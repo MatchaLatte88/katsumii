@@ -2,78 +2,110 @@
 <template>
   <Disclosure
     as="nav"
-    class="sticky top-0 z-50 ring-1 ring-white/10 border-b border-white/10
-           bg-gray-900/80 supports-[backdrop-filter]:bg-gray-900/60 backdrop-blur"
+    :class="[
+      'fixed inset-x-0 top-0 z-[60] px-3 pt-3',
+      theme === 'light'
+        ? 'bg-transparent'
+        : 'bg-transparent'
+    ]"
     v-slot="{ open }"
   >
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex h-16 items-center justify-between">
-        <!-- Brand -->
-        <a :href="brandHref" class="flex items-center gap-3">
-          <div class="size-9 rounded-xl bg-white/5 ring-1 ring-white/10 grid place-items-center">
-            <span class="text-sm font-semibold text-teal-300">K</span>
+    <div
+      :class="[
+        'nav-shell mx-auto max-w-4xl rounded-2xl border px-3 sm:px-4',
+        theme === 'light'
+          ? 'border-white/65 bg-white/45 shadow-[0_12px_38px_-20px_rgba(15,23,42,0.22)] supports-[backdrop-filter]:bg-white/32'
+          : 'border-blue-400/25 bg-slate-950/46 shadow-[0_14px_46px_-22px_rgba(0,0,0,0.62)] supports-[backdrop-filter]:bg-slate-950/34'
+      ]"
+    >
+      <div class="relative flex h-16 items-center justify-between">
+        <a :href="brandHref" class="group flex items-center gap-3">
+          <div class="size-11 overflow-hidden rounded-xl transition-transform duration-300 group-hover:scale-[1.04]">
+            <img :src="assetUrl('logo.png')" alt="Katsumii Logo" class="h-full w-full object-contain" />
           </div>
           <div class="leading-tight">
-            <div class="text-sm font-semibold">{{ brandTitle }}</div>
-            <div class="text-xs text-gray-400">{{ brandSubtitle }}</div>
+            <div
+              :class="[
+                'text-lg font-medium tracking-tight transition-colors duration-300 sm:text-xl',
+                theme === 'light' ? 'text-gray-900 group-hover:text-gray-950' : 'text-slate-100 group-hover:text-cyan-200'
+              ]"
+            >
+              {{ brandTitle }}
+            </div>
+            <div :class="['text-xs', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">
+              {{ brandSubtitle }}
+            </div>
           </div>
         </a>
 
-        <!-- Desktop nav -->
-        <div class="hidden md:flex items-center gap-2">
+        <div class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
           <a
             v-for="item in navigation"
             :key="item.name"
             :href="item.href"
-            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white"
+            :class="[
+              'px-0.5 py-1 text-[1.02rem] font-semibold tracking-tight transition-colors duration-300',
+              theme === 'light' ? 'text-gray-500 hover:text-gray-900' : 'text-slate-300/90 hover:text-cyan-200'
+            ]"
           >
             {{ item.name }}
           </a>
-
-          <a
-            v-if="cta"
-            :href="cta.href"
-            target="_blank"
-            rel="noreferrer"
-            class="ml-2 rounded-md bg-teal-500 px-3.5 py-2 text-sm font-semibold text-gray-950 shadow-xs hover:bg-teal-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
-          >
-            {{ cta.label }}
-          </a>
         </div>
 
-        <!-- Mobile menu button -->
-        <div class="-mr-2 flex md:hidden">
-          <DisclosureButton
-            class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-300 hover:bg-white/5 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-teal-500"
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            @click="emit('toggle-theme')"
+            :aria-pressed="theme === 'light'"
+            :aria-label="theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'"
+            :class="[
+              'inline-flex h-11 w-11 items-center justify-center rounded-xl border transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2',
+              theme === 'light'
+                ? 'border-gray-300 bg-white/90 text-gray-700 hover:bg-white focus-visible:outline-teal-600'
+                : 'border-blue-400/30 bg-slate-900 text-slate-200 hover:bg-slate-800 focus-visible:outline-cyan-400'
+            ]"
           >
-            <span class="sr-only">Menü öffnen</span>
-            <Bars3Icon v-if="!open" class="block size-6" aria-hidden="true" />
-            <XMarkIcon v-else class="block size-6" aria-hidden="true" />
-          </DisclosureButton>
+            <MoonIcon v-if="theme === 'light'" class="h-5 w-5" aria-hidden="true" />
+            <SunIcon v-else class="h-5 w-5" aria-hidden="true" />
+          </button>
+
+          <div class="-mr-2 flex md:hidden">
+            <DisclosureButton
+              :class="[
+                'relative inline-flex items-center justify-center rounded-xl p-2 focus:outline-2 focus:outline-offset-2 transition-all duration-300',
+                theme === 'light'
+                  ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900 focus:outline-teal-600'
+                  : 'text-slate-300 hover:bg-slate-800/80 hover:text-slate-100 focus:outline-cyan-400'
+              ]"
+            >
+              <span class="sr-only">Open menu</span>
+              <Bars3Icon v-if="!open" class="block size-6 transition-transform duration-300" aria-hidden="true" />
+              <XMarkIcon v-else class="block size-6 transition-transform duration-300" aria-hidden="true" />
+            </DisclosureButton>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Mobile panel -->
-    <DisclosurePanel class="md:hidden">
+    <DisclosurePanel
+      :class="[
+        'mx-auto mt-2 max-w-7xl overflow-hidden rounded-2xl border md:hidden',
+        theme === 'light'
+          ? 'border-gray-200 bg-white/88 supports-[backdrop-filter]:bg-white/80'
+          : 'border-blue-400/25 bg-slate-900/90 supports-[backdrop-filter]:bg-slate-900/80'
+      ]"
+    >
       <div class="space-y-1 px-4 py-3">
         <a
           v-for="item in navigation"
           :key="item.name"
           :href="item.href"
-          class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white"
+          :class="[
+            'block rounded-xl px-3 py-2 text-base font-medium transition-all duration-300 hover:translate-x-0.5',
+            theme === 'light' ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' : 'text-slate-300 hover:bg-slate-800/80 hover:text-cyan-200'
+          ]"
         >
           {{ item.name }}
-        </a>
-
-        <a
-          v-if="cta"
-          :href="cta.href"
-          target="_blank"
-          rel="noreferrer"
-          class="mt-2 block rounded-md bg-teal-500 px-3.5 py-2.5 text-center text-base font-semibold text-gray-950 hover:bg-teal-400"
-        >
-          {{ cta.label }}
         </a>
       </div>
     </DisclosurePanel>
@@ -82,23 +114,52 @@
 
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue"
-import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline"
+import { Bars3Icon, MoonIcon, SunIcon, XMarkIcon } from "@heroicons/vue/24/outline"
+
+const emit = defineEmits(["toggle-theme"])
+const baseUrl = import.meta.env.BASE_URL
+const assetUrl = (path) => `${baseUrl}${path.replace(/^\/+/, "")}`
 
 defineProps({
+  theme: { type: String, default: "light" },
   brandTitle: { type: String, default: "Katsumii" },
-  brandSubtitle: { type: String, default: "Offline Prop Trading Journal" },
+  brandSubtitle: { type: String, default: "Offline Trading Journal" },
   brandHref: { type: String, default: "#top" },
   navigation: {
     type: Array,
     default: () => [
       { name: "Features", href: "#features" },
       { name: "Screens", href: "#screens" },
-      { name: "Lizenz", href: "#pricing" },
+      { name: "License", href: "#pricing" },
     ],
-  },
-  cta: {
-    type: Object,
-    default: () => ({ label: "Lizenz kaufen", href: "#" }),
   },
 })
 </script>
+
+<style scoped>
+.nav-shell {
+  backdrop-filter: blur(20px) saturate(165%);
+  animation: nav-fade-in 360ms ease-out;
+}
+
+@keyframes nav-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
+
+
+
+
+
+
+
+
+

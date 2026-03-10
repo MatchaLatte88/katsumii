@@ -1,83 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap");
 @import "tailwindcss";
 
-/* --- Design Tokens (Farben/Glows) --- */
-:root{
-  --bg0: 10 11 14;        /* near-black */
-  --bg1: 16 18 24;        /* card bg */
-  --line: 255 255 255;    /* white lines */
-  --mint: 122 240 215;    /* mint/teal */
-  --mint2: 93 203 255;    /* cyan */
+:root {
+  color-scheme: light;
 }
 
-/* --- Page background like screenshot (soft radial glows) --- */
-body{
-  background:
-    radial-gradient(800px 400px at 50% -10%, rgba(122,240,215,.18), transparent 60%),
-    radial-gradient(700px 500px at 15% 20%, rgba(93,203,255,.10), transparent 60%),
-    radial-gradient(900px 600px at 85% 35%, rgba(122,240,215,.08), transparent 60%),
-    rgb(var(--bg0));
+html {
+  scroll-behavior: smooth;
 }
 
-/* optional: smoother font rendering */
-*{ -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-
-/* --- Reusable “components” via utility classes --- */
-@layer utilities {
-  .text-grad{
-    background: linear-gradient(90deg, rgb(var(--mint2)), rgb(var(--mint)));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .glass{
-    background: rgba(255,255,255,.04);
-    border: 1px solid rgba(255,255,255,.08);
-    box-shadow:
-      0 0 0 1px rgba(255,255,255,.04) inset,
-      0 20px 80px rgba(0,0,0,.45);
-    backdrop-filter: blur(10px);
-  }
-
-  .card{
-    border-radius: 1.25rem;
-    background: rgba(255,255,255,.04);
-    border: 1px solid rgba(255,255,255,.08);
-  }
-
-  .glow-mint{
-    box-shadow:
-      0 0 0 1px rgba(122,240,215,.12) inset,
-      0 20px 80px rgba(0,0,0,.55),
-      0 0 60px rgba(122,240,215,.18);
-  }
-
-  .btn{
-    border-radius: 9999px;
-    padding: .85rem 1.2rem;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: .5rem;
-  }
-
-  .btn-primary{
-    background: linear-gradient(90deg, rgba(93,203,255,.95), rgba(122,240,215,.95));
-    color: rgba(7,8,10,1);
-    box-shadow: 0 0 0 1px rgba(255,255,255,.10) inset, 0 18px 70px rgba(122,240,215,.22);
-  }
-
-  .btn-ghost{
-    background: rgba(255,255,255,.06);
-    border: 1px solid rgba(255,255,255,.10);
-    color: rgba(255,255,255,.92);
-  }
-
-  .pillnav{
-    border-radius: 9999px;
-    background: rgba(255,255,255,.04);
-    border: 1px solid rgba(255,255,255,.08);
-    backdrop-filter: blur(12px);
-  }
+html,
+body,
+#app {
+  min-height: 100%;
 }
+
+body {
+  margin: 0;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-family: "Sora", "Manrope", sans-serif;
+}
+
+::selection {
+  background: rgba(45, 212, 191, 0.35);
+  color: #e6fffa;
+}
+
+html.dark ::selection {
+  background: rgba(45, 212, 191, 0.45);
+  color: #03131a;
+}
+

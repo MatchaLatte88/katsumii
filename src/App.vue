@@ -1,628 +1,687 @@
-<!-- pages/Landing.vue  (oder App.vue) -->
 <template>
-  <div class="bg-gray-900 text-white">
-    <!-- Sticky Nav (separat) -->
+  <div :class="pageClass">
+    <div class="k-bg" :class="theme === 'light' ? 'k-bg-light' : 'k-bg-dark'" aria-hidden="true">
+      <div class="k-bg-orb k-bg-orb-a" />
+      <div class="k-bg-orb k-bg-orb-b" />
+      <div class="k-bg-grid" />
+      <div class="k-bg-structure" />
+      <div class="k-bg-noise" />
+    </div>
+
     <AppNav
+      :theme="theme"
       :navigation="navigation"
-      :cta="{ label: 'Lizenz kaufen', href: checkoutUrl }"
       brand-title="Katsumii"
-      brand-subtitle="Offline Prop Trading Journal"
+      brand-subtitle="Offline Trading Journal"
       brand-href="#top"
+      @toggle-theme="toggleTheme"
     />
 
-    <!-- HERO -->
-    <div id="top" class="relative isolate px-6 lg:px-8">
-      <div
-        class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-        aria-hidden="true"
-      >
-        <div
-          class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36rem] -translate-x-1/2 rotate-30 bg-gradient-to-tr from-teal-400 to-sky-500 opacity-25 sm:left-[calc(50%-30rem)] sm:w-[72rem]"
-          style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
-        />
-      </div>
-
-      <div class="mx-auto max-w-2xl py-24 sm:py-32 lg:py-36">
-        <div class="hidden sm:mb-8 sm:flex sm:justify-center">
-          <div class="relative rounded-full px-3 py-1 text-sm text-gray-300 ring-1 ring-white/10 hover:ring-white/20">
-            Local-first: alles bleibt auf deinem Gerät — keine Cloud, kein Login, kein Abo.
-            <a href="#features" class="font-semibold text-teal-300">
-              <span class="absolute inset-0" aria-hidden="true" />
-              Features ansehen <span aria-hidden="true">→</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="text-center">
-          <h1 class="text-5xl font-semibold tracking-tight text-balance sm:text-7xl">
-            Prop Trading Journal<br />
-            lokal. schnell. übersichtlich.
-          </h1>
-
-          <p class="mt-8 text-lg font-medium text-pretty text-gray-300 sm:text-xl/8">
-            Erfasse Trades mit Screenshots, dokumentiere Setups & Regeln, führe mehrere Prop- und Personal-Accounts
-            und analysiere deine Performance — komplett offline.
-          </p>
-
-          <div class="mt-10 flex items-center justify-center gap-x-6">
-            <a
-              :href="checkoutUrl"
-              target="_blank"
-              rel="noreferrer"
-              class="rounded-md bg-teal-500 px-3.5 py-2.5 text-sm font-semibold text-gray-950 shadow-xs hover:bg-teal-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+    <main>
+      <section id="top" class="relative px-6 pb-20 pt-20 sm:pt-28 lg:px-10">
+        <div class="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div class="reveal">
+            <p
+              :class="[
+                'inline-flex items-center rounded-full border px-4 py-1 text-xs font-semibold uppercase tracking-[0.22em]',
+                theme === 'light'
+                  ? 'border-teal-200 bg-teal-50 text-teal-700'
+                  : 'border-cyan-300/30 bg-cyan-400/10 text-cyan-200'
+              ]"
             >
-              Jetzt starten
-            </a>
+              Kaizen Trading Workflow
+            </p>
 
-            <a href="#pricing" class="text-sm font-semibold hover:text-gray-100">
-              Lizenz <span aria-hidden="true">→</span>
-            </a>
+            <div class="mt-7 flex items-center gap-5">
+              <img :src="assetUrl('logo.png')" alt="Katsumii logo" class="h-20 w-20 object-contain sm:h-24 sm:w-24" />
+              <h1
+                :class="[
+                  'font-display text-5xl font-semibold leading-none tracking-tight sm:text-6xl lg:text-7xl',
+                  theme === 'light' ? 'text-gray-900' : 'text-slate-100'
+                ]"
+              >
+                KATSUMII
+              </h1>
+            </div>
+
+            <p
+              :class="[
+                'mt-7 max-w-xl text-lg leading-relaxed',
+                theme === 'light' ? 'text-gray-600' : 'text-slate-300'
+              ]"
+            >
+              Modernes Trading Journal mit Fokus auf Klarheit, Struktur und Disziplin. Lokal, schnell und gebaut fuer
+              Prop Trader, die professionell wachsen wollen.
+            </p>
+
+            <div class="mt-9 flex flex-wrap gap-3">
+              <a
+                :href="checkoutUrl"
+                :target="linkTarget(checkoutUrl)"
+                :rel="linkRel(checkoutUrl)"
+                :class="[
+                  'rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5',
+                  theme === 'light'
+                    ? 'bg-teal-600 text-white hover:bg-teal-500'
+                    : 'bg-cyan-300 text-slate-950 hover:bg-cyan-200'
+                ]"
+              >
+                Buy License
+              </a>
+              <a
+                href="#showcase"
+                :class="[
+                  'rounded-full border px-6 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5',
+                  theme === 'light'
+                    ? 'border-gray-300 bg-white/80 text-gray-700 hover:bg-white'
+                    : 'border-blue-400/30 bg-slate-900/70 text-slate-200 hover:bg-slate-800/80'
+                ]"
+              >
+                Product Tour
+              </a>
+            </div>
           </div>
 
-          <p class="mt-6 text-xs text-gray-400">Einmalzahlung · Offline-first · Prop-Firm & Personal Accounts</p>
-        </div>
-      </div>
-
-      <div
-        class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-        aria-hidden="true"
-      >
-        <div
-          class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36rem] -translate-x-1/2 bg-gradient-to-tr from-sky-500 to-teal-400 opacity-20 sm:left-[calc(50%+36rem)] sm:w-[72rem]"
-          style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
-        />
-      </div>
-    </div>
-
-
-
-
-
-  <div class="bg-gray-900">
-    <div class="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
-      <div class="relative isolate overflow-hidden bg-gray-800 px-6 pt-16 after:pointer-events-none after:absolute after:inset-0 after:inset-ring after:inset-ring-white/10 sm:rounded-3xl sm:px-16 after:sm:rounded-3xl md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
-        <svg viewBox="0 0 1024 1024" class="absolute top-1/2 left-1/2 -z-10 size-256 -translate-y-1/2 mask-[radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0" aria-hidden="true">
-          <circle cx="512" cy="512" r="512" fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fill-opacity="0.7" />
-          <defs>
-            <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641">
-              <stop stop-color="#7775D6" />
-              <stop offset="1" stop-color="#E935C1" />
-            </radialGradient>
-          </defs>
-        </svg>
-        <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
-          <h2 class="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">Boost your productivity. Start using our app today.</h2>
-          <p class="mt-6 text-lg/8 text-pretty text-gray-300">Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla.</p>
-          <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-            <a href="#" class="rounded-md bg-gray-700 px-3.5 py-2.5 text-sm font-semibold text-white inset-ring inset-ring-white/5 hover:bg-gray-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"> Get started </a>
-            <a href="#" class="text-sm/6 font-semibold text-white hover:text-gray-100">
-              Learn more
-              <span aria-hidden="true">→</span>
-            </a>
+          <div class="reveal relative">
+            <div
+              :class="[
+                'k-card relative overflow-hidden rounded-3xl border p-5 sm:p-6',
+                theme === 'light'
+                  ? 'border-gray-200 bg-white/85 shadow-[0_30px_90px_-45px_rgba(15,23,42,0.45)]'
+                  : 'border-blue-400/25 bg-slate-900/80 shadow-[0_30px_100px_-45px_rgba(0,0,0,0.8)]'
+              ]"
+            >
+              <div
+                :class="[
+                  'absolute -right-16 -top-16 h-44 w-44 rounded-full blur-2xl',
+                  theme === 'light' ? 'bg-teal-200/70' : 'bg-cyan-400/25'
+                ]"
+              />
+              <img
+                :src="theme === 'light' ? assetUrl('Sc1_Light.png') : assetUrl('Sc1_Dark.png')"
+                alt="Katsumii dashboard"
+                class="w-full rounded-2xl border"
+                :class="theme === 'light' ? 'border-gray-200' : 'border-blue-400/25'"
+              />
+              <div class="mt-5 grid grid-cols-3 gap-3">
+                <article
+                  v-for="item in heroStats"
+                  :key="item.label"
+                  :class="[
+                    'rounded-2xl border p-3 text-center',
+                    theme === 'light' ? 'border-gray-200 bg-gray-50' : 'border-blue-400/20 bg-slate-900/75'
+                  ]"
+                >
+                  <p :class="['text-xl font-semibold', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ item.value }}</p>
+                  <p :class="['text-xs', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">{{ item.label }}</p>
+                </article>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="relative mt-16 h-80 lg:mt-8">
-          <img class="absolute top-0 left-0 w-228 max-w-none rounded-md bg-white/5 ring-1 ring-white/10" src="https://tailwindcss.com/plus-assets/img/component-images/dark-project-app-screenshot.png" alt="App screenshot" width="1824" height="1080" />
-        </div>
-      </div>
-    </div>
-  </div>
+      </section>
 
+      <section id="features" class="px-6 py-20 lg:px-10">
+        <div class="mx-auto max-w-7xl">
+          <div class="reveal max-w-3xl">
+            <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">
+              Why Katsumii
+            </p>
+            <h2 :class="['mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
+              Professional structure with dominant, high-clarity feature workflows
+            </h2>
+          </div>
 
+          <div class="reveal mt-8 overflow-hidden rounded-full border py-2" :class="theme === 'light' ? 'border-gray-200 bg-white/75' : 'border-blue-400/20 bg-slate-900'">
+            <div class="feature-marquee flex min-w-max gap-2 px-2">
+              <span
+                v-for="item in featureTicker"
+                :key="item"
+                :class="[
+                  'rounded-full border px-4 py-1 text-xs font-semibold uppercase tracking-[0.12em]',
+                  theme === 'light' ? 'border-teal-200 bg-teal-50 text-teal-700' : 'border-cyan-300/30 bg-cyan-400/10 text-cyan-200'
+                ]"
+              >
+                {{ item }}
+              </span>
+              <span
+                v-for="item in featureTicker"
+                :key="`${item}-clone`"
+                :class="[
+                  'rounded-full border px-4 py-1 text-xs font-semibold uppercase tracking-[0.12em]',
+                  theme === 'light' ? 'border-teal-200 bg-teal-50 text-teal-700' : 'border-cyan-300/30 bg-cyan-400/10 text-cyan-200'
+                ]"
+              >
+                {{ item }}
+              </span>
+            </div>
+          </div>
 
-<!-- FEATURES (Text links, Bild rechts) - gleicher overlap-sicherer Ansatz -->
-<section id="features" class="overflow-hidden bg-gray-900">
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <div
-      class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20
-             lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center"
-    >
-      <!-- TEXT (links) -->
-      <div class="lg:pr-8">
-        <div class="lg:max-w-lg">
-          <h2 class="text-base font-semibold text-teal-300">Für echte Auswertung gebaut</h2>
+          <article
+            class="reveal feature-spotlight mt-10 grid gap-8 overflow-hidden rounded-[2rem] border p-6 sm:p-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12"
+            :class="theme === 'light' ? 'border-gray-200 bg-white/90' : 'border-blue-400/25 bg-slate-900/85'"
 
-          <p class="mt-2 text-4xl font-semibold tracking-tight text-pretty sm:text-5xl">
-            Accounts, Regeln, Statistik — in einer lokalen App
-          </p>
+          >
+            <div class="relative z-10">
+              <p :class="['text-xs font-semibold uppercase tracking-[0.18em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">
+                Feature Spotlight
+              </p>
+              <h3 :class="['mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
+                Build conviction through calm, measurable execution
+              </h3>
+              <p :class="['mt-4 max-w-xl text-sm leading-relaxed sm:text-base', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
+                Die wichtigsten Features sind jetzt bewusst im Zentrum: schneller Trade-Flow, glasklare Prop-Regel-Uebersicht und
+                Analytics, die direkt Entscheidungen verbessern.
+              </p>
 
-          <p class="mt-6 text-lg/8 text-gray-300">
-            Lokale Datenbank, schnelle Suche, saubere Auswertungen und klare Account-Übersicht für Prop-Firm-Challenges
-            und Personal-Accounts.
-          </p>
+              <ul class="mt-6 space-y-3">
+                <li
+                  v-for="point in spotlightPoints"
+                  :key="point"
+                  class="flex items-start gap-3 rounded-xl border px-4 py-3"
+                  :class="theme === 'light' ? 'border-gray-200 bg-gray-50/80' : 'border-blue-400/20 bg-slate-900'"
+                >
+                  <CheckIcon class="mt-0.5 h-5 w-5 flex-none" :class="theme === 'light' ? 'text-teal-600' : 'text-cyan-200'" />
+                  <span :class="['text-sm', theme === 'light' ? 'text-gray-700' : 'text-slate-200']">{{ point }}</span>
+                </li>
+              </ul>
+            </div>
 
-          <dl class="mt-10 max-w-xl space-y-8 text-base/7 text-gray-300 lg:max-w-none">
-            <div v-for="feature in features" :key="feature.name" class="relative pl-9">
-              <dt class="inline font-semibold text-white">
-                <component
-                  :is="feature.icon"
-                  class="absolute top-1 left-1 size-5 text-teal-300"
-                  aria-hidden="true"
+            <div class="relative z-10 flex items-center">
+              <div class="relative w-full">
+                <img
+                  :src="theme === 'light' ? assetUrl('Sc1_Light.png') : assetUrl('Sc1_Dark.png')"
+                  alt="Katsumii feature spotlight"
+                  class="w-full rounded-2xl border"
+                  :class="theme === 'light' ? 'border-gray-200 shadow-xl' : 'border-blue-400/25 shadow-2xl shadow-black/30'"
                 />
-                {{ feature.name }}
-              </dt>
-              {{ " " }}
-              <dd class="inline text-gray-300">{{ feature.description }}</dd>
-            </div>
-          </dl>
-        </div>
-      </div>
-
-      <!-- IMAGE (rechts) -->
-      <div class="lg:pl-8">
-        <img
-          src="/Sc1.png"
-          alt="Katsumii – Journal & Statistik Screenshot"
-          class="w-full rounded-xl shadow-xl ring-1 ring-white/10"
-          width="2432"
-          height="1442"
-        />
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES (Bild links, Text rechts) -->
-<section class="overflow-hidden bg-gray-900">
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <div
-      class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20
-             lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center"
-    >
-      <!-- IMAGE -->
-      <div class="lg:pr-8">
-        <img
-          src="/Sc1.png"
-          alt="Katsumii – Strategy Management & Trading Overview"
-          class="w-full rounded-xl shadow-xl ring-1 ring-white/10"
-          width="2432"
-          height="1442"
-        />
-      </div>
-
-      <!-- TEXT -->
-      <div class="lg:pl-8">
-        <div class="lg:max-w-lg">
-
-          <h2 class="text-base font-semibold text-teal-300">
-            Struktur für dein Trading
-          </h2>
-
-          <p class="mt-2 text-4xl font-semibold tracking-tight text-pretty sm:text-5xl">
-            Strategien, Accounts und Regeln an einem Ort
-          </p>
-
-          <p class="mt-6 text-lg/8 text-gray-300">
-            Katsumii hilft dir, dein Trading strukturiert zu organisieren:
-            dokumentiere Strategien, tracke deine Performance im Kalender
-            und behalte Prop-Firm-Regeln immer im Blick — komplett lokal
-            und ohne Cloud-Abhängigkeit.
-          </p>
-
-          <dl class="mt-10 max-w-xl space-y-8 text-base/7 text-gray-300 lg:max-w-none">
-
-            <div class="relative pl-9">
-              <dt class="inline font-semibold text-white">
-                <component :is="features[0].icon" class="absolute top-1 left-1 size-5 text-teal-300" />
-                Strategie-Management & Library
-              </dt>
-              <dd class="inline text-gray-300">
-                Erstelle deine eigene Strategie-Bibliothek, dokumentiere Regeln,
-                Setups und Notizen — und verknüpfe Trades direkt mit deiner Strategie.
-              </dd>
-            </div>
-
-            <div class="relative pl-9">
-              <dt class="inline font-semibold text-white">
-                <component :is="features[1].icon" class="absolute top-1 left-1 size-5 text-teal-300" />
-                Trading Kalender & Tages-PnL
-              </dt>
-              <dd class="inline text-gray-300">
-                Behalte deine Performance im Kalender im Blick: Tages-PnL,
-                Gewinn- und Verlusttage sowie deine Trading-Aktivität
-                werden übersichtlich visualisiert.
-              </dd>
-            </div>
-
-            <div class="relative pl-9">
-              <dt class="inline font-semibold text-white">
-                <component :is="features[2].icon" class="absolute top-1 left-1 size-5 text-teal-300" />
-                Prop-Firm Account Presets
-              </dt>
-              <dd class="inline text-gray-300">
-                Nutze vorbereitete Account-Presets für typische Prop-Firm Regeln
-                wie Daily Max Loss, Max Drawdown oder Mindest-Tradingtage.
-              </dd>
-            </div>
-
-            <div class="relative pl-9">
-              <dt class="inline font-semibold text-white">
-                <component :is="features[3].icon" class="absolute top-1 left-1 size-5 text-teal-300" />
-                Risk- & Inactivity Alerts
-              </dt>
-              <dd class="inline text-gray-300">
-                Lass dich warnen, wenn du dein Daily Loss Limit erreichst,
-                dein Max Drawdown näherkommt oder wenn längere
-                Trading-Inaktivität erkannt wird.
-              </dd>
-            </div>
-
-          </dl>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-    <!-- BENTO / SCREENS -->
-    <section id="screens" class="bg-gray-900 py-20 sm:py-28">
-      <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-        <h2 class="text-center text-base font-semibold text-teal-300">Workflows, die du wirklich nutzt</h2>
-        <p class="mx-auto mt-2 max-w-2xl text-center text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
-          Von Trade-Eintrag bis Monatsreport — ohne Browser, ohne Cloud
-        </p>
-
-        <div class="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
-          <!-- Big left -->
-          <div class="relative lg:row-span-2">
-            <div class="absolute inset-px rounded-3xl bg-gray-800" />
-            <div class="relative flex h-full flex-col overflow-hidden rounded-3xl ring-1 ring-white/10">
-              <div class="px-8 pt-8 pb-3 sm:px-10 sm:pt-10">
-                <p class="mt-2 text-lg font-medium tracking-tight text-white max-lg:text-center">
-                  Trade-Einträge mit Screenshot & Notizen
-                </p>
-                <p class="mt-2 max-w-lg text-sm/6 text-gray-400 max-lg:text-center">
-                  Entry/Exit markieren, Setup taggen, Fehler tracken, Charts anhängen und Reviews schreiben — alles lokal.
-                </p>
-              </div>
-              <div class="relative min-h-72 w-full grow">
-                <div class="absolute inset-x-8 top-8 bottom-0 overflow-hidden rounded-2xl bg-gray-900/50 ring-1 ring-white/10">
-                  <img class="size-full object-cover object-top opacity-90" src="/Sc2.png" alt="Screenshot Review" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Top middle -->
-          <div class="relative max-lg:row-start-1">
-            <div class="absolute inset-px rounded-3xl bg-gray-800" />
-            <div class="relative flex h-full flex-col overflow-hidden rounded-3xl ring-1 ring-white/10">
-              <div class="px-8 pt-8 sm:px-10 sm:pt-10">
-                <p class="mt-2 text-lg font-medium tracking-tight text-white max-lg:text-center">
-                  Prop-Account Management
-                </p>
-                <p class="mt-2 max-w-lg text-sm/6 text-gray-400 max-lg:text-center">
-                  Accounts, Ziele, Limits und Regeln im Blick (Drawdown, Daily Loss, Trading Days).
-                </p>
-              </div>
-              <div class="flex flex-1 items-center justify-center px-8 max-lg:pt-10 max-lg:pb-12 sm:px-10 lg:pb-8">
-                <div class="w-full rounded-2xl bg-gray-900/50 ring-1 ring-white/10 p-6">
-                  <div class="text-sm text-gray-300 font-medium">Account Snapshot</div>
-                  <div class="mt-3 grid grid-cols-2 gap-3 text-sm text-gray-400">
-                    <div class="rounded-xl bg-white/5 ring-1 ring-white/10 p-3">
-                      <div class="text-gray-300">Equity</div>
-                      <div class="text-white font-semibold">€ 52,480</div>
-                    </div>
-                    <div class="rounded-xl bg-white/5 ring-1 ring-white/10 p-3">
-                      <div class="text-gray-300">Max DD</div>
-                      <div class="text-white font-semibold">-€ 2,500</div>
-                    </div>
-                    <div class="rounded-xl bg-white/5 ring-1 ring-white/10 p-3">
-                      <div class="text-gray-300">Winrate</div>
-                      <div class="text-white font-semibold">57%</div>
-                    </div>
-                    <div class="rounded-xl bg-white/5 ring-1 ring-white/10 p-3">
-                      <div class="text-gray-300">Expectancy</div>
-                      <div class="text-white font-semibold">+0.18R</div>
-                    </div>
+                <div class="mt-4 grid grid-cols-3 gap-3">
+                  <div
+                    v-for="kpi in spotlightKpis"
+                    :key="kpi.label"
+                    class="rounded-xl border px-3 py-2 text-center"
+                    :class="theme === 'light' ? 'border-gray-200 bg-white/95' : 'border-blue-400/25 bg-slate-950/75'"
+                  >
+                    <p :class="['text-base font-semibold', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ kpi.value }}</p>
+                    <p :class="['text-[11px]', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">{{ kpi.label }}</p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Bottom middle -->
-          <div class="relative max-lg:row-start-3 lg:col-start-2 lg:row-start-2">
-            <div class="absolute inset-px rounded-3xl bg-gray-800" />
-            <div class="relative flex h-full flex-col overflow-hidden rounded-3xl ring-1 ring-white/10">
-              <div class="px-8 pt-8 sm:px-10 sm:pt-10">
-                <p class="mt-2 text-lg font-medium tracking-tight text-white max-lg:text-center">
-                  Statistiken, die Entscheidungen verbessern
-                </p>
-                <p class="mt-2 max-w-lg text-sm/6 text-gray-400 max-lg:text-center">
-                  R-Multiples, Reports, Setup-Performance, Fehlerhäufigkeit, Sessions, Instrumente.
-                </p>
-              </div>
-              <div class="flex flex-1 items-center max-lg:py-6 lg:pb-8 px-8 sm:px-10">
-                <div class="w-full rounded-2xl bg-gray-900/50 ring-1 ring-white/10 p-6 text-sm text-gray-400">
-                  <div class="flex items-center justify-between">
-                    <span class="text-gray-300 font-medium">Top Setup</span>
-                    <span class="text-teal-300 font-semibold">Breakout</span>
-                  </div>
-                  <div class="mt-3 grid grid-cols-3 gap-3">
-                    <div class="rounded-xl bg-white/5 ring-1 ring-white/10 p-3">
-                      <div class="text-gray-300">Trades</div>
-                      <div class="text-white font-semibold">128</div>
-                    </div>
-                    <div class="rounded-xl bg-white/5 ring-1 ring-white/10 p-3">
-                      <div class="text-gray-300">Ø R</div>
-                      <div class="text-white font-semibold">+0.32</div>
-                    </div>
-                    <div class="rounded-xl bg-white/5 ring-1 ring-white/10 p-3">
-                      <div class="text-gray-300">PF</div>
-                      <div class="text-white font-semibold">1.41</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Big right -->
-          <div class="relative lg:row-span-2">
-            <div class="absolute inset-px rounded-3xl bg-gray-800" />
-            <div class="relative flex h-full flex-col overflow-hidden rounded-3xl ring-1 ring-white/10">
-              <div class="px-8 pt-8 pb-3 sm:px-10 sm:pt-10">
-                <p class="mt-2 text-lg font-medium tracking-tight text-white max-lg:text-center">
-                  Regel-Check & Review-Routine
-                </p>
-                <p class="mt-2 max-w-lg text-sm/6 text-gray-400 max-lg:text-center">
-                  Regeln abhaken, Regelbrüche tracken und Daily/Weekly/Monthly Reviews aufbauen.
-                </p>
-              </div>
-              <div class="relative min-h-72 w-full grow">
-                <div class="absolute top-8 right-8 bottom-8 left-8 overflow-hidden rounded-2xl bg-gray-900/50 ring-1 ring-white/10 p-6">
-                  <div class="flex items-center gap-3 text-sm text-gray-300 font-medium">
-                    <LockClosedIcon class="size-5 text-teal-300" />
-                    Rule Checklist
-                  </div>
-                  <ul class="mt-4 space-y-3 text-sm text-gray-400">
-                    <li class="flex items-center gap-3">
-                      <span class="size-2 rounded-full bg-teal-300" />
-                      Nur A+ Setups gehandelt
-                    </li>
-                    <li class="flex items-center gap-3">
-                      <span class="size-2 rounded-full bg-teal-300" />
-                      Max. Risiko pro Trade eingehalten
-                    </li>
-                    <li class="flex items-center gap-3">
-                      <span class="size-2 rounded-full bg-gray-600" />
-                      Kein Revenge Trading (Review)
-                    </li>
-                    <li class="flex items-center gap-3">
-                      <span class="size-2 rounded-full bg-gray-600" />
-                      Session-Ende dokumentiert
-                    </li>
-                  </ul>
-                  <div class="mt-6 rounded-xl bg-white/5 ring-1 ring-white/10 p-4 text-sm text-gray-400">
-                    Tipp: Bei Regelbrüchen immer kurz „Warum?“ notieren — das macht Statistik später ehrlich.
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            <article
+              v-for="feature in features"
+              :key="feature.name"
+              class="reveal feature-card group rounded-3xl border p-6 transition-all duration-300 hover:-translate-y-1"
+              :class="theme === 'light' ? 'border-gray-200 bg-white/85 hover:shadow-lg' : 'border-blue-400/20 bg-slate-900/70 hover:bg-slate-800/80'"
+  
+            >
+              <component
+                :is="feature.icon"
+                class="h-6 w-6"
+                :class="theme === 'light' ? 'text-teal-600' : 'text-cyan-200'"
+              />
+              <h3 :class="['mt-4 text-lg font-semibold', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ feature.name }}</h3>
+              <p :class="['mt-3 text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">{{ feature.description }}</p>
+            </article>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- PRICING -->
-    <section id="pricing" class="relative isolate bg-gray-900 px-6 pb-5 lg:px-8">
-      <div class="mx-auto max-w-4xl text-center">
-        <h2 class="text-base/7 font-semibold text-teal-300">Lizenz</h2>
-        <p class="mt-2 text-5xl font-semibold tracking-tight text-balance sm:text-6xl">
-          Einmal zahlen. Lokal nutzen.
-        </p>
-      </div>
+      <section id="showcase" class="px-6 py-20 lg:px-10">
+        <div class="mx-auto max-w-7xl space-y-12">
+          <article class="grid items-center gap-10 lg:grid-cols-2">
+            <div class="reveal rounded-3xl border p-4" :class="theme === 'light' ? 'border-gray-200 bg-white/85 shadow-xl' : 'border-blue-400/25 bg-slate-900/80 shadow-2xl shadow-black/30'">
+              <p :class="['mb-3 text-xs font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">
+                Dashboard
+              </p>
+              <img
+                :src="theme === 'light' ? assetUrl('Sc1_Light.png') : assetUrl('Sc1_Dark.png')"
+                alt="Katsumii dashboard analytics screenshot"
+                class="w-full rounded-2xl border"
+                :class="theme === 'light' ? 'border-gray-200' : 'border-blue-400/25'"
+              />
+            </div>
 
-      <p class="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-gray-300 sm:text-xl/8">
-        Keine monatlichen Gebühren, keine Cloud-Abhängigkeit. Du kaufst eine Lizenz — deine Daten bleiben bei dir.
-      </p>
+            <div class="reveal flex items-center lg:min-h-full">
+              <div>
+                <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">Dashboard Analytics</p>
+                <h2 :class="['mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
+                  Measure your edge.
+                </h2>
+                <p :class="['mt-4 text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
+                  Das Dashboard zeigt Balance, PnL, Regelstatus und Setup-Qualitaet in einem klaren Analytics-Flow.
+                </p>
+                <ul class="mt-8 space-y-4">
+                  <li
+                    v-for="step in dashboardSteps"
+                    :key="step.title"
+                    class="rounded-2xl border p-4"
+                    :class="theme === 'light' ? 'border-gray-200 bg-white/80' : 'border-blue-400/20 bg-slate-900'"
+                  >
+                    <p :class="['text-sm font-semibold', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ step.title }}</p>
+                    <p :class="['mt-1 text-sm', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">{{ step.description }}</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </article>
 
-      <div class="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2">
-        <div
-          v-for="(tier, tierIdx) in tiers"
-          :key="tier.id"
-          :class="[
-            tier.featured ? 'relative bg-gray-800' : 'bg-white/2.5 sm:mx-8 lg:mx-0',
-            tier.featured
-              ? ''
-              : tierIdx === 0
-                ? 'rounded-t-3xl sm:rounded-b-none lg:rounded-tr-none lg:rounded-bl-3xl'
-                : 'sm:rounded-t-none lg:rounded-tr-3xl lg:rounded-bl-none',
-            'rounded-3xl p-8 ring-1 ring-white/10 sm:p-10'
-          ]"
-        >
-          <h3 :id="tier.id" class="text-base/7 font-semibold text-teal-300">{{ tier.name }}</h3>
+          <article class="grid items-center gap-10 lg:grid-cols-2">
+            <div class="reveal flex items-center order-2 lg:order-1 lg:min-h-full">
+              <div>
+                <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">Trading Calendar</p>
+                <h2 :class="['mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
+                  Plan with clarity.
+                </h2>
+                <p :class="['mt-4 text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
+                  Der Kalender macht Trading-Tage, Tages-PnL und Monatsmuster sofort sichtbar, damit Reviews schneller
+                  und praeziser werden.
+                </p>
+                <ul class="mt-8 space-y-4">
+                  <li
+                    v-for="step in calendarSteps"
+                    :key="step.title"
+                    class="rounded-2xl border p-4"
+                    :class="theme === 'light' ? 'border-gray-200 bg-white/80' : 'border-blue-400/20 bg-slate-900'"
+                  >
+                    <p :class="['text-sm font-semibold', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ step.title }}</p>
+                    <p :class="['mt-1 text-sm', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">{{ step.description }}</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
 
-          <p class="mt-4 flex items-baseline gap-x-2">
-            <span class="text-5xl font-semibold tracking-tight text-white">{{ tier.price }}</span>
-            <span class="text-base text-gray-400">einmalig</span>
-          </p>
+            <div class="reveal rounded-3xl border p-4 order-1 lg:order-2" :class="theme === 'light' ? 'border-gray-200 bg-white/85 shadow-xl' : 'border-blue-400/25 bg-slate-900/80 shadow-2xl shadow-black/30'">
+              <p :class="['mb-3 text-xs font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">
+                Trading Calendar
+              </p>
+              <img
+                :src="theme === 'light' ? assetUrl('Sc2_Light.png') : assetUrl('Sc2_Dark.png')"
+                alt="Katsumii trading calendar screenshot"
+                class="w-full rounded-2xl border"
+                :class="theme === 'light' ? 'border-gray-200' : 'border-blue-400/25'"
+              />
+            </div>
+          </article>
+        </div>
 
-          <p class="mt-6 text-base/7 text-gray-300">{{ tier.description }}</p>
-
-          <ul role="list" class="mt-8 space-y-3 text-sm/6 text-gray-300 sm:mt-10">
-            <li v-for="feature in tier.features" :key="feature" class="flex gap-x-3">
-              <CheckIcon class="h-6 w-5 flex-none text-teal-300" aria-hidden="true" />
-              {{ feature }}
-            </li>
-          </ul>
-
+        <div class="mx-auto mt-8 max-w-7xl text-center reveal">
           <a
-            :href="tier.href"
-            :aria-describedby="tier.id"
-            target="_blank"
-            rel="noreferrer"
+            :href="pageUrl('features')"
             :class="[
-              tier.featured
-                ? 'bg-teal-500 text-gray-950 hover:bg-teal-400 focus-visible:outline-teal-500'
-                : 'bg-white/10 text-white ring-1 ring-inset ring-white/10 hover:bg-white/15 focus-visible:outline-white/75',
-              'mt-8 block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10'
+              'inline-flex items-center gap-2 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5',
+              theme === 'light' ? 'text-gray-600 hover:text-gray-900' : 'text-slate-400 hover:text-cyan-200'
             ]"
           >
-            Jetzt kaufen
+            See all features
+            <span aria-hidden="true">-&gt;</span>
           </a>
+        </div>
+      </section>
 
-          <p v-if="tier.featured" class="mt-3 text-xs text-gray-400">
-            Empfehlung: Für aktive Trader, die Regeln testen und Auswertung ernst nehmen.
+      <section id="pricing" class="px-6 pb-20 pt-20 lg:px-10">
+        <div class="mx-auto max-w-5xl text-center reveal">
+          <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">License</p>
+          <h2 :class="['mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
+            One-time payment. Long-term edge.
+          </h2>
+          <p :class="['mx-auto mt-5 max-w-2xl text-base', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
+            Kein Abo, keine Cloud Bindung. Deine Daten bleiben lokal und du behaeltst volle Kontrolle.
           </p>
         </div>
+
+        <div class="mx-auto mt-14 max-w-6xl">
+          <div class="relative flex flex-col gap-6 lg:min-h-[42rem] lg:flex-row lg:items-start lg:justify-center">
+            <article
+              class="reveal rounded-3xl border p-8 text-left lg:w-[28rem] lg:translate-x-10 lg:translate-y-8 lg:scale-[0.965] lg:opacity-95"
+              :class="theme === 'light' ? 'border-gray-200 bg-white shadow-lg' : 'border-blue-400/20 bg-slate-900'"
+            >
+              <p :class="['text-sm font-semibold uppercase tracking-[0.12em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">{{ starterTier.name }}</p>
+              <p :class="['mt-4 text-5xl font-semibold', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ starterTier.price }}</p>
+              <p :class="['mt-1 text-sm', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">one-time</p>
+              <p :class="['mt-4 text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">{{ starterTier.description }}</p>
+              <ul class="mt-6 space-y-3">
+                <li v-for="feature in starterTier.features" :key="feature" class="flex items-start gap-2">
+                  <CheckIcon class="mt-0.5 h-5 w-5 flex-none" :class="theme === 'light' ? 'text-teal-600' : 'text-cyan-200'" />
+                  <span :class="['text-sm', theme === 'light' ? 'text-gray-700' : 'text-slate-200']">{{ feature }}</span>
+                </li>
+              </ul>
+              <a
+                :href="starterTier.href"
+                :target="linkTarget(starterTier.href)"
+                :rel="linkRel(starterTier.href)"
+                class="mt-7 inline-flex rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
+                :class="theme === 'light' ? 'bg-gray-900 text-white hover:bg-gray-800' : 'bg-slate-800 text-slate-100 hover:bg-slate-700'"
+              >
+                Buy {{ starterTier.name }}
+              </a>
+            </article>
+
+            <article
+              class="reveal relative z-20 rounded-3xl border p-8 text-left lg:-translate-x-12 lg:w-[30rem]"
+              :class="theme === 'light' ? 'border-teal-300 bg-teal-50 shadow-2xl' : 'border-cyan-300/35 bg-slate-900 shadow-[0_24px_90px_-36px_rgba(34,211,238,0.55)]'"
+            >
+              <span
+                :class="[
+                  'inline-flex rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.13em]',
+                  theme === 'light' ? 'border-teal-300 bg-white text-teal-700' : 'border-cyan-200/40 bg-slate-950 text-cyan-200'
+                ]"
+              >
+                Main Program
+              </span>
+              <p :class="['mt-4 text-sm font-semibold uppercase tracking-[0.12em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">{{ featuredTier.name }}</p>
+              <p :class="['mt-4 text-5xl font-semibold', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ featuredTier.price }}</p>
+              <p :class="['mt-1 text-sm', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">one-time</p>
+              <p :class="['mt-4 text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">{{ featuredTier.description }}</p>
+              <ul class="mt-6 space-y-3">
+                <li v-for="feature in featuredTier.features" :key="feature" class="flex items-start gap-2">
+                  <CheckIcon class="mt-0.5 h-5 w-5 flex-none" :class="theme === 'light' ? 'text-teal-600' : 'text-cyan-200'" />
+                  <span :class="['text-sm', theme === 'light' ? 'text-gray-700' : 'text-slate-200']">{{ feature }}</span>
+                </li>
+              </ul>
+              <a
+                :href="featuredTier.href"
+                :target="linkTarget(featuredTier.href)"
+                :rel="linkRel(featuredTier.href)"
+                class="mt-7 inline-flex rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
+                :class="theme === 'light' ? 'bg-teal-700 text-white hover:bg-teal-600' : 'bg-cyan-300 text-slate-950 hover:bg-cyan-200'"
+              >
+                Buy {{ featuredTier.name }}
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="px-6 pb-20 lg:px-10">
+        <div
+          class="reveal mx-auto max-w-6xl rounded-3xl border px-6 py-12 text-center sm:px-10"
+          :class="theme === 'light' ? 'border-gray-200 bg-white/90' : 'border-blue-400/20 bg-slate-900'"
+        >
+          <h2 :class="['font-display text-3xl font-semibold sm:text-4xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
+            Ready to build your edge with discipline?
+          </h2>
+          <p :class="['mx-auto mt-4 max-w-2xl text-base', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
+            Start with the full version or test the demo first. Same mindset, same clean workflow.
+          </p>
+          <div class="mt-8 flex flex-wrap justify-center gap-3">
+            <a
+              :href="checkoutUrl"
+              :target="linkTarget(checkoutUrl)"
+              :rel="linkRel(checkoutUrl)"
+              :class="[
+                'rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5',
+                theme === 'light' ? 'bg-teal-600 text-white hover:bg-teal-500' : 'bg-cyan-300 text-slate-950 hover:bg-cyan-200'
+              ]"
+            >
+              Buy License
+            </a>
+            <a
+              href="coming_soon.html"
+              :class="[
+                'rounded-full border px-6 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5',
+                theme === 'light' ? 'border-gray-300 bg-white text-gray-700 hover:bg-gray-50' : 'border-blue-400/30 bg-slate-900/70 text-slate-200 hover:bg-slate-800/80'
+              ]"
+            >
+              Try Free Demo
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="relative overflow-hidden border-t"
+      :class="theme === 'light' ? 'border-gray-200/90 bg-white/88' : 'border-blue-400/20 bg-slate-950/95'"
+    >
+      <div
+        class="pointer-events-none absolute inset-x-0 top-0 h-px"
+        :class="theme === 'light' ? 'bg-gradient-to-r from-transparent via-teal-400/50 to-transparent' : 'bg-gradient-to-r from-transparent via-cyan-300/45 to-transparent'"
+      />
+
+      <div class="mx-auto max-w-7xl px-6 py-14 lg:px-10">
+        <div
+          class="reveal relative overflow-hidden rounded-[2rem] border p-6 sm:p-8"
+          :class="theme === 'light' ? 'border-gray-200 bg-white/92 shadow-[0_24px_80px_-50px_rgba(15,23,42,0.28)]' : 'border-blue-400/20 bg-slate-900/72 shadow-[0_30px_90px_-50px_rgba(0,0,0,0.8)]'"
+        >
+          <div
+            class="pointer-events-none absolute -right-16 top-0 h-40 w-40 rounded-full blur-3xl"
+            :class="theme === 'light' ? 'bg-teal-200/60' : 'bg-cyan-400/16'"
+          />
+
+          <div class="relative grid gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.9fr]">
+            <div>
+              <div class="flex items-center gap-3">
+                <div
+                  class="flex h-12 w-12 items-center justify-center rounded-2xl border"
+                  :class="theme === 'light' ? 'border-teal-200 bg-teal-50' : 'border-cyan-300/20 bg-slate-950/70'"
+                >
+                  <img :src="assetUrl('logo.png')" alt="Katsumii logo" class="h-8 w-8 object-contain" />
+                </div>
+                <div>
+                  <p :class="['font-display text-xl font-semibold tracking-tight', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">Katsumii</p>
+                  <p :class="['text-xs uppercase tracking-[0.18em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">Offline Trading Journal</p>
+                </div>
+              </div>
+
+              <p :class="['mt-5 max-w-md text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
+                Entwickelt fuer Trader, die mit Klarheit arbeiten, Regeln respektieren und ihre Performance systematisch verbessern wollen.
+              </p>
+
+              <div class="mt-6 flex flex-wrap gap-3">
+                <span
+                  v-for="item in footerHighlights"
+                  :key="item"
+                  :class="[
+                    'rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em]',
+                    theme === 'light' ? 'border-teal-200 bg-teal-50 text-teal-700' : 'border-cyan-300/20 bg-cyan-400/10 text-cyan-200'
+                  ]"
+                >
+                  {{ item }}
+                </span>
+              </div>
+            </div>
+
+            <div>
+              <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">Product</p>
+              <div class="mt-5 space-y-3">
+                <a
+                  v-for="item in footerProductLinks"
+                  :key="item.name"
+                  :href="item.href"
+                  :class="[
+                    'block text-sm transition-colors duration-300',
+                    theme === 'light' ? 'text-gray-600 hover:text-gray-900' : 'text-slate-400 hover:text-cyan-200'
+                  ]"
+                >
+                  {{ item.name }}
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">Company</p>
+              <div class="mt-5 space-y-3">
+                <a
+                  v-for="item in footerCompanyLinks"
+                  :key="item.name"
+                  :href="item.href"
+                  :target="linkTarget(item.href)"
+                  :rel="linkRel(item.href)"
+                  :class="[
+                    'block text-sm transition-colors duration-300',
+                    theme === 'light' ? 'text-gray-600 hover:text-gray-900' : 'text-slate-400 hover:text-cyan-200'
+                  ]"
+                >
+                  {{ item.name }}
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <div
+                class="rounded-2xl border p-5"
+                :class="theme === 'light' ? 'border-gray-200 bg-gray-50/90' : 'border-blue-400/20 bg-slate-950/70'"
+              >
+                <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">Support</p>
+                <p :class="['mt-3 text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
+                  Fragen zu License, Demo oder Workflow? Wir helfen dir direkt weiter.
+                </p>
+                <a
+                  href="mailto:support@katsumii.app"
+                  class="mt-5 inline-flex rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
+                  :class="theme === 'light' ? 'bg-gray-900 text-white hover:bg-gray-800' : 'bg-cyan-300 text-slate-950 hover:bg-cyan-200'"
+                >
+                  Contact Support
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="reveal mt-8 flex flex-col gap-4 border-t pt-6 text-xs sm:flex-row sm:items-center sm:justify-between"
+          :class="theme === 'light' ? 'border-gray-200 text-gray-500' : 'border-blue-400/15 text-slate-500'"
+        >
+          <p>
+            Copyright {{ year }} Katsumii. Trading involves risk. The app is for documentation and analysis only.
+          </p>
+          <div class="flex flex-wrap gap-x-5 gap-y-2">
+            <a
+              v-for="item in footerLegalLinks"
+              :key="item.name"
+              :href="item.href"
+              :class="theme === 'light' ? 'transition-colors hover:text-gray-900' : 'transition-colors hover:text-cyan-200'"
+            >
+              {{ item.name }}
+            </a>
+          </div>
+        </div>
       </div>
-    </section>
-    <div class="mt-10 text-center">
-
-   <!-- DEMO-->
-  <p class="text-gray-400 text-sm">
-    Noch unsicher?
-  </p>
-
-  <a
-    href="/demo"
-    class="mt-2 inline-block text-teal-300 font-semibold hover:text-teal-200"
-  >
-    Teste Katsumii kostenlos in der Demo-Version →
-  </a>
-
-  <p class="mt-2 text-xs text-gray-500 pb-10">
-    Keine Registrierung · Offline Demo · Direkter Download
-  </p>
-</div>
-
-<!-- FOOTER -->
-<footer class="border-t border-white/10 bg-gray-900">
-  <div class="mx-auto max-w-7xl px-6 lg:px-8 py-14">
-
-    <div class="grid grid-cols-1 gap-10 md:grid-cols-4">
-
-      <!-- BRAND -->
-      <div>
-        <h3 class="text-white font-semibold text-lg">Katsumii</h3>
-        <p class="mt-3 text-sm text-gray-400 leading-relaxed">
-          Local-first Trading Journal für Prop Trader und private Accounts.
-          Analysiere deine Trades, verwalte Strategien und behalte deine
-          Trading-Regeln im Blick – komplett offline.
-        </p>
-
-        <p class="mt-4 text-xs text-gray-500">
-          © {{ year }} Katsumii
-        </p>
-      </div>
-
-      <!-- PRODUCT -->
-      <div>
-        <h4 class="text-sm font-semibold text-white">Produkt</h4>
-        <ul class="mt-4 space-y-3 text-sm text-gray-400">
-          <li>
-            <a href="#features" class="hover:text-white">Features</a>
-          </li>
-          <li>
-            <a href="#pricing" class="hover:text-white">Lizenz</a>
-          </li>
-          <li>
-            <a href="/demo" class="hover:text-white">Kostenlose Demo</a>
-          </li>
-          <li>
-            <a href="/download" class="hover:text-white">Download</a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- RESOURCES -->
-      <div>
-        <h4 class="text-sm font-semibold text-white">Ressourcen</h4>
-        <ul class="mt-4 space-y-3 text-sm text-gray-400">
-          <li>
-            <a href="/faq" class="hover:text-white">FAQ</a>
-          </li>
-          <li>
-            <a href="/guide" class="hover:text-white">User Guide</a>
-          </li>
-          <li>
-            <a href="/changelog" class="hover:text-white">Changelog</a>
-          </li>
-          <li>
-            <a href="mailto:support@katsumii.app" class="hover:text-white">Support</a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- LEGAL -->
-      <div>
-        <h4 class="text-sm font-semibold text-white">Rechtliches</h4>
-        <ul class="mt-4 space-y-3 text-sm text-gray-400">
-          <li>
-            <a href="/impressum" class="hover:text-white">Impressum</a>
-          </li>
-          <li>
-            <a href="/privacy" class="hover:text-white">Datenschutz</a>
-          </li>
-          <li>
-            <a href="/terms" class="hover:text-white">Nutzungsbedingungen</a>
-          </li>
-          <li>
-            <a href="/eula" class="hover:text-white">Lizenzvereinbarung (EULA)</a>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-
-    <!-- BOTTOM BAR -->
-    <div class="mt-12 border-t border-white/10 pt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-
-      <p class="text-xs text-gray-500">
-        Trading beinhaltet Risiken. Diese Software dient ausschließlich zur Analyse und Dokumentation von Trades.
-      </p>
-
-      <div class="flex items-center gap-5 text-sm text-gray-400">
-        <a href="#top" class="hover:text-white">Nach oben ↑</a>
-      </div>
-
-    </div>
-
-  </div>
-</footer>
+    </footer>
   </div>
 </template>
 
 <script setup>
-import { computed } from "vue"
-import AppNav from "./components/AppNav.vue"
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue"
 import { CheckIcon } from "@heroicons/vue/20/solid"
-import { CloudArrowUpIcon, LockClosedIcon, ServerIcon, ChartBarIcon } from "@heroicons/vue/20/solid"
+import { ChartBarIcon, CloudArrowUpIcon, LockClosedIcon, ServerIcon } from "@heroicons/vue/24/outline"
+import AppNav from "./components/AppNav.vue"
 
-/**
- * TODO: set your real checkout link (e.g. Lemonsqueezy)
- */
-const checkoutUrl = "#"
+const baseUrl = import.meta.env.BASE_URL
+const assetUrl = (path) => `${baseUrl}${path.replace(/^\/+/, "")}`
+const pageUrl = (page) => `${baseUrl}?page=${page}`
+const checkoutUrl = assetUrl("coming_soon.html")
 
 const navigation = [
+  { name: "Top", href: "#top" },
   { name: "Features", href: "#features" },
-  { name: "Screens", href: "#screens" },
-  { name: "Lizenz", href: "#pricing" },
+  { name: "Showcase", href: "#showcase" },
+  { name: "Pricing", href: "#pricing" },
+]
+
+const footerHighlights = ["100% Offline-first", "Structured Reviews", "Prop-Ready Workflow"]
+
+const footerProductLinks = [
+  { name: "Features", href: "#features" },
+  { name: "Showcase", href: "#showcase" },
+  { name: "License", href: "#pricing" },
+  { name: "Buy License", href: checkoutUrl },
+]
+
+const footerCompanyLinks = [
+  { name: "FAQ", href: pageUrl("faq") },
+  { name: "Imprint", href: pageUrl("impressum") },
+  { name: "Email Support", href: "mailto:support@katsumii.app" },
+]
+
+const footerLegalLinks = [
+  { name: "FAQ", href: pageUrl("faq") },
+  { name: "Imprint", href: pageUrl("impressum") },
+  { name: "Support", href: "mailto:support@katsumii.app" },
+]
+
+const heroStats = [
+  { label: "Offline-first", value: "100%" },
+  { label: "App speed", value: "Fast" },
+  { label: "Focused UI", value: "Clean" },
 ]
 
 const features = [
   {
-    name: "Account-Übersicht (Prop & Personal)",
-    description: "Mehrere Accounts verwalten, Ziele & Limits tracken und den Fortschritt klar sehen.",
+    name: "Account clarity",
+    description: "Prop and personal accounts in one view with clear goals, limits and progress.",
     icon: ServerIcon,
   },
   {
-    name: "Trades + Screenshots + Review",
-    description: "Einträge mit Chart-Screenshots, Notizen, Tags, Fehlern und Regel-Check — ideal für Post-Trade Reviews.",
+    name: "Structured journaling",
+    description: "Capture trades with screenshots, notes, setup tags and disciplined review logs.",
     icon: CloudArrowUpIcon,
   },
   {
-    name: "Statistiken & Performance Analyse",
-    description: "Winrate, R-Multiples, Expectancy, Profit Factor, Setup-Performance, Tages-/Wochenreports.",
+    name: "Actionable analytics",
+    description: "Track expectancy, R-multiples, setup quality and consistency over time.",
     icon: ChartBarIcon,
   },
   {
-    name: "Lokale Daten & Privatsphäre",
-    description: "Kein Login, keine Cloud: deine Daten bleiben auf deinem Gerät (offline-first).",
+    name: "Private by design",
+    description: "No login and no cloud dependency. Your trading data stays local.",
     icon: LockClosedIcon,
+  },
+]
+
+
+const featureTicker = [
+  "100% Offline-first",
+  "Prop Rule Guardrails",
+  "Screenshot Journaling",
+  "Advanced Performance Stats",
+  "Fast Local Search",
+  "Kaizen Review Routine",
+]
+
+const spotlightPoints = [
+  "Trade Entry mit Screenshots, Notizen und Setup-Context in Sekunden.",
+  "Prop Account Limits immer sichtbar, inklusive Rule-Break Risiko.",
+  "Analyse nach Setup, Session und Fehlern fuer gezielte Verbesserung.",
+]
+
+const spotlightKpis = [
+  { value: "A+", label: "Setup Score" },
+  { value: "+0.31R", label: "Avg. Edge" },
+  { value: "100%", label: "Local Data" },
+]
+
+const dashboardSteps = [
+  {
+    title: "Account and PnL at a glance",
+    description: "Sieh Balance, Gesamt-PnL und aktive Konten auf einen Blick.",
+  },
+  {
+    title: "Rule-focused monitoring",
+    description: "Behalte Limits und Risiko-Status live im Blick, bevor Regeln brechen.",
+  },
+  {
+    title: "Setup quality tracking",
+    description: "Vergleiche Setups und erkenne schnell, was deinen Edge wirklich treibt.",
+  },
+]
+
+const calendarSteps = [
+  {
+    title: "Daily performance map",
+    description: "Jeder Tag zeigt sofort Gewinn, Verlust und Aktivitaet im Monatsbild.",
+  },
+  {
+    title: "Pattern recognition",
+    description: "Erkenne Wochenmuster und wiederkehrende Fehler in deinem Timing.",
+  },
+  {
+    title: "Review-ready history",
+    description: "Nutze die Kalender-Historie fuer strukturierte Wochen- und Monatsreviews.",
   },
 ]
 
@@ -630,28 +689,326 @@ const tiers = [
   {
     name: "Light",
     id: "tier-light",
-    href: checkoutUrl,
-    price: "49 €",
-    description: "Für sauberes Journaling mit den wichtigsten Auswertungen.",
-    features: ["Trade-Journal inkl. Screenshots", "Tags & Basis-Filter", "Basis-Statistiken (Winrate, ØR, PF)", "Lifetime-Lizenz (einmalig)"],
+    href: "coming_soon.html",
+    price: "$49",
+    description: "For clean journaling with essential analytics.",
+    features: [
+      "Trade journal with screenshots",
+      "Tags and basic filters",
+      "Core statistics and reports",
+      "Lifetime license"
+    ],
     featured: false,
   },
   {
     name: "Professional",
     id: "tier-pro",
-    href: checkoutUrl,
-    price: "89 €",
-    description: "Für aktive Trader, die Regeln testen und Performance messbar verbessern wollen.",
+    href: "coming_soon.html",
+    price: "$89",
+    description: "For serious traders who optimize process and performance.",
     features: [
-      "Alles aus Light",
-      "Prop-Account Management (Ziele/Regeln/Limits)",
-      "Erweiterte Statistik (Setup/Session/Instrument)",
-      "Review-Routinen & Regelbruch-Tracking",
-      "Priorisierter Support",
+      "Everything in Light",
+      "Prop account management",
+      "Advanced strategy breakdowns",
+      "Review routine and rule tracking",
+      "Priority support"
     ],
     featured: true,
   },
 ]
+const featuredTier = computed(() => tiers.find((tier) => tier.featured) ?? tiers[0])
+const starterTier = computed(() => tiers.find((tier) => !tier.featured) ?? tiers[1] ?? tiers[0])
+const theme = ref("light")
+const observer = ref(null)
+
+const isExternalLink = (href) => {
+  if (!href) return false
+  if (href.startsWith("mailto:") || href.startsWith("tel:")) return true
+
+  const url = new URL(href, window.location.origin)
+  return url.origin !== window.location.origin
+}
+
+const linkTarget = (href) => (isExternalLink(href) ? "_blank" : undefined)
+const linkRel = (href) => (isExternalLink(href) ? "noreferrer noopener" : undefined)
+
+const applyTheme = (value) => {
+  theme.value = value
+  localStorage.setItem("katsumii-theme", value)
+}
+
+const toggleTheme = () => {
+  applyTheme(theme.value === "dark" ? "light" : "dark")
+}
+
+
+const pageClass = computed(() =>
+  theme.value === "light"
+    ? "relative min-h-screen overflow-x-hidden bg-slate-50 text-gray-900 transition-colors duration-300"
+    : "relative min-h-screen overflow-x-hidden bg-slate-950 text-slate-100 transition-colors duration-300"
+)
+
+const setupRevealAnimations = () => {
+  observer.value?.disconnect()
+
+  const revealItems = Array.from(document.querySelectorAll(".reveal"))
+  const revealGroups = document.querySelectorAll("section, footer")
+
+  revealGroups.forEach((group) => {
+    const groupItems = group.querySelectorAll(".reveal")
+    groupItems.forEach((item, index) => {
+      const delay = Math.min(index * 90, 420)
+      item.style.setProperty("--reveal-delay", `${delay}ms`)
+    })
+  })
+
+  observer.value = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible")
+          observer.value?.unobserve(entry.target)
+        }
+      })
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
+  )
+
+  revealItems.forEach((item) => {
+    if (item.classList.contains("is-visible")) return
+
+    const rect = item.getBoundingClientRect()
+    const inView = rect.top < window.innerHeight * 0.92 && rect.bottom > window.innerHeight * 0.08
+
+    if (inView) {
+      item.classList.add("is-visible")
+      return
+    }
+
+    observer.value?.observe(item)
+  })
+}
+
+onMounted(() => {
+  const savedTheme = localStorage.getItem("katsumii-theme")
+  if (savedTheme === "light" || savedTheme === "dark") {
+    theme.value = savedTheme
+  }
+
+  nextTick(() => {
+    setupRevealAnimations()
+  })
+})
+
+onUnmounted(() => {
+  observer.value?.disconnect()
+})
+
+watch(theme, (value) => {
+  document.documentElement.classList.toggle("dark", value === "dark")
+  nextTick(() => {
+    setupRevealAnimations()
+  })
+})
 
 const year = computed(() => new Date().getFullYear())
 </script>
+
+<style scoped>
+.k-bg {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+
+.k-bg-light {
+  --k-grid: rgba(15, 23, 42, 0.075);
+  --k-structure: rgba(20, 184, 166, 0.095);
+  --k-noise: rgba(255, 255, 255, 0.05);
+}
+
+.k-bg-dark {
+  --k-grid: rgba(30, 64, 175, 0.16);
+  --k-structure: rgba(34, 211, 238, 0.09);
+  --k-noise: rgba(255, 255, 255, 0.025);
+}
+.k-bg-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.4;
+}
+
+.k-bg-orb-a {
+  left: -8%;
+  top: -12%;
+  height: 360px;
+  width: 360px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(59, 130, 246, 0) 72%);
+  animation: driftA 14s ease-in-out infinite;
+}
+
+.k-bg-orb-b {
+  bottom: -8%;
+  right: -8%;
+  height: 420px;
+  width: 420px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.38) 0%, rgba(34, 211, 238, 0) 70%);
+  animation: driftB 17s ease-in-out infinite;
+}
+
+.k-bg-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+  background-image: linear-gradient(var(--k-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--k-grid) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at center, black 22%, transparent 78%);
+}
+
+.k-bg-structure {
+  position: absolute;
+  inset: 0;
+  opacity: 0.34;
+  background:
+    radial-gradient(120% 65% at 50% -10%, var(--k-structure), transparent 60%),
+    repeating-linear-gradient(
+      30deg,
+      transparent 0 22px,
+      var(--k-structure) 22px 23px
+    ),
+    repeating-linear-gradient(
+      -30deg,
+      transparent 0 22px,
+      var(--k-structure) 22px 23px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 38px,
+      var(--k-structure) 38px 39px
+    );
+  mask-image: radial-gradient(circle at 50% 35%, black 20%, transparent 88%);
+}
+
+.k-bg-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background-image: radial-gradient(var(--k-noise) 0.7px, transparent 0.7px);
+  background-size: 3px 3px;
+}
+
+.k-card {
+  backdrop-filter: blur(14px);
+}
+
+
+.feature-marquee {
+  animation: feature-marquee 30s linear infinite;
+}
+
+.reveal {
+  opacity: 0;
+  filter: blur(6px);
+  transform: translate3d(0, 26px, 0) scale(0.985);
+  transition:
+    opacity 0.78s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.78s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.78s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: transform, opacity, filter;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+@keyframes driftA {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(24px, 22px, 0);
+  }
+}
+
+@keyframes driftB {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-26px, -20px, 0);
+  }
+}
+
+@keyframes feature-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    filter: none;
+  }
+
+  .k-bg-orb-a,
+  .k-bg-orb-b {
+    animation: none;
+  }
+
+  .feature-marquee {
+    animation: none;
+  }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
