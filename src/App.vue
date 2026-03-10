@@ -420,7 +420,7 @@
               Buy License
             </a>
             <a
-              href="coming_soon.html"
+              :href="baseUrl"
               :class="[
                 'rounded-full border px-6 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5',
                 theme === 'light' ? 'border-gray-300 bg-white text-gray-700 hover:bg-gray-50' : 'border-blue-400/30 bg-slate-900/70 text-slate-200 hover:bg-slate-800/80'
@@ -574,7 +574,7 @@ import AppNav from "./components/AppNav.vue"
 const baseUrl = import.meta.env.BASE_URL
 const assetUrl = (path) => `${baseUrl}${path.replace(/^\/+/, "")}`
 const pageUrl = (page) => `${baseUrl}?page=${page}`
-const checkoutUrl = assetUrl("coming_soon.html")
+const checkoutUrl = baseUrl
 
 const navigation = [
   { name: "Top", href: "#top" },
@@ -689,7 +689,7 @@ const tiers = [
   {
     name: "Light",
     id: "tier-light",
-    href: "coming_soon.html",
+    href: baseUrl,
     price: "$49",
     description: "For clean journaling with essential analytics.",
     features: [
@@ -703,7 +703,7 @@ const tiers = [
   {
     name: "Professional",
     id: "tier-pro",
-    href: "coming_soon.html",
+    href: baseUrl,
     price: "$89",
     description: "For serious traders who optimize process and performance.",
     features: [
@@ -975,6 +975,7 @@ const year = computed(() => new Date().getFullYear())
   }
 }
 </style>
+
 
 
 

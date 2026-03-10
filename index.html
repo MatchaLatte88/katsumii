@@ -1,14 +1,732 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Katsumii Journal</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Katsumii | Coming Soon</title>
+  <meta name="description" content="Katsumii is a trading journal built for serious traders. Coming soon." />
+
+  <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      color-scheme: dark;
+      --page-bg: #020617;
+      --page-bg-secondary: #0f172a;
+      --surface: rgba(15, 23, 42, 0.78);
+      --surface-strong: rgba(2, 6, 23, 0.78);
+      --surface-soft: rgba(15, 23, 42, 0.56);
+      --surface-border: rgba(96, 165, 250, 0.2);
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --text-soft: #94a3b8;
+      --text-faint: #64748b;
+      --accent: #67e8f9;
+      --accent-strong: #22d3ee;
+      --accent-deep: #0891b2;
+      --button-text: #02111b;
+      --grid: rgba(30, 64, 175, 0.16);
+      --structure: rgba(34, 211, 238, 0.09);
+      --noise: rgba(255, 255, 255, 0.025);
+      --orb-a: rgba(59, 130, 246, 0.4);
+      --orb-b: rgba(34, 211, 238, 0.38);
+      --shadow: 0 30px 100px -45px rgba(0, 0, 0, 0.8);
+      --shadow-soft: 0 8px 28px -6px rgba(34, 211, 238, 0.45);
+      --badge-bg: rgba(34, 211, 238, 0.08);
+      --tag-bg: rgba(148, 163, 184, 0.06);
+      --input-bg: rgba(15, 23, 42, 0.72);
+      --footer-border: rgba(96, 165, 250, 0.12);
+      --toggle-bg: rgba(15, 23, 42, 0.76);
+      --wash-top: rgba(255, 255, 255, 0.04);
+      --wash-bottom: rgba(103, 232, 249, 0.06);
+      --tile-glow-a: rgba(255, 255, 255, 0.055);
+      --tile-glow-b: rgba(34, 211, 238, 0.085);
+    }
+
+    :root[data-theme="light"] {
+      color-scheme: light;
+      --page-bg: #f8fafc;
+      --page-bg-secondary: #f1f5f9;
+      --surface: rgba(255, 255, 255, 0.72);
+      --surface-strong: rgba(255, 255, 255, 0.58);
+      --surface-soft: rgba(255, 255, 255, 0.48);
+      --surface-border: rgba(229, 231, 235, 0.95);
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --text-soft: #6b7280;
+      --text-faint: #9ca3af;
+      --accent: #0f766e;
+      --accent-strong: #14b8a6;
+      --accent-deep: #0f766e;
+      --button-text: #ffffff;
+      --grid: rgba(15, 23, 42, 0.075);
+      --structure: rgba(20, 184, 166, 0.095);
+      --noise: rgba(255, 255, 255, 0.05);
+      --orb-a: rgba(45, 212, 191, 0.24);
+      --orb-b: rgba(59, 130, 246, 0.16);
+      --shadow: 0 30px 90px -45px rgba(15, 23, 42, 0.2);
+      --shadow-soft: 0 10px 30px -10px rgba(20, 184, 166, 0.22);
+      --badge-bg: rgba(20, 184, 166, 0.08);
+      --tag-bg: rgba(240, 253, 250, 0.82);
+      --input-bg: rgba(255, 255, 255, 0.82);
+      --footer-border: rgba(229, 231, 235, 0.95);
+      --toggle-bg: rgba(255, 255, 255, 0.86);
+      --wash-top: rgba(255, 255, 255, 0.6);
+      --wash-bottom: rgba(20, 184, 166, 0.08);
+      --tile-glow-a: rgba(255, 255, 255, 0.85);
+      --tile-glow-b: rgba(20, 184, 166, 0.1);
+    }
+
+    html, body {
+      min-height: 100%;
+    }
+
+    body {
+      font-family: "DM Sans", "Segoe UI", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      color: var(--text-main);
+      background:
+        radial-gradient(120% 65% at 50% -10%, rgba(34, 211, 238, 0.05), transparent 60%),
+        linear-gradient(180deg, var(--page-bg-secondary) 0%, var(--page-bg) 100%);
+      transition: background-color 220ms ease, color 220ms ease;
+    }
+
+    .k-bg {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .k-bg-orb {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(80px);
+      opacity: 0.4;
+    }
+
+    .k-bg-orb-a {
+      left: -8%;
+      top: -12%;
+      height: 360px;
+      width: 360px;
+      background: radial-gradient(circle, var(--orb-a) 0%, rgba(59, 130, 246, 0) 72%);
+      animation: driftA 14s ease-in-out infinite;
+    }
+
+    .k-bg-orb-b {
+      bottom: -8%;
+      right: -8%;
+      height: 420px;
+      width: 420px;
+      background: radial-gradient(circle, var(--orb-b) 0%, rgba(34, 211, 238, 0) 70%);
+      animation: driftB 17s ease-in-out infinite;
+    }
+
+    .k-bg-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.3;
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(circle at center, black 22%, transparent 78%);
+    }
+
+    .k-bg-structure {
+      position: absolute;
+      inset: 0;
+      opacity: 0.34;
+      background:
+        radial-gradient(120% 65% at 50% -10%, var(--structure), transparent 60%),
+        repeating-linear-gradient(30deg, transparent 0 22px, var(--structure) 22px 23px),
+        repeating-linear-gradient(-30deg, transparent 0 22px, var(--structure) 22px 23px),
+        repeating-linear-gradient(90deg, transparent 0 38px, var(--structure) 38px 39px);
+      mask-image: radial-gradient(circle at 50% 35%, black 20%, transparent 88%);
+    }
+
+    .k-bg-noise {
+      position: absolute;
+      inset: 0;
+      opacity: 0.08;
+      background-image: radial-gradient(var(--noise) 0.7px, transparent 0.7px);
+      background-size: 3px 3px;
+    }
+
+    .k-bg-wash {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, var(--wash-top) 0%, transparent 34%, var(--wash-bottom) 100%),
+        radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.1), transparent 34%);
+      opacity: 0.75;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 22px;
+      right: 22px;
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      border: 1px solid var(--surface-border);
+      background: var(--toggle-bg);
+      color: var(--text-muted);
+      border-radius: 999px;
+      padding: 0.82rem 1.05rem;
+      font: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-2px);
+      border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+      color: var(--text-main);
+      box-shadow: 0 24px 60px -30px rgba(15, 23, 42, 0.35);
+    }
+
+    .theme-toggle-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+      box-shadow: 0 0 18px color-mix(in srgb, var(--accent-strong) 45%, transparent);
+    }
+
+    .secret-entry {
+      position: fixed;
+      left: 16px;
+      bottom: 16px;
+      z-index: 12;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: color-mix(in srgb, var(--surface-soft) 70%, transparent);
+      color: var(--text-soft);
+      text-decoration: none;
+      font-family: "DM Mono", monospace;
+      font-size: 11px;
+      line-height: 1;
+      opacity: 0.35;
+      transition: opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .secret-entry:hover,
+    .secret-entry:focus-visible {
+      opacity: 0.85;
+      transform: scale(1.08);
+      border-color: var(--surface-border);
+      background: var(--surface-soft);
+      outline: none;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 5.5rem 1.5rem 3rem;
+      text-align: center;
+    }
+
+    .shell {
+      position: relative;
+      width: min(100%, 1080px);
+      border: 1px solid var(--surface-border);
+      background: linear-gradient(180deg, var(--surface) 0%, var(--surface-strong) 100%);
+      border-radius: 36px;
+      padding: 2.25rem 2rem 2rem;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      opacity: 0;
+      animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 120ms forwards;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(145deg, var(--tile-glow-a) 0%, transparent 34%, var(--tile-glow-b) 100%),
+        radial-gradient(circle at 78% 18%, var(--tile-glow-b), transparent 28%),
+        radial-gradient(circle at 18% 0%, var(--tile-glow-a), transparent 26%);
+      opacity: 0.85;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1.75rem;
+    }
+
+    .logo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .logo-mark {
+      width: 132px;
+      height: 132px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+      flex-shrink: 0;
+    }
+
+    .logo-mark img {
+      width: 132px;
+      height: 132px;
+      object-fit: contain;
+      filter: drop-shadow(0 18px 36px rgba(20, 184, 166, 0.18));
+    }
+
+    .logo-text {
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--text-main);
+      line-height: 1;
+    }
+
+    .logo-text span {
+      color: var(--accent);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border: 1px solid color-mix(in srgb, var(--accent-strong) 20%, transparent);
+      background: var(--badge-bg);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 0.58rem 1rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-strong);
+      box-shadow: 0 0 8px color-mix(in srgb, var(--accent-strong) 75%, transparent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 7vw, 5.2rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1.04;
+      color: var(--text-main);
+      max-width: 760px;
+      margin-inline: auto;
+    }
+
+    h1 .accent {
+      color: var(--accent);
+    }
+
+    .subline {
+      margin: 1.5rem auto 0;
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      max-width: 560px;
+      font-weight: 300;
+    }
+
+    .domain-card {
+      max-width: 520px;
+      margin: 2rem auto 0;
+      padding: 1.1rem 1.2rem;
+      border-radius: 22px;
+      border: 1px solid var(--surface-border);
+      background: var(--surface-soft);
+      backdrop-filter: blur(16px);
+    }
+
+    .domain-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .domain-value {
+      margin-top: 0.5rem;
+      font-family: "DM Mono", monospace;
+      font-size: clamp(0.95rem, 3vw, 1.15rem);
+      color: var(--accent);
+      word-break: break-word;
+    }
+
+    .divider {
+      width: 42px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin: 2.3rem auto;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      border: 1px solid var(--surface-border);
+      background: var(--tag-bg);
+      color: var(--text-soft);
+      border-radius: 999px;
+      padding: 0.34rem 0.78rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+    }
+
+    .notify-wrap {
+      margin-top: 2.8rem;
+    }
+
+    .notify-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-soft);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.875rem;
+      text-transform: uppercase;
+    }
+
+    .notify-row {
+      display: flex;
+      gap: 0.65rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .notify-input {
+      flex: 1;
+      background: var(--input-bg);
+      border: 1px solid var(--surface-border);
+      border-radius: 999px;
+      padding: 0.85rem 1rem;
+      font-family: inherit;
+      font-size: 0.92rem;
+      color: var(--text-main);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .notify-input::placeholder {
+      color: var(--text-faint);
+    }
+
+    .notify-input:focus {
+      border-color: color-mix(in srgb, var(--accent-strong) 40%, transparent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-strong) 10%, transparent);
+    }
+
+    .notify-btn {
+      background: linear-gradient(135deg, var(--accent-strong), var(--accent));
+      color: var(--button-text);
+      border: none;
+      border-radius: 999px;
+      padding: 0.85rem 1.3rem;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.15s ease, filter 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .notify-btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+    }
+
+    .notify-btn:active {
+      transform: translateY(0);
+    }
+
+    .notify-btn.sent {
+      background: color-mix(in srgb, var(--accent-strong) 14%, transparent);
+      color: var(--accent);
+      border: 1px solid color-mix(in srgb, var(--accent-strong) 24%, transparent);
+      box-shadow: none;
+      pointer-events: none;
+    }
+
+    .notify-hint {
+      margin-top: 0.8rem;
+      font-size: 0.76rem;
+      color: var(--text-faint);
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      padding: 1.25rem 1.5rem 1.6rem;
+      text-align: center;
+      font-size: 0.76rem;
+      color: var(--text-faint);
+      letter-spacing: 0.04em;
+      border-top: 1px solid var(--footer-border);
+      background: color-mix(in srgb, var(--surface-strong) 76%, transparent);
+      backdrop-filter: blur(14px);
+    }
+
+    footer a {
+      color: var(--text-soft);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    @keyframes driftA {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(24px, 22px, 0); }
+    }
+
+    @keyframes driftB {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(-26px, -20px, 0); }
+    }
+
+    @media (max-width: 720px) {
+      .theme-toggle {
+        top: 14px;
+        right: 14px;
+        padding: 0.75rem 0.95rem;
+      }
+
+      .page {
+        padding-inline: 1rem;
+        padding-top: 5rem;
+      }
+
+      .shell {
+        border-radius: 28px;
+        padding: 1.6rem 1.2rem;
+      }
+
+      .logo-mark,
+      .logo-mark img {
+        width: 108px;
+        height: 108px;
+      }
+
+      .notify-row {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .k-bg-orb-a,
+      .k-bg-orb-b,
+      .badge-dot {
+        animation: none;
+      }
+
+      .shell {
+        animation: none;
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="k-bg" aria-hidden="true">
+    <div class="k-bg-orb k-bg-orb-a"></div>
+    <div class="k-bg-orb k-bg-orb-b"></div>
+    <div class="k-bg-grid"></div>
+    <div class="k-bg-structure"></div>
+    <div class="k-bg-noise"></div>
+    <div class="k-bg-wash"></div>
+  </div>
+
+  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
+    <span class="theme-toggle-dot" aria-hidden="true"></span>
+    <span id="theme-label">Light mode</span>
+  </button>
+
+  <a class="secret-entry" href="/app.html" aria-label="Open main website" title="Open main website">.</a>
+
+  <main class="page">
+    <section class="shell" aria-label="Coming soon page">
+      <div class="hero-brand">
+        <div class="logo-wrap">
+          <div class="logo-mark">
+            <img src="./logo.png" alt="Katsumii logo" />
+          </div>
+          <span class="logo-text">Katsumii<span>.</span></span>
+        </div>
+
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Independent launch page
+        </div>
+      </div>
+
+      <h1>
+        The trading journal<br />
+        <span class="accent">built for serious traders.</span>
+      </h1>
+
+      <p class="subline">
+        Structured journaling, prop account clarity, and practical analytics - all in one place.
+        The full website is on the way.
+      </p>
+
+      <div class="domain-card">
+        <p class="domain-label">Live domain</p>
+        <p class="domain-value">katsumii.com</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="tags">
+        <span class="tag">Offline-first</span>
+        <span class="tag">Prop-ready</span>
+        <span class="tag">Structured reviews</span>
+        <span class="tag">Actionable analytics</span>
+      </div>
+
+      <div class="notify-wrap">
+        <p class="notify-label">Get notified when we launch</p>
+        <div class="notify-row">
+          <input
+            id="email-input"
+            class="notify-input"
+            type="email"
+            placeholder="your@email.com"
+            autocomplete="email"
+          />
+          <button class="notify-btn" id="notify-btn" type="button">
+            Notify me
+          </button>
+        </div>
+        <p class="notify-hint">No spam. One email when it is ready.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2026 Katsumii &middot; <a href="mailto:hello@katsumii.app">hello@katsumii.app</a>
+  </footer>
+
+  <script>
+    const root = document.documentElement
+    const toggle = document.getElementById("theme-toggle")
+    const label = document.getElementById("theme-label")
+    const input = document.getElementById("email-input")
+    const button = document.getElementById("notify-btn")
+
+    function setTheme(theme) {
+      root.setAttribute("data-theme", theme)
+      localStorage.setItem("katsumii-coming-soon-theme", theme)
+      label.textContent = theme === "dark" ? "Light mode" : "Dark mode"
+    }
+
+    function getInitialTheme() {
+      const saved = localStorage.getItem("katsumii-coming-soon-theme")
+      if (saved === "light" || saved === "dark") return saved
+      return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"
+    }
+
+    function handleNotify() {
+      const email = input.value.trim()
+
+      if (!email || !email.includes("@")) {
+        input.style.borderColor = "rgba(248, 113, 113, 0.5)"
+        input.focus()
+        setTimeout(() => {
+          input.style.borderColor = ""
+        }, 1200)
+        return
+      }
+
+      button.textContent = "You are on the list"
+      button.classList.add("sent")
+      input.disabled = true
+      input.style.opacity = "0.45"
+    }
+
+    setTheme(getInitialTheme())
+
+    toggle.addEventListener("click", () => {
+      const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark"
+      setTheme(nextTheme)
+    })
+
+    button.addEventListener("click", handleNotify)
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") handleNotify()
+    })
+  </script>
+</body>
 </html>
+
 
