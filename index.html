@@ -138,12 +138,13 @@
     .k-bg-grid {
       position: absolute;
       inset: 0;
-      opacity: 0.3;
-      background-image:
-        linear-gradient(var(--grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-      background-size: 42px 42px;
+      opacity: 0.35;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50V18L28 2l28 16v32L28 66zM28 100L0 84V52l28-16 28 16v32L28 100z' fill='none' stroke='rgba(30%2C64%2C175%2C0.55)' stroke-width='1'/%3E%3C/svg%3E");
       mask-image: radial-gradient(circle at center, black 22%, transparent 78%);
+    }
+
+    :root[data-theme="light"] .k-bg-grid {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50V18L28 2l28 16v32L28 66zM28 100L0 84V52l28-16 28 16v32L28 100z' fill='none' stroke='rgba(15%2C23%2C42%2C0.3)' stroke-width='1'/%3E%3C/svg%3E");
     }
 
     .k-bg-structure {
