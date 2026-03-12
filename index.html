@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Katsumii | Coming Soon</title>
-  <meta name="description" content="Katsumii is a trading journal built for serious traders. Coming soon." />
+  <meta name="description" content="Katsumii is a trading journal built for serious traders. Pre-launch." />
 
   <link rel="icon" type="image/x-icon" href="./favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -40,6 +40,7 @@
       --orb-a:         rgba(59, 130, 246, 0.28);
       --orb-b:         rgba(34, 211, 238, 0.22);
       --grid-c:        rgba(30, 64, 175, 0.1);
+      --hc-stroke:     rgba(34, 211, 238, 0.02);
     }
 
     :root[data-theme="light"] {
@@ -68,6 +69,7 @@
       --orb-a:         rgba(6, 182, 212, 0.16);
       --orb-b:         rgba(59, 130, 246, 0.12);
       --grid-c:        rgba(15, 23, 42, 0.055);
+      --hc-stroke:     rgba(8, 145, 178, 0.04);
     }
 
     html, body { height: 100%; }
@@ -104,11 +106,11 @@
     .k-bg-grid {
       position: absolute;
       inset: 0;
-      background-image:
-        linear-gradient(var(--grid-c) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid-c) 1px, transparent 1px);
-      background-size: 52px 52px;
+      width: 100%;
+      height: 100%;
+      opacity: 0.8;
       mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 80%, transparent 100%);
+      -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 80%, transparent 100%);
     }
 
     /* diagonal accent band */
@@ -250,20 +252,20 @@
       position: relative;
       z-index: 1;
       flex: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3.5rem;
+      display: flex;
       align-items: center;
-      max-width: 1280px;
+      justify-content: center;
+      max-width: 960px;
       width: 100%;
       margin: 0 auto;
-      padding: 4vh 4.5rem 4vh;
+      padding: 6vh 4.5rem 4vh;
     }
 
     /* ─── Left Column ─── */
     .col-left {
       display: flex;
       flex-direction: column;
+      width: min(100%, 760px);
     }
 
     /* brand row */
@@ -526,102 +528,7 @@
       text-transform: uppercase;
     }
 
-    /* ─── Right Column ─── */
-    .col-right {
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-      opacity: 0;
-      animation: riseIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.32s forwards;
-    }
-
-    /* ─── Slideshow ─── */
-    .slideshow {
-      position: relative;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid var(--border-accent);
-      background: var(--panel-bg);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      box-shadow:
-        0 0 0 1px rgba(34, 211, 238, 0.035) inset,
-        var(--shadow-glow),
-        0 24px 64px -20px rgba(0, 0, 0, 0.55);
-      aspect-ratio: 16 / 10;
-    }
-
-    :root[data-theme="light"] .slideshow {
-      box-shadow:
-        0 0 0 1px rgba(8, 145, 178, 0.06) inset,
-        0 20px 56px -18px rgba(15, 23, 42, 0.1);
-    }
-
-    .slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 0.75s ease;
-      pointer-events: none;
-    }
-
-    .slide.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .slideshow-nav {
-      position: absolute;
-      bottom: 14px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 6px;
-      z-index: 5;
-    }
-
-    .nav-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      border: none;
-      background: rgba(255, 255, 255, 0.32);
-      cursor: pointer;
-      padding: 0;
-      transition: background 0.22s, width 0.22s;
-      flex-shrink: 0;
-    }
-
-    .nav-dot.active {
-      width: 22px;
-      background: var(--accent);
-      box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 60%, transparent);
-    }
-
-    .slide-progress {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: rgba(255, 255, 255, 0.08);
-      z-index: 4;
-    }
-
-    .slide-progress-bar {
-      height: 100%;
-      width: 0%;
-      background: var(--accent);
-    }
-
-    /* ─── Footer ─── */
+    /* --- Footer --- */
     footer {
       position: relative;
       z-index: 1;
@@ -664,12 +571,24 @@
       50%       { opacity: 0.45; transform: scale(0.8); }
     }
 
-    /* ─── Responsive ─── */
+    /* ─── Typewriter Cursor ─── */
+    .hl-cursor {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 300;
+      margin-left: 0.04em;
+      animation: cursorBlink 0.75s step-end infinite;
+    }
+
+    @keyframes cursorBlink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    /* --- Responsive --- */
     @media (max-width: 960px) {
       main {
-        grid-template-columns: 1fr;
         padding: 2.5rem 1.75rem 2rem;
-        gap: 2.5rem;
       }
 
       .col-left { align-items: flex-start; }
@@ -704,14 +623,10 @@
       .headline-block,
       .subline,
       .cta-block,
-      .meta-row,
-      .col-right {
+      .meta-row {
         animation: none;
         opacity: 1;
       }
-
-      .slide { transition: none; }
-      .slide-progress-bar { transition: none; }
     }
   </style>
 </head>
@@ -720,7 +635,14 @@
   <!-- Background -->
   <div class="k-bg" aria-hidden="true">
     <div class="k-bg-gradient"></div>
-    <div class="k-bg-grid"></div>
+    <svg class="k-bg-grid" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <pattern id="hc" x="0" y="0" width="69.28" height="60" patternUnits="userSpaceOnUse">
+          <path d="M34.64,0 L51.96,10 L51.96,30 L34.64,40 L17.32,30 L17.32,10 Z M0,0 L17.32,10 M17.32,30 L0,40 M51.96,10 L69.28,0 M69.28,40 L51.96,30 M34.64,40 L34.64,60 M0,40 L0,60" style="fill:none;stroke:var(--hc-stroke);stroke-width:1.5"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#hc)"/>
+    </svg>
     <div class="k-bg-band"></div>
   </div>
 
@@ -736,7 +658,7 @@
       <span class="ticker-item"><span class="ticker-dot"></span>Performance metrics</span>
       <span class="ticker-item"><span class="ticker-dot"></span>Journal system</span>
       <!-- duplicate for seamless loop -->
-      <span class="ticker-item"><span class="ticker-dot"></span>Offline-first</span>
+      <span class="ticker-item"><span class="ticker-dot"></span>Offline</span>
       <span class="ticker-item"><span class="ticker-dot"></span>Prop-ready</span>
       <span class="ticker-item"><span class="ticker-dot"></span>Structured reviews</span>
       <span class="ticker-item"><span class="ticker-dot"></span>Actionable analytics</span>
@@ -769,7 +691,7 @@
         </div>
         <div class="live-badge">
           <span class="live-dot"></span>
-          Pre-launch
+          Coming soon
         </div>
       </div>
 
@@ -777,7 +699,7 @@
         <p class="eyebrow"><span class="eyebrow-line"></span>Trading Journal</p>
         <h1>
           <span class="thin">Trade with</span>
-          <span class="strong"><span class="hl">clarity.</span></span>
+          <span class="strong"><span class="hl" id="typed-word">clarity.</span><span class="hl-cursor" aria-hidden="true">|</span></span>
         </h1>
       </div>
 
@@ -806,65 +728,9 @@
           <span class="chip-value">katsumii.com</span>
         </div>
         <span class="tag">Prop-ready</span>
-        <span class="tag">Offline-first</span>
-      </div>
-
-    </div>
-
-    <!-- Right Column -->
-    <div class="col-right">
-
-      <!-- Slideshow -->
-      <div class="slideshow" id="slideshow">
-
-        <div class="slide active">
-          <img src="./Sc1_Dark.png" alt="Katsumii app — trade journal view"
-               class="slide-img theme-img"
-               data-dark="./Sc1_Dark.png" data-light="./Sc1_Light.png" />
-        </div>
-
-        <div class="slide">
-          <img src="./Sc2_Dark.png" alt="Katsumii app — analytics view"
-               class="slide-img theme-img"
-               data-dark="./Sc2_Dark.png" data-light="./Sc2_Light.png" />
-        </div>
-
-        <div class="slide">
-          <img src="./Slide1.png" alt="Katsumii feature highlight" class="slide-img" />
-        </div>
-
-        <div class="slide">
-          <img src="./Slide2.png" alt="Katsumii feature highlight" class="slide-img" />
-        </div>
-
-        <div class="slide">
-          <img src="./Slide3.png" alt="Katsumii feature highlight" class="slide-img" />
-        </div>
-
-        <div class="slide">
-          <img src="./Slide4.png" alt="Katsumii feature highlight" class="slide-img" />
-        </div>
-
-        <div class="slide">
-          <img src="./Slide5.png" alt="Katsumii feature highlight" class="slide-img" />
-        </div>
-
-        <!-- Navigation dots -->
-        <div class="slideshow-nav" role="tablist" aria-label="Slideshow navigation">
-          <button class="nav-dot active" data-goto="0" aria-label="Slide 1" role="tab" aria-selected="true"></button>
-          <button class="nav-dot" data-goto="1" aria-label="Slide 2" role="tab" aria-selected="false"></button>
-          <button class="nav-dot" data-goto="2" aria-label="Slide 3" role="tab" aria-selected="false"></button>
-          <button class="nav-dot" data-goto="3" aria-label="Slide 4" role="tab" aria-selected="false"></button>
-          <button class="nav-dot" data-goto="4" aria-label="Slide 5" role="tab" aria-selected="false"></button>
-          <button class="nav-dot" data-goto="5" aria-label="Slide 6" role="tab" aria-selected="false"></button>
-          <button class="nav-dot" data-goto="6" aria-label="Slide 7" role="tab" aria-selected="false"></button>
-        </div>
-
-        <!-- Progress bar -->
-        <div class="slide-progress" aria-hidden="true">
-          <div class="slide-progress-bar" id="slide-progress-bar"></div>
-        </div>
-
+        <span class="tag">Offline</span>
+        <span class="tag">locally running</span>
+        <span class="tag">no subscription</span>
       </div>
 
     </div>
@@ -890,10 +756,6 @@
       root.setAttribute("data-theme", t)
       localStorage.setItem("katsumii-coming-soon-theme", t)
       label.textContent = t === "dark" ? "Light mode" : "Dark mode"
-      // swap theme-aware slideshow images
-      document.querySelectorAll(".theme-img").forEach(img => {
-        img.src = t === "dark" ? img.dataset.dark : img.dataset.light
-      })
     }
 
     function getInitialTheme() {
@@ -924,66 +786,42 @@
 
     btn.addEventListener("click", handleNotify)
     input.addEventListener("keydown", e => { if (e.key === "Enter") handleNotify() })
-
-    // ─── Slideshow ───
+    // Typewriter effect
     ;(function () {
-      const INTERVAL   = 4500
-      const slides     = document.querySelectorAll(".slide")
-      const dots       = document.querySelectorAll(".nav-dot")
-      const progressBar = document.getElementById("slide-progress-bar")
-      const container  = document.getElementById("slideshow")
-      let current = 0
-      let paused  = false
-      let timer   = null
+      const el = document.getElementById('typed-word')
+      if (!el) return
+      const words = ['clarity.', 'precision.', 'discipline.', 'confidence.', 'conviction.']
+      let wordIdx = 0
+      let charIdx = words[0].length
+      let deleting = false
 
-      function showSlide(n) {
-        slides[current].classList.remove("active")
-        dots[current].classList.remove("active")
-        dots[current].setAttribute("aria-selected", "false")
-        current = (n + slides.length) % slides.length
-        slides[current].classList.add("active")
-        dots[current].classList.add("active")
-        dots[current].setAttribute("aria-selected", "true")
+      function tick() {
+        const word = words[wordIdx]
+        if (deleting) {
+          charIdx--
+          el.textContent = word.slice(0, charIdx)
+          if (charIdx === 0) {
+            deleting = false
+            wordIdx = (wordIdx + 1) % words.length
+            setTimeout(tick, 300)
+            return
+          }
+          setTimeout(tick, 100)
+        } else {
+          charIdx++
+          el.textContent = word.slice(0, charIdx)
+          if (charIdx === word.length) {
+            deleting = true
+            setTimeout(tick, 2200)
+            return
+          }
+          setTimeout(tick, 115)
+        }
       }
 
-      function startProgress() {
-        if (!progressBar) return
-        progressBar.style.transition = "none"
-        progressBar.style.width = "0%"
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            progressBar.style.transition = "width " + INTERVAL + "ms linear"
-            progressBar.style.width = "100%"
-          })
-        })
-      }
-
-      function next() {
-        showSlide(current + 1)
-        startProgress()
-      }
-
-      function schedule() {
-        clearInterval(timer)
-        timer = setInterval(() => { if (!paused) next() }, INTERVAL)
-      }
-
-      if (container) {
-        container.addEventListener("mouseenter", () => { paused = true })
-        container.addEventListener("mouseleave", () => { paused = false })
-      }
-
-      dots.forEach((dot, i) => {
-        dot.addEventListener("click", () => {
-          showSlide(i)
-          startProgress()
-          schedule()
-        })
-      })
-
-      startProgress()
-      schedule()
+      setTimeout(function () { deleting = true; tick() }, 3000)
     })()
   </script>
 </body>
 </html>
+
