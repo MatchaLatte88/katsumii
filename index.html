@@ -178,12 +178,18 @@
       to   { transform: translateX(-50%); }
     }
 
-    /* ─── Theme Toggle ─── */
-    .theme-toggle {
+    /* ─── Controls (top-right) ─── */
+    .controls {
       position: fixed;
       top: 48px;
       right: 16px;
       z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .theme-toggle {
       display: inline-flex;
       align-items: center;
       gap: 0.38rem;
@@ -219,6 +225,122 @@
       border-radius: 50%;
       background: linear-gradient(135deg, var(--accent), var(--accent-hi));
       box-shadow: 0 0 6px color-mix(in srgb, var(--accent) 60%, transparent);
+      flex-shrink: 0;
+    }
+
+    /* ─── Lang Switch Dropdown ─── */
+    .lang-switch {
+      position: relative;
+    }
+
+    .lang-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      height: 26px;
+      padding: 0 0.6rem 0 0.45rem;
+      border: 1px solid var(--border);
+      background: var(--toggle-bg);
+      border-radius: 999px;
+      backdrop-filter: blur(14px) saturate(130%);
+      -webkit-backdrop-filter: blur(14px) saturate(130%);
+      cursor: pointer;
+      opacity: 0.55;
+      transition: opacity 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .lang-btn:hover {
+      opacity: 1;
+      border-color: var(--border-accent);
+      transform: scale(1.08);
+    }
+
+    .lang-globe {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      opacity: 0.75;
+    }
+
+    .lang-panel {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 6px);
+      min-width: 128px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--panel-bg);
+      box-shadow: 0 8px 24px -8px rgba(0,0,0,0.45);
+      backdrop-filter: blur(16px) saturate(150%);
+      -webkit-backdrop-filter: blur(16px) saturate(150%);
+      padding: 4px 0;
+      z-index: 100;
+      opacity: 0;
+      transform: scale(0.95);
+      transform-origin: top right;
+      pointer-events: none;
+      transition: opacity 75ms ease-in, transform 75ms ease-in;
+    }
+
+    .lang-panel.open {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+      transition: opacity 100ms ease-out, transform 100ms ease-out;
+    }
+
+    :root[data-theme="light"] .lang-panel {
+      border-color: rgba(148, 163, 184, 0.35);
+      background: rgba(255, 255, 255, 0.97);
+      box-shadow: 0 8px 24px -8px rgba(148, 163, 184, 0.35);
+    }
+
+    .lang-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 7px 12px;
+      font-family: "DM Sans", "Segoe UI", sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.12s ease, color 0.12s ease;
+    }
+
+    .lang-item:hover {
+      background: rgba(148, 163, 184, 0.1);
+      color: var(--text);
+    }
+
+    :root[data-theme="light"] .lang-item:hover {
+      background: rgba(241, 245, 249, 0.9);
+      color: #111827;
+    }
+
+    .lang-item.active {
+      color: var(--accent);
+    }
+
+    :root[data-theme="light"] .lang-item.active {
+      color: #0f766e;
+    }
+
+    .lang-check {
+      display: inline-block;
+      width: 14px;
+      text-align: center;
       flex-shrink: 0;
     }
 
@@ -374,6 +496,7 @@
       font-weight: 300;
       color: var(--text-muted);
       display: block;
+      margin-bottom: 0.1em;
     }
 
     h1 .strong {
@@ -407,86 +530,6 @@
       margin-bottom: 2.25rem;
       opacity: 0;
       animation: riseIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.28s forwards;
-    }
-
-    /* email cta */
-    .cta-block {
-      opacity: 0;
-      animation: riseIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.38s forwards;
-    }
-
-    .cta-label {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      margin-bottom: 0.7rem;
-    }
-
-    .cta-row {
-      display: flex;
-      justify-content: center;
-      gap: 0.55rem;
-      max-width: 400px;
-    }
-
-    .notify-input {
-      flex: 1;
-      background: var(--input-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 0.78rem 1rem;
-      font-family: inherit;
-      font-size: 0.88rem;
-      color: var(--text);
-      outline: none;
-      transition: border-color 0.18s, box-shadow 0.18s;
-      min-width: 0;
-    }
-
-    .notify-input::placeholder { color: var(--text-faint); }
-
-    .notify-input:focus {
-      border-color: color-mix(in srgb, var(--accent) 45%, transparent);
-      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 9%, transparent);
-    }
-
-    .notify-btn {
-      background: linear-gradient(135deg, var(--accent), var(--accent-hi));
-      color: var(--btn-fg);
-      border: none;
-      border-radius: 10px;
-      padding: 0.78rem 1.35rem;
-      font-family: inherit;
-      font-size: 0.82rem;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-      flex-shrink: 0;
-      box-shadow: 0 6px 22px -8px rgba(34, 211, 238, 0.5);
-      transition: transform 0.14s, filter 0.18s, box-shadow 0.18s;
-    }
-
-    .notify-btn:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.06);
-    }
-
-    .notify-btn:active { transform: translateY(0); }
-
-    .notify-btn.sent {
-      background: color-mix(in srgb, var(--accent) 10%, transparent);
-      color: var(--accent);
-      border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
-      box-shadow: none;
-      pointer-events: none;
-    }
-
-    .cta-hint {
-      margin-top: 0.65rem;
-      font-size: 0.68rem;
-      color: var(--text-faint);
     }
 
     /* meta row */
@@ -603,8 +646,6 @@
 
       .subline { max-width: 100%; }
 
-      .cta-row { max-width: 100%; }
-
       footer {
         padding: 0.9rem 1.75rem;
         flex-direction: column;
@@ -616,9 +657,7 @@
     @media (max-width: 520px) {
       h1 { font-size: 2.7rem; }
 
-      .cta-row { flex-direction: column; }
-
-      .theme-toggle { top: 44px; right: 10px; height: 24px; }
+      .controls { top: 44px; right: 10px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -630,7 +669,6 @@
       .brand-row,
       .headline-block,
       .subline,
-      .cta-block,
       .meta-row {
         animation: none;
         opacity: 1;
@@ -656,32 +694,26 @@
 
   <!-- Ticker Strip -->
   <div class="ticker-wrap" aria-hidden="true">
-    <div class="ticker-inner">
-      <span class="ticker-item"><span class="ticker-dot"></span>Offline-first</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Prop-ready</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Structured reviews</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Actionable analytics</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Risk management</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Trade replay</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Performance metrics</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Journal system</span>
-      <!-- duplicate for seamless loop -->
-      <span class="ticker-item"><span class="ticker-dot"></span>Offline-first</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Prop-ready</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Structured reviews</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Actionable analytics</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Risk management</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Trade replay</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Performance metrics</span>
-      <span class="ticker-item"><span class="ticker-dot"></span>Journal system</span>
-    </div>
+    <div class="ticker-inner" id="ticker-inner"></div>
   </div>
 
-  <!-- Theme Toggle -->
-  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
-    <span class="toggle-dot" aria-hidden="true"></span>
-    <span id="theme-label">Light</span>
-  </button>
+  <!-- Controls (theme + language) -->
+  <div class="controls">
+    <div class="lang-switch" id="lang-switch">
+      <button class="lang-btn" id="lang-btn" type="button" aria-label="Switch language" aria-haspopup="listbox" aria-expanded="false">
+        <svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <span id="lang-label">EN</span>
+      </button>
+      <div class="lang-panel" id="lang-panel" role="listbox"></div>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
+      <span class="toggle-dot" aria-hidden="true"></span>
+      <span id="theme-label">Light</span>
+    </button>
+  </div>
 
   <!-- Secret Entry (preserved) -->
   <a class="secret-entry" href="./app.html" aria-label="Open main website" title="Open main website">.</a>
@@ -699,46 +731,31 @@
         </div>
         <div class="live-badge">
           <span class="live-dot"></span>
-          Coming soon
+          <span id="cs-badge">Coming soon</span>
         </div>
       </div>
 
       <div class="headline-block">
-        <p class="eyebrow"><span class="eyebrow-line"></span>Trading Journal</p>
+        <p class="eyebrow"><span class="eyebrow-line"></span><span id="cs-eyebrow">Trading Journal</span></p>
         <h1>
-          <span class="thin">Trade with</span>
+          <span class="thin" id="cs-tagline">Trade with</span>
           <span class="strong"><span class="hl" id="typed-word">clarity.</span><span class="hl-cursor" aria-hidden="true">|</span></span>
         </h1>
       </div>
 
-      <p class="subline">
+      <p class="subline" id="cs-subline">
         Structured journaling, prop challenge and funded account support, deep insights with advanced analytics — built for traders who take self discipline seriously.
       </p>
-<!--
-      <div class="cta-block">
-        <p class="cta-label">Get notified when we launch</p>
-        <div class="cta-row">
-          <input
-            id="email-input"
-            class="notify-input"
-            type="email"
-            placeholder="your@email.com"
-            autocomplete="email"
-          />
-          <button class="notify-btn" id="notify-btn" type="button">Notify me</button>
-        </div>
-        <p class="cta-hint">No spam. One email when it is ready.</p>
-      </div>-->
 
       <div class="meta-row">
         <div class="domain-chip">
           <span class="chip-label">Domain</span>
           <span class="chip-value">katsumii.com</span>
         </div>
-        <span class="tag">Prop-ready</span>
-        <span class="tag">Offline</span>
-        <span class="tag">locally running</span>
-        <span class="tag">no subscription</span>
+        <span class="tag" id="tag-0">Prop-ready</span>
+        <span class="tag" id="tag-1">Offline</span>
+        <span class="tag" id="tag-2">Locally running</span>
+        <span class="tag" id="tag-3">No subscription</span>
       </div>
 
     </div>
@@ -754,53 +771,177 @@
   </footer>
 
   <script>
-    const root   = document.documentElement
-    const toggle = document.getElementById("theme-toggle")
-    const label  = document.getElementById("theme-label")
-    const input  = document.getElementById("email-input")
-    const btn    = document.getElementById("notify-btn")
+    // ─── Translations ───────────────────────────────────────────────
+    const LOCALES_ORDER = ["en", "de", "es", "tw"]
+
+    const TRANSLATIONS = {
+      en: {
+        ticker:    ["Offline-first", "Prop-ready", "Structured reviews", "Actionable analytics", "Risk management", "Trade replay", "Performance metrics", "Journal system"],
+        badge:     "Coming soon",
+        eyebrow:   "Trading Journal",
+        tagline:   "Trade with",
+        typewords: ["discipline.", "consistency.", "precision.", "confidence.", "clarity."],
+        subline:   "Structured journaling, prop challenge and funded account support, deep insights with advanced analytics — built for traders who take self discipline seriously.",
+        tags:      ["Prop-ready", "Offline", "Locally running", "No subscription"],
+        themeLight: "Light",
+        themeDark:  "Dark",
+      },
+      de: {
+        ticker:    ["100% Offline-first", "Prop-bereit", "Strukturierte Reviews", "Aussagekräftige Analytics", "Risikomanagement", "Trade-Replay", "Performance-Metriken", "Journal-System"],
+        badge:     "Demnächst",
+        eyebrow:   "Trading Journal",
+        tagline:   "Trade mit",
+        typewords: ["Disziplin.", "Konsistenz.", "Präzision.", "Überzeugung.", "Klarheit."],
+        subline:   "Strukturiertes Journaling, Prop-Challenge- und Funded-Account-Support sowie tiefe Einblicke durch erweiterte Analytics — entwickelt für Trader, die Selbstdisziplin ernst nehmen.",
+        tags:      ["Prop-bereit", "Offline", "Lokal", "Kein Abo"],
+        themeLight: "Hell",
+        themeDark:  "Dunkel",
+      },
+      es: {
+        ticker:    ["100% Sin conexión", "Listo para Prop", "Revisiones estructuradas", "Análisis accionable", "Gestión de riesgo", "Replay de trades", "Métricas de rendimiento", "Diario de trading"],
+        badge:     "Próximamente",
+        eyebrow:   "Diario de Trading",
+        tagline:   "Opera con",
+        typewords: ["disciplina.", "consistencia.", "precisión.", "confianza.", "claridad."],
+        subline:   "Diario estructurado, soporte para prop challenge y cuentas financiadas, análisis avanzado — diseñado para traders que toman en serio la autodisciplina.",
+        tags:      ["Listo para Prop", "Sin conexión", "Local", "Sin suscripción"],
+        themeLight: "Claro",
+        themeDark:  "Oscuro",
+      },
+      tw: {
+        ticker:    ["100% 離線優先", "適合Prop交易", "結構化複盤", "可執行分析", "風險管理", "交易回放", "績效指標", "日誌系統"],
+        badge:     "即將推出",
+        eyebrow:   "交易日誌",
+        tagline:   "以",
+        typewords: ["紀律.", "一致性.", "精確性.", "自信.", "清晰."],
+        subline:   "結構化日誌記錄、Prop挑戰與資助帳戶支援，以及深入的進階分析 — 為認真對待自律的交易者而打造。",
+        tags:      ["適合Prop", "離線", "本地運行", "無訂閱"],
+        themeLight: "亮色",
+        themeDark:  "暗色",
+      },
+    }
+
+    // ─── Theme ──────────────────────────────────────────────────────
+    const root         = document.documentElement
+    const themeToggle  = document.getElementById("theme-toggle")
+    const themeLabel   = document.getElementById("theme-label")
 
     function setTheme(t) {
       root.setAttribute("data-theme", t)
       localStorage.setItem("katsumii-coming-soon-theme", t)
       localStorage.setItem("katsumii-theme", t)
-      label.textContent = t === "dark" ? "Light" : "Dark"
+      const tr = TRANSLATIONS[currentLocale]
+      themeLabel.textContent = t === "dark" ? tr.themeLight : tr.themeDark
     }
 
     function getInitialTheme() {
       const s = localStorage.getItem("katsumii-coming-soon-theme")
              || localStorage.getItem("katsumii-theme")
       if (s === "light" || s === "dark") return s
-      var h = new Date().getHours(); return (h >= 6 && h < 19) ? 'light' : 'dark'
+      var h = new Date().getHours(); return (h >= 6 && h < 19) ? "light" : "dark"
     }
 
-    setTheme(getInitialTheme())
-
-    toggle.addEventListener("click", () => {
+    themeToggle.addEventListener("click", () => {
       setTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark")
     })
 
-    function handleNotify() {
-      const email = input.value.trim()
-      if (!email || !email.includes("@")) {
-        input.style.borderColor = "rgba(248, 113, 113, 0.55)"
-        input.focus()
-        setTimeout(() => { input.style.borderColor = "" }, 1200)
-        return
-      }
-      btn.textContent = "You are on the list"
-      btn.classList.add("sent")
-      input.disabled = true
-      input.style.opacity = "0.45"
+    // ─── Language ───────────────────────────────────────────────────
+    const langLabel  = document.getElementById("lang-label")
+
+    const SUPPORTED_LANGS = ["en", "de", "es", "tw"]
+    const LANG_NAMES = { en: "English", de: "Deutsch", es: "Español", tw: "繁體中文" }
+    const savedLang   = localStorage.getItem("katsumii-locale")
+    const browserLang = navigator.language.slice(0, 2)
+    let currentLocale = SUPPORTED_LANGS.includes(savedLang)
+      ? savedLang
+      : SUPPORTED_LANGS.includes(browserLang)
+        ? browserLang
+        : "en"
+
+    let typingTimer = null
+
+    function buildTicker(tr) {
+      const inner = document.getElementById("ticker-inner")
+      const items = [...tr.ticker, ...tr.ticker]
+      inner.innerHTML = items.map(t =>
+        `<span class="ticker-item"><span class="ticker-dot"></span>${t}</span>`
+      ).join("")
     }
 
-    if (btn)   btn.addEventListener("click", handleNotify)
-    if (input) input.addEventListener("keydown", e => { if (e.key === "Enter") handleNotify() })
-    // Typewriter effect
-    ;(function () {
-      const el = document.getElementById('typed-word')
+    function applyLocale(lang) {
+      currentLocale = lang
+      localStorage.setItem("katsumii-locale", lang)
+      langLabel.textContent = lang.toUpperCase()
+      document.documentElement.lang = lang === "tw" ? "zh-TW" : lang
+
+      const tr = TRANSLATIONS[lang]
+      document.getElementById("cs-badge").textContent   = tr.badge
+      document.getElementById("cs-eyebrow").textContent = tr.eyebrow
+      document.getElementById("cs-tagline").textContent = tr.tagline
+      document.getElementById("cs-subline").textContent = tr.subline
+      tr.tags.forEach((t, i) => {
+        const el = document.getElementById("tag-" + i)
+        if (el) el.textContent = t
+      })
+
+      const theme = root.getAttribute("data-theme") || "dark"
+      themeLabel.textContent = theme === "dark" ? tr.themeLight : tr.themeDark
+
+      buildTicker(tr)
+      restartTypewriter(tr.typewords)
+      refreshLangPanel()
+    }
+
+    // ─── Lang Dropdown ──────────────────────────────────────────────
+    const langSwitch = document.getElementById("lang-switch")
+    const langBtn    = document.getElementById("lang-btn")
+    const langPanel  = document.getElementById("lang-panel")
+
+    function refreshLangPanel() {
+      langPanel.innerHTML = LOCALES_ORDER.map(lang => `
+        <button class="lang-item${lang === currentLocale ? ' active' : ''}" data-lang="${lang}" type="button" role="option" aria-selected="${lang === currentLocale}">
+          <span class="lang-check">${lang === currentLocale ? '✓' : ''}</span>
+          ${LANG_NAMES[lang]}
+        </button>
+      `).join("")
+      langPanel.querySelectorAll(".lang-item").forEach(btn => {
+        btn.addEventListener("click", () => {
+          applyLocale(btn.dataset.lang)
+          closeLangPanel()
+        })
+      })
+    }
+
+    function openLangPanel() {
+      refreshLangPanel()
+      langPanel.classList.add("open")
+      langBtn.setAttribute("aria-expanded", "true")
+    }
+
+    function closeLangPanel() {
+      langPanel.classList.remove("open")
+      langBtn.setAttribute("aria-expanded", "false")
+    }
+
+    langBtn.addEventListener("click", (e) => {
+      e.stopPropagation()
+      langPanel.classList.contains("open") ? closeLangPanel() : openLangPanel()
+    })
+
+    document.addEventListener("click", (e) => {
+      if (!langSwitch.contains(e.target)) closeLangPanel()
+    })
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLangPanel()
+    })
+
+    // ─── Typewriter ─────────────────────────────────────────────────
+    function restartTypewriter(words) {
+      clearTimeout(typingTimer)
+      const el = document.getElementById("typed-word")
       if (!el) return
-      const words = ['discipline.', 'consistancy.', 'precision.', 'confidence.', 'clarity.']
+
       let wordIdx = 0
       let charIdx = words[0].length
       let deleting = false
@@ -813,25 +954,28 @@
           if (charIdx === 0) {
             deleting = false
             wordIdx = (wordIdx + 1) % words.length
-            setTimeout(tick, 300)
-            return
+            typingTimer = setTimeout(tick, 300)
+          } else {
+            typingTimer = setTimeout(tick, 100)
           }
-          setTimeout(tick, 100)
         } else {
           charIdx++
           el.textContent = word.slice(0, charIdx)
           if (charIdx === word.length) {
             deleting = true
-            setTimeout(tick, 2200)
-            return
+            typingTimer = setTimeout(tick, 2200)
+          } else {
+            typingTimer = setTimeout(tick, 115)
           }
-          setTimeout(tick, 115)
         }
       }
 
-      setTimeout(function () { deleting = true; tick() }, 3000)
-    })()
+      typingTimer = setTimeout(function () { deleting = true; tick() }, 3000)
+    }
+
+    // ─── Init ────────────────────────────────────────────────────────
+    setTheme(getInitialTheme())
+    applyLocale(currentLocale)
   </script>
 </body>
 </html>
-

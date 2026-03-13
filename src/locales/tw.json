@@ -1,0 +1,183 @@
+{
+  "brand": {
+    "subtitle": "離線交易日誌"
+  },
+  "nav": {
+    "top": "首頁",
+    "features": "功能",
+    "showcase": "展示",
+    "pricing": "價格"
+  },
+  "hero": {
+    "badge": "交易日誌與分析",
+    "tagline": "用紀律交易",
+    "description": "一款專注於清晰、結構與紀律的現代交易日誌。完全本地運行、速度極快，專為希望專業成長的 Prop Trader 打造。",
+    "ctaBuy": "購買授權",
+    "ctaTour": "產品導覽"
+  },
+  "heroStats": [
+    { "label": "離線優先", "value": "100%" },
+    { "label": "應用速度", "value": "快速" },
+    { "label": "專注介面", "value": "簡潔" }
+  ],
+  "featureTicker": [
+    "100% 離線優先",
+    "Prop 規則監控",
+    "截圖交易日誌",
+    "進階績效統計",
+    "高速本地搜尋",
+    "Kaizen 改善檢討流程"
+  ],
+  "features": {
+    "label": "為什麼選擇 Katsumii",
+    "headline": "專業化結構與清晰高效的工作流程",
+    "spotlight": {
+      "label": "功能亮點",
+      "headline": "用冷靜且可衡量的執行建立信心",
+      "description": "最重要的功能被放在核心位置：快速的交易記錄流程、清晰的 Prop 規則可視化，以及能直接提升決策品質的分析工具。",
+      "points": [
+        "幾秒內記錄交易：包含截圖、筆記與 Setup 情境。",
+        "Prop 帳戶限制隨時可見，包含違規風險提醒。",
+        "依 Setup、交易時段與錯誤進行分析，精準提升表現。"
+      ]
+    },
+    "cards": [
+      {
+        "name": "帳戶清晰管理",
+        "description": "Prop 與個人帳戶集中於同一視圖，清楚顯示目標、限制與進度。"
+      },
+      {
+        "name": "結構化交易日誌",
+        "description": "透過截圖、筆記、Setup 標籤與紀律化檢討紀錄交易。"
+      },
+      {
+        "name": "可行動的分析",
+        "description": "追蹤 Expectancy、R-Multiples、Setup 品質與長期穩定度。"
+      },
+      {
+        "name": "隱私優先設計",
+        "description": "無需登入、無雲端依賴。你的交易資料完全保存在本地。"
+      }
+    ]
+  },
+  "spotlightKpis": [
+    { "value": "A+", "label": "Setup 評分" },
+    { "value": "+0.31R", "label": "平均 Edge" },
+    { "value": "100%", "label": "本地資料" }
+  ],
+  "showcase": {
+    "dashboardWindowLabel": "儀表板",
+    "dashboard": {
+      "label": "儀表板分析",
+      "headline": "量化你的 Edge。",
+      "description": "儀表板清楚呈現餘額、PnL、規則狀態與 Setup 品質，形成完整的分析流程。"
+    },
+    "dashboardSteps": [
+      {
+        "title": "帳戶與 PnL 一目了然",
+        "description": "立即查看餘額、總 PnL 與目前的活躍帳戶。"
+      },
+      {
+        "title": "規則監控",
+        "description": "即時掌握帳戶限制與風險狀態，在違反規則前提前警示。"
+      },
+      {
+        "title": "Setup 品質追蹤",
+        "description": "比較不同 Setup，快速找出真正帶來 Edge 的交易模式。"
+      }
+    ],
+    "calendar": {
+      "label": "交易日曆",
+      "headline": "清晰規劃交易。",
+      "description": "日曆能立即呈現交易日、每日 PnL 與每月模式，讓檢討更快速、更精準。"
+    },
+    "calendarSteps": [
+      {
+        "title": "每日績效地圖",
+        "description": "在月視圖中清楚顯示每天的獲利、虧損與交易活動。"
+      },
+      {
+        "title": "模式識別",
+        "description": "發現每週的交易模式與重複出現的錯誤。"
+      },
+      {
+        "title": "檢討歷史",
+        "description": "利用日曆歷史進行結構化的每週與每月回顧。"
+      }
+    ],
+    "calendarWindowLabel": "交易日曆",
+    "seeAll": "查看所有功能"
+  },
+  "pricing": {
+    "label": "授權",
+    "headline": "一次付款，長期優勢。",
+    "description": "無訂閱、無雲端依賴。資料保存在本地，你完全掌控。",
+    "oneTime": "一次性",
+    "mainProgram": "主程式",
+    "buy": "購買"
+  },
+  "tiers": {
+    "light": {
+      "name": "Light",
+      "price": "$49",
+      "description": "適合需要乾淨交易日誌與基本分析的交易者。",
+      "features": [
+        "附截圖的交易日誌",
+        "標籤與基本篩選",
+        "核心統計與報告",
+        "終身授權"
+      ]
+    },
+    "professional": {
+      "name": "Professional",
+      "price": "$89",
+      "description": "適合希望優化交易流程與績效的專業交易者。",
+      "features": [
+        "包含 Light 全部功能",
+        "Prop 帳戶管理",
+        "進階策略分析",
+        "檢討流程與規則追蹤",
+        "優先客服支援"
+      ]
+    }
+  },
+  "cta": {
+    "headline": "準備好用紀律建立你的 Edge 了嗎？",
+    "description": "直接使用完整版本，或先試試免費 Demo。相同理念、相同清晰流程。",
+    "buyLicense": "購買授權",
+    "tryDemo": "試用免費 Demo"
+  },
+  "footer": {
+    "tagline": "離線交易日誌",
+    "description": "為重視清晰思維、遵守規則並希望系統化提升交易績效的交易者打造。",
+    "highlights": [
+      "100% 離線優先",
+      "結構化檢討",
+      "Prop 交易流程最佳化"
+    ],
+    "product": "產品",
+    "productLinks": [
+      "功能",
+      "展示",
+      "授權",
+      "購買授權"
+    ],
+    "company": "公司",
+    "companyLinks": [
+      "常見問題",
+      "法律聲明",
+      "Email 支援"
+    ],
+    "support": {
+      "label": "支援",
+      "description": "對授權、Demo 或使用流程有問題？我們很樂意協助。",
+      "contact": "聯絡支援"
+    },
+    "legalLinks": [
+      "常見問題",
+      "法律聲明",
+      "支援"
+    ],
+    "copyright": "Copyright {year} Katsumii。交易具有風險。本應用程式僅用於紀錄與分析。"
+  }
+}

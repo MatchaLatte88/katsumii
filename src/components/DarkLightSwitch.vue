@@ -114,8 +114,8 @@ onMounted(() => {
 .toggle-track {
   position: relative;
   display: block;
-  width: 132px;
-  height: 52px;
+  width: 100px;
+  height: 40px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   cursor: pointer;
@@ -179,13 +179,13 @@ onMounted(() => {
 /* ── Sun ── */
 .sun {
   position: absolute;
-  left: 14px;
+  left: 10px;
   top: 50%;
   transform: translateY(-50%) scale(0.72);
   opacity: 0;
   transition: transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.28s ease;
-  width: 30px;
-  height: 30px;
+  width: 22px;
+  height: 22px;
 }
 
 .sun-enter {
@@ -195,7 +195,7 @@ onMounted(() => {
 
 .sun-core {
   position: absolute;
-  inset: 4px;
+  inset: 3px;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 35%, #fff3a8, #f5b02e 65%, #ea8d1e);
 }
@@ -208,21 +208,21 @@ onMounted(() => {
 
 .cloud-a {
   width: 38px;
-  height: 32px;
-  right: 7px;
-  top: 7px;
-  transform: translateX(34px);
+  height: 18px;
+  right: 5px;
+  top: 5px;
+  transform: translateX(43px);
   opacity: 0;
 }
 
 .cloud-slide { transform: translateX(0) !important; opacity: 1 !important; }
 
 .cloud-b {
-  width: 24px;
-  height: 24px;
-  right: 20px;
-  bottom: 5px;
-  transform: translateX(34px);
+  width: 26px;
+  height: 14px;
+  right: 13px;
+  bottom: 4px;
+  transform: translateX(31px);
   opacity: 0;
   transition-delay: 0.05s;
 }
@@ -231,15 +231,18 @@ onMounted(() => {
 
 .cloud-puff {
   position: absolute;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.93);
   border-radius: 50%;
 }
 
-.puff-1  { width: 28px; height: 21px; left: 10px; top: 7px; }
-.puff-2  { width: 28px; height: 20px; left: 0; top: 11px; }
-.puff-3  { width: 14px; height: 12px; left: 22px; top: 11px; background: #e8f4ff; }
-.puff-b1 { width: 14px; height: 11px; left: 5px; top: 4px; background: #eaf6ff; }
-.puff-b2 { width: 20px; height: 14px; left: 0; top: 9px; background: #e0eeff; }
+/* Cloud A – breite Basis + zwei runde Buckel oben */
+.puff-1  { width: 38px; height: 11px; left: 0; bottom: 0; border-radius: 6px; }
+.puff-2  { width: 18px; height: 18px; left: 5px;  top: 0; }
+.puff-3  { width: 13px; height: 13px; left: 20px; top: 3px; }
+
+/* Cloud B – schmale Basis + ein Buckel oben */
+.puff-b1 { width: 26px; height: 9px;  left: 0; bottom: 0; border-radius: 5px; background: rgba(255,255,255,0.90); }
+.puff-b2 { width: 15px; height: 15px; left: 5px;  top: 0; background: rgba(255,255,255,0.90); }
 
 /* ── Stars ── */
 .star {
@@ -265,11 +268,11 @@ onMounted(() => {
 }
 
 .knob-left  { left: 5px; }
-.knob-right { left: 81px; }
+.knob-right { left: calc(100% - 35px); }
 
 .knob {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   position: relative;
   overflow: hidden;
@@ -286,7 +289,7 @@ onMounted(() => {
 
 .knob-sun-core {
   position: absolute;
-  inset: 6px;
+  inset: 4px;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 30%, rgba(255, 255, 210, 0.6), transparent 60%);
 }
@@ -325,16 +328,16 @@ onMounted(() => {
   box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2), inset -1px -1px 1px rgba(255, 255, 255, 0.07);
 }
 
-.crater-a { width: 10px; height: 7px; top: 11px; left: 12px; }
-.crater-b { width: 6px;  height: 6px; top: 21px; left: 22px; }
-.crater-c { width: 4px;  height: 4px; top: 8px;  left: 25px; }
+.crater-a { width: 7px; height: 5px; top: 8px;  left: 9px; }
+.crater-b { width: 5px; height: 4px; top: 16px; left: 17px; }
+.crater-c { width: 3px; height: 3px; top: 6px;  left: 19px; }
 
 .moon-shine {
   position: absolute;
-  top: 4px;
-  left: 5px;
-  width: 11px;
-  height: 7px;
+  top: 3px;
+  left: 4px;
+  width: 8px;
+  height: 5px;
   border-radius: 50%;
   background: rgba(34, 211, 238, 0.12);
   transform: rotate(-30deg);

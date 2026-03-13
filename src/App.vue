@@ -17,7 +17,7 @@
       :theme="theme"
       :navigation="navigation"
       brand-title="Katsumii"
-      brand-subtitle="Offline Trading Journal"
+      :brand-subtitle="t('brand.subtitle')"
       brand-href="#top"
       @toggle-theme="toggleTheme"
     />
@@ -34,7 +34,7 @@
                   : 'border-cyan-300/30 bg-cyan-400/10 text-cyan-200'
               ]"
             >
-              Kaizen Trading Workflow
+              {{ t('hero.badge') }}
             </p>
 
             <div class="mt-7 flex items-center gap-5">
@@ -42,14 +42,14 @@
               <div>
                 <h1
                   :class="[
-                    'font-display text-5xl font-semibold leading-none tracking-tight sm:text-6xl lg:text-7xl',
+                    'font-display !text-5xl font-semibold leading-none tracking-tight sm:text-6xl lg:text-7xl',
                     theme === 'light' ? 'text-gray-900' : 'text-slate-100'
                   ]"
                 >
                   KATSUMII
                 </h1>
                 <p :class="['mt-2 text-xl font-light tracking-tight sm:text-2xl', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">
-                  Trade with
+                  {{ t('hero.tagline') }}
                   <span
                     ref="typedWordEl"
                     :class="['font-semibold', theme === 'light' ? 'text-teal-600' : 'text-cyan-300']"
@@ -67,8 +67,7 @@
                 theme === 'light' ? 'text-gray-600' : 'text-slate-300'
               ]"
             >
-              Modernes Trading Journal mit Fokus auf Klarheit, Struktur und Disziplin. Lokal, schnell und gebaut fuer
-              Prop Trader, die professionell wachsen wollen.
+              {{ t('hero.description') }}
             </p>
 
             <div class="mt-9 flex flex-wrap gap-3">
@@ -83,7 +82,7 @@
                     : 'bg-cyan-300 text-slate-950 hover:bg-cyan-200'
                 ]"
               >
-                Buy License
+                {{ t('hero.ctaBuy') }}
               </a>
               <a
                 href="#showcase"
@@ -94,7 +93,7 @@
                     : 'border-blue-400/30 bg-slate-900/70 text-slate-200 hover:bg-slate-800/80'
                 ]"
               >
-                Product Tour
+                {{ t('hero.ctaTour') }}
               </a>
             </div>
           </div>
@@ -115,7 +114,7 @@
                   theme === 'light' ? 'border-gray-200 bg-gray-50/80' : 'border-blue-400/20 bg-slate-950/60'
                 ]"
               >
-                <span :class="['text-xs font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-300']">Dashboard</span>
+                <span :class="['text-xs font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-300']">{{ t('showcase.dashboardWindowLabel') }}</span>
                 <div class="flex items-center gap-1.5">
                   <span class="h-2.5 w-2.5 rounded-full bg-red-400/50" />
                   <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/50" />
@@ -161,10 +160,10 @@
         <div class="mx-auto max-w-7xl">
           <div class="reveal max-w-3xl">
             <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">
-              Why Katsumii
+              {{ t('features.label') }}
             </p>
             <h2 :class="['mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
-              Professional structure with dominant, high-clarity feature workflows
+              {{ t('features.headline') }}
             </h2>
           </div>
 
@@ -200,14 +199,13 @@
           >
             <div class="relative z-10">
               <p :class="['text-xs font-semibold uppercase tracking-[0.18em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">
-                Feature Spotlight
+                {{ t('features.spotlight.label') }}
               </p>
               <h3 :class="['mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
-                Build conviction through calm, measurable execution
+                {{ t('features.spotlight.headline') }}
               </h3>
               <p :class="['mt-4 max-w-xl text-sm leading-relaxed sm:text-base', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
-                Die wichtigsten Features sind jetzt bewusst im Zentrum: schneller Trade-Flow, glasklare Prop-Regel-Uebersicht und
-                Analytics, die direkt Entscheidungen verbessern.
+                {{ t('features.spotlight.description') }}
               </p>
 
               <ul class="mt-6 space-y-3">
@@ -252,7 +250,7 @@
               :key="feature.name"
               class="reveal feature-card group rounded-3xl border p-6 transition-all duration-300 hover:-translate-y-1"
               :class="theme === 'light' ? 'border-gray-200 bg-white/85 hover:shadow-lg' : 'border-blue-400/20 bg-slate-900/70 hover:bg-slate-800/80'"
-  
+
             >
               <component
                 :is="feature.icon"
@@ -271,7 +269,7 @@
           <article class="grid items-center gap-10 lg:grid-cols-2">
             <div class="reveal rounded-3xl border p-4" :class="theme === 'light' ? 'border-gray-200 bg-white/85 shadow-xl' : 'border-blue-400/25 bg-slate-900/80 shadow-2xl shadow-black/30'">
               <p :class="['mb-3 text-xs font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">
-                Dashboard
+                {{ t('showcase.dashboardWindowLabel') }}
               </p>
               <img
                 :src="theme === 'light' ? assetUrl('Sc1_Light.png') : assetUrl('Sc1_Dark.png')"
@@ -283,12 +281,12 @@
 
             <div class="reveal flex items-center lg:min-h-full">
               <div>
-                <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">Dashboard Analytics</p>
+                <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">{{ t('showcase.dashboard.label') }}</p>
                 <h2 :class="['mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
-                  Measure your edge.
+                  {{ t('showcase.dashboard.headline') }}
                 </h2>
                 <p :class="['mt-4 text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
-                  Das Dashboard zeigt Balance, PnL, Regelstatus und Setup-Qualitaet in einem klaren Analytics-Flow.
+                  {{ t('showcase.dashboard.description') }}
                 </p>
                 <ul class="mt-8 space-y-4">
                   <li
@@ -308,13 +306,12 @@
           <article class="grid items-center gap-10 lg:grid-cols-2">
             <div class="reveal flex items-center order-2 lg:order-1 lg:min-h-full">
               <div>
-                <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">Trading Calendar</p>
+                <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">{{ t('showcase.calendar.label') }}</p>
                 <h2 :class="['mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
-                  Plan with clarity.
+                  {{ t('showcase.calendar.headline') }}
                 </h2>
                 <p :class="['mt-4 text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
-                  Der Kalender macht Trading-Tage, Tages-PnL und Monatsmuster sofort sichtbar, damit Reviews schneller
-                  und praeziser werden.
+                  {{ t('showcase.calendar.description') }}
                 </p>
                 <ul class="mt-8 space-y-4">
                   <li
@@ -332,7 +329,7 @@
 
             <div class="reveal rounded-3xl border p-4 order-1 lg:order-2" :class="theme === 'light' ? 'border-gray-200 bg-white/85 shadow-xl' : 'border-blue-400/25 bg-slate-900/80 shadow-2xl shadow-black/30'">
               <p :class="['mb-3 text-xs font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">
-                Trading Calendar
+                {{ t('showcase.calendarWindowLabel') }}
               </p>
               <img
                 :src="theme === 'light' ? assetUrl('Sc2_Light.png') : assetUrl('Sc2_Dark.png')"
@@ -352,7 +349,7 @@
               theme === 'light' ? 'text-gray-600 hover:text-gray-900' : 'text-slate-400 hover:text-cyan-200'
             ]"
           >
-            See all features
+            {{ t('showcase.seeAll') }}
             <span aria-hidden="true">-&gt;</span>
           </a>
         </div>
@@ -360,12 +357,12 @@
 
       <section id="pricing" class="px-6 pb-20 pt-20 lg:px-10">
         <div class="mx-auto max-w-5xl text-center reveal">
-          <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">License</p>
+          <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">{{ t('pricing.label') }}</p>
           <h2 :class="['mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
-            One-time payment. Long-term edge.
+            {{ t('pricing.headline') }}
           </h2>
           <p :class="['mx-auto mt-5 max-w-2xl text-base', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
-            Kein Abo, keine Cloud Bindung. Deine Daten bleiben lokal und du behaeltst volle Kontrolle.
+            {{ t('pricing.description') }}
           </p>
         </div>
 
@@ -377,7 +374,7 @@
             >
               <p :class="['text-sm font-semibold uppercase tracking-[0.12em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">{{ starterTier.name }}</p>
               <p :class="['mt-4 text-5xl font-semibold', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ starterTier.price }}</p>
-              <p :class="['mt-1 text-sm', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">one-time</p>
+              <p :class="['mt-1 text-sm', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">{{ t('pricing.oneTime') }}</p>
               <p :class="['mt-4 text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">{{ starterTier.description }}</p>
               <ul class="mt-6 space-y-3">
                 <li v-for="feature in starterTier.features" :key="feature" class="flex items-start gap-2">
@@ -392,7 +389,7 @@
                 class="mt-7 inline-flex rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
                 :class="theme === 'light' ? 'bg-gray-900 text-white hover:bg-gray-800' : 'bg-slate-800 text-slate-100 hover:bg-slate-700'"
               >
-                Buy {{ starterTier.name }}
+                {{ t('pricing.buy') }} {{ starterTier.name }}
               </a>
             </article>
 
@@ -406,11 +403,11 @@
                   theme === 'light' ? 'border-teal-300 bg-white text-teal-700' : 'border-cyan-200/40 bg-slate-950 text-cyan-200'
                 ]"
               >
-                Main Program
+                {{ t('pricing.mainProgram') }}
               </span>
               <p :class="['mt-4 text-sm font-semibold uppercase tracking-[0.12em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">{{ featuredTier.name }}</p>
               <p :class="['mt-4 text-5xl font-semibold', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ featuredTier.price }}</p>
-              <p :class="['mt-1 text-sm', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">one-time</p>
+              <p :class="['mt-1 text-sm', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">{{ t('pricing.oneTime') }}</p>
               <p :class="['mt-4 text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">{{ featuredTier.description }}</p>
               <ul class="mt-6 space-y-3">
                 <li v-for="feature in featuredTier.features" :key="feature" class="flex items-start gap-2">
@@ -425,7 +422,7 @@
                 class="mt-7 inline-flex rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
                 :class="theme === 'light' ? 'bg-teal-700 text-white hover:bg-teal-600' : 'bg-cyan-300 text-slate-950 hover:bg-cyan-200'"
               >
-                Buy {{ featuredTier.name }}
+                {{ t('pricing.buy') }} {{ featuredTier.name }}
               </a>
             </article>
           </div>
@@ -438,10 +435,10 @@
           :class="theme === 'light' ? 'border-gray-200 bg-white/90' : 'border-blue-400/20 bg-slate-900'"
         >
           <h2 :class="['font-display text-3xl font-semibold sm:text-4xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
-            Ready to build your edge with discipline?
+            {{ t('cta.headline') }}
           </h2>
           <p :class="['mx-auto mt-4 max-w-2xl text-base', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
-            Start with the full version or test the demo first. Same mindset, same clean workflow.
+            {{ t('cta.description') }}
           </p>
           <div class="mt-8 flex flex-wrap justify-center gap-3">
             <a
@@ -453,7 +450,7 @@
                 theme === 'light' ? 'bg-teal-600 text-white hover:bg-teal-500' : 'bg-cyan-300 text-slate-950 hover:bg-cyan-200'
               ]"
             >
-              Buy License
+              {{ t('cta.buyLicense') }}
             </a>
             <a
               :href="baseUrl"
@@ -462,7 +459,7 @@
                 theme === 'light' ? 'border-gray-300 bg-white text-gray-700 hover:bg-gray-50' : 'border-blue-400/30 bg-slate-900/70 text-slate-200 hover:bg-slate-800/80'
               ]"
             >
-              Try Free Demo
+              {{ t('cta.tryDemo') }}
             </a>
           </div>
         </div>
@@ -499,12 +496,12 @@
                 </div>
                 <div>
                   <p :class="['font-display text-xl font-semibold tracking-tight', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">Katsumii</p>
-                  <p :class="['text-xs uppercase tracking-[0.18em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">Offline Trading Journal</p>
+                  <p :class="['text-xs uppercase tracking-[0.18em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">{{ t('footer.tagline') }}</p>
                 </div>
               </div>
 
               <p :class="['mt-5 max-w-md text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
-                Entwickelt fuer Trader, die mit Klarheit arbeiten, Regeln respektieren und ihre Performance systematisch verbessern wollen.
+                {{ t('footer.description') }}
               </p>
 
               <div class="mt-6 flex flex-wrap gap-3">
@@ -522,7 +519,7 @@
             </div>
 
             <div>
-              <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">Product</p>
+              <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ t('footer.product') }}</p>
               <div class="mt-5 space-y-3">
                 <a
                   v-for="item in footerProductLinks"
@@ -539,7 +536,7 @@
             </div>
 
             <div>
-              <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">Company</p>
+              <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ t('footer.company') }}</p>
               <div class="mt-5 space-y-3">
                 <a
                   v-for="item in footerCompanyLinks"
@@ -562,16 +559,16 @@
                 class="rounded-2xl border p-5"
                 :class="theme === 'light' ? 'border-gray-200 bg-gray-50/90' : 'border-blue-400/20 bg-slate-950/70'"
               >
-                <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">Support</p>
+                <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ t('footer.support.label') }}</p>
                 <p :class="['mt-3 text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
-                  Fragen zu License, Demo oder Workflow? Wir helfen dir direkt weiter.
+                  {{ t('footer.support.description') }}
                 </p>
                 <a
                   href="mailto:support@katsumii.app"
                   class="mt-5 inline-flex rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
                   :class="theme === 'light' ? 'bg-gray-900 text-white hover:bg-gray-800' : 'bg-cyan-300 text-slate-950 hover:bg-cyan-200'"
                 >
-                  Contact Support
+                  {{ t('footer.support.contact') }}
                 </a>
               </div>
             </div>
@@ -583,7 +580,7 @@
           :class="theme === 'light' ? 'border-gray-200 text-gray-500' : 'border-blue-400/15 text-slate-500'"
         >
           <p>
-            Copyright {{ year }} Katsumii. Trading involves risk. The app is for documentation and analysis only.
+            {{ t('footer.copyright', { year }) }}
           </p>
           <div class="flex flex-wrap gap-x-5 gap-y-2">
             <a
@@ -603,157 +600,84 @@
 
 <script setup>
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue"
+import { useI18n } from "vue-i18n"
 import { CheckIcon } from "@heroicons/vue/20/solid"
 import { ChartBarIcon, CloudArrowUpIcon, LockClosedIcon, ServerIcon } from "@heroicons/vue/24/outline"
 import AppNav from "./components/AppNav.vue"
+
+const { t, tm } = useI18n()
 
 const baseUrl = import.meta.env.BASE_URL
 const assetUrl = (path) => `${baseUrl}${path.replace(/^\/+/, "")}`
 const pageUrl = (page) => `${baseUrl}?page=${page}`
 const checkoutUrl = baseUrl
 
-const navigation = [
-  { name: "Top", href: "#top" },
-  { name: "Features", href: "#features" },
-  { name: "Showcase", href: "#showcase" },
-  { name: "Pricing", href: "#pricing" },
-]
+const navigation = computed(() => [
+  { name: t('nav.top'), href: "#top" },
+  { name: t('nav.features'), href: "#features" },
+  { name: t('nav.showcase'), href: "#showcase" },
+  { name: t('nav.pricing'), href: "#pricing" },
+])
 
-const footerHighlights = ["100% Offline-first", "Structured Reviews", "Prop-Ready Workflow"]
+const footerHighlights = computed(() => tm('footer.highlights'))
 
-const footerProductLinks = [
-  { name: "Features", href: "#features" },
-  { name: "Showcase", href: "#showcase" },
-  { name: "License", href: "#pricing" },
-  { name: "Buy License", href: checkoutUrl },
-]
+const footerProductLinks = computed(() => [
+  { name: tm('footer.productLinks')[0], href: "#features" },
+  { name: tm('footer.productLinks')[1], href: "#showcase" },
+  { name: tm('footer.productLinks')[2], href: "#pricing" },
+  { name: tm('footer.productLinks')[3], href: checkoutUrl },
+])
 
-const footerCompanyLinks = [
-  { name: "FAQ", href: pageUrl("faq") },
-  { name: "Imprint", href: pageUrl("impressum") },
-  { name: "Email Support", href: "mailto:support@katsumii.app" },
-]
+const footerCompanyLinks = computed(() => [
+  { name: tm('footer.companyLinks')[0], href: pageUrl("faq") },
+  { name: tm('footer.companyLinks')[1], href: pageUrl("impressum") },
+  { name: tm('footer.companyLinks')[2], href: "mailto:support@katsumii.app" },
+])
 
-const footerLegalLinks = [
-  { name: "FAQ", href: pageUrl("faq") },
-  { name: "Imprint", href: pageUrl("impressum") },
-  { name: "Support", href: "mailto:support@katsumii.app" },
-]
+const footerLegalLinks = computed(() => [
+  { name: tm('footer.legalLinks')[0], href: pageUrl("faq") },
+  { name: tm('footer.legalLinks')[1], href: pageUrl("impressum") },
+  { name: tm('footer.legalLinks')[2], href: "mailto:support@katsumii.app" },
+])
 
-const heroStats = [
-  { label: "Offline-first", value: "100%" },
-  { label: "App speed", value: "Fast" },
-  { label: "Focused UI", value: "Clean" },
-]
+const heroStats = computed(() => tm('heroStats'))
+const featureTicker = computed(() => tm('featureTicker'))
+const spotlightPoints = computed(() => tm('features.spotlight.points'))
+const spotlightKpis = computed(() => tm('spotlightKpis'))
+const dashboardSteps = computed(() => tm('showcase.dashboardSteps'))
+const calendarSteps = computed(() => tm('showcase.calendarSteps'))
 
-const features = [
+const features = computed(() => [
+  { name: t('features.cards.0.name'), description: t('features.cards.0.description'), icon: ServerIcon },
+  { name: t('features.cards.1.name'), description: t('features.cards.1.description'), icon: CloudArrowUpIcon },
+  { name: t('features.cards.2.name'), description: t('features.cards.2.description'), icon: ChartBarIcon },
+  { name: t('features.cards.3.name'), description: t('features.cards.3.description'), icon: LockClosedIcon },
+])
+
+const tiers = computed(() => [
   {
-    name: "Account clarity",
-    description: "Prop and personal accounts in one view with clear goals, limits and progress.",
-    icon: ServerIcon,
-  },
-  {
-    name: "Structured journaling",
-    description: "Capture trades with screenshots, notes, setup tags and disciplined review logs.",
-    icon: CloudArrowUpIcon,
-  },
-  {
-    name: "Actionable analytics",
-    description: "Track expectancy, R-multiples, setup quality and consistency over time.",
-    icon: ChartBarIcon,
-  },
-  {
-    name: "Private by design",
-    description: "No login and no cloud dependency. Your trading data stays local.",
-    icon: LockClosedIcon,
-  },
-]
-
-
-const featureTicker = [
-  "100% Offline-first",
-  "Prop Rule Guardrails",
-  "Screenshot Journaling",
-  "Advanced Performance Stats",
-  "Fast Local Search",
-  "Kaizen Review Routine",
-]
-
-const spotlightPoints = [
-  "Trade Entry mit Screenshots, Notizen und Setup-Context in Sekunden.",
-  "Prop Account Limits immer sichtbar, inklusive Rule-Break Risiko.",
-  "Analyse nach Setup, Session und Fehlern fuer gezielte Verbesserung.",
-]
-
-const spotlightKpis = [
-  { value: "A+", label: "Setup Score" },
-  { value: "+0.31R", label: "Avg. Edge" },
-  { value: "100%", label: "Local Data" },
-]
-
-const dashboardSteps = [
-  {
-    title: "Account and PnL at a glance",
-    description: "Sieh Balance, Gesamt-PnL und aktive Konten auf einen Blick.",
-  },
-  {
-    title: "Rule-focused monitoring",
-    description: "Behalte Limits und Risiko-Status live im Blick, bevor Regeln brechen.",
-  },
-  {
-    title: "Setup quality tracking",
-    description: "Vergleiche Setups und erkenne schnell, was deinen Edge wirklich treibt.",
-  },
-]
-
-const calendarSteps = [
-  {
-    title: "Daily performance map",
-    description: "Jeder Tag zeigt sofort Gewinn, Verlust und Aktivitaet im Monatsbild.",
-  },
-  {
-    title: "Pattern recognition",
-    description: "Erkenne Wochenmuster und wiederkehrende Fehler in deinem Timing.",
-  },
-  {
-    title: "Review-ready history",
-    description: "Nutze die Kalender-Historie fuer strukturierte Wochen- und Monatsreviews.",
-  },
-]
-
-const tiers = [
-  {
-    name: "Light",
+    name: t('tiers.light.name'),
     id: "tier-light",
     href: baseUrl,
-    price: "$49",
-    description: "For clean journaling with essential analytics.",
-    features: [
-      "Trade journal with screenshots",
-      "Tags and basic filters",
-      "Core statistics and reports",
-      "Lifetime license"
-    ],
+    price: t('tiers.light.price'),
+    description: t('tiers.light.description'),
+    features: tm('tiers.light.features'),
     featured: false,
   },
   {
-    name: "Professional",
+    name: t('tiers.professional.name'),
     id: "tier-pro",
     href: baseUrl,
-    price: "$89",
-    description: "For serious traders who optimize process and performance.",
-    features: [
-      "Everything in Light",
-      "Prop account management",
-      "Advanced strategy breakdowns",
-      "Review routine and rule tracking",
-      "Priority support"
-    ],
+    price: t('tiers.professional.price'),
+    description: t('tiers.professional.description'),
+    features: tm('tiers.professional.features'),
     featured: true,
   },
-]
-const featuredTier = computed(() => tiers.find((tier) => tier.featured) ?? tiers[0])
-const starterTier = computed(() => tiers.find((tier) => !tier.featured) ?? tiers[1] ?? tiers[0])
+])
+
+const featuredTier = computed(() => tiers.value.find((tier) => tier.featured) ?? tiers.value[0])
+const starterTier = computed(() => tiers.value.find((tier) => !tier.featured) ?? tiers.value[1] ?? tiers.value[0])
+
 const getInitialTheme = () => {
   const saved = localStorage.getItem('katsumii-theme')
              || localStorage.getItem('katsumii-coming-soon-theme')
@@ -1004,41 +928,3 @@ const year = computed(() => new Date().getFullYear())
   }
 }
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

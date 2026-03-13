@@ -1,0 +1,183 @@
+{
+  "brand": {
+    "subtitle": "Offline Trading Journal"
+  },
+  "nav": {
+    "top": "Start",
+    "features": "Funktionen",
+    "showcase": "Einblicke",
+    "pricing": "Preise"
+  },
+  "hero": {
+    "badge": "Trading Journal und Analyse",
+    "tagline": "Trade mit",
+    "description": "Modernes Trading Journal mit Fokus auf Klarheit, Struktur und Disziplin. Lokal, schnell und entwickelt für Prop Trader, die professionell wachsen wollen.",
+    "ctaBuy": "Lizenz kaufen",
+    "ctaTour": "Produkt ansehen"
+  },
+  "heroStats": [
+    { "label": "Offline-first", "value": "100%" },
+    { "label": "App-Geschwindigkeit", "value": "Schnell" },
+    { "label": "Fokussierte Oberfläche", "value": "Klar" }
+  ],
+  "featureTicker": [
+    "100% Offline-first",
+    "Prop-Regelüberwachung",
+    "Screenshot-Journaling",
+    "Erweiterte Performance-Statistiken",
+    "Schnelle lokale Suche",
+    "Kaizen-Review-Routine"
+  ],
+  "features": {
+    "label": "Warum Katsumii",
+    "headline": "Professionelle Struktur mit klaren, fokussierten Workflows",
+    "spotlight": {
+      "label": "Feature-Highlight",
+      "headline": "Überzeugung durch ruhige, messbare Ausführung",
+      "description": "Die wichtigsten Funktionen stehen bewusst im Mittelpunkt: schneller Trade-Workflow, eine glasklare Übersicht über Prop-Regeln und Analytics, die deine Entscheidungen direkt verbessern.",
+      "points": [
+        "Trades in Sekunden erfassen – mit Screenshots, Notizen und Setup-Kontext.",
+        "Prop-Account-Limits jederzeit sichtbar, inklusive Risiko für Regelverstöße.",
+        "Analyse nach Setup, Session und Fehlern für gezielte Verbesserung."
+      ]
+    },
+    "cards": [
+      {
+        "name": "Klare Kontenübersicht",
+        "description": "Prop- und private Accounts in einer Ansicht mit klaren Zielen, Limits und Fortschritt."
+      },
+      {
+        "name": "Strukturiertes Journaling",
+        "description": "Trades erfassen mit Screenshots, Notizen, Setup-Tags und disziplinierten Review-Logs."
+      },
+      {
+        "name": "Aussagekräftige Analysen",
+        "description": "Verfolge Expectancy, R-Multiples, Setup-Qualität und Konsistenz über die Zeit."
+      },
+      {
+        "name": "Privatsphäre im Fokus",
+        "description": "Kein Login und keine Cloud-Abhängigkeit. Deine Trading-Daten bleiben lokal."
+      }
+    ]
+  },
+  "spotlightKpis": [
+    { "value": "A+", "label": "Setup-Bewertung" },
+    { "value": "+0.31R", "label": "Durchschnittlicher Edge" },
+    { "value": "100%", "label": "Lokale Daten" }
+  ],
+  "showcase": {
+    "dashboardWindowLabel": "Dashboard",
+    "dashboard": {
+      "label": "Dashboard-Analyse",
+      "headline": "Miss deinen Edge.",
+      "description": "Das Dashboard zeigt Balance, PnL, Regelstatus und Setup-Qualität in einem klaren Analyse-Flow."
+    },
+    "dashboardSteps": [
+      {
+        "title": "Account und PnL auf einen Blick",
+        "description": "Sieh Balance, Gesamt-PnL und aktive Konten sofort."
+      },
+      {
+        "title": "Regelbasierte Überwachung",
+        "description": "Behalte Limits und Risikostatus im Blick, bevor Regeln gebrochen werden."
+      },
+      {
+        "title": "Setup-Qualität analysieren",
+        "description": "Vergleiche Setups und erkenne schnell, was deinen Edge wirklich ausmacht."
+      }
+    ],
+    "calendar": {
+      "label": "Trading-Kalender",
+      "headline": "Plane mit Klarheit.",
+      "description": "Der Kalender macht Trading-Tage, Tages-PnL und Monatsmuster sofort sichtbar, damit Reviews schneller und präziser werden."
+    },
+    "calendarSteps": [
+      {
+        "title": "Tägliche Performance-Übersicht",
+        "description": "Jeder Tag zeigt sofort Gewinn, Verlust und Aktivität im Monatsüberblick."
+      },
+      {
+        "title": "Muster erkennen",
+        "description": "Erkenne Wochenmuster und wiederkehrende Fehler in deinem Timing."
+      },
+      {
+        "title": "Perfekt für Reviews",
+        "description": "Nutze die Kalender-Historie für strukturierte Wochen- und Monatsreviews."
+      }
+    ],
+    "calendarWindowLabel": "Trading-Kalender",
+    "seeAll": "Alle Funktionen ansehen"
+  },
+  "pricing": {
+    "label": "Lizenz",
+    "headline": "Einmal zahlen. Langfristigen Edge aufbauen.",
+    "description": "Kein Abo, keine Cloud-Bindung. Deine Daten bleiben lokal und du behältst die volle Kontrolle.",
+    "oneTime": "einmalig",
+    "mainProgram": "Hauptprogramm",
+    "buy": "Kaufen"
+  },
+  "tiers": {
+    "light": {
+      "name": "Light",
+      "price": "$49",
+      "description": "Für sauberes Journaling mit den wichtigsten Analysen.",
+      "features": [
+        "Trading-Journal mit Screenshots",
+        "Tags und grundlegende Filter",
+        "Kernstatistiken und Reports",
+        "Lifetime-Lizenz"
+      ]
+    },
+    "professional": {
+      "name": "Professional",
+      "price": "$89",
+      "description": "Für ernsthafte Trader, die Prozess und Performance optimieren.",
+      "features": [
+        "Alles aus Light",
+        "Prop-Account-Verwaltung",
+        "Erweiterte Strategie-Analysen",
+        "Review-Routine und Regel-Tracking",
+        "Priorisierter Support"
+      ]
+    }
+  },
+  "cta": {
+    "headline": "Bereit, deinen Edge mit Disziplin aufzubauen?",
+    "description": "Starte mit der Vollversion oder teste zuerst die Demo. Gleiche Philosophie, gleicher klarer Workflow.",
+    "buyLicense": "Lizenz kaufen",
+    "tryDemo": "Kostenlose Demo testen"
+  },
+  "footer": {
+    "tagline": "Offline Trading Journal",
+    "description": "Entwickelt für Trader, die mit Klarheit arbeiten, Regeln respektieren und ihre Performance systematisch verbessern wollen.",
+    "highlights": [
+      "100% Offline-first",
+      "Strukturierte Reviews",
+      "Prop-optimierter Workflow"
+    ],
+    "product": "Produkt",
+    "productLinks": [
+      "Funktionen",
+      "Einblicke",
+      "Lizenz",
+      "Lizenz kaufen"
+    ],
+    "company": "Unternehmen",
+    "companyLinks": [
+      "FAQ",
+      "Impressum",
+      "E-Mail Support"
+    ],
+    "support": {
+      "label": "Support",
+      "description": "Fragen zur Lizenz, Demo oder zum Workflow? Wir helfen dir direkt weiter.",
+      "contact": "Support kontaktieren"
+    },
+    "legalLinks": [
+      "FAQ",
+      "Impressum",
+      "Support"
+    ],
+    "copyright": "Copyright {year} Katsumii. Trading beinhaltet Risiken. Die App dient ausschließlich zur Dokumentation und Analyse."
+  }
+}

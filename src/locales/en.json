@@ -1,0 +1,183 @@
+{
+  "brand": {
+    "subtitle": "Offline Trading Journal"
+  },
+  "nav": {
+    "top": "Top",
+    "features": "Features",
+    "showcase": "Showcase",
+    "pricing": "Pricing"
+  },
+  "hero": {
+    "badge": "Trading Journal & Analytics",
+    "tagline": "Trade with",
+    "description": "A modern trading journal focused on clarity, structure, and discipline. Local, fast, and built for prop traders who want to grow professionally.",
+    "ctaBuy": "Buy License",
+    "ctaTour": "Product Tour"
+  },
+  "heroStats": [
+    { "label": "Offline-first", "value": "100%" },
+    { "label": "App Speed", "value": "Fast" },
+    { "label": "Focused UI", "value": "Clean" }
+  ],
+  "featureTicker": [
+    "100% Offline-first",
+    "Prop Rule Guardrails",
+    "Screenshot Journaling",
+    "Advanced Performance Stats",
+    "Fast Local Search",
+    "Kaizen Review Routine"
+  ],
+  "features": {
+    "label": "Why Katsumii",
+    "headline": "Professional structure with clear, focused workflows",
+    "spotlight": {
+      "label": "Feature Spotlight",
+      "headline": "Build conviction through calm, measurable execution",
+      "description": "The most important features are intentionally placed at the center: a fast trade workflow, crystal-clear prop rule visibility, and analytics that directly improve decision-making.",
+      "points": [
+        "Log trades in seconds with screenshots, notes, and setup context.",
+        "Prop account limits always visible, including rule-break risk.",
+        "Analyze performance by setup, session, and mistakes to improve with precision."
+      ]
+    },
+    "cards": [
+      {
+        "name": "Account Clarity",
+        "description": "Prop and personal accounts in one view with clear goals, limits, and progress."
+      },
+      {
+        "name": "Structured Journaling",
+        "description": "Capture trades with screenshots, notes, setup tags, and disciplined review logs."
+      },
+      {
+        "name": "Actionable Analytics",
+        "description": "Track expectancy, R-multiples, setup quality, and consistency over time."
+      },
+      {
+        "name": "Private by Design",
+        "description": "No login and no cloud dependency. Your trading data stays local."
+      }
+    ]
+  },
+  "spotlightKpis": [
+    { "value": "A+", "label": "Setup Score" },
+    { "value": "+0.31R", "label": "Average Edge" },
+    { "value": "100%", "label": "Local Data" }
+  ],
+  "showcase": {
+    "dashboardWindowLabel": "Dashboard",
+    "dashboard": {
+      "label": "Dashboard Analytics",
+      "headline": "Measure your edge.",
+      "description": "The dashboard displays balance, PnL, rule status, and setup quality in a clear analytics flow."
+    },
+    "dashboardSteps": [
+      {
+        "title": "Account and PnL at a glance",
+        "description": "Instantly see your balance, total PnL, and active accounts."
+      },
+      {
+        "title": "Rule-focused monitoring",
+        "description": "Keep track of limits and risk status before rules are violated."
+      },
+      {
+        "title": "Setup quality tracking",
+        "description": "Compare setups and quickly identify what truly drives your edge."
+      }
+    ],
+    "calendar": {
+      "label": "Trading Calendar",
+      "headline": "Plan with clarity.",
+      "description": "The calendar makes trading days, daily PnL, and monthly patterns immediately visible, making reviews faster and more precise."
+    },
+    "calendarSteps": [
+      {
+        "title": "Daily performance overview",
+        "description": "Each day instantly shows profit, loss, and activity within the monthly view."
+      },
+      {
+        "title": "Pattern recognition",
+        "description": "Identify weekly patterns and recurring mistakes in your timing."
+      },
+      {
+        "title": "Review-ready history",
+        "description": "Use the calendar history for structured weekly and monthly reviews."
+      }
+    ],
+    "calendarWindowLabel": "Trading Calendar",
+    "seeAll": "See all features"
+  },
+  "pricing": {
+    "label": "License",
+    "headline": "One-time payment. Long-term edge.",
+    "description": "No subscription and no cloud dependency. Your data stays local and under your control.",
+    "oneTime": "one-time",
+    "mainProgram": "Main Program",
+    "buy": "Buy"
+  },
+  "tiers": {
+    "light": {
+      "name": "Light",
+      "price": "$49",
+      "description": "For clean journaling with essential analytics.",
+      "features": [
+        "Trading journal with screenshots",
+        "Tags and basic filters",
+        "Core statistics and reports",
+        "Lifetime license"
+      ]
+    },
+    "professional": {
+      "name": "Professional",
+      "price": "$89",
+      "description": "For serious traders who optimize process and performance.",
+      "features": [
+        "Everything in Light",
+        "Prop account management",
+        "Advanced strategy breakdowns",
+        "Review routines and rule tracking",
+        "Priority support"
+      ]
+    }
+  },
+  "cta": {
+    "headline": "Ready to build your edge with discipline?",
+    "description": "Start with the full version or test the demo first. Same mindset, same clean workflow.",
+    "buyLicense": "Buy License",
+    "tryDemo": "Try Free Demo"
+  },
+  "footer": {
+    "tagline": "Offline Trading Journal",
+    "description": "Built for traders who value clarity, respect rules, and want to systematically improve their performance.",
+    "highlights": [
+      "100% Offline-first",
+      "Structured Reviews",
+      "Prop-ready Workflow"
+    ],
+    "product": "Product",
+    "productLinks": [
+      "Features",
+      "Showcase",
+      "License",
+      "Buy License"
+    ],
+    "company": "Company",
+    "companyLinks": [
+      "FAQ",
+      "Imprint",
+      "Email Support"
+    ],
+    "support": {
+      "label": "Support",
+      "description": "Questions about the license, demo, or workflow? We're happy to help.",
+      "contact": "Contact Support"
+    },
+    "legalLinks": [
+      "FAQ",
+      "Imprint",
+      "Support"
+    ],
+    "copyright": "Copyright {year} Katsumii. Trading involves risk. The app is intended for documentation and analysis only."
+  }
+}

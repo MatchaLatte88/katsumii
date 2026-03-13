@@ -53,6 +53,8 @@
         </div>
 
         <div class="flex items-center gap-2">
+          <LangSwitch :theme="theme" />
+
           <div class="theme-switch-wrap">
             <DarkLightSwitch :is-dark="theme === 'dark'" @toggle="emit('toggle-theme')" />
           </div>
@@ -104,6 +106,7 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue"
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline"
 import DarkLightSwitch from "./DarkLightSwitch.vue"
+import LangSwitch from "./LangSwitch.vue"
 
 const emit = defineEmits(["toggle-theme"])
 const baseUrl = import.meta.env.BASE_URL

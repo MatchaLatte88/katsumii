@@ -4,6 +4,7 @@ import App from "./App.vue"
 import FaqPage from "./components/FaqPage.vue"
 import ImpressumPage from "./components/ImpressumPage.vue"
 import FeaturesPage from "./components/FeaturesPage.vue"
+import i18n from "./i18n.js"
 
 const params = new URLSearchParams(window.location.search)
 const page = params.get("page")
@@ -17,4 +18,4 @@ if (page === "faq") {
   ActivePage = FeaturesPage
 }
 
-createApp(ActivePage).mount("#app")
+createApp(ActivePage).use(i18n).mount("#app")
