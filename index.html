@@ -711,7 +711,7 @@
       <p class="subline">
         Structured journaling, prop challenge and funded account support, deep insights with advanced analytics — built for traders who take self discipline seriously.
       </p>
-
+<!--
       <div class="cta-block">
         <p class="cta-label">Get notified when we launch</p>
         <div class="cta-row">
@@ -725,7 +725,7 @@
           <button class="notify-btn" id="notify-btn" type="button">Notify me</button>
         </div>
         <p class="cta-hint">No spam. One email when it is ready.</p>
-      </div>
+      </div>-->
 
       <div class="meta-row">
         <div class="domain-chip">
@@ -760,11 +760,13 @@
     function setTheme(t) {
       root.setAttribute("data-theme", t)
       localStorage.setItem("katsumii-coming-soon-theme", t)
+      localStorage.setItem("katsumii-theme", t)
       label.textContent = t === "dark" ? "Light mode" : "Dark mode"
     }
 
     function getInitialTheme() {
       const s = localStorage.getItem("katsumii-coming-soon-theme")
+             || localStorage.getItem("katsumii-theme")
       if (s === "light" || s === "dark") return s
       return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"
     }
