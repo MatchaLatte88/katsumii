@@ -147,6 +147,86 @@
     "buyLicense": "Lizenz kaufen",
     "tryDemo": "Kostenlose Demo testen"
   },
+  "demo": {
+    "badge": "Kostenlose Demo",
+    "headline": "Noch unsicher? Erst ausprobieren, dann kaufen.",
+    "description": "Entdecke den vollen Workflow mit Beispieldaten. Kein Account, kein Abo, keine Verpflichtung — einfach die App.",
+    "points": [
+      "Kein Account oder Login erforderlich",
+      "Vollzugriff auf alle Funktionen",
+      "Läuft komplett offline"
+    ],
+    "cta": "Demo kostenlos testen"
+  },
+  "featuresPage": {
+    "brandSubtitle": "Funktionen",
+    "liveScreen": "Live Screen",
+    "nav": {
+      "home": "Zur Startseite",
+      "pricing": "Preise",
+      "faq": "FAQ"
+    },
+    "hero": {
+      "label": "Feature Deep Dive",
+      "headlineA": "Gebaut für den echten",
+      "headlineB": "Trading-Alltag.",
+      "description": "Jede Funktion folgt einem realen Workflow-Schritt — vom ersten Trade bis zur monatlichen Performance-Analyse.",
+      "tags": ["100% Offline-first", "Prop-bereit", "Strukturierte Reviews", "Aussagekräftige Analytics"]
+    },
+    "features": [
+      {
+        "eyebrow": "Core Workflow",
+        "badge": "Essentiell",
+        "title": "Strukturiertes Journaling",
+        "description": "Trade-Dokumentation mit Screenshots, Kontext und Review-Disziplin. Ein klarer Entry-Flow, der sich von Anfang an wie ein professioneller Prozess anfühlt.",
+        "points": [
+          "Screenshots, Notizen und Setup-Kontext in einem einzigen Flow.",
+          "Fehler und Erkenntnisse direkt pro Trade festhalten.",
+          "Solide Grundlage für Wochen- und Monatsreviews."
+        ]
+      },
+      {
+        "eyebrow": "Account Control",
+        "badge": "Pro",
+        "title": "Prop & Personal Account Klarheit",
+        "description": "Mehrere Accounts, Prop-Regeln und persönliche Limits — alles in einer gemeinsamen Struktur. Kein Tool-Wechsel, kein Kontextverlust, keine verpassten Limits.",
+        "points": [
+          "Prop-Regeln und persönliche Konten nebeneinander verwalten.",
+          "Limit- und Risiko-Kontext immer auf einen Blick sichtbar.",
+          "Status und Fortschritt bleiben über alle Accounts klar."
+        ]
+      },
+      {
+        "eyebrow": "Analytics",
+        "badge": "Einblick",
+        "title": "Praktisch nutzbare Performance-Analysen",
+        "description": "Auswertungen, die nicht nur gut aussehen, sondern konkrete Entscheidungen ermöglichen. Analyse nach Setup, Session-Typ und wiederkehrenden Mustern.",
+        "points": [
+          "Edge, Konstanz und Prozessqualität messbar machen.",
+          "Fehlerbilder erkennen, bevor sie teuer werden.",
+          "Auf Datenbasis optimieren, nicht nach Bauchgefühl."
+        ]
+      },
+      {
+        "eyebrow": "Review System",
+        "badge": "Review",
+        "title": "Kalender & Historienansicht",
+        "description": "Trading-Tage, PnL-Muster und Aktivitätszyklen auf einen Blick. Der Zeitverlauf macht sichtbar, was im Tagesrauschen verschwindet.",
+        "points": [
+          "Monatsbild für schnelle Pattern-Erkennung.",
+          "Reviews werden präziser durch eine lückenlose Historie.",
+          "Tagesergebnisse im größeren Prozess eingebettet."
+        ]
+      }
+    ],
+    "cta": {
+      "label": "Das ist das gesamte Bild",
+      "headline": "Bereit loszulegen?",
+      "description": "Hol dir die Professional-Lizenz für den kompletten Workflow — oder teste zuerst die Demo und prüfe, ob es zu deinem Prozess passt.",
+      "buyLicense": "Lizenz kaufen",
+      "tryDemo": "Demo kostenlos testen"
+    }
+  },
   "footer": {
     "tagline": "Offline Trading Journal",
     "description": "Entwickelt für Trader, die mit Klarheit arbeiten, Regeln respektieren und ihre Performance systematisch verbessern wollen.",

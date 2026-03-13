@@ -23,7 +23,7 @@
     />
 
     <main>
-      <section id="top" class="relative px-6 pb-20 pt-20 sm:pt-28 lg:px-10">
+      <section id="top" class="relative px-6 pb-40 !pt-80 sm:pt-28 lg:px-10">
         <div class="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div class="reveal">
             <p
@@ -303,7 +303,7 @@
             </div>
           </article>
 
-          <article class="grid items-center gap-10 lg:grid-cols-2">
+          <article class="grid items-center mt-40 gap-10 lg:grid-cols-2">
             <div class="reveal flex items-center order-2 lg:order-1 lg:min-h-full">
               <div>
                 <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">{{ t('showcase.calendar.label') }}</p>
@@ -431,37 +431,57 @@
 
       <section class="px-6 pb-20 lg:px-10">
         <div
-          class="reveal mx-auto max-w-6xl rounded-3xl border px-6 py-12 text-center sm:px-10"
-          :class="theme === 'light' ? 'border-gray-200 bg-white/90' : 'border-blue-400/20 bg-slate-900'"
+          class="reveal mx-auto max-w-xl rounded-3xl border px-8 py-10 text-center"
+          :class="theme === 'light' ? 'border-gray-200 bg-white/80' : 'border-blue-400/15 bg-slate-900/60'"
         >
-          <h2 :class="['font-display text-3xl font-semibold sm:text-4xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
-            {{ t('cta.headline') }}
+          <!-- Badge -->
+          <span
+            class="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-widest"
+            :class="theme === 'light' ? 'border-teal-500/30 bg-teal-50 text-teal-700' : 'border-cyan-400/25 bg-cyan-400/8 text-cyan-300'"
+          >
+            {{ t('demo.badge') }}
+          </span>
+
+          <!-- Headline -->
+          <h2
+            class="mt-5 font-display text-2xl font-semibold sm:text-3xl"
+            :class="theme === 'light' ? 'text-gray-900' : 'text-slate-100'"
+          >
+            {{ t('demo.headline') }}
           </h2>
-          <p :class="['mx-auto mt-4 max-w-2xl text-base', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
-            {{ t('cta.description') }}
+
+          <!-- Description -->
+          <p
+            class="mx-auto mt-3 max-w-sm text-sm leading-relaxed"
+            :class="theme === 'light' ? 'text-gray-500' : 'text-slate-400'"
+          >
+            {{ t('demo.description') }}
           </p>
-          <div class="mt-8 flex flex-wrap justify-center gap-3">
-            <a
-              :href="checkoutUrl"
-              :target="linkTarget(checkoutUrl)"
-              :rel="linkRel(checkoutUrl)"
-              :class="[
-                'rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5',
-                theme === 'light' ? 'bg-teal-600 text-white hover:bg-teal-500' : 'bg-cyan-300 text-slate-950 hover:bg-cyan-200'
-              ]"
+
+          <!-- Points -->
+          <ul class="mt-6 flex flex-col items-center gap-2">
+            <li
+              v-for="point in tm('demo.points')"
+              :key="point"
+              class="flex items-center gap-2 text-sm"
+              :class="theme === 'light' ? 'text-gray-600' : 'text-slate-300'"
             >
-              {{ t('cta.buyLicense') }}
-            </a>
-            <a
-              :href="baseUrl"
-              :class="[
-                'rounded-full border px-6 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5',
-                theme === 'light' ? 'border-gray-300 bg-white text-gray-700 hover:bg-gray-50' : 'border-blue-400/30 bg-slate-900/70 text-slate-200 hover:bg-slate-800/80'
-              ]"
-            >
-              {{ t('cta.tryDemo') }}
-            </a>
-          </div>
+              <CheckIcon
+                class="h-4 w-4 flex-shrink-0"
+                :class="theme === 'light' ? 'text-teal-600' : 'text-cyan-400'"
+              />
+              {{ point }}
+            </li>
+          </ul>
+
+          <!-- CTA -->
+          <a
+            :href="baseUrl"
+            class="mt-7 inline-flex rounded-full border px-6 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
+            :class="theme === 'light' ? 'border-gray-300 text-gray-700 hover:bg-gray-50' : 'border-blue-400/30 text-slate-200 hover:bg-slate-800/60'"
+          >
+            {{ t('demo.cta') }}
+          </a>
         </div>
       </section>
     </main>
@@ -609,7 +629,7 @@ const { t, tm } = useI18n()
 
 const baseUrl = import.meta.env.BASE_URL
 const assetUrl = (path) => `${baseUrl}${path.replace(/^\/+/, "")}`
-const pageUrl = (page) => `${baseUrl}?page=${page}`
+const pageUrl = (page) => `${baseUrl}app.html?page=${page}`
 const checkoutUrl = baseUrl
 
 const navigation = computed(() => [

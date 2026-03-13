@@ -147,6 +147,86 @@
     "buyLicense": "Comprar licencia",
     "tryDemo": "Probar demo gratuita"
   },
+  "demo": {
+    "badge": "Demo gratuita",
+    "headline": "¿Aún no estás seguro? Pruébalo antes de comprar.",
+    "description": "Explora el flujo completo con datos de muestra. Sin cuenta, sin suscripción, sin compromiso — solo la app.",
+    "points": [
+      "Sin cuenta ni inicio de sesión",
+      "Acceso completo a todas las funciones",
+      "Funciona completamente sin conexión"
+    ],
+    "cta": "Probar demo gratuita"
+  },
+  "featuresPage": {
+    "brandSubtitle": "Funciones",
+    "liveScreen": "Pantalla en vivo",
+    "nav": {
+      "home": "Inicio",
+      "pricing": "Precios",
+      "faq": "FAQ"
+    },
+    "hero": {
+      "label": "Análisis de funciones",
+      "headlineA": "Diseñado para cómo los traders",
+      "headlineB": "realmente trabajan.",
+      "description": "Cada función sigue un paso del flujo de trabajo real — desde registrar tu primer trade hasta revisar los patrones de rendimiento mensual.",
+      "tags": ["100% Sin conexión", "Listo para Prop", "Revisiones estructuradas", "Análisis accionable"]
+    },
+    "features": [
+      {
+        "eyebrow": "Flujo principal",
+        "badge": "Esencial",
+        "title": "Diario estructurado",
+        "description": "Documentación de trades con capturas de pantalla, contexto y disciplina de revisión. Un flujo de entrada claro que se siente como un proceso profesional desde el primer día.",
+        "points": [
+          "Capturas, notas y contexto de setup en un solo flujo.",
+          "Registra errores e ideas clave directamente por trade.",
+          "Base sólida para revisiones semanales y mensuales."
+        ]
+      },
+      {
+        "eyebrow": "Control de cuentas",
+        "badge": "Pro",
+        "title": "Claridad en cuentas prop y personales",
+        "description": "Múltiples cuentas, reglas prop y límites personales — todo en una estructura compartida. Sin cambiar de herramienta, sin perder contexto, sin límites olvidados.",
+        "points": [
+          "Gestiona reglas prop y cuentas personales juntas.",
+          "Contexto de límites y riesgo siempre visible.",
+          "El estado y progreso se mantienen claros en todas las cuentas."
+        ]
+      },
+      {
+        "eyebrow": "Análisis",
+        "badge": "Perspectiva",
+        "title": "Análisis de rendimiento que se mantiene práctico",
+        "description": "Análisis que no solo lucen bien, sino que permiten decisiones concretas. Desglosa el rendimiento por setup, tipo de sesión y patrones recurrentes.",
+        "points": [
+          "Mide tu edge, consistencia y calidad de proceso.",
+          "Identifica patrones de error antes de que sean costosos.",
+          "Optimiza con datos, no con intuición."
+        ]
+      },
+      {
+        "eyebrow": "Sistema de revisión",
+        "badge": "Revisión",
+        "title": "Vista de calendario e historial",
+        "description": "Días de trading, patrones de PnL y ciclos de actividad de un vistazo. La línea de tiempo hace visible lo que desaparece en el ruido diario.",
+        "points": [
+          "Vista mensual para reconocimiento rápido de patrones.",
+          "Revisiones más precisas con historial completo.",
+          "Resultados diarios vistos dentro del panorama general."
+        ]
+      }
+    ],
+    "cta": {
+      "label": "Eso es el panorama completo",
+      "headline": "¿Listo para empezar?",
+      "description": "Obtén la licencia Professional para el flujo completo — o prueba la demo primero y ve si encaja con tu proceso.",
+      "buyLicense": "Comprar licencia",
+      "tryDemo": "Probar demo gratuita"
+    }
+  },
   "footer": {
     "tagline": "Diario de Trading Offline",
     "description": "Diseñado para traders que trabajan con claridad, respetan las reglas y quieren mejorar su rendimiento de forma sistemática.",
