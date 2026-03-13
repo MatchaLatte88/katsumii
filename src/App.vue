@@ -125,7 +125,7 @@
               <!-- Screenshot cropped -->
               <div class="relative overflow-hidden" style="max-height: 260px;">
                 <img
-                  :src="theme === 'light' ? assetUrl('Sc1_Light.png') : assetUrl('Sc1_Dark.png')"
+                  :src="theme === 'light' ? assetUrl('Dashboard_light.png') : assetUrl('Dashboard_dark.png')"
                   alt="Katsumii dashboard"
                   class="w-full object-cover object-top"
                 />
@@ -224,7 +224,7 @@
             <div class="relative z-10 flex items-center">
               <div class="relative w-full">
                 <img
-                  :src="theme === 'light' ? assetUrl('Sc1_Light.png') : assetUrl('Sc1_Dark.png')"
+                  :src="theme === 'light' ? assetUrl('Main_light.png') : assetUrl('Main_dark.png')"
                   alt="Katsumii feature spotlight"
                   class="w-full rounded-2xl border"
                   :class="theme === 'light' ? 'border-gray-200 shadow-xl' : 'border-blue-400/25 shadow-2xl shadow-black/30'"
@@ -263,7 +263,7 @@
           </div>
         </div>
       </section>
-
+<!-- Dashboard -->
       <section id="showcase" class="px-6 py-20 lg:px-10">
         <div class="mx-auto max-w-7xl space-y-12">
           <article class="grid items-center gap-10 lg:grid-cols-2">
@@ -272,7 +272,7 @@
                 {{ t('showcase.dashboardWindowLabel') }}
               </p>
               <img
-                :src="theme === 'light' ? assetUrl('Sc1_Light.png') : assetUrl('Sc1_Dark.png')"
+                :src="theme === 'light' ? assetUrl('Dashboard_light.png') : assetUrl('Dashboard_dark.png')"
                 alt="Katsumii dashboard analytics screenshot"
                 class="w-full rounded-2xl border"
                 :class="theme === 'light' ? 'border-gray-200' : 'border-blue-400/25'"
@@ -302,7 +302,7 @@
               </div>
             </div>
           </article>
-
+<!-- Calendar -->
           <article class="grid items-center mt-40 gap-10 lg:grid-cols-2">
             <div class="reveal flex items-center order-2 lg:order-1 lg:min-h-full">
               <div>
@@ -332,7 +332,7 @@
                 {{ t('showcase.calendarWindowLabel') }}
               </p>
               <img
-                :src="theme === 'light' ? assetUrl('Sc2_Light.png') : assetUrl('Sc2_Dark.png')"
+                :src="theme === 'light' ? assetUrl('Calendar_light.png') : assetUrl('Calendar_dark.png')"
                 alt="Katsumii trading calendar screenshot"
                 class="w-full rounded-2xl border"
                 :class="theme === 'light' ? 'border-gray-200' : 'border-blue-400/25'"

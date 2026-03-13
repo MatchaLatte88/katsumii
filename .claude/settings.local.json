@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \":*)",
+      "Bash(head -30 grep -n \"k-bg\\\\|background\\\\|orb\\\\|grid\\\\|noise\\\\|structure\" \"c:/Users/Matcha/Desktop/ClaudeWorkspace/Katsumii Website/src/components/FeaturesPage.vue\")",
+      "Bash(head -30 grep -n \"k-bg\\\\|background\\\\|orb\\\\|grid\\\\|noise\\\\|structure\" \"c:/Users/Matcha/Desktop/ClaudeWorkspace/Katsumii Website/src/components/ImpressumPage.vue\")",
+      "Bash(head -20 grep -rn \"FaqPage\\\\|FeaturesPage\\\\|ImpressumPage\" \"c:/Users/Matcha/Desktop/ClaudeWorkspace/Katsumii Website/src/\")"
+    ]
+  }
+}
