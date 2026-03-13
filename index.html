@@ -794,8 +794,8 @@
       input.style.opacity = "0.45"
     }
 
-    btn.addEventListener("click", handleNotify)
-    input.addEventListener("keydown", e => { if (e.key === "Enter") handleNotify() })
+    if (btn)   btn.addEventListener("click", handleNotify)
+    if (input) input.addEventListener("keydown", e => { if (e.key === "Enter") handleNotify() })
     // Typewriter effect
     ;(function () {
       const el = document.getElementById('typed-word')
