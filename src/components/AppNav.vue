@@ -53,21 +53,9 @@
         </div>
 
         <div class="flex items-center gap-2">
-          <button
-            type="button"
-            @click="emit('toggle-theme')"
-            :aria-pressed="theme === 'light'"
-            :aria-label="theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'"
-            :class="[
-              'inline-flex h-11 w-11 items-center justify-center rounded-xl border transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2',
-              theme === 'light'
-                ? 'border-gray-300 bg-white/90 text-gray-700 hover:bg-white focus-visible:outline-teal-600'
-                : 'border-blue-400/30 bg-slate-900 text-slate-200 hover:bg-slate-800 focus-visible:outline-cyan-400'
-            ]"
-          >
-            <MoonIcon v-if="theme === 'light'" class="h-5 w-5" aria-hidden="true" />
-            <SunIcon v-else class="h-5 w-5" aria-hidden="true" />
-          </button>
+          <div class="theme-switch-wrap">
+            <DarkLightSwitch :is-dark="theme === 'dark'" @toggle="emit('toggle-theme')" />
+          </div>
 
           <div class="-mr-2 flex md:hidden">
             <DisclosureButton
@@ -114,7 +102,8 @@
 
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue"
-import { Bars3Icon, MoonIcon, SunIcon, XMarkIcon } from "@heroicons/vue/24/outline"
+import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline"
+import DarkLightSwitch from "./DarkLightSwitch.vue"
 
 const emit = defineEmits(["toggle-theme"])
 const baseUrl = import.meta.env.BASE_URL
@@ -140,6 +129,18 @@ defineProps({
 .nav-shell {
   backdrop-filter: blur(20px) saturate(165%);
   animation: nav-fade-in 360ms ease-out;
+}
+
+/* Scale down the 132×52px switch to fit the 64px-tall navbar */
+.theme-switch-wrap {
+  display: flex;
+  align-items: center;
+  transform: scale(0.68);
+  transform-origin: right center;
+  /* Reserve the visual space so layout doesn't shift */
+  width: calc(132px * 0.68);
+  height: calc(52px * 0.68);
+  flex-shrink: 0;
 }
 
 @keyframes nav-fade-in {

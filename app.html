@@ -4,6 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Katsumii</title>
+  <!-- Block render until theme is resolved — prevents flash of wrong background -->
+  <style>
+    html { background: #f8fafc; }
+    html.dark-init { background: #020617; }
+  </style>
+  <script>
+    (function () {
+      var t = localStorage.getItem('katsumii-theme')
+           || localStorage.getItem('katsumii-coming-soon-theme');
+      if (!t) {
+        var h = new Date().getHours();
+        t = (h >= 6 && h < 19) ? 'light' : 'dark';
+      }
+      if (t === 'dark') document.documentElement.classList.add('dark-init');
+    })();
+  </script>
   <script type="module" src="/src/main.js"></script>
 </head>
 <body>

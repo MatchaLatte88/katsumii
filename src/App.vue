@@ -1,11 +1,16 @@
 <template>
   <div :class="pageClass">
     <div class="k-bg" :class="theme === 'light' ? 'k-bg-light' : 'k-bg-dark'" aria-hidden="true">
-      <div class="k-bg-orb k-bg-orb-a" />
-      <div class="k-bg-orb k-bg-orb-b" />
-      <div class="k-bg-grid" />
-      <div class="k-bg-structure" />
-      <div class="k-bg-noise" />
+      <div class="k-bg-gradient" />
+      <svg class="k-bg-grid" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <pattern id="hc" x="0" y="0" width="69.28" height="60" patternUnits="userSpaceOnUse">
+            <path d="M34.64,0 L51.96,10 L51.96,30 L34.64,40 L17.32,30 L17.32,10 Z M0,0 L17.32,10 M17.32,30 L0,40 M51.96,10 L69.28,0 M69.28,40 L51.96,30 M34.64,40 L34.64,60 M0,40 L0,60" style="fill:none;stroke:var(--hc-stroke);stroke-width:1.5"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#hc)"/>
+      </svg>
+      <div class="k-bg-band" />
     </div>
 
     <AppNav
@@ -33,15 +38,27 @@
             </p>
 
             <div class="mt-7 flex items-center gap-5">
-              <img :src="assetUrl('logo.png')" alt="Katsumii logo" class="h-20 w-20 object-contain sm:h-24 sm:w-24" />
-              <h1
-                :class="[
-                  'font-display text-5xl font-semibold leading-none tracking-tight sm:text-6xl lg:text-7xl',
-                  theme === 'light' ? 'text-gray-900' : 'text-slate-100'
-                ]"
-              >
-                KATSUMII
-              </h1>
+              <img :src="assetUrl('logo.png')" alt="Katsumii logo" class="h-20 w-20 flex-shrink-0 object-contain sm:h-24 sm:w-24" />
+              <div>
+                <h1
+                  :class="[
+                    'font-display text-5xl font-semibold leading-none tracking-tight sm:text-6xl lg:text-7xl',
+                    theme === 'light' ? 'text-gray-900' : 'text-slate-100'
+                  ]"
+                >
+                  KATSUMII
+                </h1>
+                <p :class="['mt-2 text-xl font-light tracking-tight sm:text-2xl', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">
+                  Trade with
+                  <span
+                    ref="typedWordEl"
+                    :class="['font-semibold', theme === 'light' ? 'text-teal-600' : 'text-cyan-300']"
+                  >clarity</span><span
+                    class="typed-cursor"
+                    :class="theme === 'light' ? 'text-teal-600' : 'text-cyan-300'"
+                  >|</span>
+                </p>
+              </div>
             </div>
 
             <p
@@ -85,36 +102,55 @@
           <div class="reveal relative">
             <div
               :class="[
-                'k-card relative overflow-hidden rounded-3xl border p-5 sm:p-6',
+                'k-card overflow-hidden rounded-2xl border',
                 theme === 'light'
-                  ? 'border-gray-200 bg-white/85 shadow-[0_30px_90px_-45px_rgba(15,23,42,0.45)]'
-                  : 'border-blue-400/25 bg-slate-900/80 shadow-[0_30px_100px_-45px_rgba(0,0,0,0.8)]'
+                  ? 'border-gray-200 bg-white/90 shadow-[0_24px_80px_-36px_rgba(15,23,42,0.35)]'
+                  : 'border-blue-400/25 bg-slate-900/85 shadow-[0_24px_80px_-36px_rgba(0,0,0,0.7)]'
               ]"
             >
+              <!-- Window chrome bar -->
               <div
                 :class="[
-                  'absolute -right-16 -top-16 h-44 w-44 rounded-full blur-2xl',
-                  theme === 'light' ? 'bg-teal-200/70' : 'bg-cyan-400/25'
+                  'flex items-center justify-between border-b px-4 py-2.5',
+                  theme === 'light' ? 'border-gray-200 bg-gray-50/80' : 'border-blue-400/20 bg-slate-950/60'
                 ]"
-              />
-              <img
-                :src="theme === 'light' ? assetUrl('Sc1_Light.png') : assetUrl('Sc1_Dark.png')"
-                alt="Katsumii dashboard"
-                class="w-full rounded-2xl border"
-                :class="theme === 'light' ? 'border-gray-200' : 'border-blue-400/25'"
-              />
-              <div class="mt-5 grid grid-cols-3 gap-3">
-                <article
+              >
+                <span :class="['text-xs font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-300']">Dashboard</span>
+                <div class="flex items-center gap-1.5">
+                  <span class="h-2.5 w-2.5 rounded-full bg-red-400/50" />
+                  <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/50" />
+                  <span class="h-2.5 w-2.5 rounded-full bg-green-400/50" />
+                </div>
+              </div>
+
+              <!-- Screenshot cropped -->
+              <div class="relative overflow-hidden" style="max-height: 260px;">
+                <img
+                  :src="theme === 'light' ? assetUrl('Sc1_Light.png') : assetUrl('Sc1_Dark.png')"
+                  alt="Katsumii dashboard"
+                  class="w-full object-cover object-top"
+                />
+                <div
+                  class="pointer-events-none absolute inset-x-0 bottom-0 h-20"
+                  :class="theme === 'light' ? 'bg-gradient-to-t from-white/80 to-transparent' : 'bg-gradient-to-t from-slate-900/80 to-transparent'"
+                />
+              </div>
+
+              <!-- Stats row -->
+              <div
+                :class="[
+                  'grid grid-cols-3 divide-x border-t',
+                  theme === 'light' ? 'divide-gray-200 border-gray-200' : 'divide-blue-400/20 border-blue-400/20'
+                ]"
+              >
+                <div
                   v-for="item in heroStats"
                   :key="item.label"
-                  :class="[
-                    'rounded-2xl border p-3 text-center',
-                    theme === 'light' ? 'border-gray-200 bg-gray-50' : 'border-blue-400/20 bg-slate-900/75'
-                  ]"
+                  class="px-3 py-3 text-center"
                 >
-                  <p :class="['text-xl font-semibold', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ item.value }}</p>
-                  <p :class="['text-xs', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">{{ item.label }}</p>
-                </article>
+                  <p :class="['text-base font-semibold', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ item.value }}</p>
+                  <p :class="['text-[11px] mt-0.5', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">{{ item.label }}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -718,8 +754,52 @@ const tiers = [
 ]
 const featuredTier = computed(() => tiers.find((tier) => tier.featured) ?? tiers[0])
 const starterTier = computed(() => tiers.find((tier) => !tier.featured) ?? tiers[1] ?? tiers[0])
-const theme = ref("light")
+const getInitialTheme = () => {
+  const saved = localStorage.getItem('katsumii-theme')
+             || localStorage.getItem('katsumii-coming-soon-theme')
+  if (saved === 'light' || saved === 'dark') return saved
+  const hour = new Date().getHours()
+  return (hour >= 6 && hour < 19) ? 'light' : 'dark'
+}
+
+const theme = ref(getInitialTheme())
 const observer = ref(null)
+const typedWordEl = ref(null)
+let typingTimer = null
+
+const startTypewriter = () => {
+  const words = ['discipline.', 'consistancy.', 'precision.', 'confidence.', 'clarity.']
+  let wordIdx = 0
+  let charIdx = words[0].length
+  let deleting = false
+
+  const tick = () => {
+    if (!typedWordEl.value) return
+    const word = words[wordIdx]
+    if (deleting) {
+      charIdx--
+      typedWordEl.value.textContent = word.slice(0, charIdx)
+      if (charIdx === 0) {
+        deleting = false
+        wordIdx = (wordIdx + 1) % words.length
+        typingTimer = setTimeout(tick, 280)
+      } else {
+        typingTimer = setTimeout(tick, 55)
+      }
+    } else {
+      charIdx++
+      typedWordEl.value.textContent = word.slice(0, charIdx)
+      if (charIdx === word.length) {
+        deleting = true
+        typingTimer = setTimeout(tick, 3500)
+      } else {
+        typingTimer = setTimeout(tick, 85)
+      }
+    }
+  }
+
+  typingTimer = setTimeout(() => { deleting = true; tick() }, 2200)
+}
 
 const isExternalLink = (href) => {
   if (!href) return false
@@ -790,18 +870,15 @@ const setupRevealAnimations = () => {
 }
 
 onMounted(() => {
-  const savedTheme = localStorage.getItem("katsumii-theme")
-  if (savedTheme === "light" || savedTheme === "dark") {
-    theme.value = savedTheme
-  }
-
   nextTick(() => {
     setupRevealAnimations()
+    startTypewriter()
   })
 })
 
 onUnmounted(() => {
   observer.value?.disconnect()
+  clearTimeout(typingTimer)
 })
 
 watch(theme, (value) => {
@@ -820,89 +897,65 @@ const year = computed(() => new Date().getFullYear())
   position: fixed;
   inset: 0;
   z-index: 0;
-}
-
-
-.k-bg-light {
-  --k-grid: rgba(15, 23, 42, 0.075);
-  --k-structure: rgba(20, 184, 166, 0.095);
-  --k-noise: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
 }
 
 .k-bg-dark {
-  --k-grid: rgba(30, 64, 175, 0.16);
-  --k-structure: rgba(34, 211, 238, 0.09);
-  --k-noise: rgba(255, 255, 255, 0.025);
+  --orb-a: rgba(59, 130, 246, 0.28);
+  --orb-b: rgba(34, 211, 238, 0.22);
+  --hc-stroke: rgba(34, 211, 238, 0.02);
 }
-.k-bg-orb {
+
+.k-bg-light {
+  --orb-a: rgba(6, 182, 212, 0.16);
+  --orb-b: rgba(59, 130, 246, 0.12);
+  --hc-stroke: rgba(8, 145, 178, 0.04);
+}
+
+.k-bg-gradient {
   position: absolute;
-  border-radius: 9999px;
-  filter: blur(80px);
-  opacity: 0.4;
-}
-
-.k-bg-orb-a {
-  left: -8%;
-  top: -12%;
-  height: 360px;
-  width: 360px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(59, 130, 246, 0) 72%);
-  animation: driftA 14s ease-in-out infinite;
-}
-
-.k-bg-orb-b {
-  bottom: -8%;
-  right: -8%;
-  height: 420px;
-  width: 420px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.38) 0%, rgba(34, 211, 238, 0) 70%);
-  animation: driftB 17s ease-in-out infinite;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 8% 18%, var(--orb-a), transparent 60%),
+    radial-gradient(ellipse 55% 45% at 88% 80%, var(--orb-b), transparent 55%);
 }
 
 .k-bg-grid {
   position: absolute;
   inset: 0;
-  opacity: 0.3;
-  background-image: linear-gradient(var(--k-grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--k-grid) 1px, transparent 1px);
-  background-size: 42px 42px;
-  mask-image: radial-gradient(circle at center, black 22%, transparent 78%);
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 80%, transparent 100%);
 }
 
-.k-bg-structure {
+.k-bg-band {
   position: absolute;
-  inset: 0;
-  opacity: 0.34;
-  background:
-    radial-gradient(120% 65% at 50% -10%, var(--k-structure), transparent 60%),
-    repeating-linear-gradient(
-      30deg,
-      transparent 0 22px,
-      var(--k-structure) 22px 23px
-    ),
-    repeating-linear-gradient(
-      -30deg,
-      transparent 0 22px,
-      var(--k-structure) 22px 23px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent 0 38px,
-      var(--k-structure) 38px 39px
-    );
-  mask-image: radial-gradient(circle at 50% 35%, black 20%, transparent 88%);
-}
-
-.k-bg-noise {
-  position: absolute;
-  inset: 0;
-  opacity: 0.08;
-  background-image: radial-gradient(var(--k-noise) 0.7px, transparent 0.7px);
-  background-size: 3px 3px;
+  top: -30%;
+  right: 0;
+  width: 52%;
+  height: 160%;
+  background: linear-gradient(to bottom, transparent, rgba(34, 211, 238, 0.018) 40%, transparent);
+  transform: skewX(-6deg);
+  border-left: 1px solid rgba(34, 211, 238, 0.055);
+  transform-origin: top right;
 }
 
 .k-card {
   backdrop-filter: blur(14px);
+}
+
+.typed-cursor {
+  display: inline-block;
+  font-weight: 300;
+  margin-left: 0.02em;
+  animation: typedCursorBlink 0.75s step-end infinite;
+}
+
+@keyframes typedCursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
 
 
@@ -928,25 +981,6 @@ const year = computed(() => new Date().getFullYear())
   transform: translate3d(0, 0, 0) scale(1);
 }
 
-@keyframes driftA {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-  50% {
-    transform: translate3d(24px, 22px, 0);
-  }
-}
-
-@keyframes driftB {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-  50% {
-    transform: translate3d(-26px, -20px, 0);
-  }
-}
 
 @keyframes feature-marquee {
   from {
@@ -963,11 +997,6 @@ const year = computed(() => new Date().getFullYear())
     transform: none;
     transition: none;
     filter: none;
-  }
-
-  .k-bg-orb-a,
-  .k-bg-orb-b {
-    animation: none;
   }
 
   .feature-marquee {
