@@ -771,7 +771,7 @@
       const s = localStorage.getItem("katsumii-coming-soon-theme")
              || localStorage.getItem("katsumii-theme")
       if (s === "light" || s === "dark") return s
-      return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"
+      var h = new Date().getHours(); return (h >= 6 && h < 19) ? 'light' : 'dark'
     }
 
     setTheme(getInitialTheme())
