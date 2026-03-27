@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,70 +10,81 @@
   <link rel="icon" type="image/x-icon" href="./favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       color-scheme: dark;
-      --bg:            #020617;
-      --bg2:           #0a1628;
-      --surface:       rgba(13, 21, 40, 0.82);
-      --surface-soft:  rgba(15, 23, 42, 0.52);
-      --border:        rgba(96, 165, 250, 0.14);
+      --bg: #020617;
+      --bg2: #0a1628;
+      --surface: rgba(13, 21, 40, 0.82);
+      --surface-soft: rgba(15, 23, 42, 0.52);
+      --border: rgba(96, 165, 250, 0.14);
       --border-accent: rgba(34, 211, 238, 0.22);
-      --text:          #f1f5f9;
-      --text-muted:    #94a3b8;
-      --text-faint:    #475569;
-      --accent:        #22d3ee;
-      --accent-hi:     #67e8f9;
-      --accent-lo:     #0891b2;
-      --btn-fg:        #021018;
-      --positive:      #34d399;
-      --pos-bg:        rgba(52, 211, 153, 0.1);
-      --panel-bg:      rgba(10, 18, 34, 0.9);
-      --metric-bg:     rgba(13, 21, 40, 0.95);
-      --toggle-bg:     rgba(13, 21, 40, 0.88);
-      --input-bg:      rgba(13, 21, 40, 0.8);
-      --tag-bg:        rgba(148, 163, 184, 0.06);
-      --shadow-glow:   0 0 60px -20px rgba(34, 211, 238, 0.18);
-      --orb-a:         rgba(59, 130, 246, 0.28);
-      --orb-b:         rgba(34, 211, 238, 0.22);
-      --grid-c:        rgba(30, 64, 175, 0.1);
-      --hc-stroke:     rgba(34, 211, 238, 0.02);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-faint: #475569;
+      --accent: #22d3ee;
+      --accent-hi: #67e8f9;
+      --accent-lo: #0891b2;
+      --btn-fg: #021018;
+      --positive: #34d399;
+      --pos-bg: rgba(52, 211, 153, 0.1);
+      --panel-bg: rgba(10, 18, 34, 0.9);
+      --metric-bg: rgba(13, 21, 40, 0.95);
+      --toggle-bg: rgba(13, 21, 40, 0.88);
+      --input-bg: rgba(13, 21, 40, 0.8);
+      --tag-bg: rgba(148, 163, 184, 0.06);
+      --shadow-glow: 0 0 60px -20px rgba(34, 211, 238, 0.18);
+      --orb-a: rgba(59, 130, 246, 0.28);
+      --orb-b: rgba(34, 211, 238, 0.22);
+      --grid-c: rgba(30, 64, 175, 0.1);
+      --hc-stroke: rgba(34, 211, 238, 0.02);
     }
 
     :root[data-theme="light"] {
       color-scheme: light;
-      --bg:            #f0f4f8;
-      --bg2:           #e4ecf4;
-      --surface:       rgba(255, 255, 255, 0.86);
-      --surface-soft:  rgba(248, 250, 252, 0.7);
-      --border:        rgba(148, 163, 184, 0.28);
+      --bg: #f0f4f8;
+      --bg2: #e4ecf4;
+      --surface: rgba(255, 255, 255, 0.86);
+      --surface-soft: rgba(248, 250, 252, 0.7);
+      --border: rgba(148, 163, 184, 0.28);
       --border-accent: rgba(8, 145, 178, 0.22);
-      --text:          #0f172a;
-      --text-muted:    #475569;
-      --text-faint:    #94a3b8;
-      --accent:        #0891b2;
-      --accent-hi:     #06b6d4;
-      --accent-lo:     #0e7490;
-      --btn-fg:        #ffffff;
-      --positive:      #059669;
-      --pos-bg:        rgba(5, 150, 105, 0.09);
-      --panel-bg:      rgba(248, 250, 252, 0.97);
-      --metric-bg:     rgba(255, 255, 255, 0.97);
-      --toggle-bg:     rgba(255, 255, 255, 0.92);
-      --input-bg:      rgba(255, 255, 255, 0.92);
-      --tag-bg:        rgba(241, 245, 249, 0.9);
-      --shadow-glow:   0 0 60px -20px rgba(8, 145, 178, 0.12);
-      --orb-a:         rgba(6, 182, 212, 0.16);
-      --orb-b:         rgba(59, 130, 246, 0.12);
-      --grid-c:        rgba(15, 23, 42, 0.055);
-      --hc-stroke:     rgba(8, 145, 178, 0.04);
+      --text: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      --accent: #0891b2;
+      --accent-hi: #06b6d4;
+      --accent-lo: #0e7490;
+      --btn-fg: #ffffff;
+      --positive: #059669;
+      --pos-bg: rgba(5, 150, 105, 0.09);
+      --panel-bg: rgba(248, 250, 252, 0.97);
+      --metric-bg: rgba(255, 255, 255, 0.97);
+      --toggle-bg: rgba(255, 255, 255, 0.92);
+      --input-bg: rgba(255, 255, 255, 0.92);
+      --tag-bg: rgba(241, 245, 249, 0.9);
+      --shadow-glow: 0 0 60px -20px rgba(8, 145, 178, 0.12);
+      --orb-a: rgba(6, 182, 212, 0.16);
+      --orb-b: rgba(59, 130, 246, 0.12);
+      --grid-c: rgba(15, 23, 42, 0.055);
+      --hc-stroke: rgba(8, 145, 178, 0.04);
     }
 
-    html, body { height: 100%; }
+    html,
+    body {
+      height: 100%;
+    }
 
     body {
       font-family: "DM Sans", "Segoe UI", sans-serif;
@@ -111,19 +123,6 @@
       opacity: 0.8;
       mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 80%, transparent 100%);
       -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 80%, transparent 100%);
-    }
-
-    /* diagonal accent band */
-    .k-bg-band {
-      position: absolute;
-      top: -30%;
-      right: 0;
-      width: 52%;
-      height: 160%;
-      background: linear-gradient(to bottom, transparent, rgba(34, 211, 238, 0.018) 40%, transparent);
-      transform: skewX(-6deg);
-      border-left: 1px solid rgba(34, 211, 238, 0.055);
-      transform-origin: top right;
     }
 
     /* ─── Ticker Strip ─── */
@@ -174,8 +173,13 @@
     }
 
     @keyframes ticker {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-33.3333%);
+      }
     }
 
     /* ─── Controls (top-right) ─── */
@@ -228,6 +232,116 @@
       flex-shrink: 0;
     }
 
+    /* ─── Background Switch ─── */
+    .bg-switch {
+      position: relative;
+    }
+
+    .bg-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border: 1px solid var(--border);
+      background: var(--toggle-bg);
+      border-radius: 999px;
+      backdrop-filter: blur(14px) saturate(130%);
+      -webkit-backdrop-filter: blur(14px) saturate(130%);
+      cursor: pointer;
+      opacity: 0.55;
+      transition: opacity 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+      color: var(--text-muted);
+    }
+
+    .bg-btn:hover {
+      opacity: 1;
+      border-color: var(--border-accent);
+      transform: scale(1.08);
+    }
+
+    .bg-btn svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .bg-panel {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 6px);
+      min-width: 128px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--panel-bg);
+      box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(16px) saturate(150%);
+      -webkit-backdrop-filter: blur(16px) saturate(150%);
+      padding: 4px 0;
+      z-index: 100;
+      opacity: 0;
+      transform: scale(0.95);
+      transform-origin: top right;
+      pointer-events: none;
+      transition: opacity 75ms ease-in, transform 75ms ease-in;
+    }
+
+    .bg-panel.open {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+      transition: opacity 100ms ease-out, transform 100ms ease-out;
+    }
+
+    :root[data-theme="light"] .bg-panel {
+      border-color: rgba(148, 163, 184, 0.35);
+      background: rgba(255, 255, 255, 0.97);
+      box-shadow: 0 8px 24px -8px rgba(148, 163, 184, 0.35);
+    }
+
+    .bg-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 7px 12px;
+      font-family: "DM Sans", "Segoe UI", sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.12s ease, color 0.12s ease;
+    }
+
+    .bg-item:hover {
+      background: rgba(148, 163, 184, 0.1);
+      color: var(--text);
+    }
+
+    :root[data-theme="light"] .bg-item:hover {
+      background: rgba(241, 245, 249, 0.9);
+      color: #111827;
+    }
+
+    .bg-item.active {
+      color: var(--accent);
+    }
+
+    :root[data-theme="light"] .bg-item.active {
+      color: #0f766e;
+    }
+
+    .bg-check {
+      display: inline-block;
+      width: 14px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
     /* ─── Lang Switch Dropdown ─── */
     .lang-switch {
       position: relative;
@@ -275,7 +389,7 @@
       border-radius: 12px;
       border: 1px solid var(--border);
       background: var(--panel-bg);
-      box-shadow: 0 8px 24px -8px rgba(0,0,0,0.45);
+      box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.45);
       backdrop-filter: blur(16px) saturate(150%);
       -webkit-backdrop-filter: blur(16px) saturate(150%);
       padding: 4px 0;
@@ -565,7 +679,9 @@
       color: var(--text-faint);
     }
 
-    .chip-value { color: var(--accent); }
+    .chip-value {
+      color: var(--accent);
+    }
 
     .tag {
       border: 1px solid var(--border);
@@ -603,7 +719,9 @@
       transition: color 0.18s;
     }
 
-    footer a:hover { color: var(--accent); }
+    footer a:hover {
+      color: var(--accent);
+    }
 
     .footer-r {
       display: flex;
@@ -613,13 +731,29 @@
 
     /* ─── Animations ─── */
     @keyframes riseIn {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.45; transform: scale(0.8); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.45;
+        transform: scale(0.8);
+      }
     }
 
     /* ─── Typewriter Cursor ─── */
@@ -632,8 +766,15 @@
     }
 
     @keyframes cursorBlink {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0; }
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
     }
 
     /* --- Responsive --- */
@@ -642,9 +783,13 @@
         padding: 2.5rem 1.75rem 2rem;
       }
 
-      .col-left { align-items: center; }
+      .col-left {
+        align-items: center;
+      }
 
-      .subline { max-width: 100%; }
+      .subline {
+        max-width: 100%;
+      }
 
       footer {
         padding: 0.9rem 1.75rem;
@@ -655,12 +800,18 @@
     }
 
     @media (max-width: 520px) {
-      h1 { font-size: 2.7rem; }
+      h1 {
+        font-size: 2.7rem;
+      }
 
-      .controls { top: 44px; right: 10px; }
+      .controls {
+        top: 44px;
+        right: 10px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
+
       .ticker-inner,
       .live-dot {
         animation: none;
@@ -676,20 +827,26 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Background -->
   <div class="k-bg" aria-hidden="true">
     <div class="k-bg-gradient"></div>
-    <svg class="k-bg-grid" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <canvas id="stars-canvas"
+      style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;display:none;"></canvas>
+    <canvas id="flow-canvas"
+      style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;display:none;"></canvas>
+    <svg id="hc-grid" class="k-bg-grid" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
         <pattern id="hc" x="0" y="0" width="69.28" height="60" patternUnits="userSpaceOnUse">
-          <path d="M34.64,0 L51.96,10 L51.96,30 L34.64,40 L17.32,30 L17.32,10 Z M0,0 L17.32,10 M17.32,30 L0,40 M51.96,10 L69.28,0 M69.28,40 L51.96,30 M34.64,40 L34.64,60 M0,40 L0,60" style="fill:none;stroke:var(--hc-stroke);stroke-width:1.5"/>
+          <path
+            d="M34.64,0 L51.96,10 L51.96,30 L34.64,40 L17.32,30 L17.32,10 Z M0,0 L17.32,10 M17.32,30 L0,40 M51.96,10 L69.28,0 M69.28,40 L51.96,30 M34.64,40 L34.64,60 M0,40 L0,60"
+            style="fill:none;stroke:var(--hc-stroke);stroke-width:1.5" />
         </pattern>
       </defs>
-      <rect width="100%" height="100%" fill="url(#hc)"/>
+      <rect width="100%" height="100%" fill="url(#hc)" />
     </svg>
-    <div class="k-bg-band"></div>
   </div>
 
   <!-- Ticker Strip -->
@@ -697,18 +854,62 @@
     <div class="ticker-inner" id="ticker-inner"></div>
   </div>
 
-  <!-- Controls (theme + language) -->
+  <!-- Controls (theme + language + background) -->
   <div class="controls">
     <div class="lang-switch" id="lang-switch">
-      <button class="lang-btn" id="lang-btn" type="button" aria-label="Switch language" aria-haspopup="listbox" aria-expanded="false">
-        <svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      <button class="lang-btn" id="lang-btn" type="button" aria-label="Switch language" aria-haspopup="listbox"
+        aria-expanded="false">
+        <svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" />
+          <path
+            d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
         </svg>
         <span id="lang-label">EN</span>
       </button>
       <div class="lang-panel" id="lang-panel" role="listbox"></div>
     </div>
+
+    <!-- Background picker -->
+    <div class="bg-switch" id="bg-switch">
+      <button class="bg-btn" id="bg-btn" type="button" aria-label="Switch background" aria-haspopup="listbox"
+        aria-expanded="false">
+        <!-- icon updated by JS -->
+        <svg id="bg-icon-honeycomb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="7" height="7" rx="1" />
+          <rect x="14" y="3" width="7" height="7" rx="1" />
+          <rect x="3" y="14" width="7" height="7" rx="1" />
+          <rect x="14" y="14" width="7" height="7" rx="1" />
+        </svg>
+        <svg id="bg-icon-stars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none;">
+          <path d="M12 2l1.5 4.5H18l-3.75 2.75L15.75 14 12 11.25 8.25 14l1.5-4.75L6 6.5h4.5L12 2z" />
+          <circle cx="4" cy="4" r="0.5" fill="currentColor" stroke="none" />
+          <circle cx="20" cy="8" r="0.5" fill="currentColor" stroke="none" />
+          <circle cx="6" cy="18" r="0.5" fill="currentColor" stroke="none" />
+          <circle cx="19" cy="19" r="0.5" fill="currentColor" stroke="none" />
+        </svg>
+        <svg id="bg-icon-flow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none;">
+          <path d="M3 12 C6 7, 10 7, 12 12 S18 17, 21 12" />
+          <path d="M3 7 C6 3, 10 3, 12 7 S18 11, 21 7" opacity="0.5" />
+          <path d="M3 17 C6 13, 10 13, 12 17 S18 21, 21 17" opacity="0.5" />
+        </svg>
+      </button>
+      <div class="bg-panel" id="bg-panel" role="listbox">
+        <button class="bg-item active" data-bg="honeycomb" type="button" role="option">
+          <span class="bg-check">✓</span>Honeycomb
+        </button>
+        <button class="bg-item" data-bg="stars" id="bg-item-stars" type="button" role="option">
+          <span class="bg-check"></span>Stars
+        </button>
+        <button class="bg-item" data-bg="flow" type="button" role="option">
+          <span class="bg-check"></span>Flow
+        </button>
+      </div>
+    </div>
+
     <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
       <span class="toggle-dot" aria-hidden="true"></span>
       <span id="theme-label">Light</span>
@@ -716,7 +917,7 @@
   </div>
 
   <!-- Secret Entry (preserved) -->
-  <a class="secret-entry" href="./app.html" aria-label="Open main website" title="Open main website">.</a>
+  <a class="secret-entry" href="#" aria-label="Open main website" title="Open main website">.</a>
 
   <!-- Main Layout -->
   <main>
@@ -739,12 +940,14 @@
         <p class="eyebrow"><span class="eyebrow-line"></span><span id="cs-eyebrow">Trading Journal</span></p>
         <h1>
           <span class="thin" id="cs-tagline">Trade with</span>
-          <span class="strong"><span class="hl" id="typed-word">clarity.</span><span class="hl-cursor" aria-hidden="true">|</span></span>
+          <span class="strong"><span class="hl" id="typed-word">clarity.</span><span class="hl-cursor"
+              aria-hidden="true">|</span></span>
         </h1>
       </div>
 
       <p class="subline" id="cs-subline">
-        Structured journaling, prop challenge and funded account support, deep insights with advanced analytics — built for traders who take self discipline seriously.
+        Structured journaling, prop challenge and funded account support, deep insights with advanced analytics — built
+        for traders who take self discipline seriously.
       </p>
 
       <div class="meta-row">
@@ -755,11 +958,11 @@
         <span class="tag" id="tag-0">Journaling</span>
         <span class="tag" id="tag-1">Offline</span>
         <span class="tag" id="tag-2">No subscription</span>
-        <span class="tag" id="tag-3">Deep Stat. Insights</span>
-        <span class="tag" id="tag-3">Account Management</span>
-        <span class="tag" id="tag-3">Prop. Challenge Tracking</span>
-        <span class="tag" id="tag-3">CSV/API Trade Import</span>
-        <span class="tag" id="tag-3">Presets & Customizable</span>
+        <span class="tag" id="tag-3">Deep Analysis</span>
+        <span class="tag" id="tag-4">Account Management</span>
+        <span class="tag" id="tag-5">Prop. Challenge Tracking</span>
+        <span class="tag" id="tag-6">CSV/API Trade Import</span>
+        <span class="tag" id="tag-7">Calendar</span>
       </div>
 
     </div>
@@ -769,7 +972,7 @@
   <footer>
     <span>&copy; 2026 Frederik Morbe</span>
     <div class="footer-r">
-      <a href="mailto:info@katsumii.com">Write us an E-Mail</a>
+      <a href="mailto:katsumii_dev@outlook.com">Write us an E-Mail</a>
       <span>katsumii.com</span>
     </div>
   </footer>
@@ -780,55 +983,55 @@
 
     const TRANSLATIONS = {
       en: {
-        ticker:    ["Offline-first", "Prop-ready", "Structured reviews", "Actionable analytics", "Risk management", "Trade replay", "Performance metrics", "Journal system"],
-        badge:     "Coming soon",
-        eyebrow:   "Trading Journal",
-        tagline:   "Trade with",
+        ticker: ["Offline", "Personal / Challenge / Funded", "Performance Report Export", "Deep analytics", "MLL/DLL Tracking", "Calendar", "Account Management", "Journaling"],
+        badge: "Coming soon",
+        eyebrow: "Trading Journal",
+        tagline: "Trade with",
         typewords: ["discipline.", "consistency.", "precision.", "confidence.", "clarity."],
-        subline:   "Structured journaling, prop challenge and funded account support, deep insights with advanced analytics — built for traders who take self discipline seriously.",
-        tags:      ["Prop-ready", "Offline", "Locally running", "No subscription"],
+        subline: "Structured journaling, prop challenge and funded account support, deep insights with advanced analytics — built for traders who take self discipline seriously.",
+        tags: ["Journaling", "Offline", "No subscription", "Deep Analysis", "Account Management", "Prop. Challenge Tracking", "CSV/API Trade Import", "Calendar"],
         themeLight: "Light",
-        themeDark:  "Dark",
+        themeDark: "Dark",
       },
       de: {
-        ticker:    ["100% Offline-first", "Prop-bereit", "Strukturierte Reviews", "Aussagekräftige Analytics", "Risikomanagement", "Trade-Replay", "Performance-Metriken", "Journal-System"],
-        badge:     "Demnächst",
-        eyebrow:   "Trading Journal",
-        tagline:   "Trade mit",
+        ticker: ["Offline", "Personal / Challenge / Funded", "Performance Report Export", "Trading Tiefen Analyse", "MLL/DLL immer im Blick", "Kalender", "Account Management", "Tagebuch"],
+        badge: "Demnächst",
+        eyebrow: "Trading Journal",
+        tagline: "Trade mit",
         typewords: ["Disziplin.", "Konsistenz.", "Präzision.", "Überzeugung.", "Klarheit."],
-        subline:   "Strukturiertes Journaling, Prop-Challenge- und Funded-Account-Support sowie tiefe Einblicke durch erweiterte Analytics — entwickelt für Trader, die Selbstdisziplin ernst nehmen.",
-        tags:      ["Prop-bereit", "Offline", "Lokal", "Kein Abo"],
+        subline: "Strukturiertes Journaling, Prop-Challenge- und Funded-Account-Support sowie tiefe Einblicke durch erweiterte Analytics — entwickelt für Trader, die Selbstdisziplin ernst nehmen.",
+        tags: ["Tagebuch", "Offline", "Kein Abo", "Tiefen Analyse", "Account Management", "Prop. Challenge Tracking", "CSV/API Trade Import", "Kalender"],
         themeLight: "Hell",
-        themeDark:  "Dunkel",
+        themeDark: "Dunkel",
       },
       es: {
-        ticker:    ["100% Sin conexión", "Listo para Prop", "Revisiones estructuradas", "Análisis accionable", "Gestión de riesgo", "Replay de trades", "Métricas de rendimiento", "Diario de trading"],
-        badge:     "Próximamente",
-        eyebrow:   "Diario de Trading",
-        tagline:   "Opera con",
+        ticker: ["Offline", "Personal / Challenge / Funded", "Exportación de Informes", "Análisis profundo", "Seguimiento MLL/DLL", "Calendario", "Gestión de Cuentas", "Journaling"],
+        badge: "Próximamente",
+        eyebrow: "Diario de Trading",
+        tagline: "Opera con",
         typewords: ["disciplina.", "consistencia.", "precisión.", "confianza.", "claridad."],
-        subline:   "Diario estructurado, soporte para prop challenge y cuentas financiadas, análisis avanzado — diseñado para traders que toman en serio la autodisciplina.",
-        tags:      ["Listo para Prop", "Sin conexión", "Local", "Sin suscripción"],
+        subline: "Diario estructurado, soporte para prop challenge y cuentas financiadas, análisis avanzado — diseñado para traders que toman en serio la autodisciplina.",
+        tags: ["Diario", "Sin conexión", "Sin suscripción", "Análisis profundo", "Gestión de Cuentas", "Seguimiento Prop Challenge", "Importación CSV/API", "Calendario"],
         themeLight: "Claro",
-        themeDark:  "Oscuro",
+        themeDark: "Oscuro",
       },
       tw: {
-        ticker:    ["100% 離線優先", "適合Prop交易", "結構化複盤", "可執行分析", "風險管理", "交易回放", "績效指標", "日誌系統"],
-        badge:     "即將推出",
-        eyebrow:   "交易日誌",
-        tagline:   "以",
+        ticker: ["離線", "個人 / 挑戰 / 資助", "績效報告匯出", "深度分析", "MLL/DLL 追蹤", "日曆", "帳戶管理", "日誌記錄"],
+        badge: "即將推出",
+        eyebrow: "交易日誌",
+        tagline: "以",
         typewords: ["紀律.", "一致性.", "精確性.", "自信.", "清晰."],
-        subline:   "結構化日誌記錄、Prop挑戰與資助帳戶支援，以及深入的進階分析 — 為認真對待自律的交易者而打造。",
-        tags:      ["適合Prop", "離線", "本地運行", "無訂閱"],
+        subline: "結構化日誌記錄、Prop挑戰與資助帳戶支援，以及深入的進階分析 — 為認真對待自律的交易者而打造。",
+        tags: ["日誌記錄", "離線", "無訂閱", "深度分析", "帳戶管理", "Prop 挑戰追蹤", "CSV/API 交易匯入", "日曆"],
         themeLight: "亮色",
-        themeDark:  "暗色",
+        themeDark: "暗色",
       },
     }
 
     // ─── Theme ──────────────────────────────────────────────────────
-    const root         = document.documentElement
-    const themeToggle  = document.getElementById("theme-toggle")
-    const themeLabel   = document.getElementById("theme-label")
+    const root = document.documentElement
+    const themeToggle = document.getElementById("theme-toggle")
+    const themeLabel = document.getElementById("theme-label")
 
     function setTheme(t) {
       root.setAttribute("data-theme", t)
@@ -840,21 +1043,27 @@
 
     function getInitialTheme() {
       const s = localStorage.getItem("katsumii-coming-soon-theme")
-             || localStorage.getItem("katsumii-theme")
+        || localStorage.getItem("katsumii-theme")
       if (s === "light" || s === "dark") return s
       var h = new Date().getHours(); return (h >= 6 && h < 19) ? "light" : "dark"
     }
 
     themeToggle.addEventListener("click", () => {
-      setTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark")
+      const newTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark"
+      setTheme(newTheme)
+      // Stars only in dark mode — fall back to honeycomb
+      if (newTheme === "light" && currentBg === "stars") {
+        setBackground("honeycomb")
+      }
+      updateStarsItemVisibility()
     })
 
     // ─── Language ───────────────────────────────────────────────────
-    const langLabel  = document.getElementById("lang-label")
+    const langLabel = document.getElementById("lang-label")
 
     const SUPPORTED_LANGS = ["en", "de", "es", "tw"]
     const LANG_NAMES = { en: "English", de: "Deutsch", es: "Español", tw: "繁體中文" }
-    const savedLang   = localStorage.getItem("katsumii-locale")
+    const savedLang = localStorage.getItem("katsumii-locale")
     const browserLang = navigator.language.slice(0, 2)
     let currentLocale = SUPPORTED_LANGS.includes(savedLang)
       ? savedLang
@@ -866,7 +1075,7 @@
 
     function buildTicker(tr) {
       const inner = document.getElementById("ticker-inner")
-      const items = [...tr.ticker, ...tr.ticker]
+      const items = [...tr.ticker, ...tr.ticker, ...tr.ticker]
       inner.innerHTML = items.map(t =>
         `<span class="ticker-item"><span class="ticker-dot"></span>${t}</span>`
       ).join("")
@@ -879,7 +1088,7 @@
       document.documentElement.lang = lang === "tw" ? "zh-TW" : lang
 
       const tr = TRANSLATIONS[lang]
-      document.getElementById("cs-badge").textContent   = tr.badge
+      document.getElementById("cs-badge").textContent = tr.badge
       document.getElementById("cs-eyebrow").textContent = tr.eyebrow
       document.getElementById("cs-tagline").textContent = tr.tagline
       document.getElementById("cs-subline").textContent = tr.subline
@@ -898,8 +1107,8 @@
 
     // ─── Lang Dropdown ──────────────────────────────────────────────
     const langSwitch = document.getElementById("lang-switch")
-    const langBtn    = document.getElementById("lang-btn")
-    const langPanel  = document.getElementById("lang-panel")
+    const langBtn = document.getElementById("lang-btn")
+    const langPanel = document.getElementById("lang-panel")
 
     function refreshLangPanel() {
       langPanel.innerHTML = LOCALES_ORDER.map(lang => `
@@ -947,6 +1156,7 @@
       if (!el) return
 
       let wordIdx = 0
+      el.textContent = words[0]
       let charIdx = words[0].length
       let deleting = false
 
@@ -980,6 +1190,307 @@
     // ─── Init ────────────────────────────────────────────────────────
     setTheme(getInitialTheme())
     applyLocale(currentLocale)
+
+    // ─── Background Picker ───────────────────────────────────────────
+    const bgSwitch = document.getElementById("bg-switch")
+    const bgBtn = document.getElementById("bg-btn")
+    const bgPanel = document.getElementById("bg-panel")
+    const bgIconHC = document.getElementById("bg-icon-honeycomb")
+    const bgIconStars = document.getElementById("bg-icon-stars")
+    const bgIconFlow = document.getElementById("bg-icon-flow")
+    const bgItemStars = document.getElementById("bg-item-stars")
+    const hcGrid = document.getElementById("hc-grid")
+    const starsCanvas = document.getElementById("stars-canvas")
+    const flowCanvas = document.getElementById("flow-canvas")
+
+    let currentBg = localStorage.getItem("katsumii-bg") || "honeycomb"
+    let starsRaf = null
+    let flowRaf = null
+
+    function applyBgIcon(bg) {
+      bgIconHC.style.display = bg === "honeycomb" ? "" : "none"
+      bgIconStars.style.display = bg === "stars" ? "" : "none"
+      bgIconFlow.style.display = bg === "flow" ? "" : "none"
+    }
+
+    function updateStarsItemVisibility() {
+      const isLight = root.getAttribute("data-theme") === "light"
+      bgItemStars.style.display = isLight ? "none" : ""
+    }
+
+    function refreshBgPanel(bg) {
+      bgPanel.querySelectorAll(".bg-item").forEach(btn => {
+        const active = btn.dataset.bg === bg
+        btn.classList.toggle("active", active)
+        btn.querySelector(".bg-check").textContent = active ? "✓" : ""
+        btn.setAttribute("aria-selected", active)
+      })
+    }
+
+    function openBgPanel() {
+      bgPanel.classList.add("open")
+      bgBtn.setAttribute("aria-expanded", "true")
+    }
+
+    function closeBgPanel() {
+      bgPanel.classList.remove("open")
+      bgBtn.setAttribute("aria-expanded", "false")
+    }
+
+    bgBtn.addEventListener("click", (e) => {
+      e.stopPropagation()
+      bgPanel.classList.contains("open") ? closeBgPanel() : openBgPanel()
+    })
+
+    document.addEventListener("click", (e) => {
+      if (!bgSwitch.contains(e.target)) closeBgPanel()
+    })
+
+    bgPanel.querySelectorAll(".bg-item").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const val = btn.dataset.bg
+        setBackground(val)
+        closeBgPanel()
+      })
+    })
+
+    function setBackground(bg) {
+      currentBg = bg
+      localStorage.setItem("katsumii-bg", bg)
+      applyBgIcon(bg)
+      refreshBgPanel(bg)
+      // hide all canvases / grid first
+      stopStarfield()
+      stopFlow()
+      starsCanvas.style.display = "none"
+      flowCanvas.style.display = "none"
+      hcGrid.style.display = "none"
+      if (bg === "stars") {
+        starsCanvas.style.display = ""
+        startStarfield()
+      } else if (bg === "flow") {
+        flowCanvas.style.display = ""
+        startFlow()
+      } else {
+        hcGrid.style.display = ""
+      }
+    }
+
+    // ─── Starfield ───────────────────────────────────────────────────
+    function seededRand(seed) {
+      let s = seed
+      return function () {
+        s = (s * 1664525 + 1013904223) & 0xffffffff
+        return (s >>> 0) / 0xffffffff
+      }
+    }
+
+    let starsData = []
+    let starsCtx = null
+    let starsDpr = 1
+    let starsResizeTimer = null
+
+    function buildStars(w, h) {
+      const rand = seededRand(0xdeadbeef)
+      const count = Math.round((w * h) / 4200)
+      starsData = []
+      for (let i = 0; i < count; i++) {
+        const jx = rand() * w
+        const jy = rand() * h
+        const wx = jx + Math.sin(jy * 0.031 + 1.7) * 38
+        const wy = jy + Math.cos(jx * 0.027 + 0.9) * 32
+        const x = ((wx % w) + w) % w
+        const y = ((wy % h) + h) % h
+        const size = rand() < 0.12 ? rand() * 1.1 + 0.9 : rand() < 0.45 ? rand() * 0.55 + 0.25 : rand() * 0.25 + 0.08
+        const phase = rand() * Math.PI * 2
+        const speed = rand() * 0.0004 + 0.00008
+        const twinkleAmp = rand() * 0.55 + 0.08
+        const hue = rand() < 0.08 ? 35 + rand() * 20 : 210 + rand() * 40
+        const sat = rand() < 0.08 ? 55 : 10 + rand() * 25
+        const base = 0.15 + rand() * 0.7
+        starsData.push({ x, y, size, phase, speed, twinkleAmp, hue, sat, base })
+      }
+    }
+
+    function resizeStarCanvas() {
+      starsDpr = window.devicePixelRatio || 1
+      const w = starsCanvas.clientWidth
+      const h = starsCanvas.clientHeight
+      starsCanvas.width = w * starsDpr
+      starsCanvas.height = h * starsDpr
+      starsCtx.setTransform(starsDpr, 0, 0, starsDpr, 0, 0)
+      buildStars(w, h)
+    }
+
+    function starFrame(ts) {
+      const w = starsCanvas.clientWidth
+      const h = starsCanvas.clientHeight
+      starsCtx.clearRect(0, 0, w, h)
+      const isLight = root.getAttribute("data-theme") === "light"
+      const lum = isLight ? 18 : 98
+      for (const s of starsData) {
+        const flicker = Math.sin(s.phase + ts * s.speed)
+        const opacity = s.base * (1 - s.twinkleAmp * 0.5 + flicker * s.twinkleAmp * 0.5) * (isLight ? 0.65 : 1)
+        if (opacity <= 0) continue
+        const glow = s.size > 0.8 ? s.size * 2.2 : 0
+        if (glow > 0) {
+          const grad = starsCtx.createRadialGradient(s.x, s.y, 0, s.x, s.y, glow)
+          grad.addColorStop(0, `hsla(${s.hue},${s.sat}%,${lum}%,${opacity * 0.45})`)
+          grad.addColorStop(1, `hsla(${s.hue},${s.sat}%,${lum}%,0)`)
+          starsCtx.beginPath()
+          starsCtx.arc(s.x, s.y, glow, 0, Math.PI * 2)
+          starsCtx.fillStyle = grad
+          starsCtx.fill()
+        }
+        starsCtx.beginPath()
+        starsCtx.arc(s.x, s.y, s.size, 0, Math.PI * 2)
+        starsCtx.fillStyle = `hsla(${s.hue},${s.sat}%,${lum}%,${opacity})`
+        starsCtx.fill()
+      }
+      starsRaf = requestAnimationFrame(starFrame)
+    }
+
+    function startStarfield() {
+      if (starsRaf || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+      starsCtx = starsCanvas.getContext("2d")
+      resizeStarCanvas()
+      starsRaf = requestAnimationFrame(starFrame)
+    }
+
+    function stopStarfield() {
+      cancelAnimationFrame(starsRaf)
+      starsRaf = null
+    }
+
+    window.addEventListener("resize", () => {
+      if (currentBg === "stars") {
+        clearTimeout(starsResizeTimer)
+        starsResizeTimer = setTimeout(resizeStarCanvas, 150)
+      }
+    })
+
+    document.addEventListener("visibilitychange", () => {
+      if (currentBg === "stars") {
+        if (document.hidden) stopStarfield(); else startStarfield()
+      } else if (currentBg === "flow") {
+        if (document.hidden) stopFlow(); else startFlow()
+      }
+    })
+
+    // ─── Flow background ────────────────────────────────────────────────
+    let flowData = []
+    let flowCtx = null
+    let flowDpr = 1
+    let flowResizeTimer = null
+
+    function buildFlowRibbons(h) {
+      const rand = seededRand(0xcafebabe)
+      const RIBBONS = 22
+      flowData = Array.from({ length: RIBBONS }, () => ({
+        y: rand(),
+        amp1: rand() * 0.09 + 0.03,
+        amp2: rand() * 0.05 + 0.01,
+        freq1: rand() * 0.5 + 0.15,
+        freq2: rand() * 0.9 + 0.3,
+        phase1: rand() * Math.PI * 2,
+        phase2: rand() * Math.PI * 2,
+        speed1: (rand() * 0.12 + 0.04) * (rand() < 0.5 ? 1 : -1),
+        speed2: (rand() * 0.20 + 0.08) * (rand() < 0.5 ? 1 : -1),
+        breathPhase: rand() * Math.PI * 2,
+        breathSpeed: rand() * 0.0004 + 0.0001,
+        hue: 180 + rand() * 60,
+        alpha: rand() * 0.10 + 0.04,
+        width: rand() * 1.4 + 0.3,
+      }))
+    }
+
+    function resizeFlowCanvas() {
+      flowDpr = window.devicePixelRatio || 1
+      const w = flowCanvas.clientWidth
+      const h = flowCanvas.clientHeight
+      flowCanvas.width = w * flowDpr
+      flowCanvas.height = h * flowDpr
+      flowCtx.setTransform(flowDpr, 0, 0, flowDpr, 0, 0)
+      buildFlowRibbons(h)
+    }
+
+    function flowFrame(ts) {
+      const w = flowCanvas.clientWidth
+      const h = flowCanvas.clientHeight
+      flowCtx.clearRect(0, 0, w, h)
+      const t = ts * 0.001
+      const isLight = root.getAttribute("data-theme") === "light"
+      const lum = isLight ? 30 : 72
+      const sat = isLight ? 55 : 65
+      const STEPS = 90
+      for (const r of flowData) {
+        const breathe = 0.75 + 0.25 * Math.sin(r.breathPhase + ts * r.breathSpeed)
+        const alpha = r.alpha * breathe * (isLight ? 0.55 : 1)
+        flowCtx.beginPath()
+        for (let i = 0; i <= STEPS; i++) {
+          const x = (i / STEPS) * w
+          const phase = (i / STEPS) * Math.PI * 2
+          const y = r.y * h
+            + Math.sin(phase * r.freq1 + t * r.speed1 + r.phase1) * r.amp1 * h
+            + Math.sin(phase * r.freq2 + t * r.speed2 + r.phase2) * r.amp2 * h
+          i === 0 ? flowCtx.moveTo(x, y) : flowCtx.lineTo(x, y)
+        }
+        flowCtx.strokeStyle = `hsla(${r.hue},${sat}%,${lum}%,${alpha})`
+        flowCtx.lineWidth = r.width
+        flowCtx.stroke()
+      }
+      flowRaf = requestAnimationFrame(flowFrame)
+    }
+
+    function startFlow() {
+      if (flowRaf || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+      flowCtx = flowCanvas.getContext("2d")
+      resizeFlowCanvas()
+      flowRaf = requestAnimationFrame(flowFrame)
+    }
+
+    function stopFlow() {
+      cancelAnimationFrame(flowRaf)
+      flowRaf = null
+    }
+
+    window.addEventListener("resize", () => {
+      if (currentBg !== "flow") return
+      clearTimeout(flowResizeTimer)
+      flowResizeTimer = setTimeout(resizeFlowCanvas, 150)
+    })
+
+    // initialise bg state
+    updateStarsItemVisibility()
+    applyBgIcon(currentBg)
+    refreshBgPanel(currentBg)
+    // If saved bg is "stars" but we're in light mode, fall back
+    if (currentBg === "stars" && root.getAttribute("data-theme") === "light") {
+      currentBg = "honeycomb"
+      localStorage.setItem("katsumii-bg", "honeycomb")
+    }
+    if (currentBg === "stars") {
+      hcGrid.style.display = "none"
+      starsCanvas.style.display = ""
+      startStarfield()
+    } else if (currentBg === "flow") {
+      hcGrid.style.display = "none"
+      flowCanvas.style.display = ""
+      startFlow()
+    }
+
+    // ─── Secret Entry Logic ──────────────────────────────────────────
+    document.querySelector(".secret-entry").addEventListener("click", (e) => {
+      e.preventDefault()
+      const input = prompt("Password required:")
+      // Simple base64 check (password: 'Mango26')
+      if (input && btoa(input) === "TWFuZ28yNg==") {
+        window.location.href = "./app.html"
+      } else if (input !== null) {
+        alert("Access denied.")
+      }
+    })
   </script>
 </body>
+
 </html>
