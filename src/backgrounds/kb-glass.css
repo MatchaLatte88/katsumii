@@ -1,0 +1,25 @@
+/*
+ * kb-glass.css — Glassmorphism utility classes
+ *
+ * Requires: kb-tokens.css (for --glass, --glass-brd, --glass-shadow)
+ *
+ * Usage:
+ *   <div class="glass">...</div>        standard glass card
+ *   <div class="glass-heavy">...</div>  stronger blur for overlays/modals
+ */
+
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--glass-brd);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+}
+
+.glass-heavy {
+  background: var(--glass);
+  border: 1px solid var(--glass-brd);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+}

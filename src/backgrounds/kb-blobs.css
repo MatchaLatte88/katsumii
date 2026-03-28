@@ -1,0 +1,36 @@
+/*
+ * kb-blobs.css — Fixed background blob effects (Teal + Indigo)
+ *
+ * Requires: kb-tokens.css (for --blob1-opacity / --blob2-opacity)
+ *
+ * The blobs are invisible in light mode (opacity 0) and
+ * softly visible in dark mode (opacity 0.12 / 0.10).
+ * Toggle dark mode by adding/removing class "dark" on <html>.
+ */
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Teal blob — left-center */
+body::before {
+  background: radial-gradient(
+    ellipse 700px 500px at 15% 45%,
+    rgba(20, 184, 166, var(--blob1-opacity)),
+    transparent 70%
+  );
+}
+
+/* Indigo blob — upper-right */
+body::after {
+  background: radial-gradient(
+    ellipse 500px 400px at 78% 25%,
+    rgba(99, 102, 241, var(--blob2-opacity)),
+    transparent 70%
+  );
+}

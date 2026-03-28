@@ -5,27 +5,17 @@
       theme === 'light' ? 'bg-slate-50 text-gray-900' : 'bg-slate-950 text-slate-100',
     ]"
   >
-    <!-- Background -->
-    <div class="k-bg" :class="theme === 'light' ? 'k-bg-light' : 'k-bg-dark'" aria-hidden="true">
-      <div class="k-bg-gradient" />
-      <svg class="k-bg-grid" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <pattern id="hc-features" x="0" y="0" width="69.28" height="60" patternUnits="userSpaceOnUse">
-            <path d="M34.64,0 L51.96,10 L51.96,30 L34.64,40 L17.32,30 L17.32,10 Z M0,0 L17.32,10 M17.32,30 L0,40 M51.96,10 L69.28,0 M69.28,40 L51.96,30 M34.64,40 L34.64,60 M0,40 L0,60" style="fill:none;stroke:var(--hc-stroke);stroke-width:1.5"/>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#hc-features)"/>
-      </svg>
-      <div class="k-bg-band" />
-    </div>
+    <KbBackground :pattern="bg" :isDark="theme === 'dark'" />
 
     <AppNav
       :theme="theme"
+      :bg="bg"
       :navigation="navigation"
       brand-title="Katsumii"
       :brand-subtitle="t('featuresPage.brandSubtitle')"
       :brand-href="baseUrl"
       @toggle-theme="toggleTheme"
+      @change-bg="changeBg"
     />
 
     <!-- ── HERO ─────────────────────────────────────────────────────── -->
@@ -325,9 +315,10 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from "vue"
+import { computed, onMounted, ref, watch } from "vue"
 import { useI18n } from "vue-i18n"
 import AppNav from "./AppNav.vue"
+import KbBackground from "../backgrounds/KbBackground.vue"
 
 const { t, tm } = useI18n()
 
@@ -339,6 +330,7 @@ const navigation = computed(() => [
   { name: t('featuresPage.nav.home'), href: baseUrl },
   { name: t('featuresPage.nav.pricing'), href: `${baseUrl}app.html#pricing` },
   { name: t('featuresPage.nav.faq'), href: `${baseUrl}app.html?page=faq` },
+  { name: "Manual", href: `${baseUrl}app.html?page=manual` },
 ])
 
 const FEATURE_STATIC = [
@@ -354,19 +346,44 @@ const features = computed(() =>
 
 const activeFeatureId = ref(null)
 
+// ── Background ─────────────────────────────────────────────────────
+const BG_MIGRATE = { flow: 'lines' }
+const _savedBg = localStorage.getItem('katsumii-bg') || 'lines'
+const bg = ref(BG_MIGRATE[_savedBg] ?? _savedBg)
+
+const changeBg = (val) => {
+  bg.value = val
+  localStorage.setItem('katsumii-bg', val)
+}
+
 // ── Theme ──────────────────────────────────────────────────────────
-const theme = ref("light")
+const getInitialTheme = () => {
+  const saved = localStorage.getItem('katsumii-theme') || localStorage.getItem('katsumii-coming-soon-theme')
+  if (saved === 'light' || saved === 'dark') return saved
+  if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light'
+  return 'dark'
+}
+
+const theme = ref(getInitialTheme())
 
 const applyTheme = (value) => {
   theme.value = value
   localStorage.setItem("katsumii-theme", value)
+  document.documentElement.classList.toggle("dark", value === "dark")
 }
 
-const toggleTheme = () => applyTheme(theme.value === "dark" ? "light" : "dark")
+const toggleTheme = () => {
+  const next = theme.value === "dark" ? "light" : "dark"
+  if (next === "light" && bg.value === "stars") changeBg("lines")
+  applyTheme(next)
+}
+
+watch(theme, (value) => {
+  document.documentElement.classList.toggle("dark", value === "dark")
+})
 
 onMounted(() => {
-  const savedTheme = localStorage.getItem("katsumii-theme")
-  if (savedTheme === "light" || savedTheme === "dark") theme.value = savedTheme
+  document.documentElement.classList.toggle("dark", theme.value === "dark")
 
   // Hero entrance
   const heroEls = [
@@ -426,32 +443,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.k-bg {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-}
-.k-bg-dark  { --orb-a: rgba(59,130,246,0.28); --orb-b: rgba(34,211,238,0.22); --hc-stroke: rgba(34,211,238,0.02); }
-.k-bg-light { --orb-a: rgba(6,182,212,0.16);  --orb-b: rgba(59,130,246,0.12); --hc-stroke: rgba(8,145,178,0.04); }
-.k-bg-gradient {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 70% 55% at 8% 18%, var(--orb-a), transparent 60%),
-    radial-gradient(ellipse 55% 45% at 88% 80%, var(--orb-b), transparent 55%);
-}
-.k-bg-grid {
-  position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.8;
-  mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 80%, transparent 100%);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 80%, transparent 100%);
-}
-.k-bg-band {
-  position: absolute; top: -30%; right: 0; width: 52%; height: 160%;
-  background: linear-gradient(to bottom, transparent, rgba(34,211,238,0.018) 40%, transparent);
-  transform: skewX(-6deg); border-left: 1px solid rgba(34,211,238,0.055); transform-origin: top right;
-}
-
 /* ── Hero entrance ─────────────────────────────────────────────── */
 .hero-label,
 .hero-title,

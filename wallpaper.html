@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Katsumii Wallpaper</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap");
+
+    :root {
+      color-scheme: dark;
+      --bg-base: #020617;
+      --text-main: #f8fbff;
+      --text-soft: rgba(226, 232, 240, 0.82);
+      --orb-a: rgba(59, 130, 246, 0.28);
+      --orb-b: rgba(34, 211, 238, 0.22);
+      --hc-stroke: rgba(34, 211, 238, 0.03);
+      --plate-bg: rgba(2, 6, 23, 0.34);
+      --plate-border: rgba(125, 211, 252, 0.16);
+      --plate-shadow: 0 32px 120px -40px rgba(0, 0, 0, 0.8);
+      --logo-shadow: 0 26px 48px rgba(8, 47, 73, 0.35);
+    }
+
+    :root.light {
+      color-scheme: light;
+      --bg-base: #f8fafc;
+      --text-main: #0f172a;
+      --text-soft: rgba(51, 65, 85, 0.72);
+      --orb-a: rgba(6, 182, 212, 0.16);
+      --orb-b: rgba(59, 130, 246, 0.12);
+      --hc-stroke: rgba(8, 145, 178, 0.06);
+      --plate-bg: rgba(255, 255, 255, 0.42);
+      --plate-border: rgba(8, 145, 178, 0.12);
+      --plate-shadow: 0 32px 120px -48px rgba(15, 23, 42, 0.28);
+      --logo-shadow: 0 26px 48px rgba(14, 116, 144, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: var(--bg-base);
+    }
+
+    body {
+      position: relative;
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .wallpaper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      isolation: isolate;
+      background:
+        radial-gradient(ellipse 70% 55% at 8% 18%, var(--orb-a), transparent 60%),
+        radial-gradient(ellipse 55% 45% at 88% 80%, var(--orb-b), transparent 55%),
+        var(--bg-base);
+    }
+
+    .bg-layer,
+    .bg-grid,
+    .bg-canvas {
+      position: absolute;
+      inset: 0;
+    }
+
+    .bg-canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    .bg-grid {
+      width: 100%;
+      height: 100%;
+      opacity: 0.82;
+      mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 82%, transparent 100%);
+      -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 82%, transparent 100%);
+    }
+
+    .brand-wrap {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 100%;
+      height: 100%;
+      padding: 6vw;
+    }
+
+    .brand-plate {
+      display: inline-flex;
+      align-items: center;
+      gap: clamp(1.4rem, 2vw, 2.25rem);
+      padding: clamp(1.1rem, 1.6vw, 1.6rem) clamp(1.5rem, 2.5vw, 2.4rem);
+      border: 1px solid var(--plate-border);
+      border-radius: 999px;
+      background: var(--plate-bg);
+      box-shadow: var(--plate-shadow);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .logo {
+      width: clamp(96px, 10vw, 150px);
+      height: clamp(96px, 10vw, 150px);
+      object-fit: contain;
+      filter: drop-shadow(var(--logo-shadow));
+      flex: 0 0 auto;
+    }
+
+    .wordmark {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .name {
+      margin: 0;
+      font-family: "Sora", "Manrope", sans-serif;
+      font-size: clamp(3.5rem, 8vw, 8rem);
+      font-weight: 600;
+      line-height: 0.94;
+      letter-spacing: -0.06em;
+      color: var(--text-main);
+      white-space: nowrap;
+    }
+
+    .subtle {
+      margin: 0;
+      font-size: clamp(0.8rem, 1.25vw, 1rem);
+      font-weight: 600;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      padding-left: 0.3em;
+      white-space: nowrap;
+    }
+
+    .vignette {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        radial-gradient(circle at center, transparent 48%, rgba(2, 6, 23, 0.14) 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+      pointer-events: none;
+    }
+
+    :root.light .vignette {
+      background:
+        radial-gradient(circle at center, transparent 48%, rgba(148, 163, 184, 0.12) 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0));
+    }
+
+    @media (max-width: 900px) {
+      .brand-plate {
+        flex-direction: column;
+        border-radius: 2rem;
+        text-align: center;
+      }
+
+      .wordmark {
+        align-items: center;
+      }
+
+      .subtle {
+        padding-left: 0;
+        letter-spacing: 0.3em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wallpaper">
+    <canvas id="stars" class="bg-canvas" hidden aria-hidden="true"></canvas>
+    <canvas id="flow" class="bg-canvas" hidden aria-hidden="true"></canvas>
+
+    <svg id="grid" class="bg-grid" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <pattern id="hc" x="0" y="0" width="69.28" height="60" patternUnits="userSpaceOnUse">
+          <path d="M34.64,0 L51.96,10 L51.96,30 L34.64,40 L17.32,30 L17.32,10 Z M0,0 L17.32,10 M17.32,30 L0,40 M51.96,10 L69.28,0 M69.28,40 L51.96,30 M34.64,40 L34.64,60 M0,40 L0,60" fill="none" stroke="var(--hc-stroke)" stroke-width="1.5"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#hc)"></rect>
+    </svg>
+
+    <div class="vignette"></div>
+
+    <main class="brand-wrap">
+      <section class="brand-plate" aria-label="Katsumii wallpaper">
+        <img class="logo" src="./public/logo.png" alt="Katsumii logo" />
+        <div class="wordmark">
+          <p class="subtle">Desktop Edition</p>
+          <h1 class="name">Katsumii.</h1>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var theme = localStorage.getItem("katsumii-theme") || localStorage.getItem("katsumii-coming-soon-theme") || "dark";
+      var bg = localStorage.getItem("katsumii-bg") || "honeycomb";
+
+      if (theme === "light") {
+        root.classList.add("light");
+      }
+
+      var grid = document.getElementById("grid");
+      var starsCanvas = document.getElementById("stars");
+      var flowCanvas = document.getElementById("flow");
+      var activeCleanup = null;
+
+      function setVisible(mode) {
+        grid.hidden = mode !== "honeycomb";
+        starsCanvas.hidden = mode !== "stars";
+        flowCanvas.hidden = mode !== "flow";
+      }
+
+      function seededRand(seed) {
+        var s = seed;
+        return function () {
+          s = (s * 1664525 + 1013904223) & 0xffffffff;
+          return (s >>> 0) / 0xffffffff;
+        };
+      }
+
+      function startStars() {
+        var canvas = starsCanvas;
+        var ctx = canvas.getContext("2d");
+        var dpr = window.devicePixelRatio || 1;
+        var rafId = null;
+        var stars = [];
+
+        function buildStars(width, height) {
+          var rand = seededRand(0xdeadbeef);
+          var count = Math.round((width * height) / 4200);
+          var items = [];
+          for (var i = 0; i < count; i++) {
+            var jx = rand() * width;
+            var jy = rand() * height;
+            var wx = jx + Math.sin(jy * 0.031 + 1.7) * 38;
+            var wy = jy + Math.cos(jx * 0.027 + 0.9) * 32;
+            var x = ((wx % width) + width) % width;
+            var y = ((wy % height) + height) % height;
+            var size = rand() < 0.12 ? rand() * 1.1 + 0.9 : rand() < 0.45 ? rand() * 0.55 + 0.25 : rand() * 0.25 + 0.08;
+            items.push({
+              x: x,
+              y: y,
+              size: size,
+              phase: rand() * Math.PI * 2,
+              speed: rand() * 0.0004 + 0.00008,
+              twinkleAmp: rand() * 0.55 + 0.08,
+              hue: rand() < 0.08 ? 35 + rand() * 20 : 210 + rand() * 40,
+              sat: rand() < 0.08 ? 55 : 10 + rand() * 25,
+              base: 0.15 + rand() * 0.7
+            });
+          }
+          return items;
+        }
+
+        function resize() {
+          var width = canvas.clientWidth;
+          var height = canvas.clientHeight;
+          ctx.setTransform(1, 0, 0, 1, 0, 0);
+          canvas.width = width * dpr;
+          canvas.height = height * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          stars = buildStars(width, height);
+        }
+
+        function frame(ts) {
+          var width = canvas.clientWidth;
+          var height = canvas.clientHeight;
+          var isLight = root.classList.contains("light");
+          var lum = isLight ? 18 : 98;
+          ctx.clearRect(0, 0, width, height);
+
+          for (var i = 0; i < stars.length; i++) {
+            var s = stars[i];
+            var flicker = Math.sin(s.phase + ts * s.speed);
+            var opacity = s.base * (1 - s.twinkleAmp * 0.5 + flicker * s.twinkleAmp * 0.5) * (isLight ? 0.65 : 1);
+            if (opacity <= 0) continue;
+
+            var glow = s.size > 0.8 ? s.size * 2.2 : 0;
+            if (glow > 0) {
+              var grad = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, glow);
+              grad.addColorStop(0, "hsla(" + s.hue + "," + s.sat + "%," + lum + "%," + (opacity * 0.45) + ")");
+              grad.addColorStop(1, "hsla(" + s.hue + "," + s.sat + "%," + lum + "%,0)");
+              ctx.beginPath();
+              ctx.arc(s.x, s.y, glow, 0, Math.PI * 2);
+              ctx.fillStyle = grad;
+              ctx.fill();
+            }
+
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+            ctx.fillStyle = "hsla(" + s.hue + "," + s.sat + "%," + lum + "%," + opacity + ")";
+            ctx.fill();
+          }
+
+          rafId = window.requestAnimationFrame(frame);
+        }
+
+        resize();
+        rafId = window.requestAnimationFrame(frame);
+        window.addEventListener("resize", resize);
+
+        return function () {
+          window.cancelAnimationFrame(rafId);
+          window.removeEventListener("resize", resize);
+        };
+      }
+
+      function startFlow() {
+        var canvas = flowCanvas;
+        var ctx = canvas.getContext("2d");
+        var dpr = window.devicePixelRatio || 1;
+        var rafId = null;
+        var ribbons = [];
+
+        function buildFlowRibbons() {
+          var rand = seededRand(0xcafebabe);
+          var items = [];
+          for (var i = 0; i < 22; i++) {
+            items.push({
+              y: rand(),
+              amp1: rand() * 0.09 + 0.03,
+              amp2: rand() * 0.05 + 0.01,
+              freq1: rand() * 0.5 + 0.15,
+              freq2: rand() * 0.9 + 0.3,
+              phase1: rand() * Math.PI * 2,
+              phase2: rand() * Math.PI * 2,
+              speed1: (rand() * 0.12 + 0.04) * (rand() < 0.5 ? 1 : -1),
+              speed2: (rand() * 0.2 + 0.08) * (rand() < 0.5 ? 1 : -1),
+              breathPhase: rand() * Math.PI * 2,
+              breathSpeed: rand() * 0.0004 + 0.0001,
+              hue: 180 + rand() * 60,
+              alpha: rand() * 0.1 + 0.04,
+              width: rand() * 1.4 + 0.3
+            });
+          }
+          return items;
+        }
+
+        function resize() {
+          var width = canvas.clientWidth;
+          var height = canvas.clientHeight;
+          ctx.setTransform(1, 0, 0, 1, 0, 0);
+          canvas.width = width * dpr;
+          canvas.height = height * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          ribbons = buildFlowRibbons(height);
+        }
+
+        function frame(ts) {
+          var width = canvas.clientWidth;
+          var height = canvas.clientHeight;
+          var t = ts * 0.001;
+          var isLight = root.classList.contains("light");
+          var lum = isLight ? 30 : 72;
+          var sat = isLight ? 55 : 65;
+          var steps = 90;
+
+          ctx.clearRect(0, 0, width, height);
+
+          for (var i = 0; i < ribbons.length; i++) {
+            var r = ribbons[i];
+            var breathe = 0.75 + 0.25 * Math.sin(r.breathPhase + ts * r.breathSpeed);
+            var alpha = r.alpha * breathe * (isLight ? 0.55 : 1);
+            ctx.beginPath();
+
+            for (var j = 0; j <= steps; j++) {
+              var x = (j / steps) * width;
+              var phase = (j / steps) * Math.PI * 2;
+              var y = r.y * height
+                + Math.sin(phase * r.freq1 + t * r.speed1 + r.phase1) * r.amp1 * height
+                + Math.sin(phase * r.freq2 + t * r.speed2 + r.phase2) * r.amp2 * height;
+
+              if (j === 0) {
+                ctx.moveTo(x, y);
+              } else {
+                ctx.lineTo(x, y);
+              }
+            }
+
+            ctx.strokeStyle = "hsla(" + r.hue + "," + sat + "%," + lum + "%," + alpha + ")";
+            ctx.lineWidth = r.width;
+            ctx.stroke();
+          }
+
+          rafId = window.requestAnimationFrame(frame);
+        }
+
+        resize();
+        rafId = window.requestAnimationFrame(frame);
+        window.addEventListener("resize", resize);
+
+        return function () {
+          window.cancelAnimationFrame(rafId);
+          window.removeEventListener("resize", resize);
+        };
+      }
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches && bg !== "honeycomb") {
+        bg = "honeycomb";
+      }
+
+      setVisible(bg);
+
+      if (bg === "stars") activeCleanup = startStars();
+      if (bg === "flow") activeCleanup = startFlow();
+
+      window.addEventListener("beforeunload", function () {
+        if (activeCleanup) activeCleanup();
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,25 +1,16 @@
 <template>
   <div :class="pageClass">
-    <div class="k-bg" :class="theme === 'light' ? 'k-bg-light' : 'k-bg-dark'" aria-hidden="true">
-      <div class="k-bg-gradient" />
-      <svg class="k-bg-grid" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <pattern id="hc" x="0" y="0" width="69.28" height="60" patternUnits="userSpaceOnUse">
-            <path d="M34.64,0 L51.96,10 L51.96,30 L34.64,40 L17.32,30 L17.32,10 Z M0,0 L17.32,10 M17.32,30 L0,40 M51.96,10 L69.28,0 M69.28,40 L51.96,30 M34.64,40 L34.64,60 M0,40 L0,60" style="fill:none;stroke:var(--hc-stroke);stroke-width:1.5"/>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#hc)"/>
-      </svg>
-      <div class="k-bg-band" />
-    </div>
+    <KbBackground :pattern="bg" :isDark="theme === 'dark'" />
 
     <AppNav
       :theme="theme"
+      :bg="bg"
       :navigation="navigation"
       brand-title="Katsumii"
       :brand-subtitle="t('brand.subtitle')"
       brand-href="#top"
       @toggle-theme="toggleTheme"
+      @change-bg="changeBg"
     />
 
     <main>
@@ -355,7 +346,7 @@
         </div>
       </section>
 
-      <section id="pricing" class="px-6 pb-20 pt-20 lg:px-10">
+      <section id="pricing" class="px-6 pb-24 pt-20 lg:px-10">
         <div class="mx-auto max-w-5xl text-center reveal">
           <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">{{ t('pricing.label') }}</p>
           <h2 :class="['mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
@@ -366,65 +357,101 @@
           </p>
         </div>
 
-        <div class="mx-auto mt-14 max-w-6xl">
-          <div class="relative flex flex-col gap-6 lg:min-h-[42rem] lg:flex-row lg:items-start lg:justify-center">
+        <div class="mx-auto mt-16 max-w-4xl">
+          <div class="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2">
+
+            <!-- Starter card -->
             <article
-              class="reveal rounded-3xl border p-8 text-left lg:w-[28rem] lg:translate-x-10 lg:translate-y-8 lg:scale-[0.965] lg:opacity-95"
-              :class="theme === 'light' ? 'border-gray-200 bg-white shadow-lg' : 'border-blue-400/20 bg-slate-900'"
+              class="reveal flex flex-col rounded-3xl border p-8 text-left"
+              :class="theme === 'light' ? 'border-gray-200 bg-white shadow-md' : 'border-slate-700/60 bg-slate-900'"
             >
-              <p :class="['text-sm font-semibold uppercase tracking-[0.12em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">{{ starterTier.name }}</p>
-              <p :class="['mt-4 text-5xl font-semibold', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ starterTier.price }}</p>
-              <p :class="['mt-1 text-sm', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">{{ t('pricing.oneTime') }}</p>
-              <p :class="['mt-4 text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">{{ starterTier.description }}</p>
-              <ul class="mt-6 space-y-3">
-                <li v-for="feature in starterTier.features" :key="feature" class="flex items-start gap-2">
-                  <CheckIcon class="mt-0.5 h-5 w-5 flex-none" :class="theme === 'light' ? 'text-teal-600' : 'text-cyan-200'" />
-                  <span :class="['text-sm', theme === 'light' ? 'text-gray-700' : 'text-slate-200']">{{ feature }}</span>
+              <p :class="['text-xs font-semibold uppercase tracking-[0.14em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-300/80']">
+                {{ starterTier.name }}
+              </p>
+              <div class="mt-5 flex items-end gap-1.5">
+                <span :class="['text-6xl font-bold leading-none tracking-tight', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
+                  {{ starterTier.price }}
+                </span>
+              </div>
+              <p :class="['mt-1.5 text-xs font-medium uppercase tracking-widest', theme === 'light' ? 'text-gray-400' : 'text-slate-500']">
+                {{ t('pricing.oneTime') }}
+              </p>
+              <div :class="['my-6 h-px w-full', theme === 'light' ? 'bg-gray-100' : 'bg-slate-800']" />
+              <p :class="['text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-400']">
+                {{ starterTier.description }}
+              </p>
+              <ul class="mt-6 grow space-y-3">
+                <li v-for="feature in starterTier.features" :key="feature" class="flex items-start gap-2.5">
+                  <CheckIcon class="mt-0.5 h-4 w-4 flex-none" :class="theme === 'light' ? 'text-teal-600' : 'text-cyan-400'" />
+                  <span :class="['text-sm', theme === 'light' ? 'text-gray-700' : 'text-slate-300']">{{ feature }}</span>
                 </li>
               </ul>
               <a
                 :href="starterTier.href"
                 :target="linkTarget(starterTier.href)"
                 :rel="linkRel(starterTier.href)"
-                class="mt-7 inline-flex rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
-                :class="theme === 'light' ? 'bg-gray-900 text-white hover:bg-gray-800' : 'bg-slate-800 text-slate-100 hover:bg-slate-700'"
+                class="mt-8 inline-flex items-center justify-center self-start rounded-full border px-5 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
+                :class="theme === 'light' ? 'border-gray-300 bg-white text-gray-800 hover:bg-gray-50 hover:border-gray-400' : 'border-slate-600 bg-slate-800 text-slate-200 hover:bg-slate-700 hover:border-slate-500'"
               >
                 {{ t('pricing.buy') }} {{ starterTier.name }}
               </a>
             </article>
 
-            <article
-              class="reveal relative z-20 rounded-3xl border p-8 text-left lg:-translate-x-12 lg:w-[30rem]"
-              :class="theme === 'light' ? 'border-teal-300 bg-teal-50 shadow-2xl' : 'border-cyan-300/35 bg-slate-900 shadow-[0_24px_90px_-36px_rgba(34,211,238,0.55)]'"
+            <!-- Featured card — gradient border wrapper -->
+            <div
+              class="reveal rounded-3xl p-[1.5px] transition-shadow duration-300"
+              :class="theme === 'light'
+                ? 'bg-linear-to-br from-teal-400 via-cyan-300 to-teal-500 shadow-xl shadow-teal-100'
+                : 'bg-linear-to-br from-cyan-400 via-teal-400 to-cyan-500 shadow-[0_0_64px_-8px_rgba(34,211,238,0.30)]'"
             >
-              <span
-                :class="[
-                  'inline-flex rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.13em]',
-                  theme === 'light' ? 'border-teal-300 bg-white text-teal-700' : 'border-cyan-200/40 bg-slate-950 text-cyan-200'
-                ]"
+              <!-- "Most popular" badge floating above the card -->
+              <div class="-mt-4 mb-0 flex justify-center">
+                <span
+                  class="inline-flex items-center gap-1.5 rounded-full px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.14em] shadow-sm"
+                  :class="theme === 'light' ? 'bg-teal-600 text-white' : 'bg-cyan-400 text-slate-950'"
+                >
+                  <span class="inline-block h-1.5 w-1.5 rounded-full" :class="theme === 'light' ? 'bg-white' : 'bg-slate-950'" aria-hidden="true" />
+                  {{ t('pricing.mainProgram') }}
+                </span>
+              </div>
+
+              <article
+                class="flex h-full flex-col rounded-[calc(1.5rem-1.5px)] p-8 text-left"
+                :class="theme === 'light' ? 'bg-white' : 'bg-slate-900'"
               >
-                {{ t('pricing.mainProgram') }}
-              </span>
-              <p :class="['mt-4 text-sm font-semibold uppercase tracking-[0.12em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">{{ featuredTier.name }}</p>
-              <p :class="['mt-4 text-5xl font-semibold', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ featuredTier.price }}</p>
-              <p :class="['mt-1 text-sm', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">{{ t('pricing.oneTime') }}</p>
-              <p :class="['mt-4 text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">{{ featuredTier.description }}</p>
-              <ul class="mt-6 space-y-3">
-                <li v-for="feature in featuredTier.features" :key="feature" class="flex items-start gap-2">
-                  <CheckIcon class="mt-0.5 h-5 w-5 flex-none" :class="theme === 'light' ? 'text-teal-600' : 'text-cyan-200'" />
-                  <span :class="['text-sm', theme === 'light' ? 'text-gray-700' : 'text-slate-200']">{{ feature }}</span>
-                </li>
-              </ul>
-              <a
-                :href="featuredTier.href"
-                :target="linkTarget(featuredTier.href)"
-                :rel="linkRel(featuredTier.href)"
-                class="mt-7 inline-flex rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
-                :class="theme === 'light' ? 'bg-teal-700 text-white hover:bg-teal-600' : 'bg-cyan-300 text-slate-950 hover:bg-cyan-200'"
-              >
-                {{ t('pricing.buy') }} {{ featuredTier.name }}
-              </a>
-            </article>
+                <p :class="['text-xs font-semibold uppercase tracking-[0.14em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-300']">
+                  {{ featuredTier.name }}
+                </p>
+                <div class="mt-5 flex items-end gap-1.5">
+                  <span :class="['text-6xl font-bold leading-none tracking-tight', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
+                    {{ featuredTier.price }}
+                  </span>
+                </div>
+                <p :class="['mt-1.5 text-xs font-medium uppercase tracking-widest', theme === 'light' ? 'text-gray-400' : 'text-slate-500']">
+                  {{ t('pricing.oneTime') }}
+                </p>
+                <div :class="['my-6 h-px w-full', theme === 'light' ? 'bg-teal-100' : 'bg-slate-800']" />
+                <p :class="['text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-400']">
+                  {{ featuredTier.description }}
+                </p>
+                <ul class="mt-6 grow space-y-3">
+                  <li v-for="feature in featuredTier.features" :key="feature" class="flex items-start gap-2.5">
+                    <CheckIcon class="mt-0.5 h-4 w-4 flex-none" :class="theme === 'light' ? 'text-teal-600' : 'text-cyan-400'" />
+                    <span :class="['text-sm', theme === 'light' ? 'text-gray-700' : 'text-slate-300']">{{ feature }}</span>
+                  </li>
+                </ul>
+                <a
+                  :href="featuredTier.href"
+                  :target="linkTarget(featuredTier.href)"
+                  :rel="linkRel(featuredTier.href)"
+                  class="mt-8 flex w-full items-center justify-center rounded-full py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
+                  :class="theme === 'light' ? 'bg-teal-600 text-white hover:bg-teal-500' : 'bg-cyan-400 text-slate-950 hover:bg-cyan-300'"
+                >
+                  {{ t('pricing.buy') }} {{ featuredTier.name }}
+                </a>
+              </article>
+            </div>
+
           </div>
         </div>
       </section>
@@ -584,7 +611,7 @@
                   {{ t('footer.support.description') }}
                 </p>
                 <a
-                  href="mailto:support@katsumii.app"
+                  href="mailto:katsumii_dev@outlook.com"
                   class="mt-5 inline-flex rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
                   :class="theme === 'light' ? 'bg-gray-900 text-white hover:bg-gray-800' : 'bg-cyan-300 text-slate-950 hover:bg-cyan-200'"
                 >
@@ -624,8 +651,19 @@ import { useI18n } from "vue-i18n"
 import { CheckIcon } from "@heroicons/vue/20/solid"
 import { ChartBarIcon, CloudArrowUpIcon, LockClosedIcon, ServerIcon } from "@heroicons/vue/24/outline"
 import AppNav from "./components/AppNav.vue"
+import KbBackground from "./backgrounds/KbBackground.vue"
 
 const { t, tm } = useI18n()
+
+// ─── Background picker ──────────────────────────────────────────────────────
+const BG_MIGRATE = { flow: 'lines' }
+const _savedBg = localStorage.getItem('katsumii-bg') || 'lines'
+const bg = ref(BG_MIGRATE[_savedBg] ?? _savedBg)
+
+const changeBg = (val) => {
+  bg.value = val
+  localStorage.setItem('katsumii-bg', val)
+}
 
 const baseUrl = import.meta.env.BASE_URL
 const assetUrl = (path) => `${baseUrl}${path.replace(/^\/+/, "")}`
@@ -637,6 +675,7 @@ const navigation = computed(() => [
   { name: t('nav.features'), href: "#features" },
   { name: t('nav.showcase'), href: "#showcase" },
   { name: t('nav.pricing'), href: "#pricing" },
+  { name: "Manual", href: `${baseUrl}app.html?page=manual` },
 ])
 
 const footerHighlights = computed(() => tm('footer.highlights'))
@@ -651,13 +690,13 @@ const footerProductLinks = computed(() => [
 const footerCompanyLinks = computed(() => [
   { name: tm('footer.companyLinks')[0], href: pageUrl("faq") },
   { name: tm('footer.companyLinks')[1], href: pageUrl("impressum") },
-  { name: tm('footer.companyLinks')[2], href: "mailto:support@katsumii.app" },
+  { name: tm('footer.companyLinks')[2], href: "mailto:katsumii_dev@outlook.com" },
 ])
 
 const footerLegalLinks = computed(() => [
   { name: tm('footer.legalLinks')[0], href: pageUrl("faq") },
   { name: tm('footer.legalLinks')[1], href: pageUrl("impressum") },
-  { name: tm('footer.legalLinks')[2], href: "mailto:support@katsumii.app" },
+  { name: tm('footer.legalLinks')[2], href: "mailto:katsumii_dev@outlook.com" },
 ])
 
 const heroStats = computed(() => tm('heroStats'))
@@ -702,8 +741,8 @@ const getInitialTheme = () => {
   const saved = localStorage.getItem('katsumii-theme')
              || localStorage.getItem('katsumii-coming-soon-theme')
   if (saved === 'light' || saved === 'dark') return saved
-  const hour = new Date().getHours()
-  return (hour >= 6 && hour < 19) ? 'light' : 'dark'
+  if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light'
+  return 'dark'
 }
 
 const theme = ref(getInitialTheme())
@@ -827,6 +866,9 @@ onUnmounted(() => {
 
 watch(theme, (value) => {
   document.documentElement.classList.toggle("dark", value === "dark")
+  if (value === "light" && bg.value === "stars") {
+    changeBg("honeycomb")
+  }
   nextTick(() => {
     setupRevealAnimations()
   })
@@ -836,56 +878,6 @@ const year = computed(() => new Date().getFullYear())
 </script>
 
 <style scoped>
-.k-bg {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.k-bg-dark {
-  --orb-a: rgba(59, 130, 246, 0.28);
-  --orb-b: rgba(34, 211, 238, 0.22);
-  --hc-stroke: rgba(34, 211, 238, 0.02);
-}
-
-.k-bg-light {
-  --orb-a: rgba(6, 182, 212, 0.16);
-  --orb-b: rgba(59, 130, 246, 0.12);
-  --hc-stroke: rgba(8, 145, 178, 0.04);
-}
-
-.k-bg-gradient {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 70% 55% at 8% 18%, var(--orb-a), transparent 60%),
-    radial-gradient(ellipse 55% 45% at 88% 80%, var(--orb-b), transparent 55%);
-}
-
-.k-bg-grid {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.8;
-  mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 80%, transparent 100%);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 80%, transparent 100%);
-}
-
-.k-bg-band {
-  position: absolute;
-  top: -30%;
-  right: 0;
-  width: 52%;
-  height: 160%;
-  background: linear-gradient(to bottom, transparent, rgba(34, 211, 238, 0.018) 40%, transparent);
-  transform: skewX(-6deg);
-  border-left: 1px solid rgba(34, 211, 238, 0.055);
-  transform-origin: top right;
-}
-
 .k-card {
   backdrop-filter: blur(14px);
 }

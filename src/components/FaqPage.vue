@@ -111,7 +111,7 @@ import AppNav from "./AppNav.vue"
 const baseUrl = import.meta.env.BASE_URL
 
 const navigation = [
-  { name: "Overview", href: "#" },
+  { name: "Manual", href: `${baseUrl}app.html?page=manual` },
   { name: "Back Home", href: baseUrl },
 ]
 

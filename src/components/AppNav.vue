@@ -55,6 +55,8 @@
         <div class="flex items-center gap-2">
           <LangSwitch :theme="theme" />
 
+          <BgSwitch :theme="theme" :model-value="bg" @update:model-value="emit('change-bg', $event)" />
+
           <div class="theme-switch-wrap">
             <DarkLightSwitch :is-dark="theme === 'dark'" @toggle="emit('toggle-theme')" />
           </div>
@@ -107,13 +109,15 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue"
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline"
 import DarkLightSwitch from "./DarkLightSwitch.vue"
 import LangSwitch from "./LangSwitch.vue"
+import BgSwitch from "./BgSwitch.vue"
 
-const emit = defineEmits(["toggle-theme"])
+const emit = defineEmits(["toggle-theme", "change-bg"])
 const baseUrl = import.meta.env.BASE_URL
 const assetUrl = (path) => `${baseUrl}${path.replace(/^\/+/, "")}`
 
 defineProps({
   theme: { type: String, default: "light" },
+  bg:    { type: String, default: "honeycomb" },
   brandTitle: { type: String, default: "Katsumii" },
   brandSubtitle: { type: String, default: "Offline Trading Journal" },
   brandHref: { type: String, default: "#top" },

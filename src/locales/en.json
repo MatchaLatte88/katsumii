@@ -11,52 +11,55 @@
   "hero": {
     "badge": "Trading Journal & Analytics",
     "tagline": "Trade with",
-    "description": "A modern trading journal focused on clarity, structure, and discipline. Local, fast, and built for prop traders who want to grow professionally.",
-    "ctaBuy": "Buy License",
+    "description": "An offline trading journal which helps you to focus on discipline, supports you with extensive and deep trading analysis. Local, fast, and built for traders who want to grow professionally. Manage your own Rules or keep an eye on your Prop-Firm accounts and Challenge progress.",
+    "ctaBuy": "Buy Katsumii",
     "ctaTour": "Product Tour"
   },
   "heroStats": [
-    { "label": "Offline-first", "value": "100%" },
-    { "label": "App Speed", "value": "Fast" },
+    { "label": "Offline", "value": "100%" },
+    { "label": "Journal", "value": "Fast" },
     { "label": "Focused UI", "value": "Clean" }
   ],
   "featureTicker": [
-    "100% Offline-first",
-    "Prop Rule Guardrails",
+    "100% Offline",
+    "Propfirm Rule Guardrails",
+    "Challenge Progress",
     "Screenshot Journaling",
     "Advanced Performance Stats",
-    "Fast Local Search",
-    "Kaizen Review Routine"
+    "Calendar and Alerts",
+    "Customisable",
+    "Account Management"
   ],
   "features": {
     "label": "Why Katsumii",
-    "headline": "Professional structure with clear, focused workflows",
+    "headline": "Professional journaling with clear, focused workflows",
     "spotlight": {
       "label": "Feature Spotlight",
-      "headline": "Build conviction through calm, measurable execution",
-      "description": "The most important features are intentionally placed at the center: a fast trade workflow, crystal-clear prop rule visibility, and analytics that directly improve decision-making.",
+      "headline": "Build discipline through calm, measurable execution",
+      "description": "The most important features are intentionally placed at the center: a fast trade workflow, crystal-clear propfirm rule visibility, and analytics that directly improve decision-making.",
       "points": [
         "Log trades in seconds with screenshots, notes, and setup context.",
         "Prop account limits always visible, including rule-break risk.",
+        "Get notified by alerts for upcoming inactivity period deadlines.",
         "Analyze performance by setup, session, and mistakes to improve with precision."
       ]
     },
     "cards": [
       {
         "name": "Account Clarity",
-        "description": "Prop and personal accounts in one view with clear goals, limits, and progress."
+        "description": "Prop and personal account management with clear goals, limits, and progress."
       },
       {
         "name": "Structured Journaling",
-        "description": "Capture trades with screenshots, notes, setup tags, and disciplined review logs."
+        "description": "Journal trades with screenshots, notes, used strategie, tags, and much more."
       },
       {
-        "name": "Actionable Analytics",
-        "description": "Track expectancy, R-multiples, setup quality, and consistency over time."
+        "name": "Extensive Analytics",
+        "description": "Track winrate, expectancy, effective RRR vs planned RRR, setup quality, best and worst time/day and consistency."
       },
       {
         "name": "Private by Design",
-        "description": "No login and no cloud dependency. Your trading data stays local."
+        "description": "No login and no cloud dependency. Your trading data stays local on your PC."
       }
     ]
   },
@@ -188,7 +191,7 @@
       {
         "eyebrow": "Account Control",
         "badge": "Pro",
-        "title": "Prop & personal account clarity",
+        "title": "Prop & personal account overview",
         "description": "Multiple accounts, prop rules, and personal limits — all in one shared structure. No tool switching, no lost context, no missed limits.",
         "points": [
           "Manage prop rules and personal accounts side by side.",
@@ -225,6 +228,246 @@
       "description": "Get the Professional license for the complete workflow — or try the demo first and see if it fits your process.",
       "buyLicense": "Buy License",
       "tryDemo": "Try Free Demo"
+    }
+  },
+  "welcomePage": {
+    "eyebrow": "New Installation",
+    "heading": "Welcome to Katsumii.",
+    "subheading": "Thank you for your purchase. You're now set up with a professional trading journal built for discipline and clarity.",
+    "onboarding": [
+      {
+        "number": "01",
+        "title": "Connect Your First Account",
+        "description": "Add a personal or prop firm account to begin tracking your trades, balance, and risk rules."
+      },
+      {
+        "number": "02",
+        "title": "Log Your First Trade",
+        "description": "Enter trade details, attach a screenshot, add your notes, and start building your journal history."
+      },
+      {
+        "number": "03",
+        "title": "Review Your Analytics",
+        "description": "After a few sessions, visit the analytics dashboard to measure your edge, patterns, and consistency."
+      }
+    ],
+    "nextSteps": {
+      "heading": "What to do next",
+      "items": [
+        "Open Katsumii and complete the initial setup",
+        "Add your first trading account",
+        "Log your first trade entry",
+        "Explore the Analytics dashboard",
+        "Read the full Manual for advanced features"
+      ]
+    },
+    "cta": "Explore the Manual",
+    "nav": {
+      "home": "Back Home",
+      "manual": "Manual"
+    }
+  },
+  "manualPage": {
+    "hero": {
+      "eyebrow": "Documentation",
+      "heading": "Katsumii Manual",
+      "description": "Everything you need to get the most out of your trading journal — step by step, topic by topic."
+    },
+    "nav": {
+      "overview": "Overview",
+      "home": "Back Home",
+      "faq": "FAQ"
+    },
+    "search": {
+      "placeholder": "Search topics...",
+      "noResults": "No topics found."
+    },
+    "articles": "articles",
+    "article": "article",
+    "prev": "Previous",
+    "next": "Next",
+    "backToOverview": "Back to Overview",
+    "topics": {
+      "gettingStarted": {
+        "title": "Getting Started",
+        "description": "Installation, first launch, and initial configuration to get up and running quickly.",
+        "articles": {
+          "installation": {
+            "title": "Installation",
+            "content": [
+              "Download the Katsumii installer from your purchase confirmation email or from your account on katsumii.app. The installer is a standard Windows setup file (.exe) and is digitally signed.",
+              "Run the installer and follow the on-screen prompts. A standard user-level installation is used — no administrator rights are required. The app installs to your user profile by default.",
+              "Once installed, launch Katsumii from the Start menu shortcut or the desktop icon created during setup. On first launch, you will be guided through initial configuration."
+            ]
+          },
+          "firstLaunch": {
+            "title": "First Launch",
+            "content": [
+              "On first launch, Katsumii runs a quick setup wizard. This wizard lets you choose your preferred language, color theme, and default currency for your accounts.",
+              "No account registration or internet connection is required. All your data stays on your local machine from the very first moment.",
+              "After completing the wizard, you land on the main dashboard. The dashboard is empty until you add your first account and trades — this is expected and normal."
+            ]
+          },
+          "setup": {
+            "title": "Initial Setup",
+            "content": [
+              "Before logging trades, it is recommended to create at least one account. Navigate to the Accounts section from the left sidebar and click 'Add Account'.",
+              "Give your account a name (e.g. 'FTMO 100K Challenge' or 'Personal Futures'), select the account type (Personal or Prop Firm), and set the starting balance.",
+              "For Prop Firm accounts, you can configure the firm's rules immediately: max daily drawdown, max overall drawdown, minimum trading days, and any active inactivity alert windows. These rules are displayed at all times while that account is active."
+            ]
+          }
+        }
+      },
+      "journal": {
+        "title": "The Journal",
+        "description": "How to log, annotate, and review your trades for maximum learning value.",
+        "articles": {
+          "logging": {
+            "title": "Logging a Trade",
+            "content": [
+              "To log a trade, click the '+ New Trade' button on the dashboard or in the Journal section. A trade entry form opens on the right panel.",
+              "Fill in the core fields: instrument (e.g. NQ, EURUSD), direction (Long/Short), entry price, exit price, position size, and trade date. Katsumii automatically calculates PnL, R-multiple, and risk based on your account's risk settings.",
+              "You can also select your setup type, emotional state, session (London, New York, Asian), and assign tags for later filtering. These fields are optional but greatly improve your analytics quality over time."
+            ]
+          },
+          "screenshots": {
+            "title": "Adding Screenshots",
+            "content": [
+              "To attach a chart screenshot to a trade, open the trade entry and click the screenshot area in the media panel. You can drag and drop an image file directly, or click to browse your file system.",
+              "Katsumii stores screenshots locally in a dedicated folder next to the app data. Images are never uploaded to any server.",
+              "You can add multiple screenshots per trade — for example, a higher-timeframe context chart and an entry-level chart. All screenshots are visible in the trade detail view and during review sessions."
+            ]
+          },
+          "tags": {
+            "title": "Tags and Setups",
+            "content": [
+              "Tags allow you to categorize trades by setup type, mistake category, market condition, or any custom label you define. You can create custom tags in Settings under 'Trade Tags'.",
+              "The 'Setup' field is distinct from tags — it refers to your named trading setups (e.g. 'Break & Retest', 'Fair Value Gap', 'ORB'). Setups are managed in Settings under 'Setups' and appear in your analytics breakdowns.",
+              "Assigning accurate setups and tags consistently is the key to meaningful analytics. Even a simple tagging system applied consistently will reveal patterns that improve your decision-making."
+            ]
+          },
+          "notes": {
+            "title": "Trade Notes and Mistakes",
+            "content": [
+              "Each trade has a Notes field for free-form text. Use this to describe the trade rationale, market context, or anything worth remembering during review.",
+              "The Mistakes field is a separate multi-select picker that lets you flag specific process errors: 'Moved SL', 'Chased Entry', 'Broke Rules', 'Oversized', etc. Mistakes are tracked in analytics so you can see recurring patterns.",
+              "Notes and mistakes are also visible in your calendar view on the day of the trade, making weekly and monthly review sessions faster and more structured."
+            ]
+          }
+        }
+      },
+      "accounts": {
+        "title": "Account Management",
+        "description": "Manage personal and prop firm accounts with full rule visibility and challenge tracking.",
+        "articles": {
+          "addAccount": {
+            "title": "Adding an Account",
+            "content": [
+              "Go to the Accounts section via the left sidebar and click 'Add Account'. Enter an account name, select the type (Personal or Prop Firm), and set the starting balance and currency.",
+              "Personal accounts have no rule constraints — they simply track your balance and trading history. Prop Firm accounts unlock the rules configuration panel.",
+              "You can add as many accounts as needed. Accounts are listed in the sidebar and can be switched at any time. All analytics sections respect the currently active account filter."
+            ]
+          },
+          "propRules": {
+            "title": "Prop Firm Rules",
+            "content": [
+              "When creating or editing a Prop Firm account, you can configure the firm's evaluation rules directly in Katsumii. Supported rule types include: Max Daily Loss, Max Total Drawdown, Minimum Trading Days, and Inactivity Periods.",
+              "These rules are shown on the dashboard at all times when the account is active. A color-coded status indicator shows how close you are to each rule limit — green (safe), yellow (caution), red (close to breach).",
+              "Katsumii does not connect to your broker. Rule tracking is based on the trades you log manually. Accuracy depends on logging all your trades consistently."
+            ]
+          },
+          "progress": {
+            "title": "Challenge Progress",
+            "content": [
+              "For Prop Firm challenge accounts, Katsumii tracks your progress toward the profit target automatically based on your logged trades and starting balance.",
+              "The Challenge Progress panel on the dashboard shows: current balance, profit target, days traded, minimum required trading days, and time remaining if you have set a challenge deadline.",
+              "When a challenge is completed or failed, you can archive the account and optionally duplicate it to start a new attempt — preserving your history while starting fresh."
+            ]
+          }
+        }
+      },
+      "analytics": {
+        "title": "Analytics & Statistics",
+        "description": "Understand your performance data and identify what is — and is not — working in your process.",
+        "articles": {
+          "dashboard": {
+            "title": "Dashboard Overview",
+            "content": [
+              "The dashboard is the main control center of Katsumii. It shows your current account balance, cumulative PnL, win rate, average R-multiple, and active rule status at a glance.",
+              "The dashboard updates in real time as you add or edit trades. All figures are calculated from your actual trade log, not estimated or simulated.",
+              "You can filter the dashboard by date range and account. This lets you analyze a specific challenge phase, a single month, or your overall historical performance."
+            ]
+          },
+          "setupStats": {
+            "title": "Setup Statistics",
+            "content": [
+              "The Setup Statistics view breaks down your performance by named setup. For each setup you can see: total trades, win rate, average R, total PnL, and expectancy.",
+              "This is one of the most powerful views in Katsumii. Over time, it reveals which setups genuinely have edge and which are costing you money — regardless of your subjective confidence in them.",
+              "Setups with fewer than 20 trades should be interpreted cautiously. The statistics become statistically meaningful with a larger sample size. Katsumii displays a sample size indicator next to each setup to help you judge reliability."
+            ]
+          },
+          "consistency": {
+            "title": "Consistency Metrics",
+            "content": [
+              "Consistency metrics measure how well you follow your own rules and process, independent of PnL. A disciplined trader with edge should show high consistency scores even during drawdown periods.",
+              "Key consistency indicators include: percentage of trades logged with screenshots, percentage of trades with a defined setup, average time between trade entry and journal entry, and mistake recurrence rate.",
+              "Improving consistency metrics is often more actionable than chasing higher win rates. Katsumii surfaces these metrics in a dedicated Consistency panel accessible from the Analytics section."
+            ]
+          }
+        }
+      },
+      "calendar": {
+        "title": "Calendar View",
+        "description": "See your daily PnL, trading patterns, and session history at a glance.",
+        "articles": {
+          "navigation": {
+            "title": "Navigating the Calendar",
+            "content": [
+              "The Calendar view shows a monthly grid where each day displays your net PnL for that session. Green days are profitable, red days are losing days, and grey days had no activity.",
+              "Click on any day to see the trades logged on that date in a compact list. Click a trade to open its full detail view without leaving the calendar context.",
+              "Use the month navigation arrows to move forward and backward through your trading history. A year overview mode is also available by clicking the month/year header — useful for identifying seasonal patterns."
+            ]
+          },
+          "patterns": {
+            "title": "Identifying Patterns",
+            "content": [
+              "The calendar is most powerful for identifying time-based patterns: which days of the week you perform best, which weeks tend to be your worst, and whether your losses cluster around specific market events.",
+              "Hover over any day to see a quick summary tooltip: number of trades, net PnL, win rate for the day, and any flagged mistakes. This makes pattern scanning fast without needing to open individual trades.",
+              "Combine the calendar with the Analytics section's Day-of-Week breakdown for a quantified view of your time-based patterns. The calendar provides the intuitive visual; the analytics provide the numbers."
+            ]
+          }
+        }
+      },
+      "settings": {
+        "title": "Settings & Preferences",
+        "description": "Customize Katsumii's appearance, default values, and data management to fit your workflow.",
+        "articles": {
+          "general": {
+            "title": "General Settings",
+            "content": [
+              "General settings are accessible from the gear icon in the bottom-left sidebar. From here you can change the application language, color theme (light/dark), default currency, and date format.",
+              "You can also configure your default risk per trade (in percentage or fixed R-value). This default is used to auto-calculate position sizing suggestions when entering new trades.",
+              "The 'Trading Sessions' setting lets you define your active session times (e.g. London 08:00–12:00 UTC). Katsumii uses this to auto-assign sessions to trades based on entry time."
+            ]
+          },
+          "alerts": {
+            "title": "Alerts and Notifications",
+            "content": [
+              "Katsumii can send Windows desktop notifications for upcoming prop firm rule events. Alerts are fully local — no email or app account required.",
+              "Configurable alert types include: approaching daily loss limit (e.g. at 80% of max daily drawdown), inactivity period deadline reminders (e.g. 1 day before a required trading day), and profit target reached.",
+              "Alerts are configured per account under Account Settings > Alerts. You can set custom thresholds and enable or disable each alert type independently."
+            ]
+          },
+          "backup": {
+            "title": "Data Backup",
+            "content": [
+              "All Katsumii data is stored locally in a structured database file in your user data folder. You can find the exact path in Settings > About > Data Location.",
+              "To back up your data, simply copy the database file to an external drive, cloud storage, or another location. Katsumii does not include a built-in sync service by design.",
+              "To restore a backup, close Katsumii, replace the current database file with your backup copy, and relaunch the app. All your accounts, trades, and settings will be restored exactly as they were."
+            ]
+          }
+        }
+      }
     }
   },
   "footer": {
