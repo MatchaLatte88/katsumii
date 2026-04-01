@@ -15,6 +15,7 @@
     rel="stylesheet" />
 
   <script defer src="https://cloud.umami.is/script.js" data-website-id="e5a8e4a5-cf96-4053-8fa4-9245f4fe5af4"></script>
+  <script async src="https://tally.so/widgets/embed.js"></script>
 
   <style>
     *,
@@ -812,6 +813,34 @@
       }
     }
 
+    /* ─── CTA Button ─── */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.6rem;
+      background: var(--accent);
+      color: var(--btn-fg);
+      border: none;
+      border-radius: 999px;
+      font-family: "DM Sans", sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+      box-shadow: 0 0 20px -6px color-mix(in srgb, var(--accent) 55%, transparent);
+      opacity: 0;
+      animation: riseIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.38s forwards;
+    }
+
+    .cta-btn:hover {
+      opacity: 0.88;
+      transform: translateY(-2px);
+      box-shadow: 0 0 28px -4px color-mix(in srgb, var(--accent) 70%, transparent);
+    }
+
     @media (prefers-reduced-motion: reduce) {
 
       .ticker-inner,
@@ -952,6 +981,14 @@
         for traders who take self discipline seriously.
       </p>
 
+      <button class="cta-btn" id="cs-cta"
+        data-tally-open="lbWr8B"
+        data-tally-layout="modal"
+        data-tally-width="800"
+        data-tally-auto-close="15000">
+        Join the Waitlist →
+      </button>
+
       <div class="meta-row">
         <div class="domain-chip">
           <span class="chip-label">Domain</span>
@@ -994,6 +1031,7 @@
         tags: ["Journaling", "Offline", "No subscription", "Deep Analysis", "Account Management", "Prop. Challenge Tracking", "CSV/API Trade Import", "Calendar"],
         themeLight: "Light",
         themeDark: "Dark",
+        cta: "Join the Waitlist →",
       },
       de: {
         ticker: ["Offline", "Personal / Challenge / Funded", "Performance Report Export", "Trading Tiefen Analyse", "MLL/DLL immer im Blick", "Kalender", "Account Management", "Tagebuch"],
@@ -1005,6 +1043,7 @@
         tags: ["Tagebuch", "Offline", "Kein Abo", "Tiefen Analyse", "Account Management", "Prop. Challenge Tracking", "CSV/API Trade Import", "Kalender"],
         themeLight: "Hell",
         themeDark: "Dunkel",
+        cta: "Zur Warteliste →",
       },
       es: {
         ticker: ["Offline", "Personal / Challenge / Funded", "Exportación de Informes", "Análisis profundo", "Seguimiento MLL/DLL", "Calendario", "Gestión de Cuentas", "Journaling"],
@@ -1016,6 +1055,7 @@
         tags: ["Diario", "Sin conexión", "Sin suscripción", "Análisis profundo", "Gestión de Cuentas", "Seguimiento Prop Challenge", "Importación CSV/API", "Calendario"],
         themeLight: "Claro",
         themeDark: "Oscuro",
+        cta: "Unirse a la lista →",
       },
       tw: {
         ticker: ["離線", "個人 / 挑戰 / 資助", "績效報告匯出", "深度分析", "MLL/DLL 追蹤", "日曆", "帳戶管理", "日誌記錄"],
@@ -1027,6 +1067,7 @@
         tags: ["日誌記錄", "離線", "無訂閱", "深度分析", "帳戶管理", "Prop 挑戰追蹤", "CSV/API 交易匯入", "日曆"],
         themeLight: "亮色",
         themeDark: "暗色",
+        cta: "加入等候名單 →",
       },
     }
 
@@ -1092,6 +1133,7 @@
       const tr = TRANSLATIONS[lang]
       document.getElementById("cs-badge").textContent = tr.badge
       document.getElementById("cs-eyebrow").textContent = tr.eyebrow
+      document.getElementById("cs-cta").textContent = tr.cta
       document.getElementById("cs-tagline").textContent = tr.tagline
       document.getElementById("cs-subline").textContent = tr.subline
       tr.tags.forEach((t, i) => {
