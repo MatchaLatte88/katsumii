@@ -611,7 +611,7 @@
                   {{ t('footer.support.description') }}
                 </p>
                 <a
-                  href="mailto:katsumii_dev@outlook.com"
+                  href="mailto:info@katsumii.com"
                   class="mt-5 inline-flex rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
                   :class="theme === 'light' ? 'bg-gray-900 text-white hover:bg-gray-800' : 'bg-cyan-300 text-slate-950 hover:bg-cyan-200'"
                 >
@@ -690,13 +690,13 @@ const footerProductLinks = computed(() => [
 const footerCompanyLinks = computed(() => [
   { name: tm('footer.companyLinks')[0], href: pageUrl("faq") },
   { name: tm('footer.companyLinks')[1], href: pageUrl("impressum") },
-  { name: tm('footer.companyLinks')[2], href: "mailto:katsumii_dev@outlook.com" },
+  { name: tm('footer.companyLinks')[2], href: "mailto:info@katsumii.com" },
 ])
 
 const footerLegalLinks = computed(() => [
   { name: tm('footer.legalLinks')[0], href: pageUrl("faq") },
   { name: tm('footer.legalLinks')[1], href: pageUrl("impressum") },
-  { name: tm('footer.legalLinks')[2], href: "mailto:katsumii_dev@outlook.com" },
+  { name: tm('footer.legalLinks')[2], href: "mailto:info@katsumii.com" },
 ])
 
 const heroStats = computed(() => tm('heroStats'))

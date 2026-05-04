@@ -68,7 +68,7 @@
         >
           <h2 :class="['text-sm font-semibold uppercase tracking-[0.12em]', theme === 'light' ? 'text-teal-600' : 'text-teal-300']">Kontakt</h2>
           <p :class="['mt-3 leading-7', theme === 'light' ? 'text-gray-700' : 'text-gray-300']">
-            E-Mail: support@katsumii.app
+            E-Mail: info@katsumii.com
             <br />
             Telefon: +49 000 0000000
             <br />

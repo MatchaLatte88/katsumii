@@ -85,10 +85,10 @@
         >
           <h3 :class="['text-xl font-semibold', theme === 'light' ? 'text-gray-900' : 'text-white']">Noch eine Frage offen?</h3>
           <p :class="['mt-2', theme === 'light' ? 'text-gray-600' : 'text-gray-300']">
-            Schreib uns jederzeit an support@katsumii.app - wir helfen dir schnell weiter.
+            Schreib uns jederzeit an info@katsumii.com - wir helfen dir schnell weiter.
           </p>
           <a
-            href="mailto:support@katsumii.app"
+            href="mailto:info@katsumii.com"
             :class="[
               'mt-5 inline-flex rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5',
               theme === 'light' ? 'bg-teal-600 text-white hover:bg-teal-500' : 'bg-teal-500 text-gray-950 hover:bg-teal-400'
@@ -144,7 +144,7 @@ const faqItems = [
   {
     category: "Support",
     question: "Wie kann ich Support kontaktieren?",
-    answer: "Direkt per E-Mail an support@katsumii.app. Beschreibe kurz dein Anliegen und idealerweise dein Setup fuer schnellere Hilfe.",
+    answer: "Direkt per E-Mail an info@katsumii.com. Beschreibe kurz dein Anliegen und idealerweise dein Setup fuer schnellere Hilfe.",
   },
 ]
 
