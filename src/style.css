@@ -3,6 +3,16 @@
 
 :root {
   color-scheme: light;
+  --katsumii-ink: #07131f;
+  --katsumii-muted: #5f7082;
+  --katsumii-line: rgba(15, 23, 42, 0.1);
+  --katsumii-teal: #0f9f8f;
+  --katsumii-cyan: #22d3ee;
+  --katsumii-radius-lg: 1.35rem;
+  --katsumii-radius-xl: 1.75rem;
+  --katsumii-radius-control: 999px;
+  --katsumii-shadow-soft: 0 24px 80px -42px rgba(15, 23, 42, 0.42);
+  --katsumii-shadow-strong: 0 28px 90px -44px rgba(2, 6, 23, 0.72);
 }
 
 html {
@@ -21,6 +31,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 .font-display {
@@ -28,12 +39,70 @@ body {
 }
 
 ::selection {
-  background: rgba(45, 212, 191, 0.35);
-  color: #e6fffa;
+  background: rgba(20, 184, 166, 0.28);
+  color: #042f2e;
 }
 
 html.dark ::selection {
   background: rgba(45, 212, 191, 0.45);
   color: #03131a;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgba(20, 184, 166, 0.35);
+  outline-offset: 3px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.k-section-layer {
+  position: relative;
+  z-index: 10;
+}
+
+.k-main-tile {
+  border-radius: var(--katsumii-radius-xl);
+}
+
+.k-sub-tile {
+  border-radius: var(--katsumii-radius-lg);
+}
+
+.k-pill {
+  border-radius: var(--katsumii-radius-control);
+}
+
+.k-glass {
+  backdrop-filter: blur(18px) saturate(150%);
+}
+
+.k-hover-lift {
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.k-hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+@media (max-width: 640px) {
+  html {
+    scroll-padding-top: 6rem;
+  }
+
+  .k-hover-lift:hover {
+    transform: none;
+  }
 }
 

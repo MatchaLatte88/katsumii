@@ -202,7 +202,7 @@
               >{{ feature.num }}</span>
 
               <div
-                class="overflow-hidden rounded-[1.75rem] border transition-all duration-500"
+                class="k-main-tile k-glass overflow-hidden border transition-all duration-500"
                 :class="theme === 'light'
                   ? 'border-gray-200 shadow-[0_32px_80px_-20px_rgba(15,23,42,0.18)]'
                   : 'border-blue-400/15 shadow-[0_32px_80px_-20px_rgba(0,0,0,0.7)]'"
@@ -228,7 +228,7 @@
     <section class="px-6 pb-24 pt-10 lg:px-10">
       <div class="mx-auto max-w-6xl">
         <div
-          class="cta-block relative overflow-hidden rounded-[2.5rem] border px-8 py-16 text-center sm:px-12"
+          class="cta-block k-main-tile k-glass relative overflow-hidden border px-8 py-16 text-center sm:px-12"
           :class="theme === 'light'
             ? 'border-gray-200 bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.1)]'
             : 'border-slate-800/60 bg-slate-900/60 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]'"
@@ -259,7 +259,7 @@
             </p>
             <div class="mt-9 flex flex-wrap justify-center gap-3">
               <a
-                :href="`${baseUrl}app.html#pricing`"
+                :href="`${baseUrl}app.html?page=pricing`"
                 class="rounded-full px-7 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
                 :class="theme === 'light'
                   ? 'bg-teal-700 text-white hover:bg-teal-600 hover:shadow-lg'
@@ -299,7 +299,7 @@
             :class="theme === 'light' ? 'hover:text-gray-700' : 'hover:text-slate-300'"
           >{{ t('featuresPage.nav.home') }}</a>
           <a
-            :href="`${baseUrl}app.html#pricing`"
+            :href="`${baseUrl}app.html?page=pricing`"
             class="transition-colors duration-150"
             :class="theme === 'light' ? 'hover:text-gray-700' : 'hover:text-slate-300'"
           >{{ t('featuresPage.nav.pricing') }}</a>
@@ -328,7 +328,7 @@ const year = new Date().getFullYear()
 
 const navigation = computed(() => [
   { name: t('featuresPage.nav.home'), href: baseUrl },
-  { name: t('featuresPage.nav.pricing'), href: `${baseUrl}app.html#pricing` },
+  { name: t('featuresPage.nav.pricing'), href: `${baseUrl}app.html?page=pricing` },
   { name: t('featuresPage.nav.faq'), href: `${baseUrl}app.html?page=faq` },
   { name: "Manual", href: `${baseUrl}app.html?page=manual` },
 ])

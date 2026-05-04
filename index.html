@@ -30,10 +30,10 @@
       color-scheme: dark;
       --bg: #020617;
       --bg2: #0a1628;
-      --surface: rgba(13, 21, 40, 0.82);
-      --surface-soft: rgba(15, 23, 42, 0.52);
-      --border: rgba(96, 165, 250, 0.14);
-      --border-accent: rgba(34, 211, 238, 0.22);
+      --surface: rgba(13, 21, 40, 0.76);
+      --surface-soft: rgba(15, 23, 42, 0.48);
+      --border: rgba(96, 165, 250, 0.16);
+      --border-accent: rgba(34, 211, 238, 0.28);
       --text: #f1f5f9;
       --text-muted: #94a3b8;
       --text-faint: #475569;
@@ -48,7 +48,7 @@
       --toggle-bg: rgba(13, 21, 40, 0.88);
       --input-bg: rgba(13, 21, 40, 0.8);
       --tag-bg: rgba(148, 163, 184, 0.06);
-      --shadow-glow: 0 0 60px -20px rgba(34, 211, 238, 0.18);
+      --shadow-glow: 0 28px 90px -48px rgba(34, 211, 238, 0.42);
       --orb-a: rgba(59, 130, 246, 0.28);
       --orb-b: rgba(34, 211, 238, 0.22);
       --grid-c: rgba(30, 64, 175, 0.1);
@@ -59,7 +59,7 @@
       color-scheme: light;
       --bg: #f0f4f8;
       --bg2: #e4ecf4;
-      --surface: rgba(255, 255, 255, 0.86);
+      --surface: rgba(255, 255, 255, 0.82);
       --surface-soft: rgba(248, 250, 252, 0.7);
       --border: rgba(148, 163, 184, 0.28);
       --border-accent: rgba(8, 145, 178, 0.22);
@@ -77,7 +77,7 @@
       --toggle-bg: rgba(255, 255, 255, 0.92);
       --input-bg: rgba(255, 255, 255, 0.92);
       --tag-bg: rgba(241, 245, 249, 0.9);
-      --shadow-glow: 0 0 60px -20px rgba(8, 145, 178, 0.12);
+      --shadow-glow: 0 26px 90px -50px rgba(15, 23, 42, 0.34);
       --orb-a: rgba(6, 182, 212, 0.16);
       --orb-b: rgba(59, 130, 246, 0.12);
       --grid-c: rgba(15, 23, 42, 0.055);
@@ -494,38 +494,41 @@
       position: relative;
       z-index: 1;
       flex: 1;
-      display: flex;
+      display: grid;
+      grid-template-columns: minmax(0, 0.88fr) minmax(360px, 1.12fr);
       align-items: center;
-      justify-content: center;
-      max-width: 960px;
+      gap: clamp(2.5rem, 5vw, 5.5rem);
+      max-width: 1200px;
       width: 100%;
       margin: 0 auto;
-      padding: 6vh 4.5rem 4vh;
+      padding: clamp(5rem, 9vh, 7.5rem) 2rem clamp(4rem, 7vh, 6rem);
     }
 
     /* ─── Left Column ─── */
     .col-left {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
-      width: min(100%, 760px);
+      align-items: flex-start;
+      text-align: left;
+      width: 100%;
     }
 
     /* brand row */
     .brand-row {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
+      justify-content: space-between;
       gap: 0.9rem;
-      margin-bottom: 2.5rem;
+      width: 100%;
+      margin-bottom: 3rem;
       opacity: 0;
       animation: riseIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards;
     }
 
     .logo-img {
-      width: 100px;
-      height: 100px;
+      width: 74px;
+      height: 74px;
       object-fit: contain;
       flex-shrink: 0;
     }
@@ -537,7 +540,7 @@
     }
 
     .wordmark {
-      font-size: clamp(2rem, 3.2vw, 2.85rem);
+      font-size: clamp(2rem, 3vw, 2.75rem);
       font-weight: 700;
       letter-spacing: -0.04em;
       line-height: 1;
@@ -583,7 +586,7 @@
     .eyebrow {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 0.55rem;
       font-size: 0.68rem;
       font-weight: 600;
@@ -602,7 +605,7 @@
     }
 
     h1 {
-      font-size: clamp(3rem, 5.5vw, 5.6rem);
+      font-size: clamp(3.2rem, 5.6vw, 6.05rem);
       font-weight: 700;
       letter-spacing: -0.045em;
       line-height: 0.93;
@@ -618,6 +621,8 @@
 
     h1 .strong {
       display: block;
+      max-width: 100%;
+      white-space: nowrap;
     }
 
     h1 .hl {
@@ -653,7 +658,7 @@
     .meta-row {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 0.65rem;
       flex-wrap: wrap;
       margin-top: 1.85rem;
@@ -696,6 +701,151 @@
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
+    }
+
+    .product-preview {
+      position: relative;
+      opacity: 0;
+      animation: riseIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.32s forwards;
+    }
+
+    .product-preview::before {
+      content: "";
+      position: absolute;
+      inset: 8% -5% auto auto;
+      width: 48%;
+      aspect-ratio: 1;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--accent) 22%, transparent);
+      filter: blur(70px);
+      pointer-events: none;
+    }
+
+    .preview-window {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: color-mix(in srgb, var(--surface) 92%, transparent);
+      box-shadow: var(--shadow-glow);
+      backdrop-filter: blur(22px) saturate(155%);
+      -webkit-backdrop-filter: blur(22px) saturate(155%);
+    }
+
+    .preview-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 46px;
+      border-bottom: 1px solid var(--border);
+      padding: 0 1rem;
+      background: color-mix(in srgb, var(--surface-soft) 76%, transparent);
+    }
+
+    .preview-label {
+      font-family: "DM Mono", monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .preview-dots {
+      display: inline-flex;
+      gap: 0.42rem;
+    }
+
+    .preview-dots span {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--text-faint);
+      opacity: 0.45;
+    }
+
+    .preview-media {
+      position: relative;
+      max-height: 460px;
+      overflow: hidden;
+    }
+
+    .preview-media::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 26%;
+      background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--surface) 96%, transparent));
+      pointer-events: none;
+    }
+
+    .preview-media img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .preview-media .dark-shot,
+    :root[data-theme="light"] .preview-media .light-shot {
+      display: block;
+    }
+
+    .preview-media .light-shot,
+    :root[data-theme="light"] .preview-media .dark-shot {
+      display: none;
+    }
+
+    .preview-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+    }
+
+    .preview-metric {
+      padding: 1rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .preview-metric:last-child {
+      border-right: 0;
+    }
+
+    .preview-metric strong {
+      display: block;
+      color: var(--text);
+      font-size: 1rem;
+      line-height: 1.1;
+    }
+
+    .preview-metric span {
+      display: block;
+      margin-top: 0.28rem;
+      color: var(--text-faint);
+      font-size: 0.68rem;
+    }
+
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .trust-item {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 0.8rem 0.9rem;
+      background: color-mix(in srgb, var(--surface) 70%, transparent);
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      line-height: 1.35;
+    }
+
+    .trust-item strong {
+      display: block;
+      margin-bottom: 0.24rem;
+      color: var(--text);
+      font-size: 0.82rem;
     }
 
     /* --- Footer --- */
@@ -783,15 +933,32 @@
     /* --- Responsive --- */
     @media (max-width: 960px) {
       main {
-        padding: 2.5rem 1.75rem 2rem;
+        grid-template-columns: 1fr;
+        padding: 5.5rem 1.4rem 2.5rem;
       }
 
       .col-left {
         align-items: center;
+        text-align: center;
+      }
+
+      .brand-row {
+        flex-direction: column;
+        justify-content: center;
       }
 
       .subline {
         max-width: 100%;
+      }
+
+      .meta-row,
+      .eyebrow {
+        justify-content: center;
+      }
+
+      .product-preview {
+        width: min(100%, 760px);
+        margin: 0 auto;
       }
 
       footer {
@@ -804,12 +971,35 @@
 
     @media (max-width: 520px) {
       h1 {
-        font-size: 2.7rem;
+        font-size: clamp(2.45rem, 15vw, 3.4rem);
       }
 
       .controls {
         top: 44px;
         right: 10px;
+      }
+
+      .brand-name-row {
+        gap: 0.7rem;
+      }
+
+      .logo-img {
+        width: 62px;
+        height: 62px;
+      }
+
+      .trust-strip,
+      .preview-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .preview-metric {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .preview-metric:last-child {
+        border-bottom: 0;
       }
     }
 
@@ -869,7 +1059,10 @@
       .brand-row,
       .headline-block,
       .subline,
-      .meta-row {
+      .meta-row,
+      .product-preview,
+      .cta-btn,
+      .early-badge {
         animation: none;
         opacity: 1;
       }
@@ -1025,12 +1218,60 @@
       </div>
 
     </div>
+
+    <aside class="product-preview" aria-label="Katsumii product preview">
+      <div class="preview-window">
+        <div class="preview-bar">
+          <span class="preview-label">Live product view</span>
+          <span class="preview-dots" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div class="preview-media">
+          <img src="./Dashboard_dark.png" alt="Katsumii dashboard preview" class="dark-shot" />
+          <img src="./Dashboard_light.png" alt="Katsumii dashboard preview" class="light-shot" />
+        </div>
+        <div class="preview-metrics">
+          <div class="preview-metric">
+            <strong>Offline</strong>
+            <span>Local-first journal workflow</span>
+          </div>
+          <div class="preview-metric">
+            <strong>Challenge</strong>
+            <span>Prop account progress tracking</span>
+          </div>
+          <div class="preview-metric">
+            <strong>Analytics</strong>
+            <span>Reports for serious review</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="trust-strip" aria-label="Katsumii highlights">
+        <div class="trust-item">
+          <strong>No subscription</strong>
+          One-time access model for disciplined traders.
+        </div>
+        <div class="trust-item">
+          <strong>CSV/API import</strong>
+          Built for repeatable journal routines.
+        </div>
+        <div class="trust-item">
+          <strong>Performance export</strong>
+          Share clean reports when it matters.
+        </div>
+      </div>
+    </aside>
   </main>
 
   <!-- Footer -->
   <footer>
     <span>&copy; 2026 Frederik Morbe</span>
     <div class="footer-r">
+      <a href="app.html?page=privacy">Datenschutz</a>
+      <a href="app.html?page=impressum">Impressum</a>
       <a href="mailto:info@katsumii.com">Write us an E-Mail</a>
       <span>katsumii.com</span>
     </div>

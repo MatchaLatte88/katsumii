@@ -257,6 +257,129 @@
       "settings": { "title": "Einstellungen", "description": "Katsumii anpassen und Daten verwalten.", "articles": { "general": { "title": "Allgemeine Einstellungen", "content": ["Allgemeine Einstellungen: Sprache, Theme, Währung, Datumsformat.", "Standard-Risiko pro Trade und bevorzugte Sessions konfigurierbar.", "Zugänglich über das Zahnrad-Icon in der linken Sidebar."] }, "alerts": { "title": "Alerts und Benachrichtigungen", "content": ["Katsumii sendet Windows-Desktop-Benachrichtigungen für Prop-Firm-Ereignisse.", "Konfigurierbare Alert-Typen: Tagesverlust-Annäherung, Inaktivitätsfristen, Gewinnziel erreicht.", "Alerts werden pro Konto unter Konto-Einstellungen konfiguriert."] }, "backup": { "title": "Datensicherung", "content": ["Alle Daten werden lokal in einer Datenbankdatei gespeichert.", "Zur Sicherung: Datenbankdatei in einen externen Speicherort kopieren.", "Wiederherstellung: App schließen, Datei ersetzen, App neu starten."] } } }
     }
   },
+  "pricingPage": {
+    "brandSubtitle": "Preise",
+    "popular": "Beliebteste Wahl",
+    "highlights": [
+      { "title": "Lifetime-Lizenz", "text": "Einmal zahlen und dauerhaft nutzen." },
+      { "title": "Offline-first", "text": "Kein Cloud-Account erforderlich." },
+      { "title": "Upgrade-Pfad", "text": "Einfach starten und zu Pro wachsen." }
+    ],
+    "hero": {
+      "label": "Preise",
+      "headlineA": "Einmal zahlen.",
+      "headlineB": "Langfristiger Edge.",
+      "description": "Kein Abo, keine Cloud-Abhängigkeit. Wähle den Plan, der zu deinem Trading-Workflow passt — und er gehört dir für immer."
+    },
+    "nav": {
+      "home": "Zur Startseite",
+      "features": "Funktionen",
+      "faq": "FAQ"
+    },
+    "tiers": {
+      "demo": {
+        "name": "Demo",
+        "price": "$0",
+        "description": "Entdecke den vollen Workflow mit Beispieldaten. Kein Account, keine Verpflichtung.",
+        "features": [
+          "Voller UI-Zugriff mit Beispieldaten",
+          "Alle Journal-Funktionen",
+          "Grundlegende Analytics-Übersicht",
+          "Läuft komplett offline"
+        ],
+        "cta": "Demo testen"
+      },
+      "light": {
+        "name": "Light",
+        "price": "$49",
+        "priceNote": "einmalig",
+        "description": "Für sauberes Journaling mit wichtigen Analysen und solider Trade-Dokumentation.",
+        "features": [
+          "Unbegrenzte Trade-Einträge",
+          "Screenshot-Journaling",
+          "Tags, Setups & Filter",
+          "Kernstatistiken & Reports",
+          "Kalender- & Historienansicht",
+          "Lifetime-Lizenz"
+        ],
+        "cta": "Light kaufen"
+      },
+      "professional": {
+        "name": "Professional",
+        "price": "$89",
+        "priceNote": "einmalig",
+        "description": "Für ernsthafte Trader, die Prozess optimieren, Prop-Accounts verwalten und Performance im Detail tracken.",
+        "features": [
+          "Alles aus Light",
+          "Prop-Account-Verwaltung",
+          "Challenge-Fortschritt",
+          "Erweiterte Strategie-Analysen",
+          "Konsistenz-Metriken",
+          "Regel-Tracking & Alerts"
+        ],
+        "cta": "Professional kaufen"
+      }
+    },
+    "tierMeta": {
+      "demo": { "label": "Vorschau", "value": "Erst testen, dann kaufen" },
+      "light": { "label": "Ideal für", "value": "Kern-Journaling" },
+      "professional": { "label": "Power-User", "value": "Prop & Deep Analytics" }
+    },
+    "comparison": {
+      "kicker": "Pläne im Überblick",
+      "headline": "Funktionsvergleich",
+      "description": "Sieh genau, was in jedem Plan enthalten ist. Alle Versionen laufen offline, kein Account erforderlich.",
+      "feature": "Funktion",
+      "groups": [
+        {
+          "category": "Journaling",
+          "rows": [
+            { "label": "Trade-Einträge", "demo": "5 Beispiel-Trades", "light": "Unbegrenzt", "pro": "Unbegrenzt" },
+            { "label": "Screenshot-Anhänge", "demo": true, "light": true, "pro": true },
+            { "label": "Notizen & Fehler-Tracking", "demo": true, "light": true, "pro": true },
+            { "label": "Eigene Tags & Setups", "demo": false, "light": true, "pro": true },
+            { "label": "Trade-Vorlagen", "demo": false, "light": true, "pro": true }
+          ]
+        },
+        {
+          "category": "Konten",
+          "rows": [
+            { "label": "Persönliche Konten", "demo": "1 (nur lesen)", "light": "max. 6", "pro": "Unbegrenzt" },
+            { "label": "Prop-Firm-Konten", "demo": false, "light": false, "pro": "Unbegrenzt" },
+            { "label": "Challenge-Fortschritt", "demo": false, "light": false, "pro": true },
+            { "label": "Regel-Guardrails & Alerts", "demo": false, "light": false, "pro": true }
+          ]
+        },
+        {
+          "category": "Analytics",
+          "rows": [
+            { "label": "Grundstatistiken (Winrate, PnL)", "demo": true, "light": true, "pro": true },
+            { "label": "Kalender- & Historienansicht", "demo": false, "light": true, "pro": true },
+            { "label": "Setup-Performance-Aufschlüsselung", "demo": false, "light": true, "pro": true },
+            { "label": "Session- & Wochentag-Analyse", "demo": false, "light": true, "pro": true },
+            { "label": "Konsistenz-Metriken", "demo": false, "light": false, "pro": true },
+            { "label": "Effektives vs. geplantes RRR", "demo": false, "light": false, "pro": true }
+          ]
+        },
+        {
+          "category": "Allgemein",
+          "rows": [
+            { "label": "100% Offline", "demo": true, "light": true, "pro": true },
+            { "label": "Dark & Light Mode", "demo": true, "light": true, "pro": true },
+            { "label": "Mehrsprachig", "demo": true, "light": true, "pro": true },
+            { "label": "Datensicherung & Wiederherstellung", "demo": false, "light": true, "pro": true }
+          ]
+        }
+      ]
+    },
+    "cta": {
+      "label": "Bereit loszulegen?",
+      "headline": "Baue deinen Edge mit Disziplin auf.",
+      "description": "Starte mit der kostenlosen Demo oder geh direkt zum passenden Plan. Keine Abos, niemals.",
+      "backHome": "Zur Startseite",
+      "seeFeatures": "Alle Funktionen ansehen"
+    }
+  },
   "footer": {
     "tagline": "Offline Trading Journal",
     "description": "Entwickelt für Trader, die mit Klarheit arbeiten, Regeln respektieren und ihre Performance systematisch verbessern wollen.",
@@ -275,7 +398,7 @@
     "company": "Unternehmen",
     "companyLinks": [
       "FAQ",
-      "Impressum",
+      "Kontakt",
       "E-Mail Support"
     ],
     "support": {
@@ -286,6 +409,8 @@
     "legalLinks": [
       "FAQ",
       "Impressum",
+      "Datenschutz",
+      "AGB",
       "Support"
     ],
     "copyright": "Copyright {year} Katsumii. Trading beinhaltet Risiken. Die App dient ausschließlich zur Dokumentation und Analyse."

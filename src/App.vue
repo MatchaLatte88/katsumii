@@ -14,12 +14,12 @@
     />
 
     <main>
-      <section id="top" class="relative px-6 pb-40 !pt-80 sm:pt-28 lg:px-10">
-        <div class="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <section id="top" class="hero-section relative px-5 pb-24 pt-32 sm:px-6 sm:pb-32 sm:pt-36 lg:px-10 lg:pt-40">
+        <div class="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div class="reveal">
             <p
               :class="[
-                'inline-flex items-center rounded-full border px-4 py-1 text-xs font-semibold uppercase tracking-[0.22em]',
+                'inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] shadow-sm',
                 theme === 'light'
                   ? 'border-teal-200 bg-teal-50 text-teal-700'
                   : 'border-cyan-300/30 bg-cyan-400/10 text-cyan-200'
@@ -28,18 +28,18 @@
               {{ t('hero.badge') }}
             </p>
 
-            <div class="mt-7 flex items-center gap-5">
-              <img :src="assetUrl('logo.png')" alt="Katsumii logo" class="h-20 w-20 flex-shrink-0 object-contain sm:h-24 sm:w-24" />
+            <div class="mt-7 flex items-center gap-4 sm:gap-5">
+              <img :src="assetUrl('logo.png')" alt="Katsumii logo" class="hero-logo h-16 w-16 flex-shrink-0 object-contain sm:h-24 sm:w-24" />
               <div>
                 <h1
                   :class="[
-                    'font-display !text-5xl font-semibold leading-none tracking-tight sm:text-6xl lg:text-7xl',
+                    'font-display text-5xl font-semibold leading-none tracking-tight sm:text-6xl lg:text-7xl',
                     theme === 'light' ? 'text-gray-900' : 'text-slate-100'
                   ]"
                 >
                   KATSUMII
                 </h1>
-                <p :class="['mt-2 text-xl font-light tracking-tight sm:text-2xl', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">
+                <p :class="['mt-2 text-lg font-medium tracking-tight sm:text-2xl', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">
                   {{ t('hero.tagline') }}
                   <span
                     ref="typedWordEl"
@@ -54,23 +54,23 @@
 
             <p
               :class="[
-                'mt-7 max-w-xl text-lg leading-relaxed',
+                'mt-7 max-w-2xl text-base leading-8 sm:text-lg',
                 theme === 'light' ? 'text-gray-600' : 'text-slate-300'
               ]"
             >
               {{ t('hero.description') }}
             </p>
 
-            <div class="mt-9 flex flex-wrap gap-3">
+            <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <a
                 :href="checkoutUrl"
                 :target="linkTarget(checkoutUrl)"
                 :rel="linkRel(checkoutUrl)"
                 :class="[
-                  'rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5',
+                  'inline-flex min-h-12 items-center justify-center rounded-full px-6 py-3 text-sm font-bold transition-all duration-300 hover:-translate-y-0.5',
                   theme === 'light'
-                    ? 'bg-teal-600 text-white hover:bg-teal-500'
-                    : 'bg-cyan-300 text-slate-950 hover:bg-cyan-200'
+                    ? 'bg-teal-600 text-white shadow-[0_16px_42px_-20px_rgba(13,148,136,0.9)] hover:bg-teal-500'
+                    : 'bg-cyan-300 text-slate-950 shadow-[0_16px_42px_-20px_rgba(34,211,238,0.9)] hover:bg-cyan-200'
                 ]"
               >
                 {{ t('hero.ctaBuy') }}
@@ -78,7 +78,7 @@
               <a
                 href="#showcase"
                 :class="[
-                  'rounded-full border px-6 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5',
+                  'inline-flex min-h-12 items-center justify-center rounded-full border px-6 py-3 text-sm font-bold transition-all duration-300 hover:-translate-y-0.5',
                   theme === 'light'
                     ? 'border-gray-300 bg-white/80 text-gray-700 hover:bg-white'
                     : 'border-blue-400/30 bg-slate-900/70 text-slate-200 hover:bg-slate-800/80'
@@ -87,15 +87,29 @@
                 {{ t('hero.ctaTour') }}
               </a>
             </div>
+
+            <div
+              class="mt-8 grid max-w-xl grid-cols-3 overflow-hidden rounded-2xl border"
+              :class="theme === 'light' ? 'border-gray-200/80 bg-white/68 shadow-sm' : 'border-cyan-300/15 bg-slate-950/35'"
+            >
+              <div
+                v-for="item in heroStats"
+                :key="`hero-proof-${item.label}`"
+                class="px-3 py-3"
+              >
+                <p :class="['text-sm font-bold sm:text-base', theme === 'light' ? 'text-gray-950' : 'text-slate-50']">{{ item.value }}</p>
+                <p :class="['mt-1 text-[11px] leading-tight', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">{{ item.label }}</p>
+              </div>
+            </div>
           </div>
 
-          <div class="reveal relative">
-            <div
+          <div class="reveal hero-visual relative">
+              <div
               :class="[
-                'k-card overflow-hidden rounded-2xl border',
+                'k-card hero-window k-main-tile k-glass overflow-hidden border',
                 theme === 'light'
-                  ? 'border-gray-200 bg-white/90 shadow-[0_24px_80px_-36px_rgba(15,23,42,0.35)]'
-                  : 'border-blue-400/25 bg-slate-900/85 shadow-[0_24px_80px_-36px_rgba(0,0,0,0.7)]'
+                  ? 'border-gray-200/90 bg-white/88 shadow-[0_30px_90px_-42px_rgba(15,23,42,0.42)]'
+                  : 'border-cyan-300/20 bg-slate-900/82 shadow-[0_34px_100px_-46px_rgba(0,0,0,0.86)]'
               ]"
             >
               <!-- Window chrome bar -->
@@ -147,13 +161,13 @@
         </div>
       </section>
 
-      <section id="features" class="px-6 py-20 lg:px-10">
+      <section id="features" class="section-band px-5 py-20 sm:px-6 sm:py-24 lg:px-10">
         <div class="mx-auto max-w-7xl">
           <div class="reveal max-w-3xl">
             <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">
               {{ t('features.label') }}
             </p>
-            <h2 :class="['mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
+            <h2 :class="['mt-3 font-display text-3xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
               {{ t('features.headline') }}
             </h2>
           </div>
@@ -184,8 +198,8 @@
           </div>
 
           <article
-            class="reveal feature-spotlight mt-10 grid gap-8 overflow-hidden rounded-[2rem] border p-6 sm:p-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12"
-            :class="theme === 'light' ? 'border-gray-200 bg-white/90' : 'border-blue-400/25 bg-slate-900/85'"
+            class="reveal feature-spotlight k-main-tile k-glass mt-10 grid gap-8 overflow-hidden border p-5 sm:p-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12"
+            :class="theme === 'light' ? 'border-gray-200/85 bg-white/82 shadow-[0_24px_80px_-48px_rgba(15,23,42,0.38)]' : 'border-cyan-300/18 bg-slate-900/72 shadow-[0_28px_90px_-54px_rgba(0,0,0,0.82)]'"
 
           >
             <div class="relative z-10">
@@ -203,7 +217,7 @@
                 <li
                   v-for="point in spotlightPoints"
                   :key="point"
-                  class="flex items-start gap-3 rounded-xl border px-4 py-3"
+                  class="flex items-start gap-3 rounded-2xl border px-4 py-3"
                   :class="theme === 'light' ? 'border-gray-200 bg-gray-50/80' : 'border-blue-400/20 bg-slate-900'"
                 >
                   <CheckIcon class="mt-0.5 h-5 w-5 flex-none" :class="theme === 'light' ? 'text-teal-600' : 'text-cyan-200'" />
@@ -239,8 +253,8 @@
             <article
               v-for="feature in features"
               :key="feature.name"
-              class="reveal feature-card group rounded-3xl border p-6 transition-all duration-300 hover:-translate-y-1"
-              :class="theme === 'light' ? 'border-gray-200 bg-white/85 hover:shadow-lg' : 'border-blue-400/20 bg-slate-900/70 hover:bg-slate-800/80'"
+              class="reveal feature-card k-sub-tile k-glass k-hover-lift group border p-6"
+              :class="theme === 'light' ? 'border-gray-200/85 bg-white/78 hover:border-teal-200 hover:shadow-[0_18px_55px_-35px_rgba(15,23,42,0.34)]' : 'border-cyan-300/14 bg-slate-900/62 hover:border-cyan-300/28 hover:bg-slate-900/82'"
 
             >
               <component
@@ -255,10 +269,10 @@
         </div>
       </section>
 <!-- Dashboard -->
-      <section id="showcase" class="px-6 py-20 lg:px-10">
-        <div class="mx-auto max-w-7xl space-y-12">
-          <article class="grid items-center gap-10 lg:grid-cols-2">
-            <div class="reveal rounded-3xl border p-4" :class="theme === 'light' ? 'border-gray-200 bg-white/85 shadow-xl' : 'border-blue-400/25 bg-slate-900/80 shadow-2xl shadow-black/30'">
+      <section id="showcase" class="section-band px-5 py-20 sm:px-6 sm:py-24 lg:px-10">
+        <div class="mx-auto max-w-7xl space-y-16 lg:space-y-24">
+          <article class="showcase-row grid items-center gap-8 lg:grid-cols-[1.14fr_0.86fr] lg:gap-14">
+            <div class="reveal screenshot-shell k-main-tile k-glass border p-3 sm:p-4" :class="theme === 'light' ? 'border-gray-200/85 bg-white/78 shadow-[0_24px_80px_-44px_rgba(15,23,42,0.35)]' : 'border-cyan-300/18 bg-slate-900/72 shadow-[0_28px_90px_-50px_rgba(0,0,0,0.82)]'">
               <p :class="['mb-3 text-xs font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">
                 {{ t('showcase.dashboardWindowLabel') }}
               </p>
@@ -273,7 +287,7 @@
             <div class="reveal flex items-center lg:min-h-full">
               <div>
                 <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">{{ t('showcase.dashboard.label') }}</p>
-                <h2 :class="['mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
+                <h2 :class="['mt-3 font-display text-3xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
                   {{ t('showcase.dashboard.headline') }}
                 </h2>
                 <p :class="['mt-4 text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
@@ -294,11 +308,11 @@
             </div>
           </article>
 <!-- Calendar -->
-          <article class="grid items-center mt-40 gap-10 lg:grid-cols-2">
+          <article class="showcase-row grid items-center gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:gap-14">
             <div class="reveal flex items-center order-2 lg:order-1 lg:min-h-full">
               <div>
                 <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">{{ t('showcase.calendar.label') }}</p>
-                <h2 :class="['mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
+                <h2 :class="['mt-3 font-display text-3xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
                   {{ t('showcase.calendar.headline') }}
                 </h2>
                 <p :class="['mt-4 text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
@@ -318,7 +332,7 @@
               </div>
             </div>
 
-            <div class="reveal rounded-3xl border p-4 order-1 lg:order-2" :class="theme === 'light' ? 'border-gray-200 bg-white/85 shadow-xl' : 'border-blue-400/25 bg-slate-900/80 shadow-2xl shadow-black/30'">
+            <div class="reveal screenshot-shell k-main-tile k-glass border p-3 order-1 sm:p-4 lg:order-2" :class="theme === 'light' ? 'border-gray-200/85 bg-white/78 shadow-[0_24px_80px_-44px_rgba(15,23,42,0.35)]' : 'border-cyan-300/18 bg-slate-900/72 shadow-[0_28px_90px_-50px_rgba(0,0,0,0.82)]'">
               <p :class="['mb-3 text-xs font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">
                 {{ t('showcase.calendarWindowLabel') }}
               </p>
@@ -346,120 +360,10 @@
         </div>
       </section>
 
-      <section id="pricing" class="px-6 pb-24 pt-20 lg:px-10">
-        <div class="mx-auto max-w-5xl text-center reveal">
-          <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">{{ t('pricing.label') }}</p>
-          <h2 :class="['mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
-            {{ t('pricing.headline') }}
-          </h2>
-          <p :class="['mx-auto mt-5 max-w-2xl text-base', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
-            {{ t('pricing.description') }}
-          </p>
-        </div>
-
-        <div class="mx-auto mt-16 max-w-4xl">
-          <div class="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2">
-
-            <!-- Starter card -->
-            <article
-              class="reveal flex flex-col rounded-3xl border p-8 text-left"
-              :class="theme === 'light' ? 'border-gray-200 bg-white shadow-md' : 'border-slate-700/60 bg-slate-900'"
-            >
-              <p :class="['text-xs font-semibold uppercase tracking-[0.14em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-300/80']">
-                {{ starterTier.name }}
-              </p>
-              <div class="mt-5 flex items-end gap-1.5">
-                <span :class="['text-6xl font-bold leading-none tracking-tight', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
-                  {{ starterTier.price }}
-                </span>
-              </div>
-              <p :class="['mt-1.5 text-xs font-medium uppercase tracking-widest', theme === 'light' ? 'text-gray-400' : 'text-slate-500']">
-                {{ t('pricing.oneTime') }}
-              </p>
-              <div :class="['my-6 h-px w-full', theme === 'light' ? 'bg-gray-100' : 'bg-slate-800']" />
-              <p :class="['text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-400']">
-                {{ starterTier.description }}
-              </p>
-              <ul class="mt-6 grow space-y-3">
-                <li v-for="feature in starterTier.features" :key="feature" class="flex items-start gap-2.5">
-                  <CheckIcon class="mt-0.5 h-4 w-4 flex-none" :class="theme === 'light' ? 'text-teal-600' : 'text-cyan-400'" />
-                  <span :class="['text-sm', theme === 'light' ? 'text-gray-700' : 'text-slate-300']">{{ feature }}</span>
-                </li>
-              </ul>
-              <a
-                :href="starterTier.href"
-                :target="linkTarget(starterTier.href)"
-                :rel="linkRel(starterTier.href)"
-                class="mt-8 inline-flex items-center justify-center self-start rounded-full border px-5 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
-                :class="theme === 'light' ? 'border-gray-300 bg-white text-gray-800 hover:bg-gray-50 hover:border-gray-400' : 'border-slate-600 bg-slate-800 text-slate-200 hover:bg-slate-700 hover:border-slate-500'"
-              >
-                {{ t('pricing.buy') }} {{ starterTier.name }}
-              </a>
-            </article>
-
-            <!-- Featured card — gradient border wrapper -->
-            <div
-              class="reveal rounded-3xl p-[1.5px] transition-shadow duration-300"
-              :class="theme === 'light'
-                ? 'bg-linear-to-br from-teal-400 via-cyan-300 to-teal-500 shadow-xl shadow-teal-100'
-                : 'bg-linear-to-br from-cyan-400 via-teal-400 to-cyan-500 shadow-[0_0_64px_-8px_rgba(34,211,238,0.30)]'"
-            >
-              <!-- "Most popular" badge floating above the card -->
-              <div class="-mt-4 mb-0 flex justify-center">
-                <span
-                  class="inline-flex items-center gap-1.5 rounded-full px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.14em] shadow-sm"
-                  :class="theme === 'light' ? 'bg-teal-600 text-white' : 'bg-cyan-400 text-slate-950'"
-                >
-                  <span class="inline-block h-1.5 w-1.5 rounded-full" :class="theme === 'light' ? 'bg-white' : 'bg-slate-950'" aria-hidden="true" />
-                  {{ t('pricing.mainProgram') }}
-                </span>
-              </div>
-
-              <article
-                class="flex h-full flex-col rounded-[calc(1.5rem-1.5px)] p-8 text-left"
-                :class="theme === 'light' ? 'bg-white' : 'bg-slate-900'"
-              >
-                <p :class="['text-xs font-semibold uppercase tracking-[0.14em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-300']">
-                  {{ featuredTier.name }}
-                </p>
-                <div class="mt-5 flex items-end gap-1.5">
-                  <span :class="['text-6xl font-bold leading-none tracking-tight', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
-                    {{ featuredTier.price }}
-                  </span>
-                </div>
-                <p :class="['mt-1.5 text-xs font-medium uppercase tracking-widest', theme === 'light' ? 'text-gray-400' : 'text-slate-500']">
-                  {{ t('pricing.oneTime') }}
-                </p>
-                <div :class="['my-6 h-px w-full', theme === 'light' ? 'bg-teal-100' : 'bg-slate-800']" />
-                <p :class="['text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-400']">
-                  {{ featuredTier.description }}
-                </p>
-                <ul class="mt-6 grow space-y-3">
-                  <li v-for="feature in featuredTier.features" :key="feature" class="flex items-start gap-2.5">
-                    <CheckIcon class="mt-0.5 h-4 w-4 flex-none" :class="theme === 'light' ? 'text-teal-600' : 'text-cyan-400'" />
-                    <span :class="['text-sm', theme === 'light' ? 'text-gray-700' : 'text-slate-300']">{{ feature }}</span>
-                  </li>
-                </ul>
-                <a
-                  :href="featuredTier.href"
-                  :target="linkTarget(featuredTier.href)"
-                  :rel="linkRel(featuredTier.href)"
-                  class="mt-8 flex w-full items-center justify-center rounded-full py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
-                  :class="theme === 'light' ? 'bg-teal-600 text-white hover:bg-teal-500' : 'bg-cyan-400 text-slate-950 hover:bg-cyan-300'"
-                >
-                  {{ t('pricing.buy') }} {{ featuredTier.name }}
-                </a>
-              </article>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <section class="px-6 pb-20 lg:px-10">
+      <section class="px-5 pb-20 sm:px-6 lg:px-10">
         <div
-          class="reveal mx-auto max-w-xl rounded-3xl border px-8 py-10 text-center"
-          :class="theme === 'light' ? 'border-gray-200 bg-white/80' : 'border-blue-400/15 bg-slate-900/60'"
+          class="reveal k-main-tile k-glass mx-auto max-w-3xl border px-6 py-10 text-center sm:px-10"
+          :class="theme === 'light' ? 'border-gray-200/85 bg-white/80 shadow-[0_22px_75px_-52px_rgba(15,23,42,0.4)]' : 'border-cyan-300/14 bg-slate-900/62'"
         >
           <!-- Badge -->
           <span
@@ -515,7 +419,7 @@
 
     <footer
       class="relative overflow-hidden border-t"
-      :class="theme === 'light' ? 'border-gray-200/90 bg-white/88' : 'border-blue-400/20 bg-slate-950/95'"
+      :class="theme === 'light' ? 'border-gray-200/90 bg-white/82' : 'border-cyan-300/16 bg-slate-950/92'"
     >
       <div
         class="pointer-events-none absolute inset-x-0 top-0 h-px"
@@ -524,8 +428,8 @@
 
       <div class="mx-auto max-w-7xl px-6 py-14 lg:px-10">
         <div
-          class="reveal relative overflow-hidden rounded-[2rem] border p-6 sm:p-8"
-          :class="theme === 'light' ? 'border-gray-200 bg-white/92 shadow-[0_24px_80px_-50px_rgba(15,23,42,0.28)]' : 'border-blue-400/20 bg-slate-900/72 shadow-[0_30px_90px_-50px_rgba(0,0,0,0.8)]'"
+          class="reveal k-main-tile k-glass relative overflow-hidden border p-6 sm:p-8"
+          :class="theme === 'light' ? 'border-gray-200/85 bg-white/86 shadow-[0_24px_80px_-50px_rgba(15,23,42,0.28)]' : 'border-cyan-300/16 bg-slate-900/70 shadow-[0_30px_90px_-50px_rgba(0,0,0,0.8)]'"
         >
           <div
             class="pointer-events-none absolute -right-16 top-0 h-40 w-40 rounded-full blur-3xl"
@@ -674,7 +578,7 @@ const navigation = computed(() => [
   { name: t('nav.top'), href: "#top" },
   { name: t('nav.features'), href: "#features" },
   { name: t('nav.showcase'), href: "#showcase" },
-  { name: t('nav.pricing'), href: "#pricing" },
+  { name: t('nav.pricing'), href: `${baseUrl}app.html?page=pricing` },
   { name: "Manual", href: `${baseUrl}app.html?page=manual` },
 ])
 
@@ -683,20 +587,21 @@ const footerHighlights = computed(() => tm('footer.highlights'))
 const footerProductLinks = computed(() => [
   { name: tm('footer.productLinks')[0], href: "#features" },
   { name: tm('footer.productLinks')[1], href: "#showcase" },
-  { name: tm('footer.productLinks')[2], href: "#pricing" },
+  { name: tm('footer.productLinks')[2], href: `${baseUrl}app.html?page=pricing` },
   { name: tm('footer.productLinks')[3], href: checkoutUrl },
 ])
 
 const footerCompanyLinks = computed(() => [
   { name: tm('footer.companyLinks')[0], href: pageUrl("faq") },
-  { name: tm('footer.companyLinks')[1], href: pageUrl("impressum") },
-  { name: tm('footer.companyLinks')[2], href: "mailto:info@katsumii.com" },
+  { name: tm('footer.companyLinks')[1], href: pageUrl("contact") },
 ])
 
 const footerLegalLinks = computed(() => [
   { name: tm('footer.legalLinks')[0], href: pageUrl("faq") },
   { name: tm('footer.legalLinks')[1], href: pageUrl("impressum") },
-  { name: tm('footer.legalLinks')[2], href: "mailto:info@katsumii.com" },
+  { name: tm('footer.legalLinks')[2], href: pageUrl("privacy") },
+  { name: tm('footer.legalLinks')[3], href: pageUrl("terms") },
+  { name: tm('footer.legalLinks')[4], href: "mailto:info@katsumii.com" },
 ])
 
 const heroStats = computed(() => tm('heroStats'))
@@ -713,29 +618,6 @@ const features = computed(() => [
   { name: t('features.cards.3.name'), description: t('features.cards.3.description'), icon: LockClosedIcon },
 ])
 
-const tiers = computed(() => [
-  {
-    name: t('tiers.light.name'),
-    id: "tier-light",
-    href: baseUrl,
-    price: t('tiers.light.price'),
-    description: t('tiers.light.description'),
-    features: tm('tiers.light.features'),
-    featured: false,
-  },
-  {
-    name: t('tiers.professional.name'),
-    id: "tier-pro",
-    href: baseUrl,
-    price: t('tiers.professional.price'),
-    description: t('tiers.professional.description'),
-    features: tm('tiers.professional.features'),
-    featured: true,
-  },
-])
-
-const featuredTier = computed(() => tiers.value.find((tier) => tier.featured) ?? tiers.value[0])
-const starterTier = computed(() => tiers.value.find((tier) => !tier.featured) ?? tiers.value[1] ?? tiers.value[0])
 
 const getInitialTheme = () => {
   const saved = localStorage.getItem('katsumii-theme')
@@ -751,7 +633,7 @@ const typedWordEl = ref(null)
 let typingTimer = null
 
 const startTypewriter = () => {
-  const words = ['discipline.', 'consistancy.', 'precision.', 'confidence.', 'clarity.']
+  const words = ['discipline.', 'consistency.', 'precision.', 'confidence.', 'clarity.']
   let wordIdx = 0
   let charIdx = words[0].length
   let deleting = false
@@ -878,8 +760,76 @@ const year = computed(() => new Date().getFullYear())
 </script>
 
 <style scoped>
+.hero-section::before {
+  position: absolute;
+  inset: 7rem max(1rem, calc((100vw - 80rem) / 2)) auto;
+  height: clamp(18rem, 34vw, 30rem);
+  content: "";
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 26% 35%, rgba(20, 184, 166, 0.18), transparent 34%),
+    radial-gradient(circle at 72% 42%, rgba(34, 211, 238, 0.15), transparent 38%);
+  filter: blur(44px);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.hero-logo {
+  filter: drop-shadow(0 20px 30px rgba(15, 118, 110, 0.18));
+}
+
+.hero-visual::before {
+  position: absolute;
+  inset: 8% -5% auto auto;
+  width: 42%;
+  aspect-ratio: 1;
+  content: "";
+  border-radius: 999px;
+  background: rgba(45, 212, 191, 0.18);
+  filter: blur(62px);
+  pointer-events: none;
+}
+
 .k-card {
   backdrop-filter: blur(14px);
+}
+
+.section-band {
+  position: relative;
+}
+
+.section-band::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(180deg, transparent, rgba(15, 23, 42, 0.025) 48%, transparent);
+  pointer-events: none;
+}
+
+.feature-spotlight {
+  position: relative;
+}
+
+.feature-spotlight::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(135deg, rgba(20, 184, 166, 0.09), transparent 36%),
+    radial-gradient(circle at 95% 8%, rgba(34, 211, 238, 0.16), transparent 30%);
+  pointer-events: none;
+}
+
+.feature-card {
+  min-height: 14.25rem;
+}
+
+.screenshot-shell img {
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.screenshot-shell:hover img {
+  transform: scale(1.012);
 }
 
 .typed-cursor {
@@ -938,5 +888,23 @@ const year = computed(() => new Date().getFullYear())
   .feature-marquee {
     animation: none;
   }
+
+  .screenshot-shell:hover img {
+    transform: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-section::before {
+    top: 5rem;
+    height: 22rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .feature-card {
+    min-height: auto;
+  }
+
 }
 </style>

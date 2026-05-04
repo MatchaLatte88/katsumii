@@ -257,6 +257,129 @@
       "settings": { "title": "設置與偏好", "description": "自定義 Katsumii 並管理您的數據。", "articles": { "general": { "title": "一般設置", "content": ["一般設置：語言、主題、貨幣、日期格式。", "可配置每筆交易的默認風險和活躍交易時段。", "通過左側欄的齒輪圖標訪問。"] }, "alerts": { "title": "提醒與通知", "content": ["Katsumii 為自營交易事件發送 Windows 桌面通知。", "可配置的提醒類型：接近日虧損限制、不活躍截止日期。", "在帳戶設置中按帳戶配置提醒。"] }, "backup": { "title": "數據備份", "content": ["所有數據本地儲存在資料庫檔案中。", "備份：將資料庫檔案複製到外部位置。", "還原：關閉應用，替換檔案，重新啟動。"] } } }
     }
   },
+  "pricingPage": {
+    "brandSubtitle": "價格方案",
+    "popular": "最受歡迎",
+    "highlights": [
+      { "title": "終身授權", "text": "一次付費，長期使用。" },
+      { "title": "離線優先", "text": "不需要雲端帳號。" },
+      { "title": "升級路徑", "text": "從簡單開始，逐步升級至 Pro。" }
+    ],
+    "hero": {
+      "label": "價格",
+      "headlineA": "一次付費。",
+      "headlineB": "長期優勢。",
+      "description": "無訂閱、無雲端依賴。選擇適合您交易工作流程的方案，永久擁有。"
+    },
+    "nav": {
+      "home": "返回首頁",
+      "features": "功能",
+      "faq": "常見問題"
+    },
+    "tiers": {
+      "demo": {
+        "name": "Demo",
+        "price": "$0",
+        "description": "使用範例數據探索完整工作流程。無需帳號，無需承諾。",
+        "features": [
+          "完整 UI 存取與範例數據",
+          "所有日誌功能",
+          "基本分析概覽",
+          "完全離線運行"
+        ],
+        "cta": "試用 Demo"
+      },
+      "light": {
+        "name": "Light",
+        "price": "$49",
+        "priceNote": "一次性",
+        "description": "適合需要基本分析和完善交易記錄的清晰日誌管理。",
+        "features": [
+          "無限交易記錄",
+          "截圖日誌",
+          "標籤、策略與篩選",
+          "核心統計與報告",
+          "日曆與歷史檢視",
+          "終身授權"
+        ],
+        "cta": "購買 Light"
+      },
+      "professional": {
+        "name": "Professional",
+        "price": "$89",
+        "priceNote": "一次性",
+        "description": "適合認真優化流程、管理 Prop 帳戶並深度追蹤績效的交易者。",
+        "features": [
+          "包含 Light 所有功能",
+          "Prop 帳戶管理",
+          "挑戰進度追蹤",
+          "進階策略分析",
+          "一致性指標",
+          "規則追蹤與提醒"
+        ],
+        "cta": "購買 Professional"
+      }
+    },
+    "tierMeta": {
+      "demo": { "label": "預覽", "value": "購買前先試用" },
+      "light": { "label": "適合", "value": "核心日誌管理" },
+      "professional": { "label": "進階使用者", "value": "Prop 與深度分析" }
+    },
+    "comparison": {
+      "kicker": "方案一覽",
+      "headline": "功能比較",
+      "description": "清楚了解每個方案包含的內容。所有版本皆離線運行，無需帳號。",
+      "feature": "功能",
+      "groups": [
+        {
+          "category": "日誌",
+          "rows": [
+            { "label": "交易記錄", "demo": "5 筆範例", "light": "無限", "pro": "無限" },
+            { "label": "截圖附件", "demo": true, "light": true, "pro": true },
+            { "label": "筆記與錯誤追蹤", "demo": true, "light": true, "pro": true },
+            { "label": "自訂標籤與策略", "demo": false, "light": true, "pro": true },
+            { "label": "交易範本", "demo": false, "light": true, "pro": true }
+          ]
+        },
+        {
+          "category": "帳戶",
+          "rows": [
+            { "label": "個人帳戶", "demo": "1（唯讀）", "light": "最多 6 個", "pro": "無限" },
+            { "label": "Prop 公司帳戶", "demo": false, "light": false, "pro": "無限" },
+            { "label": "挑戰進度追蹤", "demo": false, "light": false, "pro": true },
+            { "label": "規則防護與提醒", "demo": false, "light": false, "pro": true }
+          ]
+        },
+        {
+          "category": "分析",
+          "rows": [
+            { "label": "基本統計（勝率、PnL）", "demo": true, "light": true, "pro": true },
+            { "label": "日曆與歷史檢視", "demo": false, "light": true, "pro": true },
+            { "label": "策略績效分析", "demo": false, "light": true, "pro": true },
+            { "label": "交易時段與星期分析", "demo": false, "light": true, "pro": true },
+            { "label": "一致性指標", "demo": false, "light": false, "pro": true },
+            { "label": "實際 vs. 計畫 RRR", "demo": false, "light": false, "pro": true }
+          ]
+        },
+        {
+          "category": "一般",
+          "rows": [
+            { "label": "100% 離線", "demo": true, "light": true, "pro": true },
+            { "label": "深色與淺色模式", "demo": true, "light": true, "pro": true },
+            { "label": "多語言支援", "demo": true, "light": true, "pro": true },
+            { "label": "數據備份與還原", "demo": false, "light": true, "pro": true }
+          ]
+        }
+      ]
+    },
+    "cta": {
+      "label": "準備開始了嗎？",
+      "headline": "用紀律打造你的優勢。",
+      "description": "從免費 Demo 開始，或直接選擇適合你工作流程的方案。永遠不收訂閱費。",
+      "backHome": "返回首頁",
+      "seeFeatures": "查看所有功能"
+    }
+  },
   "footer": {
     "tagline": "離線交易日誌",
     "description": "為重視清晰思維、遵守規則並希望系統化提升交易績效的交易者打造。",
@@ -275,7 +398,7 @@
     "company": "公司",
     "companyLinks": [
       "常見問題",
-      "法律聲明",
+      "聯絡我們",
       "Email 支援"
     ],
     "support": {
@@ -286,6 +409,8 @@
     "legalLinks": [
       "常見問題",
       "法律聲明",
+      "隱私權政策",
+      "使用條款",
       "支援"
     ],
     "copyright": "Copyright {year} Katsumii。交易具有風險。本應用程式僅用於紀錄與分析。"

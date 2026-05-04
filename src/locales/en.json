@@ -470,6 +470,129 @@
       }
     }
   },
+  "pricingPage": {
+    "brandSubtitle": "Pricing",
+    "popular": "Most Popular",
+    "highlights": [
+      { "title": "Lifetime license", "text": "Pay once and keep the workflow." },
+      { "title": "Offline-first", "text": "No cloud account required." },
+      { "title": "Upgrade path", "text": "Start simple and grow into Pro." }
+    ],
+    "hero": {
+      "label": "Pricing",
+      "headlineA": "One-time payment.",
+      "headlineB": "Long-term edge.",
+      "description": "No subscriptions, no cloud dependency. Choose the plan that fits your trading workflow and own it forever."
+    },
+    "nav": {
+      "home": "Back Home",
+      "features": "Features",
+      "faq": "FAQ"
+    },
+    "tiers": {
+      "demo": {
+        "name": "Demo",
+        "price": "$0",
+        "description": "Explore the full workflow with sample data. No account, no commitment.",
+        "features": [
+          "Full UI access with sample data",
+          "All journal features",
+          "Basic analytics overview",
+          "Runs completely offline"
+        ],
+        "cta": "Try Free Demo"
+      },
+      "light": {
+        "name": "Light",
+        "price": "$49",
+        "priceNote": "one-time",
+        "description": "For clean journaling with essential analytics and solid trade documentation.",
+        "features": [
+          "Unlimited trade entries",
+          "Screenshot journaling",
+          "Tags, setups & filters",
+          "Core statistics & reports",
+          "Calendar & history view",
+          "Lifetime license"
+        ],
+        "cta": "Buy Light"
+      },
+      "professional": {
+        "name": "Professional",
+        "price": "$89",
+        "priceNote": "one-time",
+        "description": "For serious traders who optimize process, manage prop accounts, and track performance in depth.",
+        "features": [
+          "Everything in Light",
+          "Prop account management",
+          "Challenge progress tracking",
+          "Advanced strategy breakdowns",
+          "Consistency metrics",
+          "Rule tracking & alerts"
+        ],
+        "cta": "Buy Professional"
+      }
+    },
+    "tierMeta": {
+      "demo": { "label": "Preview", "value": "Try before buying" },
+      "light": { "label": "Best for", "value": "Core journaling" },
+      "professional": { "label": "Power users", "value": "Prop & deep analytics" }
+    },
+    "comparison": {
+      "kicker": "Plans at a glance",
+      "headline": "Feature comparison",
+      "description": "See exactly what's included in each plan. Every tier runs offline, no account required.",
+      "feature": "Feature",
+      "groups": [
+        {
+          "category": "Journaling",
+          "rows": [
+            { "label": "Trade entries", "demo": "5 sample trades", "light": "Unlimited", "pro": "Unlimited" },
+            { "label": "Screenshot attachments", "demo": true, "light": true, "pro": true },
+            { "label": "Notes & mistake tracking", "demo": true, "light": true, "pro": true },
+            { "label": "Custom tags & setups", "demo": false, "light": true, "pro": true },
+            { "label": "Trade templates", "demo": false, "light": true, "pro": true }
+          ]
+        },
+        {
+          "category": "Accounts",
+          "rows": [
+            { "label": "Personal accounts", "demo": "1 (read-only)", "light": "max. 6", "pro": "Unlimited" },
+            { "label": "Prop firm accounts", "demo": false, "light": false, "pro": "Unlimited" },
+            { "label": "Challenge progress tracking", "demo": false, "light": false, "pro": true },
+            { "label": "Rule guardrails & alerts", "demo": false, "light": false, "pro": true }
+          ]
+        },
+        {
+          "category": "Analytics",
+          "rows": [
+            { "label": "Basic statistics (winrate, PnL)", "demo": true, "light": true, "pro": true },
+            { "label": "Calendar & history view", "demo": false, "light": true, "pro": true },
+            { "label": "Setup performance breakdown", "demo": false, "light": true, "pro": true },
+            { "label": "Session & day-of-week analysis", "demo": false, "light": true, "pro": true },
+            { "label": "Consistency metrics", "demo": false, "light": false, "pro": true },
+            { "label": "Effective vs planned RRR", "demo": false, "light": false, "pro": true }
+          ]
+        },
+        {
+          "category": "General",
+          "rows": [
+            { "label": "100% offline", "demo": true, "light": true, "pro": true },
+            { "label": "Dark & light mode", "demo": true, "light": true, "pro": true },
+            { "label": "Multi-language support", "demo": true, "light": true, "pro": true },
+            { "label": "Data backup & restore", "demo": false, "light": true, "pro": true }
+          ]
+        }
+      ]
+    },
+    "cta": {
+      "label": "Ready to start?",
+      "headline": "Build your edge with discipline.",
+      "description": "Start with the free demo or go straight to the plan that fits your workflow. No subscriptions, ever.",
+      "backHome": "Back Home",
+      "seeFeatures": "See All Features"
+    }
+  },
   "footer": {
     "tagline": "Offline Trading Journal",
     "description": "Built for traders who value clarity, respect rules, and want to systematically improve their performance.",
@@ -488,7 +611,7 @@
     "company": "Company",
     "companyLinks": [
       "FAQ",
-      "Imprint",
+      "Contact",
       "Email Support"
     ],
     "support": {
@@ -499,6 +622,8 @@
     "legalLinks": [
       "FAQ",
       "Imprint",
+      "Privacy",
+      "Terms",
       "Support"
     ],
     "copyright": "Copyright {year} Katsumii. Trading involves risk. The app is intended for documentation and analysis only."

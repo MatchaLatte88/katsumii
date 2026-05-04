@@ -9,6 +9,10 @@ import ImpressumPage from "./components/ImpressumPage.vue"
 import FeaturesPage from "./components/FeaturesPage.vue"
 import WelcomePage from "./components/WelcomePage.vue"
 import ManualPage from "./components/ManualPage.vue"
+import PricingPage from "./components/PricingPage.vue"
+import PrivacyPage from "./components/PrivacyPage.vue"
+import ContactPage from "./components/ContactPage.vue"
+import TermsPage from "./components/TermsPage.vue"
 import i18n from "./i18n.js"
 
 const params = new URLSearchParams(window.location.search)
@@ -25,6 +29,14 @@ if (page === "faq") {
   ActivePage = WelcomePage
 } else if (page === "manual") {
   ActivePage = ManualPage
+} else if (page === "pricing") {
+  ActivePage = PricingPage
+} else if (page === "privacy") {
+  ActivePage = PrivacyPage
+} else if (page === "contact") {
+  ActivePage = ContactPage
+} else if (page === "terms") {
+  ActivePage = TermsPage
 }
 
 createApp(ActivePage).use(i18n).mount("#app")

@@ -31,6 +31,7 @@ No linting or test scripts are configured.
 Components reference public assets (images, etc.) via `import.meta.env.BASE_URL` to stay compatible with any Vite `base` config. Pattern: `` `${baseUrl}${path}` ``.
 
 ### Styling
+do not create new style classes if not necessary, reuse as many as possible.
 - Global styles: `src/style.css` (imported in `main.js`)
 - Tailwind v4 via `@tailwindcss/postcss` plugin — configured in `postcss.config.js`, no `tailwind.config.js` needed
 - Theme-conditional classes are applied inline with ternary arrays: `theme === 'light' ? '...' : '...'`

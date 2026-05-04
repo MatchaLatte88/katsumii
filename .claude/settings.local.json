@@ -4,7 +4,27 @@
       "Bash(node -e \":*)",
       "Bash(head -30 grep -n \"k-bg\\\\|background\\\\|orb\\\\|grid\\\\|noise\\\\|structure\" \"c:/Users/Matcha/Desktop/ClaudeWorkspace/Katsumii Website/src/components/FeaturesPage.vue\")",
       "Bash(head -30 grep -n \"k-bg\\\\|background\\\\|orb\\\\|grid\\\\|noise\\\\|structure\" \"c:/Users/Matcha/Desktop/ClaudeWorkspace/Katsumii Website/src/components/ImpressumPage.vue\")",
-      "Bash(head -20 grep -rn \"FaqPage\\\\|FeaturesPage\\\\|ImpressumPage\" \"c:/Users/Matcha/Desktop/ClaudeWorkspace/Katsumii Website/src/\")"
+      "Bash(head -20 grep -rn \"FaqPage\\\\|FeaturesPage\\\\|ImpressumPage\" \"c:/Users/Matcha/Desktop/ClaudeWorkspace/Katsumii Website/src/\")",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(where npm:*)",
+      "Bash(where node:*)",
+      "Bash(tasklist)",
+      "Bash(del /f \"C:\\\\Users\\\\Matcha\\\\Desktop\\\\ClaudeWorkspace\\\\Katsumii Website\\\\.git\\\\index.lock\")",
+      "Bash(cmd /c del /f \"C:\\\\Users\\\\Matcha\\\\Desktop\\\\ClaudeWorkspace\\\\Katsumii Website\\\\.git\\\\index.lock\")",
+      "Bash(git -C \"C:\\\\Users\\\\Matcha\\\\Desktop\\\\ClaudeWorkspace\\\\Katsumii Website\" diff)",
+      "Bash(git -C \"C:\\\\Users\\\\Matcha\\\\Desktop\\\\ClaudeWorkspace\\\\Katsumii Website\" pull --rebase)",
+      "Bash(git -C \"C:\\\\Users\\\\Matcha\\\\Desktop\\\\ClaudeWorkspace\\\\Katsumii Website\" push)",
+      "Bash(git -C \"C:\\\\Users\\\\Matcha\\\\Desktop\\\\ClaudeWorkspace\\\\Katsumii Website\" stash)",
+      "Bash(git -C \"C:\\\\Users\\\\Matcha\\\\Desktop\\\\ClaudeWorkspace\\\\Katsumii Website\" stash pop)",
+      "Bash(git -C \"C:\\\\Users\\\\Matcha\\\\Desktop\\\\ClaudeWorkspace\\\\Katsumii Website\" add index.html)",
+      "Bash(git -C \"C:\\\\Users\\\\Matcha\\\\Desktop\\\\ClaudeWorkspace\\\\Katsumii Website\" rebase --continue)",
+      "Bash(GIT_EDITOR=true git -C \"C:\\\\Users\\\\Matcha\\\\Desktop\\\\ClaudeWorkspace\\\\Katsumii Website\" rebase --continue)",
+      "Bash(git -C \"C:\\\\Users\\\\Matcha\\\\Desktop\\\\ClaudeWorkspace\\\\Katsumii Website\" rebase --abort)",
+      "Bash(git -C \"C:\\\\Users\\\\Matcha\\\\Desktop\\\\ClaudeWorkspace\\\\Katsumii Website\" pull --no-rebase)",
+      "Bash(git -C \"C:\\\\Users\\\\Matcha\\\\Desktop\\\\ClaudeWorkspace\\\\Katsumii Website\" add index.html src/App.vue src/components/FaqPage.vue src/components/ImpressumPage.vue test.html)",
+      "Bash(git -C 'C:\\\\Users\\\\Matcha\\\\Desktop\\\\ClaudeWorkspace\\\\Katsumii Website' commit -m ' *)",
+      "Bash(node -e \"require\\('./src/locales/es.json'\\)\")",
+      "Bash(node -e 'require\\('\\\\''./__TRACKED_VAR__'\\\\''\\); console.log\\('\\\\''OK: __TRACKED_VAR__'\\\\''\\)')"
     ]
   }
 }
