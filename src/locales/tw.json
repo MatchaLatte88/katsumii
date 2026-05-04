@@ -110,7 +110,7 @@
   },
   "pricing": {
     "label": "授權",
-    "headline": "一次付款，長期優勢。",
+    "headline": "一次付款，終身優勢。",
     "description": "無訂閱、無雲端依賴。資料保存在本地，你完全掌控。",
     "oneTime": "一次性",
     "mainProgram": "主程式",
@@ -268,7 +268,7 @@
     "hero": {
       "label": "價格",
       "headlineA": "一次付費。",
-      "headlineB": "長期優勢。",
+      "headlineB": "終身優勢。",
       "description": "無訂閱、無雲端依賴。選擇適合您交易工作流程的方案，永久擁有。"
     },
     "nav": {

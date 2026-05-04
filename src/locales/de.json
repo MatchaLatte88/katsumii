@@ -110,7 +110,7 @@
   },
   "pricing": {
     "label": "Lizenz",
-    "headline": "Einmal zahlen. Langfristigen Edge aufbauen.",
+    "headline": "Einmal zahlen. Lifetime Edge.",
     "description": "Kein Abo, keine Cloud-Bindung. Deine Daten bleiben lokal und du behältst die volle Kontrolle.",
     "oneTime": "einmalig",
     "mainProgram": "Hauptprogramm",
@@ -268,7 +268,7 @@
     "hero": {
       "label": "Preise",
       "headlineA": "Einmal zahlen.",
-      "headlineB": "Langfristiger Edge.",
+      "headlineB": "Lifetime Edge.",
       "description": "Kein Abo, keine Cloud-Abhängigkeit. Wähle den Plan, der zu deinem Trading-Workflow passt — und er gehört dir für immer."
     },
     "nav": {

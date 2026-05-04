@@ -70,11 +70,11 @@
           :class="[
             tier.highlighted
               ? theme === 'light'
-                ? 'recommended-card z-20 border-[#4e9b91]/55 bg-white shadow-[0_32px_80px_-40px_rgba(78,155,145,0.55)] lg:scale-[1.04]'
-                : 'recommended-card z-20 border-cyan-300/45 bg-slate-800/95 shadow-[0_32px_88px_-40px_rgba(34,211,238,0.52)] lg:scale-[1.04]'
+                ? 'recommended-card z-20 border-[#4e9b91]/55 bg-white hover:bg-[#00e5d4]/5 shadow-[0_32px_80px_-40px_rgba(78,155,145,0.55)] lg:scale-[1.04]'
+                : 'recommended-card z-20 border-cyan-300/45 bg-slate-800/95 hover:bg-[#0d2540] shadow-[0_32px_88px_-40px_rgba(34,211,238,0.52)] lg:scale-[1.04]'
               : theme === 'light'
-                ? 'pricing-card--side border-gray-200/80 bg-white/82 shadow-[0_18px_60px_-48px_rgba(15,23,42,0.28)]'
-                : 'pricing-card--side border-slate-700/55 bg-slate-900/85 shadow-[0_18px_60px_-48px_rgba(0,0,0,0.55)]',
+                ? 'pricing-card--side border-[#4e9b91]/35 bg-white/82 hover:bg-[#00e5d4]/5 shadow-[0_18px_60px_-48px_rgba(15,23,42,0.28)]'
+                : 'pricing-card--side border-slate-700/55 bg-slate-900/85 hover:bg-[#0d2540] shadow-[0_18px_60px_-48px_rgba(0,0,0,0.55)]',
           ]"
           :data-index="index"
         >
@@ -645,7 +645,8 @@ onMounted(() => {
     opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.3s ease,
-    border-color 0.3s ease;
+    border-color 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .recommended-ribbon {

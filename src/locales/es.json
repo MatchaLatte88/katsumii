@@ -110,7 +110,7 @@
   },
   "pricing": {
     "label": "Licencia",
-    "headline": "Pago único. Ventaja a largo plazo.",
+    "headline": "Pago único. Edge de por vida.",
     "description": "Sin suscripción ni dependencia de la nube. Tus datos permanecen locales y bajo tu control.",
     "oneTime": "pago único",
     "mainProgram": "Programa principal",
@@ -268,7 +268,7 @@
     "hero": {
       "label": "Precios",
       "headlineA": "Pago único.",
-      "headlineB": "Edge a largo plazo.",
+      "headlineB": "Edge de por vida.",
       "description": "Sin suscripciones, sin dependencia de la nube. Elige el plan que se adapte a tu flujo de trading y será tuyo para siempre."
     },
     "nav": {

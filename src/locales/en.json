@@ -113,7 +113,7 @@
   },
   "pricing": {
     "label": "License",
-    "headline": "One-time payment. Long-term edge.",
+    "headline": "One-time payment. Lifetime edge.",
     "description": "No subscription and no cloud dependency. Your data stays local and under your control.",
     "oneTime": "one-time",
     "mainProgram": "Main Program",
@@ -481,7 +481,7 @@
     "hero": {
       "label": "Pricing",
       "headlineA": "One-time payment.",
-      "headlineB": "Long-term edge.",
+      "headlineB": "Lifetime edge.",
       "description": "No subscriptions, no cloud dependency. Choose the plan that fits your trading workflow and own it forever."
     },
     "nav": {
