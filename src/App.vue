@@ -690,13 +690,13 @@ const footerProductLinks = computed(() => [
 const footerCompanyLinks = computed(() => [
   { name: tm('footer.companyLinks')[0], href: pageUrl("faq") },
   { name: tm('footer.companyLinks')[1], href: pageUrl("impressum") },
-  { name: tm('footer.companyLinks')[2], href: "mailto:katsumii_dev@outlook.com" },
+  { name: tm('footer.companyLinks')[2], href: "mailto:info@katsumii.com" },
 ])
 
 const footerLegalLinks = computed(() => [
   { name: tm('footer.legalLinks')[0], href: pageUrl("faq") },
   { name: tm('footer.legalLinks')[1], href: pageUrl("impressum") },
-  { name: tm('footer.legalLinks')[2], href: "mailto:katsumii_dev@outlook.com" },
+  { name: tm('footer.legalLinks')[2], href: "mailto:info@katsumii.com" },
 ])
 
 const heroStats = computed(() => tm('heroStats'))
