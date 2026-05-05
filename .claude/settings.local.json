@@ -24,7 +24,12 @@
       "Bash(git -C \"C:\\\\Users\\\\Matcha\\\\Desktop\\\\ClaudeWorkspace\\\\Katsumii Website\" add index.html src/App.vue src/components/FaqPage.vue src/components/ImpressumPage.vue test.html)",
       "Bash(git -C 'C:\\\\Users\\\\Matcha\\\\Desktop\\\\ClaudeWorkspace\\\\Katsumii Website' commit -m ' *)",
       "Bash(node -e \"require\\('./src/locales/es.json'\\)\")",
-      "Bash(node -e 'require\\('\\\\''./__TRACKED_VAR__'\\\\''\\); console.log\\('\\\\''OK: __TRACKED_VAR__'\\\\''\\)')"
+      "Bash(node -e 'require\\('\\\\''./__TRACKED_VAR__'\\\\''\\); console.log\\('\\\\''OK: __TRACKED_VAR__'\\\\''\\)')",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git -C \"C:/Users/Matcha/Desktop/ClaudeWorkspace/Katsumii Website\" status)",
+      "Bash(git -C \"C:/Users/Matcha/Desktop/ClaudeWorkspace/Katsumii Website\" diff)"
     ]
   }
 }
