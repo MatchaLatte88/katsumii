@@ -17,7 +17,7 @@
       :navigation="navigation"
       brand-title="Katsumii"
       brand-subtitle="Impressum"
-      :brand-href="baseUrl"
+      :brand-href="appHomePath"
       @toggle-theme="toggleTheme"
     />
 
@@ -125,13 +125,14 @@
 <script setup>
 import { onMounted, ref, watch } from "vue"
 import AppNav from "./AppNav.vue"
+import { appHomePath, pagePath } from "../utils/routes.js"
 
 const baseUrl = import.meta.env.BASE_URL
 
 const navigation = [
-  { name: "Manual", href: `${baseUrl}app.html?page=manual` },
-  { name: "FAQ", href: `${baseUrl}app.html?page=faq` },
-  { name: "Back Home", href: baseUrl },
+  { name: "Manual", href: pagePath("manual") },
+  { name: "FAQ", href: pagePath("faq") },
+  { name: "Back Home", href: appHomePath },
 ]
 
 const theme = ref("light")

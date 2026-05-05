@@ -19,7 +19,7 @@
       :navigation="navLinks"
       brand-title="Katsumii"
       brand-subtitle="Manual"
-      :brand-href="baseUrl"
+      :brand-href="appHomePath"
       @toggle-theme="toggleTheme"
     />
 
@@ -312,6 +312,7 @@ import {
   XMarkIcon,
 } from "@heroicons/vue/24/outline"
 import AppNav from "./AppNav.vue"
+import { appHomePath, pagePath } from "../utils/routes.js"
 
 const { t, tm } = useI18n()
 const baseUrl = import.meta.env.BASE_URL
@@ -330,8 +331,8 @@ watch(theme, (v) => document.documentElement.classList.toggle("dark", v === "dar
 
 // ---------- Nav ----------
 const navLinks = computed(() => [
-  { name: t("manualPage.nav.home"), href: baseUrl },
-  { name: t("manualPage.nav.faq"), href: `${baseUrl}app.html?page=faq` },
+  { name: t("manualPage.nav.home"), href: appHomePath },
+  { name: t("manualPage.nav.faq"), href: pagePath("faq") },
 ])
 
 // ---------- Topics ----------

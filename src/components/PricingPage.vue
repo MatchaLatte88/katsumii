@@ -13,7 +13,7 @@
       :navigation="navigation"
       brand-title="Katsumii"
       :brand-subtitle="t('pricingPage.brandSubtitle')"
-      :brand-href="baseUrl"
+      :brand-href="appHomePath"
       @toggle-theme="toggleTheme"
       @change-bg="changeBg"
     />
@@ -375,24 +375,24 @@
               {{ t('pricingPage.cta.description') }}
             </p>
             <div class="mt-9 flex flex-wrap justify-center gap-3">
-              <a
-                :href="baseUrl"
+              <RouterLink
+                :to="appHomePath"
                 class="rounded-full px-7 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
                 :class="theme === 'light'
                   ? 'bg-[#4e9b91] text-white hover:bg-[#438b82] hover:shadow-lg'
                   : 'bg-cyan-400 text-slate-950 hover:bg-cyan-300 hover:shadow-[0_10px_40px_-10px_rgba(34,211,238,0.5)]'"
               >
                 {{ t('pricingPage.cta.backHome') }}
-              </a>
-              <a
-                :href="`${baseUrl}app.html?page=features`"
+              </RouterLink>
+              <RouterLink
+                :to="pagePath('features')"
                 class="rounded-full border px-7 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
                 :class="theme === 'light'
                   ? 'border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50'
                   : 'border-slate-700/80 bg-transparent text-slate-300 hover:border-slate-500 hover:bg-slate-800/50'"
               >
                 {{ t('pricingPage.cta.seeFeatures') }}
-              </a>
+              </RouterLink>
             </div>
           </div>
         </div>
@@ -410,21 +410,21 @@
       >
         <span>&copy; {{ year }} Katsumii</span>
         <div class="flex gap-5">
-          <a
-            :href="baseUrl"
+          <RouterLink
+            :to="appHomePath"
             class="transition-colors duration-150"
             :class="theme === 'light' ? 'hover:text-gray-700' : 'hover:text-slate-300'"
-          >{{ t('pricingPage.nav.home') }}</a>
-          <a
-            :href="`${baseUrl}app.html?page=features`"
+          >{{ t('pricingPage.nav.home') }}</RouterLink>
+          <RouterLink
+            :to="pagePath('features')"
             class="transition-colors duration-150"
             :class="theme === 'light' ? 'hover:text-gray-700' : 'hover:text-slate-300'"
-          >{{ t('pricingPage.nav.features') }}</a>
-          <a
-            :href="`${baseUrl}app.html?page=faq`"
+          >{{ t('pricingPage.nav.features') }}</RouterLink>
+          <RouterLink
+            :to="pagePath('faq')"
             class="transition-colors duration-150"
             :class="theme === 'light' ? 'hover:text-gray-700' : 'hover:text-slate-300'"
-          >{{ t('pricingPage.nav.faq') }}</a>
+          >{{ t('pricingPage.nav.faq') }}</RouterLink>
         </div>
       </div>
     </footer>
@@ -436,6 +436,7 @@ import { computed, nextTick, onMounted, ref, watch } from "vue"
 import { useI18n } from "vue-i18n"
 import AppNav from "./AppNav.vue"
 import KbBackground from "../backgrounds/KbBackground.vue"
+import { appHomePath, pagePath } from "../utils/routes.js"
 
 const { t, tm } = useI18n()
 
@@ -443,9 +444,9 @@ const baseUrl = import.meta.env.BASE_URL
 const year = new Date().getFullYear()
 
 const navigation = computed(() => [
-  { name: t('pricingPage.nav.home'), href: baseUrl },
-  { name: t('pricingPage.nav.features'), href: `${baseUrl}app.html?page=features` },
-  { name: t('pricingPage.nav.faq'), href: `${baseUrl}app.html?page=faq` },
+  { name: t('pricingPage.nav.home'), href: appHomePath },
+  { name: t('pricingPage.nav.features'), href: pagePath("features") },
+  { name: t('pricingPage.nav.faq'), href: pagePath("faq") },
 ])
 
 const pricingHighlights = computed(() => tm('pricingPage.highlights'))

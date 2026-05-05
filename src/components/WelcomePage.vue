@@ -19,7 +19,7 @@
       :navigation="navigation"
       brand-title="Katsumii"
       brand-subtitle="Welcome"
-      :brand-href="baseUrl"
+      :brand-href="appHomePath"
       @toggle-theme="toggleTheme"
     />
 
@@ -88,8 +88,8 @@
 
       <!-- CTA -->
       <div class="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-        <a
-          :href="`${baseUrl}app.html?page=manual`"
+        <RouterLink
+          :to="pagePath('manual')"
           :class="[
             'inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-base font-semibold transition-all duration-300 hover:-translate-y-0.5',
             theme === 'light'
@@ -99,13 +99,13 @@
         >
           {{ t('welcomePage.cta') }}
           <ArrowRightIcon class="size-4" />
-        </a>
-        <a
-          :href="baseUrl"
+        </RouterLink>
+        <RouterLink
+          :to="appHomePath"
           :class="['text-sm font-medium transition-colors duration-300', theme === 'light' ? 'text-gray-500 hover:text-gray-800' : 'text-slate-400 hover:text-slate-200']"
         >
           {{ t('welcomePage.nav.home') }}
-        </a>
+        </RouterLink>
       </div>
     </section>
   </div>
@@ -116,6 +116,7 @@ import { computed, onMounted, ref, watch } from "vue"
 import { useI18n } from "vue-i18n"
 import { ArrowRightIcon, CheckCircleIcon, SparklesIcon } from "@heroicons/vue/24/outline"
 import AppNav from "./AppNav.vue"
+import { appHomePath, pagePath } from "../utils/routes.js"
 
 const { t, tm } = useI18n()
 const baseUrl = import.meta.env.BASE_URL
@@ -125,8 +126,8 @@ const savedTheme = localStorage.getItem("katsumii-theme")
 const theme = ref(savedTheme === "dark" ? "dark" : "light")
 
 const navigation = computed(() => [
-  { name: t("welcomePage.nav.manual"), href: `${baseUrl}app.html?page=manual` },
-  { name: t("welcomePage.nav.home"), href: baseUrl },
+  { name: t("welcomePage.nav.manual"), href: pagePath("manual") },
+  { name: t("welcomePage.nav.home"), href: appHomePath },
 ])
 
 const onboardingSteps = computed(() => tm("welcomePage.onboarding"))

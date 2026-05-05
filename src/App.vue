@@ -347,8 +347,8 @@
         </div>
 
         <div class="mx-auto mt-8 max-w-7xl text-center reveal">
-          <a
-            :href="pageUrl('features')"
+          <RouterLink
+            :to="pagePath('features')"
             :class="[
               'inline-flex items-center gap-2 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5',
               theme === 'light' ? 'text-gray-600 hover:text-gray-900' : 'text-slate-400 hover:text-cyan-200'
@@ -356,7 +356,7 @@
           >
             {{ t('showcase.seeAll') }}
             <span aria-hidden="true">-&gt;</span>
-          </a>
+          </RouterLink>
         </div>
       </section>
 
@@ -406,13 +406,13 @@
           </ul>
 
           <!-- CTA -->
-          <a
-            :href="baseUrl"
+          <RouterLink
+            :to="appHomePath"
             class="mt-7 inline-flex rounded-full border px-6 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
             :class="theme === 'light' ? 'border-gray-300 text-gray-700 hover:bg-gray-50' : 'border-blue-400/30 text-slate-200 hover:bg-slate-800/60'"
           >
             {{ t('demo.cta') }}
-          </a>
+          </RouterLink>
         </div>
       </section>
     </main>
@@ -556,6 +556,7 @@ import { CheckIcon } from "@heroicons/vue/20/solid"
 import { ChartBarIcon, CloudArrowUpIcon, LockClosedIcon, ServerIcon } from "@heroicons/vue/24/outline"
 import AppNav from "./components/AppNav.vue"
 import KbBackground from "./backgrounds/KbBackground.vue"
+import { appHomePath, pagePath } from "./utils/routes.js"
 
 const { t, tm } = useI18n()
 
@@ -571,15 +572,14 @@ const changeBg = (val) => {
 
 const baseUrl = import.meta.env.BASE_URL
 const assetUrl = (path) => `${baseUrl}${path.replace(/^\/+/, "")}`
-const pageUrl = (page) => `${baseUrl}app.html?page=${page}`
 const checkoutUrl = baseUrl
 
 const navigation = computed(() => [
   { name: t('nav.top'), href: "#top" },
   { name: t('nav.showcase'), href: "#features" },
-  { name: t('nav.features'), href: `${baseUrl}app.html?page=features` },
-  { name: t('nav.pricing'), href: `${baseUrl}app.html?page=pricing` },
-  { name: "Manual", href: `${baseUrl}app.html?page=manual` },
+  { name: t('nav.features'), href: pagePath("features") },
+  { name: t('nav.pricing'), href: pagePath("pricing") },
+  { name: "Manual", href: pagePath("manual") },
 ])
 
 const footerHighlights = computed(() => tm('footer.highlights'))
@@ -587,20 +587,20 @@ const footerHighlights = computed(() => tm('footer.highlights'))
 const footerProductLinks = computed(() => [
   { name: tm('footer.productLinks')[0], href: "#features" },
   { name: tm('footer.productLinks')[1], href: "#showcase" },
-  { name: tm('footer.productLinks')[2], href: `${baseUrl}app.html?page=pricing` },
+  { name: tm('footer.productLinks')[2], href: pagePath("pricing") },
   { name: tm('footer.productLinks')[3], href: checkoutUrl },
 ])
 
 const footerCompanyLinks = computed(() => [
-  { name: tm('footer.companyLinks')[0], href: pageUrl("faq") },
-  { name: tm('footer.companyLinks')[1], href: pageUrl("contact") },
+  { name: tm('footer.companyLinks')[0], href: pagePath("faq") },
+  { name: tm('footer.companyLinks')[1], href: pagePath("contact") },
 ])
 
 const footerLegalLinks = computed(() => [
-  { name: tm('footer.legalLinks')[0], href: pageUrl("faq") },
-  { name: tm('footer.legalLinks')[1], href: pageUrl("impressum") },
-  { name: tm('footer.legalLinks')[2], href: pageUrl("privacy") },
-  { name: tm('footer.legalLinks')[3], href: pageUrl("terms") },
+  { name: tm('footer.legalLinks')[0], href: pagePath("faq") },
+  { name: tm('footer.legalLinks')[1], href: pagePath("impressum") },
+  { name: tm('footer.legalLinks')[2], href: pagePath("privacy") },
+  { name: tm('footer.legalLinks')[3], href: pagePath("terms") },
   { name: tm('footer.legalLinks')[4], href: "mailto:info@katsumii.com" },
 ])
 

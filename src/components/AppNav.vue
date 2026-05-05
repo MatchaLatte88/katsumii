@@ -19,7 +19,12 @@
       ]"
     >
       <div class="relative flex h-16 items-center justify-between gap-3">
-        <a :href="brandHref" class="group flex items-center gap-3">
+        <component
+          :is="isRouteLink(brandHref) ? 'RouterLink' : 'a'"
+          :to="isRouteLink(brandHref) ? brandHref : undefined"
+          :href="isRouteLink(brandHref) ? undefined : brandHref"
+          class="group flex items-center gap-3"
+        >
           <div class="brand-mark size-11 overflow-hidden rounded-xl transition-transform duration-300 group-hover:scale-[1.04]">
             <img :src="assetUrl('logo.png')" alt="Katsumii Logo" class="h-full w-full object-contain" />
           </div>
@@ -36,15 +41,17 @@
               {{ brandSubtitle }}
             </div>
           </div>
-        </a>
+        </component>
 
         <div class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full border px-1.5 py-1 lg:flex"
           :class="theme === 'light' ? 'border-gray-200/75 bg-white/44' : 'border-cyan-300/12 bg-white/[0.03]'"
         >
-          <a
+          <component
             v-for="item in visibleNavigation"
             :key="item.name"
-            :href="item.href"
+            :is="isRouteLink(item.href) ? 'RouterLink' : 'a'"
+            :to="isRouteLink(item.href) ? item.href : undefined"
+            :href="isRouteLink(item.href) ? undefined : item.href"
             :class="[
               isTopLink(item)
                 ? 'inline-flex h-9 w-9 items-center justify-center rounded-full p-0 transition-all duration-300'
@@ -57,7 +64,7 @@
             <ArrowUpIcon v-if="isTopLink(item)" class="h-4 w-4" aria-hidden="true" />
             <span v-if="isTopLink(item)" class="sr-only">{{ item.name }}</span>
             <template v-else>{{ item.name }}</template>
-          </a>
+          </component>
         </div>
 
         <div class="nav-actions flex items-center gap-0.5">
@@ -96,10 +103,12 @@
       ]"
     >
       <div class="space-y-1 px-4 py-3">
-        <a
+        <component
           v-for="item in visibleNavigation"
           :key="item.name"
-          :href="item.href"
+          :is="isRouteLink(item.href) ? 'RouterLink' : 'a'"
+          :to="isRouteLink(item.href) ? item.href : undefined"
+          :href="isRouteLink(item.href) ? undefined : item.href"
           :class="[
             isTopLink(item)
               ? 'flex h-11 items-center justify-center rounded-xl px-3 py-2.5 transition-all duration-300 hover:translate-x-0.5'
@@ -112,7 +121,7 @@
           <ArrowUpIcon v-if="isTopLink(item)" class="h-5 w-5" aria-hidden="true" />
           <span v-if="isTopLink(item)" class="sr-only">{{ item.name }}</span>
           <template v-else>{{ item.name }}</template>
-        </a>
+        </component>
       </div>
     </DisclosurePanel>
   </Disclosure>
@@ -139,15 +148,16 @@ const props = defineProps({
   navigation: {
     type: Array,
     default: () => [
-      { name: "Features", href: "app.html?page=features" },
+      { name: "Features", href: "/features" },
       { name: "Screens", href: "#screens" },
-      { name: "License", href: "app.html?page=pricing" },
+      { name: "License", href: "/pricing" },
     ],
   },
 })
 
 const hasScrolled = ref(false)
 const isTopLink = (item) => item?.href === "#top"
+const isRouteLink = (href) => Boolean(href?.startsWith("/") && !href.startsWith("//") && !href.includes("#"))
 const visibleNavigation = computed(() =>
   props.navigation.filter((item) => !isTopLink(item) || hasScrolled.value)
 )
