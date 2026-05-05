@@ -14,553 +14,42 @@
     />
 
     <main>
-      <section id="top" class="hero-section relative px-5 pb-24 pt-32 sm:px-6 sm:pb-32 sm:pt-36 lg:px-10 lg:pt-40">
-        <div class="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-          <div class="reveal">
-            <p
-              :class="[
-                'inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] shadow-sm',
-                theme === 'light'
-                  ? 'border-teal-200 bg-teal-50 text-teal-700'
-                  : 'border-cyan-300/30 bg-cyan-400/10 text-cyan-200'
-              ]"
-            >
-              {{ t('hero.badge') }}
-            </p>
-
-            <div class="mt-7 flex items-center gap-4 sm:gap-5">
-              <img :src="assetUrl('logo.png')" alt="Katsumii logo" class="hero-logo h-16 w-16 flex-shrink-0 object-contain sm:h-24 sm:w-24" />
-              <div>
-                <h1
-                  :class="[
-                    'font-display text-5xl font-semibold leading-none tracking-tight sm:text-6xl lg:text-7xl',
-                    theme === 'light' ? 'text-gray-900' : 'text-slate-100'
-                  ]"
-                >
-                  KATSUMII
-                </h1>
-                <p :class="['mt-2 text-lg font-medium tracking-tight sm:text-2xl', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">
-                  {{ t('hero.tagline') }}
-                  <span
-                    ref="typedWordEl"
-                    :class="['font-semibold', theme === 'light' ? 'text-teal-600' : 'text-cyan-300']"
-                  >clarity</span><span
-                    class="typed-cursor"
-                    :class="theme === 'light' ? 'text-teal-600' : 'text-cyan-300'"
-                  >|</span>
-                </p>
-              </div>
-            </div>
-
-            <p
-              :class="[
-                'mt-7 max-w-2xl text-base leading-8 sm:text-lg',
-                theme === 'light' ? 'text-gray-600' : 'text-slate-300'
-              ]"
-            >
-              {{ t('hero.description') }}
-            </p>
-
-            <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <a
-                :href="checkoutUrl"
-                :target="linkTarget(checkoutUrl)"
-                :rel="linkRel(checkoutUrl)"
-                :class="[
-                  'inline-flex min-h-12 items-center justify-center rounded-full px-6 py-3 text-sm font-bold transition-all duration-300 hover:-translate-y-0.5',
-                  theme === 'light'
-                    ? 'bg-teal-600 text-white shadow-[0_16px_42px_-20px_rgba(13,148,136,0.9)] hover:bg-teal-500'
-                    : 'bg-cyan-300 text-slate-950 shadow-[0_16px_42px_-20px_rgba(34,211,238,0.9)] hover:bg-cyan-200'
-                ]"
-              >
-                {{ t('hero.ctaBuy') }}
-              </a>
-              <a
-                href="#showcase"
-                :class="[
-                  'inline-flex min-h-12 items-center justify-center rounded-full border px-6 py-3 text-sm font-bold transition-all duration-300 hover:-translate-y-0.5',
-                  theme === 'light'
-                    ? 'border-gray-300 bg-white/80 text-gray-700 hover:bg-white'
-                    : 'border-blue-400/30 bg-slate-900/70 text-slate-200 hover:bg-slate-800/80'
-                ]"
-              >
-                {{ t('hero.ctaTour') }}
-              </a>
-            </div>
-
-            <div
-              class="mt-8 grid max-w-xl grid-cols-3 overflow-hidden rounded-2xl border"
-              :class="theme === 'light' ? 'border-gray-200/80 bg-white/68 shadow-sm' : 'border-cyan-300/15 bg-slate-950/35'"
-            >
-              <div
-                v-for="item in heroStats"
-                :key="`hero-proof-${item.label}`"
-                class="px-3 py-3"
-              >
-                <p :class="['text-sm font-bold sm:text-base', theme === 'light' ? 'text-gray-950' : 'text-slate-50']">{{ item.value }}</p>
-                <p :class="['mt-1 text-[11px] leading-tight', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">{{ item.label }}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="reveal hero-visual relative">
-              <div
-              :class="[
-                'k-card hero-window k-main-tile k-glass overflow-hidden border',
-                theme === 'light'
-                  ? 'border-gray-200/90 bg-white/88 shadow-[0_30px_90px_-42px_rgba(15,23,42,0.42)]'
-                  : 'border-cyan-300/20 bg-slate-900/82 shadow-[0_34px_100px_-46px_rgba(0,0,0,0.86)]'
-              ]"
-            >
-              <!-- Window chrome bar -->
-              <div
-                :class="[
-                  'flex items-center justify-between border-b px-4 py-2.5',
-                  theme === 'light' ? 'border-gray-200 bg-gray-50/80' : 'border-blue-400/20 bg-slate-950/60'
-                ]"
-              >
-                <span :class="['text-xs font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-300']">{{ t('showcase.dashboardWindowLabel') }}</span>
-                <div class="flex items-center gap-1.5">
-                  <span class="h-2.5 w-2.5 rounded-full bg-red-400/50" />
-                  <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/50" />
-                  <span class="h-2.5 w-2.5 rounded-full bg-green-400/50" />
-                </div>
-              </div>
-
-              <!-- Screenshot cropped -->
-              <div class="relative overflow-hidden" style="max-height: 260px;">
-                <img
-                  :src="theme === 'light' ? assetUrl('Dashboard_light.png') : assetUrl('Dashboard_dark.png')"
-                  alt="Katsumii dashboard"
-                  class="w-full object-cover object-top"
-                />
-                <div
-                  class="pointer-events-none absolute inset-x-0 bottom-0 h-20"
-                  :class="theme === 'light' ? 'bg-gradient-to-t from-white/80 to-transparent' : 'bg-gradient-to-t from-slate-900/80 to-transparent'"
-                />
-              </div>
-
-              <!-- Stats row -->
-              <div
-                :class="[
-                  'grid grid-cols-3 divide-x border-t',
-                  theme === 'light' ? 'divide-gray-200 border-gray-200' : 'divide-blue-400/20 border-blue-400/20'
-                ]"
-              >
-                <div
-                  v-for="item in heroStats"
-                  :key="item.label"
-                  class="px-3 py-3 text-center"
-                >
-                  <p :class="['text-base font-semibold', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ item.value }}</p>
-                  <p :class="['text-[11px] mt-0.5', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">{{ item.label }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="features" class="section-band px-5 py-20 sm:px-6 sm:py-24 lg:px-10">
-        <div class="mx-auto max-w-7xl">
-          <div class="reveal max-w-3xl">
-            <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">
-              {{ t('features.label') }}
-            </p>
-            <h2 :class="['mt-3 font-display text-3xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
-              {{ t('features.headline') }}
-            </h2>
-          </div>
-
-          <div class="reveal mt-8 overflow-hidden rounded-full border py-2" :class="theme === 'light' ? 'border-gray-200 bg-white/75' : 'border-blue-400/20 bg-slate-900'">
-            <div class="feature-marquee flex min-w-max gap-2 px-2">
-              <span
-                v-for="item in featureTicker"
-                :key="item"
-                :class="[
-                  'rounded-full border px-4 py-1 text-xs font-semibold uppercase tracking-[0.12em]',
-                  theme === 'light' ? 'border-teal-200 bg-teal-50 text-teal-700' : 'border-cyan-300/30 bg-cyan-400/10 text-cyan-200'
-                ]"
-              >
-                {{ item }}
-              </span>
-              <span
-                v-for="item in featureTicker"
-                :key="`${item}-clone`"
-                :class="[
-                  'rounded-full border px-4 py-1 text-xs font-semibold uppercase tracking-[0.12em]',
-                  theme === 'light' ? 'border-teal-200 bg-teal-50 text-teal-700' : 'border-cyan-300/30 bg-cyan-400/10 text-cyan-200'
-                ]"
-              >
-                {{ item }}
-              </span>
-            </div>
-          </div>
-
-          <article
-            class="reveal feature-spotlight k-main-tile k-glass mt-10 grid gap-8 overflow-hidden border p-5 sm:p-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12"
-            :class="theme === 'light' ? 'border-gray-200/85 bg-white/82 shadow-[0_24px_80px_-48px_rgba(15,23,42,0.38)]' : 'border-cyan-300/18 bg-slate-900/72 shadow-[0_28px_90px_-54px_rgba(0,0,0,0.82)]'"
-
-          >
-            <div class="relative z-10">
-              <p :class="['text-xs font-semibold uppercase tracking-[0.18em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">
-                {{ t('features.spotlight.label') }}
-              </p>
-              <h3 :class="['mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
-                {{ t('features.spotlight.headline') }}
-              </h3>
-              <p :class="['mt-4 max-w-xl text-sm leading-relaxed sm:text-base', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
-                {{ t('features.spotlight.description') }}
-              </p>
-
-              <ul class="mt-6 space-y-3">
-                <li
-                  v-for="point in spotlightPoints"
-                  :key="point"
-                  class="flex items-start gap-3 rounded-2xl border px-4 py-3"
-                  :class="theme === 'light' ? 'border-gray-200 bg-gray-50/80' : 'border-blue-400/20 bg-slate-900'"
-                >
-                  <CheckIcon class="mt-0.5 h-5 w-5 flex-none" :class="theme === 'light' ? 'text-teal-600' : 'text-cyan-200'" />
-                  <span :class="['text-sm', theme === 'light' ? 'text-gray-700' : 'text-slate-200']">{{ point }}</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="relative z-10 flex items-center">
-              <div class="relative w-full">
-                <img
-                  :src="theme === 'light' ? assetUrl('Main_light.png') : assetUrl('Main_dark.png')"
-                  alt="Katsumii feature spotlight"
-                  class="w-full rounded-2xl border"
-                  :class="theme === 'light' ? 'border-gray-200 shadow-xl' : 'border-blue-400/25 shadow-2xl shadow-black/30'"
-                />
-                <div class="mt-4 grid grid-cols-3 gap-3">
-                  <div
-                    v-for="kpi in spotlightKpis"
-                    :key="kpi.label"
-                    class="rounded-xl border px-3 py-2 text-center"
-                    :class="theme === 'light' ? 'border-gray-200 bg-white/95' : 'border-blue-400/25 bg-slate-950/75'"
-                  >
-                    <p :class="['text-base font-semibold', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ kpi.value }}</p>
-                    <p :class="['text-[11px]', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">{{ kpi.label }}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <div class="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            <article
-              v-for="feature in features"
-              :key="feature.name"
-              class="reveal feature-card k-sub-tile k-glass k-hover-lift group border p-6"
-              :class="theme === 'light' ? 'border-gray-200/85 bg-white/78 hover:border-teal-200 hover:shadow-[0_18px_55px_-35px_rgba(15,23,42,0.34)]' : 'border-cyan-300/14 bg-slate-900/62 hover:border-cyan-300/28 hover:bg-slate-900/82'"
-
-            >
-              <component
-                :is="feature.icon"
-                class="h-6 w-6"
-                :class="theme === 'light' ? 'text-teal-600' : 'text-cyan-200'"
-              />
-              <h3 :class="['mt-4 text-lg font-semibold', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ feature.name }}</h3>
-              <p :class="['mt-3 text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">{{ feature.description }}</p>
-            </article>
-          </div>
-        </div>
-      </section>
-<!-- Dashboard -->
-      <section id="showcase" class="section-band px-5 py-20 sm:px-6 sm:py-24 lg:px-10">
-        <div class="mx-auto max-w-7xl space-y-16 lg:space-y-24">
-          <article class="showcase-row grid items-center gap-8 lg:grid-cols-[1.14fr_0.86fr] lg:gap-14">
-            <div class="reveal screenshot-shell k-main-tile k-glass border p-3 sm:p-4" :class="theme === 'light' ? 'border-gray-200/85 bg-white/78 shadow-[0_24px_80px_-44px_rgba(15,23,42,0.35)]' : 'border-cyan-300/18 bg-slate-900/72 shadow-[0_28px_90px_-50px_rgba(0,0,0,0.82)]'">
-              <p :class="['mb-3 text-xs font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">
-                {{ t('showcase.dashboardWindowLabel') }}
-              </p>
-              <img
-                :src="theme === 'light' ? assetUrl('Dashboard_light.png') : assetUrl('Dashboard_dark.png')"
-                alt="Katsumii dashboard analytics screenshot"
-                class="w-full rounded-2xl border"
-                :class="theme === 'light' ? 'border-gray-200' : 'border-blue-400/25'"
-              />
-            </div>
-
-            <div class="reveal flex items-center lg:min-h-full">
-              <div>
-                <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">{{ t('showcase.dashboard.label') }}</p>
-                <h2 :class="['mt-3 font-display text-3xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
-                  {{ t('showcase.dashboard.headline') }}
-                </h2>
-                <p :class="['mt-4 text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
-                  {{ t('showcase.dashboard.description') }}
-                </p>
-                <ul class="mt-8 space-y-4">
-                  <li
-                    v-for="step in dashboardSteps"
-                    :key="step.title"
-                    class="rounded-2xl border p-4"
-                    :class="theme === 'light' ? 'border-gray-200 bg-white/80' : 'border-blue-400/20 bg-slate-900'"
-                  >
-                    <p :class="['text-sm font-semibold', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ step.title }}</p>
-                    <p :class="['mt-1 text-sm', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">{{ step.description }}</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </article>
-<!-- Calendar -->
-          <article class="showcase-row grid items-center gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:gap-14">
-            <div class="reveal flex items-center order-2 lg:order-1 lg:min-h-full">
-              <div>
-                <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">{{ t('showcase.calendar.label') }}</p>
-                <h2 :class="['mt-3 font-display text-3xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">
-                  {{ t('showcase.calendar.headline') }}
-                </h2>
-                <p :class="['mt-4 text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
-                  {{ t('showcase.calendar.description') }}
-                </p>
-                <ul class="mt-8 space-y-4">
-                  <li
-                    v-for="step in calendarSteps"
-                    :key="step.title"
-                    class="rounded-2xl border p-4"
-                    :class="theme === 'light' ? 'border-gray-200 bg-white/80' : 'border-blue-400/20 bg-slate-900'"
-                  >
-                    <p :class="['text-sm font-semibold', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ step.title }}</p>
-                    <p :class="['mt-1 text-sm', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">{{ step.description }}</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="reveal screenshot-shell k-main-tile k-glass border p-3 order-1 sm:p-4 lg:order-2" :class="theme === 'light' ? 'border-gray-200/85 bg-white/78 shadow-[0_24px_80px_-44px_rgba(15,23,42,0.35)]' : 'border-cyan-300/18 bg-slate-900/72 shadow-[0_28px_90px_-50px_rgba(0,0,0,0.82)]'">
-              <p :class="['mb-3 text-xs font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">
-                {{ t('showcase.calendarWindowLabel') }}
-              </p>
-              <img
-                :src="theme === 'light' ? assetUrl('Calendar_light.png') : assetUrl('Calendar_dark.png')"
-                alt="Katsumii trading calendar screenshot"
-                class="w-full rounded-2xl border"
-                :class="theme === 'light' ? 'border-gray-200' : 'border-blue-400/25'"
-              />
-            </div>
-          </article>
-        </div>
-
-        <div class="mx-auto mt-8 max-w-7xl text-center reveal">
-          <RouterLink
-            :to="pagePath('features')"
-            :class="[
-              'inline-flex items-center gap-2 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5',
-              theme === 'light' ? 'text-gray-600 hover:text-gray-900' : 'text-slate-400 hover:text-cyan-200'
-            ]"
-          >
-            {{ t('showcase.seeAll') }}
-            <span aria-hidden="true">-&gt;</span>
-          </RouterLink>
-        </div>
-      </section>
-
-      <section class="px-5 pb-20 sm:px-6 lg:px-10">
-        <div
-          class="reveal k-main-tile k-glass mx-auto max-w-3xl border px-6 py-10 text-center sm:px-10"
-          :class="theme === 'light' ? 'border-gray-200/85 bg-white/80 shadow-[0_22px_75px_-52px_rgba(15,23,42,0.4)]' : 'border-cyan-300/14 bg-slate-900/62'"
-        >
-          <!-- Badge -->
-          <span
-            class="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-widest"
-            :class="theme === 'light' ? 'border-teal-500/30 bg-teal-50 text-teal-700' : 'border-cyan-400/25 bg-cyan-400/8 text-cyan-300'"
-          >
-            {{ t('demo.badge') }}
-          </span>
-
-          <!-- Headline -->
-          <h2
-            class="mt-5 font-display text-2xl font-semibold sm:text-3xl"
-            :class="theme === 'light' ? 'text-gray-900' : 'text-slate-100'"
-          >
-            {{ t('demo.headline') }}
-          </h2>
-
-          <!-- Description -->
-          <p
-            class="mx-auto mt-3 max-w-sm text-sm leading-relaxed"
-            :class="theme === 'light' ? 'text-gray-500' : 'text-slate-400'"
-          >
-            {{ t('demo.description') }}
-          </p>
-
-          <!-- Points -->
-          <ul class="mt-6 flex flex-col items-center gap-2">
-            <li
-              v-for="point in tm('demo.points')"
-              :key="point"
-              class="flex items-center gap-2 text-sm"
-              :class="theme === 'light' ? 'text-gray-600' : 'text-slate-300'"
-            >
-              <CheckIcon
-                class="h-4 w-4 flex-shrink-0"
-                :class="theme === 'light' ? 'text-teal-600' : 'text-cyan-400'"
-              />
-              {{ point }}
-            </li>
-          </ul>
-
-          <!-- CTA -->
-          <RouterLink
-            :to="appHomePath"
-            class="mt-7 inline-flex rounded-full border px-6 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
-            :class="theme === 'light' ? 'border-gray-300 text-gray-700 hover:bg-gray-50' : 'border-blue-400/30 text-slate-200 hover:bg-slate-800/60'"
-          >
-            {{ t('demo.cta') }}
-          </RouterLink>
-        </div>
-      </section>
+      <HomeHero
+        :theme="theme"
+        :asset-url="assetUrl"
+        :checkout-url="checkoutUrl"
+        :link-target="linkTarget"
+        :link-rel="linkRel"
+      />
+      <HomeFeatures :theme="theme" :asset-url="assetUrl" />
+      <HomeShowcase :theme="theme" :asset-url="assetUrl" />
+      <HomeDemoCta :theme="theme" />
     </main>
 
-    <footer
-      class="relative overflow-hidden border-t"
-      :class="theme === 'light' ? 'border-gray-200/90 bg-white/82' : 'border-cyan-300/16 bg-slate-950/92'"
-    >
-      <div
-        class="pointer-events-none absolute inset-x-0 top-0 h-px"
-        :class="theme === 'light' ? 'hidden' : 'bg-gradient-to-r from-transparent via-cyan-300/45 to-transparent'"
-      />
-
-      <div class="mx-auto max-w-7xl px-6 py-14 lg:px-10">
-        <div
-          class="reveal k-main-tile k-glass relative overflow-hidden border p-6 sm:p-8"
-          :class="theme === 'light' ? 'border-gray-200/85 bg-white/86 shadow-[0_24px_80px_-50px_rgba(15,23,42,0.28)]' : 'border-cyan-300/16 bg-slate-900/70 shadow-[0_30px_90px_-50px_rgba(0,0,0,0.8)]'"
-        >
-            <div
-              class="pointer-events-none absolute -right-16 top-0 h-40 w-40 rounded-full blur-3xl"
-              :class="theme === 'light' ? 'hidden' : 'bg-cyan-400/16'"
-            />
-
-          <div class="relative grid gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.9fr]">
-            <div>
-              <div class="flex items-center gap-3">
-                <div
-                  class="flex h-12 w-12 items-center justify-center rounded-2xl border"
-                  :class="theme === 'light' ? 'border-teal-200 bg-teal-50' : 'border-cyan-300/20 bg-slate-950/70'"
-                >
-                  <img :src="assetUrl('logo.png')" alt="Katsumii logo" class="h-8 w-8 object-contain" />
-                </div>
-                <div>
-                  <p :class="['font-display text-xl font-semibold tracking-tight', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">Katsumii</p>
-                  <p :class="['text-xs uppercase tracking-[0.18em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-200']">{{ t('footer.tagline') }}</p>
-                </div>
-              </div>
-
-              <p :class="['mt-5 max-w-md text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
-                {{ t('footer.description') }}
-              </p>
-
-              <div class="mt-6 flex flex-wrap gap-3">
-                <span
-                  v-for="item in footerHighlights"
-                  :key="item"
-                  :class="[
-                    'rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em]',
-                    theme === 'light' ? 'border-teal-200 bg-teal-50 text-teal-700' : 'border-cyan-300/20 bg-cyan-400/10 text-cyan-200'
-                  ]"
-                >
-                  {{ item }}
-                </span>
-              </div>
-            </div>
-
-            <div>
-              <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ t('footer.product') }}</p>
-              <div class="mt-5 space-y-3">
-                <a
-                  v-for="item in footerProductLinks"
-                  :key="item.name"
-                  :href="item.href"
-                  :class="[
-                    'block text-sm transition-colors duration-300',
-                    theme === 'light' ? 'text-gray-600 hover:text-gray-900' : 'text-slate-400 hover:text-cyan-200'
-                  ]"
-                >
-                  {{ item.name }}
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ t('footer.company') }}</p>
-              <div class="mt-5 space-y-3">
-                <a
-                  v-for="item in footerCompanyLinks"
-                  :key="item.name"
-                  :href="item.href"
-                  :target="linkTarget(item.href)"
-                  :rel="linkRel(item.href)"
-                  :class="[
-                    'block text-sm transition-colors duration-300',
-                    theme === 'light' ? 'text-gray-600 hover:text-gray-900' : 'text-slate-400 hover:text-cyan-200'
-                  ]"
-                >
-                  {{ item.name }}
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <div
-                class="rounded-2xl border p-5"
-                :class="theme === 'light' ? 'border-gray-200 bg-gray-50/90' : 'border-blue-400/20 bg-slate-950/70'"
-              >
-                <p :class="['text-sm font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ t('footer.support.label') }}</p>
-                <p :class="['mt-3 text-sm leading-relaxed', theme === 'light' ? 'text-gray-600' : 'text-slate-300']">
-                  {{ t('footer.support.description') }}
-                </p>
-                <a
-                  href="mailto:info@katsumii.com"
-                  class="mt-5 inline-flex rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
-                  :class="theme === 'light' ? 'bg-gray-900 text-white hover:bg-gray-800' : 'bg-cyan-300 text-slate-950 hover:bg-cyan-200'"
-                >
-                  {{ t('footer.support.contact') }}
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="reveal mt-8 flex flex-col gap-4 border-t pt-6 text-xs sm:flex-row sm:items-center sm:justify-between"
-          :class="theme === 'light' ? 'border-gray-200 text-gray-500' : 'border-blue-400/15 text-slate-500'"
-        >
-          <p>
-            {{ t('footer.copyright', { year }) }}
-          </p>
-          <div class="flex flex-wrap gap-x-5 gap-y-2">
-            <a
-              v-for="item in footerLegalLinks"
-              :key="item.name"
-              :href="item.href"
-              :class="theme === 'light' ? 'transition-colors hover:text-gray-900' : 'transition-colors hover:text-cyan-200'"
-            >
-              {{ item.name }}
-            </a>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <HomeFooter
+      :theme="theme"
+      :asset-url="assetUrl"
+      :checkout-url="checkoutUrl"
+      :link-target="linkTarget"
+      :link-rel="linkRel"
+    />
   </div>
 </template>
 
 <script setup>
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue"
 import { useI18n } from "vue-i18n"
-import { CheckIcon } from "@heroicons/vue/20/solid"
-import { ChartBarIcon, CloudArrowUpIcon, LockClosedIcon, ServerIcon } from "@heroicons/vue/24/outline"
 import AppNav from "./components/AppNav.vue"
 import KbBackground from "./backgrounds/KbBackground.vue"
-import { appHomePath, pagePath } from "./utils/routes.js"
+import HomeDemoCta from "./components/home/HomeDemoCta.vue"
+import HomeFeatures from "./components/home/HomeFeatures.vue"
+import HomeFooter from "./components/home/HomeFooter.vue"
+import HomeHero from "./components/home/HomeHero.vue"
+import HomeShowcase from "./components/home/HomeShowcase.vue"
+import { pagePath } from "./utils/routes.js"
 
-const { t, tm } = useI18n()
+const { t } = useI18n()
 
-// ─── Background picker ──────────────────────────────────────────────────────
 const BG_MIGRATE = { flow: 'lines' }
 const _savedBg = localStorage.getItem('katsumii-bg') || 'lines'
 const bg = ref(BG_MIGRATE[_savedBg] ?? _savedBg)
@@ -582,43 +71,6 @@ const navigation = computed(() => [
   { name: "Manual", href: pagePath("manual") },
 ])
 
-const footerHighlights = computed(() => tm('footer.highlights'))
-
-const footerProductLinks = computed(() => [
-  { name: tm('footer.productLinks')[0], href: "#features" },
-  { name: tm('footer.productLinks')[1], href: "#showcase" },
-  { name: tm('footer.productLinks')[2], href: pagePath("pricing") },
-  { name: tm('footer.productLinks')[3], href: checkoutUrl },
-])
-
-const footerCompanyLinks = computed(() => [
-  { name: tm('footer.companyLinks')[0], href: pagePath("faq") },
-  { name: tm('footer.companyLinks')[1], href: pagePath("contact") },
-])
-
-const footerLegalLinks = computed(() => [
-  { name: tm('footer.legalLinks')[0], href: pagePath("faq") },
-  { name: tm('footer.legalLinks')[1], href: pagePath("impressum") },
-  { name: tm('footer.legalLinks')[2], href: pagePath("privacy") },
-  { name: tm('footer.legalLinks')[3], href: pagePath("terms") },
-  { name: tm('footer.legalLinks')[4], href: "mailto:info@katsumii.com" },
-])
-
-const heroStats = computed(() => tm('heroStats'))
-const featureTicker = computed(() => tm('featureTicker'))
-const spotlightPoints = computed(() => tm('features.spotlight.points'))
-const spotlightKpis = computed(() => tm('spotlightKpis'))
-const dashboardSteps = computed(() => tm('showcase.dashboardSteps'))
-const calendarSteps = computed(() => tm('showcase.calendarSteps'))
-
-const features = computed(() => [
-  { name: t('features.cards.0.name'), description: t('features.cards.0.description'), icon: ServerIcon },
-  { name: t('features.cards.1.name'), description: t('features.cards.1.description'), icon: CloudArrowUpIcon },
-  { name: t('features.cards.2.name'), description: t('features.cards.2.description'), icon: ChartBarIcon },
-  { name: t('features.cards.3.name'), description: t('features.cards.3.description'), icon: LockClosedIcon },
-])
-
-
 const getInitialTheme = () => {
   const saved = localStorage.getItem('katsumii-theme')
   if (saved === 'light' || saved === 'dark') return saved
@@ -628,42 +80,6 @@ const getInitialTheme = () => {
 
 const theme = ref(getInitialTheme())
 const observer = ref(null)
-const typedWordEl = ref(null)
-let typingTimer = null
-
-const startTypewriter = () => {
-  const words = ['discipline.', 'consistency.', 'precision.', 'confidence.', 'clarity.']
-  let wordIdx = 0
-  let charIdx = words[0].length
-  let deleting = false
-
-  const tick = () => {
-    if (!typedWordEl.value) return
-    const word = words[wordIdx]
-    if (deleting) {
-      charIdx--
-      typedWordEl.value.textContent = word.slice(0, charIdx)
-      if (charIdx === 0) {
-        deleting = false
-        wordIdx = (wordIdx + 1) % words.length
-        typingTimer = setTimeout(tick, 280)
-      } else {
-        typingTimer = setTimeout(tick, 55)
-      }
-    } else {
-      charIdx++
-      typedWordEl.value.textContent = word.slice(0, charIdx)
-      if (charIdx === word.length) {
-        deleting = true
-        typingTimer = setTimeout(tick, 3500)
-      } else {
-        typingTimer = setTimeout(tick, 85)
-      }
-    }
-  }
-
-  typingTimer = setTimeout(() => { deleting = true; tick() }, 2200)
-}
 
 const isExternalLink = (href) => {
   if (!href) return false
@@ -684,7 +100,6 @@ const applyTheme = (value) => {
 const toggleTheme = () => {
   applyTheme(theme.value === "dark" ? "light" : "dark")
 }
-
 
 const pageClass = computed(() =>
   theme.value === "light"
@@ -734,15 +149,11 @@ const setupRevealAnimations = () => {
 }
 
 onMounted(() => {
-  nextTick(() => {
-    setupRevealAnimations()
-    startTypewriter()
-  })
+  nextTick(setupRevealAnimations)
 })
 
 onUnmounted(() => {
   observer.value?.disconnect()
-  clearTimeout(typingTimer)
 })
 
 watch(theme, (value) => {
@@ -750,15 +161,11 @@ watch(theme, (value) => {
   if (value === "light" && bg.value === "stars") {
     changeBg("honeycomb")
   }
-  nextTick(() => {
-    setupRevealAnimations()
-  })
+  nextTick(setupRevealAnimations)
 })
-
-const year = computed(() => new Date().getFullYear())
 </script>
 
-<style scoped>
+<style>
 .hero-section::before {
   position: absolute;
   inset: 7rem max(1rem, calc((100vw - 80rem) / 2)) auto;
@@ -859,7 +266,6 @@ const year = computed(() => new Date().getFullYear())
   50%       { opacity: 0; }
 }
 
-
 .feature-marquee {
   animation: feature-marquee 30s linear infinite;
 }
@@ -881,7 +287,6 @@ const year = computed(() => new Date().getFullYear())
   filter: blur(0);
   transform: translate3d(0, 0, 0) scale(1);
 }
-
 
 @keyframes feature-marquee {
   from {
@@ -920,6 +325,5 @@ const year = computed(() => new Date().getFullYear())
   .feature-card {
     min-height: auto;
   }
-
 }
 </style>
