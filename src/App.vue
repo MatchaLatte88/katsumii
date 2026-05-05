@@ -423,7 +423,7 @@
     >
       <div
         class="pointer-events-none absolute inset-x-0 top-0 h-px"
-        :class="theme === 'light' ? 'bg-gradient-to-r from-transparent via-teal-400/50 to-transparent' : 'bg-gradient-to-r from-transparent via-cyan-300/45 to-transparent'"
+        :class="theme === 'light' ? 'hidden' : 'bg-gradient-to-r from-transparent via-cyan-300/45 to-transparent'"
       />
 
       <div class="mx-auto max-w-7xl px-6 py-14 lg:px-10">
@@ -431,10 +431,10 @@
           class="reveal k-main-tile k-glass relative overflow-hidden border p-6 sm:p-8"
           :class="theme === 'light' ? 'border-gray-200/85 bg-white/86 shadow-[0_24px_80px_-50px_rgba(15,23,42,0.28)]' : 'border-cyan-300/16 bg-slate-900/70 shadow-[0_30px_90px_-50px_rgba(0,0,0,0.8)]'"
         >
-          <div
-            class="pointer-events-none absolute -right-16 top-0 h-40 w-40 rounded-full blur-3xl"
-            :class="theme === 'light' ? 'bg-teal-200/60' : 'bg-cyan-400/16'"
-          />
+            <div
+              class="pointer-events-none absolute -right-16 top-0 h-40 w-40 rounded-full blur-3xl"
+              :class="theme === 'light' ? 'hidden' : 'bg-cyan-400/16'"
+            />
 
           <div class="relative grid gap-10 lg:grid-cols-[1.2fr_0.8fr_0.8fr_0.9fr]">
             <div>
@@ -576,8 +576,8 @@ const checkoutUrl = baseUrl
 
 const navigation = computed(() => [
   { name: t('nav.top'), href: "#top" },
-  { name: t('nav.features'), href: "#features" },
-  { name: t('nav.showcase'), href: "#showcase" },
+  { name: t('nav.showcase'), href: "#features" },
+  { name: t('nav.features'), href: `${baseUrl}app.html?page=features` },
   { name: t('nav.pricing'), href: `${baseUrl}app.html?page=pricing` },
   { name: "Manual", href: `${baseUrl}app.html?page=manual` },
 ])
@@ -621,7 +621,6 @@ const features = computed(() => [
 
 const getInitialTheme = () => {
   const saved = localStorage.getItem('katsumii-theme')
-             || localStorage.getItem('katsumii-coming-soon-theme')
   if (saved === 'light' || saved === 'dark') return saved
   if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light'
   return 'dark'
@@ -689,8 +688,8 @@ const toggleTheme = () => {
 
 const pageClass = computed(() =>
   theme.value === "light"
-    ? "relative min-h-screen overflow-x-hidden bg-slate-50 text-gray-900 transition-colors duration-300"
-    : "relative min-h-screen overflow-x-hidden bg-slate-950 text-slate-100 transition-colors duration-300"
+    ? "k-page-light relative min-h-screen overflow-x-hidden bg-slate-50 text-gray-900 transition-colors duration-300"
+    : "k-page-dark relative min-h-screen overflow-x-hidden bg-slate-950 text-slate-100 transition-colors duration-300"
 )
 
 const setupRevealAnimations = () => {
@@ -774,6 +773,10 @@ const year = computed(() => new Date().getFullYear())
   pointer-events: none;
 }
 
+.k-page-light .hero-section::before {
+  display: none;
+}
+
 .hero-logo {
   filter: drop-shadow(0 20px 30px rgba(15, 118, 110, 0.18));
 }
@@ -788,6 +791,10 @@ const year = computed(() => new Date().getFullYear())
   background: rgba(45, 212, 191, 0.18);
   filter: blur(62px);
   pointer-events: none;
+}
+
+.k-page-light .hero-visual::before {
+  display: none;
 }
 
 .k-card {
@@ -806,6 +813,10 @@ const year = computed(() => new Date().getFullYear())
   pointer-events: none;
 }
 
+.k-page-light .section-band::before {
+  display: none;
+}
+
 .feature-spotlight {
   position: relative;
 }
@@ -818,6 +829,10 @@ const year = computed(() => new Date().getFullYear())
     linear-gradient(135deg, rgba(20, 184, 166, 0.09), transparent 36%),
     radial-gradient(circle at 95% 8%, rgba(34, 211, 238, 0.16), transparent 30%);
   pointer-events: none;
+}
+
+.k-page-light .feature-spotlight::after {
+  display: none;
 }
 
 .feature-card {

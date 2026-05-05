@@ -60,7 +60,7 @@ import { SwatchIcon } from "@heroicons/vue/24/outline"
 
 const props = defineProps({
   theme:      { type: String, default: "light" },
-  modelValue: { type: String, default: "honeycomb" },
+  modelValue: { type: String, default: "lines" },
 })
 
 const emit = defineEmits(["update:modelValue"])

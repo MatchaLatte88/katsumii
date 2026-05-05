@@ -42,15 +42,21 @@
           :class="theme === 'light' ? 'border-gray-200/75 bg-white/44' : 'border-cyan-300/12 bg-white/[0.03]'"
         >
           <a
-            v-for="item in navigation"
+            v-for="item in visibleNavigation"
             :key="item.name"
             :href="item.href"
             :class="[
-              'rounded-full px-3.5 py-2 text-sm font-semibold tracking-tight transition-all duration-300',
+              isTopLink(item)
+                ? 'inline-flex h-9 w-9 items-center justify-center rounded-full p-0 transition-all duration-300'
+                : 'rounded-full px-3.5 py-2 text-sm font-semibold tracking-tight transition-all duration-300',
               theme === 'light' ? 'text-gray-600 hover:bg-white hover:text-gray-950 hover:shadow-sm' : 'text-slate-300/90 hover:bg-cyan-300/10 hover:text-cyan-100'
             ]"
+            :aria-label="isTopLink(item) ? item.name : undefined"
+            :title="isTopLink(item) ? item.name : undefined"
           >
-            {{ item.name }}
+            <ArrowUpIcon v-if="isTopLink(item)" class="h-4 w-4" aria-hidden="true" />
+            <span v-if="isTopLink(item)" class="sr-only">{{ item.name }}</span>
+            <template v-else>{{ item.name }}</template>
           </a>
         </div>
 
@@ -91,15 +97,21 @@
     >
       <div class="space-y-1 px-4 py-3">
         <a
-          v-for="item in navigation"
+          v-for="item in visibleNavigation"
           :key="item.name"
           :href="item.href"
           :class="[
-            'block rounded-xl px-3 py-2.5 text-base font-semibold transition-all duration-300 hover:translate-x-0.5',
+            isTopLink(item)
+              ? 'flex h-11 items-center justify-center rounded-xl px-3 py-2.5 transition-all duration-300 hover:translate-x-0.5'
+              : 'block rounded-xl px-3 py-2.5 text-base font-semibold transition-all duration-300 hover:translate-x-0.5',
             theme === 'light' ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' : 'text-slate-300 hover:bg-slate-800/80 hover:text-cyan-200'
           ]"
+          :aria-label="isTopLink(item) ? item.name : undefined"
+          :title="isTopLink(item) ? item.name : undefined"
         >
-          {{ item.name }}
+          <ArrowUpIcon v-if="isTopLink(item)" class="h-5 w-5" aria-hidden="true" />
+          <span v-if="isTopLink(item)" class="sr-only">{{ item.name }}</span>
+          <template v-else>{{ item.name }}</template>
         </a>
       </div>
     </DisclosurePanel>
@@ -107,8 +119,9 @@
 </template>
 
 <script setup>
+import { computed, onMounted, onUnmounted, ref } from "vue"
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue"
-import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline"
+import { ArrowUpIcon, Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline"
 import DarkLightSwitch from "./DarkLightSwitch.vue"
 import LangSwitch from "./LangSwitch.vue"
 import BgSwitch from "./BgSwitch.vue"
@@ -117,20 +130,39 @@ const emit = defineEmits(["toggle-theme", "change-bg"])
 const baseUrl = import.meta.env.BASE_URL
 const assetUrl = (path) => `${baseUrl}${path.replace(/^\/+/, "")}`
 
-defineProps({
+const props = defineProps({
   theme: { type: String, default: "light" },
-  bg:    { type: String, default: "honeycomb" },
+  bg:    { type: String, default: "lines" },
   brandTitle: { type: String, default: "Katsumii" },
   brandSubtitle: { type: String, default: "Offline Trading Journal" },
   brandHref: { type: String, default: "#top" },
   navigation: {
     type: Array,
     default: () => [
-      { name: "Features", href: "#features" },
+      { name: "Features", href: "app.html?page=features" },
       { name: "Screens", href: "#screens" },
       { name: "License", href: "app.html?page=pricing" },
     ],
   },
+})
+
+const hasScrolled = ref(false)
+const isTopLink = (item) => item?.href === "#top"
+const visibleNavigation = computed(() =>
+  props.navigation.filter((item) => !isTopLink(item) || hasScrolled.value)
+)
+
+const updateScrollState = () => {
+  hasScrolled.value = window.scrollY > 140
+}
+
+onMounted(() => {
+  updateScrollState()
+  window.addEventListener("scroll", updateScrollState, { passive: true })
+})
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", updateScrollState)
 })
 </script>
 

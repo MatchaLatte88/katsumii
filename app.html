@@ -11,8 +11,7 @@
   </style>
   <script>
     (function () {
-      var t = localStorage.getItem('katsumii-theme')
-           || localStorage.getItem('katsumii-coming-soon-theme');
+      var t = localStorage.getItem('katsumii-theme');
       if (!t) {
         var h = new Date().getHours();
         t = (h >= 6 && h < 19) ? 'light' : 'dark';
@@ -20,6 +19,7 @@
       if (t === 'dark') document.documentElement.classList.add('dark-init');
     })();
   </script>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="e5a8e4a5-cf96-4053-8fa4-9245f4fe5af4"></script>
   <script type="module" src="/src/main.js"></script>
 </head>
 <body>

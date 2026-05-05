@@ -1343,15 +1343,13 @@
 
     function setTheme(t) {
       root.setAttribute("data-theme", t)
-      localStorage.setItem("katsumii-coming-soon-theme", t)
       localStorage.setItem("katsumii-theme", t)
       const tr = TRANSLATIONS[currentLocale]
       themeLabel.textContent = t === "dark" ? tr.themeLight : tr.themeDark
     }
 
     function getInitialTheme() {
-      const s = localStorage.getItem("katsumii-coming-soon-theme")
-        || localStorage.getItem("katsumii-theme")
+      const s = localStorage.getItem("katsumii-theme")
       if (s === "light" || s === "dark") return s
       var h = new Date().getHours(); return (h >= 6 && h < 19) ? "light" : "dark"
     }

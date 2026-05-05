@@ -536,7 +536,7 @@ const changeBg = (val) => {
 
 // ── Theme ──────────────────────────────────────────────────────────
 const getInitialTheme = () => {
-  const saved = localStorage.getItem('katsumii-theme') || localStorage.getItem('katsumii-coming-soon-theme')
+  const saved = localStorage.getItem('katsumii-theme')
   if (saved === 'light' || saved === 'dark') return saved
   if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light'
   return 'dark'
