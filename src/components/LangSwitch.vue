@@ -2,14 +2,14 @@
   <Menu as="div" class="relative">
     <MenuButton
       :class="[
-        'flex items-center gap-1 rounded-xl px-2.5 py-1.5 text-xs font-semibold uppercase tracking-widest transition-all duration-200',
+        'flex items-center gap-1 rounded-xl px-2 py-1 text-xs font-semibold uppercase tracking-widest transition-all duration-200',
         theme === 'light'
           ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
           : 'text-slate-300 hover:bg-slate-800/80 hover:text-slate-100'
       ]"
     >
       <GlobeAltIcon class="h-4 w-4" />
-      {{ locale }}
+      {{ LABELS[locale] ?? locale }}
     </MenuButton>
 
     <Transition
@@ -65,6 +65,10 @@ defineProps({
 const { locale } = useI18n()
 
 const LOCALES = ["en", "de", "es", "tw"]
+
+const LABELS = {
+  tw: "zh",
+}
 
 const NAMES = {
   de: "Deutsch",

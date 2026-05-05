@@ -482,7 +482,7 @@
       "label": "Pricing",
       "headlineA": "One-time payment.",
       "headlineB": "Lifetime edge.",
-      "description": "No subscriptions, no cloud dependency. Choose the plan that fits your trading workflow and own it forever."
+      "description": "No subscriptions, no cloud dependency. Choose the version that fits your trading workflow and own it forever."
     },
     "nav": {
       "home": "Back Home",
@@ -493,6 +493,11 @@
       "demo": {
         "name": "Demo",
         "price": "$0",
+        "seats": "1",
+        "seatsLabel": "sample account",
+        "entries": "5",
+        "entriesLabel": "sample trades included",
+        "inclusionLabel": null,
         "description": "Explore the full workflow with sample data. No account, no commitment.",
         "features": [
           "Full UI access with sample data",
@@ -506,6 +511,11 @@
         "name": "Light",
         "price": "$49",
         "priceNote": "one-time",
+        "seats": "6",
+        "seatsLabel": "personal accounts",
+        "entries": "Unlimited",
+        "entriesLabel": "trade entries",
+        "inclusionLabel": null,
         "description": "For clean journaling with essential analytics and solid trade documentation.",
         "features": [
           "Unlimited trade entries",
@@ -521,6 +531,11 @@
         "name": "Professional",
         "price": "$89",
         "priceNote": "one-time",
+        "seats": "Unlimited",
+        "seatsLabel": "accounts (incl. prop)",
+        "entries": "Unlimited",
+        "entriesLabel": "trade entries",
+        "inclusionLabel": "LIGHT +",
         "description": "For serious traders who optimize process, manage prop accounts, and track performance in depth.",
         "features": [
           "Everything in Light",
@@ -587,8 +602,8 @@
     },
     "cta": {
       "label": "Ready to start?",
-      "headline": "Build your edge with discipline.",
-      "description": "Start with the free demo or go straight to the plan that fits your workflow. No subscriptions, ever.",
+      "headline": "Build your edge with clarity.",
+      "description": "Start with the free demo or go straight to the version that fits your workflow. Buy it, own it. No subscriptions, ever.",
       "backHome": "Back Home",
       "seeFeatures": "See All Features"
     }

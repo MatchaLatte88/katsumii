@@ -9,61 +9,82 @@
     "pricing": "Precios"
   },
   "hero": {
-    "badge": "Diario de Trading y Análisis",
+    "badge": "Diario de trading y análisis",
     "tagline": "Opera con",
-    "description": "Un diario de trading moderno centrado en la claridad, la estructura y la disciplina. Local, rápido y diseñado para prop traders que quieren crecer de forma profesional.",
-    "ctaBuy": "Comprar licencia",
-    "ctaTour": "Ver el producto"
+    "description": "Un diario de trading offline que te ayuda a mantener la disciplina y te acompaña con análisis amplios y profundos. Local, rápido y creado para traders que quieren crecer de forma profesional. Gestiona tus propias reglas o mantén bajo control tus cuentas de prop firm y el progreso de tus challenges.",
+    "ctaBuy": "Comprar Katsumii",
+    "ctaTour": "Tour del producto"
   },
   "heroStats": [
-    { "label": "Offline-first", "value": "100%" },
-    { "label": "Velocidad de la app", "value": "Rápida" },
-    { "label": "Interfaz enfocada", "value": "Limpia" }
+    {
+      "label": "Offline",
+      "value": "100%"
+    },
+    {
+      "label": "Diario",
+      "value": "Rápido"
+    },
+    {
+      "label": "Interfaz enfocada",
+      "value": "Limpia"
+    }
   ],
   "featureTicker": [
-    "100% Offline-first",
-    "Control de reglas Prop",
+    "100% offline",
+    "Límites para reglas prop firm",
+    "Progreso de challenges",
     "Diario con capturas de pantalla",
-    "Estadísticas de rendimiento avanzadas",
-    "Búsqueda local rápida",
-    "Rutina de revisión Kaizen"
+    "Estadísticas avanzadas de rendimiento",
+    "Calendario y alertas",
+    "Personalizable",
+    "Gestión de cuentas"
   ],
   "features": {
     "label": "Por qué Katsumii",
-    "headline": "Estructura profesional con flujos de trabajo claros y enfocados",
+    "headline": "Journaling profesional con flujos claros y enfocados",
     "spotlight": {
       "label": "Función destacada",
-      "headline": "Construye convicción con una ejecución calmada y medible",
-      "description": "Las funciones más importantes están en el centro: un flujo rápido para registrar trades, una visión clara de las reglas de cuentas Prop y analíticas que mejoran directamente tus decisiones.",
+      "headline": "Construye disciplina mediante una ejecución calmada y medible",
+      "description": "Las funciones más importantes están colocadas deliberadamente en el centro: un flujo rápido para registrar trades, visibilidad cristalina de las reglas prop firm y análisis que mejoran directamente tus decisiones.",
       "points": [
-        "Registra trades en segundos con capturas de pantalla, notas y contexto del setup.",
-        "Los límites de cuentas Prop siempre visibles, incluyendo el riesgo de romper reglas.",
-        "Analiza por setup, sesión y errores para mejorar con precisión."
+        "Registra trades en segundos con capturas, notas y contexto del setup.",
+        "Límites de cuentas prop siempre visibles, incluido el riesgo de romper reglas.",
+        "Recibe alertas sobre próximos plazos de periodos de inactividad.",
+        "Analiza el rendimiento por setup, sesión y errores para mejorar con precisión."
       ]
     },
     "cards": [
       {
         "name": "Claridad de cuentas",
-        "description": "Cuentas Prop y personales en una sola vista con objetivos, límites y progreso claros."
+        "description": "Gestión de cuentas prop y personales con objetivos, límites y progreso claros."
       },
       {
         "name": "Journaling estructurado",
-        "description": "Registra trades con capturas, notas, etiquetas de setup y revisiones disciplinadas."
+        "description": "Registra trades con capturas, notas, estrategia usada, tags y mucho más."
       },
       {
-        "name": "Analítica accionable",
-        "description": "Sigue la expectancy, los R-multiples, la calidad de setups y la consistencia en el tiempo."
+        "name": "Analítica amplia",
+        "description": "Sigue winrate, expectancy, RRR efectivo frente al planificado, calidad de setup, mejores y peores horas/días y consistencia."
       },
       {
-        "name": "Privacidad por diseño",
-        "description": "Sin login y sin dependencia de la nube. Tus datos de trading permanecen locales."
+        "name": "Privado por diseño",
+        "description": "Sin login y sin dependencia de la nube. Tus datos de trading permanecen locales en tu PC."
       }
     ]
   },
   "spotlightKpis": [
-    { "value": "A+", "label": "Puntuación de Setup" },
-    { "value": "+0.31R", "label": "Edge promedio" },
-    { "value": "100%", "label": "Datos locales" }
+    {
+      "value": "A+",
+      "label": "Puntuación de Setup"
+    },
+    {
+      "value": "+0.31R",
+      "label": "Edge promedio"
+    },
+    {
+      "value": "100%",
+      "label": "Datos locales"
+    }
   ],
   "showcase": {
     "dashboardWindowLabel": "Dashboard",
@@ -171,7 +192,12 @@
       "headlineA": "Diseñado para cómo los traders",
       "headlineB": "realmente trabajan.",
       "description": "Cada función sigue un paso del flujo de trabajo real — desde registrar tu primer trade hasta revisar los patrones de rendimiento mensual.",
-      "tags": ["100% Sin conexión", "Listo para Prop", "Revisiones estructuradas", "Análisis accionable"]
+      "tags": [
+        "100% Sin conexión",
+        "Listo para Prop",
+        "Revisiones estructuradas",
+        "Análisis accionable"
+      ]
     },
     "features": [
       {
@@ -232,44 +258,263 @@
     "heading": "Bienvenido a Katsumii.",
     "subheading": "Gracias por tu compra. Ahora tienes un diario de trading profesional orientado a la disciplina y la claridad.",
     "onboarding": [
-      { "number": "01", "title": "Conecta tu Primera Cuenta", "description": "Añade una cuenta personal o de prop firm para comenzar a registrar trades, saldo y reglas de riesgo." },
-      { "number": "02", "title": "Registra tu Primer Trade", "description": "Introduce los detalles del trade, adjunta una captura de pantalla y comienza a construir tu historial." },
-      { "number": "03", "title": "Revisa tus Analytics", "description": "Tras unas sesiones, visita el panel de analytics para medir tu ventaja, patrones y consistencia." }
+      {
+        "number": "01",
+        "title": "Conecta tu Primera Cuenta",
+        "description": "Añade una cuenta personal o de prop firm para comenzar a registrar trades, saldo y reglas de riesgo."
+      },
+      {
+        "number": "02",
+        "title": "Registra tu Primer Trade",
+        "description": "Introduce los detalles del trade, adjunta una captura de pantalla y comienza a construir tu historial."
+      },
+      {
+        "number": "03",
+        "title": "Revisa tus Analytics",
+        "description": "Tras unas sesiones, visita el panel de analytics para medir tu ventaja, patrones y consistencia."
+      }
     ],
     "nextSteps": {
       "heading": "Qué hacer a continuación",
-      "items": ["Abre Katsumii y completa la configuración inicial", "Añade tu primera cuenta de trading", "Registra tu primer trade", "Explora el panel de Analytics", "Lee el Manual completo para funciones avanzadas"]
+      "items": [
+        "Abre Katsumii y completa la configuración inicial",
+        "Añade tu primera cuenta de trading",
+        "Registra tu primer trade",
+        "Explora el panel de Analytics",
+        "Lee el Manual completo para funciones avanzadas"
+      ]
     },
     "cta": "Explorar el Manual",
-    "nav": { "home": "Volver al Inicio", "manual": "Manual" }
+    "nav": {
+      "home": "Volver al Inicio",
+      "manual": "Manual"
+    }
   },
   "manualPage": {
-    "hero": { "eyebrow": "Documentación", "heading": "Manual de Katsumii", "description": "Todo lo que necesitas para sacar el máximo partido a tu diario de trading." },
-    "nav": { "overview": "Resumen", "home": "Volver al Inicio", "faq": "FAQ" },
-    "search": { "placeholder": "Buscar temas...", "noResults": "No se encontraron temas." },
-    "articles": "artículos", "article": "artículo", "prev": "Anterior", "next": "Siguiente", "backToOverview": "Volver al Resumen",
+    "hero": {
+      "eyebrow": "Documentación",
+      "heading": "Manual de Katsumii",
+      "description": "Todo lo que necesitas para sacar el máximo partido a tu diario de trading, paso a paso y tema por tema."
+    },
+    "nav": {
+      "overview": "Resumen",
+      "home": "Volver al inicio",
+      "faq": "FAQ"
+    },
+    "search": {
+      "placeholder": "Buscar temas...",
+      "noResults": "No se encontraron temas."
+    },
+    "articles": "artículos",
+    "article": "artículo",
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "backToOverview": "Volver al resumen",
     "topics": {
-      "gettingStarted": { "title": "Primeros Pasos", "description": "Instalación, primer inicio y configuración inicial.", "articles": { "installation": { "title": "Instalación", "content": ["Descarga el instalador de Katsumii desde el correo de confirmación de compra.", "Ejecuta el instalador y sigue las instrucciones en pantalla.", "Una vez instalado, abre Katsumii desde el menú Inicio o el acceso directo del escritorio."] }, "firstLaunch": { "title": "Primer Inicio", "content": ["En el primer inicio, un asistente guía la configuración básica.", "No se requiere registro ni conexión a internet.", "Tras el asistente, accedes al panel principal."] }, "setup": { "title": "Configuración Inicial", "content": ["Crea al menos una cuenta en la sección 'Cuentas'.", "Asigna nombre, tipo y capital inicial.", "Las cuentas de prop firm permiten configurar reglas de evaluación."] } } },
-      "journal": { "title": "El Diario", "description": "Cómo registrar y revisar tus trades.", "articles": { "logging": { "title": "Registrar un Trade", "content": ["Haz clic en '+ Nuevo Trade' en el panel o en el Diario.", "Rellena los campos obligatorios: instrumento, dirección, precios, fecha.", "Los campos opcionales como Setup y Tags mejoran la calidad de los analytics."] }, "screenshots": { "title": "Añadir Capturas", "content": ["Abre el trade y haz clic en el área de capturas.", "Puedes arrastrar y soltar o usar el explorador de archivos.", "Las capturas se guardan localmente y nunca se suben a ningún servidor."] }, "tags": { "title": "Tags y Setups", "content": ["Los tags categorizan trades por tipo de setup, error o condición de mercado.", "El campo 'Setup' se refiere a tus setups de trading con nombre.", "El tagging consistente es clave para analytics significativos."] }, "notes": { "title": "Notas y Errores", "content": ["El campo de notas es para texto libre: justificación, contexto, conclusiones.", "El campo de errores permite seleccionar errores de proceso recurrentes.", "Los errores se analizan en la sección de Analytics."] } } },
-      "accounts": { "title": "Gestión de Cuentas", "description": "Cuentas personales y de prop firm con visibilidad total.", "articles": { "addAccount": { "title": "Añadir una Cuenta", "content": ["Ve a 'Cuentas' y haz clic en 'Añadir Cuenta'.", "Introduce nombre, tipo y capital inicial.", "Puedes añadir tantas cuentas como necesites."] }, "propRules": { "title": "Reglas de Prop Firm", "content": ["Al crear una cuenta de prop firm puedes configurar sus reglas.", "Tipos de regla: pérdida diaria máxima, drawdown total, días mínimos de trading.", "Las reglas se muestran con código de color en el panel."] }, "progress": { "title": "Progreso del Challenge", "content": ["Katsumii registra el progreso hacia el objetivo de beneficio automáticamente.", "El panel muestra saldo actual, objetivo, días operados y tiempo restante.", "Los challenges completados pueden archivarse y duplicarse."] } } },
-      "analytics": { "title": "Analytics y Estadísticas", "description": "Comprende tus datos de rendimiento.", "articles": { "dashboard": { "title": "Resumen del Panel", "content": ["El panel muestra saldo, PnL, winrate y estado de reglas.", "Todos los valores se calculan en tiempo real desde el diario de trades.", "Puedes filtrar por rango de fechas y cuenta."] }, "setupStats": { "title": "Estadísticas de Setup", "content": ["Las estadísticas de setup desglosan el rendimiento por setup.", "Identifica qué setups tienen ventaja real y cuáles no.", "Los setups con menos de 20 trades deben interpretarse con cautela."] }, "consistency": { "title": "Métricas de Consistencia", "content": ["Las métricas de consistencia miden la disciplina de proceso, independiente del PnL.", "Indicadores: tasa de capturas, asignación de setup, tasa de errores recurrentes.", "Mejorar la consistencia suele ser más accionable que buscar mayor winrate."] } } },
-      "calendar": { "title": "Vista de Calendario", "description": "PnL diario y patrones de trading de un vistazo.", "articles": { "navigation": { "title": "Navegar el Calendario", "content": ["El calendario muestra una cuadrícula mensual con el PnL neto por día.", "Haz clic en un día para ver los trades de esa fecha.", "Las flechas de navegación permiten explorar el historial de trading."] }, "patterns": { "title": "Identificar Patrones", "content": ["El calendario revela patrones temporales: mejores/peores días, agrupaciones de pérdidas.", "Los tooltips de hover muestran resúmenes rápidos sin abrir trades.", "Combina el calendario con el análisis por día de semana en Analytics."] } } },
-      "settings": { "title": "Ajustes y Preferencias", "description": "Personaliza Katsumii y gestiona tus datos.", "articles": { "general": { "title": "Ajustes Generales", "content": ["Ajustes generales: idioma, tema, moneda, formato de fecha.", "Configura el riesgo predeterminado por trade y las sesiones activas.", "Accesible desde el icono de engranaje en la barra lateral izquierda."] }, "alerts": { "title": "Alertas y Notificaciones", "content": ["Katsumii envía notificaciones de escritorio Windows para eventos de prop firm.", "Tipos de alerta configurables: aproximación al límite diario, vencimientos de inactividad.", "Las alertas se configuran por cuenta en Ajustes de Cuenta > Alertas."] }, "backup": { "title": "Copia de Seguridad", "content": ["Todos los datos se almacenan localmente en un archivo de base de datos.", "Para hacer copia: copia el archivo a un destino externo.", "Para restaurar: cierra la app, reemplaza el archivo y vuelve a abrirla."] } } }
+      "gettingStarted": {
+        "title": "Primeros pasos",
+        "description": "Instalación, primer inicio y configuración inicial para empezar rápido.",
+        "articles": {
+          "installation": {
+            "title": "Instalación",
+            "content": [
+              "Descarga el instalador de Katsumii desde el correo de confirmación de compra o desde tu cuenta en katsumii.app. El instalador es un archivo estándar de instalación para Windows (.exe) y está firmado digitalmente.",
+              "Ejecuta el instalador y sigue las instrucciones en pantalla. Se usa una instalación estándar a nivel de usuario; no necesitas permisos de administrador. Por defecto, la app se instala en tu perfil de usuario.",
+              "Una vez instalado, abre Katsumii desde el acceso directo del menú Inicio o desde el icono del escritorio creado durante la instalación. En el primer inicio, la app te guiará por la configuración inicial."
+            ]
+          },
+          "firstLaunch": {
+            "title": "Primer inicio",
+            "content": [
+              "En el primer inicio, Katsumii ejecuta un asistente de configuración rápido. Allí eliges tu idioma preferido, el tema de color y la moneda predeterminada para tus cuentas.",
+              "No se requiere registro de cuenta ni conexión a internet. Todos tus datos permanecen en tu equipo local desde el primer momento.",
+              "Después de completar el asistente, llegarás al dashboard principal. El dashboard estará vacío hasta que añadas tu primera cuenta y tus primeros trades; esto es normal y esperado."
+            ]
+          },
+          "setup": {
+            "title": "Configuración inicial",
+            "content": [
+              "Antes de registrar trades, se recomienda crear al menos una cuenta. Ve a la sección Cuentas desde la barra lateral izquierda y haz clic en \"Añadir cuenta\".",
+              "Ponle un nombre a tu cuenta, por ejemplo \"FTMO 100K Challenge\" o \"Personal Futures\", selecciona el tipo de cuenta (Personal o Prop Firm) y define el saldo inicial.",
+              "Para cuentas Prop Firm, puedes configurar de inmediato las reglas de la firma: drawdown diario máximo, drawdown total máximo, días mínimos de trading y ventanas activas de alerta por inactividad. Estas reglas se muestran siempre mientras esa cuenta esté activa."
+            ]
+          }
+        }
+      },
+      "journal": {
+        "title": "El diario",
+        "description": "Cómo registrar, anotar y revisar tus trades para obtener el máximo aprendizaje.",
+        "articles": {
+          "logging": {
+            "title": "Registrar un trade",
+            "content": [
+              "Para registrar un trade, haz clic en el botón \"+ Nuevo trade\" en el dashboard o en la sección Diario. Se abrirá un formulario de entrada en el panel derecho.",
+              "Rellena los campos principales: instrumento (por ejemplo NQ, EURUSD), dirección (Long/Short), precio de entrada, precio de salida, tamaño de posición y fecha del trade. Katsumii calcula automáticamente PnL, múltiplo R y riesgo según la configuración de riesgo de tu cuenta.",
+              "También puedes seleccionar el tipo de setup, estado emocional, sesión (Londres, Nueva York, Asia) y asignar tags para filtrar más adelante. Estos campos son opcionales, pero con el tiempo mejoran mucho la calidad de tus analytics."
+            ]
+          },
+          "screenshots": {
+            "title": "Añadir capturas de pantalla",
+            "content": [
+              "Para adjuntar una captura del gráfico a un trade, abre la entrada del trade y haz clic en el área de capturas dentro del panel de medios. Puedes arrastrar y soltar una imagen directamente, o hacer clic para buscarla en tu sistema de archivos.",
+              "Katsumii guarda las capturas localmente en una carpeta dedicada junto a los datos de la app. Las imágenes nunca se suben a ningún servidor.",
+              "Puedes añadir varias capturas por trade; por ejemplo, un gráfico de contexto en marco temporal superior y otro del punto de entrada. Todas las capturas se ven en el detalle del trade y durante las sesiones de revisión."
+            ]
+          },
+          "tags": {
+            "title": "Tags y setups",
+            "content": [
+              "Los tags te permiten categorizar trades por tipo de setup, categoría de error, condición de mercado o cualquier etiqueta personalizada que definas. Puedes crear tags propios en Ajustes, dentro de \"Trade Tags\".",
+              "El campo \"Setup\" es distinto de los tags: se refiere a tus setups de trading con nombre, por ejemplo \"Break & Retest\", \"Fair Value Gap\" u \"ORB\". Los setups se gestionan en Ajustes, dentro de \"Setups\", y aparecen en los desgloses de analytics.",
+              "Asignar setups y tags con precisión y consistencia es clave para obtener analytics útiles. Incluso un sistema simple de tags, aplicado de forma constante, revelará patrones que mejoran tu toma de decisiones."
+            ]
+          },
+          "notes": {
+            "title": "Notas y errores del trade",
+            "content": [
+              "Cada trade tiene un campo de notas para texto libre. Úsalo para describir la razón del trade, el contexto del mercado o cualquier cosa que quieras recordar durante la revisión.",
+              "El campo de errores es un selector múltiple separado que te permite marcar errores concretos de proceso: \"Moví el SL\", \"Perseguí la entrada\", \"Rompí reglas\", \"Tamaño excesivo\", etc. Los errores se registran en analytics para que puedas ver patrones recurrentes.",
+              "Las notas y los errores también se muestran en la vista de calendario el día del trade, haciendo que las revisiones semanales y mensuales sean más rápidas y estructuradas."
+            ]
+          }
+        }
+      },
+      "accounts": {
+        "title": "Gestión de cuentas",
+        "description": "Gestiona cuentas personales y prop firm con visibilidad completa de reglas y seguimiento de challenges.",
+        "articles": {
+          "addAccount": {
+            "title": "Añadir una cuenta",
+            "content": [
+              "Ve a la sección Cuentas desde la barra lateral izquierda y haz clic en \"Añadir cuenta\". Introduce el nombre de la cuenta, selecciona el tipo (Personal o Prop Firm) y define saldo inicial y moneda.",
+              "Las cuentas personales no tienen restricciones de reglas; simplemente registran tu saldo y tu historial de trading. Las cuentas Prop Firm desbloquean el panel de configuración de reglas.",
+              "Puedes añadir tantas cuentas como necesites. Las cuentas aparecen en la barra lateral y puedes cambiar entre ellas en cualquier momento. Todas las secciones de analytics respetan el filtro de la cuenta activa."
+            ]
+          },
+          "propRules": {
+            "title": "Reglas de prop firm",
+            "content": [
+              "Al crear o editar una cuenta Prop Firm, puedes configurar las reglas de evaluación de la firma directamente en Katsumii. Los tipos de reglas compatibles incluyen: pérdida diaria máxima, drawdown total máximo, días mínimos de trading y periodos de inactividad.",
+              "Estas reglas se muestran siempre en el dashboard cuando la cuenta está activa. Un indicador de estado por color muestra qué tan cerca estás de cada límite: verde (seguro), amarillo (precaución), rojo (cerca de incumplir).",
+              "Katsumii no se conecta a tu broker. El seguimiento de reglas se basa en los trades que registras manualmente. La precisión depende de que registres todos tus trades de forma consistente."
+            ]
+          },
+          "progress": {
+            "title": "Progreso del challenge",
+            "content": [
+              "Para cuentas de challenge Prop Firm, Katsumii sigue automáticamente tu progreso hacia el objetivo de beneficio según los trades registrados y el saldo inicial.",
+              "El panel de Progreso del Challenge en el dashboard muestra: saldo actual, objetivo de beneficio, días operados, días mínimos requeridos y tiempo restante si has configurado una fecha límite del challenge.",
+              "Cuando un challenge se completa o falla, puedes archivar la cuenta y, si quieres, duplicarla para empezar un nuevo intento, conservando tu historial mientras comienzas de nuevo."
+            ]
+          }
+        }
+      },
+      "analytics": {
+        "title": "Analytics y estadísticas",
+        "description": "Comprende tus datos de rendimiento e identifica qué funciona y qué no en tu proceso.",
+        "articles": {
+          "dashboard": {
+            "title": "Resumen del dashboard",
+            "content": [
+              "El dashboard es el centro de control principal de Katsumii. Muestra de un vistazo el saldo actual, PnL acumulado, winrate, múltiplo R promedio y estado de reglas activas.",
+              "El dashboard se actualiza en tiempo real cuando añades o editas trades. Todas las cifras se calculan desde tu registro real de trades, no desde estimaciones ni simulaciones.",
+              "Puedes filtrar el dashboard por rango de fechas y cuenta. Esto te permite analizar una fase específica de un challenge, un mes concreto o tu rendimiento histórico completo."
+            ]
+          },
+          "setupStats": {
+            "title": "Estadísticas de setup",
+            "content": [
+              "La vista de Estadísticas de Setup desglosa tu rendimiento por setup con nombre. Para cada setup puedes ver: total de trades, winrate, R promedio, PnL total y expectancy.",
+              "Es una de las vistas más potentes de Katsumii. Con el tiempo revela qué setups tienen edge real y cuáles te cuestan dinero, independientemente de la confianza subjetiva que tengas en ellos.",
+              "Los setups con menos de 20 trades deben interpretarse con cautela. Las estadísticas se vuelven más significativas con una muestra mayor. Katsumii muestra un indicador de tamaño de muestra junto a cada setup para ayudarte a juzgar su fiabilidad."
+            ]
+          },
+          "consistency": {
+            "title": "Métricas de consistencia",
+            "content": [
+              "Las métricas de consistencia miden qué tan bien sigues tus propias reglas y tu proceso, independientemente del PnL. Un trader disciplinado con edge debería mostrar puntuaciones altas de consistencia incluso durante periodos de drawdown.",
+              "Entre los indicadores clave están: porcentaje de trades registrados con capturas, porcentaje de trades con setup definido, tiempo medio entre la entrada al trade y el registro en el diario, y tasa de repetición de errores.",
+              "Mejorar las métricas de consistencia suele ser más accionable que perseguir una winrate más alta. Katsumii muestra estas métricas en un panel dedicado de Consistencia dentro de Analytics."
+            ]
+          }
+        }
+      },
+      "calendar": {
+        "title": "Vista de calendario",
+        "description": "Ve tu PnL diario, patrones de trading e historial de sesiones de un vistazo.",
+        "articles": {
+          "navigation": {
+            "title": "Navegar el calendario",
+            "content": [
+              "La vista de calendario muestra una cuadrícula mensual donde cada día enseña el PnL neto de esa sesión. Los días verdes son rentables, los rojos son días con pérdida y los grises no tuvieron actividad.",
+              "Haz clic en cualquier día para ver los trades registrados en esa fecha en una lista compacta. Haz clic en un trade para abrir su vista completa sin salir del contexto del calendario.",
+              "Usa las flechas de navegación mensual para avanzar y retroceder por tu historial de trading. También hay una vista anual al hacer clic en el encabezado de mes/año, útil para detectar patrones estacionales."
+            ]
+          },
+          "patterns": {
+            "title": "Identificar patrones",
+            "content": [
+              "El calendario es especialmente útil para detectar patrones basados en el tiempo: qué días de la semana rindes mejor, qué semanas suelen ser peores y si tus pérdidas se agrupan alrededor de eventos concretos del mercado.",
+              "Al pasar el cursor sobre un día, verás un resumen rápido: número de trades, PnL neto, winrate del día y errores marcados. Esto hace que escanear patrones sea rápido sin abrir trades individuales.",
+              "Combina el calendario con el desglose por día de la semana en Analytics para una vista cuantificada de tus patrones temporales. El calendario aporta la parte visual e intuitiva; analytics aporta los números."
+            ]
+          }
+        }
+      },
+      "settings": {
+        "title": "Ajustes y preferencias",
+        "description": "Personaliza la apariencia, los valores predeterminados y la gestión de datos de Katsumii para adaptarlo a tu flujo.",
+        "articles": {
+          "general": {
+            "title": "Ajustes generales",
+            "content": [
+              "Los ajustes generales están disponibles desde el icono de engranaje en la parte inferior izquierda de la barra lateral. Desde allí puedes cambiar el idioma, el tema de color (claro/oscuro), la moneda predeterminada y el formato de fecha.",
+              "También puedes configurar tu riesgo predeterminado por trade, en porcentaje o como valor R fijo. Este valor se usa para calcular automáticamente sugerencias de tamaño de posición al introducir nuevos trades.",
+              "El ajuste \"Trading Sessions\" te permite definir tus horarios activos de sesión, por ejemplo Londres 08:00–12:00 UTC. Katsumii usa esto para asignar sesiones automáticamente según la hora de entrada del trade."
+            ]
+          },
+          "alerts": {
+            "title": "Alertas y notificaciones",
+            "content": [
+              "Katsumii puede enviar notificaciones de escritorio de Windows para próximos eventos de reglas prop firm. Las alertas son completamente locales: no se requiere email ni cuenta de app.",
+              "Los tipos de alerta configurables incluyen: acercamiento al límite de pérdida diaria, por ejemplo al 80% del drawdown diario máximo, recordatorios de plazos de inactividad, por ejemplo un día antes de un día de trading requerido, y objetivo de beneficio alcanzado.",
+              "Las alertas se configuran por cuenta en Ajustes de cuenta > Alertas. Puedes definir umbrales personalizados y activar o desactivar cada tipo de alerta de forma independiente."
+            ]
+          },
+          "backup": {
+            "title": "Copia de seguridad de datos",
+            "content": [
+              "Todos los datos de Katsumii se almacenan localmente en un archivo de base de datos estructurado dentro de tu carpeta de datos de usuario. Puedes encontrar la ruta exacta en Ajustes > Acerca de > Ubicación de datos.",
+              "Para hacer una copia de seguridad, simplemente copia el archivo de base de datos a una unidad externa, almacenamiento en la nube u otra ubicación. Katsumii no incluye un servicio de sincronización integrado por diseño.",
+              "Para restaurar una copia, cierra Katsumii, reemplaza el archivo de base de datos actual por tu copia de seguridad y vuelve a abrir la app. Todas tus cuentas, trades y ajustes se restaurarán exactamente como estaban."
+            ]
+          }
+        }
+      }
     }
   },
   "pricingPage": {
     "brandSubtitle": "Precios",
     "popular": "Más Popular",
     "highlights": [
-      { "title": "Licencia de por vida", "text": "Paga una vez y conserva el flujo." },
-      { "title": "Offline-first", "text": "No requiere cuenta en la nube." },
-      { "title": "Ruta de upgrade", "text": "Empieza simple y crece a Pro." }
+      {
+        "title": "Licencia de por vida",
+        "text": "Paga una vez y conserva el flujo."
+      },
+      {
+        "title": "Offline-first",
+        "text": "No requiere cuenta en la nube."
+      },
+      {
+        "title": "Ruta de upgrade",
+        "text": "Empieza simple y crece a Pro."
+      }
     ],
     "hero": {
       "label": "Precios",
       "headlineA": "Pago único.",
       "headlineB": "Edge de por vida.",
-      "description": "Sin suscripciones, sin dependencia de la nube. Elige el plan que se adapte a tu flujo de trading y será tuyo para siempre."
+      "description": "Sin suscripciones, sin dependencia de la nube. Elige la versión que se adapte a tu flujo de trading y será tuya para siempre."
     },
     "nav": {
       "home": "Inicio",
@@ -280,6 +525,11 @@
       "demo": {
         "name": "Demo",
         "price": "$0",
+        "seats": "1",
+        "seatsLabel": "cuenta de muestra",
+        "entries": "5",
+        "entriesLabel": "trades de muestra incluidos",
+        "inclusionLabel": null,
         "description": "Explora el flujo completo con datos de ejemplo. Sin cuenta, sin compromiso.",
         "features": [
           "Acceso completo a la UI con datos de ejemplo",
@@ -293,6 +543,11 @@
         "name": "Light",
         "price": "$49",
         "priceNote": "pago único",
+        "seats": "6",
+        "seatsLabel": "cuentas personales",
+        "entries": "Ilimitadas",
+        "entriesLabel": "entradas de trades",
+        "inclusionLabel": null,
         "description": "Para un journaling limpio con analytics esenciales y documentación sólida de trades.",
         "features": [
           "Entradas de trades ilimitadas",
@@ -308,6 +563,11 @@
         "name": "Professional",
         "price": "$89",
         "priceNote": "pago único",
+        "seats": "Ilimitadas",
+        "seatsLabel": "cuentas (incl. prop)",
+        "entries": "Ilimitadas",
+        "entriesLabel": "entradas de trades",
+        "inclusionLabel": "LIGHT +",
         "description": "Para traders serios que optimizan su proceso, gestionan cuentas prop y analizan rendimiento en profundidad.",
         "features": [
           "Todo lo de Light",
@@ -321,9 +581,18 @@
       }
     },
     "tierMeta": {
-      "demo": { "label": "Vista previa", "value": "Prueba antes de comprar" },
-      "light": { "label": "Ideal para", "value": "Journaling esencial" },
-      "professional": { "label": "Usuarios avanzados", "value": "Prop y analytics profundos" }
+      "demo": {
+        "label": "Vista previa",
+        "value": "Prueba antes de comprar"
+      },
+      "light": {
+        "label": "Ideal para",
+        "value": "Journaling esencial"
+      },
+      "professional": {
+        "label": "Usuarios avanzados",
+        "value": "Prop y analytics profundos"
+      }
     },
     "comparison": {
       "kicker": "Planes de un vistazo",
@@ -334,48 +603,143 @@
         {
           "category": "Journaling",
           "rows": [
-            { "label": "Entradas de trades", "demo": "5 trades de ejemplo", "light": "Ilimitadas", "pro": "Ilimitadas" },
-            { "label": "Capturas de pantalla", "demo": true, "light": true, "pro": true },
-            { "label": "Notas y seguimiento de errores", "demo": true, "light": true, "pro": true },
-            { "label": "Tags y setups personalizados", "demo": false, "light": true, "pro": true },
-            { "label": "Plantillas de trades", "demo": false, "light": true, "pro": true }
+            {
+              "label": "Entradas de trades",
+              "demo": "5 trades de ejemplo",
+              "light": "Ilimitadas",
+              "pro": "Ilimitadas"
+            },
+            {
+              "label": "Capturas de pantalla",
+              "demo": true,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Notas y seguimiento de errores",
+              "demo": true,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Tags y setups personalizados",
+              "demo": false,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Plantillas de trades",
+              "demo": false,
+              "light": true,
+              "pro": true
+            }
           ]
         },
         {
           "category": "Cuentas",
           "rows": [
-            { "label": "Cuentas personales", "demo": "1 (solo lectura)", "light": "máx. 6", "pro": "Ilimitadas" },
-            { "label": "Cuentas prop firm", "demo": false, "light": false, "pro": "Ilimitadas" },
-            { "label": "Progreso de challenges", "demo": false, "light": false, "pro": true },
-            { "label": "Guardrails de reglas y alertas", "demo": false, "light": false, "pro": true }
+            {
+              "label": "Cuentas personales",
+              "demo": "1 (solo lectura)",
+              "light": "máx. 6",
+              "pro": "Ilimitadas"
+            },
+            {
+              "label": "Cuentas prop firm",
+              "demo": false,
+              "light": false,
+              "pro": "Ilimitadas"
+            },
+            {
+              "label": "Progreso de challenges",
+              "demo": false,
+              "light": false,
+              "pro": true
+            },
+            {
+              "label": "Guardrails de reglas y alertas",
+              "demo": false,
+              "light": false,
+              "pro": true
+            }
           ]
         },
         {
           "category": "Analytics",
           "rows": [
-            { "label": "Estadísticas básicas (winrate, PnL)", "demo": true, "light": true, "pro": true },
-            { "label": "Vista de calendario e historial", "demo": false, "light": true, "pro": true },
-            { "label": "Rendimiento por setup", "demo": false, "light": true, "pro": true },
-            { "label": "Análisis por sesión y día", "demo": false, "light": true, "pro": true },
-            { "label": "Métricas de consistencia", "demo": false, "light": false, "pro": true },
-            { "label": "RRR efectivo vs. planificado", "demo": false, "light": false, "pro": true }
+            {
+              "label": "Estadísticas básicas (winrate, PnL)",
+              "demo": true,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Vista de calendario e historial",
+              "demo": false,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Rendimiento por setup",
+              "demo": false,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Análisis por sesión y día",
+              "demo": false,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Métricas de consistencia",
+              "demo": false,
+              "light": false,
+              "pro": true
+            },
+            {
+              "label": "RRR efectivo vs. planificado",
+              "demo": false,
+              "light": false,
+              "pro": true
+            }
           ]
         },
         {
           "category": "General",
           "rows": [
-            { "label": "100% offline", "demo": true, "light": true, "pro": true },
-            { "label": "Modo oscuro y claro", "demo": true, "light": true, "pro": true },
-            { "label": "Soporte multiidioma", "demo": true, "light": true, "pro": true },
-            { "label": "Backup y restauración", "demo": false, "light": true, "pro": true }
+            {
+              "label": "100% offline",
+              "demo": true,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Modo oscuro y claro",
+              "demo": true,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Soporte multiidioma",
+              "demo": true,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Backup y restauración",
+              "demo": false,
+              "light": true,
+              "pro": true
+            }
           ]
         }
       ]
     },
     "cta": {
       "label": "¿Listo para empezar?",
-      "headline": "Construye tu edge con disciplina.",
-      "description": "Empieza con la demo gratuita o ve directo al plan que se adapte a tu flujo. Sin suscripciones, nunca.",
+      "headline": "Construye tu edge con claridad.",
+      "description": "Empieza con la demo gratuita o ve directo a la versión que se adapte a tu flujo. Cómprala, tenla. Sin suscripciones, nunca.",
       "backHome": "Inicio",
       "seeFeatures": "Ver todas las funciones"
     }

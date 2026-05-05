@@ -10,60 +10,81 @@
   },
   "hero": {
     "badge": "交易日誌與分析",
-    "tagline": "用紀律交易",
-    "description": "一款專注於清晰、結構與紀律的現代交易日誌。完全本地運行、速度極快，專為希望專業成長的 Prop Trader 打造。",
-    "ctaBuy": "購買授權",
+    "tagline": "用",
+    "description": "一款離線交易日誌，幫助你專注於紀律，並透過全面、深入的交易分析支援你的成長。本地運行、速度快速，專為想要專業進步的交易者打造。你可以管理自己的規則，也可以隨時掌握 Prop Firm 帳戶與 Challenge 進度。",
+    "ctaBuy": "購買 Katsumii",
     "ctaTour": "產品導覽"
   },
   "heroStats": [
-    { "label": "離線優先", "value": "100%" },
-    { "label": "應用速度", "value": "快速" },
-    { "label": "專注介面", "value": "簡潔" }
+    {
+      "label": "離線",
+      "value": "100%"
+    },
+    {
+      "label": "日誌",
+      "value": "快速"
+    },
+    {
+      "label": "專注介面",
+      "value": "簡潔"
+    }
   ],
   "featureTicker": [
-    "100% 離線優先",
-    "Prop 規則監控",
+    "100% 離線",
+    "Prop Firm 規則防護",
+    "Challenge 進度",
     "截圖交易日誌",
     "進階績效統計",
-    "高速本地搜尋",
-    "Kaizen 改善檢討流程"
+    "日曆與提醒",
+    "可自訂",
+    "帳戶管理"
   ],
   "features": {
     "label": "為什麼選擇 Katsumii",
-    "headline": "專業化結構與清晰高效的工作流程",
+    "headline": "清晰、專注流程中的專業交易日誌",
     "spotlight": {
       "label": "功能亮點",
-      "headline": "用冷靜且可衡量的執行建立信心",
-      "description": "最重要的功能被放在核心位置：快速的交易記錄流程、清晰的 Prop 規則可視化，以及能直接提升決策品質的分析工具。",
+      "headline": "透過冷靜、可衡量的執行建立紀律",
+      "description": "最重要的功能被刻意放在核心位置：快速的交易記錄流程、清楚可見的 Prop Firm 規則，以及能直接改善決策的分析。",
       "points": [
-        "幾秒內記錄交易：包含截圖、筆記與 Setup 情境。",
-        "Prop 帳戶限制隨時可見，包含違規風險提醒。",
-        "依 Setup、交易時段與錯誤進行分析，精準提升表現。"
+        "幾秒內記錄交易，包含截圖、筆記與 Setup 情境。",
+        "Prop 帳戶限制隨時可見，包含違規風險。",
+        "針對即將到來的不活躍期限接收提醒。",
+        "依 Setup、交易時段與錯誤分析績效，精準改善。"
       ]
     },
     "cards": [
       {
-        "name": "帳戶清晰管理",
-        "description": "Prop 與個人帳戶集中於同一視圖，清楚顯示目標、限制與進度。"
+        "name": "清楚的帳戶管理",
+        "description": "管理 Prop 與個人帳戶，清楚顯示目標、限制與進度。"
       },
       {
         "name": "結構化交易日誌",
-        "description": "透過截圖、筆記、Setup 標籤與紀律化檢討紀錄交易。"
+        "description": "用截圖、筆記、使用的策略、標籤等內容記錄每筆交易。"
       },
       {
-        "name": "可行動的分析",
-        "description": "追蹤 Expectancy、R-Multiples、Setup 品質與長期穩定度。"
+        "name": "深入分析",
+        "description": "追蹤勝率、Expectancy、實際 RRR 與計畫 RRR、Setup 品質、最佳與最差時間/日期，以及一致性。"
       },
       {
         "name": "隱私優先設計",
-        "description": "無需登入、無雲端依賴。你的交易資料完全保存在本地。"
+        "description": "無需登入，也不依賴雲端。你的交易資料保留在自己的電腦本地。"
       }
     ]
   },
   "spotlightKpis": [
-    { "value": "A+", "label": "Setup 評分" },
-    { "value": "+0.31R", "label": "平均 Edge" },
-    { "value": "100%", "label": "本地資料" }
+    {
+      "value": "A+",
+      "label": "Setup 評分"
+    },
+    {
+      "value": "+0.31R",
+      "label": "平均 Edge"
+    },
+    {
+      "value": "100%",
+      "label": "本地資料"
+    }
   ],
   "showcase": {
     "dashboardWindowLabel": "儀表板",
@@ -171,7 +192,12 @@
       "headlineA": "專為交易者的真實",
       "headlineB": "工作流程設計。",
       "description": "每項功能都圍繞真實的工作流程步驟設計——從記錄第一筆交易到回顧月度績效模式。",
-      "tags": ["100% 離線優先", "適合Prop交易", "結構化複盤", "可執行分析"]
+      "tags": [
+        "100% 離線優先",
+        "適合Prop交易",
+        "結構化複盤",
+        "可執行分析"
+      ]
     },
     "features": [
       {
@@ -232,44 +258,263 @@
     "heading": "歡迎使用 Katsumii。",
     "subheading": "感謝您的購買。您現在擁有一個專業的交易日誌，專為紀律與清晰而設計。",
     "onboarding": [
-      { "number": "01", "title": "連接您的第一個帳戶", "description": "新增個人帳戶或自營交易帳戶，開始追蹤交易、餘額和風險規則。" },
-      { "number": "02", "title": "記錄您的第一筆交易", "description": "輸入交易詳情、附加截圖並開始建立您的日誌歷史。" },
-      { "number": "03", "title": "查看您的分析報告", "description": "幾次交易後，造訪分析儀表板以衡量您的優勢、模式和一致性。" }
+      {
+        "number": "01",
+        "title": "連接您的第一個帳戶",
+        "description": "新增個人帳戶或自營交易帳戶，開始追蹤交易、餘額和風險規則。"
+      },
+      {
+        "number": "02",
+        "title": "記錄您的第一筆交易",
+        "description": "輸入交易詳情、附加截圖並開始建立您的日誌歷史。"
+      },
+      {
+        "number": "03",
+        "title": "查看您的分析報告",
+        "description": "幾次交易後，造訪分析儀表板以衡量您的優勢、模式和一致性。"
+      }
     ],
     "nextSteps": {
       "heading": "接下來要做什麼",
-      "items": ["開啟 Katsumii 並完成初始設置", "新增您的第一個交易帳戶", "記錄您的第一筆交易", "探索分析儀表板", "閱讀完整手冊以了解進階功能"]
+      "items": [
+        "開啟 Katsumii 並完成初始設置",
+        "新增您的第一個交易帳戶",
+        "記錄您的第一筆交易",
+        "探索分析儀表板",
+        "閱讀完整手冊以了解進階功能"
+      ]
     },
     "cta": "探索手冊",
-    "nav": { "home": "返回首頁", "manual": "手冊" }
+    "nav": {
+      "home": "返回首頁",
+      "manual": "手冊"
+    }
   },
   "manualPage": {
-    "hero": { "eyebrow": "文件", "heading": "Katsumii 使用手冊", "description": "一切您需要充分利用交易日誌的資訊。" },
-    "nav": { "overview": "概覽", "home": "返回首頁", "faq": "常見問題" },
-    "search": { "placeholder": "搜尋主題...", "noResults": "未找到主題。" },
-    "articles": "篇文章", "article": "篇文章", "prev": "上一頁", "next": "下一頁", "backToOverview": "返回概覽",
+    "hero": {
+      "eyebrow": "文件",
+      "heading": "Katsumii 使用手冊",
+      "description": "充分運用你的交易日誌所需的一切內容，依步驟、依主題清楚說明。"
+    },
+    "nav": {
+      "overview": "概覽",
+      "home": "返回首頁",
+      "faq": "常見問題"
+    },
+    "search": {
+      "placeholder": "搜尋主題...",
+      "noResults": "找不到主題。"
+    },
+    "articles": "篇文章",
+    "article": "篇文章",
+    "prev": "上一頁",
+    "next": "下一頁",
+    "backToOverview": "返回概覽",
     "topics": {
-      "gettingStarted": { "title": "入門指南", "description": "安裝、首次啟動和初始設置。", "articles": { "installation": { "title": "安裝", "content": ["從購買確認郵件下載 Katsumii 安裝程式。", "執行安裝程式並按照螢幕提示操作。", "安裝完成後，從開始功能表或桌面捷徑啟動 Katsumii。"] }, "firstLaunch": { "title": "首次啟動", "content": ["首次啟動時，設置嚮導將引導您完成基本設定。", "無需帳戶註冊或網路連線。", "完成嚮導後，您將進入主儀表板。"] }, "setup": { "title": "初始設置", "content": ["在「帳戶」區域新增至少一個帳戶。", "輸入名稱、類型和初始資金。", "自營交易帳戶可配置評估規則。"] } } },
-      "journal": { "title": "交易日誌", "description": "如何記錄和審查您的交易。", "articles": { "logging": { "title": "記錄交易", "content": ["在儀表板或日誌區域點擊「+ 新交易」。", "填寫必填欄位：工具、方向、價格、日期。", "設置和標籤等可選欄位可大幅提升分析品質。"] }, "screenshots": { "title": "添加截圖", "content": ["開啟交易並點擊截圖區域。", "可拖放圖片或使用檔案瀏覽器。", "截圖本地儲存，絕不上傳至任何伺服器。"] }, "tags": { "title": "標籤與設置", "content": ["標籤按設置類型、錯誤或市場條件分類交易。", "「設置」欄位指您命名的交易策略。", "一致的標籤是有意義分析的關鍵。"] }, "notes": { "title": "筆記與錯誤", "content": ["筆記欄位用於自由文字：理由、背景、見解。", "錯誤欄位允許選擇重複的流程錯誤。", "錯誤在分析部分中被追蹤和分析。"] } } },
-      "accounts": { "title": "帳戶管理", "description": "個人和自營交易帳戶的完整管理。", "articles": { "addAccount": { "title": "新增帳戶", "content": ["前往「帳戶」並點擊「新增帳戶」。", "輸入名稱、類型和初始資金。", "可新增任意數量的帳戶。"] }, "propRules": { "title": "自營公司規則", "content": ["建立自營交易帳戶時可配置規則。", "支援的規則類型：最大日虧損、最大總回撤、最少交易天數。", "規則在儀表板上以顏色編碼顯示。"] }, "progress": { "title": "挑戰進度", "content": ["Katsumii 自動追蹤盈利目標的進度。", "面板顯示：當前餘額、目標、交易天數和剩餘時間。", "已完成的挑戰可以歸檔和複製。"] } } },
-      "analytics": { "title": "分析與統計", "description": "了解您的績效數據。", "articles": { "dashboard": { "title": "儀表板概覽", "content": ["儀表板顯示餘額、盈虧、勝率和規則狀態。", "所有數值從交易日誌實時計算。", "可按日期範圍和帳戶篩選。"] }, "setupStats": { "title": "策略統計", "content": ["策略統計按策略分解績效。", "識別哪些策略有真實優勢，哪些沒有。", "少於20筆交易的策略應謹慎解讀。"] }, "consistency": { "title": "一致性指標", "content": ["一致性指標衡量流程紀律，獨立於盈虧。", "指標：截圖比率、策略分配率、錯誤重複率。", "提升一致性通常比追求更高勝率更有效。"] } } },
-      "calendar": { "title": "日曆視圖", "description": "一目了然地查看每日盈虧和交易模式。", "articles": { "navigation": { "title": "瀏覽日曆", "content": ["日曆顯示每日淨盈虧的月度網格。", "點擊某天查看當日交易。", "使用導航箭頭瀏覽交易歷史。"] }, "patterns": { "title": "識別模式", "content": ["日曆揭示時間模式：最佳/最差交易日、虧損集中期。", "懸停工具提示顯示快速摘要。", "將日曆與分析中的星期幾分析結合使用。"] } } },
-      "settings": { "title": "設置與偏好", "description": "自定義 Katsumii 並管理您的數據。", "articles": { "general": { "title": "一般設置", "content": ["一般設置：語言、主題、貨幣、日期格式。", "可配置每筆交易的默認風險和活躍交易時段。", "通過左側欄的齒輪圖標訪問。"] }, "alerts": { "title": "提醒與通知", "content": ["Katsumii 為自營交易事件發送 Windows 桌面通知。", "可配置的提醒類型：接近日虧損限制、不活躍截止日期。", "在帳戶設置中按帳戶配置提醒。"] }, "backup": { "title": "數據備份", "content": ["所有數據本地儲存在資料庫檔案中。", "備份：將資料庫檔案複製到外部位置。", "還原：關閉應用，替換檔案，重新啟動。"] } } }
+      "gettingStarted": {
+        "title": "入門指南",
+        "description": "安裝、首次啟動與初始設定，幫助你快速開始。",
+        "articles": {
+          "installation": {
+            "title": "安裝",
+            "content": [
+              "從購買確認 Email 或 katsumii.app 帳戶下載 Katsumii 安裝程式。安裝程式是標準的 Windows 安裝檔（.exe），並已進行數位簽章。",
+              "執行安裝程式並依照畫面提示操作。Katsumii 採用標準使用者層級安裝，不需要系統管理員權限；預設會安裝到你的使用者設定檔。",
+              "安裝完成後，可從開始功能表捷徑或安裝時建立的桌面圖示啟動 Katsumii。首次啟動時，系統會引導你完成初始設定。"
+            ]
+          },
+          "firstLaunch": {
+            "title": "首次啟動",
+            "content": [
+              "首次啟動時，Katsumii 會執行一個快速設定精靈。你可以選擇偏好的語言、色彩主題，以及帳戶的預設貨幣。",
+              "不需要註冊帳號，也不需要網路連線。從一開始，所有資料都會保留在你的本機電腦上。",
+              "完成設定精靈後，你會進入主儀表板。儀表板會保持空白，直到你新增第一個帳戶與交易；這是正常且預期的狀態。"
+            ]
+          },
+          "setup": {
+            "title": "初始設定",
+            "content": [
+              "在記錄交易前，建議先建立至少一個帳戶。從左側側邊欄進入「帳戶」區域，然後點擊「新增帳戶」。",
+              "為帳戶命名，例如「FTMO 100K Challenge」或「Personal Futures」，選擇帳戶類型（個人或 Prop Firm），並設定初始餘額。",
+              "對於 Prop Firm 帳戶，你可以立即設定公司的規則：最大日回撤、最大總回撤、最低交易日數，以及任何啟用中的不活躍提醒期間。只要該帳戶處於啟用狀態，這些規則就會持續顯示。"
+            ]
+          }
+        }
+      },
+      "journal": {
+        "title": "交易日誌",
+        "description": "如何記錄、註解與檢討交易，讓每筆交易發揮最大學習價值。",
+        "articles": {
+          "logging": {
+            "title": "記錄一筆交易",
+            "content": [
+              "若要記錄交易，請在儀表板或日誌區域點擊「+ 新交易」。交易輸入表單會在右側面板開啟。",
+              "填寫核心欄位：商品（例如 NQ、EURUSD）、方向（Long/Short）、進場價格、出場價格、部位大小與交易日期。Katsumii 會根據帳戶的風險設定，自動計算 PnL、R 倍數與風險。",
+              "你也可以選擇 Setup 類型、情緒狀態、交易時段（London、New York、Asian），並加入標籤以便之後篩選。這些欄位是選填，但長期來看能大幅提升分析品質。"
+            ]
+          },
+          "screenshots": {
+            "title": "新增截圖",
+            "content": [
+              "若要將圖表截圖附加到交易，請開啟該筆交易並點擊媒體面板中的截圖區域。你可以直接拖放圖片檔，或點擊後從檔案系統選取。",
+              "Katsumii 會將截圖本地儲存在 App 資料旁的專用資料夾中。圖片絕不會上傳到任何伺服器。",
+              "每筆交易可以加入多張截圖，例如較高週期的背景圖，以及進場級別的圖表。所有截圖都會顯示在交易詳細頁與檢討流程中。"
+            ]
+          },
+          "tags": {
+            "title": "標籤與 Setups",
+            "content": [
+              "標籤可用來依 Setup 類型、錯誤類別、市場條件，或你自訂的任何分類來整理交易。你可以在設定中的「Trade Tags」建立自訂標籤。",
+              "「Setup」欄位與標籤不同，它代表你命名的交易 Setup，例如「Break & Retest」、「Fair Value Gap」或「ORB」。Setups 可在設定中的「Setups」管理，並會出現在 Analytics 的分類分析中。",
+              "穩定且準確地分配 Setups 和標籤，是產生有意義分析的關鍵。即使是簡單的標籤系統，只要持續使用，也能揭示改善決策的模式。"
+            ]
+          },
+          "notes": {
+            "title": "交易筆記與錯誤",
+            "content": [
+              "每筆交易都有一個自由文字的筆記欄位。你可以用它記錄交易理由、市場背景，或任何檢討時值得回看的內容。",
+              "錯誤欄位是一個獨立的多選項選擇器，可用來標記特定流程錯誤，例如「移動 SL」、「追價進場」、「違反規則」、「部位過大」等。這些錯誤會進入 Analytics，幫助你看見重複模式。",
+              "筆記與錯誤也會在該交易日的日曆視圖中顯示，讓每週與每月檢討更快速、更有結構。"
+            ]
+          }
+        }
+      },
+      "accounts": {
+        "title": "帳戶管理",
+        "description": "管理個人與 Prop Firm 帳戶，完整掌握規則與 Challenge 進度。",
+        "articles": {
+          "addAccount": {
+            "title": "新增帳戶",
+            "content": [
+              "從左側側邊欄進入「帳戶」區域，點擊「新增帳戶」。輸入帳戶名稱、選擇類型（個人或 Prop Firm），並設定初始餘額與貨幣。",
+              "個人帳戶沒有規則限制，只會追蹤餘額與交易歷史。Prop Firm 帳戶則會開啟規則設定面板。",
+              "你可以依需求新增任意數量的帳戶。帳戶會列在側邊欄中，並可隨時切換。所有 Analytics 區域都會依照目前啟用的帳戶篩選器顯示。"
+            ]
+          },
+          "propRules": {
+            "title": "Prop Firm 規則",
+            "content": [
+              "建立或編輯 Prop Firm 帳戶時，你可以直接在 Katsumii 中設定公司的評估規則。支援的規則類型包含：最大日虧損、最大總回撤、最低交易日數，以及不活躍期間。",
+              "只要帳戶處於啟用狀態，這些規則就會持續顯示在儀表板上。顏色狀態指示器會顯示你距離各項限制有多近：綠色（安全）、黃色（注意）、紅色（接近違規）。",
+              "Katsumii 不會連接你的 Broker。規則追蹤是根據你手動記錄的交易計算，因此準確度取決於你是否一致地記錄所有交易。"
+            ]
+          },
+          "progress": {
+            "title": "Challenge 進度",
+            "content": [
+              "對於 Prop Firm Challenge 帳戶，Katsumii 會根據你記錄的交易與初始餘額，自動追蹤你距離獲利目標的進度。",
+              "儀表板上的 Challenge 進度面板會顯示：目前餘額、獲利目標、已交易天數、最低要求交易日數，以及若你設定了 Challenge 截止日，還會顯示剩餘時間。",
+              "當 Challenge 完成或失敗後，你可以封存該帳戶，並可選擇複製它以開始新的嘗試；這樣能保留歷史，同時重新開始。"
+            ]
+          }
+        }
+      },
+      "analytics": {
+        "title": "分析與統計",
+        "description": "理解你的績效資料，找出交易流程中有效與無效的部分。",
+        "articles": {
+          "dashboard": {
+            "title": "儀表板概覽",
+            "content": [
+              "儀表板是 Katsumii 的主要控制中心。它會一目了然地顯示目前帳戶餘額、累計 PnL、勝率、平均 R 倍數，以及啟用中的規則狀態。",
+              "當你新增或編輯交易時，儀表板會即時更新。所有數字都來自你的實際交易紀錄，不是估算或模擬結果。",
+              "你可以依日期範圍和帳戶篩選儀表板。這讓你能分析特定 Challenge 階段、單一月份，或整體歷史績效。"
+            ]
+          },
+          "setupStats": {
+            "title": "Setup 統計",
+            "content": [
+              "Setup 統計視圖會依你命名的 Setup 分解績效。每個 Setup 都可查看：總交易數、勝率、平均 R、總 PnL 與 Expectancy。",
+              "這是 Katsumii 中最有價值的視圖之一。隨著時間累積，它會揭示哪些 Setups 真正有 Edge，哪些正在造成虧損，不受你主觀信心影響。",
+              "少於 20 筆交易的 Setups 應謹慎解讀。樣本數越大，統計才越有意義。Katsumii 會在每個 Setup 旁顯示樣本數指標，幫助你判斷可靠性。"
+            ]
+          },
+          "consistency": {
+            "title": "一致性指標",
+            "content": [
+              "一致性指標衡量你遵守自身規則與流程的程度，獨立於 PnL。具有 Edge 的紀律交易者，即使在回撤期間，也應展現較高的一致性分數。",
+              "關鍵一致性指標包含：附有截圖的交易比例、具有明確 Setup 的交易比例、從進場到寫入日誌的平均時間，以及錯誤重複率。",
+              "改善一致性通常比追求更高勝率更具行動性。Katsumii 會在 Analytics 區域中的專用一致性面板呈現這些指標。"
+            ]
+          }
+        }
+      },
+      "calendar": {
+        "title": "日曆視圖",
+        "description": "一眼查看每日 PnL、交易模式與 Session 歷史。",
+        "articles": {
+          "navigation": {
+            "title": "瀏覽日曆",
+            "content": [
+              "日曆視圖會顯示一個月度網格，每一天都呈現該 Session 的淨 PnL。綠色代表獲利日，紅色代表虧損日，灰色代表沒有活動。",
+              "點擊任意日期，即可在精簡列表中查看當天記錄的交易。點擊某筆交易，則可在不離開日曆情境的情況下開啟完整詳細視圖。",
+              "使用月份導覽箭頭可前後瀏覽交易歷史。點擊月份/年份標題也可切換到年度概覽，方便辨識季節性模式。"
+            ]
+          },
+          "patterns": {
+            "title": "辨識模式",
+            "content": [
+              "日曆最適合用來辨識時間相關模式：一週中哪些日子表現最好、哪些週通常最差，以及虧損是否集中在特定市場事件附近。",
+              "將滑鼠停在任一天上，可以看到快速摘要：交易筆數、淨 PnL、當日勝率，以及標記的錯誤。這讓你不必逐筆打開交易，也能快速掃描模式。",
+              "將日曆與 Analytics 區域中的星期幾分析結合，可以量化你的時間模式。日曆提供直覺視覺化，Analytics 則提供數字。"
+            ]
+          }
+        }
+      },
+      "settings": {
+        "title": "設定與偏好",
+        "description": "自訂 Katsumii 的外觀、預設值與資料管理方式，以符合你的工作流程。",
+        "articles": {
+          "general": {
+            "title": "一般設定",
+            "content": [
+              "一般設定可從左下角側邊欄的齒輪圖示進入。你可以在這裡變更應用程式語言、色彩主題（淺色/深色）、預設貨幣與日期格式。",
+              "你也可以設定每筆交易的預設風險，可以使用百分比或固定 R 值。這個預設值會在輸入新交易時，用來自動計算部位大小建議。",
+              "「Trading Sessions」設定可讓你定義活躍交易時段，例如 London 08:00–12:00 UTC。Katsumii 會根據進場時間自動將交易分配到對應 Session。"
+            ]
+          },
+          "alerts": {
+            "title": "提醒與通知",
+            "content": [
+              "Katsumii 可以針對即將到來的 Prop Firm 規則事件發送 Windows 桌面通知。提醒完全本地運作，不需要 Email，也不需要 App 帳號。",
+              "可設定的提醒類型包含：接近日虧損限制，例如達到最大日回撤的 80%；不活躍期限提醒，例如要求交易日前 1 天；以及達到獲利目標。",
+              "提醒會在每個帳戶的「帳戶設定 > 提醒」中設定。你可以自訂門檻，並獨立啟用或停用每一種提醒。"
+            ]
+          },
+          "backup": {
+            "title": "資料備份",
+            "content": [
+              "所有 Katsumii 資料都會本地儲存在使用者資料夾中的結構化資料庫檔案裡。你可以在「設定 > 關於 > 資料位置」找到完整路徑。",
+              "若要備份資料，只需將資料庫檔案複製到外接硬碟、雲端儲存空間或其他位置。Katsumii 基於設計不內建同步服務。",
+              "若要還原備份，請先關閉 Katsumii，將目前的資料庫檔案替換為你的備份檔，然後重新啟動 App。所有帳戶、交易與設定都會恢復到備份時的狀態。"
+            ]
+          }
+        }
+      }
     }
   },
   "pricingPage": {
     "brandSubtitle": "價格方案",
     "popular": "最受歡迎",
     "highlights": [
-      { "title": "終身授權", "text": "一次付費，長期使用。" },
-      { "title": "離線優先", "text": "不需要雲端帳號。" },
-      { "title": "升級路徑", "text": "從簡單開始，逐步升級至 Pro。" }
+      {
+        "title": "終身授權",
+        "text": "一次付費，長期使用。"
+      },
+      {
+        "title": "離線優先",
+        "text": "不需要雲端帳號。"
+      },
+      {
+        "title": "升級路徑",
+        "text": "從簡單開始，逐步升級至 Pro。"
+      }
     ],
     "hero": {
       "label": "價格",
       "headlineA": "一次付費。",
       "headlineB": "終身優勢。",
-      "description": "無訂閱、無雲端依賴。選擇適合您交易工作流程的方案，永久擁有。"
+      "description": "無訂閱、無雲端依賴。選擇適合您交易工作流程的版本，永久擁有。"
     },
     "nav": {
       "home": "返回首頁",
@@ -280,6 +525,11 @@
       "demo": {
         "name": "Demo",
         "price": "$0",
+        "seats": "1",
+        "seatsLabel": "範例帳戶",
+        "entries": "5",
+        "entriesLabel": "範例交易記錄",
+        "inclusionLabel": null,
         "description": "使用範例數據探索完整工作流程。無需帳號，無需承諾。",
         "features": [
           "完整 UI 存取與範例數據",
@@ -293,6 +543,11 @@
         "name": "Light",
         "price": "$49",
         "priceNote": "一次性",
+        "seats": "6",
+        "seatsLabel": "個人帳戶",
+        "entries": "無限",
+        "entriesLabel": "交易記錄",
+        "inclusionLabel": null,
         "description": "適合需要基本分析和完善交易記錄的清晰日誌管理。",
         "features": [
           "無限交易記錄",
@@ -308,6 +563,11 @@
         "name": "Professional",
         "price": "$89",
         "priceNote": "一次性",
+        "seats": "無限",
+        "seatsLabel": "帳戶（含 Prop）",
+        "entries": "無限",
+        "entriesLabel": "交易記錄",
+        "inclusionLabel": "LIGHT +",
         "description": "適合認真優化流程、管理 Prop 帳戶並深度追蹤績效的交易者。",
         "features": [
           "包含 Light 所有功能",
@@ -321,9 +581,18 @@
       }
     },
     "tierMeta": {
-      "demo": { "label": "預覽", "value": "購買前先試用" },
-      "light": { "label": "適合", "value": "核心日誌管理" },
-      "professional": { "label": "進階使用者", "value": "Prop 與深度分析" }
+      "demo": {
+        "label": "預覽",
+        "value": "購買前先試用"
+      },
+      "light": {
+        "label": "適合",
+        "value": "核心日誌管理"
+      },
+      "professional": {
+        "label": "進階使用者",
+        "value": "Prop 與深度分析"
+      }
     },
     "comparison": {
       "kicker": "方案一覽",
@@ -334,48 +603,143 @@
         {
           "category": "日誌",
           "rows": [
-            { "label": "交易記錄", "demo": "5 筆範例", "light": "無限", "pro": "無限" },
-            { "label": "截圖附件", "demo": true, "light": true, "pro": true },
-            { "label": "筆記與錯誤追蹤", "demo": true, "light": true, "pro": true },
-            { "label": "自訂標籤與策略", "demo": false, "light": true, "pro": true },
-            { "label": "交易範本", "demo": false, "light": true, "pro": true }
+            {
+              "label": "交易記錄",
+              "demo": "5 筆範例",
+              "light": "無限",
+              "pro": "無限"
+            },
+            {
+              "label": "截圖附件",
+              "demo": true,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "筆記與錯誤追蹤",
+              "demo": true,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "自訂標籤與策略",
+              "demo": false,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "交易範本",
+              "demo": false,
+              "light": true,
+              "pro": true
+            }
           ]
         },
         {
           "category": "帳戶",
           "rows": [
-            { "label": "個人帳戶", "demo": "1（唯讀）", "light": "最多 6 個", "pro": "無限" },
-            { "label": "Prop 公司帳戶", "demo": false, "light": false, "pro": "無限" },
-            { "label": "挑戰進度追蹤", "demo": false, "light": false, "pro": true },
-            { "label": "規則防護與提醒", "demo": false, "light": false, "pro": true }
+            {
+              "label": "個人帳戶",
+              "demo": "1（唯讀）",
+              "light": "最多 6 個",
+              "pro": "無限"
+            },
+            {
+              "label": "Prop 公司帳戶",
+              "demo": false,
+              "light": false,
+              "pro": "無限"
+            },
+            {
+              "label": "挑戰進度追蹤",
+              "demo": false,
+              "light": false,
+              "pro": true
+            },
+            {
+              "label": "規則防護與提醒",
+              "demo": false,
+              "light": false,
+              "pro": true
+            }
           ]
         },
         {
           "category": "分析",
           "rows": [
-            { "label": "基本統計（勝率、PnL）", "demo": true, "light": true, "pro": true },
-            { "label": "日曆與歷史檢視", "demo": false, "light": true, "pro": true },
-            { "label": "策略績效分析", "demo": false, "light": true, "pro": true },
-            { "label": "交易時段與星期分析", "demo": false, "light": true, "pro": true },
-            { "label": "一致性指標", "demo": false, "light": false, "pro": true },
-            { "label": "實際 vs. 計畫 RRR", "demo": false, "light": false, "pro": true }
+            {
+              "label": "基本統計（勝率、PnL）",
+              "demo": true,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "日曆與歷史檢視",
+              "demo": false,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "策略績效分析",
+              "demo": false,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "交易時段與星期分析",
+              "demo": false,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "一致性指標",
+              "demo": false,
+              "light": false,
+              "pro": true
+            },
+            {
+              "label": "實際 vs. 計畫 RRR",
+              "demo": false,
+              "light": false,
+              "pro": true
+            }
           ]
         },
         {
           "category": "一般",
           "rows": [
-            { "label": "100% 離線", "demo": true, "light": true, "pro": true },
-            { "label": "深色與淺色模式", "demo": true, "light": true, "pro": true },
-            { "label": "多語言支援", "demo": true, "light": true, "pro": true },
-            { "label": "數據備份與還原", "demo": false, "light": true, "pro": true }
+            {
+              "label": "100% 離線",
+              "demo": true,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "深色與淺色模式",
+              "demo": true,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "多語言支援",
+              "demo": true,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "數據備份與還原",
+              "demo": false,
+              "light": true,
+              "pro": true
+            }
           ]
         }
       ]
     },
     "cta": {
       "label": "準備開始了嗎？",
-      "headline": "用紀律打造你的優勢。",
-      "description": "從免費 Demo 開始，或直接選擇適合你工作流程的方案。永遠不收訂閱費。",
+      "headline": "用清晰打造你的優勢。",
+      "description": "從免費 Demo 開始，或直接選擇適合你工作流程的版本。買下它，擁有它。永遠不收訂閱費。",
       "backHome": "返回首頁",
       "seeFeatures": "查看所有功能"
     }

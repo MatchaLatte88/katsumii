@@ -54,12 +54,12 @@
           </a>
         </div>
 
-        <div class="nav-actions flex items-center gap-1.5 sm:gap-2">
+        <div class="nav-actions flex items-center gap-0.5">
           <LangSwitch :theme="theme" />
 
           <BgSwitch :theme="theme" :model-value="bg" @update:model-value="emit('change-bg', $event)" />
 
-          <div class="theme-switch-wrap">
+          <div class="theme-switch-wrap ml-1.5">
             <DarkLightSwitch :is-dark="theme === 'dark'" @toggle="emit('toggle-theme')" />
           </div>
 
@@ -144,16 +144,16 @@ defineProps({
   filter: drop-shadow(0 10px 18px rgba(15, 118, 110, 0.16));
 }
 
-/* Scale down the 132×52px switch to fit the 64px-tall navbar */
+/* Scale down the 100×40px switch to fit the 64px-tall navbar */
 .theme-switch-wrap {
   display: flex;
   align-items: center;
   transform: scale(0.68);
-  transform-origin: right center;
-  /* Reserve the visual space so layout doesn't shift */
-  width: calc(132px * 0.68);
-  height: calc(52px * 0.68);
+  transform-origin: left center;
+  width: 100px;
+  height: 40px;
   flex-shrink: 0;
+  margin-right: calc(-100px * (1 - 0.68));
 }
 
 @keyframes nav-fade-in {
@@ -191,7 +191,7 @@ defineProps({
   }
 
   .nav-actions {
-    gap: 0.2rem;
+    gap: 0.125rem;
   }
 }
 </style>

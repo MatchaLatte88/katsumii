@@ -2,17 +2,14 @@
   <Menu as="div" class="relative">
     <MenuButton
       :class="[
-        'flex items-center gap-1 rounded-xl px-2.5 py-1.5 text-xs font-semibold uppercase tracking-widest transition-all duration-200',
+        'flex items-center gap-1 rounded-xl px-2 py-1 text-xs font-semibold uppercase tracking-widest transition-all duration-200',
         theme === 'light'
           ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
           : 'text-slate-300 hover:bg-slate-800/80 hover:text-slate-100'
       ]"
       :title="OPTIONS.find(o => o.value === modelValue)?.label ?? 'Background'"
     >
-      <SunIcon        v-if="modelValue === 'sky'"           class="h-4 w-4" />
-      <SparklesIcon   v-else-if="modelValue === 'seasonal' || modelValue === 'stars'" class="h-4 w-4" />
-      <ArrowPathIcon  v-else-if="modelValue === 'lines'"     class="h-4 w-4" />
-      <Squares2X2Icon v-else class="h-4 w-4" />
+      <SwatchIcon class="h-4 w-4" />
     </MenuButton>
 
     <Transition
@@ -48,7 +45,6 @@
             ]"
           >
             <span class="w-4 text-center flex-shrink-0">{{ modelValue === option.value ? '✓' : '' }}</span>
-            <component :is="option.icon" class="h-3.5 w-3.5 flex-shrink-0" />
             {{ option.label }}
           </button>
         </MenuItem>
@@ -60,7 +56,7 @@
 <script setup>
 import { computed } from "vue"
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue"
-import { SparklesIcon, Squares2X2Icon, ArrowPathIcon, SunIcon } from "@heroicons/vue/24/outline"
+import { SwatchIcon } from "@heroicons/vue/24/outline"
 
 const props = defineProps({
   theme:      { type: String, default: "light" },
@@ -70,11 +66,11 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue"])
 
 const ALL_OPTIONS = [
-  { value: "honeycomb", label: "Honeycomb", icon: Squares2X2Icon },
-  { value: "stars",     label: "Stars",     icon: SparklesIcon,  darkOnly: true },
-  { value: "lines",     label: "Lines",     icon: ArrowPathIcon  },
-  { value: "sky",       label: "Rain",      icon: SunIcon        },
-  { value: "seasonal",  label: "Seasonal",  icon: SparklesIcon   },
+  { value: "honeycomb", label: "Honeycomb" },
+  { value: "stars",     label: "Stars",    darkOnly: true },
+  { value: "lines",     label: "Lines"     },
+  { value: "sky",       label: "Rain"      },
+  { value: "seasonal",  label: "Seasonal"  },
 ]
 
 const OPTIONS = computed(() =>

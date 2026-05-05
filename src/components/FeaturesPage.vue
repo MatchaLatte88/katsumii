@@ -21,9 +21,9 @@
     <!-- ── HERO ─────────────────────────────────────────────────────── -->
     <section class="relative overflow-hidden px-6 pb-0 pt-28 lg:px-10">
       <div
+        v-if="theme !== 'light'"
         aria-hidden="true"
-        class="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full blur-[140px]"
-        :class="theme === 'light' ? 'bg-teal-200/35' : 'bg-cyan-500/8'"
+        class="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full blur-[140px] bg-cyan-500/8"
       />
 
       <div class="relative mx-auto max-w-6xl">
@@ -234,9 +234,9 @@
             : 'border-slate-800/60 bg-slate-900/60 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]'"
         >
           <div
+            v-if="theme !== 'light'"
             aria-hidden="true"
-            class="pointer-events-none absolute left-1/2 top-0 h-64 w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px]"
-            :class="theme === 'light' ? 'bg-teal-100/80' : 'bg-cyan-500/6'"
+            class="pointer-events-none absolute left-1/2 top-0 h-64 w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px] bg-cyan-500/6"
           />
           <div class="relative">
             <p
