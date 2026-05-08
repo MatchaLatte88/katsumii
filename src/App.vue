@@ -17,9 +17,6 @@
       <HomeHero
         :theme="theme"
         :asset-url="assetUrl"
-        :checkout-url="checkoutUrl"
-        :link-target="linkTarget"
-        :link-rel="linkRel"
       />
       <HomeFeatures :theme="theme" :asset-url="assetUrl" />
       <HomeShowcase :theme="theme" :asset-url="assetUrl" />

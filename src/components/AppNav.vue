@@ -186,6 +186,19 @@ onUnmounted(() => {
   filter: drop-shadow(0 10px 18px rgba(15, 118, 110, 0.16));
 }
 
+:deep(a),
+:deep(button),
+:deep([role="button"]) {
+  cursor: pointer;
+  user-select: none;
+}
+
+:deep(a *),
+:deep(button *),
+:deep([role="button"] *) {
+  cursor: inherit;
+}
+
 /* Scale down the 100×40px switch to fit the 64px-tall navbar */
 .theme-switch-wrap {
   display: flex;

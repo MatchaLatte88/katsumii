@@ -41,7 +41,7 @@
       </ul>
 
       <RouterLink
-        :to="appHomePath"
+        :to="pagePath('pricing')"
         class="mt-7 inline-flex rounded-full border px-6 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
         :class="theme === 'light' ? 'border-gray-300 text-gray-700 hover:bg-gray-50' : 'border-blue-400/30 text-slate-200 hover:bg-slate-800/60'"
       >
@@ -54,7 +54,7 @@
 <script setup>
 import { useI18n } from "vue-i18n"
 import { CheckIcon } from "@heroicons/vue/20/solid"
-import { appHomePath } from "../../utils/routes.js"
+import { pagePath } from "../../utils/routes.js"
 
 defineProps({
   theme: { type: String, required: true },

@@ -47,10 +47,8 @@
         </p>
 
         <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-          <a
-            :href="checkoutUrl"
-            :target="linkTarget(checkoutUrl)"
-            :rel="linkRel(checkoutUrl)"
+          <RouterLink
+            :to="pagePath('pricing')"
             :class="[
               'inline-flex min-h-12 items-center justify-center rounded-full px-6 py-3 text-sm font-bold transition-all duration-300 hover:-translate-y-0.5',
               theme === 'light'
@@ -59,7 +57,7 @@
             ]"
           >
             {{ t('hero.ctaBuy') }}
-          </a>
+          </RouterLink>
           <a
             href="#showcase"
             :class="[
@@ -80,7 +78,7 @@
           <div
             v-for="item in heroStats"
             :key="`hero-proof-${item.label}`"
-            class="px-3 py-3"
+            class="px-3 py-3 text-center"
           >
             <p :class="['text-sm font-bold sm:text-base', theme === 'light' ? 'text-gray-950' : 'text-slate-50']">{{ item.value }}</p>
             <p :class="['mt-1 text-[11px] leading-tight', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">{{ item.label }}</p>
@@ -130,7 +128,7 @@
             ]"
           >
             <div
-              v-for="item in heroStats"
+              v-for="item in heroFeatureStats"
               :key="item.label"
               class="px-3 py-3 text-center"
             >
@@ -147,17 +145,16 @@
 <script setup>
 import { computed, onMounted, onUnmounted, ref } from "vue"
 import { useI18n } from "vue-i18n"
+import { pagePath } from "../../utils/routes.js"
 
 defineProps({
   theme: { type: String, required: true },
   assetUrl: { type: Function, required: true },
-  checkoutUrl: { type: String, required: true },
-  linkTarget: { type: Function, required: true },
-  linkRel: { type: Function, required: true },
 })
 
 const { t, tm } = useI18n()
 const heroStats = computed(() => tm('heroStats'))
+const heroFeatureStats = computed(() => tm('heroFeatureStats'))
 const typedWordEl = ref(null)
 let typingTimer = null
 

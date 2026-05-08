@@ -29,6 +29,20 @@
       "value": "簡潔"
     }
   ],
+  "heroFeatureStats": [
+    {
+      "label": "資料點",
+      "value": "42"
+    },
+    {
+      "label": "進度追蹤",
+      "value": "Prop Firm"
+    },
+    {
+      "label": "匯入",
+      "value": "CSV"
+    }
+  ],
   "featureTicker": [
     "100% 離線",
     "Prop Firm 規則防護",
@@ -39,6 +53,7 @@
     "可自訂",
     "帳戶管理"
   ],
+  "brokerSyncNote": "Broker Sync is under development. We're testing selected integrations based on user demand and API availability.",
   "features": {
     "label": "為什麼選擇 Katsumii",
     "headline": "清晰、專注流程中的專業交易日誌",

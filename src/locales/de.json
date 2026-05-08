@@ -29,6 +29,20 @@
       "value": "Klar"
     }
   ],
+  "heroFeatureStats": [
+    {
+      "label": "Datenpunkte",
+      "value": "42"
+    },
+    {
+      "label": "Fortschritt",
+      "value": "Prop-Firm"
+    },
+    {
+      "label": "Import",
+      "value": "CSV"
+    }
+  ],
   "featureTicker": [
     "100% offline",
     "Prop-Firm-Regelgrenzen",
@@ -39,6 +53,7 @@
     "Anpassbar",
     "Kontoverwaltung"
   ],
+  "brokerSyncNote": "Broker Sync is under development. We're testing selected integrations based on user demand and API availability.",
   "features": {
     "label": "Warum Katsumii",
     "headline": "Professionelles Journaling mit klaren, fokussierten Workflows",

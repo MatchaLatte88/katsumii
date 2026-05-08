@@ -29,6 +29,20 @@
       "value": "Limpia"
     }
   ],
+  "heroFeatureStats": [
+    {
+      "label": "Datos",
+      "value": "42"
+    },
+    {
+      "label": "Progreso",
+      "value": "Prop Firm"
+    },
+    {
+      "label": "Importación",
+      "value": "CSV"
+    }
+  ],
   "featureTicker": [
     "100% offline",
     "Límites para reglas prop firm",
@@ -39,6 +53,7 @@
     "Personalizable",
     "Gestión de cuentas"
   ],
+  "brokerSyncNote": "Broker Sync is under development. We're testing selected integrations based on user demand and API availability.",
   "features": {
     "label": "Por qué Katsumii",
     "headline": "Journaling profesional con flujos claros y enfocados",

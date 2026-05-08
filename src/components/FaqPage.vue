@@ -118,29 +118,59 @@ const navigation = [
 
 const faqItems = [
   {
-    category: "License",
+    category: "Allgemein",
+    question: "Was ist Katsumii?",
+    answer: "Katsumii ist ein Trading Journal zum Erfassen von Trades, Accounts, Setups, Screenshots, Journalnotizen, Performance-Statistiken und Reports.",
+  },
+  {
+    category: "Lizenz",
     question: "Ist Katsumii ein Abo oder eine Einmalzahlung?",
     answer: "Katsumii ist als One-Time-License gedacht. Du zahlst einmal und kannst die App lokal nutzen, ohne monatliche Gebuehren.",
   },
   {
-    category: "Privacy",
-    question: "Werden meine Trading-Daten in eine Cloud geladen?",
-    answer: "Nein. Der Fokus liegt auf offline-first. Deine Daten bleiben lokal auf deinem Geraet.",
+    category: "Nutzung",
+    question: "Welche Account-Typen werden unterstuetzt?",
+    answer: "Katsumii unterstuetzt Funded Accounts, Challenge-/Demo-Accounts und persoenliche Accounts. Jeder Modus fuehrt eigene Accounts und Trades getrennt voneinander.",
   },
   {
-    category: "Usage",
-    question: "Kann ich mehrere Prop- und Personal-Accounts verwalten?",
-    answer: "Ja, genau dafuer ist Katsumii gebaut. Du kannst mehrere Accounts parallel organisieren und getrennt auswerten.",
+    category: "Prop Trading",
+    question: "Kann ich Prop-Firm-Challenges tracken?",
+    answer: "Ja. Challenge-Accounts koennen Profit-Targets, Max-Loss, Daily-Loss-Limits, Trailing Drawdown, Activity Requirements, Consistency Rules, Zeitlimits und weitere Prop-Firm-Regeln abbilden.",
+  },
+  {
+    category: "Datenschutz",
+    question: "Wo werden meine Daten gespeichert?",
+    answer: "Alle Daten liegen lokal auf deinem Geraet. Das Backend nutzt eine lokale SQLite-Datenbank, Bilder werden in lokalen Upload-Ordnern gespeichert.",
+  },
+  {
+    category: "Datenschutz",
+    question: "Braucht Katsumii eine Internetverbindung?",
+    answer: "Nein. Journal, Accounts, Trades und Reports sind vollstaendig lokale Features. Deine Kerndaten sind jederzeit offline verfuegbar.",
   },
   {
     category: "Features",
-    question: "Unterstuetzt die App Screenshots und Trade-Notizen?",
-    answer: "Ja. Du kannst zu Trades Screenshots, Notizen, Setups, Fehler und Review-Eintraege dokumentieren.",
+    question: "Welche Informationen kann ich zu einem Trade speichern?",
+    answer: "Du kannst P&L, Risiko, Richtung, Groesse, Asset, Setup, geplantes R:R, Pips/Punkte, Entry/Exit, Zeiten, Duration, Fees, Mood, Mistakes, Tags, Timeframe, Farbe, Links, Notizen und bis zu vier Screenshots speichern.",
   },
   {
-    category: "Updates",
-    question: "Wie erhalte ich neue Versionen?",
-    answer: "Neue Versionen werden ueber deine offiziellen Download-Kanaele bereitgestellt. Changelog und Hinweise sind im Resource-Bereich vorgesehen.",
+    category: "Import / Export",
+    question: "Kann ich Trades aus CSV importieren?",
+    answer: "Ja. Der CSV-Import-Wizard fuehrt durch Upload, Spalten-Mapping, Vorschau, Duplikat-Pruefung und finalen Import. Vorgefertigte Presets fuer Tradovate, NinjaTrader, Rithmic, TopstepX und Interactive Brokers sind enthalten.",
+  },
+  {
+    category: "Statistiken",
+    question: "Welche Statistiken berechnet Katsumii?",
+    answer: "P&L, Win Rate, Profit Factor, Effective R:R, Planned R:R, Expectancy, Trade Count, Average Win/Loss, Best/Worst Trade, Streaks, Winning Days, Drawdown Distance, Daily Loss Distance und Consistency-Metriken.",
+  },
+  {
+    category: "Features",
+    question: "Kann ich Reports erstellen?",
+    answer: "Ja. Katsumii enthaelt einen Strategy Report und einen HTML Performance Report – ein offline-faehiges Dokument mit Equity Curve, Calendar Heatmap und Auswertungen nach Tag, Session, Setup und weiteren Filtern.",
+  },
+  {
+    category: "Daten",
+    question: "Werden Backups unterstuetzt?",
+    answer: "Ja. Katsumii unterstuetzt Backup-Export und -Import, Wiederherstellung des letzten Backups, benutzerdefinierte Backup-Pfade, Retention-Einstellungen und automatische Backups (woechentlich oder monatlich).",
   },
   {
     category: "Support",

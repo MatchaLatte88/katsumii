@@ -20,6 +20,11 @@
     { "label": "Journal", "value": "Fast" },
     { "label": "Focused UI", "value": "Clean" }
   ],
+  "heroFeatureStats": [
+    { "label": "Data points", "value": "42" },
+    { "label": "Progress tracking", "value": "Prop Firm" },
+    { "label": "Import", "value": "CSV" }
+  ],
   "featureTicker": [
     "100% Offline",
     "Propfirm Rule Guardrails",
@@ -30,6 +35,7 @@
     "Customisable",
     "Account Management"
   ],
+  "brokerSyncNote": "Broker Sync is under development. We're testing selected integrations based on user demand and API availability.",
   "features": {
     "label": "Why Katsumii",
     "headline": "Professional journaling with clear, focused workflows",

@@ -7,7 +7,7 @@
           ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
           : 'text-slate-300 hover:bg-slate-800/80 hover:text-slate-100'
       ]"
-      :title="OPTIONS.find(o => o.value === modelValue)?.label ?? 'Background'"
+      :title="selectedOption?.label ?? 'Background'"
     >
       <SwatchIcon class="h-4 w-4" />
     </MenuButton>
@@ -77,8 +77,11 @@ const OPTIONS = computed(() =>
   ALL_OPTIONS.filter(o => !o.darkOnly || props.theme === "dark")
 )
 
+const selectedOption = computed(() =>
+  OPTIONS.value.find((option) => option.value === props.modelValue)
+)
+
 const select = (val) => {
-  localStorage.setItem("katsumii-bg", val)
   emit("update:modelValue", val)
 }
 </script>

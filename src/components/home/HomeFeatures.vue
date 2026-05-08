@@ -35,6 +35,16 @@
         </div>
       </div>
 
+      <div
+        class="reveal mt-5 flex max-w-4xl items-start gap-3 rounded-2xl border px-4 py-3 sm:items-center"
+        :class="theme === 'light' ? 'border-teal-200/80 bg-teal-50/75 text-gray-700 shadow-sm' : 'border-cyan-300/20 bg-cyan-400/10 text-slate-300'"
+      >
+        <InformationCircleIcon class="mt-0.5 h-5 w-5 flex-none sm:mt-0" :class="theme === 'light' ? 'text-teal-600' : 'text-cyan-200'" />
+        <p class="text-sm leading-relaxed">
+          {{ t('brokerSyncNote') }}
+        </p>
+      </div>
+
       <article
         class="reveal feature-spotlight k-main-tile k-glass mt-10 grid gap-8 overflow-hidden border p-5 sm:p-8 lg:grid-cols-[1.05fr_1fr] lg:gap-12"
         :class="theme === 'light' ? 'border-gray-200/85 bg-white/82 shadow-[0_24px_80px_-48px_rgba(15,23,42,0.38)]' : 'border-cyan-300/18 bg-slate-900/72 shadow-[0_28px_90px_-54px_rgba(0,0,0,0.82)]'"
@@ -110,7 +120,7 @@
 import { computed } from "vue"
 import { useI18n } from "vue-i18n"
 import { CheckIcon } from "@heroicons/vue/20/solid"
-import { ChartBarIcon, CloudArrowUpIcon, LockClosedIcon, ServerIcon } from "@heroicons/vue/24/outline"
+import { ChartBarIcon, CloudArrowUpIcon, InformationCircleIcon, LockClosedIcon, ServerIcon } from "@heroicons/vue/24/outline"
 
 defineProps({
   theme: { type: String, required: true },
