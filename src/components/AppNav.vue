@@ -14,8 +14,8 @@
       :class="[
         'nav-shell mx-auto max-w-7xl rounded-[1.35rem] border px-3 sm:px-4',
         theme === 'light'
-          ? 'border-white/70 bg-white/62 shadow-[0_18px_60px_-32px_rgba(15,23,42,0.35)] supports-[backdrop-filter]:bg-white/45'
-          : 'border-cyan-300/20 bg-slate-950/62 shadow-[0_20px_70px_-34px_rgba(0,0,0,0.76)] supports-[backdrop-filter]:bg-slate-950/45'
+          ? 'nav-shell-light border-white/70 bg-white/62 shadow-[0_18px_60px_-32px_rgba(15,23,42,0.35)] supports-[backdrop-filter]:bg-white/45'
+          : 'nav-shell-dark border-cyan-300/20 bg-slate-950/62 shadow-[0_20px_70px_-34px_rgba(0,0,0,0.76)] supports-[backdrop-filter]:bg-slate-950/45'
       ]"
     >
       <div class="relative flex h-16 items-center justify-between gap-3">
@@ -225,6 +225,19 @@ onUnmounted(() => {
 @media (max-width: 1120px) {
   .nav-shell {
     max-width: calc(100vw - 1.5rem);
+  }
+}
+
+@media (max-width: 1023px) {
+  .nav-shell-light {
+    background-color: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .nav-shell-dark {
+    background-color: rgba(2, 6, 23, 0.97) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 }
 

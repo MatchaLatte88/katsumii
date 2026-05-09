@@ -65,20 +65,13 @@ const props = defineProps({
 
 const emit = defineEmits(["update:modelValue"])
 
-const ALL_OPTIONS = [
+const OPTIONS = [
   { value: "honeycomb", label: "Honeycomb" },
-  { value: "stars",     label: "Stars",    darkOnly: true },
   { value: "lines",     label: "Lines"     },
-  { value: "sky",       label: "Rain"      },
-  { value: "seasonal",  label: "Seasonal"  },
 ]
 
-const OPTIONS = computed(() =>
-  ALL_OPTIONS.filter(o => !o.darkOnly || props.theme === "dark")
-)
-
 const selectedOption = computed(() =>
-  OPTIONS.value.find((option) => option.value === props.modelValue)
+  OPTIONS.find((option) => option.value === props.modelValue)
 )
 
 const select = (val) => {

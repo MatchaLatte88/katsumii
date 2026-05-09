@@ -47,7 +47,7 @@ import { pagePath } from "./utils/routes.js"
 
 const { t } = useI18n()
 
-const BG_MIGRATE = { flow: 'lines' }
+const BG_MIGRATE = { flow: 'lines', stars: 'lines', sky: 'honeycomb', seasonal: 'honeycomb' }
 const _savedBg = localStorage.getItem('katsumii-bg') || 'lines'
 const _isMobile = /Mobi|Android/i.test(navigator.userAgent) || window.innerWidth < 768
 const bg = ref(_isMobile ? 'honeycomb' : (BG_MIGRATE[_savedBg] ?? _savedBg))
@@ -156,9 +156,6 @@ onUnmounted(() => {
 
 watch(theme, (value) => {
   document.documentElement.classList.toggle("dark", value === "dark")
-  if (value === "light" && bg.value === "stars") {
-    changeBg("honeycomb")
-  }
   nextTick(setupRevealAnimations)
 })
 </script>
