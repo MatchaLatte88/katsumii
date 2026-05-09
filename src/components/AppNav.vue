@@ -199,16 +199,10 @@ onUnmounted(() => {
   cursor: inherit;
 }
 
-/* Scale down the 100×40px switch to fit the 64px-tall navbar */
 .theme-switch-wrap {
   display: flex;
   align-items: center;
-  transform: scale(0.68);
-  transform-origin: left center;
-  width: 100px;
-  height: 40px;
   flex-shrink: 0;
-  margin-right: calc(-100px * (1 - 0.68));
 }
 
 @keyframes nav-fade-in {
@@ -246,11 +240,7 @@ onUnmounted(() => {
     display: none;
   }
 
-  .theme-switch-wrap {
-    transform: scale(0.58);
-    width: calc(132px * 0.58);
-    height: calc(52px * 0.58);
-  }
+
 }
 
 @media (max-width: 420px) {
