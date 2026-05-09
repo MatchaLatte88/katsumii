@@ -723,11 +723,6 @@
         "category": "Data",
         "question": "Are backups supported?",
         "answer": "Yes. Katsumii supports backup export and import, last-backup restore, custom backup paths, retention settings, and automatic backups (weekly or monthly)."
-      },
-      {
-        "category": "Support",
-        "question": "How can I contact support?",
-        "answer": "Email us directly at info{'@'}katsumii.com. Briefly describe your issue and ideally your setup for faster assistance."
       }
     ]
   }

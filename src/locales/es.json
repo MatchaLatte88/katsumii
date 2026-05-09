@@ -868,11 +868,6 @@
         "category": "Datos",
         "question": "¿Se admiten copias de seguridad?",
         "answer": "Sí. Katsumii admite exportación e importación de copias de seguridad, restauración de la última copia, rutas personalizadas, configuración de retención y copias automáticas (semanales o mensuales)."
-      },
-      {
-        "category": "Soporte",
-        "question": "¿Cómo puedo contactar con soporte?",
-        "answer": "Directamente por correo electrónico a info{'@'}katsumii.com. Describe brevemente tu problema y, si es posible, tu configuración para una ayuda más rápida."
       }
     ]
   }

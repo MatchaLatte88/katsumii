@@ -98,8 +98,8 @@
       :class="[
         'mx-auto mt-2 max-w-7xl overflow-hidden rounded-2xl border lg:hidden',
         theme === 'light'
-          ? 'border-gray-200 bg-white/88 supports-[backdrop-filter]:bg-white/80'
-          : 'border-blue-400/25 bg-slate-900/90 supports-[backdrop-filter]:bg-slate-900/80'
+          ? 'border-gray-200 bg-white'
+          : 'border-blue-400/25 bg-slate-900'
       ]"
     >
       <div class="space-y-1 px-4 py-3">

@@ -868,11 +868,6 @@
         "category": "Daten",
         "question": "Werden Backups unterstützt?",
         "answer": "Ja. Katsumii unterstützt Backup-Export und -Import, Wiederherstellung des letzten Backups, benutzerdefinierte Backup-Pfade, Retention-Einstellungen und automatische Backups (wöchentlich oder monatlich)."
-      },
-      {
-        "category": "Support",
-        "question": "Wie kann ich Support kontaktieren?",
-        "answer": "Direkt per E-Mail an info{'@'}katsumii.com. Beschreibe kurz dein Anliegen und idealerweise dein Setup für schnellere Hilfe."
       }
     ]
   }
