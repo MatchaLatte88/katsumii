@@ -815,6 +815,11 @@
         "answer": "Katsumii es un diario de trading para registrar operaciones, cuentas, setups, capturas de pantalla, notas de diario, estadísticas de rendimiento e informes."
       },
       {
+        "category": "General",
+        "question": "¿Qué sistemas operativos son compatibles?",
+        "answer": "Katsumii funciona en Windows y macOS. Ambas plataformas están oficialmente soportadas y reciben actualizaciones."
+      },
+      {
         "category": "Licencia",
         "question": "¿Katsumii es una suscripción o un pago único?",
         "answer": "Katsumii está diseñado como licencia de pago único. Pagas una vez y puedes usar la aplicación localmente sin cuotas mensuales."

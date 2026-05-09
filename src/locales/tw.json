@@ -815,6 +815,11 @@
         "answer": "Katsumii 是一款交易日誌，用於記錄交易、帳戶、策略設置、截圖、日誌筆記、績效統計與報告。"
       },
       {
+        "category": "一般",
+        "question": "支援哪些作業系統？",
+        "answer": "Katsumii 可在 Windows 和 macOS 上執行。兩個平台均獲得官方支援並定期接收更新。"
+      },
+      {
         "category": "授權",
         "question": "Katsumii 是訂閱制還是一次性付款？",
         "answer": "Katsumii 採用一次性授權。您只需付款一次，即可在本地使用，無需每月費用。"

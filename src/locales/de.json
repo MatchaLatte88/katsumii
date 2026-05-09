@@ -815,6 +815,11 @@
         "answer": "Katsumii ist ein Trading Journal zum Erfassen von Trades, Accounts, Setups, Screenshots, Journalnotizen, Performance-Statistiken und Reports."
       },
       {
+        "category": "Allgemein",
+        "question": "Welche Betriebssysteme werden unterstützt?",
+        "answer": "Katsumii läuft auf Windows und macOS. Beide Plattformen werden offiziell unterstützt und erhalten Updates."
+      },
+      {
         "category": "Lizenz",
         "question": "Ist Katsumii ein Abo oder eine Einmalzahlung?",
         "answer": "Katsumii ist als One-Time-License gedacht. Du zahlst einmal und kannst die App lokal nutzen, ohne monatliche Gebühren."
