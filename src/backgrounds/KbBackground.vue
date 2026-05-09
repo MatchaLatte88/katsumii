@@ -57,7 +57,7 @@ function startFlow() {
   if (!canvas) return
   const ctx = canvas.getContext('2d')
   function resize() {
-    const dpr = window.devicePixelRatio || 1
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5)
     canvas.width = window.innerWidth * dpr
     canvas.height = window.innerHeight * dpr
     canvas.style.width = window.innerWidth + 'px'
@@ -116,7 +116,7 @@ function startSky() {
   const ctx = canvas.getContext('2d')
   const dark = props.isDark
   function resize() {
-    const dpr = window.devicePixelRatio || 1
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5)
     canvas.width = window.innerWidth * dpr; canvas.height = window.innerHeight * dpr
     canvas.style.width = window.innerWidth + 'px'; canvas.style.height = window.innerHeight + 'px'
     ctx.scale(dpr, dpr)
@@ -248,7 +248,7 @@ function startSeasonal() {
   const ctx = canvas.getContext('2d')
   const dark = props.isDark
   function resize() {
-    const dpr = window.devicePixelRatio || 1
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5)
     canvas.width=window.innerWidth*dpr; canvas.height=window.innerHeight*dpr
     canvas.style.width=window.innerWidth+'px'; canvas.style.height=window.innerHeight+'px'
     ctx.setTransform(1,0,0,1,0,0); ctx.scale(dpr,dpr)
@@ -400,7 +400,7 @@ function startStars() {
   if (!canvas) return
   const ctx = canvas.getContext('2d')
   function resize() {
-    const dpr = window.devicePixelRatio || 1
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5)
     canvas.width = window.innerWidth * dpr; canvas.height = window.innerHeight * dpr
     canvas.style.width = window.innerWidth + 'px'; canvas.style.height = window.innerHeight + 'px'
     ctx.scale(dpr, dpr)
@@ -412,15 +412,22 @@ function startStars() {
     twinkleSpd: 0.4 + Math.random() * 1.8, twinkleOff: Math.random() * Math.PI * 2,
     glow: Math.random() < 0.18,
   }))
+  for (const s of stars) {
+    if (s.glow) {
+      const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 5)
+      g.addColorStop(0, 'rgba(190,215,255,0.55)'); g.addColorStop(1, 'transparent')
+      s.glowGrad = g
+    }
+  }
   let t = 0
   function draw() {
     ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
     for (const s of stars) {
       const a = s.alpha * (0.35 + 0.65 * (0.5 + 0.5 * Math.sin(t * s.twinkleSpd + s.twinkleOff)))
-      if (s.glow) {
-        const g = ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.r*5)
-        g.addColorStop(0,`rgba(190,215,255,${a*0.55})`); g.addColorStop(1,'transparent')
-        ctx.beginPath(); ctx.arc(s.x,s.y,s.r*5,0,Math.PI*2); ctx.fillStyle=g; ctx.fill()
+      if (s.glowGrad) {
+        ctx.save(); ctx.globalAlpha = a
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.r * 5, 0, Math.PI * 2); ctx.fillStyle = s.glowGrad; ctx.fill()
+        ctx.restore()
       }
       ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2); ctx.fillStyle=`rgba(215,230,255,${a})`; ctx.fill()
     }
@@ -435,6 +442,22 @@ function stopStars() {
 }
 
 // ── Lifecycle ──────────────────────────────────────────────────────────────
+function startCurrent() {
+  if (props.pattern === 'lines')    setTimeout(startFlow,     0)
+  if (props.pattern === 'sky')      setTimeout(startSky,      0)
+  if (props.pattern === 'seasonal') setTimeout(startSeasonal, 0)
+  if (props.pattern === 'stars')    setTimeout(startStars,    0)
+}
+
+function stopAll() {
+  stopFlow(); stopSky(); stopSeasonal(); stopStars()
+}
+
+function handleVisibilityChange() {
+  if (document.hidden) stopAll()
+  else startCurrent()
+}
+
 watch(() => props.pattern, (val, old) => {
   if (old === 'lines')    stopFlow()
   if (old === 'sky')      stopSky()
@@ -452,14 +475,13 @@ watch(() => props.isDark, () => {
 })
 
 onMounted(() => {
-  if (props.pattern === 'lines')    setTimeout(startFlow,    0)
-  if (props.pattern === 'sky')      setTimeout(startSky,     0)
-  if (props.pattern === 'seasonal') setTimeout(startSeasonal, 0)
-  if (props.pattern === 'stars')    setTimeout(startStars,    0)
+  startCurrent()
+  document.addEventListener('visibilitychange', handleVisibilityChange)
 })
 
 onBeforeUnmount(() => {
-  stopFlow(); stopSky(); stopSeasonal(); stopStars()
+  stopAll()
+  document.removeEventListener('visibilitychange', handleVisibilityChange)
 })
 </script>
 

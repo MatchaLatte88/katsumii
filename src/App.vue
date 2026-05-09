@@ -49,7 +49,8 @@ const { t } = useI18n()
 
 const BG_MIGRATE = { flow: 'lines' }
 const _savedBg = localStorage.getItem('katsumii-bg') || 'lines'
-const bg = ref(BG_MIGRATE[_savedBg] ?? _savedBg)
+const _isMobile = /Mobi|Android/i.test(navigator.userAgent) || window.innerWidth < 768
+const bg = ref(_isMobile ? 'honeycomb' : (BG_MIGRATE[_savedBg] ?? _savedBg))
 
 const changeBg = (val) => {
   bg.value = val
