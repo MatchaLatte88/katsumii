@@ -793,5 +793,82 @@
       "Soporte"
     ],
     "copyright": "Copyright {year} Katsumii. El trading implica riesgo. La aplicación está destinada únicamente a documentación y análisis."
+  },
+  "faq": {
+    "hero": {
+      "label": "Soporte",
+      "title": "Preguntas frecuentes",
+      "subtitle": "Todo lo que necesitas saber sobre la licencia, datos, actualizaciones y uso de Katsumii, en un solo lugar."
+    },
+    "filter": { "all": "Todos" },
+    "search": { "placeholder": "Buscar preguntas …" },
+    "empty": "No se encontraron resultados.",
+    "cta": {
+      "title": "¿Tienes alguna otra pregunta?",
+      "body": "Escríbenos cuando quieras a info{'@'}katsumii.com — te ayudaremos lo antes posible.",
+      "button": "Contactar soporte"
+    },
+    "items": [
+      {
+        "category": "General",
+        "question": "¿Qué es Katsumii?",
+        "answer": "Katsumii es un diario de trading para registrar operaciones, cuentas, setups, capturas de pantalla, notas de diario, estadísticas de rendimiento e informes."
+      },
+      {
+        "category": "Licencia",
+        "question": "¿Katsumii es una suscripción o un pago único?",
+        "answer": "Katsumii está diseñado como licencia de pago único. Pagas una vez y puedes usar la aplicación localmente sin cuotas mensuales."
+      },
+      {
+        "category": "Uso",
+        "question": "¿Qué tipos de cuenta se admiten?",
+        "answer": "Katsumii admite cuentas financiadas, cuentas de desafío/demo y cuentas personales. Cada modo gestiona sus propias cuentas y operaciones de forma independiente."
+      },
+      {
+        "category": "Prop Trading",
+        "question": "¿Puedo hacer seguimiento de desafíos de prop firms?",
+        "answer": "Sí. Las cuentas de desafío pueden configurar objetivos de beneficio, pérdida máxima, límites de pérdida diaria, drawdown flotante, requisitos de actividad, reglas de consistencia, límites de tiempo y otras reglas de prop firm."
+      },
+      {
+        "category": "Privacidad",
+        "question": "¿Dónde se almacenan mis datos?",
+        "answer": "Todos los datos se almacenan localmente en tu dispositivo. El backend utiliza una base de datos SQLite local y las imágenes se guardan en carpetas de carga locales."
+      },
+      {
+        "category": "Privacidad",
+        "question": "¿Katsumii necesita conexión a Internet?",
+        "answer": "No. El diario, las cuentas, las operaciones y los informes son funciones completamente locales. Tus datos principales siempre están disponibles sin conexión."
+      },
+      {
+        "category": "Funciones",
+        "question": "¿Qué información puedo guardar de una operación?",
+        "answer": "Puedes guardar P&L, riesgo, dirección, tamaño, activo, setup, R:R planificado, pips/puntos, entrada/salida, tiempos, duración, comisiones, estado de ánimo, errores, etiquetas, marco temporal, color, enlaces, notas y hasta cuatro capturas de pantalla."
+      },
+      {
+        "category": "Importar / Exportar",
+        "question": "¿Puedo importar operaciones desde CSV?",
+        "answer": "Sí. El asistente de importación CSV te guía por la carga, el mapeo de columnas, la vista previa, la comprobación de duplicados y la importación final. Se incluyen presets para Tradovate, NinjaTrader, Rithmic, TopstepX e Interactive Brokers."
+      },
+      {
+        "category": "Estadísticas",
+        "question": "¿Qué estadísticas calcula Katsumii?",
+        "answer": "P&L, tasa de acierto, factor de beneficio, R:R efectivo, R:R planificado, expectativa, número de operaciones, media de ganancia/pérdida, mejor/peor operación, rachas, días ganadores, distancia al drawdown, distancia a la pérdida diaria y métricas de consistencia."
+      },
+      {
+        "category": "Funciones",
+        "question": "¿Puedo crear informes?",
+        "answer": "Sí. Katsumii incluye un informe de estrategia y un informe de rendimiento HTML — un documento sin conexión con curva de capital, mapa de calor de calendario y desglose por día, sesión, setup y más."
+      },
+      {
+        "category": "Datos",
+        "question": "¿Se admiten copias de seguridad?",
+        "answer": "Sí. Katsumii admite exportación e importación de copias de seguridad, restauración de la última copia, rutas personalizadas, configuración de retención y copias automáticas (semanales o mensuales)."
+      },
+      {
+        "category": "Soporte",
+        "question": "¿Cómo puedo contactar con soporte?",
+        "answer": "Directamente por correo electrónico a info{'@'}katsumii.com. Describe brevemente tu problema y, si es posible, tu configuración para una ayuda más rápida."
+      }
+    ]
   }
 }

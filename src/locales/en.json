@@ -648,5 +648,82 @@
       "Support"
     ],
     "copyright": "Copyright {year} Katsumii. Trading involves risk. The app is intended for documentation and analysis only."
+  },
+  "faq": {
+    "hero": {
+      "label": "Support",
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything you need to know about license, data, updates, and how to use Katsumii — all in one place."
+    },
+    "filter": { "all": "All" },
+    "search": { "placeholder": "Search questions …" },
+    "empty": "No results found.",
+    "cta": {
+      "title": "Still have a question?",
+      "body": "Write to us anytime at info{'@'}katsumii.com — we'll get back to you quickly.",
+      "button": "Contact Support"
+    },
+    "items": [
+      {
+        "category": "General",
+        "question": "What is Katsumii?",
+        "answer": "Katsumii is a trading journal for logging trades, accounts, setups, screenshots, journal notes, performance statistics, and reports."
+      },
+      {
+        "category": "License",
+        "question": "Is Katsumii a subscription or a one-time purchase?",
+        "answer": "Katsumii is designed as a one-time license. You pay once and can use the app locally with no monthly fees."
+      },
+      {
+        "category": "Usage",
+        "question": "Which account types are supported?",
+        "answer": "Katsumii supports funded accounts, challenge/demo accounts, and personal accounts. Each mode keeps its own accounts and trades separate."
+      },
+      {
+        "category": "Prop Trading",
+        "question": "Can I track prop firm challenges?",
+        "answer": "Yes. Challenge accounts can model profit targets, max loss, daily loss limits, trailing drawdown, activity requirements, consistency rules, time limits, and other prop firm rules."
+      },
+      {
+        "category": "Privacy",
+        "question": "Where is my data stored?",
+        "answer": "All data lives locally on your device. The backend uses a local SQLite database, and images are stored in local upload folders."
+      },
+      {
+        "category": "Privacy",
+        "question": "Does Katsumii need an internet connection?",
+        "answer": "No. Journal, accounts, trades, and reports are fully local features. Your core data is always available offline."
+      },
+      {
+        "category": "Features",
+        "question": "What information can I save for a trade?",
+        "answer": "You can store P&L, risk, direction, size, asset, setup, planned R:R, pips/points, entry/exit, times, duration, fees, mood, mistakes, tags, timeframe, color, links, notes, and up to four screenshots."
+      },
+      {
+        "category": "Import / Export",
+        "question": "Can I import trades from CSV?",
+        "answer": "Yes. The CSV import wizard guides you through upload, column mapping, preview, duplicate checking, and final import. Ready-made presets for Tradovate, NinjaTrader, Rithmic, TopstepX, and Interactive Brokers are included."
+      },
+      {
+        "category": "Statistics",
+        "question": "What statistics does Katsumii calculate?",
+        "answer": "P&L, win rate, profit factor, effective R:R, planned R:R, expectancy, trade count, average win/loss, best/worst trade, streaks, winning days, drawdown distance, daily loss distance, and consistency metrics."
+      },
+      {
+        "category": "Features",
+        "question": "Can I create reports?",
+        "answer": "Yes. Katsumii includes a strategy report and an HTML performance report — an offline-capable document with equity curve, calendar heatmap, and breakdowns by day, session, setup, and more."
+      },
+      {
+        "category": "Data",
+        "question": "Are backups supported?",
+        "answer": "Yes. Katsumii supports backup export and import, last-backup restore, custom backup paths, retention settings, and automatic backups (weekly or monthly)."
+      },
+      {
+        "category": "Support",
+        "question": "How can I contact support?",
+        "answer": "Email us directly at info{'@'}katsumii.com. Briefly describe your issue and ideally your setup for faster assistance."
+      }
+    ]
   }
 }

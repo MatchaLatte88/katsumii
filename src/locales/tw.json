@@ -793,5 +793,82 @@
       "支援"
     ],
     "copyright": "Copyright {year} Katsumii。交易具有風險。本應用程式僅用於紀錄與分析。"
+  },
+  "faq": {
+    "hero": {
+      "label": "支援",
+      "title": "常見問題",
+      "subtitle": "關於 Katsumii 授權、資料、更新及使用方式的所有重要資訊，一目瞭然。"
+    },
+    "filter": { "all": "全部" },
+    "search": { "placeholder": "搜尋問題 …" },
+    "empty": "找不到相關結果。",
+    "cta": {
+      "title": "還有其他問題嗎？",
+      "body": "隨時寫信給我們 info{'@'}katsumii.com — 我們會盡快協助您。",
+      "button": "聯絡支援"
+    },
+    "items": [
+      {
+        "category": "一般",
+        "question": "Katsumii 是什麼？",
+        "answer": "Katsumii 是一款交易日誌，用於記錄交易、帳戶、策略設置、截圖、日誌筆記、績效統計與報告。"
+      },
+      {
+        "category": "授權",
+        "question": "Katsumii 是訂閱制還是一次性付款？",
+        "answer": "Katsumii 採用一次性授權。您只需付款一次，即可在本地使用，無需每月費用。"
+      },
+      {
+        "category": "使用",
+        "question": "支援哪些帳戶類型？",
+        "answer": "Katsumii 支援資金帳戶、挑戰/模擬帳戶及個人帳戶。每種模式各自管理獨立的帳戶與交易記錄。"
+      },
+      {
+        "category": "Prop Trading",
+        "question": "我可以追蹤自營交易挑戰嗎？",
+        "answer": "可以。挑戰帳戶可設定盈利目標、最大虧損、每日虧損限額、浮動回撤、活動要求、一致性規則、時間限制及其他自營公司規則。"
+      },
+      {
+        "category": "隱私",
+        "question": "我的資料存放在哪裡？",
+        "answer": "所有資料均儲存於您的本地裝置。後端使用本地 SQLite 資料庫，圖片則存放在本地上傳資料夾中。"
+      },
+      {
+        "category": "隱私",
+        "question": "Katsumii 需要網路連線嗎？",
+        "answer": "不需要。日誌、帳戶、交易與報告均為完全本地功能。您的核心資料隨時可離線使用。"
+      },
+      {
+        "category": "功能",
+        "question": "一筆交易可以儲存哪些資訊？",
+        "answer": "您可以儲存損益、風險、方向、規模、資產、策略、計畫 R:R、Pips/點數、進出場、時間、持倉時間、手續費、情緒、錯誤、標籤、時間框架、顏色、連結、筆記，以及最多四張截圖。"
+      },
+      {
+        "category": "匯入 / 匯出",
+        "question": "我可以從 CSV 匯入交易嗎？",
+        "answer": "可以。CSV 匯入精靈將引導您完成上傳、欄位對應、預覽、重複檢查及最終匯入。內建 Tradovate、NinjaTrader、Rithmic、TopstepX 及 Interactive Brokers 的現成預設。"
+      },
+      {
+        "category": "統計",
+        "question": "Katsumii 計算哪些統計數據？",
+        "answer": "損益、勝率、獲利因子、實際 R:R、計畫 R:R、期望值、交易次數、平均盈虧、最佳/最差交易、連勝連敗、獲利天數、回撤距離、每日虧損距離及一致性指標。"
+      },
+      {
+        "category": "功能",
+        "question": "我可以建立報告嗎？",
+        "answer": "可以。Katsumii 包含策略報告及 HTML 績效報告 — 一份可離線使用的文件，內含權益曲線、日曆熱圖，以及按日期、時段、策略等維度的分析。"
+      },
+      {
+        "category": "資料",
+        "question": "支援備份嗎？",
+        "answer": "支援。Katsumii 提供備份匯出與匯入、上次備份還原、自訂備份路徑、保留設定，以及自動備份（每週或每月）。"
+      },
+      {
+        "category": "支援",
+        "question": "如何聯絡支援？",
+        "answer": "直接寄送電子郵件至 info{'@'}katsumii.com。請簡短描述您的問題，並盡可能提供您的使用環境，以便我們更快為您提供協助。"
+      }
+    ]
   }
 }

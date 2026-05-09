@@ -12,6 +12,7 @@
       </svg>
       <div class="k-bg-band" />
     </div>
+
     <AppNav
       :theme="theme"
       :navigation="navigation"
@@ -21,80 +22,199 @@
       @toggle-theme="toggleTheme"
     />
 
-    <section class="relative isolate px-6 pb-20 pt-28 lg:px-8">
-      <div class="mx-auto max-w-4xl text-center">
-        <p :class="['text-sm font-semibold tracking-[0.2em] uppercase', theme === 'light' ? 'text-teal-600' : 'text-teal-300']">
-          Support
+    <section class="relative isolate px-6 pb-24 pt-28 lg:px-8">
+      <!-- Hero -->
+      <div class="faq-hero mx-auto max-w-4xl text-center">
+        <p
+          :class="[
+            'faq-hero-label inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em]',
+            theme === 'light'
+              ? 'border-teal-200 bg-teal-50 text-teal-700'
+              : 'border-cyan-300/30 bg-cyan-400/10 text-cyan-300'
+          ]"
+        >
+          {{ t('faq.hero.label') }}
         </p>
         <h1
           :class="[
-            'mt-4 text-4xl font-semibold tracking-tight sm:text-6xl',
+            'faq-hero-title mt-5 text-4xl font-semibold tracking-tight sm:text-6xl',
             theme === 'light' ? 'text-gray-900' : 'text-white'
           ]"
         >
-          Frequently Asked Questions
+          {{ t('faq.hero.title') }}
         </h1>
-        <p :class="['mx-auto mt-6 max-w-2xl text-lg', theme === 'light' ? 'text-gray-600' : 'text-gray-300']">
-          Alles Wichtige zu Lizenz, Daten, Updates und Nutzung von Katsumii in einer klaren Uebersicht.
+        <p :class="['faq-hero-sub mx-auto mt-5 max-w-2xl text-lg', theme === 'light' ? 'text-gray-500' : 'text-gray-400']">
+          {{ t('faq.hero.subtitle') }}
         </p>
       </div>
 
-      <div class="mx-auto mt-14 max-w-4xl space-y-4">
-        <Disclosure v-for="item in faqItems" :key="item.question" v-slot="{ open }">
-          <div
+      <!-- Search -->
+      <div class="faq-search mx-auto mt-10 max-w-2xl">
+        <div
+          :class="[
+            'flex items-center gap-3 rounded-2xl border px-4 py-3 k-glass transition-all duration-200',
+            theme === 'light'
+              ? 'border-gray-200 bg-white/80 focus-within:border-teal-400 focus-within:shadow-[0_0_0_3px_rgba(20,184,166,0.12)]'
+              : 'border-white/10 bg-slate-800/60 focus-within:border-cyan-400/50 focus-within:shadow-[0_0_0_3px_rgba(34,211,238,0.1)]'
+          ]"
+        >
+          <MagnifyingGlassIcon :class="['size-5 shrink-0', theme === 'light' ? 'text-gray-400' : 'text-gray-500']" />
+          <input
+            v-model="searchQuery"
+            type="search"
+            :placeholder="t('faq.search.placeholder')"
             :class="[
-              'rounded-2xl border backdrop-blur transition-all duration-300',
-              theme === 'light'
-                ? 'border-gray-200 bg-white/85 hover:shadow-[0_10px_30px_-20px_rgba(15,23,42,0.35)]'
-                : 'border-white/10 bg-gray-800/70 hover:bg-gray-800/85'
+              'w-full bg-transparent text-sm outline-none placeholder:text-gray-400',
+              theme === 'light' ? 'text-gray-900' : 'text-slate-100'
             ]"
+          />
+          <button
+            v-if="searchQuery"
+            @click="searchQuery = ''"
+            :class="['shrink-0 rounded-full p-0.5 transition-colors', theme === 'light' ? 'text-gray-400 hover:text-gray-700' : 'text-gray-500 hover:text-gray-300']"
+            aria-label="Clear search"
           >
-            <DisclosureButton class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5">
-              <div>
-                <p :class="['text-xs font-semibold uppercase tracking-[0.14em]', theme === 'light' ? 'text-teal-600' : 'text-teal-300']">
-                  {{ item.category }}
-                </p>
-                <h2 :class="['mt-1 text-lg font-semibold', theme === 'light' ? 'text-gray-900' : 'text-white']">
-                  {{ item.question }}
-                </h2>
-              </div>
-              <ChevronDownIcon
-                :class="[
-                  'size-5 shrink-0 transition-transform duration-300',
-                  open ? 'rotate-180' : 'rotate-0',
-                  theme === 'light' ? 'text-gray-500' : 'text-gray-400'
-                ]"
-              />
-            </DisclosureButton>
-
-            <DisclosurePanel>
-              <div :class="['px-5 pb-5 sm:px-6 sm:pb-6', theme === 'light' ? 'text-gray-600' : 'text-gray-300']">
-                {{ item.answer }}
-              </div>
-            </DisclosurePanel>
-          </div>
-        </Disclosure>
+            <XMarkIcon class="size-4" />
+          </button>
+        </div>
       </div>
 
+      <!-- Category filter -->
+      <div class="faq-filter mx-auto mt-5 max-w-4xl">
+        <div class="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+          <button
+            v-for="cat in categories"
+            :key="cat"
+            @click="selectedCategory = cat"
+            :class="[
+              'shrink-0 rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-200',
+              selectedCategory === cat
+                ? theme === 'light'
+                  ? 'border-teal-500 bg-teal-600 text-white shadow-sm'
+                  : 'border-cyan-400/50 bg-cyan-400/15 text-cyan-300'
+                : theme === 'light'
+                  ? 'border-gray-200 bg-white/70 text-gray-500 hover:border-teal-300 hover:text-teal-700'
+                  : 'border-white/10 bg-white/5 text-gray-400 hover:border-cyan-400/30 hover:text-gray-300'
+            ]"
+          >
+            {{ cat === 'all' ? t('faq.filter.all') : cat }}
+          </button>
+        </div>
+      </div>
+
+      <!-- FAQ items -->
+      <div class="mx-auto mt-8 max-w-4xl space-y-3">
+        <template v-if="filteredItems.length > 0">
+          <Disclosure
+            v-for="(item, idx) in filteredItems"
+            :key="item.question"
+            v-slot="{ open }"
+          >
+            <!-- Static wrapper owns the reveal animation so Vue's class-patching doesn't clobber the .revealed class -->
+            <div class="faq-item" :style="{ '--stagger': idx }">
+            <div
+              :class="[
+                'k-glass rounded-2xl border transition-all duration-300',
+                open
+                  ? theme === 'light'
+                    ? 'border-teal-300/70 shadow-[0_8px_24px_-12px_rgba(20,184,166,0.25)]'
+                    : 'border-cyan-400/30 shadow-[0_8px_24px_-12px_rgba(34,211,238,0.15)]'
+                  : theme === 'light'
+                    ? 'border-gray-200/80 bg-white/80 hover:border-teal-200 hover:shadow-[0_8px_24px_-16px_rgba(15,23,42,0.2)]'
+                    : 'border-white/8 bg-slate-800/55 hover:border-cyan-400/20',
+              ]"
+            >
+              <DisclosureButton class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5">
+                <div class="min-w-0">
+                  <span
+                    :class="[
+                      'inline-flex rounded-full border px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.13em]',
+                      theme === 'light'
+                        ? 'border-teal-200 bg-teal-50 text-teal-600'
+                        : 'border-cyan-400/25 bg-cyan-400/8 text-cyan-400'
+                    ]"
+                  >
+                    {{ item.category }}
+                  </span>
+                  <h2 :class="['mt-2 text-base font-semibold sm:text-lg', theme === 'light' ? 'text-gray-900' : 'text-white']">
+                    {{ item.question }}
+                  </h2>
+                </div>
+                <ChevronDownIcon
+                  :class="[
+                    'size-5 shrink-0 transition-transform duration-300',
+                    open ? 'rotate-180' : 'rotate-0',
+                    theme === 'light' ? 'text-teal-500' : 'text-cyan-400'
+                  ]"
+                />
+              </DisclosureButton>
+
+              <DisclosurePanel>
+                <div
+                  :class="[
+                    'border-t px-5 pb-5 pt-4 text-sm leading-relaxed sm:px-6 sm:pb-6 sm:text-base',
+                    theme === 'light' ? 'border-gray-100 text-gray-600' : 'border-white/6 text-gray-300'
+                  ]"
+                >
+                  {{ item.answer }}
+                </div>
+              </DisclosurePanel>
+            </div>
+            </div>
+          </Disclosure>
+        </template>
+
+        <!-- Empty state -->
+        <div
+          v-else
+          :class="[
+            'rounded-2xl border py-14 text-center k-glass',
+            theme === 'light' ? 'border-gray-200 bg-white/70' : 'border-white/8 bg-slate-800/40'
+          ]"
+        >
+          <MagnifyingGlassIcon :class="['mx-auto mb-3 size-8 opacity-30', theme === 'light' ? 'text-gray-500' : 'text-gray-400']" />
+          <p :class="['text-sm font-medium', theme === 'light' ? 'text-gray-500' : 'text-gray-400']">{{ t('faq.empty') }}</p>
+          <button
+            @click="searchQuery = ''; selectedCategory = 'all'"
+            :class="['mt-4 text-xs font-semibold underline underline-offset-2', theme === 'light' ? 'text-teal-600' : 'text-cyan-400']"
+          >
+            {{ t('faq.filter.all') }}
+          </button>
+        </div>
+      </div>
+
+      <!-- CTA -->
       <div class="mx-auto mt-14 max-w-4xl">
         <div
           :class="[
-            'rounded-2xl border p-6 text-center sm:p-8',
-            theme === 'light' ? 'border-gray-200 bg-gray-50/90' : 'border-white/10 bg-white/5'
+            'faq-cta k-main-tile k-glass border p-8 text-center sm:p-10',
+            theme === 'light'
+              ? 'border-gray-200/80 bg-white/70 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.18)]'
+              : 'border-white/8 bg-slate-800/40 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.5)]'
           ]"
         >
-          <h3 :class="['text-xl font-semibold', theme === 'light' ? 'text-gray-900' : 'text-white']">Noch eine Frage offen?</h3>
-          <p :class="['mt-2', theme === 'light' ? 'text-gray-600' : 'text-gray-300']">
-            Schreib uns jederzeit an info@katsumii.com - wir helfen dir schnell weiter.
+          <div
+            :class="[
+              'mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border',
+              theme === 'light' ? 'border-teal-200 bg-teal-50' : 'border-cyan-400/25 bg-cyan-400/8'
+            ]"
+          >
+            <EnvelopeIcon :class="['size-5', theme === 'light' ? 'text-teal-600' : 'text-cyan-400']" />
+          </div>
+          <h3 :class="['text-xl font-semibold', theme === 'light' ? 'text-gray-900' : 'text-white']">{{ t('faq.cta.title') }}</h3>
+          <p :class="['mx-auto mt-2 max-w-sm text-sm', theme === 'light' ? 'text-gray-500' : 'text-gray-400']">
+            {{ t('faq.cta.body') }}
           </p>
           <a
             href="mailto:info@katsumii.com"
             :class="[
-              'mt-5 inline-flex rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5',
-              theme === 'light' ? 'bg-teal-600 text-white hover:bg-teal-500' : 'bg-teal-500 text-gray-950 hover:bg-teal-400'
+              'mt-6 inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5',
+              theme === 'light'
+                ? 'bg-teal-600 text-white hover:bg-teal-500 shadow-[0_8px_20px_-8px_rgba(13,148,136,0.5)]'
+                : 'bg-cyan-400/15 text-cyan-300 border border-cyan-400/30 hover:bg-cyan-400/25'
             ]"
           >
-            Support kontaktieren
+            {{ t('faq.cta.button') }}
           </a>
         </div>
       </div>
@@ -103,98 +223,75 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from "vue"
+import { computed, onMounted, ref, watch } from "vue"
+import { useI18n } from "vue-i18n"
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue"
-import { ChevronDownIcon } from "@heroicons/vue/24/outline"
+import { ChevronDownIcon, MagnifyingGlassIcon, XMarkIcon, EnvelopeIcon } from "@heroicons/vue/24/outline"
 import AppNav from "./AppNav.vue"
 import { appHomePath, pagePath } from "../utils/routes.js"
 
-const baseUrl = import.meta.env.BASE_URL
+const { t, tm } = useI18n()
 
 const navigation = [
   { name: "Manual", href: pagePath("manual") },
   { name: "Back Home", href: appHomePath },
 ]
 
-const faqItems = [
-  {
-    category: "Allgemein",
-    question: "Was ist Katsumii?",
-    answer: "Katsumii ist ein Trading Journal zum Erfassen von Trades, Accounts, Setups, Screenshots, Journalnotizen, Performance-Statistiken und Reports.",
-  },
-  {
-    category: "Lizenz",
-    question: "Ist Katsumii ein Abo oder eine Einmalzahlung?",
-    answer: "Katsumii ist als One-Time-License gedacht. Du zahlst einmal und kannst die App lokal nutzen, ohne monatliche Gebuehren.",
-  },
-  {
-    category: "Nutzung",
-    question: "Welche Account-Typen werden unterstuetzt?",
-    answer: "Katsumii unterstuetzt Funded Accounts, Challenge-/Demo-Accounts und persoenliche Accounts. Jeder Modus fuehrt eigene Accounts und Trades getrennt voneinander.",
-  },
-  {
-    category: "Prop Trading",
-    question: "Kann ich Prop-Firm-Challenges tracken?",
-    answer: "Ja. Challenge-Accounts koennen Profit-Targets, Max-Loss, Daily-Loss-Limits, Trailing Drawdown, Activity Requirements, Consistency Rules, Zeitlimits und weitere Prop-Firm-Regeln abbilden.",
-  },
-  {
-    category: "Datenschutz",
-    question: "Wo werden meine Daten gespeichert?",
-    answer: "Alle Daten liegen lokal auf deinem Geraet. Das Backend nutzt eine lokale SQLite-Datenbank, Bilder werden in lokalen Upload-Ordnern gespeichert.",
-  },
-  {
-    category: "Datenschutz",
-    question: "Braucht Katsumii eine Internetverbindung?",
-    answer: "Nein. Journal, Accounts, Trades und Reports sind vollstaendig lokale Features. Deine Kerndaten sind jederzeit offline verfuegbar.",
-  },
-  {
-    category: "Features",
-    question: "Welche Informationen kann ich zu einem Trade speichern?",
-    answer: "Du kannst P&L, Risiko, Richtung, Groesse, Asset, Setup, geplantes R:R, Pips/Punkte, Entry/Exit, Zeiten, Duration, Fees, Mood, Mistakes, Tags, Timeframe, Farbe, Links, Notizen und bis zu vier Screenshots speichern.",
-  },
-  {
-    category: "Import / Export",
-    question: "Kann ich Trades aus CSV importieren?",
-    answer: "Ja. Der CSV-Import-Wizard fuehrt durch Upload, Spalten-Mapping, Vorschau, Duplikat-Pruefung und finalen Import. Vorgefertigte Presets fuer Tradovate, NinjaTrader, Rithmic, TopstepX und Interactive Brokers sind enthalten.",
-  },
-  {
-    category: "Statistiken",
-    question: "Welche Statistiken berechnet Katsumii?",
-    answer: "P&L, Win Rate, Profit Factor, Effective R:R, Planned R:R, Expectancy, Trade Count, Average Win/Loss, Best/Worst Trade, Streaks, Winning Days, Drawdown Distance, Daily Loss Distance und Consistency-Metriken.",
-  },
-  {
-    category: "Features",
-    question: "Kann ich Reports erstellen?",
-    answer: "Ja. Katsumii enthaelt einen Strategy Report und einen HTML Performance Report – ein offline-faehiges Dokument mit Equity Curve, Calendar Heatmap und Auswertungen nach Tag, Session, Setup und weiteren Filtern.",
-  },
-  {
-    category: "Daten",
-    question: "Werden Backups unterstuetzt?",
-    answer: "Ja. Katsumii unterstuetzt Backup-Export und -Import, Wiederherstellung des letzten Backups, benutzerdefinierte Backup-Pfade, Retention-Einstellungen und automatische Backups (woechentlich oder monatlich).",
-  },
-  {
-    category: "Support",
-    question: "Wie kann ich Support kontaktieren?",
-    answer: "Direkt per E-Mail an info@katsumii.com. Beschreibe kurz dein Anliegen und idealerweise dein Setup fuer schnellere Hilfe.",
-  },
-]
-
 const theme = ref("light")
+const searchQuery = ref("")
+const selectedCategory = ref("all")
+
+const faqItems = computed(() => {
+  const raw = tm("faq.items")
+  return Array.isArray(raw) ? raw : []
+})
+
+const categories = computed(() => {
+  const cats = [...new Set(faqItems.value.map((i) => i.category))]
+  return ["all", ...cats]
+})
+
+const filteredItems = computed(() => {
+  const q = searchQuery.value.trim().toLowerCase()
+  return faqItems.value.filter((item) => {
+    const matchCat = selectedCategory.value === "all" || item.category === selectedCategory.value
+    if (!matchCat) return false
+    if (!q) return true
+    return item.question.toLowerCase().includes(q) || item.answer.toLowerCase().includes(q)
+  })
+})
 
 const applyTheme = (value) => {
   theme.value = value
   localStorage.setItem("katsumii-theme", value)
 }
 
-const toggleTheme = () => {
-  applyTheme(theme.value === "dark" ? "light" : "dark")
-}
+const toggleTheme = () => applyTheme(theme.value === "dark" ? "light" : "dark")
 
 onMounted(() => {
   const savedTheme = localStorage.getItem("katsumii-theme")
-  if (savedTheme === "light" || savedTheme === "dark") {
-    theme.value = savedTheme
-  }
+  if (savedTheme === "light" || savedTheme === "dark") theme.value = savedTheme
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          const el = e.target
+          const stagger = Number(el.style.getPropertyValue("--stagger") || 0)
+          setTimeout(() => el.classList.add("revealed"), stagger * 70)
+          io.unobserve(el)
+        }
+      })
+    },
+    { threshold: 0.07 },
+  )
+
+  const observe = () => document.querySelectorAll(".faq-item, .faq-hero, .faq-search, .faq-filter, .faq-cta").forEach((el) => io.observe(el))
+  observe()
+
+  watch(filteredItems, () => {
+    setTimeout(observe, 50)
+  })
 })
 
 watch(theme, (value) => {
@@ -228,4 +325,26 @@ watch(theme, (value) => {
   background: linear-gradient(to bottom, transparent, rgba(34,211,238,0.018) 40%, transparent);
   transform: skewX(-6deg); border-left: 1px solid rgba(34,211,238,0.055); transform-origin: top right;
 }
+
+/* Scroll reveal */
+.faq-item,
+.faq-hero,
+.faq-search,
+.faq-filter,
+.faq-cta {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.faq-hero { transform: translateY(14px); }
+.faq-search { transition-delay: 0.06s; }
+.faq-filter { transition-delay: 0.1s; }
+.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hide scrollbar on filter row */
+.scrollbar-hide { scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
 </style>

@@ -793,5 +793,82 @@
       "Support"
     ],
     "copyright": "Copyright {year} Katsumii. Trading beinhaltet Risiken. Die App dient ausschließlich zur Dokumentation und Analyse."
+  },
+  "faq": {
+    "hero": {
+      "label": "Support",
+      "title": "Häufig gestellte Fragen",
+      "subtitle": "Alles Wichtige zu Lizenz, Daten, Updates und Nutzung von Katsumii in einer klaren Übersicht."
+    },
+    "filter": { "all": "Alle" },
+    "search": { "placeholder": "Fragen durchsuchen …" },
+    "empty": "Keine Ergebnisse gefunden.",
+    "cta": {
+      "title": "Noch eine Frage offen?",
+      "body": "Schreib uns jederzeit an info{'@'}katsumii.com — wir helfen dir schnell weiter.",
+      "button": "Support kontaktieren"
+    },
+    "items": [
+      {
+        "category": "Allgemein",
+        "question": "Was ist Katsumii?",
+        "answer": "Katsumii ist ein Trading Journal zum Erfassen von Trades, Accounts, Setups, Screenshots, Journalnotizen, Performance-Statistiken und Reports."
+      },
+      {
+        "category": "Lizenz",
+        "question": "Ist Katsumii ein Abo oder eine Einmalzahlung?",
+        "answer": "Katsumii ist als One-Time-License gedacht. Du zahlst einmal und kannst die App lokal nutzen, ohne monatliche Gebühren."
+      },
+      {
+        "category": "Nutzung",
+        "question": "Welche Account-Typen werden unterstützt?",
+        "answer": "Katsumii unterstützt Funded Accounts, Challenge-/Demo-Accounts und persönliche Accounts. Jeder Modus führt eigene Accounts und Trades getrennt voneinander."
+      },
+      {
+        "category": "Prop Trading",
+        "question": "Kann ich Prop-Firm-Challenges tracken?",
+        "answer": "Ja. Challenge-Accounts können Profit-Targets, Max-Loss, Daily-Loss-Limits, Trailing Drawdown, Activity Requirements, Consistency Rules, Zeitlimits und weitere Prop-Firm-Regeln abbilden."
+      },
+      {
+        "category": "Datenschutz",
+        "question": "Wo werden meine Daten gespeichert?",
+        "answer": "Alle Daten liegen lokal auf deinem Gerät. Das Backend nutzt eine lokale SQLite-Datenbank, Bilder werden in lokalen Upload-Ordnern gespeichert."
+      },
+      {
+        "category": "Datenschutz",
+        "question": "Braucht Katsumii eine Internetverbindung?",
+        "answer": "Nein. Journal, Accounts, Trades und Reports sind vollständig lokale Features. Deine Kerndaten sind jederzeit offline verfügbar."
+      },
+      {
+        "category": "Features",
+        "question": "Welche Informationen kann ich zu einem Trade speichern?",
+        "answer": "Du kannst P&L, Risiko, Richtung, Größe, Asset, Setup, geplantes R:R, Pips/Punkte, Entry/Exit, Zeiten, Duration, Fees, Mood, Mistakes, Tags, Timeframe, Farbe, Links, Notizen und bis zu vier Screenshots speichern."
+      },
+      {
+        "category": "Import / Export",
+        "question": "Kann ich Trades aus CSV importieren?",
+        "answer": "Ja. Der CSV-Import-Wizard führt durch Upload, Spalten-Mapping, Vorschau, Duplikat-Prüfung und finalen Import. Vorgefertigte Presets für Tradovate, NinjaTrader, Rithmic, TopstepX und Interactive Brokers sind enthalten."
+      },
+      {
+        "category": "Statistiken",
+        "question": "Welche Statistiken berechnet Katsumii?",
+        "answer": "P&L, Win Rate, Profit Factor, Effective R:R, Planned R:R, Expectancy, Trade Count, Average Win/Loss, Best/Worst Trade, Streaks, Winning Days, Drawdown Distance, Daily Loss Distance und Consistency-Metriken."
+      },
+      {
+        "category": "Features",
+        "question": "Kann ich Reports erstellen?",
+        "answer": "Ja. Katsumii enthält einen Strategy Report und einen HTML Performance Report — ein offline-fähiges Dokument mit Equity Curve, Calendar Heatmap und Auswertungen nach Tag, Session, Setup und weiteren Filtern."
+      },
+      {
+        "category": "Daten",
+        "question": "Werden Backups unterstützt?",
+        "answer": "Ja. Katsumii unterstützt Backup-Export und -Import, Wiederherstellung des letzten Backups, benutzerdefinierte Backup-Pfade, Retention-Einstellungen und automatische Backups (wöchentlich oder monatlich)."
+      },
+      {
+        "category": "Support",
+        "question": "Wie kann ich Support kontaktieren?",
+        "answer": "Direkt per E-Mail an info{'@'}katsumii.com. Beschreibe kurz dein Anliegen und idealerweise dein Setup für schnellere Hilfe."
+      }
+    ]
   }
 }
