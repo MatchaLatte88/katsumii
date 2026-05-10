@@ -2,18 +2,18 @@
 <template>
   <Disclosure
     as="nav"
-    class="fixed inset-x-0 top-0 z-[60] px-3 pt-3"
+    class="fixed inset-x-0 top-0 z-[60]"
     v-slot="{ open }"
   >
     <div
       :class="[
-        'nav-shell mx-auto max-w-7xl rounded-[1.35rem] border px-3 sm:px-4',
+        'nav-shell w-full border-b px-0',
         isDark
-          ? 'nav-shell-dark border-cyan-300/20 bg-slate-950/62 shadow-[0_20px_70px_-34px_rgba(0,0,0,0.76)] supports-[backdrop-filter]:bg-slate-950/45'
-          : 'nav-shell-light border-white/70 bg-white/62 shadow-[0_18px_60px_-32px_rgba(15,23,42,0.35)] supports-[backdrop-filter]:bg-white/45'
+          ? 'nav-shell-dark border-cyan-300/18 bg-slate-950/74 shadow-[0_18px_54px_-34px_rgba(0,0,0,0.82)] supports-[backdrop-filter]:bg-slate-950/58'
+          : 'nav-shell-light border-white/72 bg-white/78 shadow-[0_16px_48px_-34px_rgba(15,23,42,0.36)] supports-[backdrop-filter]:bg-white/60'
       ]"
     >
-      <div class="relative flex h-16 items-center justify-between gap-3">
+      <div class="relative mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-3 sm:px-4">
         <component
           :is="isRouteLink(brandHref) ? 'RouterLink' : 'a'"
           :to="isRouteLink(brandHref) ? brandHref : undefined"
@@ -91,13 +91,13 @@
 
     <DisclosurePanel
       :class="[
-        'mx-auto mt-2 max-w-7xl overflow-hidden rounded-2xl border lg:hidden',
+        'overflow-hidden border-b lg:hidden',
         isDark
-          ? 'border-blue-400/25 bg-slate-900'
-          : 'border-gray-200 bg-white'
+          ? 'border-blue-400/22 bg-slate-950/98'
+          : 'border-gray-200 bg-white/98'
       ]"
     >
-      <div class="space-y-1 px-4 py-3">
+      <div class="mx-auto max-w-7xl space-y-1 px-4 py-3">
         <component
           v-for="item in visibleNavigation"
           :key="item.name"
@@ -211,11 +211,6 @@ onUnmounted(() => {
   }
 }
 
-@media (max-width: 1120px) {
-  .nav-shell {
-    max-width: calc(100vw - 1.5rem);
-  }
-}
 
 @media (max-width: 1023px) {
   .nav-shell-light {
