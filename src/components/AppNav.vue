@@ -21,7 +21,7 @@
           class="group flex items-center gap-3"
         >
           <div class="brand-mark size-11 overflow-hidden rounded-xl transition-transform duration-300 group-hover:scale-[1.04]">
-            <img :src="assetUrl('logo.png')" alt="Katsumii Logo" class="h-full w-full object-contain" />
+            <img :src="assetUrl('logo.png')" :alt="t('common.alts.logo')" class="h-full w-full object-contain" />
           </div>
           <div class="brand-copy leading-tight">
             <div
@@ -80,7 +80,7 @@
                   : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900 focus:outline-teal-600'
               ]"
             >
-              <span class="sr-only">Open menu</span>
+              <span class="sr-only">{{ t('common.aria.openMenu') }}</span>
               <Bars3Icon v-if="!open" class="block size-6 transition-transform duration-300" aria-hidden="true" />
               <XMarkIcon v-else class="block size-6 transition-transform duration-300" aria-hidden="true" />
             </DisclosureButton>
@@ -124,6 +124,7 @@
 
 <script setup>
 import { computed, inject, onMounted, onUnmounted, ref } from "vue"
+import { useI18n } from "vue-i18n"
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue"
 import { ArrowUpIcon, Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline"
 import DarkLightSwitch from "./DarkLightSwitch.vue"
@@ -132,6 +133,7 @@ import BgSwitch from "./BgSwitch.vue"
 
 const isDark = inject("isDark")
 const toggleTheme = inject("toggleTheme")
+const { t } = useI18n()
 
 const baseUrl = import.meta.env.BASE_URL
 const assetUrl = (path) => `${baseUrl}${path.replace(/^\/+/, "")}`
@@ -142,11 +144,7 @@ const props = defineProps({
   brandHref:     { type: String, default: "#top" },
   navigation: {
     type: Array,
-    default: () => [
-      { name: "Features", href: "/features" },
-      { name: "Screens", href: "#screens" },
-      { name: "License", href: "/pricing" },
-    ],
+    default: () => [],
   },
 })
 
@@ -210,7 +208,6 @@ onUnmounted(() => {
     transform: translateY(0);
   }
 }
-
 
 @media (max-width: 1023px) {
   .nav-shell-light {

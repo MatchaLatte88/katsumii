@@ -9,7 +9,7 @@
 
     <AppNav
       :navigation="navigation"
-      brand-title="Katsumii"
+      :brand-title="t('common.brandTitle')"
       :brand-subtitle="t('pricingPage.brandSubtitle')"
       :brand-href="appHomePath"
     />
@@ -432,6 +432,7 @@ import { computed, inject, nextTick, onMounted } from "vue"
 import { useI18n } from "vue-i18n"
 import AppNav from "./AppNav.vue"
 import KbBackground from "../backgrounds/KbBackground.vue"
+import { useSiteNavigation } from "../composables/useSiteNavigation.js"
 import { appHomePath, pagePath } from "../utils/routes.js"
 
 const { t, tm } = useI18n()
@@ -439,11 +440,7 @@ const { t, tm } = useI18n()
 const baseUrl = import.meta.env.BASE_URL
 const year = new Date().getFullYear()
 
-const navigation = computed(() => [
-  { name: t('pricingPage.nav.home'), href: appHomePath },
-  { name: t('pricingPage.nav.features'), href: pagePath("features") },
-  { name: t('pricingPage.nav.faq'), href: pagePath("faq") },
-])
+const navigation = useSiteNavigation()
 
 const pricingHighlights = computed(() => tm('pricingPage.highlights'))
 

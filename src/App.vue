@@ -4,7 +4,7 @@
 
     <AppNav
       :navigation="navigation"
-      brand-title="Katsumii"
+      :brand-title="t('common.brandTitle')"
       :brand-subtitle="t('brand.subtitle')"
       brand-href="#top"
     />
@@ -35,7 +35,7 @@ import HomeFeatures from "./components/home/HomeFeatures.vue"
 import HomeFooter from "./components/home/HomeFooter.vue"
 import HomeHero from "./components/home/HomeHero.vue"
 import HomeShowcase from "./components/home/HomeShowcase.vue"
-import { pagePath } from "./utils/routes.js"
+import { useSiteNavigation } from "./composables/useSiteNavigation.js"
 
 const { t } = useI18n()
 
@@ -46,13 +46,7 @@ const baseUrl = import.meta.env.BASE_URL
 const assetUrl = (path) => `${baseUrl}${path.replace(/^\/+/, "")}`
 const checkoutUrl = baseUrl
 
-const navigation = computed(() => [
-  { name: t('nav.top'), href: "#top" },
-  { name: t('nav.showcase'), href: "#features" },
-  { name: t('nav.features'), href: pagePath("features") },
-  { name: t('nav.pricing'), href: pagePath("pricing") },
-  { name: "Manual", href: pagePath("manual") },
-])
+const navigation = useSiteNavigation()
 
 const observer = ref(null)
 

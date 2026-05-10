@@ -9,7 +9,7 @@
 
     <AppNav
       :navigation="navigation"
-      brand-title="Katsumii"
+      :brand-title="t('common.brandTitle')"
       :brand-subtitle="t('featuresPage.brandSubtitle')"
       :brand-href="appHomePath"
     />
@@ -81,7 +81,7 @@
               :class="!isDark ? 'bg-white text-gray-400' : 'bg-slate-800 text-slate-500'"
             >katsumii.app</span>
           </div>
-          <img :src="assetUrl('Slide1.png')" alt="Katsumii – full system overview" class="w-full" />
+          <img :src="assetUrl('Slide1.png')" :alt="t('featuresPage.alts.hero')" class="w-full" />
         </div>
       </div>
     </section>
@@ -315,6 +315,7 @@ import { computed, inject, onMounted, ref } from "vue"
 import { useI18n } from "vue-i18n"
 import AppNav from "./AppNav.vue"
 import KbBackground from "../backgrounds/KbBackground.vue"
+import { useSiteNavigation } from "../composables/useSiteNavigation.js"
 import { appHomePath, pagePath } from "../utils/routes.js"
 
 const { t, tm } = useI18n()
@@ -323,22 +324,17 @@ const baseUrl = import.meta.env.BASE_URL
 const assetUrl = (path) => `${baseUrl}${path.replace(/^\/+/, "")}`
 const year = new Date().getFullYear()
 
-const navigation = computed(() => [
-  { name: t('featuresPage.nav.home'), href: appHomePath },
-  { name: t('featuresPage.nav.pricing'), href: pagePath("pricing") },
-  { name: t('featuresPage.nav.faq'), href: pagePath("faq") },
-  { name: "Manual", href: pagePath("manual") },
-])
+const navigation = useSiteNavigation()
 
 const FEATURE_STATIC = [
-  { id: "journaling", num: "01", image: "Slide3.png", alt: "Katsumii structured journaling" },
-  { id: "accounts",   num: "02", image: "Slide4.png", alt: "Katsumii prop account overview" },
-  { id: "analytics",  num: "03", image: "Slide2.png", alt: "Katsumii analytics" },
-  { id: "calendar",   num: "04", image: "Slide5.png", alt: "Katsumii calendar and history" },
+  { id: "journaling", num: "01", image: "Slide3.png", altKey: "featuresPage.alts.journaling" },
+  { id: "accounts",   num: "02", image: "Slide4.png", altKey: "featuresPage.alts.accounts" },
+  { id: "analytics",  num: "03", image: "Slide2.png", altKey: "featuresPage.alts.analytics" },
+  { id: "calendar",   num: "04", image: "Slide5.png", altKey: "featuresPage.alts.calendar" },
 ]
 
 const features = computed(() =>
-  FEATURE_STATIC.map((s, i) => ({ ...s, ...tm('featuresPage.features')[i] }))
+  FEATURE_STATIC.map((s, i) => ({ ...s, alt: t(s.altKey), ...tm('featuresPage.features')[i] }))
 )
 
 const activeFeatureId = ref(null)

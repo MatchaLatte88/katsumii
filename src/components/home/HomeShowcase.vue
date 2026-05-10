@@ -8,7 +8,7 @@
           </p>
           <img
             :src="isDark ? assetUrl('Dashboard_dark.png') : assetUrl('Dashboard_light.png')"
-            alt="Katsumii dashboard analytics screenshot"
+            :alt="t('common.alts.dashboardAnalytics')"
             class="w-full rounded-2xl border"
             :class="isDark ? 'border-blue-400/25' : 'border-gray-200'"
           />
@@ -68,7 +68,7 @@
           </p>
           <img
             :src="isDark ? assetUrl('Calendar_dark.png') : assetUrl('Calendar_light.png')"
-            alt="Katsumii trading calendar screenshot"
+            :alt="t('common.alts.tradingCalendar')"
             class="w-full rounded-2xl border"
             :class="isDark ? 'border-blue-400/25' : 'border-gray-200'"
           />

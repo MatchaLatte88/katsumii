@@ -11,38 +11,64 @@
   "hero": {
     "badge": "Trading Journal & Analytics",
     "tagline": "Trade with",
-    "description": "An offline trading journal which helps you to focus on discipline, supports you with extensive and deep trading analysis. Local, fast, and built for traders who want to grow professionally. Manage your own Rules or keep an eye on your Prop-Firm accounts and Challenge progress.",
+    "description": "An offline trading journal that helps you stay disciplined and gives you deep, practical trading analytics. Local, fast, and built for traders who want to improve professionally. Manage your own rules, prop firm accounts, and challenge progress in one focused workflow.",
     "ctaBuy": "Buy Katsumii",
-    "ctaTour": "Product Tour"
+    "ctaTour": "Product Tour",
+    "typedWords": [
+      "discipline.",
+      "consistency.",
+      "precision.",
+      "confidence.",
+      "clarity."
+    ],
+    "initialTypedWord": "clarity"
   },
   "heroStats": [
-    { "label": "Offline", "value": "100%" },
-    { "label": "Journal", "value": "Fast" },
-    { "label": "Focused UI", "value": "Clean" }
+    {
+      "label": "Offline",
+      "value": "100%"
+    },
+    {
+      "label": "Journal",
+      "value": "Fast"
+    },
+    {
+      "label": "Focused UI",
+      "value": "Clean"
+    }
   ],
   "heroFeatureStats": [
-    { "label": "Data points", "value": "42" },
-    { "label": "Progress tracking", "value": "Prop Firm" },
-    { "label": "Import", "value": "CSV" }
+    {
+      "label": "Data points",
+      "value": "42"
+    },
+    {
+      "label": "Progress tracking",
+      "value": "Prop Firm"
+    },
+    {
+      "label": "Import",
+      "value": "CSV"
+    }
   ],
   "featureTicker": [
-    "100% Offline",
-    "Propfirm Rule Guardrails",
-    "Challenge Progress",
-    "Screenshot Journaling",
-    "Advanced Performance Stats",
-    "Calendar and Alerts",
-    "Customisable",
-    "Account Management"
+    "100% offline",
+    "Prop firm rule guardrails",
+    "Challenge progress",
+    "Screenshot journaling",
+    "Advanced performance stats",
+    "Calendar and alerts",
+    "Customizable",
+    "Account management"
   ],
-  "brokerSyncNote": "Broker Sync is under development. We're testing selected integrations based on user demand and API availability.",
+  "brokerSyncNote": "Broker sync is in development. We are testing selected integrations based on user demand and API availability.",
   "features": {
     "label": "Why Katsumii",
     "headline": "Professional journaling with clear, focused workflows",
     "spotlight": {
       "label": "Feature Spotlight",
       "headline": "Build discipline through calm, measurable execution",
-      "description": "The most important features are intentionally placed at the center: a fast trade workflow, crystal-clear propfirm rule visibility, and analytics that directly improve decision-making.",
+      "description": "The core workflow stays intentionally focused: fast trade logging, clear prop firm rule visibility, and analytics that help you make better review decisions.",
       "points": [
         "Log trades in seconds with screenshots, notes, and setup context.",
         "Prop account limits always visible, including rule-break risk.",
@@ -57,11 +83,11 @@
       },
       {
         "name": "Structured Journaling",
-        "description": "Journal trades with screenshots, notes, used strategie, tags, and much more."
+        "description": "Journal trades with screenshots, notes, strategy context, tags, and more."
       },
       {
         "name": "Extensive Analytics",
-        "description": "Track winrate, expectancy, effective RRR vs planned RRR, setup quality, best and worst time/day and consistency."
+        "description": "Track win rate, expectancy, effective R:R versus planned R:R, setup quality, best and worst times or days, and consistency."
       },
       {
         "name": "Private by Design",
@@ -70,9 +96,18 @@
     ]
   },
   "spotlightKpis": [
-    { "value": "A+", "label": "Setup Score" },
-    { "value": "+0.31R", "label": "Average Edge" },
-    { "value": "100%", "label": "Local Data" }
+    {
+      "value": "A+",
+      "label": "Setup Score"
+    },
+    {
+      "value": "+0.31R",
+      "label": "Average Edge"
+    },
+    {
+      "value": "100%",
+      "label": "Local Data"
+    }
   ],
   "showcase": {
     "dashboardWindowLabel": "Dashboard",
@@ -180,7 +215,12 @@
       "headlineA": "Built for how traders",
       "headlineB": "actually work.",
       "description": "Every feature follows a real workflow step — from logging your first trade to reviewing monthly performance patterns.",
-      "tags": ["Offline-first", "Prop-ready", "Structured Reviews", "Actionable Analytics"]
+      "tags": [
+        "Offline-first",
+        "Prop-ready",
+        "Structured Reviews",
+        "Actionable Analytics"
+      ]
     },
     "features": [
       {
@@ -234,6 +274,13 @@
       "description": "Get the Professional license for the complete workflow — or try the demo first and see if it fits your process.",
       "buyLicense": "Buy License",
       "tryDemo": "Try Free Demo"
+    },
+    "alts": {
+      "hero": "Katsumii full system overview",
+      "journaling": "Katsumii structured journaling screen",
+      "accounts": "Katsumii prop account overview screen",
+      "analytics": "Katsumii analytics screen",
+      "calendar": "Katsumii calendar and history screen"
     }
   },
   "welcomePage": {
@@ -271,7 +318,8 @@
     "nav": {
       "home": "Back Home",
       "manual": "Manual"
-    }
+    },
+    "brandSubtitle": "Welcome"
   },
   "manualPage": {
     "hero": {
@@ -474,15 +522,29 @@
           }
         }
       }
+    },
+    "brandSubtitle": "Manual",
+    "mobile": {
+      "openTopics": "Topics",
+      "closeTopics": "Close"
     }
   },
   "pricingPage": {
     "brandSubtitle": "Pricing",
     "popular": "Most Popular",
     "highlights": [
-      { "title": "Lifetime license", "text": "Pay once and keep the workflow." },
-      { "title": "Offline-first", "text": "No cloud account required." },
-      { "title": "Upgrade path", "text": "Start simple and grow into Pro." }
+      {
+        "title": "Lifetime license",
+        "text": "Pay once and keep the workflow."
+      },
+      {
+        "title": "Offline-first",
+        "text": "No cloud account required."
+      },
+      {
+        "title": "Upgrade path",
+        "text": "Start simple and grow into Pro."
+      }
     ],
     "hero": {
       "label": "Pricing",
@@ -555,9 +617,18 @@
       }
     },
     "tierMeta": {
-      "demo": { "label": "Preview", "value": "Try before buying" },
-      "light": { "label": "Best for", "value": "Core journaling" },
-      "professional": { "label": "Power users", "value": "Prop & deep analytics" }
+      "demo": {
+        "label": "Preview",
+        "value": "Try before buying"
+      },
+      "light": {
+        "label": "Best for",
+        "value": "Core journaling"
+      },
+      "professional": {
+        "label": "Power users",
+        "value": "Prop & deep analytics"
+      }
     },
     "comparison": {
       "kicker": "Plans at a glance",
@@ -568,40 +639,135 @@
         {
           "category": "Journaling",
           "rows": [
-            { "label": "Trade entries", "demo": "5 sample trades", "light": "Unlimited", "pro": "Unlimited" },
-            { "label": "Screenshot attachments", "demo": true, "light": true, "pro": true },
-            { "label": "Notes & mistake tracking", "demo": true, "light": true, "pro": true },
-            { "label": "Custom tags & setups", "demo": false, "light": true, "pro": true },
-            { "label": "Trade templates", "demo": false, "light": true, "pro": true }
+            {
+              "label": "Trade entries",
+              "demo": "5 sample trades",
+              "light": "Unlimited",
+              "pro": "Unlimited"
+            },
+            {
+              "label": "Screenshot attachments",
+              "demo": true,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Notes & mistake tracking",
+              "demo": true,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Custom tags & setups",
+              "demo": false,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Trade templates",
+              "demo": false,
+              "light": true,
+              "pro": true
+            }
           ]
         },
         {
           "category": "Accounts",
           "rows": [
-            { "label": "Personal accounts", "demo": "1 (read-only)", "light": "max. 6", "pro": "Unlimited" },
-            { "label": "Prop firm accounts", "demo": false, "light": false, "pro": "Unlimited" },
-            { "label": "Challenge progress tracking", "demo": false, "light": false, "pro": true },
-            { "label": "Rule guardrails & alerts", "demo": false, "light": false, "pro": true }
+            {
+              "label": "Personal accounts",
+              "demo": "1 (read-only)",
+              "light": "max. 6",
+              "pro": "Unlimited"
+            },
+            {
+              "label": "Prop firm accounts",
+              "demo": false,
+              "light": false,
+              "pro": "Unlimited"
+            },
+            {
+              "label": "Challenge progress tracking",
+              "demo": false,
+              "light": false,
+              "pro": true
+            },
+            {
+              "label": "Rule guardrails & alerts",
+              "demo": false,
+              "light": false,
+              "pro": true
+            }
           ]
         },
         {
           "category": "Analytics",
           "rows": [
-            { "label": "Basic statistics (winrate, PnL)", "demo": true, "light": true, "pro": true },
-            { "label": "Calendar & history view", "demo": false, "light": true, "pro": true },
-            { "label": "Setup performance breakdown", "demo": false, "light": true, "pro": true },
-            { "label": "Session & day-of-week analysis", "demo": false, "light": true, "pro": true },
-            { "label": "Consistency metrics", "demo": false, "light": false, "pro": true },
-            { "label": "Effective vs planned RRR", "demo": false, "light": false, "pro": true }
+            {
+              "label": "Basic statistics (winrate, PnL)",
+              "demo": true,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Calendar & history view",
+              "demo": false,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Setup performance breakdown",
+              "demo": false,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Session & day-of-week analysis",
+              "demo": false,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Consistency metrics",
+              "demo": false,
+              "light": false,
+              "pro": true
+            },
+            {
+              "label": "Effective vs planned RRR",
+              "demo": false,
+              "light": false,
+              "pro": true
+            }
           ]
         },
         {
           "category": "General",
           "rows": [
-            { "label": "100% offline", "demo": true, "light": true, "pro": true },
-            { "label": "Dark & light mode", "demo": true, "light": true, "pro": true },
-            { "label": "Multi-language support", "demo": true, "light": true, "pro": true },
-            { "label": "Data backup & restore", "demo": false, "light": true, "pro": true }
+            {
+              "label": "100% offline",
+              "demo": true,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Dark & light mode",
+              "demo": true,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Multi-language support",
+              "demo": true,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "Data backup & restore",
+              "demo": false,
+              "light": true,
+              "pro": true
+            }
           ]
         }
       ]
@@ -655,8 +821,12 @@
       "title": "Frequently Asked Questions",
       "subtitle": "Everything you need to know about license, data, updates, and how to use Katsumii — all in one place."
     },
-    "filter": { "all": "All" },
-    "search": { "placeholder": "Search questions …" },
+    "filter": {
+      "all": "All"
+    },
+    "search": {
+      "placeholder": "Search questions …"
+    },
     "empty": "No results found.",
     "cta": {
       "title": "Still have a question?",
@@ -723,6 +893,322 @@
         "category": "Data",
         "question": "Are backups supported?",
         "answer": "Yes. Katsumii supports backup export and import, last-backup restore, custom backup paths, retention settings, and automatic backups (weekly or monthly)."
+      }
+    ],
+    "brandSubtitle": "FAQ",
+    "nav": {
+      "manual": "Manual",
+      "backHome": "Back Home"
+    }
+  },
+  "common": {
+    "brandTitle": "Katsumii",
+    "navigation": {
+      "home": "Home",
+      "manual": "Manual",
+      "faq": "FAQ",
+      "features": "Features",
+      "pricing": "Pricing",
+      "imprint": "Imprint",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "contact": "Contact",
+      "back": "Back",
+      "backHome": "Back Home"
+    },
+    "aria": {
+      "openMenu": "Open menu",
+      "clearSearch": "Clear search",
+      "switchToLight": "Switch to light mode",
+      "switchToDark": "Switch to dark mode",
+      "background": "Background"
+    },
+    "backgrounds": {
+      "honeycomb": "Honeycomb",
+      "lines": "Lines"
+    },
+    "alts": {
+      "logo": "Katsumii logo",
+      "dashboard": "Katsumii dashboard",
+      "featureSpotlight": "Katsumii feature spotlight",
+      "dashboardAnalytics": "Katsumii dashboard analytics screenshot",
+      "tradingCalendar": "Katsumii trading calendar screenshot"
+    },
+    "pageTitles": {
+      "default": "Katsumii",
+      "app": "Katsumii - Offline Trading Journal",
+      "features": "Features - Katsumii",
+      "pricing": "Pricing - Katsumii",
+      "manual": "Manual - Katsumii",
+      "faq": "FAQ - Katsumii",
+      "contact": "Contact - Katsumii",
+      "impressum": "Imprint - Katsumii",
+      "privacy": "Privacy - Katsumii",
+      "terms": "Terms - Katsumii",
+      "welcome": "Welcome - Katsumii",
+      "notFound": "404 - Katsumii"
+    }
+  },
+  "contactPage": {
+    "brandSubtitle": "Contact",
+    "nav": {
+      "faq": "FAQ",
+      "imprint": "Imprint",
+      "back": "Back"
+    },
+    "hero": {
+      "label": "Get in touch",
+      "title": "Contact us",
+      "description": "Questions about your license, the app, or your workflow? We are happy to help and usually reply within 1-2 business days."
+    },
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "you{'@'}example.com",
+      "subjectPlaceholder": "e.g. License question",
+      "messagePlaceholder": "Tell us what you need help with...",
+      "submit": "Send message",
+      "mailHint": "Sends via your email client to"
+    },
+    "success": {
+      "title": "Message ready to send",
+      "description": "Your email client should have opened with your message pre-filled. If nothing happened,",
+      "directLink": "send us an email directly",
+      "reset": "Send another message"
+    },
+    "direct": {
+      "prefix": "Prefer to write directly?"
+    },
+    "mailtoFallbackSubject": "Contact from katsumii.com",
+    "mailtoName": "Name",
+    "mailtoEmail": "Email"
+  },
+  "notFoundPage": {
+    "brandSubtitle": "Page not found",
+    "nav": {
+      "features": "Features",
+      "pricing": "Pricing",
+      "faq": "FAQ"
+    },
+    "label": "404",
+    "title": "Page not found",
+    "description": "This Katsumii page does not exist or has moved.",
+    "cta": "Back to Katsumii"
+  },
+  "termsPage": {
+    "brandSubtitle": "Terms of Service",
+    "nav": {
+      "faq": "FAQ",
+      "imprint": "Imprint",
+      "back": "Back"
+    },
+    "hero": {
+      "label": "Legal",
+      "title": "Terms of Service",
+      "description": "Please read these terms carefully before purchasing or using Katsumii. Last updated: May 2025."
+    },
+    "sections": [
+      {
+        "title": "1. Scope & Contracting Party",
+        "paragraphs": [
+          "These Terms of Service govern the purchase and use of Katsumii, a desktop trading journal application provided by Frederik Morbe. Contact: info{'@'}katsumii.com. Website: katsumii.com.",
+          "By purchasing a license or downloading and using the software, you agree to these terms. If you do not agree, do not use the software."
+        ]
+      },
+      {
+        "title": "2. License Grant",
+        "paragraphs": [
+          "After successful payment, you receive a non-exclusive, non-transferable, revocable license to install and use Katsumii on your own devices for personal or professional trading documentation."
+        ],
+        "list": [
+          "The license is granted to one user and may not be shared, resold, or sublicensed.",
+          "Installation on multiple personal devices owned by the same licensee is permitted.",
+          "The license is perpetual for the purchased version. Updates may require a new purchase depending on the release type."
+        ]
+      },
+      {
+        "title": "3. Restrictions",
+        "paragraphs": [
+          "You may not copy, modify, distribute, sell, sublicense, reverse-engineer, decompile, disassemble, remove notices from, or use the software for unlawful purposes."
+        ]
+      },
+      {
+        "title": "4. Payment & Refunds",
+        "paragraphs": [
+          "Payments are processed by Lemon Squeezy, who acts as Merchant of Record and handles payment, tax, and invoicing obligations.",
+          "Because Katsumii is a digital product delivered immediately after purchase, withdrawal rights may expire upon download or activation where permitted by law. Refund requests outside that scope are reviewed case by case. Contact info{'@'}katsumii.com within 14 days of purchase."
+        ]
+      },
+      {
+        "title": "5. Intellectual Property",
+        "paragraphs": [
+          "All intellectual property rights in the software, including source code, graphics, UI design, and documentation, remain with Frederik Morbe. These terms do not transfer ownership rights to you."
+        ]
+      },
+      {
+        "title": "6. Informational Purpose Only",
+        "paragraphs": [
+          "Katsumii is a journaling and documentation tool only. It helps traders record, review, and reflect on trades. It is not intended as a basis for real-money trading or investment decisions.",
+          "Charts, statistics, scores, ratings, and other outputs are for informational and self-reflective purposes only and are not recommendations, signals, strategies, or instructions."
+        ]
+      },
+      {
+        "title": "7. No Financial Advice",
+        "paragraphs": [
+          "Nothing in Katsumii, on katsumii.com, or in communication from Frederik Morbe constitutes financial, investment, trading, or regulated advice. If you need advice, consult a qualified professional in your jurisdiction."
+        ]
+      },
+      {
+        "title": "8. Accuracy of Calculations & Statistics",
+        "paragraphs": [
+          "All calculations, statistics, metrics, scores, ratios, and projections may contain errors, inaccuracies, or omissions. You are responsible for verifying data before drawing conclusions."
+        ],
+        "list": [
+          "Results depend entirely on user-entered data.",
+          "The software may contain bugs or calculation errors.",
+          "Statistical outputs are based only on the recorded sample and have no predictive validity.",
+          "No guarantee is made that any displayed figure is complete, current, or error-free."
+        ]
+      },
+      {
+        "title": "9. Risk Warning",
+        "paragraphs": [
+          "Trading financial instruments, including stocks, futures, forex, CFDs, options, and cryptocurrencies, involves substantial risk of loss and is not suitable for everyone.",
+          "You use Katsumii entirely at your own risk. Frederik Morbe is not responsible for financial losses connected to your trading activity."
+        ]
+      },
+      {
+        "title": "10. Software Provided As Is",
+        "paragraphs": [
+          "The software is provided as is and as available without warranties of any kind. We do not warrant that it will be error-free, uninterrupted, or that defects will be corrected."
+        ]
+      },
+      {
+        "title": "11. Limitation of Liability",
+        "paragraphs": [
+          "To the maximum extent permitted by law, Frederik Morbe is not liable for direct, indirect, incidental, special, consequential, or punitive damages arising from use of or inability to use the software.",
+          "Total aggregate liability is limited to the amount paid for the software in the twelve months before the claim, except where mandatory law provides otherwise."
+        ]
+      },
+      {
+        "title": "12. Governing Law & Jurisdiction",
+        "paragraphs": [
+          "These terms are governed by the laws of the Federal Republic of Germany, excluding the CISG. Mandatory consumer protection rules in your country of residence remain unaffected."
+        ]
+      },
+      {
+        "title": "13. Changes to These Terms",
+        "paragraphs": [
+          "We may update these terms at any time. Material changes will be announced on katsumii.com. Continued use after the effective date means you accept the changes."
+        ]
+      },
+      {
+        "title": "14. Contact",
+        "paragraphs": [
+          "For questions about these terms, contact info{'@'}katsumii.com."
+        ]
+      }
+    ]
+  },
+  "privacyPage": {
+    "brandSubtitle": "Privacy",
+    "nav": {
+      "faq": "FAQ",
+      "imprint": "Imprint",
+      "back": "Back"
+    },
+    "hero": {
+      "label": "Legal",
+      "title": "Privacy Policy",
+      "description": "Information about how katsumii.com handles your data under GDPR principles."
+    },
+    "sections": [
+      {
+        "title": "1. Controller",
+        "paragraphs": [
+          "The controller for this website is Frederik Morbe. Contact: info{'@'}katsumii.com. Website: katsumii.com."
+        ]
+      },
+      {
+        "title": "2. Hosting",
+        "paragraphs": [
+          "This website is operated through an external hosting provider. When you visit the site, technically necessary connection data such as IP address, time, and requested page may be processed briefly in server logs for secure and stable operation."
+        ]
+      },
+      {
+        "title": "3. Analytics with Umami",
+        "paragraphs": [
+          "This website uses Umami, a privacy-friendly analytics tool."
+        ],
+        "list": [
+          "No cookies are set.",
+          "IP addresses are not stored; only anonymized usage statistics are collected.",
+          "No cross-site tracking is performed.",
+          "No opt-out is required because no personal tracking data is processed."
+        ]
+      },
+      {
+        "title": "4. Payments via Lemon Squeezy",
+        "paragraphs": [
+          "Purchases are processed by Lemon Squeezy, which acts as Merchant of Record and handles payment processing, invoicing, and taxes independently.",
+          "During checkout, Lemon Squeezy processes transaction data such as name, email address, and payment data. Katsumii receives only the information needed for license delivery."
+        ]
+      },
+      {
+        "title": "5. Contact by Email",
+        "paragraphs": [
+          "If you contact us by email, we store your email address and message content to process your request. We do not share this data without your consent and delete it once the request has been completed, unless legal retention duties apply."
+        ]
+      },
+      {
+        "title": "6. Your Rights",
+        "paragraphs": [
+          "Under GDPR, you may have rights to access, rectification, deletion, restriction, objection, and complaint with a supervisory authority. For requests, contact info{'@'}katsumii.com."
+        ]
+      },
+      {
+        "title": "7. Updates to This Policy",
+        "paragraphs": [
+          "This privacy policy is current as of May 2025. We may update it if our services or legal requirements change."
+        ]
+      }
+    ]
+  },
+  "impressumPage": {
+    "brandSubtitle": "Imprint",
+    "nav": {
+      "manual": "Manual",
+      "faq": "FAQ",
+      "backHome": "Back Home"
+    },
+    "hero": {
+      "label": "Legal",
+      "title": "Imprint",
+      "description": "Legal provider information. Replace placeholder company details with your final business data before launch."
+    },
+    "cards": [
+      {
+        "title": "Provider",
+        "body": "Katsumii GmbH\nMax Mustermann\nMusterstrasse 12\n12345 Musterstadt\nGermany"
+      },
+      {
+        "title": "Contact",
+        "body": "Email: info{'@'}katsumii.com\nPhone: +49 000 0000000\nWebsite: katsumii.app"
+      },
+      {
+        "title": "Authorized representative",
+        "body": "Managing Director: Max Mustermann"
+      },
+      {
+        "title": "Commercial register",
+        "body": "Commercial register: HRB 123456\nRegister court: Amtsgericht Musterstadt\nVAT ID: DE123456789"
+      },
+      {
+        "title": "Responsible for content",
+        "body": "Max Mustermann, address as above."
       }
     ]
   }

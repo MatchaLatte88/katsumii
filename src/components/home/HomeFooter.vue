@@ -25,7 +25,7 @@
                 class="flex h-12 w-12 items-center justify-center rounded-2xl border"
                 :class="isDark ? 'border-cyan-300/20 bg-slate-950/70' : 'border-teal-200 bg-teal-50'"
               >
-                <img :src="assetUrl('logo.png')" alt="Katsumii logo" class="h-8 w-8 object-contain" />
+                <img :src="assetUrl('logo.png')" :alt="t('common.alts.logo')" class="h-8 w-8 object-contain" />
               </div>
               <div>
                 <p :class="['font-display text-xl font-semibold tracking-tight', isDark ? 'text-slate-100' : 'text-gray-900']">Katsumii</p>

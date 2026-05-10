@@ -7,7 +7,7 @@
           ? 'text-slate-300 hover:bg-slate-800/80 hover:text-slate-100'
           : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
       ]"
-      :title="selectedOption?.label ?? 'Background'"
+      :title="selectedOption?.label ?? t('common.aria.background')"
     >
       <PaintBrushIcon class="h-4 w-4" />
     </MenuButton>
@@ -55,20 +55,22 @@
 
 <script setup>
 import { computed, inject } from "vue"
+import { useI18n } from "vue-i18n"
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue"
 import { PaintBrushIcon } from "@heroicons/vue/24/outline"
 
 const isDark = inject("isDark")
 const bg = inject("bg")
 const changeBg = inject("changeBg")
+const { t } = useI18n()
 
-const OPTIONS = [
-  { value: "honeycomb", label: "Honeycomb" },
-  { value: "lines",     label: "Lines"     },
-]
+const OPTIONS = computed(() => [
+  { value: "honeycomb", label: t("common.backgrounds.honeycomb") },
+  { value: "lines",     label: t("common.backgrounds.lines")     },
+])
 
 const selectedOption = computed(() =>
-  OPTIONS.find((option) => option.value === bg.value)
+  OPTIONS.value.find((option) => option.value === bg.value)
 )
 
 const select = (val) => changeBg(val)

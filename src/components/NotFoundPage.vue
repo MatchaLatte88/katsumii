@@ -4,8 +4,8 @@
 
     <AppNav
       :navigation="navigation"
-      brand-title="Katsumii"
-      brand-subtitle="Page not found"
+      :brand-title="t('common.brandTitle')"
+      :brand-subtitle="t('notFoundPage.brandSubtitle')"
       :brand-href="appHomePath"
     />
 
@@ -15,20 +15,20 @@
         :class="!isDark ? 'border-gray-200 bg-white/85 shadow-xl' : 'border-cyan-300/20 bg-slate-900/75'"
       >
         <p :class="['text-sm font-semibold uppercase tracking-[0.18em]', !isDark ? 'text-teal-700' : 'text-cyan-300']">
-          404
+          {{ t('notFoundPage.label') }}
         </p>
         <h1 :class="['mt-4 font-display text-4xl font-semibold tracking-tight sm:text-5xl', !isDark ? 'text-gray-900' : 'text-slate-100']">
-          Page not found
+          {{ t('notFoundPage.title') }}
         </h1>
         <p :class="['mx-auto mt-4 max-w-md text-sm leading-relaxed sm:text-base', !isDark ? 'text-gray-600' : 'text-slate-300']">
-          This Katsumii page does not exist or has moved.
+          {{ t('notFoundPage.description') }}
         </p>
         <RouterLink
           :to="appHomePath"
           class="mt-8 inline-flex rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
           :class="!isDark ? 'bg-teal-600 text-white hover:bg-teal-500' : 'bg-cyan-300 text-slate-950 hover:bg-cyan-200'"
         >
-          Back to Katsumii
+          {{ t('notFoundPage.cta') }}
         </RouterLink>
       </section>
     </main>
@@ -37,17 +37,16 @@
 
 <script setup>
 import { computed, inject } from "vue"
+import { useI18n } from "vue-i18n"
 import AppNav from "./AppNav.vue"
 import KbBackground from "../backgrounds/KbBackground.vue"
-import { appHomePath, pagePath } from "../utils/routes.js"
+import { useSiteNavigation } from "../composables/useSiteNavigation.js"
+import { appHomePath } from "../utils/routes.js"
 
 const isDark = inject("isDark")
+const { t } = useI18n()
 
-const navigation = [
-  { name: "Features", href: pagePath("features") },
-  { name: "Pricing", href: pagePath("pricing") },
-  { name: "FAQ", href: pagePath("faq") },
-]
+const navigation = useSiteNavigation()
 
 const pageClass = computed(() =>
   isDark.value

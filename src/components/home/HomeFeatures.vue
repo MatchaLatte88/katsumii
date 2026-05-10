@@ -77,7 +77,7 @@
           <div class="relative w-full">
             <img
               :src="isDark ? assetUrl('Main_dark.png') : assetUrl('Main_light.png')"
-              alt="Katsumii feature spotlight"
+              :alt="t('common.alts.featureSpotlight')"
               class="w-full rounded-2xl border"
               :class="isDark ? 'border-blue-400/25 shadow-2xl shadow-black/30' : 'border-gray-200 shadow-xl'"
             />

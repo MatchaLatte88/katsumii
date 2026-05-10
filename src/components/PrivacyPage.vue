@@ -12,144 +12,40 @@
       </svg>
       <div class="k-bg-band" />
     </div>
+
     <AppNav
       :navigation="navigation"
-      brand-title="Katsumii"
-      brand-subtitle="Datenschutz"
+      :brand-title="t('common.brandTitle')"
+      :brand-subtitle="t('privacyPage.brandSubtitle')"
       :brand-href="appHomePath"
     />
 
     <section class="relative isolate px-6 pb-20 pt-28 lg:px-8">
       <div class="mx-auto max-w-4xl text-center">
         <p :class="['text-sm font-semibold tracking-[0.2em] uppercase', !isDark ? 'text-teal-600' : 'text-teal-300']">
-          Legal
+          {{ t('privacyPage.hero.label') }}
         </p>
         <h1 :class="['mt-4 text-4xl font-semibold tracking-tight sm:text-6xl', !isDark ? 'text-gray-900' : 'text-white']">
-          Datenschutzerklarung
+          {{ t('privacyPage.hero.title') }}
         </h1>
         <p :class="['mx-auto mt-6 max-w-2xl text-lg', !isDark ? 'text-gray-600' : 'text-gray-300']">
-          Informationen gemaess Art. 13 DSGVO zum Umgang mit deinen Daten auf katsumii.com.
+          {{ t('privacyPage.hero.description') }}
         </p>
       </div>
 
       <div class="mx-auto mt-14 max-w-3xl space-y-4">
-
-        <!-- Verantwortlicher -->
-        <article :class="cardClass">
-          <h2 :class="headingClass">1. Verantwortlicher</h2>
-          <p :class="textClass">
-            Verantwortlicher im Sinne der DSGVO ist:<br /><br />
-            Frederik Morbe<br />
-            E-Mail: <a href="mailto:info@katsumii.com" :class="linkClass">info@katsumii.com</a><br />
-            Website: katsumii.com
+        <article v-for="section in sections" :key="section.title" :class="cardClass">
+          <h2 :class="headingClass">{{ section.title }}</h2>
+          <p v-for="paragraph in section.paragraphs" :key="paragraph" :class="textClass">
+            {{ paragraph }}
           </p>
-        </article>
-
-        <!-- Hosting -->
-        <article :class="cardClass">
-          <h2 :class="headingClass">2. Hosting</h2>
-          <p :class="textClass">
-            Diese Website wird ueber einen externen Hosting-Anbieter betrieben. Beim Aufruf der Seite werden
-            technisch notwendige Verbindungsdaten (IP-Adresse, Uhrzeit, aufgerufene Seite) kurzzeitig im
-            Server-Log verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse
-            an einem sicheren und stabilen Betrieb).
-          </p>
-        </article>
-
-        <!-- Umami Analytics -->
-        <article :class="cardClass">
-          <h2 :class="headingClass">3. Webanalyse mit Umami</h2>
-          <p :class="textClass">
-            Diese Website nutzt Umami, ein datenschutzfreundliches Analyse-Tool.
-          </p>
-          <ul :class="['mt-4 space-y-2 text-sm', !isDark ? 'text-gray-600' : 'text-gray-400']">
-            <li class="flex items-start gap-2">
+          <ul v-if="section.list?.length" :class="['mt-4 space-y-2 text-sm', !isDark ? 'text-gray-600' : 'text-gray-400']">
+            <li v-for="item in section.list" :key="item" class="flex items-start gap-2">
               <span :class="dotClass" aria-hidden="true" />
-              <span><strong>Keine Cookies</strong> – Umami setzt keinerlei Cookies und benoetigt daher keine Cookie-Einwilligung.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span :class="dotClass" aria-hidden="true" />
-              <span><strong>Keine personenbezogenen Daten</strong> – IP-Adressen werden nicht gespeichert; es werden ausschliesslich anonymisierte Nutzungsstatistiken erhoben (z. B. Seitenaufrufe, Herkunftsland).</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span :class="dotClass" aria-hidden="true" />
-              <span><strong>Kein Cross-Site-Tracking</strong> – Daten werden nicht mit anderen Websites oder Diensten verknuepft.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span :class="dotClass" aria-hidden="true" />
-              <span><strong>Kein Opt-out erforderlich</strong> – Da keine personenbezogenen Daten verarbeitet werden, ist eine Abmeldeoption nicht notwendig.</span>
+              <span>{{ item }}</span>
             </li>
           </ul>
-          <p :class="['mt-4 text-sm', !isDark ? 'text-gray-600' : 'text-gray-400']">
-            Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Verbesserung des Angebots
-            bei gleichzeitig minimialer Datenverar­beitung).
-          </p>
         </article>
-
-        <!-- LemonSqueezy -->
-        <article :class="cardClass">
-          <h2 :class="headingClass">4. Zahlungsabwicklung ueber Lemon Squeezy</h2>
-          <p :class="textClass">
-            Kaufe werden ueber <strong>Lemon Squeezy</strong> (Lemon Squeezy, LLC, 2261 Market Street #5368,
-            San Francisco, CA 94114, USA) abgewickelt. Lemon Squeezy fungiert als
-            <strong>Merchant of Record</strong> – das bedeutet, dass Lemon Squeezy rechtlich als Verkaeufer
-            auftritt und die gesamte Zahlungsverarbeitung, Rechnungsstellung sowie die steuerliche Abwicklung
-            eigenverantwortlich uebernimmt.
-          </p>
-          <p :class="['mt-4 text-sm', !isDark ? 'text-gray-600' : 'text-gray-400']">
-            Im Rahmen des Kaufvorgangs verarbeitet Lemon Squeezy die fuer die Transaktion erforderlichen
-            Daten (z. B. Name, E-Mail-Adresse, Zahlungsdaten) in eigener Verantwortung. Katsumii erhaelt
-            nach einem Kauf lediglich eine Bestaetigung (Kauf-ID, E-Mail-Adresse) zur Lizenzauslieferung.
-          </p>
-          <p :class="['mt-4 text-sm', !isDark ? 'text-gray-600' : 'text-gray-400']">
-            Weitere Informationen zum Datenschutz bei Lemon Squeezy findest du unter:
-            <a href="https://www.lemonsqueezy.com/privacy" target="_blank" rel="noopener noreferrer" :class="linkClass">
-              lemonsqueezy.com/privacy
-            </a>.
-            Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragserfullung).
-          </p>
-        </article>
-
-        <!-- Kontaktformular / E-Mail -->
-        <article :class="cardClass">
-          <h2 :class="headingClass">5. Kontaktaufnahme per E-Mail</h2>
-          <p :class="textClass">
-            Wenn du uns per E-Mail kontaktierst, werden deine Angaben (E-Mail-Adresse, Nachrichteninhalt)
-            zur Bearbeitung deiner Anfrage gespeichert. Diese Daten geben wir nicht ohne deine Einwilligung
-            weiter und loeschen sie, sobald die Anfrage abschliessend bearbeitet ist.
-            Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.
-          </p>
-        </article>
-
-        <!-- Betroffenenrechte -->
-        <article :class="cardClass">
-          <h2 :class="headingClass">6. Deine Rechte</h2>
-          <p :class="textClass">
-            Nach der DSGVO stehen dir folgende Rechte zu:
-          </p>
-          <ul :class="['mt-4 space-y-2 text-sm', !isDark ? 'text-gray-600' : 'text-gray-400']">
-            <li class="flex items-start gap-2"><span :class="dotClass" aria-hidden="true" /><span><strong>Auskunft</strong> (Art. 15) – Welche Daten wir ueber dich gespeichert haben.</span></li>
-            <li class="flex items-start gap-2"><span :class="dotClass" aria-hidden="true" /><span><strong>Berichtigung</strong> (Art. 16) – Korrektur unrichtiger Daten.</span></li>
-            <li class="flex items-start gap-2"><span :class="dotClass" aria-hidden="true" /><span><strong>Loeschung</strong> (Art. 17) – Entfernung deiner Daten, soweit keine gesetzliche Aufbewahrungspflicht besteht.</span></li>
-            <li class="flex items-start gap-2"><span :class="dotClass" aria-hidden="true" /><span><strong>Einschraenkung</strong> (Art. 18) – Begrenzung der Verarbeitung in bestimmten Faellen.</span></li>
-            <li class="flex items-start gap-2"><span :class="dotClass" aria-hidden="true" /><span><strong>Widerspruch</strong> (Art. 21) – Widerspruch gegen Verarbeitungen auf Basis berechtigten Interesses.</span></li>
-            <li class="flex items-start gap-2"><span :class="dotClass" aria-hidden="true" /><span><strong>Beschwerde</strong> – Du hast das Recht, dich bei einer Datenschutz-Aufsichtsbehoerde zu beschweren.</span></li>
-          </ul>
-          <p :class="['mt-4 text-sm', !isDark ? 'text-gray-600' : 'text-gray-400']">
-            Fur Anfragen wende dich an:
-            <a href="mailto:info@katsumii.com" :class="linkClass">info@katsumii.com</a>
-          </p>
-        </article>
-
-        <!-- Aktualitaet -->
-        <article :class="cardClass">
-          <h2 :class="headingClass">7. Aktualitat dieser Erklarung</h2>
-          <p :class="textClass">
-            Diese Datenschutzerklarung ist aktuell gueltig und datiert vom Mai 2025. Wir behalten uns vor,
-            sie bei Anderungen unserer Dienste oder bei neuen gesetzlichen Anforderungen anzupassen.
-          </p>
-        </article>
-
       </div>
     </section>
   </div>
@@ -157,16 +53,17 @@
 
 <script setup>
 import { computed, inject } from "vue"
+import { useI18n } from "vue-i18n"
 import AppNav from "./AppNav.vue"
-import { appHomePath, pagePath } from "../utils/routes.js"
+import { useSiteNavigation } from "../composables/useSiteNavigation.js"
+import { appHomePath } from "../utils/routes.js"
 
 const isDark = inject("isDark")
+const { t, tm } = useI18n()
 
-const navigation = [
-  { name: "FAQ", href: pagePath("faq") },
-  { name: "Impressum", href: pagePath("impressum") },
-  { name: "Zuruck", href: appHomePath },
-]
+const navigation = useSiteNavigation()
+
+const sections = computed(() => tm("privacyPage.sections"))
 
 const cardClass = computed(() => [
   "rounded-2xl border p-6 backdrop-blur sm:p-8",
@@ -181,11 +78,6 @@ const headingClass = computed(() => [
 const textClass = computed(() => [
   "mt-3 text-sm leading-7",
   !isDark.value ? "text-gray-700" : "text-gray-300",
-])
-
-const linkClass = computed(() => [
-  "underline underline-offset-2 transition-colors",
-  !isDark.value ? "text-teal-600 hover:text-teal-500" : "text-cyan-400 hover:text-cyan-300",
 ])
 
 const dotClass = computed(() => [

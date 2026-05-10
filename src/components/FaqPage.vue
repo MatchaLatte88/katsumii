@@ -15,8 +15,8 @@
 
     <AppNav
       :navigation="navigation"
-      brand-title="Katsumii"
-      brand-subtitle="FAQ"
+      :brand-title="t('common.brandTitle')"
+      :brand-subtitle="t('faq.brandSubtitle')"
       :brand-href="appHomePath"
     />
 
@@ -70,7 +70,7 @@
             v-if="searchQuery"
             @click="searchQuery = ''"
             :class="['shrink-0 rounded-full p-0.5 transition-colors', !isDark ? 'text-gray-400 hover:text-gray-700' : 'text-gray-500 hover:text-gray-300']"
-            aria-label="Clear search"
+            :aria-label="t('common.aria.clearSearch')"
           >
             <XMarkIcon class="size-4" />
           </button>
@@ -103,17 +103,16 @@
       <!-- FAQ items -->
       <div class="mx-auto mt-8 max-w-4xl space-y-3">
         <template v-if="filteredItems.length > 0">
-          <Disclosure
+          <div
             v-for="(item, idx) in filteredItems"
-            :key="item.question"
-            v-slot="{ open }"
+            :key="itemKey(item)"
+            class="faq-item revealed"
+            :style="{ '--stagger': idx }"
           >
-            <!-- Static wrapper owns the reveal animation so Vue's class-patching doesn't clobber the .revealed class -->
-            <div class="faq-item" :style="{ '--stagger': idx }">
             <div
               :class="[
                 'k-glass rounded-2xl border transition-all duration-300',
-                open
+                isOpen(item)
                   ? !isDark
                     ? 'border-teal-300/70 shadow-[0_8px_24px_-12px_rgba(20,184,166,0.25)]'
                     : 'border-cyan-400/30 shadow-[0_8px_24px_-12px_rgba(34,211,238,0.15)]'
@@ -122,7 +121,12 @@
                     : 'border-white/8 bg-slate-800/55 hover:border-cyan-400/20',
               ]"
             >
-              <DisclosureButton class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5">
+              <button
+                type="button"
+                class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5"
+                :aria-expanded="isOpen(item)"
+                @click="toggleItem(item)"
+              >
                 <div class="min-w-0">
                   <span
                     :class="[
@@ -141,13 +145,13 @@
                 <ChevronDownIcon
                   :class="[
                     'size-5 shrink-0 transition-transform duration-300',
-                    open ? 'rotate-180' : 'rotate-0',
+                    isOpen(item) ? 'rotate-180' : 'rotate-0',
                     !isDark ? 'text-teal-500' : 'text-cyan-400'
                   ]"
                 />
-              </DisclosureButton>
+              </button>
 
-              <DisclosurePanel>
+              <div v-show="isOpen(item)">
                 <div
                   :class="[
                     'border-t px-5 pb-5 pt-4 text-sm leading-relaxed sm:px-6 sm:pb-6 sm:text-base',
@@ -156,10 +160,9 @@
                 >
                   {{ item.answer }}
                 </div>
-              </DisclosurePanel>
+              </div>
             </div>
-            </div>
-          </Disclosure>
+          </div>
         </template>
 
         <!-- Empty state -->
@@ -221,23 +224,21 @@
 </template>
 
 <script setup>
-import { computed, inject, onMounted, ref } from "vue"
+import { computed, inject, ref, watch } from "vue"
 import { useI18n } from "vue-i18n"
-import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue"
 import { ChevronDownIcon, MagnifyingGlassIcon, XMarkIcon, EnvelopeIcon } from "@heroicons/vue/24/outline"
 import AppNav from "./AppNav.vue"
-import { appHomePath, pagePath } from "../utils/routes.js"
+import { useSiteNavigation } from "../composables/useSiteNavigation.js"
+import { appHomePath } from "../utils/routes.js"
 
-const { t, tm } = useI18n()
+const { locale, t, tm } = useI18n()
 
-const navigation = [
-  { name: "Manual", href: pagePath("manual") },
-  { name: "Back Home", href: appHomePath },
-]
+const navigation = useSiteNavigation()
 
 const isDark = inject("isDark")
 const searchQuery = ref("")
 const selectedCategory = ref("all")
+const openItems = ref(new Set())
 
 const faqItems = computed(() => {
   const raw = tm("faq.items")
@@ -259,32 +260,25 @@ const filteredItems = computed(() => {
   })
 })
 
-onMounted(() => {
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          const el = e.target
-          const stagger = Number(el.style.getPropertyValue("--stagger") || 0)
-          setTimeout(() => el.classList.add("revealed"), stagger * 70)
-          io.unobserve(el)
-        }
-      })
-    },
-    { threshold: 0.07 },
-  )
+const itemKey = (item) => `${item.category}:${item.question}`
 
-  const observe = () => document.querySelectorAll(".faq-item, .faq-hero, .faq-search, .faq-filter, .faq-cta").forEach((el) => io.observe(el))
-  observe()
+const isOpen = (item) => openItems.value.has(itemKey(item))
 
-  watch(filteredItems, () => {
-    setTimeout(observe, 50)
-  })
+const toggleItem = (item) => {
+  const next = new Set(openItems.value)
+  const key = itemKey(item)
+  if (next.has(key)) next.delete(key)
+  else next.add(key)
+  openItems.value = next
+}
+
+watch([categories, locale], () => {
+  if (!categories.value.includes(selectedCategory.value)) {
+    selectedCategory.value = "all"
+  }
+  openItems.value = new Set()
 })
 
-watch(theme, (value) => {
-  document.documentElement.classList.toggle("dark", value === "dark")
-})
 </script>
 
 <style scoped>
@@ -320,11 +314,10 @@ watch(theme, (value) => {
 .faq-search,
 .faq-filter,
 .faq-cta {
-  opacity: 0;
-  transform: translateY(18px);
+  opacity: 1;
+  transform: none;
   transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.faq-hero { transform: translateY(14px); }
 .faq-search { transition-delay: 0.06s; }
 .faq-filter { transition-delay: 0.1s; }
 .revealed {

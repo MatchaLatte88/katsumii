@@ -4,8 +4,8 @@
 
     <AppNav
       :navigation="navigation"
-      brand-title="Katsumii"
-      brand-subtitle="Welcome"
+      :brand-title="t('common.brandTitle')"
+      :brand-subtitle="t('welcomePage.brandSubtitle')"
       :brand-href="appHomePath"
     />
 
@@ -103,6 +103,7 @@ import { useI18n } from "vue-i18n"
 import { ArrowRightIcon, CheckCircleIcon, SparklesIcon } from "@heroicons/vue/24/outline"
 import AppNav from "./AppNav.vue"
 import KbBackground from "../backgrounds/KbBackground.vue"
+import { useSiteNavigation } from "../composables/useSiteNavigation.js"
 import { appHomePath, pagePath } from "../utils/routes.js"
 
 const { t, tm } = useI18n()
@@ -110,10 +111,7 @@ const { t, tm } = useI18n()
 const isDark = inject("isDark")
 const bg = inject("bg")
 
-const navigation = computed(() => [
-  { name: t("welcomePage.nav.manual"), href: pagePath("manual") },
-  { name: t("welcomePage.nav.home"), href: appHomePath },
-])
+const navigation = useSiteNavigation()
 
 const onboardingSteps = computed(() => tm("welcomePage.onboarding"))
 const nextStepItems = computed(() => tm("welcomePage.nextSteps.items"))

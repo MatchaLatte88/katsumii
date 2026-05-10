@@ -15,21 +15,21 @@
 
     <AppNav
       :navigation="navigation"
-      brand-title="Katsumii"
-      brand-subtitle="Contact"
+      :brand-title="t('common.brandTitle')"
+      :brand-subtitle="t('contactPage.brandSubtitle')"
       :brand-href="appHomePath"
     />
 
     <section class="relative isolate px-6 pb-24 pt-28 lg:px-8">
       <div class="mx-auto max-w-4xl text-center">
         <p :class="['text-sm font-semibold tracking-[0.2em] uppercase', !isDark ? 'text-teal-600' : 'text-teal-300']">
-          Get in touch
+          {{ t('contactPage.hero.label') }}
         </p>
         <h1 :class="['mt-4 text-4xl font-semibold tracking-tight sm:text-6xl', !isDark ? 'text-gray-900' : 'text-white']">
-          Contact Us
+          {{ t('contactPage.hero.title') }}
         </h1>
         <p :class="['mx-auto mt-6 max-w-2xl text-lg', !isDark ? 'text-gray-600' : 'text-gray-300']">
-          Questions about the license, the app, or your workflow? We're happy to help — usually within 1–2 business days.
+          {{ t('contactPage.hero.description') }}
         </p>
       </div>
 
@@ -42,16 +42,16 @@
           <div :class="['mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full', !isDark ? 'bg-teal-100' : 'bg-teal-400/15']">
             <CheckIcon :class="['h-6 w-6', !isDark ? 'text-teal-600' : 'text-teal-300']" />
           </div>
-          <h2 :class="['text-lg font-semibold', !isDark ? 'text-gray-900' : 'text-slate-100']">Message sent!</h2>
+          <h2 :class="['text-lg font-semibold', !isDark ? 'text-gray-900' : 'text-slate-100']">{{ t('contactPage.success.title') }}</h2>
           <p :class="['mt-2 text-sm', !isDark ? 'text-gray-600' : 'text-slate-300']">
-            Your email client should have opened with your message pre-filled. If nothing happened,
-            <a href="mailto:info@katsumii.com" :class="linkClass">send us an email directly</a>.
+            {{ t('contactPage.success.description') }}
+            <a href="mailto:info@katsumii.com" :class="linkClass">{{ t('contactPage.success.directLink') }}</a>.
           </p>
           <button
             @click="reset"
             :class="['mt-6 rounded-full border px-5 py-2 text-sm font-semibold transition-all hover:-translate-y-0.5', !isDark ? 'border-gray-300 text-gray-700 hover:bg-gray-50' : 'border-blue-400/30 text-slate-200 hover:bg-slate-800/60']"
           >
-            Send another message
+            {{ t('contactPage.success.reset') }}
           </button>
         </div>
 
@@ -63,58 +63,58 @@
         >
           <div class="grid gap-5 sm:grid-cols-2">
             <div>
-              <label :for="'contact-name'" :class="labelClass">Name</label>
+              <label :for="'contact-name'" :class="labelClass">{{ t('contactPage.form.name') }}</label>
               <input
                 id="contact-name"
                 v-model="form.name"
                 type="text"
                 required
                 autocomplete="name"
-                placeholder="Your name"
+                :placeholder="t('contactPage.form.namePlaceholder')"
                 :class="inputClass"
               />
             </div>
             <div>
-              <label :for="'contact-email'" :class="labelClass">Email</label>
+              <label :for="'contact-email'" :class="labelClass">{{ t('contactPage.form.email') }}</label>
               <input
                 id="contact-email"
                 v-model="form.email"
                 type="email"
                 required
                 autocomplete="email"
-                placeholder="you@example.com"
+                :placeholder="t('contactPage.form.emailPlaceholder')"
                 :class="inputClass"
               />
             </div>
           </div>
 
           <div class="mt-5">
-            <label :for="'contact-subject'" :class="labelClass">Subject</label>
+            <label :for="'contact-subject'" :class="labelClass">{{ t('contactPage.form.subject') }}</label>
             <input
               id="contact-subject"
               v-model="form.subject"
               type="text"
               required
-              placeholder="e.g. License question"
+              :placeholder="t('contactPage.form.subjectPlaceholder')"
               :class="inputClass"
             />
           </div>
 
           <div class="mt-5">
-            <label :for="'contact-message'" :class="labelClass">Message</label>
+            <label :for="'contact-message'" :class="labelClass">{{ t('contactPage.form.message') }}</label>
             <textarea
               id="contact-message"
               v-model="form.message"
               required
               rows="6"
-              placeholder="Describe your question or issue..."
+              :placeholder="t('contactPage.form.messagePlaceholder')"
               :class="[inputClass, 'resize-none']"
             />
           </div>
 
           <div class="mt-6 flex items-center justify-between gap-4">
             <p :class="['text-xs', !isDark ? 'text-gray-400' : 'text-slate-500']">
-              Sends via your email client to <strong>info@katsumii.com</strong>
+              {{ t('contactPage.form.mailHint') }} <strong>info@katsumii.com</strong>
             </p>
             <button
               type="submit"
@@ -125,14 +125,14 @@
                   : 'bg-cyan-300 text-slate-950 shadow-[0_12px_32px_-16px_rgba(34,211,238,0.7)] hover:bg-cyan-200'
               ]"
             >
-              Send Message
+              {{ t('contactPage.form.submit') }}
             </button>
           </div>
         </form>
 
         <!-- Direct email fallback -->
         <p :class="['mt-8 text-center text-sm', !isDark ? 'text-gray-500' : 'text-slate-400']">
-          Prefer to write directly?
+          {{ t('contactPage.direct.prefix') }}
           <a href="mailto:info@katsumii.com" :class="linkClass">info@katsumii.com</a>
         </p>
       </div>
@@ -142,17 +142,15 @@
 
 <script setup>
 import { computed, inject, reactive, ref } from "vue"
+import { useI18n } from "vue-i18n"
 import { CheckIcon } from "@heroicons/vue/20/solid"
 import AppNav from "./AppNav.vue"
-import { appHomePath, pagePath } from "../utils/routes.js"
+import { useSiteNavigation } from "../composables/useSiteNavigation.js"
+import { appHomePath } from "../utils/routes.js"
 
-const baseUrl = import.meta.env.BASE_URL
+const { t } = useI18n()
 
-const navigation = [
-  { name: "FAQ", href: pagePath("faq") },
-  { name: "Imprint", href: pagePath("impressum") },
-  { name: "Back", href: appHomePath },
-]
+const navigation = useSiteNavigation()
 
 const isDark = inject("isDark")
 const submitted = ref(false)
@@ -160,9 +158,9 @@ const submitted = ref(false)
 const form = reactive({ name: "", email: "", subject: "", message: "" })
 
 const handleSubmit = () => {
-  const subject = encodeURIComponent(form.subject || "Contact from katsumii.com")
+  const subject = encodeURIComponent(form.subject || t("contactPage.mailtoFallbackSubject"))
   const body = encodeURIComponent(
-    `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
+    `${t("contactPage.mailtoName")}: ${form.name}\n${t("contactPage.mailtoEmail")}: ${form.email}\n\n${form.message}`
   )
   window.location.href = `mailto:info@katsumii.com?subject=${subject}&body=${body}`
   submitted.value = true

@@ -16,8 +16,8 @@
 
     <AppNav
       :navigation="navLinks"
-      brand-title="Katsumii"
-      brand-subtitle="Manual"
+      :brand-title="t('common.brandTitle')"
+      :brand-subtitle="t('manualPage.brandSubtitle')"
       :brand-href="appHomePath"
     />
 
@@ -286,7 +286,7 @@
     >
       <XMarkIcon v-if="sidebarOpen" class="size-5" />
       <Bars3Icon v-else class="size-5" />
-      <span class="text-sm font-medium">{{ sidebarOpen ? 'Close' : 'Topics' }}</span>
+      <span class="text-sm font-medium">{{ sidebarOpen ? t('manualPage.mobile.closeTopics') : t('manualPage.mobile.openTopics') }}</span>
     </button>
   </div>
 </template>
@@ -310,18 +310,15 @@ import {
   XMarkIcon,
 } from "@heroicons/vue/24/outline"
 import AppNav from "./AppNav.vue"
-import { appHomePath, pagePath } from "../utils/routes.js"
+import { useSiteNavigation } from "../composables/useSiteNavigation.js"
+import { appHomePath } from "../utils/routes.js"
 
 const { t, tm } = useI18n()
-const baseUrl = import.meta.env.BASE_URL
 
 const isDark = inject("isDark")
 
 // ---------- Nav ----------
-const navLinks = computed(() => [
-  { name: t("manualPage.nav.home"), href: appHomePath },
-  { name: t("manualPage.nav.faq"), href: pagePath("faq") },
-])
+const navLinks = useSiteNavigation()
 
 // ---------- Topics ----------
 const TOPICS = [

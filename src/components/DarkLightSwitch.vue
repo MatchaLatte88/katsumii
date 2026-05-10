@@ -4,7 +4,7 @@
     class="toggle-track"
     :class="isDark ? 'track-dark' : 'track-light'"
     :aria-pressed="isDark"
-    :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
+    :aria-label="isDark ? t('common.aria.switchToLight') : t('common.aria.switchToDark')"
     @click="emit('toggle')"
   >
     <span class="knob" :class="isDark ? 'knob-right' : 'knob-left'">
@@ -18,9 +18,11 @@
 
 <script setup>
 import { SunIcon, MoonIcon } from '@heroicons/vue/24/solid'
+import { useI18n } from "vue-i18n"
 
 defineProps({ isDark: { type: Boolean, default: false } })
 const emit = defineEmits(['toggle'])
+const { t } = useI18n()
 </script>
 
 <style scoped>

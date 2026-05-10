@@ -14,7 +14,7 @@
         </p>
 
         <div class="mt-7 flex items-center gap-4 sm:gap-5">
-          <img :src="assetUrl('logo.png')" alt="Katsumii logo" class="hero-logo h-16 w-16 flex-shrink-0 object-contain sm:h-24 sm:w-24" />
+          <img :src="assetUrl('logo.png')" :alt="t('common.alts.logo')" class="hero-logo h-16 w-16 flex-shrink-0 object-contain sm:h-24 sm:w-24" />
           <div>
             <h1
               :class="[
@@ -29,7 +29,7 @@
               <span
                 ref="typedWordEl"
                 :class="['font-semibold', isDark ? 'text-cyan-300' : 'text-teal-600']"
-              >clarity</span><span
+              >{{ initialTypedWord }}</span><span
                 class="typed-cursor"
                 :class="isDark ? 'text-cyan-300' : 'text-teal-600'"
               >|</span>
@@ -112,7 +112,7 @@
           <div class="relative overflow-hidden" style="max-height: 260px;">
             <img
               :src="isDark ? assetUrl('Dashboard_dark.png') : assetUrl('Dashboard_light.png')"
-              alt="Katsumii dashboard"
+              :alt="t('common.alts.dashboard')"
               class="w-full object-cover object-top"
             />
             <div
@@ -155,12 +155,14 @@ const isDark = inject("isDark")
 const { t, tm } = useI18n()
 const heroStats = computed(() => tm('heroStats'))
 const heroFeatureStats = computed(() => tm('heroFeatureStats'))
+const typedWords = computed(() => tm('hero.typedWords'))
+const initialTypedWord = computed(() => t('hero.initialTypedWord'))
 const typedWordEl = ref(null)
 let typingTimer = null
 let tickFn = null
 
 const startTypewriter = () => {
-  const words = ['discipline.', 'consistency.', 'precision.', 'confidence.', 'clarity.']
+  const words = typedWords.value
   let wordIdx = 0
   let charIdx = words[0].length
   let deleting = false

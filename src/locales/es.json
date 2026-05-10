@@ -13,7 +13,15 @@
     "tagline": "Opera con",
     "description": "Un diario de trading offline que te ayuda a mantener la disciplina y te acompaña con análisis amplios y profundos. Local, rápido y creado para traders que quieren crecer de forma profesional. Gestiona tus propias reglas o mantén bajo control tus cuentas de prop firm y el progreso de tus challenges.",
     "ctaBuy": "Comprar Katsumii",
-    "ctaTour": "Tour del producto"
+    "ctaTour": "Tour del producto",
+    "typedWords": [
+      "disciplina.",
+      "constancia.",
+      "precisión.",
+      "confianza.",
+      "claridad."
+    ],
+    "initialTypedWord": "claridad"
   },
   "heroStats": [
     {
@@ -53,7 +61,7 @@
     "Personalizable",
     "Gestión de cuentas"
   ],
-  "brokerSyncNote": "Broker Sync is under development. We're testing selected integrations based on user demand and API availability.",
+  "brokerSyncNote": "La sincronización con brokers está en desarrollo. Estamos probando integraciones seleccionadas según demanda de usuarios y disponibilidad de APIs.",
   "features": {
     "label": "Por qué Katsumii",
     "headline": "Journaling profesional con flujos claros y enfocados",
@@ -266,6 +274,13 @@
       "description": "Obtén la licencia Professional para el flujo completo — o prueba la demo primero y ve si encaja con tu proceso.",
       "buyLicense": "Comprar licencia",
       "tryDemo": "Probar demo gratuita"
+    },
+    "alts": {
+      "hero": "Vista general completa de Katsumii",
+      "journaling": "Pantalla de journaling estructurado de Katsumii",
+      "accounts": "Pantalla de cuentas prop en Katsumii",
+      "analytics": "Pantalla de analytics de Katsumii",
+      "calendar": "Pantalla de calendario e historial de Katsumii"
     }
   },
   "welcomePage": {
@@ -303,7 +318,8 @@
     "nav": {
       "home": "Volver al Inicio",
       "manual": "Manual"
-    }
+    },
+    "brandSubtitle": "Bienvenida"
   },
   "manualPage": {
     "hero": {
@@ -506,6 +522,11 @@
           }
         }
       }
+    },
+    "brandSubtitle": "Manual",
+    "mobile": {
+      "openTopics": "Temas",
+      "closeTopics": "Cerrar"
     }
   },
   "pricingPage": {
@@ -800,8 +821,12 @@
       "title": "Preguntas frecuentes",
       "subtitle": "Todo lo que necesitas saber sobre la licencia, datos, actualizaciones y uso de Katsumii, en un solo lugar."
     },
-    "filter": { "all": "Todos" },
-    "search": { "placeholder": "Buscar preguntas …" },
+    "filter": {
+      "all": "Todos"
+    },
+    "search": {
+      "placeholder": "Buscar preguntas …"
+    },
     "empty": "No se encontraron resultados.",
     "cta": {
       "title": "¿Tienes alguna otra pregunta?",
@@ -868,6 +893,322 @@
         "category": "Datos",
         "question": "¿Se admiten copias de seguridad?",
         "answer": "Sí. Katsumii admite exportación e importación de copias de seguridad, restauración de la última copia, rutas personalizadas, configuración de retención y copias automáticas (semanales o mensuales)."
+      }
+    ],
+    "brandSubtitle": "FAQ",
+    "nav": {
+      "manual": "Manual",
+      "backHome": "Inicio"
+    }
+  },
+  "common": {
+    "brandTitle": "Katsumii",
+    "navigation": {
+      "home": "Inicio",
+      "manual": "Manual",
+      "faq": "FAQ",
+      "features": "Funciones",
+      "pricing": "Precios",
+      "imprint": "Aviso legal",
+      "privacy": "Privacidad",
+      "terms": "Términos",
+      "contact": "Contacto",
+      "back": "Volver",
+      "backHome": "Inicio"
+    },
+    "aria": {
+      "openMenu": "Abrir menú",
+      "clearSearch": "Borrar búsqueda",
+      "switchToLight": "Cambiar al modo claro",
+      "switchToDark": "Cambiar al modo oscuro",
+      "background": "Fondo"
+    },
+    "backgrounds": {
+      "honeycomb": "Panal",
+      "lines": "Líneas"
+    },
+    "alts": {
+      "logo": "Logo de Katsumii",
+      "dashboard": "Dashboard de Katsumii",
+      "featureSpotlight": "Función destacada de Katsumii",
+      "dashboardAnalytics": "Captura del dashboard analítico de Katsumii",
+      "tradingCalendar": "Captura del calendario de trading de Katsumii"
+    },
+    "pageTitles": {
+      "default": "Katsumii",
+      "app": "Katsumii - Diario de trading offline",
+      "features": "Funciones - Katsumii",
+      "pricing": "Precios - Katsumii",
+      "manual": "Manual - Katsumii",
+      "faq": "FAQ - Katsumii",
+      "contact": "Contacto - Katsumii",
+      "impressum": "Aviso legal - Katsumii",
+      "privacy": "Privacidad - Katsumii",
+      "terms": "Términos - Katsumii",
+      "welcome": "Bienvenida - Katsumii",
+      "notFound": "404 - Katsumii"
+    }
+  },
+  "contactPage": {
+    "brandSubtitle": "Contacto",
+    "nav": {
+      "faq": "FAQ",
+      "imprint": "Aviso legal",
+      "back": "Volver"
+    },
+    "hero": {
+      "label": "Contacto",
+      "title": "Escríbenos",
+      "description": "¿Tienes preguntas sobre la licencia, la app o tu flujo de trabajo? Te ayudamos encantados y normalmente respondemos en 1-2 días laborables."
+    },
+    "form": {
+      "name": "Nombre",
+      "email": "Email",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "namePlaceholder": "Tu nombre",
+      "emailPlaceholder": "tu{'@'}example.com",
+      "subjectPlaceholder": "p. ej. pregunta sobre licencia",
+      "messagePlaceholder": "Cuéntanos en qué podemos ayudarte...",
+      "submit": "Enviar mensaje",
+      "mailHint": "Se envía desde tu cliente de email a"
+    },
+    "success": {
+      "title": "Mensaje listo para enviar",
+      "description": "Tu cliente de email debería haberse abierto con el mensaje preparado. Si no ha pasado nada,",
+      "directLink": "escríbenos directamente por email",
+      "reset": "Enviar otro mensaje"
+    },
+    "direct": {
+      "prefix": "¿Prefieres escribir directamente?"
+    },
+    "mailtoFallbackSubject": "Contacto desde katsumii.com",
+    "mailtoName": "Nombre",
+    "mailtoEmail": "Email"
+  },
+  "notFoundPage": {
+    "brandSubtitle": "Página no encontrada",
+    "nav": {
+      "features": "Funciones",
+      "pricing": "Precios",
+      "faq": "FAQ"
+    },
+    "label": "404",
+    "title": "Página no encontrada",
+    "description": "Esta página de Katsumii no existe o se ha movido.",
+    "cta": "Volver a Katsumii"
+  },
+  "termsPage": {
+    "brandSubtitle": "Términos",
+    "nav": {
+      "faq": "FAQ",
+      "imprint": "Aviso legal",
+      "back": "Volver"
+    },
+    "hero": {
+      "label": "Legal",
+      "title": "Términos del servicio",
+      "description": "Lee estos términos con atención antes de comprar o usar Katsumii. Última actualización: mayo de 2025."
+    },
+    "sections": [
+      {
+        "title": "1. Alcance y parte contratante",
+        "paragraphs": [
+          "Estos términos regulan la compra y el uso de Katsumii, una aplicación de escritorio para journaling de trading proporcionada por Frederik Morbe. Contacto: info{'@'}katsumii.com. Web: katsumii.com.",
+          "Al comprar una licencia o descargar y usar el software, aceptas estos términos. Si no estás de acuerdo, no uses el software."
+        ]
+      },
+      {
+        "title": "2. Licencia",
+        "paragraphs": [
+          "Tras el pago correcto, recibes una licencia no exclusiva, no transferible y revocable para instalar y usar Katsumii en tus propios dispositivos con fines de documentación de trading personal o profesional."
+        ],
+        "list": [
+          "La licencia es para una sola persona y no puede compartirse, revenderse ni sublicenciarse.",
+          "Se permite instalarla en varios dispositivos personales propiedad de la misma persona titular.",
+          "La licencia es perpetua para la versión comprada. Algunas actualizaciones pueden requerir una nueva compra según el tipo de lanzamiento."
+        ]
+      },
+      {
+        "title": "3. Restricciones",
+        "paragraphs": [
+          "No puedes copiar, modificar, distribuir, vender, sublicenciar, aplicar ingeniería inversa, descompilar, desensamblar, eliminar avisos del software ni usarlo con fines ilícitos."
+        ]
+      },
+      {
+        "title": "4. Pago y reembolsos",
+        "paragraphs": [
+          "Los pagos se procesan mediante Lemon Squeezy, que actúa como Merchant of Record y gestiona pagos, impuestos y facturación.",
+          "Como Katsumii es un producto digital entregado inmediatamente tras la compra, los derechos de desistimiento pueden expirar al descargarlo o activarlo cuando la ley lo permita. Otras solicitudes de reembolso se revisan caso por caso. Contacta con info{'@'}katsumii.com dentro de los 14 días posteriores a la compra."
+        ]
+      },
+      {
+        "title": "5. Propiedad intelectual",
+        "paragraphs": [
+          "Todos los derechos de propiedad intelectual del software, incluido código fuente, gráficos, diseño de interfaz y documentación, pertenecen a Frederik Morbe. Estos términos no te transfieren derechos de propiedad."
+        ]
+      },
+      {
+        "title": "6. Solo con fines informativos",
+        "paragraphs": [
+          "Katsumii es únicamente una herramienta de documentación y journaling. Ayuda a registrar, revisar y reflexionar sobre trades. No está pensada como base para decisiones de trading con dinero real o inversión.",
+          "Los gráficos, estadísticas, puntuaciones y demás resultados son solo informativos y de autoevaluación. No son recomendaciones, señales, estrategias ni instrucciones."
+        ]
+      },
+      {
+        "title": "7. No es asesoramiento financiero",
+        "paragraphs": [
+          "Nada en Katsumii, en katsumii.com o en comunicaciones de Frederik Morbe constituye asesoramiento financiero, de inversión, de trading ni asesoramiento regulado. Si necesitas asesoramiento, consulta a un profesional cualificado en tu jurisdicción."
+        ]
+      },
+      {
+        "title": "8. Exactitud de cálculos y estadísticas",
+        "paragraphs": [
+          "Todos los cálculos, estadísticas, métricas, puntuaciones, ratios y proyecciones pueden contener errores, inexactitudes u omisiones. Eres responsable de verificar los datos antes de sacar conclusiones."
+        ],
+        "list": [
+          "Los resultados dependen por completo de los datos introducidos por el usuario.",
+          "El software puede contener bugs o errores de cálculo.",
+          "Las salidas estadísticas se basan solo en la muestra registrada y no tienen validez predictiva.",
+          "No se garantiza que ninguna cifra mostrada sea completa, actual o libre de errores."
+        ]
+      },
+      {
+        "title": "9. Advertencia de riesgo",
+        "paragraphs": [
+          "Operar instrumentos financieros, incluidas acciones, futuros, forex, CFDs, opciones y criptomonedas, implica un riesgo sustancial de pérdida y no es adecuado para todo el mundo.",
+          "Usas Katsumii bajo tu propia responsabilidad. Frederik Morbe no responde por pérdidas financieras relacionadas con tu actividad de trading."
+        ]
+      },
+      {
+        "title": "10. Software tal cual",
+        "paragraphs": [
+          "El software se proporciona tal cual y según disponibilidad, sin garantías de ningún tipo. No garantizamos que esté libre de errores, que funcione sin interrupciones o que los defectos se corrijan."
+        ]
+      },
+      {
+        "title": "11. Limitación de responsabilidad",
+        "paragraphs": [
+          "En la máxima medida permitida por la ley, Frederik Morbe no será responsable de daños directos, indirectos, incidentales, especiales, consecuentes o punitivos derivados del uso o imposibilidad de uso del software.",
+          "La responsabilidad total queda limitada al importe pagado por el software en los doce meses anteriores a la reclamación, salvo que la ley obligatoria disponga otra cosa."
+        ]
+      },
+      {
+        "title": "12. Ley aplicable y jurisdicción",
+        "paragraphs": [
+          "Estos términos se rigen por las leyes de la República Federal de Alemania, excluido el CISG. Las normas obligatorias de protección al consumidor de tu país de residencia permanecen intactas."
+        ]
+      },
+      {
+        "title": "13. Cambios en estos términos",
+        "paragraphs": [
+          "Podemos actualizar estos términos en cualquier momento. Los cambios importantes se anunciarán en katsumii.com. Seguir usando el software tras su entrada en vigor implica aceptar los cambios."
+        ]
+      },
+      {
+        "title": "14. Contacto",
+        "paragraphs": [
+          "Para preguntas sobre estos términos, escribe a info{'@'}katsumii.com."
+        ]
+      }
+    ]
+  },
+  "privacyPage": {
+    "brandSubtitle": "Privacidad",
+    "nav": {
+      "faq": "FAQ",
+      "imprint": "Aviso legal",
+      "back": "Volver"
+    },
+    "hero": {
+      "label": "Legal",
+      "title": "Política de privacidad",
+      "description": "Información sobre cómo katsumii.com trata tus datos siguiendo principios de GDPR."
+    },
+    "sections": [
+      {
+        "title": "1. Responsable",
+        "paragraphs": [
+          "El responsable de este sitio web es Frederik Morbe. Contacto: info{'@'}katsumii.com. Web: katsumii.com."
+        ]
+      },
+      {
+        "title": "2. Hosting",
+        "paragraphs": [
+          "Este sitio web se opera mediante un proveedor externo de hosting. Al visitarlo, datos técnicos necesarios como dirección IP, hora y página solicitada pueden procesarse brevemente en logs del servidor para mantener un funcionamiento seguro y estable."
+        ]
+      },
+      {
+        "title": "3. Analítica con Umami",
+        "paragraphs": [
+          "Este sitio usa Umami, una herramienta de analítica respetuosa con la privacidad."
+        ],
+        "list": [
+          "No se usan cookies.",
+          "No se almacenan direcciones IP; solo se recopilan estadísticas anónimas de uso.",
+          "No hay seguimiento entre sitios.",
+          "No se requiere opt-out porque no se procesan datos personales de tracking."
+        ]
+      },
+      {
+        "title": "4. Pagos mediante Lemon Squeezy",
+        "paragraphs": [
+          "Las compras se procesan mediante Lemon Squeezy, que actúa como Merchant of Record y gestiona pagos, facturación e impuestos de forma independiente.",
+          "Durante el checkout, Lemon Squeezy procesa datos de transacción como nombre, email y datos de pago. Katsumii solo recibe la información necesaria para entregar la licencia."
+        ]
+      },
+      {
+        "title": "5. Contacto por email",
+        "paragraphs": [
+          "Si nos contactas por email, guardamos tu dirección y el contenido del mensaje para tramitar la solicitud. No compartimos estos datos sin tu consentimiento y los eliminamos cuando la solicitud queda resuelta, salvo obligación legal de conservación."
+        ]
+      },
+      {
+        "title": "6. Tus derechos",
+        "paragraphs": [
+          "Bajo GDPR puedes tener derecho de acceso, rectificación, eliminación, limitación, oposición y reclamación ante una autoridad supervisora. Para solicitudes, escribe a info{'@'}katsumii.com."
+        ]
+      },
+      {
+        "title": "7. Actualizaciones de esta política",
+        "paragraphs": [
+          "Esta política de privacidad está actualizada a mayo de 2025. Podemos modificarla si cambian nuestros servicios o los requisitos legales."
+        ]
+      }
+    ]
+  },
+  "impressumPage": {
+    "brandSubtitle": "Aviso legal",
+    "nav": {
+      "manual": "Manual",
+      "faq": "FAQ",
+      "backHome": "Inicio"
+    },
+    "hero": {
+      "label": "Legal",
+      "title": "Aviso legal",
+      "description": "Información legal del proveedor. Sustituye los datos de ejemplo por los datos finales de tu empresa antes del lanzamiento."
+    },
+    "cards": [
+      {
+        "title": "Proveedor",
+        "body": "Katsumii GmbH\nMax Mustermann\nMusterstrasse 12\n12345 Musterstadt\nAlemania"
+      },
+      {
+        "title": "Contacto",
+        "body": "Email: info{'@'}katsumii.com\nTeléfono: +49 000 0000000\nWeb: katsumii.app"
+      },
+      {
+        "title": "Representante autorizado",
+        "body": "Director gerente: Max Mustermann"
+      },
+      {
+        "title": "Registro mercantil",
+        "body": "Registro mercantil: HRB 123456\nJuzgado de registro: Amtsgericht Musterstadt\nNIF-IVA: DE123456789"
+      },
+      {
+        "title": "Responsable del contenido",
+        "body": "Max Mustermann, dirección indicada arriba."
       }
     ]
   }

@@ -13,7 +13,15 @@
     "tagline": "Trade mit",
     "description": "Ein Offline-Trading-Journal, das dir hilft, diszipliniert zu bleiben, und dich mit umfangreichen, tiefgehenden Trading-Analysen unterstützt. Lokal, schnell und gemacht für Trader, die professionell wachsen wollen. Verwalte eigene Regeln oder behalte deine Prop-Firm-Konten und deinen Challenge-Fortschritt im Blick.",
     "ctaBuy": "Katsumii kaufen",
-    "ctaTour": "Produkt-Tour"
+    "ctaTour": "Produkt-Tour",
+    "typedWords": [
+      "Disziplin.",
+      "Konstanz.",
+      "Präzision.",
+      "Vertrauen.",
+      "Klarheit."
+    ],
+    "initialTypedWord": "Klarheit"
   },
   "heroStats": [
     {
@@ -53,7 +61,7 @@
     "Anpassbar",
     "Kontoverwaltung"
   ],
-  "brokerSyncNote": "Broker Sync is under development. We're testing selected integrations based on user demand and API availability.",
+  "brokerSyncNote": "Broker-Sync ist in Entwicklung. Wir testen ausgewählte Integrationen nach Nachfrage und API-Verfügbarkeit.",
   "features": {
     "label": "Warum Katsumii",
     "headline": "Professionelles Journaling mit klaren, fokussierten Workflows",
@@ -266,6 +274,13 @@
       "description": "Hol dir die Professional-Lizenz für den kompletten Workflow — oder teste zuerst die Demo und prüfe, ob es zu deinem Prozess passt.",
       "buyLicense": "Lizenz kaufen",
       "tryDemo": "Demo kostenlos testen"
+    },
+    "alts": {
+      "hero": "Katsumii Systemübersicht",
+      "journaling": "Katsumii Ansicht für strukturiertes Journaling",
+      "accounts": "Katsumii Übersicht für Prop-Konten",
+      "analytics": "Katsumii Analytics-Ansicht",
+      "calendar": "Katsumii Kalender- und Historienansicht"
     }
   },
   "welcomePage": {
@@ -303,7 +318,8 @@
     "nav": {
       "home": "Zurück zur Startseite",
       "manual": "Handbuch"
-    }
+    },
+    "brandSubtitle": "Willkommen"
   },
   "manualPage": {
     "hero": {
@@ -506,6 +522,11 @@
           }
         }
       }
+    },
+    "brandSubtitle": "Handbuch",
+    "mobile": {
+      "openTopics": "Themen",
+      "closeTopics": "Schließen"
     }
   },
   "pricingPage": {
@@ -800,8 +821,12 @@
       "title": "Häufig gestellte Fragen",
       "subtitle": "Alles Wichtige zu Lizenz, Daten, Updates und Nutzung von Katsumii in einer klaren Übersicht."
     },
-    "filter": { "all": "Alle" },
-    "search": { "placeholder": "Fragen durchsuchen …" },
+    "filter": {
+      "all": "Alle"
+    },
+    "search": {
+      "placeholder": "Fragen durchsuchen …"
+    },
     "empty": "Keine Ergebnisse gefunden.",
     "cta": {
       "title": "Noch eine Frage offen?",
@@ -868,6 +893,322 @@
         "category": "Daten",
         "question": "Werden Backups unterstützt?",
         "answer": "Ja. Katsumii unterstützt Backup-Export und -Import, Wiederherstellung des letzten Backups, benutzerdefinierte Backup-Pfade, Retention-Einstellungen und automatische Backups (wöchentlich oder monatlich)."
+      }
+    ],
+    "brandSubtitle": "FAQ",
+    "nav": {
+      "manual": "Handbuch",
+      "backHome": "Zur Startseite"
+    }
+  },
+  "common": {
+    "brandTitle": "Katsumii",
+    "navigation": {
+      "home": "Home",
+      "manual": "Handbuch",
+      "faq": "FAQ",
+      "features": "Funktionen",
+      "pricing": "Preise",
+      "imprint": "Impressum",
+      "privacy": "Datenschutz",
+      "terms": "AGB",
+      "contact": "Kontakt",
+      "back": "Zurück",
+      "backHome": "Zur Startseite"
+    },
+    "aria": {
+      "openMenu": "Menü öffnen",
+      "clearSearch": "Suche löschen",
+      "switchToLight": "Zum hellen Modus wechseln",
+      "switchToDark": "Zum dunklen Modus wechseln",
+      "background": "Hintergrund"
+    },
+    "backgrounds": {
+      "honeycomb": "Waben",
+      "lines": "Linien"
+    },
+    "alts": {
+      "logo": "Katsumii Logo",
+      "dashboard": "Katsumii Dashboard",
+      "featureSpotlight": "Katsumii Feature-Highlight",
+      "dashboardAnalytics": "Screenshot der Katsumii Dashboard-Analyse",
+      "tradingCalendar": "Screenshot des Katsumii Trading-Kalenders"
+    },
+    "pageTitles": {
+      "default": "Katsumii",
+      "app": "Katsumii - Offline Trading Journal",
+      "features": "Funktionen - Katsumii",
+      "pricing": "Preise - Katsumii",
+      "manual": "Handbuch - Katsumii",
+      "faq": "FAQ - Katsumii",
+      "contact": "Kontakt - Katsumii",
+      "impressum": "Impressum - Katsumii",
+      "privacy": "Datenschutz - Katsumii",
+      "terms": "AGB - Katsumii",
+      "welcome": "Willkommen - Katsumii",
+      "notFound": "404 - Katsumii"
+    }
+  },
+  "contactPage": {
+    "brandSubtitle": "Kontakt",
+    "nav": {
+      "faq": "FAQ",
+      "imprint": "Impressum",
+      "back": "Zurück"
+    },
+    "hero": {
+      "label": "Kontakt",
+      "title": "Schreib uns",
+      "description": "Fragen zur Lizenz, zur App oder zu deinem Workflow? Wir helfen dir gern und antworten normalerweise innerhalb von 1-2 Werktagen."
+    },
+    "form": {
+      "name": "Name",
+      "email": "E-Mail",
+      "subject": "Betreff",
+      "message": "Nachricht",
+      "namePlaceholder": "Dein Name",
+      "emailPlaceholder": "du{'@'}example.com",
+      "subjectPlaceholder": "z. B. Frage zur Lizenz",
+      "messagePlaceholder": "Beschreib kurz, wobei wir helfen können...",
+      "submit": "Nachricht senden",
+      "mailHint": "Wird über dein E-Mail-Programm gesendet an"
+    },
+    "success": {
+      "title": "Nachricht vorbereitet",
+      "description": "Dein E-Mail-Programm sollte sich mit der vorausgefüllten Nachricht geöffnet haben. Falls nichts passiert ist,",
+      "directLink": "schreib uns direkt per E-Mail",
+      "reset": "Weitere Nachricht schreiben"
+    },
+    "direct": {
+      "prefix": "Lieber direkt schreiben?"
+    },
+    "mailtoFallbackSubject": "Kontakt über katsumii.com",
+    "mailtoName": "Name",
+    "mailtoEmail": "E-Mail"
+  },
+  "notFoundPage": {
+    "brandSubtitle": "Seite nicht gefunden",
+    "nav": {
+      "features": "Funktionen",
+      "pricing": "Preise",
+      "faq": "FAQ"
+    },
+    "label": "404",
+    "title": "Seite nicht gefunden",
+    "description": "Diese Katsumii-Seite existiert nicht oder wurde verschoben.",
+    "cta": "Zurück zu Katsumii"
+  },
+  "termsPage": {
+    "brandSubtitle": "AGB",
+    "nav": {
+      "faq": "FAQ",
+      "imprint": "Impressum",
+      "back": "Zurück"
+    },
+    "hero": {
+      "label": "Rechtliches",
+      "title": "Allgemeine Geschäftsbedingungen",
+      "description": "Bitte lies diese Bedingungen sorgfältig, bevor du Katsumii kaufst oder nutzt. Stand: Mai 2025."
+    },
+    "sections": [
+      {
+        "title": "1. Geltungsbereich und Vertragspartner",
+        "paragraphs": [
+          "Diese AGB regeln den Kauf und die Nutzung von Katsumii, einer Desktop-App für Trading-Journaling, bereitgestellt von Frederik Morbe. Kontakt: info{'@'}katsumii.com. Website: katsumii.com.",
+          "Mit dem Kauf einer Lizenz oder dem Download und der Nutzung der Software stimmst du diesen Bedingungen zu. Wenn du nicht einverstanden bist, nutze die Software bitte nicht."
+        ]
+      },
+      {
+        "title": "2. Lizenz",
+        "paragraphs": [
+          "Nach erfolgreicher Zahlung erhältst du eine nicht-exklusive, nicht übertragbare, widerrufliche Lizenz, Katsumii auf deinen eigenen Geräten für private oder berufliche Trading-Dokumentation zu installieren und zu nutzen."
+        ],
+        "list": [
+          "Die Lizenz gilt für eine einzelne Person und darf nicht geteilt, weiterverkauft oder unterlizenziert werden.",
+          "Die Installation auf mehreren eigenen Geräten derselben lizenznehmenden Person ist erlaubt.",
+          "Die Lizenz gilt dauerhaft für die gekaufte Version. Updates können je nach Release-Art einen neuen Kauf erfordern."
+        ]
+      },
+      {
+        "title": "3. Einschränkungen",
+        "paragraphs": [
+          "Du darfst die Software weder kopieren, verändern, vertreiben, verkaufen, unterlizenzieren, rückentwickeln, dekompilieren, disassemblieren, Hinweise entfernen noch für rechtswidrige Zwecke einsetzen."
+        ]
+      },
+      {
+        "title": "4. Zahlung und Rückerstattung",
+        "paragraphs": [
+          "Zahlungen werden über Lemon Squeezy abgewickelt. Lemon Squeezy agiert als Merchant of Record und übernimmt Zahlung, Steuern und Rechnungsstellung.",
+          "Da Katsumii ein digitales Produkt ist, das unmittelbar nach dem Kauf bereitgestellt wird, kann ein Widerrufsrecht nach Download oder Aktivierung erlöschen, soweit gesetzlich zulässig. Andere Rückerstattungsanfragen prüfen wir im Einzelfall. Kontaktiere info{'@'}katsumii.com innerhalb von 14 Tagen nach dem Kauf."
+        ]
+      },
+      {
+        "title": "5. Geistiges Eigentum",
+        "paragraphs": [
+          "Alle Rechte an der Software, einschließlich Quellcode, Grafiken, UI-Design und Dokumentation, verbleiben bei Frederik Morbe. Diese Bedingungen übertragen keine Eigentumsrechte an dich."
+        ]
+      },
+      {
+        "title": "6. Nur zu Informationszwecken",
+        "paragraphs": [
+          "Katsumii ist ausschließlich ein Journal- und Dokumentationstool. Es hilft Tradern, Trades zu erfassen, zu prüfen und zu reflektieren. Es ist nicht als Grundlage für Echtgeld-Trading oder Investmententscheidungen gedacht.",
+          "Charts, Statistiken, Scores, Bewertungen und andere Ausgaben dienen nur der Information und Selbstreflexion. Sie sind keine Empfehlungen, Signale, Strategien oder Handlungsanweisungen."
+        ]
+      },
+      {
+        "title": "7. Keine Finanzberatung",
+        "paragraphs": [
+          "Nichts in Katsumii, auf katsumii.com oder in der Kommunikation von Frederik Morbe stellt Finanz-, Anlage-, Trading- oder sonstige regulierte Beratung dar. Wenn du Beratung brauchst, wende dich an eine qualifizierte Fachperson in deiner Jurisdiktion."
+        ]
+      },
+      {
+        "title": "8. Genauigkeit von Berechnungen und Statistiken",
+        "paragraphs": [
+          "Alle Berechnungen, Statistiken, Kennzahlen, Scores, Ratios und Projektionen können Fehler, Ungenauigkeiten oder Auslassungen enthalten. Du bist selbst dafür verantwortlich, Daten zu prüfen, bevor du Schlüsse daraus ziehst."
+        ],
+        "list": [
+          "Ergebnisse hängen vollständig von den eingegebenen Daten ab.",
+          "Die Software kann Bugs oder Berechnungsfehler enthalten.",
+          "Statistische Ausgaben basieren nur auf der erfassten Stichprobe und haben keine Vorhersagekraft.",
+          "Es wird nicht garantiert, dass angezeigte Werte vollständig, aktuell oder fehlerfrei sind."
+        ]
+      },
+      {
+        "title": "9. Risikohinweis",
+        "paragraphs": [
+          "Der Handel mit Finanzinstrumenten, darunter Aktien, Futures, Forex, CFDs, Optionen und Kryptowährungen, ist mit erheblichen Verlustrisiken verbunden und nicht für jede Person geeignet.",
+          "Du nutzt Katsumii vollständig auf eigenes Risiko. Frederik Morbe übernimmt keine Verantwortung für finanzielle Verluste im Zusammenhang mit deiner Trading-Aktivität."
+        ]
+      },
+      {
+        "title": "10. Software wie bereitgestellt",
+        "paragraphs": [
+          "Die Software wird wie bereitgestellt und wie verfügbar ohne Gewährleistung jeglicher Art angeboten. Wir garantieren nicht, dass sie fehlerfrei, unterbrechungsfrei oder dauerhaft korrigiert verfügbar ist."
+        ]
+      },
+      {
+        "title": "11. Haftungsbeschränkung",
+        "paragraphs": [
+          "Soweit gesetzlich zulässig, haftet Frederik Morbe nicht für direkte, indirekte, zufällige, besondere, Folge- oder Strafschäden aus der Nutzung oder Nichtnutzbarkeit der Software.",
+          "Die Gesamthaftung ist auf den Betrag beschränkt, den du in den zwölf Monaten vor dem Anspruch für die Software gezahlt hast, soweit zwingendes Recht nichts anderes vorsieht."
+        ]
+      },
+      {
+        "title": "12. Recht und Gerichtsstand",
+        "paragraphs": [
+          "Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts. Zwingende Verbraucherschutzvorschriften deines Wohnsitzlandes bleiben unberührt."
+        ]
+      },
+      {
+        "title": "13. Änderungen",
+        "paragraphs": [
+          "Wir können diese Bedingungen jederzeit aktualisieren. Wesentliche Änderungen werden auf katsumii.com angekündigt. Die weitere Nutzung nach Inkrafttreten gilt als Zustimmung."
+        ]
+      },
+      {
+        "title": "14. Kontakt",
+        "paragraphs": [
+          "Bei Fragen zu diesen Bedingungen erreichst du uns unter info{'@'}katsumii.com."
+        ]
+      }
+    ]
+  },
+  "privacyPage": {
+    "brandSubtitle": "Datenschutz",
+    "nav": {
+      "faq": "FAQ",
+      "imprint": "Impressum",
+      "back": "Zurück"
+    },
+    "hero": {
+      "label": "Rechtliches",
+      "title": "Datenschutzerklärung",
+      "description": "Informationen gemäß Art. 13 DSGVO zum Umgang mit deinen Daten auf katsumii.com."
+    },
+    "sections": [
+      {
+        "title": "1. Verantwortlicher",
+        "paragraphs": [
+          "Verantwortlicher im Sinne der DSGVO ist Frederik Morbe. Kontakt: info{'@'}katsumii.com. Website: katsumii.com."
+        ]
+      },
+      {
+        "title": "2. Hosting",
+        "paragraphs": [
+          "Diese Website wird über einen externen Hosting-Anbieter betrieben. Beim Aufruf werden technisch notwendige Verbindungsdaten wie IP-Adresse, Uhrzeit und aufgerufene Seite kurzzeitig in Server-Logs verarbeitet, um einen sicheren und stabilen Betrieb zu ermöglichen."
+        ]
+      },
+      {
+        "title": "3. Webanalyse mit Umami",
+        "paragraphs": [
+          "Diese Website nutzt Umami, ein datenschutzfreundliches Analyse-Tool."
+        ],
+        "list": [
+          "Es werden keine Cookies gesetzt.",
+          "IP-Adressen werden nicht gespeichert; erfasst werden nur anonymisierte Nutzungsstatistiken.",
+          "Es findet kein websiteübergreifendes Tracking statt.",
+          "Ein Opt-out ist nicht erforderlich, da keine personenbezogenen Trackingdaten verarbeitet werden."
+        ]
+      },
+      {
+        "title": "4. Zahlungen über Lemon Squeezy",
+        "paragraphs": [
+          "Käufe werden über Lemon Squeezy abgewickelt. Lemon Squeezy agiert als Merchant of Record und übernimmt Zahlungsabwicklung, Rechnungsstellung und Steuern eigenständig.",
+          "Im Checkout verarbeitet Lemon Squeezy Transaktionsdaten wie Name, E-Mail-Adresse und Zahlungsdaten. Katsumii erhält nur die Informationen, die zur Lizenzauslieferung erforderlich sind."
+        ]
+      },
+      {
+        "title": "5. Kontakt per E-Mail",
+        "paragraphs": [
+          "Wenn du uns per E-Mail kontaktierst, speichern wir deine E-Mail-Adresse und den Nachrichteninhalt zur Bearbeitung deiner Anfrage. Wir geben diese Daten nicht ohne deine Einwilligung weiter und löschen sie nach Abschluss der Anfrage, sofern keine gesetzlichen Aufbewahrungspflichten bestehen."
+        ]
+      },
+      {
+        "title": "6. Deine Rechte",
+        "paragraphs": [
+          "Nach der DSGVO kannst du Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch sowie Beschwerde bei einer Aufsichtsbehörde haben. Für Anfragen erreichst du uns unter info{'@'}katsumii.com."
+        ]
+      },
+      {
+        "title": "7. Aktualität dieser Erklärung",
+        "paragraphs": [
+          "Diese Datenschutzerklärung ist auf dem Stand Mai 2025. Wir können sie aktualisieren, wenn sich unsere Dienste oder rechtliche Anforderungen ändern."
+        ]
+      }
+    ]
+  },
+  "impressumPage": {
+    "brandSubtitle": "Impressum",
+    "nav": {
+      "manual": "Handbuch",
+      "faq": "FAQ",
+      "backHome": "Zur Startseite"
+    },
+    "hero": {
+      "label": "Rechtliches",
+      "title": "Impressum",
+      "description": "Anbieterkennzeichnung gemäß § 5 TMG. Bitte ersetze die Platzhalter vor dem Launch durch deine finalen Firmendaten."
+    },
+    "cards": [
+      {
+        "title": "Anbieter",
+        "body": "Katsumii GmbH\nMax Mustermann\nMusterstraße 12\n12345 Musterstadt\nDeutschland"
+      },
+      {
+        "title": "Kontakt",
+        "body": "E-Mail: info{'@'}katsumii.com\nTelefon: +49 000 0000000\nWebsite: katsumii.app"
+      },
+      {
+        "title": "Vertretungsberechtigt",
+        "body": "Geschäftsführer: Max Mustermann"
+      },
+      {
+        "title": "Registereintrag",
+        "body": "Handelsregister: HRB 123456\nRegistergericht: Amtsgericht Musterstadt\nUSt-IdNr.: DE123456789"
+      },
+      {
+        "title": "Inhaltlich verantwortlich",
+        "body": "Max Mustermann, Anschrift wie oben."
       }
     ]
   }

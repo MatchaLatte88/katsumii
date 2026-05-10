@@ -13,7 +13,15 @@
     "tagline": "用",
     "description": "一款離線交易日誌，幫助你專注於紀律，並透過全面、深入的交易分析支援你的成長。本地運行、速度快速，專為想要專業進步的交易者打造。你可以管理自己的規則，也可以隨時掌握 Prop Firm 帳戶與 Challenge 進度。",
     "ctaBuy": "購買 Katsumii",
-    "ctaTour": "產品導覽"
+    "ctaTour": "產品導覽",
+    "typedWords": [
+      "紀律。",
+      "一致性。",
+      "精準。",
+      "信心。",
+      "清晰。"
+    ],
+    "initialTypedWord": "清晰"
   },
   "heroStats": [
     {
@@ -53,7 +61,7 @@
     "可自訂",
     "帳戶管理"
   ],
-  "brokerSyncNote": "Broker Sync is under development. We're testing selected integrations based on user demand and API availability.",
+  "brokerSyncNote": "Broker 同步功能正在開發中。我們會依照使用者需求與 API 可用性測試指定整合。",
   "features": {
     "label": "為什麼選擇 Katsumii",
     "headline": "清晰、專注流程中的專業交易日誌",
@@ -266,6 +274,13 @@
       "description": "獲取Professional授權以使用完整工作流程——或先試用Demo，看看是否適合你的交易流程。",
       "buyLicense": "購買授權",
       "tryDemo": "試用免費Demo"
+    },
+    "alts": {
+      "hero": "Katsumii 完整系統總覽",
+      "journaling": "Katsumii 結構化交易日誌畫面",
+      "accounts": "Katsumii Prop 帳戶總覽畫面",
+      "analytics": "Katsumii 分析畫面",
+      "calendar": "Katsumii 日曆與歷史畫面"
     }
   },
   "welcomePage": {
@@ -303,7 +318,8 @@
     "nav": {
       "home": "返回首頁",
       "manual": "手冊"
-    }
+    },
+    "brandSubtitle": "歡迎"
   },
   "manualPage": {
     "hero": {
@@ -506,6 +522,11 @@
           }
         }
       }
+    },
+    "brandSubtitle": "手冊",
+    "mobile": {
+      "openTopics": "主題",
+      "closeTopics": "關閉"
     }
   },
   "pricingPage": {
@@ -800,12 +821,16 @@
       "title": "常見問題",
       "subtitle": "關於 Katsumii 授權、資料、更新及使用方式的所有重要資訊，一目瞭然。"
     },
-    "filter": { "all": "全部" },
-    "search": { "placeholder": "搜尋問題 …" },
+    "filter": {
+      "all": "全部"
+    },
+    "search": {
+      "placeholder": "搜尋問題 …"
+    },
     "empty": "找不到相關結果。",
     "cta": {
       "title": "還有其他問題嗎？",
-      "body": "隨時寫信給我們 info{'@'}katsumii.com — 我們會盡快協助您。",
+      "body": "隨時寫信到 info{'@'}katsumii.com — 我們會盡快協助你。",
       "button": "聯絡支援"
     },
     "items": [
@@ -868,6 +893,322 @@
         "category": "資料",
         "question": "支援備份嗎？",
         "answer": "支援。Katsumii 提供備份匯出與匯入、上次備份還原、自訂備份路徑、保留設定，以及自動備份（每週或每月）。"
+      }
+    ],
+    "brandSubtitle": "常見問題",
+    "nav": {
+      "manual": "手冊",
+      "backHome": "返回首頁"
+    }
+  },
+  "common": {
+    "brandTitle": "Katsumii",
+    "navigation": {
+      "home": "首頁",
+      "manual": "手冊",
+      "faq": "常見問題",
+      "features": "功能",
+      "pricing": "價格",
+      "imprint": "法律聲明",
+      "privacy": "隱私權",
+      "terms": "服務條款",
+      "contact": "聯絡我們",
+      "back": "返回",
+      "backHome": "返回首頁"
+    },
+    "aria": {
+      "openMenu": "開啟選單",
+      "clearSearch": "清除搜尋",
+      "switchToLight": "切換至淺色模式",
+      "switchToDark": "切換至深色模式",
+      "background": "背景"
+    },
+    "backgrounds": {
+      "honeycomb": "蜂巢",
+      "lines": "線條"
+    },
+    "alts": {
+      "logo": "Katsumii 標誌",
+      "dashboard": "Katsumii 儀表板",
+      "featureSpotlight": "Katsumii 功能亮點",
+      "dashboardAnalytics": "Katsumii 儀表板分析截圖",
+      "tradingCalendar": "Katsumii 交易日曆截圖"
+    },
+    "pageTitles": {
+      "default": "Katsumii",
+      "app": "Katsumii - 離線交易日誌",
+      "features": "功能 - Katsumii",
+      "pricing": "價格 - Katsumii",
+      "manual": "手冊 - Katsumii",
+      "faq": "常見問題 - Katsumii",
+      "contact": "聯絡我們 - Katsumii",
+      "impressum": "法律聲明 - Katsumii",
+      "privacy": "隱私權 - Katsumii",
+      "terms": "服務條款 - Katsumii",
+      "welcome": "歡迎 - Katsumii",
+      "notFound": "404 - Katsumii"
+    }
+  },
+  "contactPage": {
+    "brandSubtitle": "聯絡我們",
+    "nav": {
+      "faq": "常見問題",
+      "imprint": "法律聲明",
+      "back": "返回"
+    },
+    "hero": {
+      "label": "聯絡我們",
+      "title": "與我們聯繫",
+      "description": "對授權、App 或你的交易流程有問題嗎？我們很樂意協助，通常會在 1-2 個工作天內回覆。"
+    },
+    "form": {
+      "name": "姓名",
+      "email": "Email",
+      "subject": "主旨",
+      "message": "訊息",
+      "namePlaceholder": "你的姓名",
+      "emailPlaceholder": "you{'@'}example.com",
+      "subjectPlaceholder": "例如：授權問題",
+      "messagePlaceholder": "請簡短描述你需要的協助...",
+      "submit": "送出訊息",
+      "mailHint": "將透過你的 Email 用戶端寄送至"
+    },
+    "success": {
+      "title": "訊息已準備好",
+      "description": "你的 Email 用戶端應該已開啟並填入訊息。如果沒有任何反應，",
+      "directLink": "請直接寄信給我們",
+      "reset": "再寫一封訊息"
+    },
+    "direct": {
+      "prefix": "想直接寫信？"
+    },
+    "mailtoFallbackSubject": "來自 katsumii.com 的聯絡訊息",
+    "mailtoName": "姓名",
+    "mailtoEmail": "Email"
+  },
+  "notFoundPage": {
+    "brandSubtitle": "找不到頁面",
+    "nav": {
+      "features": "功能",
+      "pricing": "價格",
+      "faq": "常見問題"
+    },
+    "label": "404",
+    "title": "找不到頁面",
+    "description": "這個 Katsumii 頁面不存在，或已被移動。",
+    "cta": "返回 Katsumii"
+  },
+  "termsPage": {
+    "brandSubtitle": "服務條款",
+    "nav": {
+      "faq": "常見問題",
+      "imprint": "法律聲明",
+      "back": "返回"
+    },
+    "hero": {
+      "label": "法律資訊",
+      "title": "服務條款",
+      "description": "購買或使用 Katsumii 前，請仔細閱讀這些條款。最後更新：2025 年 5 月。"
+    },
+    "sections": [
+      {
+        "title": "1. 適用範圍與契約方",
+        "paragraphs": [
+          "本條款規範 Katsumii 的購買與使用。Katsumii 是由 Frederik Morbe 提供的桌面交易日誌應用程式。聯絡方式：info{'@'}katsumii.com。網站：katsumii.com。",
+          "購買授權或下載並使用本軟體，即表示你同意本條款。若不同意，請勿使用本軟體。"
+        ]
+      },
+      {
+        "title": "2. 授權",
+        "paragraphs": [
+          "付款成功後，你將取得非專屬、不可轉讓、可撤銷的授權，可在自己的裝置上安裝並使用 Katsumii，用於個人或專業交易紀錄。"
+        ],
+        "list": [
+          "授權僅供單一使用者使用，不得分享、轉售或再授權。",
+          "同一授權人擁有的多台個人裝置可安裝使用。",
+          "授權對已購買版本永久有效；依更新類型不同，部分更新可能需要重新購買。"
+        ]
+      },
+      {
+        "title": "3. 使用限制",
+        "paragraphs": [
+          "你不得複製、修改、散布、出售、再授權、逆向工程、反編譯、反組譯、移除軟體聲明，或將本軟體用於任何違法目的。"
+        ]
+      },
+      {
+        "title": "4. 付款與退款",
+        "paragraphs": [
+          "付款由 Lemon Squeezy 處理。Lemon Squeezy 作為 Merchant of Record，負責付款、稅務與發票處理。",
+          "Katsumii 是購買後立即交付的數位產品；在法律允許範圍內，下載或啟用後撤回權可能終止。其他退款請求將個案審查。請於購買後 14 天內聯絡 info{'@'}katsumii.com。"
+        ]
+      },
+      {
+        "title": "5. 智慧財產權",
+        "paragraphs": [
+          "軟體的所有智慧財產權，包括原始碼、圖像、介面設計與文件，均屬 Frederik Morbe 所有。本條款不會將所有權轉讓給你。"
+        ]
+      },
+      {
+        "title": "6. 僅供資訊用途",
+        "paragraphs": [
+          "Katsumii 僅是日誌與紀錄工具，用於協助交易者記錄、檢討並反思交易。它不應作為真實資金交易或投資決策的依據。",
+          "圖表、統計、分數、評級和其他輸出僅供資訊與自我反思用途，不構成建議、訊號、策略或操作指示。"
+        ]
+      },
+      {
+        "title": "7. 非財務建議",
+        "paragraphs": [
+          "Katsumii、katsumii.com 或 Frederik Morbe 的任何溝通內容，都不構成財務、投資、交易或受監管的建議。若你需要建議，請諮詢所在地合格專業人士。"
+        ]
+      },
+      {
+        "title": "8. 計算與統計準確性",
+        "paragraphs": [
+          "所有計算、統計、指標、分數、比率與預測都可能包含錯誤、不準確或遺漏。你有責任在得出結論前自行驗證資料。"
+        ],
+        "list": [
+          "結果完全取決於使用者輸入的資料。",
+          "軟體可能包含尚未發現或修正的錯誤或計算問題。",
+          "統計輸出僅基於已記錄樣本，對未來交易沒有預測效力。",
+          "不保證任何顯示數值完整、即時或無錯。"
+        ]
+      },
+      {
+        "title": "9. 風險提示",
+        "paragraphs": [
+          "交易金融工具，包括股票、期貨、外匯、CFD、選擇權與加密貨幣，具有重大虧損風險，並不適合所有人。",
+          "你完全自行承擔使用 Katsumii 的風險。Frederik Morbe 不對你的交易活動相關財務損失負責。"
+        ]
+      },
+      {
+        "title": "10. 軟體按現狀提供",
+        "paragraphs": [
+          "本軟體按現狀及可用狀態提供，不提供任何形式的保證。我們不保證軟體無錯誤、不中斷，或任何缺陷都會被修正。"
+        ]
+      },
+      {
+        "title": "11. 責任限制",
+        "paragraphs": [
+          "在法律允許的最大範圍內，Frederik Morbe 不對因使用或無法使用本軟體而產生的直接、間接、附帶、特殊、衍生或懲罰性損害負責。",
+          "除強制法律另有規定外，總責任以提出請求前十二個月內你為本軟體支付的金額為限。"
+        ]
+      },
+      {
+        "title": "12. 準據法與管轄",
+        "paragraphs": [
+          "本條款受德意志聯邦共和國法律管轄，並排除 CISG。你居住國的強制消費者保護規定不受影響。"
+        ]
+      },
+      {
+        "title": "13. 條款變更",
+        "paragraphs": [
+          "我們可隨時更新本條款。重大變更將在 katsumii.com 公告。生效後繼續使用即表示接受更新。"
+        ]
+      },
+      {
+        "title": "14. 聯絡方式",
+        "paragraphs": [
+          "若對本條款有疑問，請聯絡 info{'@'}katsumii.com。"
+        ]
+      }
+    ]
+  },
+  "privacyPage": {
+    "brandSubtitle": "隱私權",
+    "nav": {
+      "faq": "常見問題",
+      "imprint": "法律聲明",
+      "back": "返回"
+    },
+    "hero": {
+      "label": "法律資訊",
+      "title": "隱私權政策",
+      "description": "關於 katsumii.com 如何依 GDPR 原則處理你的資料。"
+    },
+    "sections": [
+      {
+        "title": "1. 資料控制者",
+        "paragraphs": [
+          "本網站的資料控制者為 Frederik Morbe。聯絡方式：info{'@'}katsumii.com。網站：katsumii.com。"
+        ]
+      },
+      {
+        "title": "2. 網站代管",
+        "paragraphs": [
+          "本網站透過外部代管服務運作。當你造訪網站時，為了安全與穩定運行，伺服器日誌可能短暫處理必要連線資料，例如 IP 位址、時間與請求頁面。"
+        ]
+      },
+      {
+        "title": "3. 使用 Umami 分析",
+        "paragraphs": [
+          "本網站使用注重隱私的分析工具 Umami。"
+        ],
+        "list": [
+          "不設定 Cookie。",
+          "不儲存 IP 位址；僅收集匿名化使用統計。",
+          "不進行跨網站追蹤。",
+          "由於不處理個人追蹤資料，因此不需要退出選項。"
+        ]
+      },
+      {
+        "title": "4. 透過 Lemon Squeezy 付款",
+        "paragraphs": [
+          "購買流程由 Lemon Squeezy 處理。Lemon Squeezy 作為 Merchant of Record，獨立負責付款、發票與稅務。",
+          "結帳時，Lemon Squeezy 會處理姓名、Email 與付款資料等交易資訊。Katsumii 只會收到交付授權所需的資訊。"
+        ]
+      },
+      {
+        "title": "5. 透過 Email 聯絡",
+        "paragraphs": [
+          "如果你透過 Email 聯絡我們，我們會儲存你的 Email 位址與訊息內容，以便處理請求。未經同意不會分享這些資料，並會在請求完成後刪除，除非法律要求保留。"
+        ]
+      },
+      {
+        "title": "6. 你的權利",
+        "paragraphs": [
+          "依 GDPR，你可能享有查詢、更正、刪除、限制處理、反對處理，以及向監管機關申訴的權利。如需提出請求，請聯絡 info{'@'}katsumii.com。"
+        ]
+      },
+      {
+        "title": "7. 政策更新",
+        "paragraphs": [
+          "本隱私權政策更新於 2025 年 5 月。如服務或法律要求變更，我們可能會更新本政策。"
+        ]
+      }
+    ]
+  },
+  "impressumPage": {
+    "brandSubtitle": "法律聲明",
+    "nav": {
+      "manual": "手冊",
+      "faq": "常見問題",
+      "backHome": "返回首頁"
+    },
+    "hero": {
+      "label": "法律資訊",
+      "title": "法律聲明",
+      "description": "服務提供者法律資訊。正式上線前，請將範例公司資料替換為你的最終資料。"
+    },
+    "cards": [
+      {
+        "title": "服務提供者",
+        "body": "Katsumii GmbH\nMax Mustermann\nMusterstrasse 12\n12345 Musterstadt\nGermany"
+      },
+      {
+        "title": "聯絡方式",
+        "body": "Email: info{'@'}katsumii.com\n電話: +49 000 0000000\n網站: katsumii.app"
+      },
+      {
+        "title": "授權代表",
+        "body": "董事總經理：Max Mustermann"
+      },
+      {
+        "title": "商業登記",
+        "body": "商業登記：HRB 123456\n登記法院：Amtsgericht Musterstadt\nVAT ID：DE123456789"
+      },
+      {
+        "title": "內容負責人",
+        "body": "Max Mustermann，地址同上。"
       }
     ]
   }

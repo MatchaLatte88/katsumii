@@ -12,108 +12,32 @@
       </svg>
       <div class="k-bg-band" />
     </div>
+
     <AppNav
       :navigation="navigation"
-      brand-title="Katsumii"
-      brand-subtitle="Impressum"
+      :brand-title="t('common.brandTitle')"
+      :brand-subtitle="t('impressumPage.brandSubtitle')"
       :brand-href="appHomePath"
     />
 
     <section class="relative isolate px-6 pb-20 pt-28 lg:px-8">
       <div class="mx-auto max-w-4xl text-center">
-        <p :class="['text-sm font-semibold tracking-[0.2em] uppercase', !isDark ? 'text-teal-600' : 'text-teal-300']">
-          Legal
-        </p>
-        <h1
-          :class="[
-            'mt-4 text-4xl font-semibold tracking-tight sm:text-6xl',
-            !isDark ? 'text-gray-900' : 'text-white'
-          ]"
-        >
-          Impressum
-        </h1>
-        <p :class="['mx-auto mt-6 max-w-2xl text-lg', !isDark ? 'text-gray-600' : 'text-gray-300']">
-          Anbieterkennzeichnung gemaess 5 TMG. Bitte ersetze die Platzhalter mit deinen echten Firmendaten.
-        </p>
+        <p :class="['text-sm font-semibold tracking-[0.2em] uppercase', !isDark ? 'text-teal-600' : 'text-teal-300']">{{ t('impressumPage.hero.label') }}</p>
+        <h1 :class="['mt-4 text-4xl font-semibold tracking-tight sm:text-6xl', !isDark ? 'text-gray-900' : 'text-white']">{{ t('impressumPage.hero.title') }}</h1>
+        <p :class="['mx-auto mt-6 max-w-2xl text-lg', !isDark ? 'text-gray-600' : 'text-gray-300']">{{ t('impressumPage.hero.description') }}</p>
       </div>
 
       <div class="mx-auto mt-14 grid max-w-5xl gap-4 md:grid-cols-2">
         <article
+          v-for="card in cards"
+          :key="card.title"
           :class="[
             'rounded-2xl border p-6 backdrop-blur sm:p-7',
             !isDark ? 'border-gray-200 bg-white/85' : 'border-white/10 bg-gray-800/70'
           ]"
         >
-          <h2 :class="['text-sm font-semibold uppercase tracking-[0.12em]', !isDark ? 'text-teal-600' : 'text-teal-300']">Anbieter</h2>
-          <p :class="['mt-3 leading-7', !isDark ? 'text-gray-700' : 'text-gray-300']">
-            Katsumii GmbH
-            <br />
-            Max Mustermann
-            <br />
-            Musterstrasse 12
-            <br />
-            12345 Musterstadt
-            <br />
-            Deutschland
-          </p>
-        </article>
-
-        <article
-          :class="[
-            'rounded-2xl border p-6 backdrop-blur sm:p-7',
-            !isDark ? 'border-gray-200 bg-white/85' : 'border-white/10 bg-gray-800/70'
-          ]"
-        >
-          <h2 :class="['text-sm font-semibold uppercase tracking-[0.12em]', !isDark ? 'text-teal-600' : 'text-teal-300']">Kontakt</h2>
-          <p :class="['mt-3 leading-7', !isDark ? 'text-gray-700' : 'text-gray-300']">
-            E-Mail: info@katsumii.com
-            <br />
-            Telefon: +49 000 0000000
-            <br />
-            Website: katsumii.app
-          </p>
-        </article>
-
-        <article
-          :class="[
-            'rounded-2xl border p-6 backdrop-blur sm:p-7',
-            !isDark ? 'border-gray-200 bg-white/85' : 'border-white/10 bg-gray-800/70'
-          ]"
-        >
-          <h2 :class="['text-sm font-semibold uppercase tracking-[0.12em]', !isDark ? 'text-teal-600' : 'text-teal-300']">Vertretungsberechtigt</h2>
-          <p :class="['mt-3 leading-7', !isDark ? 'text-gray-700' : 'text-gray-300']">
-            Geschaeftsfuehrer: Max Mustermann
-          </p>
-        </article>
-
-        <article
-          :class="[
-            'rounded-2xl border p-6 backdrop-blur sm:p-7',
-            !isDark ? 'border-gray-200 bg-white/85' : 'border-white/10 bg-gray-800/70'
-          ]"
-        >
-          <h2 :class="['text-sm font-semibold uppercase tracking-[0.12em]', !isDark ? 'text-teal-600' : 'text-teal-300']">Registereintrag</h2>
-          <p :class="['mt-3 leading-7', !isDark ? 'text-gray-700' : 'text-gray-300']">
-            Handelsregister: HRB 123456
-            <br />
-            Registergericht: Amtsgericht Musterstadt
-            <br />
-            USt-IdNr.: DE123456789
-          </p>
-        </article>
-      </div>
-
-      <div class="mx-auto mt-4 max-w-5xl">
-        <article
-          :class="[
-            'rounded-2xl border p-6 backdrop-blur sm:p-7',
-            !isDark ? 'border-gray-200 bg-white/85' : 'border-white/10 bg-gray-800/70'
-          ]"
-        >
-          <h2 :class="['text-sm font-semibold uppercase tracking-[0.12em]', !isDark ? 'text-teal-600' : 'text-teal-300']">Inhaltlich verantwortlich</h2>
-          <p :class="['mt-3 leading-7', !isDark ? 'text-gray-700' : 'text-gray-300']">
-            Max Mustermann, Anschrift wie oben.
-          </p>
+          <h2 :class="['text-sm font-semibold uppercase tracking-[0.12em]', !isDark ? 'text-teal-600' : 'text-teal-300']">{{ card.title }}</h2>
+          <p :class="['mt-3 whitespace-pre-line leading-7', !isDark ? 'text-gray-700' : 'text-gray-300']">{{ card.body }}</p>
         </article>
       </div>
     </section>
@@ -121,17 +45,18 @@
 </template>
 
 <script setup>
-import { inject } from "vue"
+import { computed, inject } from "vue"
+import { useI18n } from "vue-i18n"
 import AppNav from "./AppNav.vue"
-import { appHomePath, pagePath } from "../utils/routes.js"
+import { useSiteNavigation } from "../composables/useSiteNavigation.js"
+import { appHomePath } from "../utils/routes.js"
 
 const isDark = inject("isDark")
+const { t, tm } = useI18n()
 
-const navigation = [
-  { name: "Manual", href: pagePath("manual") },
-  { name: "FAQ", href: pagePath("faq") },
-  { name: "Back Home", href: appHomePath },
-]
+const navigation = useSiteNavigation()
+
+const cards = computed(() => tm("impressumPage.cards"))
 </script>
 
 <style scoped>
@@ -161,4 +86,3 @@ const navigation = [
   transform: skewX(-6deg); border-left: 1px solid rgba(34,211,238,0.055); transform-origin: top right;
 }
 </style>
-
