@@ -46,6 +46,7 @@
       --panel-bg: rgba(10, 18, 34, 0.9);
       --metric-bg: rgba(13, 21, 40, 0.95);
       --toggle-bg: rgba(13, 21, 40, 0.88);
+      --control-bg: #0d1528;
       --input-bg: rgba(13, 21, 40, 0.8);
       --tag-bg: rgba(148, 163, 184, 0.06);
       --shadow-glow: 0 28px 90px -48px rgba(34, 211, 238, 0.42);
@@ -75,6 +76,7 @@
       --panel-bg: rgba(248, 250, 252, 0.97);
       --metric-bg: rgba(255, 255, 255, 0.97);
       --toggle-bg: rgba(255, 255, 255, 0.92);
+      --control-bg: #ffffff;
       --input-bg: rgba(255, 255, 255, 0.92);
       --tag-bg: rgba(241, 245, 249, 0.9);
       --shadow-glow: 0 26px 90px -50px rgba(15, 23, 42, 0.34);
@@ -283,20 +285,21 @@
       width: 26px;
       height: 26px;
       border: 1px solid var(--border);
-      background: var(--toggle-bg);
+      background: var(--control-bg);
       border-radius: 999px;
       backdrop-filter: blur(14px) saturate(130%);
       -webkit-backdrop-filter: blur(14px) saturate(130%);
       cursor: pointer;
-      opacity: 0.55;
-      transition: opacity 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+      opacity: 1;
+      transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
       color: var(--text-muted);
+      box-shadow: 0 8px 22px -16px rgba(0, 0, 0, 0.65);
     }
 
     .bg-btn:hover {
-      opacity: 1;
       border-color: var(--border-accent);
       transform: scale(1.08);
+      box-shadow: 0 10px 24px -14px color-mix(in srgb, var(--accent) 45%, rgba(0, 0, 0, 0.5));
     }
 
     .bg-btn svg {
@@ -393,24 +396,25 @@
       height: 26px;
       padding: 0 0.6rem 0 0.45rem;
       border: 1px solid var(--border);
-      background: var(--toggle-bg);
+      background: var(--control-bg);
       border-radius: 999px;
       backdrop-filter: blur(14px) saturate(130%);
       -webkit-backdrop-filter: blur(14px) saturate(130%);
       cursor: pointer;
-      opacity: 0.55;
-      transition: opacity 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+      opacity: 1;
+      transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
       font-size: 0.6rem;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-muted);
+      box-shadow: 0 8px 22px -16px rgba(0, 0, 0, 0.65);
     }
 
     .lang-btn:hover {
-      opacity: 1;
       border-color: var(--border-accent);
       transform: scale(1.08);
+      box-shadow: 0 10px 24px -14px color-mix(in srgb, var(--accent) 45%, rgba(0, 0, 0, 0.5));
     }
 
     .lang-globe {
@@ -1158,10 +1162,10 @@
       </button>
       <div class="bg-panel" id="bg-panel" role="listbox">
         <button class="bg-item active" data-bg="honeycomb" type="button" role="option">
-          <span class="bg-check">✓</span>Honeycomb
+          <span class="bg-check">✓</span><span id="bg-label-honeycomb">Honeycomb</span>
         </button>
         <button class="bg-item" data-bg="lines" type="button" role="option">
-          <span class="bg-check"></span>Lines
+          <span class="bg-check"></span><span id="bg-label-lines">Lines</span>
         </button>
       </div>
     </div>
@@ -1227,7 +1231,7 @@
 
       <div class="meta-row">
         <div class="domain-chip">
-          <span class="chip-label">Domain</span>
+          <span class="chip-label" id="domain-label">Domain</span>
           <span class="chip-value">katsumii.com</span>
         </div>
         <span class="tag" id="tag-0">Journaling</span>
@@ -1242,10 +1246,10 @@
 
     </div>
 
-    <aside class="product-preview" aria-label="Katsumii product preview">
+    <aside class="product-preview" id="product-preview" aria-label="Katsumii product preview">
       <div class="preview-window">
         <div class="preview-bar">
-          <span class="preview-label">Live product view</span>
+          <span class="preview-label" id="preview-label">Live product view</span>
           <span class="preview-dots" aria-hidden="true">
             <span></span>
             <span></span>
@@ -1258,32 +1262,32 @@
         </div>
         <div class="preview-metrics">
           <div class="preview-metric">
-            <strong>Offline</strong>
-            <span>Local-first journal workflow</span>
+            <strong id="preview-metric-title-0">Offline</strong>
+            <span id="preview-metric-text-0">Local-first journal workflow</span>
           </div>
           <div class="preview-metric">
-            <strong>Challenge</strong>
-            <span>Prop account progress tracking</span>
+            <strong id="preview-metric-title-1">Challenge</strong>
+            <span id="preview-metric-text-1">Prop account progress tracking</span>
           </div>
           <div class="preview-metric">
-            <strong>Analytics</strong>
-            <span>Reports for serious review</span>
+            <strong id="preview-metric-title-2">Analytics</strong>
+            <span id="preview-metric-text-2">Reports for serious review</span>
           </div>
         </div>
       </div>
 
       <div class="trust-strip" aria-label="Katsumii highlights">
         <div class="trust-item">
-          <strong>No subscription</strong>
-          One-time access model for disciplined traders.
+          <strong id="trust-title-0">No subscription</strong>
+          <span id="trust-text-0">One-time access model for disciplined traders.</span>
         </div>
         <div class="trust-item">
-          <strong>CSV/API import</strong>
-          Built for repeatable journal routines.
+          <strong id="trust-title-1">CSV/API import</strong>
+          <span id="trust-text-1">Built for repeatable journal routines.</span>
         </div>
         <div class="trust-item">
-          <strong>Performance export</strong>
-          Share clean reports when it matters.
+          <strong id="trust-title-2">Performance export</strong>
+          <span id="trust-text-2">Share clean reports when it matters.</span>
         </div>
       </div>
     </aside>
@@ -1293,9 +1297,9 @@
   <footer>
     <span>&copy; 2026 Frederik Morbe</span>
     <div class="footer-r">
-      <a href="/privacy">Datenschutz</a>
-      <a href="/impressum">Impressum</a>
-      <a href="mailto:info@katsumii.com">Write us an E-Mail</a>
+      <a href="/privacy" id="footer-privacy">Datenschutz</a>
+      <a href="/impressum" id="footer-impressum">Impressum</a>
+      <a href="mailto:info@katsumii.com" id="footer-email">Write us an E-Mail</a>
       <span>katsumii.com</span>
     </div>
   </footer>
@@ -1313,34 +1317,103 @@
         typewords: ["discipline.", "consistency.", "precision.", "confidence.", "clarity."],
         subline: "Structured journaling, prop challenge and funded account support, deep insights with advanced analytics — built for traders who take self discipline seriously.",
         tags: ["Journaling", "Offline", "No subscription", "Deep Analysis", "Account Management", "Prop. Challenge Tracking", "CSV/API Trade Import", "Calendar"],
+        domainLabel: "Domain",
+        previewLabel: "Live product view",
+        previewAria: "Katsumii product preview",
+        previewMetrics: [
+          ["Offline", "Local-first journal workflow"],
+          ["Challenge", "Prop account progress tracking"],
+          ["Analytics", "Reports for serious review"],
+        ],
+        trustAria: "Katsumii highlights",
+        trustItems: [
+          ["No subscription", "One-time access model for disciplined traders."],
+          ["CSV/API import", "Built for repeatable journal routines."],
+          ["Performance export", "Share clean reports when it matters."],
+        ],
+        footerPrivacy: "Privacy",
+        footerImpressum: "Legal notice",
+        footerEmail: "Write us an E-Mail",
+        backgroundAria: "Switch background",
+        backgroundOptions: { honeycomb: "Honeycomb", lines: "Lines" },
+        languageAria: "Switch language",
         themeLight: "Light",
         themeDark: "Dark",
+        themeToLight: "Switch to light mode",
+        themeToDark: "Switch to dark mode",
+        secretEntry: "Open main website",
         cta: "Join the Waitlist →",
         earlyBadge: "🎁 Early Bird Discount",
       },
       de: {
-        ticker: ["Offline", "Personal / Challenge / Funded", "Performance Report Export", "Trading Tiefen Analyse", "MLL/DLL immer im Blick", "Kalender", "Account Management", "Tagebuch"],
+        ticker: ["Offline", "Privat / Challenge / Funded", "Performance-Bericht exportieren", "Trading-Tiefenanalyse", "MLL/DLL immer im Blick", "Kalender", "Kontoverwaltung", "Tagebuch"],
         badge: "Demnächst",
         eyebrow: "Trading Journal",
         tagline: "Trade mit",
         typewords: ["Disziplin.", "Konsistenz.", "Präzision.", "Überzeugung.", "Klarheit."],
         subline: "Strukturiertes Journaling, Prop-Challenge- und Funded-Account-Support sowie tiefe Einblicke durch erweiterte Analytics — entwickelt für Trader, die Selbstdisziplin ernst nehmen.",
-        tags: ["Tagebuch", "Offline", "Kein Abo", "Tiefen Analyse", "Account Management", "Prop. Challenge Tracking", "CSV/API Trade Import", "Kalender"],
+        tags: ["Tagebuch", "Offline", "Kein Abo", "Tiefenanalyse", "Kontoverwaltung", "Prop-Challenge-Tracking", "CSV/API-Trade-Import", "Kalender"],
+        domainLabel: "Domain",
+        previewLabel: "Live-Produktansicht",
+        previewAria: "Katsumii Produktvorschau",
+        previewMetrics: [
+          ["Offline", "Lokaler Journal-Workflow"],
+          ["Challenge", "Fortschritt für Prop-Konten verfolgen"],
+          ["Analytics", "Berichte für ernsthafte Auswertung"],
+        ],
+        trustAria: "Katsumii Highlights",
+        trustItems: [
+          ["Kein Abo", "Einmaliger Zugang für disziplinierte Trader."],
+          ["CSV/API-Import", "Entwickelt für wiederholbare Journal-Routinen."],
+          ["Performance-Export", "Saubere Berichte teilen, wenn es zählt."],
+        ],
+        footerPrivacy: "Datenschutz",
+        footerImpressum: "Impressum",
+        footerEmail: "Schreib uns eine E-Mail",
+        backgroundAria: "Hintergrund wechseln",
+        backgroundOptions: { honeycomb: "Waben", lines: "Linien" },
+        languageAria: "Sprache wechseln",
         themeLight: "Hell",
         themeDark: "Dunkel",
+        themeToLight: "Zu hellem Modus wechseln",
+        themeToDark: "Zu dunklem Modus wechseln",
+        secretEntry: "Hauptwebsite öffnen",
         cta: "Zur Warteliste →",
         earlyBadge: "🎁 Early-Bird-Rabatt",
       },
       es: {
-        ticker: ["Offline", "Personal / Challenge / Funded", "Exportación de Informes", "Análisis profundo", "Seguimiento MLL/DLL", "Calendario", "Gestión de Cuentas", "Journaling"],
+        ticker: ["Sin conexión", "Personal / Challenge / Financiada", "Exportación de informes", "Análisis profundo", "Seguimiento MLL/DLL", "Calendario", "Gestión de cuentas", "Diario"],
         badge: "Próximamente",
         eyebrow: "Diario de Trading",
         tagline: "Opera con",
         typewords: ["disciplina.", "consistencia.", "precisión.", "confianza.", "claridad."],
         subline: "Diario estructurado, soporte para prop challenge y cuentas financiadas, análisis avanzado — diseñado para traders que toman en serio la autodisciplina.",
         tags: ["Diario", "Sin conexión", "Sin suscripción", "Análisis profundo", "Gestión de Cuentas", "Seguimiento Prop Challenge", "Importación CSV/API", "Calendario"],
+        domainLabel: "Dominio",
+        previewLabel: "Vista del producto en vivo",
+        previewAria: "Vista previa del producto Katsumii",
+        previewMetrics: [
+          ["Sin conexión", "Flujo de diario local primero"],
+          ["Challenge", "Seguimiento de progreso de cuentas prop"],
+          ["Análisis", "Informes para revisión seria"],
+        ],
+        trustAria: "Aspectos destacados de Katsumii",
+        trustItems: [
+          ["Sin suscripción", "Acceso único para traders disciplinados."],
+          ["Importación CSV/API", "Creado para rutinas de diario repetibles."],
+          ["Exportación de rendimiento", "Comparte informes limpios cuando importa."],
+        ],
+        footerPrivacy: "Privacidad",
+        footerImpressum: "Aviso legal",
+        footerEmail: "Escríbenos un e-mail",
+        backgroundAria: "Cambiar fondo",
+        backgroundOptions: { honeycomb: "Panal", lines: "Líneas" },
+        languageAria: "Cambiar idioma",
         themeLight: "Claro",
         themeDark: "Oscuro",
+        themeToLight: "Cambiar a modo claro",
+        themeToDark: "Cambiar a modo oscuro",
+        secretEntry: "Abrir sitio principal",
         cta: "Unirse a la lista →",
         earlyBadge: "🎁 Descuento Early Bird",
       },
@@ -1352,8 +1425,31 @@
         typewords: ["紀律.", "一致性.", "精確性.", "自信.", "清晰."],
         subline: "結構化日誌記錄、Prop挑戰與資助帳戶支援，以及深入的進階分析 — 為認真對待自律的交易者而打造。",
         tags: ["日誌記錄", "離線", "無訂閱", "深度分析", "帳戶管理", "Prop 挑戰追蹤", "CSV/API 交易匯入", "日曆"],
+        domainLabel: "網域",
+        previewLabel: "即時產品預覽",
+        previewAria: "Katsumii 產品預覽",
+        previewMetrics: [
+          ["離線", "本機優先的日誌流程"],
+          ["挑戰", "Prop 帳戶進度追蹤"],
+          ["分析", "用於認真複盤的報告"],
+        ],
+        trustAria: "Katsumii 重點功能",
+        trustItems: [
+          ["無訂閱", "為自律交易者打造的一次性存取模式。"],
+          ["CSV/API 匯入", "專為可重複的日誌流程打造。"],
+          ["績效匯出", "在需要時分享乾淨清楚的報告。"],
+        ],
+        footerPrivacy: "隱私權",
+        footerImpressum: "法律聲明",
+        footerEmail: "寫 E-Mail 給我們",
+        backgroundAria: "切換背景",
+        backgroundOptions: { honeycomb: "蜂巢", lines: "線條" },
+        languageAria: "切換語言",
         themeLight: "亮色",
         themeDark: "暗色",
+        themeToLight: "切換至亮色模式",
+        themeToDark: "切換至暗色模式",
+        secretEntry: "開啟主網站",
         cta: "加入等候名單 →",
         earlyBadge: "🎁 早鳥優惠",
       },
@@ -1368,6 +1464,7 @@
 
     function setTheme(t) {
       const isDark = t === "dark"
+      const tr = TRANSLATIONS[currentLocale] || TRANSLATIONS.en
       root.setAttribute("data-theme", t)
       localStorage.setItem("katsumii-theme", t)
       themeToggle.classList.toggle("track-dark", isDark)
@@ -1375,7 +1472,7 @@
       themeKnob.classList.toggle("knob-right", isDark)
       themeKnob.classList.toggle("knob-left", !isDark)
       themeToggle.setAttribute("aria-pressed", isDark)
-      themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode")
+      themeToggle.setAttribute("aria-label", isDark ? tr.themeToLight : tr.themeToDark)
       iconSun.style.display = isDark ? "none" : ""
       iconMoon.style.display = isDark ? "" : "none"
     }
@@ -1421,12 +1518,40 @@
       document.documentElement.lang = lang === "tw" ? "zh-TW" : lang
 
       const tr = TRANSLATIONS[lang]
+      const setText = (id, value) => {
+        const el = document.getElementById(id)
+        if (el) el.textContent = value
+      }
       document.getElementById("cs-badge").textContent = tr.badge
       document.getElementById("cs-eyebrow").textContent = tr.eyebrow
       document.getElementById("cs-cta").textContent = tr.cta
       document.getElementById("cs-early-badge").textContent = tr.earlyBadge
       document.getElementById("cs-tagline").textContent = tr.tagline
       document.getElementById("cs-subline").textContent = tr.subline
+      setText("domain-label", tr.domainLabel)
+      setText("preview-label", tr.previewLabel)
+      setText("footer-privacy", tr.footerPrivacy)
+      setText("footer-impressum", tr.footerImpressum)
+      setText("footer-email", tr.footerEmail)
+      setText("bg-label-honeycomb", tr.backgroundOptions.honeycomb)
+      setText("bg-label-lines", tr.backgroundOptions.lines)
+      document.getElementById("product-preview").setAttribute("aria-label", tr.previewAria)
+      document.querySelector(".trust-strip").setAttribute("aria-label", tr.trustAria)
+      langBtn.setAttribute("aria-label", tr.languageAria)
+      bgBtn.setAttribute("aria-label", tr.backgroundAria)
+      const secretEntry = document.querySelector(".secret-entry")
+      secretEntry.setAttribute("aria-label", tr.secretEntry)
+      secretEntry.setAttribute("title", tr.secretEntry)
+      const isDark = root.getAttribute("data-theme") === "dark"
+      themeToggle.setAttribute("aria-label", isDark ? tr.themeToLight : tr.themeToDark)
+      tr.previewMetrics.forEach(([title, text], i) => {
+        setText("preview-metric-title-" + i, title)
+        setText("preview-metric-text-" + i, text)
+      })
+      tr.trustItems.forEach(([title, text], i) => {
+        setText("trust-title-" + i, title)
+        setText("trust-text-" + i, text)
+      })
       tr.tags.forEach((t, i) => {
         const el = document.getElementById("tag-" + i)
         if (el) el.textContent = t
@@ -1521,7 +1646,6 @@
 
     // ─── Init ────────────────────────────────────────────────────────
     setTheme(getInitialTheme())
-    applyLocale(currentLocale)
 
     // ─── Background Picker ───────────────────────────────────────────
     const bgSwitch = document.getElementById("bg-switch")
@@ -1693,6 +1817,7 @@
       flowCanvas.style.display = ""
       startFlow()
     }
+    applyLocale(currentLocale)
 
     // ─── Secret Entry Logic ──────────────────────────────────────────
     document.querySelector(".secret-entry").addEventListener("click", (e) => {
