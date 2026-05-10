@@ -1527,7 +1527,7 @@
     function applyLocale(lang) {
       currentLocale = lang
       localStorage.setItem("katsumii-locale", lang)
-      langLabel.textContent = lang.toUpperCase()
+      langLabel.textContent = lang === "tw" ? "ZH" : lang.toUpperCase()
       document.documentElement.lang = lang === "tw" ? "zh-TW" : lang
 
       const tr = TRANSLATIONS[lang]
