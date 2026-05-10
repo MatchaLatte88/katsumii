@@ -665,6 +665,14 @@
       white-space: nowrap;
     }
 
+    h1.tw-layout #headline-suffix {
+      display: block;
+      white-space: nowrap;
+      margin-top: 0.18em;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
     h1 .hl {
       color: var(--accent);
       position: relative;
@@ -1209,8 +1217,8 @@
         <p class="eyebrow"><span class="eyebrow-line"></span><span id="cs-eyebrow">Trading Journal</span></p>
         <h1>
           <span class="thin" id="cs-tagline">Trade with</span>
-          <span class="strong"><span class="hl" id="typed-word">clarity.</span><span class="hl-cursor"
-              aria-hidden="true">|</span></span>
+          <span class="strong"><span class="hl" id="typed-word">clarity.</span><span class="hl-cursor" aria-hidden="true">|</span><span class="hl"
+              id="headline-suffix"></span></span>
         </h1>
       </div>
 
@@ -1315,6 +1323,7 @@
         eyebrow: "Trading Journal",
         tagline: "Trade with",
         typewords: ["discipline.", "consistency.", "precision.", "confidence.", "clarity."],
+        typeSuffix: "",
         subline: "Structured journaling, prop challenge and funded account support, deep insights with advanced analytics — built for traders who take self discipline seriously.",
         tags: ["Journaling", "Offline", "No subscription", "Deep Analysis", "Account Management", "Prop. Challenge Tracking", "CSV/API Trade Import", "Calendar"],
         domainLabel: "Domain",
@@ -1351,6 +1360,7 @@
         eyebrow: "Trading Journal",
         tagline: "Trade mit",
         typewords: ["Disziplin.", "Konsistenz.", "Präzision.", "Überzeugung.", "Klarheit."],
+        typeSuffix: "",
         subline: "Strukturiertes Journaling, Prop-Challenge- und Funded-Account-Support sowie tiefe Einblicke durch erweiterte Analytics — entwickelt für Trader, die Selbstdisziplin ernst nehmen.",
         tags: ["Tagebuch", "Offline", "Kein Abo", "Tiefenanalyse", "Kontoverwaltung", "Prop-Challenge-Tracking", "CSV/API-Trade-Import", "Kalender"],
         domainLabel: "Domain",
@@ -1387,6 +1397,7 @@
         eyebrow: "Diario de Trading",
         tagline: "Opera con",
         typewords: ["disciplina.", "consistencia.", "precisión.", "confianza.", "claridad."],
+        typeSuffix: "",
         subline: "Diario estructurado, soporte para prop challenge y cuentas financiadas, análisis avanzado — diseñado para traders que toman en serio la autodisciplina.",
         tags: ["Diario", "Sin conexión", "Sin suscripción", "Análisis profundo", "Gestión de Cuentas", "Seguimiento Prop Challenge", "Importación CSV/API", "Calendario"],
         domainLabel: "Dominio",
@@ -1421,8 +1432,10 @@
         ticker: ["離線", "個人 / 挑戰 / 資助", "績效報告匯出", "深度分析", "MLL/DLL 追蹤", "日曆", "帳戶管理", "日誌記錄"],
         badge: "即將推出",
         eyebrow: "交易日誌",
-        tagline: "以",
-        typewords: ["紀律.", "一致性.", "精確性.", "自信.", "清晰."],
+        tagline: "",
+        typewords: ["以紀律", "以沉著", "以精準", "以自信", "以洞察"],
+        typeKeepPrefix: 1,
+        typeSuffix: "交易.",
         subline: "結構化日誌記錄、Prop挑戰與資助帳戶支援，以及深入的進階分析 — 為認真對待自律的交易者而打造。",
         tags: ["日誌記錄", "離線", "無訂閱", "深度分析", "帳戶管理", "Prop 挑戰追蹤", "CSV/API 交易匯入", "日曆"],
         domainLabel: "網域",
@@ -1527,6 +1540,8 @@
       document.getElementById("cs-cta").textContent = tr.cta
       document.getElementById("cs-early-badge").textContent = tr.earlyBadge
       document.getElementById("cs-tagline").textContent = tr.tagline
+      document.getElementById("headline-suffix").textContent = tr.typeSuffix
+      document.querySelector("h1").classList.toggle("tw-layout", lang === "tw")
       document.getElementById("cs-subline").textContent = tr.subline
       setText("domain-label", tr.domainLabel)
       setText("preview-label", tr.previewLabel)
@@ -1558,7 +1573,7 @@
       })
 
       buildTicker(tr)
-      restartTypewriter(tr.typewords)
+      restartTypewriter(tr.typewords, tr.typeKeepPrefix ?? 0)
       refreshLangPanel()
     }
 
@@ -1607,7 +1622,7 @@
     })
 
     // ─── Typewriter ─────────────────────────────────────────────────
-    function restartTypewriter(words) {
+    function restartTypewriter(words, keepPrefix = 0) {
       clearTimeout(typingTimer)
       const el = document.getElementById("typed-word")
       if (!el) return
@@ -1622,7 +1637,7 @@
         if (deleting) {
           charIdx--
           el.textContent = word.slice(0, charIdx)
-          if (charIdx === 0) {
+          if (charIdx === keepPrefix) {
             deleting = false
             wordIdx = (wordIdx + 1) % words.length
             typingTimer = setTimeout(tick, 300)
