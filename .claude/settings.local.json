@@ -30,7 +30,8 @@
       "Bash(git push *)",
       "Bash(git -C \"C:/Users/Matcha/Desktop/ClaudeWorkspace/Katsumii Website\" status)",
       "Bash(git -C \"C:/Users/Matcha/Desktop/ClaudeWorkspace/Katsumii Website\" diff)",
-      "Bash(cd \"C:\\\\Users\\\\Matcha\\\\Desktop\\\\ClaudeWorkspace\\\\Katsumii Website\" && cat package.json 2>/dev/null | head -30; ls .. 2>/dev/null)"
+      "Bash(cd \"C:\\\\Users\\\\Matcha\\\\Desktop\\\\ClaudeWorkspace\\\\Katsumii Website\" && cat package.json 2>/dev/null | head -30; ls .. 2>/dev/null)",
+      "Bash(git fetch *)"
     ]
   }
 }

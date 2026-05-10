@@ -1537,7 +1537,9 @@
       }
       document.getElementById("cs-badge").textContent = tr.badge
       document.getElementById("cs-eyebrow").textContent = tr.eyebrow
-      document.getElementById("cs-cta").textContent = tr.cta
+      const ctaBtn = document.getElementById("cs-cta")
+      ctaBtn.textContent = tr.cta
+      ctaBtn.setAttribute("data-tally-open", lang === "tw" ? "lbWr8B" : "BzADW1")
       document.getElementById("cs-early-badge").textContent = tr.earlyBadge
       document.getElementById("cs-tagline").textContent = tr.tagline
       document.getElementById("headline-suffix").textContent = tr.typeSuffix
