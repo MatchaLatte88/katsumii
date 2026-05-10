@@ -1671,9 +1671,10 @@
 
     const BG_MIGRATE = { flow: "lines", stars: "lines", sky: "honeycomb", seasonal: "honeycomb" }
     const KNOWN_BG = new Set(["honeycomb", "lines"])
-    const _savedBg = localStorage.getItem("katsumii-bg") || "honeycomb"
+    const _defaultBg = window.innerWidth < 768 ? "honeycomb" : "lines"
+    const _savedBg = localStorage.getItem("katsumii-bg") || _defaultBg
     const _migrated = BG_MIGRATE[_savedBg] ?? _savedBg
-    let currentBg = KNOWN_BG.has(_migrated) ? _migrated : "honeycomb"
+    let currentBg = KNOWN_BG.has(_migrated) ? _migrated : _defaultBg
     let flowRaf = null
 
     function refreshBgPanel(bg) {
