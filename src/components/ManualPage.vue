@@ -1,7 +1,7 @@
 <template>
-  <div :class="[theme === 'light' ? 'relative min-h-screen bg-slate-50 text-gray-900' : 'relative min-h-screen bg-slate-950 text-slate-100']">
+  <div :class="[!isDark ? 'relative min-h-screen bg-slate-50 text-gray-900' : 'relative min-h-screen bg-slate-950 text-slate-100']">
     <!-- Background -->
-    <div class="k-bg" :class="theme === 'light' ? 'k-bg-light' : 'k-bg-dark'" aria-hidden="true">
+    <div class="k-bg" :class="!isDark ? 'k-bg-light' : 'k-bg-dark'" aria-hidden="true">
       <div class="k-bg-gradient" />
       <svg class="k-bg-grid" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
@@ -15,12 +15,10 @@
     </div>
 
     <AppNav
-      :theme="theme"
       :navigation="navLinks"
       brand-title="Katsumii"
       brand-subtitle="Manual"
       :brand-href="appHomePath"
-      @toggle-theme="toggleTheme"
     />
 
     <!-- Layout wrapper: sidebar + content -->
@@ -30,7 +28,7 @@
       <aside
         :class="[
           'hidden md:flex flex-col w-64 shrink-0 sticky top-24 self-start max-h-[calc(100vh-6rem)] overflow-y-auto pb-10 border-r',
-          theme === 'light' ? 'border-gray-200 bg-white/50 backdrop-blur' : 'border-blue-400/15 bg-slate-950/50 backdrop-blur'
+          !isDark ? 'border-gray-200 bg-white/50 backdrop-blur' : 'border-blue-400/15 bg-slate-950/50 backdrop-blur'
         ]"
       >
         <div class="flex flex-col gap-1 px-3 py-4">
@@ -38,8 +36,8 @@
           <button
             :class="['flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm font-semibold transition-all duration-200',
               !activeTopic
-                ? (theme === 'light' ? 'bg-teal-50 text-teal-700' : 'bg-cyan-400/10 text-cyan-300')
-                : (theme === 'light' ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200')
+                ? (!isDark ? 'bg-teal-50 text-teal-700' : 'bg-cyan-400/10 text-cyan-300')
+                : (!isDark ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200')
             ]"
             @click="goOverview"
           >
@@ -47,15 +45,15 @@
             {{ t('manualPage.nav.overview') }}
           </button>
 
-          <div :class="['my-2 border-t', theme === 'light' ? 'border-gray-100' : 'border-white/5']" />
+          <div :class="['my-2 border-t', !isDark ? 'border-gray-100' : 'border-white/5']" />
 
           <!-- Topics -->
           <div v-for="topic in TOPICS" :key="topic.id">
             <button
               :class="['flex w-full items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-sm font-semibold transition-all duration-200',
                 activeTopic?.id === topic.id
-                  ? (theme === 'light' ? 'bg-teal-50 text-teal-700' : 'bg-cyan-400/10 text-cyan-300')
-                  : (theme === 'light' ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200')
+                  ? (!isDark ? 'bg-teal-50 text-teal-700' : 'bg-cyan-400/10 text-cyan-300')
+                  : (!isDark ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200')
               ]"
               @click="selectTopic(topic)"
             >
@@ -77,16 +75,16 @@
                 :key="article.id"
                 :class="['flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-all duration-200',
                   activeArticle?.id === article.id
-                    ? (theme === 'light' ? 'bg-teal-600/10 font-semibold text-teal-700' : 'bg-cyan-400/15 font-semibold text-cyan-300')
-                    : (theme === 'light' ? 'text-gray-500 hover:bg-gray-50 hover:text-gray-800' : 'text-slate-500 hover:bg-slate-800/40 hover:text-slate-300')
+                    ? (!isDark ? 'bg-teal-600/10 font-semibold text-teal-700' : 'bg-cyan-400/15 font-semibold text-cyan-300')
+                    : (!isDark ? 'text-gray-500 hover:bg-gray-50 hover:text-gray-800' : 'text-slate-500 hover:bg-slate-800/40 hover:text-slate-300')
                 ]"
                 @click="selectArticle(article)"
               >
                 <div
                   :class="['size-1.5 shrink-0 rounded-full',
                     activeArticle?.id === article.id
-                      ? (theme === 'light' ? 'bg-teal-600' : 'bg-cyan-400')
-                      : (theme === 'light' ? 'bg-gray-300' : 'bg-slate-600')
+                      ? (!isDark ? 'bg-teal-600' : 'bg-cyan-400')
+                      : (!isDark ? 'bg-gray-300' : 'bg-slate-600')
                   ]"
                 />
                 {{ t(article.titleKey) }}
@@ -103,7 +101,7 @@
           <aside
             :class="[
               'relative z-10 flex w-72 flex-col overflow-y-auto pb-10 pt-20 shadow-2xl',
-              theme === 'light' ? 'bg-white border-r border-gray-200' : 'bg-slate-900 border-r border-blue-400/15'
+              !isDark ? 'bg-white border-r border-gray-200' : 'bg-slate-900 border-r border-blue-400/15'
             ]"
           >
             <!-- Same sidebar content as desktop -->
@@ -111,8 +109,8 @@
               <button
                 :class="['flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm font-semibold transition-all duration-200',
                   !activeTopic
-                    ? (theme === 'light' ? 'bg-teal-50 text-teal-700' : 'bg-cyan-400/10 text-cyan-300')
-                    : (theme === 'light' ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200')
+                    ? (!isDark ? 'bg-teal-50 text-teal-700' : 'bg-cyan-400/10 text-cyan-300')
+                    : (!isDark ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200')
                 ]"
                 @click="() => { goOverview(); sidebarOpen = false }"
               >
@@ -120,14 +118,14 @@
                 {{ t('manualPage.nav.overview') }}
               </button>
 
-              <div :class="['my-2 border-t', theme === 'light' ? 'border-gray-100' : 'border-white/5']" />
+              <div :class="['my-2 border-t', !isDark ? 'border-gray-100' : 'border-white/5']" />
 
               <div v-for="topic in TOPICS" :key="`mob-${topic.id}`">
                 <button
                   :class="['flex w-full items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-sm font-semibold transition-all duration-200',
                     activeTopic?.id === topic.id
-                      ? (theme === 'light' ? 'bg-teal-50 text-teal-700' : 'bg-cyan-400/10 text-cyan-300')
-                      : (theme === 'light' ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200')
+                      ? (!isDark ? 'bg-teal-50 text-teal-700' : 'bg-cyan-400/10 text-cyan-300')
+                      : (!isDark ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200')
                   ]"
                   @click="() => { selectTopic(topic); sidebarOpen = false }"
                 >
@@ -144,12 +142,12 @@
                     :key="article.id"
                     :class="['flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-all duration-200',
                       activeArticle?.id === article.id
-                        ? (theme === 'light' ? 'bg-teal-600/10 font-semibold text-teal-700' : 'bg-cyan-400/15 font-semibold text-cyan-300')
-                        : (theme === 'light' ? 'text-gray-500 hover:bg-gray-50 hover:text-gray-800' : 'text-slate-500 hover:bg-slate-800/40 hover:text-slate-300')
+                        ? (!isDark ? 'bg-teal-600/10 font-semibold text-teal-700' : 'bg-cyan-400/15 font-semibold text-cyan-300')
+                        : (!isDark ? 'text-gray-500 hover:bg-gray-50 hover:text-gray-800' : 'text-slate-500 hover:bg-slate-800/40 hover:text-slate-300')
                     ]"
                     @click="() => { selectArticle(article); sidebarOpen = false }"
                   >
-                    <div :class="['size-1.5 shrink-0 rounded-full', activeArticle?.id === article.id ? (theme === 'light' ? 'bg-teal-600' : 'bg-cyan-400') : (theme === 'light' ? 'bg-gray-300' : 'bg-slate-600')]" />
+                    <div :class="['size-1.5 shrink-0 rounded-full', activeArticle?.id === article.id ? (!isDark ? 'bg-teal-600' : 'bg-cyan-400') : (!isDark ? 'bg-gray-300' : 'bg-slate-600')]" />
                     {{ t(article.titleKey) }}
                   </button>
                 </div>
@@ -165,13 +163,13 @@
         <!-- OVERVIEW VIEW -->
         <template v-if="!activeTopic">
           <div class="mx-auto max-w-4xl">
-            <p :class="['text-sm font-semibold tracking-[0.2em] uppercase', theme === 'light' ? 'text-teal-600' : 'text-teal-300']">
+            <p :class="['text-sm font-semibold tracking-[0.2em] uppercase', !isDark ? 'text-teal-600' : 'text-teal-300']">
               {{ t('manualPage.hero.eyebrow') }}
             </p>
-            <h1 :class="['mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl', theme === 'light' ? 'text-gray-900' : 'text-white']">
+            <h1 :class="['mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl', !isDark ? 'text-gray-900' : 'text-white']">
               {{ t('manualPage.hero.heading') }}
             </h1>
-            <p :class="['mt-4 max-w-2xl text-lg', theme === 'light' ? 'text-gray-600' : 'text-slate-400']">
+            <p :class="['mt-4 max-w-2xl text-lg', !isDark ? 'text-gray-600' : 'text-slate-400']">
               {{ t('manualPage.hero.description') }}
             </p>
 
@@ -181,26 +179,26 @@
                 v-for="topic in TOPICS"
                 :key="topic.id"
                 class="group relative rounded-2xl border p-5 text-left backdrop-blur transition-all duration-300 hover:-translate-y-0.5"
-                :class="theme === 'light'
+                :class="!isDark
                   ? 'border-gray-200 bg-white/85 shadow-[0_6px_22px_-14px_rgba(15,23,42,0.2)] hover:shadow-[0_12px_32px_-14px_rgba(15,23,42,0.28)]'
                   : 'border-white/10 bg-gray-800/70 hover:bg-gray-800/80'"
                 @click="selectTopic(topic)"
               >
                 <component
                   :is="topic.icon"
-                  :class="['size-7 transition-colors duration-300', theme === 'light' ? 'text-teal-600 group-hover:text-teal-500' : 'text-cyan-400 group-hover:text-cyan-300']"
+                  :class="['size-7 transition-colors duration-300', !isDark ? 'text-teal-600 group-hover:text-teal-500' : 'text-cyan-400 group-hover:text-cyan-300']"
                 />
-                <h3 :class="['mt-3 font-semibold', theme === 'light' ? 'text-gray-900' : 'text-white']">
+                <h3 :class="['mt-3 font-semibold', !isDark ? 'text-gray-900' : 'text-white']">
                   {{ t(topic.titleKey) }}
                 </h3>
-                <p :class="['mt-1 text-sm leading-relaxed', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">
+                <p :class="['mt-1 text-sm leading-relaxed', !isDark ? 'text-gray-500' : 'text-slate-400']">
                   {{ t(topic.descriptionKey) }}
                 </p>
                 <div class="mt-4 flex items-center justify-between">
-                  <span :class="['text-xs font-medium', theme === 'light' ? 'text-gray-400' : 'text-slate-500']">
+                  <span :class="['text-xs font-medium', !isDark ? 'text-gray-400' : 'text-slate-500']">
                     {{ topic.articles.length }}&thinsp;{{ topic.articles.length === 1 ? t('manualPage.article') : t('manualPage.articles') }}
                   </span>
-                  <ChevronRightIcon :class="['size-4 transition-transform duration-300 group-hover:translate-x-0.5', theme === 'light' ? 'text-gray-400' : 'text-slate-500']" />
+                  <ChevronRightIcon :class="['size-4 transition-transform duration-300 group-hover:translate-x-0.5', !isDark ? 'text-gray-400' : 'text-slate-500']" />
                 </div>
               </button>
             </div>
@@ -213,46 +211,46 @@
             <!-- Breadcrumb -->
             <nav class="flex flex-wrap items-center gap-1.5 text-sm">
               <button
-                :class="['font-medium transition-colors duration-200', theme === 'light' ? 'text-teal-600 hover:text-teal-800' : 'text-cyan-400 hover:text-cyan-300']"
+                :class="['font-medium transition-colors duration-200', !isDark ? 'text-teal-600 hover:text-teal-800' : 'text-cyan-400 hover:text-cyan-300']"
                 @click="goOverview"
               >
                 {{ t('manualPage.nav.overview') }}
               </button>
-              <ChevronRightIcon :class="['size-3.5 shrink-0', theme === 'light' ? 'text-gray-400' : 'text-slate-500']" />
-              <span :class="[activeArticle ? 'cursor-pointer font-medium transition-colors duration-200 ' + (theme === 'light' ? 'text-teal-600 hover:text-teal-800' : 'text-cyan-400 hover:text-cyan-300') : (theme === 'light' ? 'text-gray-900 font-medium' : 'text-white font-medium')]"
+              <ChevronRightIcon :class="['size-3.5 shrink-0', !isDark ? 'text-gray-400' : 'text-slate-500']" />
+              <span :class="[activeArticle ? 'cursor-pointer font-medium transition-colors duration-200 ' + (!isDark ? 'text-teal-600 hover:text-teal-800' : 'text-cyan-400 hover:text-cyan-300') : (!isDark ? 'text-gray-900 font-medium' : 'text-white font-medium')]"
                 @click="activeArticle && (activeArticle = activeTopic.articles[0])"
               >
                 {{ t(activeTopic.titleKey) }}
               </span>
               <template v-if="activeArticle">
-                <ChevronRightIcon :class="['size-3.5 shrink-0', theme === 'light' ? 'text-gray-400' : 'text-slate-500']" />
-                <span :class="['font-medium', theme === 'light' ? 'text-gray-900' : 'text-white']">{{ t(activeArticle.titleKey) }}</span>
+                <ChevronRightIcon :class="['size-3.5 shrink-0', !isDark ? 'text-gray-400' : 'text-slate-500']" />
+                <span :class="['font-medium', !isDark ? 'text-gray-900' : 'text-white']">{{ t(activeArticle.titleKey) }}</span>
               </template>
             </nav>
 
             <!-- Article -->
             <article v-if="activeArticle" class="mt-8">
-              <span :class="['inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em]', theme === 'light' ? 'border-teal-200 bg-teal-50 text-teal-700' : 'border-cyan-300/30 bg-cyan-400/10 text-cyan-300']">
+              <span :class="['inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em]', !isDark ? 'border-teal-200 bg-teal-50 text-teal-700' : 'border-cyan-300/30 bg-cyan-400/10 text-cyan-300']">
                 <component :is="activeTopic.icon" class="size-3" />
                 {{ t(activeTopic.titleKey) }}
               </span>
 
-              <h1 :class="['mt-4 font-display text-3xl font-semibold tracking-tight sm:text-4xl', theme === 'light' ? 'text-gray-900' : 'text-white']">
+              <h1 :class="['mt-4 font-display text-3xl font-semibold tracking-tight sm:text-4xl', !isDark ? 'text-gray-900' : 'text-white']">
                 {{ t(activeArticle.titleKey) }}
               </h1>
 
-              <div :class="['mt-8 space-y-5 text-[1.02rem] leading-relaxed', theme === 'light' ? 'text-gray-700' : 'text-slate-300']">
+              <div :class="['mt-8 space-y-5 text-[1.02rem] leading-relaxed', !isDark ? 'text-gray-700' : 'text-slate-300']">
                 <p v-for="(para, i) in articleContent" :key="i">{{ para }}</p>
               </div>
             </article>
 
             <!-- Prev / Next -->
-            <div :class="['mt-14 flex items-center justify-between gap-4 border-t pt-6', theme === 'light' ? 'border-gray-200' : 'border-white/10']">
+            <div :class="['mt-14 flex items-center justify-between gap-4 border-t pt-6', !isDark ? 'border-gray-200' : 'border-white/10']">
               <button
                 v-if="prevArticle"
                 :class="[
                   'group flex items-center gap-2 rounded-xl border px-4 py-3 text-sm font-medium transition-all duration-200 hover:-translate-x-0.5',
-                  theme === 'light' ? 'border-gray-200 bg-white text-gray-700 hover:border-teal-200 hover:text-teal-700' : 'border-white/10 bg-gray-800/60 text-slate-300 hover:border-cyan-400/30 hover:text-cyan-300'
+                  !isDark ? 'border-gray-200 bg-white text-gray-700 hover:border-teal-200 hover:text-teal-700' : 'border-white/10 bg-gray-800/60 text-slate-300 hover:border-cyan-400/30 hover:text-cyan-300'
                 ]"
                 @click="selectArticle(prevArticle)"
               >
@@ -265,7 +263,7 @@
                 v-if="nextArticle"
                 :class="[
                   'group ml-auto flex items-center gap-2 rounded-xl border px-4 py-3 text-sm font-medium transition-all duration-200 hover:translate-x-0.5',
-                  theme === 'light' ? 'border-gray-200 bg-white text-gray-700 hover:border-teal-200 hover:text-teal-700' : 'border-white/10 bg-gray-800/60 text-slate-300 hover:border-cyan-400/30 hover:text-cyan-300'
+                  !isDark ? 'border-gray-200 bg-white text-gray-700 hover:border-teal-200 hover:text-teal-700' : 'border-white/10 bg-gray-800/60 text-slate-300 hover:border-cyan-400/30 hover:text-cyan-300'
                 ]"
                 @click="selectArticle(nextArticle)"
               >
@@ -283,7 +281,7 @@
     <!-- Mobile FAB -->
     <button
       class="fixed bottom-6 left-6 z-40 flex items-center gap-2 rounded-full px-4 py-3 shadow-lg transition-all duration-300 hover:scale-105 md:hidden"
-      :class="theme === 'light' ? 'bg-white border border-gray-200 text-gray-700' : 'bg-slate-800 border border-white/10 text-slate-300'"
+      :class="!isDark ? 'bg-white border border-gray-200 text-gray-700' : 'bg-slate-800 border border-white/10 text-slate-300'"
       @click="sidebarOpen = !sidebarOpen"
     >
       <XMarkIcon v-if="sidebarOpen" class="size-5" />
@@ -294,7 +292,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref, watch } from "vue"
+import { computed, inject, onMounted, ref } from "vue"
 import { useI18n } from "vue-i18n"
 import {
   ArrowLeftIcon,
@@ -317,17 +315,7 @@ import { appHomePath, pagePath } from "../utils/routes.js"
 const { t, tm } = useI18n()
 const baseUrl = import.meta.env.BASE_URL
 
-// ---------- Theme ----------
-const savedTheme = localStorage.getItem("katsumii-theme")
-const theme = ref(savedTheme === "dark" ? "dark" : "light")
-
-const toggleTheme = () => {
-  const next = theme.value === "dark" ? "light" : "dark"
-  theme.value = next
-  localStorage.setItem("katsumii-theme", next)
-}
-
-watch(theme, (v) => document.documentElement.classList.toggle("dark", v === "dark"), { immediate: true })
+const isDark = inject("isDark")
 
 // ---------- Nav ----------
 const navLinks = computed(() => [

@@ -196,43 +196,79 @@
       gap: 6px;
     }
 
-    .theme-toggle {
+    /* ─── Theme Toggle Switch ─── */
+    .toggle-track {
+      position: relative;
       display: inline-flex;
-      align-items: center;
-      gap: 0.38rem;
-      height: 26px;
-      padding: 0 0.6rem 0 0.45rem;
-      border: 1px solid var(--border);
-      background: var(--toggle-bg);
+      width: 42px;
+      height: 22px;
       border-radius: 999px;
-      backdrop-filter: blur(14px) saturate(130%);
-      -webkit-backdrop-filter: blur(14px) saturate(130%);
+      border: none;
+      padding: 0;
       cursor: pointer;
-      opacity: 0.55;
-      transition: opacity 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
-    }
-
-    .theme-toggle:hover {
-      opacity: 1;
-      border-color: var(--border-accent);
-      transform: scale(1.08);
-    }
-
-    #theme-label {
-      font-size: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .toggle-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-hi));
-      box-shadow: 0 0 6px color-mix(in srgb, var(--accent) 60%, transparent);
+      overflow: hidden;
       flex-shrink: 0;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 320ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 320ms ease;
+    }
+
+    .track-light {
+      background: linear-gradient(135deg, #14b3a2 0%, #22d3ee 100%);
+      box-shadow: inset 0 0 0 1px rgba(15,159,143,0.18), inset 0 1px 0 rgba(255,255,255,0.25);
+    }
+
+    .track-dark {
+      background: linear-gradient(135deg, #0b1624 0%, #111f33 100%);
+      box-shadow: inset 0 0 0 1px rgba(34,211,238,0.18), inset 0 1px 0 rgba(34,211,238,0.06);
+    }
+
+    .toggle-track:hover.track-light {
+      box-shadow: inset 0 0 0 1px rgba(15,159,143,0.32), inset 0 1px 0 rgba(255,255,255,0.35);
+    }
+
+    .toggle-track:hover.track-dark {
+      box-shadow: inset 0 0 0 1px rgba(34,211,238,0.32), inset 0 1px 0 rgba(34,211,238,0.12);
+    }
+
+    .toggle-track:focus-visible {
+      outline: 2px solid rgba(15,159,143,0.45);
+      outline-offset: 2px;
+    }
+
+    .toggle-track:active .knob { transform: scaleX(1.1); }
+
+    .knob {
+      position: absolute;
+      top: 2px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 2px rgba(2,6,23,0.20), inset 0 1px 0 rgba(255,255,255,0.9);
+      transition: left 320ms cubic-bezier(0.34, 1.25, 0.64, 1), transform 160ms cubic-bezier(0.4,0,0.2,1);
+      transform-origin: center;
+    }
+
+    .knob-left  { left: 2px; }
+    .knob-right { left: 22px; }
+
+    .knob-icon {
+      width: 11px;
+      height: 11px;
+      display: block;
+      flex-shrink: 0;
+      transition: opacity 160ms ease, transform 160ms ease;
+    }
+
+    .track-light .knob-icon { color: #0f9f8f; }
+    .track-dark  .knob-icon { color: #67e8f9; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .toggle-track, .knob { transition-duration: 0.01ms !important; }
+      .toggle-track:active .knob { transform: none; }
     }
 
     /* ─── Background Switch ─── */
@@ -1075,8 +1111,6 @@
   <!-- Background -->
   <div class="k-bg" aria-hidden="true">
     <div class="k-bg-gradient"></div>
-    <canvas id="stars-canvas"
-      style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;display:none;"></canvas>
     <canvas id="flow-canvas"
       style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;display:none;"></canvas>
     <svg id="hc-grid" class="k-bg-grid" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1116,45 +1150,34 @@
     <div class="bg-switch" id="bg-switch">
       <button class="bg-btn" id="bg-btn" type="button" aria-label="Switch background" aria-haspopup="listbox"
         aria-expanded="false">
-        <!-- icon updated by JS -->
-        <svg id="bg-icon-honeycomb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+        <!-- PaintBrushIcon (Heroicons outline) -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="3" y="3" width="7" height="7" rx="1" />
-          <rect x="14" y="3" width="7" height="7" rx="1" />
-          <rect x="3" y="14" width="7" height="7" rx="1" />
-          <rect x="14" y="14" width="7" height="7" rx="1" />
-        </svg>
-        <svg id="bg-icon-stars" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none;">
-          <path d="M12 2l1.5 4.5H18l-3.75 2.75L15.75 14 12 11.25 8.25 14l1.5-4.75L6 6.5h4.5L12 2z" />
-          <circle cx="4" cy="4" r="0.5" fill="currentColor" stroke="none" />
-          <circle cx="20" cy="8" r="0.5" fill="currentColor" stroke="none" />
-          <circle cx="6" cy="18" r="0.5" fill="currentColor" stroke="none" />
-          <circle cx="19" cy="19" r="0.5" fill="currentColor" stroke="none" />
-        </svg>
-        <svg id="bg-icon-flow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
-          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none;">
-          <path d="M3 12 C6 7, 10 7, 12 12 S18 17, 21 12" />
-          <path d="M3 7 C6 3, 10 3, 12 7 S18 11, 21 7" opacity="0.5" />
-          <path d="M3 17 C6 13, 10 13, 12 17 S18 21, 21 17" opacity="0.5" />
+          <path d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
         </svg>
       </button>
       <div class="bg-panel" id="bg-panel" role="listbox">
         <button class="bg-item active" data-bg="honeycomb" type="button" role="option">
           <span class="bg-check">✓</span>Honeycomb
         </button>
-        <button class="bg-item" data-bg="stars" id="bg-item-stars" type="button" role="option">
-          <span class="bg-check"></span>Stars
-        </button>
-        <button class="bg-item" data-bg="flow" type="button" role="option">
-          <span class="bg-check"></span>Flow
+        <button class="bg-item" data-bg="lines" type="button" role="option">
+          <span class="bg-check"></span>Lines
         </button>
       </div>
     </div>
 
-    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
-      <span class="toggle-dot" aria-hidden="true"></span>
-      <span id="theme-label">Light</span>
+    <button class="toggle-track track-light" id="theme-toggle" type="button"
+      aria-label="Switch to dark mode" aria-pressed="false">
+      <span class="knob knob-left" id="theme-knob">
+        <!-- Sun (Heroicons solid) -->
+        <svg id="icon-sun" class="knob-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM18.894 6.166a.75.75 0 0 0-1.06-1.06l-1.591 1.59a.75.75 0 1 0 1.06 1.061l1.591-1.59ZM21.75 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5H21a.75.75 0 0 1 .75.75ZM17.834 18.894a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 1 0-1.061 1.06l1.59 1.591ZM12 18a.75.75 0 0 1 .75.75V21a.75.75 0 0 1-1.5 0v-2.25A.75.75 0 0 1 12 18ZM7.166 17.834a.75.75 0 0 0-1.06 1.06l1.59 1.591a.75.75 0 1 0 1.061-1.06l-1.591-1.591ZM6 12a.75.75 0 0 1-.75.75H3a.75.75 0 0 1 0-1.5h2.25A.75.75 0 0 1 6 12ZM6.166 6.106a.75.75 0 0 0 1.06 1.06l1.591-1.59a.75.75 0 1 0-1.06-1.061l-1.591 1.59Z"/>
+        </svg>
+        <!-- Moon (Heroicons solid) -->
+        <svg id="icon-moon" class="knob-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:none">
+          <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.7-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z" clip-rule="evenodd"/>
+        </svg>
+      </span>
     </button>
   </div>
 
@@ -1270,8 +1293,8 @@
   <footer>
     <span>&copy; 2026 Frederik Morbe</span>
     <div class="footer-r">
-      <a href="app.html?page=privacy">Datenschutz</a>
-      <a href="app.html?page=impressum">Impressum</a>
+      <a href="/privacy">Datenschutz</a>
+      <a href="/impressum">Impressum</a>
       <a href="mailto:info@katsumii.com">Write us an E-Mail</a>
       <span>katsumii.com</span>
     </div>
@@ -1339,13 +1362,22 @@
     // ─── Theme ──────────────────────────────────────────────────────
     const root = document.documentElement
     const themeToggle = document.getElementById("theme-toggle")
-    const themeLabel = document.getElementById("theme-label")
+    const themeKnob = document.getElementById("theme-knob")
+    const iconSun = document.getElementById("icon-sun")
+    const iconMoon = document.getElementById("icon-moon")
 
     function setTheme(t) {
+      const isDark = t === "dark"
       root.setAttribute("data-theme", t)
       localStorage.setItem("katsumii-theme", t)
-      const tr = TRANSLATIONS[currentLocale]
-      themeLabel.textContent = t === "dark" ? tr.themeLight : tr.themeDark
+      themeToggle.classList.toggle("track-dark", isDark)
+      themeToggle.classList.toggle("track-light", !isDark)
+      themeKnob.classList.toggle("knob-right", isDark)
+      themeKnob.classList.toggle("knob-left", !isDark)
+      themeToggle.setAttribute("aria-pressed", isDark)
+      themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode")
+      iconSun.style.display = isDark ? "none" : ""
+      iconMoon.style.display = isDark ? "" : "none"
     }
 
     function getInitialTheme() {
@@ -1357,11 +1389,6 @@
     themeToggle.addEventListener("click", () => {
       const newTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark"
       setTheme(newTheme)
-      // Stars only in dark mode — fall back to honeycomb
-      if (newTheme === "light" && currentBg === "stars") {
-        setBackground("honeycomb")
-      }
-      updateStarsItemVisibility()
     })
 
     // ─── Language ───────────────────────────────────────────────────
@@ -1404,9 +1431,6 @@
         const el = document.getElementById("tag-" + i)
         if (el) el.textContent = t
       })
-
-      const theme = root.getAttribute("data-theme") || "dark"
-      themeLabel.textContent = theme === "dark" ? tr.themeLight : tr.themeDark
 
       buildTicker(tr)
       restartTypewriter(tr.typewords)
@@ -1503,28 +1527,15 @@
     const bgSwitch = document.getElementById("bg-switch")
     const bgBtn = document.getElementById("bg-btn")
     const bgPanel = document.getElementById("bg-panel")
-    const bgIconHC = document.getElementById("bg-icon-honeycomb")
-    const bgIconStars = document.getElementById("bg-icon-stars")
-    const bgIconFlow = document.getElementById("bg-icon-flow")
-    const bgItemStars = document.getElementById("bg-item-stars")
     const hcGrid = document.getElementById("hc-grid")
-    const starsCanvas = document.getElementById("stars-canvas")
     const flowCanvas = document.getElementById("flow-canvas")
 
-    let currentBg = localStorage.getItem("katsumii-bg") || "honeycomb"
-    let starsRaf = null
+    const BG_MIGRATE = { flow: "lines", stars: "lines", sky: "honeycomb", seasonal: "honeycomb" }
+    const KNOWN_BG = new Set(["honeycomb", "lines"])
+    const _savedBg = localStorage.getItem("katsumii-bg") || "honeycomb"
+    const _migrated = BG_MIGRATE[_savedBg] ?? _savedBg
+    let currentBg = KNOWN_BG.has(_migrated) ? _migrated : "honeycomb"
     let flowRaf = null
-
-    function applyBgIcon(bg) {
-      bgIconHC.style.display = bg === "honeycomb" ? "" : "none"
-      bgIconStars.style.display = bg === "stars" ? "" : "none"
-      bgIconFlow.style.display = bg === "flow" ? "" : "none"
-    }
-
-    function updateStarsItemVisibility() {
-      const isLight = root.getAttribute("data-theme") === "light"
-      bgItemStars.style.display = isLight ? "none" : ""
-    }
 
     function refreshBgPanel(bg) {
       bgPanel.querySelectorAll(".bg-item").forEach(btn => {
@@ -1565,18 +1576,12 @@
     function setBackground(bg) {
       currentBg = bg
       localStorage.setItem("katsumii-bg", bg)
-      applyBgIcon(bg)
       refreshBgPanel(bg)
       // hide all canvases / grid first
-      stopStarfield()
       stopFlow()
-      starsCanvas.style.display = "none"
       flowCanvas.style.display = "none"
       hcGrid.style.display = "none"
-      if (bg === "stars") {
-        starsCanvas.style.display = ""
-        startStarfield()
-      } else if (bg === "flow") {
+      if (bg === "lines") {
         flowCanvas.style.display = ""
         startFlow()
       } else {
@@ -1584,7 +1589,13 @@
       }
     }
 
-    // ─── Starfield ───────────────────────────────────────────────────
+    document.addEventListener("visibilitychange", () => {
+      if (currentBg === "lines") {
+        if (document.hidden) stopFlow(); else startFlow()
+      }
+    })
+
+    // ─── Lines (flow) background ─────────────────────────────────────────
     function seededRand(seed) {
       let s = seed
       return function () {
@@ -1593,99 +1604,6 @@
       }
     }
 
-    let starsData = []
-    let starsCtx = null
-    let starsDpr = 1
-    let starsResizeTimer = null
-
-    function buildStars(w, h) {
-      const rand = seededRand(0xdeadbeef)
-      const count = Math.round((w * h) / 4200)
-      starsData = []
-      for (let i = 0; i < count; i++) {
-        const jx = rand() * w
-        const jy = rand() * h
-        const wx = jx + Math.sin(jy * 0.031 + 1.7) * 38
-        const wy = jy + Math.cos(jx * 0.027 + 0.9) * 32
-        const x = ((wx % w) + w) % w
-        const y = ((wy % h) + h) % h
-        const size = rand() < 0.12 ? rand() * 1.1 + 0.9 : rand() < 0.45 ? rand() * 0.55 + 0.25 : rand() * 0.25 + 0.08
-        const phase = rand() * Math.PI * 2
-        const speed = rand() * 0.0004 + 0.00008
-        const twinkleAmp = rand() * 0.55 + 0.08
-        const hue = rand() < 0.08 ? 35 + rand() * 20 : 210 + rand() * 40
-        const sat = rand() < 0.08 ? 55 : 10 + rand() * 25
-        const base = 0.15 + rand() * 0.7
-        starsData.push({ x, y, size, phase, speed, twinkleAmp, hue, sat, base })
-      }
-    }
-
-    function resizeStarCanvas() {
-      starsDpr = window.devicePixelRatio || 1
-      const w = starsCanvas.clientWidth
-      const h = starsCanvas.clientHeight
-      starsCanvas.width = w * starsDpr
-      starsCanvas.height = h * starsDpr
-      starsCtx.setTransform(starsDpr, 0, 0, starsDpr, 0, 0)
-      buildStars(w, h)
-    }
-
-    function starFrame(ts) {
-      const w = starsCanvas.clientWidth
-      const h = starsCanvas.clientHeight
-      starsCtx.clearRect(0, 0, w, h)
-      const isLight = root.getAttribute("data-theme") === "light"
-      const lum = isLight ? 18 : 98
-      for (const s of starsData) {
-        const flicker = Math.sin(s.phase + ts * s.speed)
-        const opacity = s.base * (1 - s.twinkleAmp * 0.5 + flicker * s.twinkleAmp * 0.5) * (isLight ? 0.65 : 1)
-        if (opacity <= 0) continue
-        const glow = s.size > 0.8 ? s.size * 2.2 : 0
-        if (glow > 0) {
-          const grad = starsCtx.createRadialGradient(s.x, s.y, 0, s.x, s.y, glow)
-          grad.addColorStop(0, `hsla(${s.hue},${s.sat}%,${lum}%,${opacity * 0.45})`)
-          grad.addColorStop(1, `hsla(${s.hue},${s.sat}%,${lum}%,0)`)
-          starsCtx.beginPath()
-          starsCtx.arc(s.x, s.y, glow, 0, Math.PI * 2)
-          starsCtx.fillStyle = grad
-          starsCtx.fill()
-        }
-        starsCtx.beginPath()
-        starsCtx.arc(s.x, s.y, s.size, 0, Math.PI * 2)
-        starsCtx.fillStyle = `hsla(${s.hue},${s.sat}%,${lum}%,${opacity})`
-        starsCtx.fill()
-      }
-      starsRaf = requestAnimationFrame(starFrame)
-    }
-
-    function startStarfield() {
-      if (starsRaf || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
-      starsCtx = starsCanvas.getContext("2d")
-      resizeStarCanvas()
-      starsRaf = requestAnimationFrame(starFrame)
-    }
-
-    function stopStarfield() {
-      cancelAnimationFrame(starsRaf)
-      starsRaf = null
-    }
-
-    window.addEventListener("resize", () => {
-      if (currentBg === "stars") {
-        clearTimeout(starsResizeTimer)
-        starsResizeTimer = setTimeout(resizeStarCanvas, 150)
-      }
-    })
-
-    document.addEventListener("visibilitychange", () => {
-      if (currentBg === "stars") {
-        if (document.hidden) stopStarfield(); else startStarfield()
-      } else if (currentBg === "flow") {
-        if (document.hidden) stopFlow(); else startFlow()
-      }
-    })
-
-    // ─── Flow background ────────────────────────────────────────────────
     let flowData = []
     let flowCtx = null
     let flowDpr = 1
@@ -1763,25 +1681,14 @@
     }
 
     window.addEventListener("resize", () => {
-      if (currentBg !== "flow") return
+      if (currentBg !== "lines") return
       clearTimeout(flowResizeTimer)
       flowResizeTimer = setTimeout(resizeFlowCanvas, 150)
     })
 
     // initialise bg state
-    updateStarsItemVisibility()
-    applyBgIcon(currentBg)
     refreshBgPanel(currentBg)
-    // If saved bg is "stars" but we're in light mode, fall back
-    if (currentBg === "stars" && root.getAttribute("data-theme") === "light") {
-      currentBg = "honeycomb"
-      localStorage.setItem("katsumii-bg", "honeycomb")
-    }
-    if (currentBg === "stars") {
-      hcGrid.style.display = "none"
-      starsCanvas.style.display = ""
-      startStarfield()
-    } else if (currentBg === "flow") {
+    if (currentBg === "lines") {
       hcGrid.style.display = "none"
       flowCanvas.style.display = ""
       startFlow()

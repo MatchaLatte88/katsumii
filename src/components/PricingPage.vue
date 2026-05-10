@@ -2,20 +2,16 @@
   <div
     :class="[
       'relative overflow-x-hidden min-h-screen',
-      theme === 'light' ? 'bg-slate-50 text-gray-900' : 'bg-slate-950 text-slate-100',
+      !isDark ? 'bg-slate-50 text-gray-900' : 'bg-slate-950 text-slate-100',
     ]"
   >
-    <KbBackground :pattern="bg" :isDark="theme === 'dark'" />
+    <KbBackground :pattern="bg" :isDark="isDark" />
 
     <AppNav
-      :theme="theme"
-      :bg="bg"
       :navigation="navigation"
       brand-title="Katsumii"
       :brand-subtitle="t('pricingPage.brandSubtitle')"
       :brand-href="appHomePath"
-      @toggle-theme="toggleTheme"
-      @change-bg="changeBg"
     />
 
     <!-- ── HERO ─────────────────────────────────────────────────────── -->
@@ -24,20 +20,20 @@
         <div>
           <p
             class="hero-label inline-flex rounded-full border px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] shadow-sm"
-            :class="theme === 'light' ? 'border-[#4e9b91]/30 bg-[#4e9b91]/8 text-[#4e9b91]' : 'border-cyan-300/25 bg-cyan-400/10 text-cyan-200'"
+            :class="!isDark ? 'border-[#4e9b91]/30 bg-[#4e9b91]/8 text-[#4e9b91]' : 'border-cyan-300/25 bg-cyan-400/10 text-cyan-200'"
           >
             {{ t('pricingPage.hero.label') }}
           </p>
           <h1
             class="hero-title mt-5 font-display text-4xl font-semibold tracking-tight sm:text-6xl lg:text-7xl"
-            :class="theme === 'light' ? 'text-gray-950' : 'text-slate-100'"
+            :class="!isDark ? 'text-gray-950' : 'text-slate-100'"
           >
             {{ t('pricingPage.hero.headlineA') }}<br />
-            <span :class="theme === 'light' ? 'text-[#4e9b91]' : 'text-cyan-300'">{{ t('pricingPage.hero.headlineB') }}</span>
+            <span :class="!isDark ? 'text-[#4e9b91]' : 'text-cyan-300'">{{ t('pricingPage.hero.headlineB') }}</span>
           </h1>
           <p
             class="hero-meta mt-6 max-w-2xl text-base leading-8 sm:text-lg"
-            :class="theme === 'light' ? 'text-gray-600' : 'text-slate-300'"
+            :class="!isDark ? 'text-gray-600' : 'text-slate-300'"
           >
             {{ t('pricingPage.hero.description') }}
           </p>
@@ -45,16 +41,16 @@
 
         <div
           class="hero-meta pricing-proof k-main-tile k-glass grid gap-3 border p-3 sm:grid-cols-3"
-          :class="theme === 'light' ? 'border-gray-200/85 bg-white/72 shadow-[0_24px_80px_-52px_rgba(15,23,42,0.38)]' : 'border-cyan-300/16 bg-slate-900/64 shadow-[0_28px_90px_-54px_rgba(0,0,0,0.82)]'"
+          :class="!isDark ? 'border-gray-200/85 bg-white/72 shadow-[0_24px_80px_-52px_rgba(15,23,42,0.38)]' : 'border-cyan-300/16 bg-slate-900/64 shadow-[0_28px_90px_-54px_rgba(0,0,0,0.82)]'"
         >
           <div
             v-for="item in pricingHighlights"
             :key="item.title"
             class="k-sub-tile border px-4 py-4"
-            :class="theme === 'light' ? 'border-gray-200/75 bg-white/70' : 'border-cyan-300/12 bg-slate-950/38'"
+            :class="!isDark ? 'border-gray-200/75 bg-white/70' : 'border-cyan-300/12 bg-slate-950/38'"
           >
-            <p :class="['text-sm font-bold', theme === 'light' ? 'text-gray-950' : 'text-slate-50']">{{ item.title }}</p>
-            <p :class="['mt-1 text-xs leading-5', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">{{ item.text }}</p>
+            <p :class="['text-sm font-bold', !isDark ? 'text-gray-950' : 'text-slate-50']">{{ item.title }}</p>
+            <p :class="['mt-1 text-xs leading-5', !isDark ? 'text-gray-500' : 'text-slate-400']">{{ item.text }}</p>
           </div>
         </div>
       </div>
@@ -69,10 +65,10 @@
           class="pricing-card k-main-tile relative flex w-full max-w-[29rem] flex-col overflow-hidden border px-7 pb-8 pt-7 sm:px-8 lg:w-[31%] lg:max-w-none"
           :class="[
             tier.highlighted
-              ? theme === 'light'
+              ? !isDark
                 ? 'recommended-card z-20 border-[#4e9b91]/55 bg-white hover:bg-[#00e5d4]/5 shadow-[0_32px_80px_-40px_rgba(78,155,145,0.55)] lg:scale-[1.04]'
                 : 'recommended-card z-20 border-cyan-300/45 bg-slate-800/95 hover:bg-[#0d2540] shadow-[0_32px_88px_-40px_rgba(34,211,238,0.52)] lg:scale-[1.04]'
-              : theme === 'light'
+              : !isDark
                 ? 'pricing-card--side border-[#4e9b91]/35 bg-white/82 hover:bg-[#00e5d4]/5 shadow-[0_18px_60px_-48px_rgba(15,23,42,0.28)]'
                 : 'pricing-card--side border-slate-700/55 bg-slate-900/85 hover:bg-[#0d2540] shadow-[0_18px_60px_-48px_rgba(0,0,0,0.55)]',
           ]"
@@ -83,17 +79,17 @@
             <svg viewBox="0 0 144 144" fill="none" class="absolute -right-3 -top-3 h-40 w-40">
               <polygon
                 points="144,0 64,0 144,80"
-                :fill="tier.highlighted ? (theme === 'light' ? '#4e9b91' : '#22d3ee') : (theme === 'light' ? '#94a3b8' : '#334155')"
+                :fill="tier.highlighted ? (!isDark ? '#4e9b91' : '#22d3ee') : (!isDark ? '#94a3b8' : '#334155')"
                 opacity="0.32"
               />
               <polygon
                 points="144,32 100,0 144,100"
-                :fill="tier.highlighted ? (theme === 'light' ? '#0e9488' : '#67e8f9') : (theme === 'light' ? '#64748b' : '#1e293b')"
+                :fill="tier.highlighted ? (!isDark ? '#0e9488' : '#67e8f9') : (!isDark ? '#64748b' : '#1e293b')"
                 opacity="0.22"
               />
               <polygon
                 points="144,78 118,24 144,138"
-                :fill="tier.highlighted ? (theme === 'light' ? '#4e9b91' : '#a5f3fc') : (theme === 'light' ? '#cbd5e1' : '#0f172a')"
+                :fill="tier.highlighted ? (!isDark ? '#4e9b91' : '#a5f3fc') : (!isDark ? '#cbd5e1' : '#0f172a')"
                 opacity="0.14"
               />
             </svg>
@@ -103,7 +99,7 @@
           <div
             v-if="tier.highlighted"
             class="recommended-ribbon absolute bottom-0 right-0 px-2 py-3 text-[10px] font-bold uppercase tracking-[0.13em]"
-            :class="theme === 'light'
+            :class="!isDark
               ? 'bg-linear-to-b from-cyan-300 to-[#4e9b91] text-white'
               : 'bg-linear-to-b from-cyan-200 to-cyan-500 text-slate-950'"
           >
@@ -115,15 +111,15 @@
             <div
               class="flex h-11 w-11 items-center justify-center rounded-full border"
               :class="tier.highlighted
-                ? theme === 'light' ? 'border-[#4e9b91]/40 bg-[#4e9b91]/10' : 'border-cyan-300/40 bg-cyan-400/10'
-                : theme === 'light' ? 'border-gray-200 bg-gray-50' : 'border-slate-700 bg-slate-800/80'"
+                ? !isDark ? 'border-[#4e9b91]/40 bg-[#4e9b91]/10' : 'border-cyan-300/40 bg-cyan-400/10'
+                : !isDark ? 'border-gray-200 bg-gray-50' : 'border-slate-700 bg-slate-800/80'"
             >
               <!-- Demo: eye icon -->
               <svg v-if="tier.key === 'demo'" class="h-5 w-5 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
               </svg>
               <!-- Professional: sparkle icon -->
-              <svg v-else-if="tier.key === 'professional'" class="h-5 w-5" :class="theme === 'light' ? 'text-[#4e9b91]' : 'text-cyan-300'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg v-else-if="tier.key === 'professional'" class="h-5 w-5" :class="!isDark ? 'text-[#4e9b91]' : 'text-cyan-300'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
               </svg>
               <!-- Light: check-circle icon -->
@@ -136,25 +132,25 @@
           <!-- Plan name -->
           <h3
             class="relative mt-5 text-xl font-bold tracking-tight"
-            :class="theme === 'light' ? 'text-gray-950' : 'text-slate-50'"
+            :class="!isDark ? 'text-gray-950' : 'text-slate-50'"
           >{{ tier.name }}</h3>
 
           <!-- Description -->
           <p
             class="relative mt-2 text-sm leading-relaxed"
-            :class="theme === 'light' ? 'text-gray-500' : 'text-slate-400'"
+            :class="!isDark ? 'text-gray-500' : 'text-slate-400'"
           >{{ tier.description }}</p>
 
           <!-- Price -->
           <div class="relative mt-5 flex items-end gap-2">
             <span
               class="text-5xl font-bold tracking-tight"
-              :class="theme === 'light' ? 'text-gray-950' : 'text-slate-50'"
+              :class="!isDark ? 'text-gray-950' : 'text-slate-50'"
             >{{ tier.price }}</span>
             <span
               v-if="tier.priceNote"
               class="mb-1.5 text-sm"
-              :class="theme === 'light' ? 'text-gray-400' : 'text-slate-500'"
+              :class="!isDark ? 'text-gray-400' : 'text-slate-500'"
             >/ {{ tier.priceNote }}</span>
           </div>
 
@@ -164,10 +160,10 @@
               :href="tier.ctaHref"
               class="pricing-cta block w-full rounded-xl px-5 py-3.5 text-center text-sm font-bold transition-all duration-300 hover:-translate-y-0.5"
               :class="tier.highlighted
-                ? theme === 'light'
+                ? !isDark
                   ? 'bg-gradient-to-r from-[#4e9b91] to-teal-400 text-white shadow-[0_14px_36px_-14px_rgba(78,155,145,0.8)]'
                   : 'bg-gradient-to-r from-cyan-400 to-teal-300 text-slate-950 shadow-[0_14px_36px_-14px_rgba(34,211,238,0.75)]'
-                : theme === 'light'
+                : !isDark
                   ? 'border border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50'
                   : 'border border-slate-700 bg-slate-800/80 text-slate-200 hover:bg-slate-700/80'"
             >
@@ -178,7 +174,7 @@
           <!-- Divider -->
           <div
             class="relative mt-6 h-px w-full"
-            :class="theme === 'light' ? 'bg-gray-100' : 'bg-slate-700/55'"
+            :class="!isDark ? 'bg-gray-100' : 'bg-slate-700/55'"
           />
 
           <!-- Meta: Accounts + Entries -->
@@ -188,8 +184,8 @@
                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
               </svg>
-              <span class="text-sm" :class="theme === 'light' ? 'text-gray-600' : 'text-slate-400'">
-                <strong :class="theme === 'light' ? 'text-gray-900' : 'text-slate-200'">{{ tier.seats }}</strong> {{ tier.seatsLabel }}
+              <span class="text-sm" :class="!isDark ? 'text-gray-600' : 'text-slate-400'">
+                <strong :class="!isDark ? 'text-gray-900' : 'text-slate-200'">{{ tier.seats }}</strong> {{ tier.seatsLabel }}
               </span>
             </div>
             <div class="flex items-center gap-2.5">
@@ -197,21 +193,21 @@
                 <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
                 <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
               </svg>
-              <span class="text-sm" :class="theme === 'light' ? 'text-gray-600' : 'text-slate-400'">
-                <strong :class="theme === 'light' ? 'text-gray-900' : 'text-slate-200'">{{ tier.entries }}</strong> {{ tier.entriesLabel }}
+              <span class="text-sm" :class="!isDark ? 'text-gray-600' : 'text-slate-400'">
+                <strong :class="!isDark ? 'text-gray-900' : 'text-slate-200'">{{ tier.entries }}</strong> {{ tier.entriesLabel }}
               </span>
             </div>
           </div>
 
           <!-- Features divider (with optional "PLAN +" label) -->
           <div class="relative mt-5 flex items-center gap-3">
-            <div class="h-px flex-1" :class="theme === 'light' ? 'bg-gray-100' : 'bg-slate-700/55'" />
+            <div class="h-px flex-1" :class="!isDark ? 'bg-gray-100' : 'bg-slate-700/55'" />
             <span
               v-if="tier.inclusionLabel"
               class="whitespace-nowrap text-xs font-bold uppercase tracking-widest"
-              :class="theme === 'light' ? 'text-gray-300' : 'text-slate-600'"
+              :class="!isDark ? 'text-gray-300' : 'text-slate-600'"
             >{{ tier.inclusionLabel }}</span>
-            <div class="h-px flex-1" :class="theme === 'light' ? 'bg-gray-100' : 'bg-slate-700/55'" />
+            <div class="h-px flex-1" :class="!isDark ? 'bg-gray-100' : 'bg-slate-700/55'" />
           </div>
 
           <!-- Feature list -->
@@ -220,13 +216,13 @@
               <svg
                 class="mt-0.5 h-4 w-4 flex-shrink-0"
                 :class="tier.highlighted
-                  ? theme === 'light' ? 'text-[#4e9b91]' : 'text-cyan-300'
+                  ? !isDark ? 'text-[#4e9b91]' : 'text-cyan-300'
                   : 'opacity-35'"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
               >
                 <polyline points="20 6 9 17 4 12"/>
               </svg>
-              <span class="text-sm leading-snug" :class="theme === 'light' ? 'text-gray-600' : 'text-slate-400'">{{ feat }}</span>
+              <span class="text-sm leading-snug" :class="!isDark ? 'text-gray-600' : 'text-slate-400'">{{ feat }}</span>
             </li>
           </ul>
         </div>
@@ -240,20 +236,20 @@
           <div>
             <p
               class="text-xs font-bold uppercase tracking-[0.18em]"
-              :class="theme === 'light' ? 'text-[#4e9b91]' : 'text-cyan-300'"
+              :class="!isDark ? 'text-[#4e9b91]' : 'text-cyan-300'"
             >
               {{ t('pricingPage.comparison.kicker') }}
             </p>
             <h2
               class="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-5xl"
-              :class="theme === 'light' ? 'text-gray-950' : 'text-slate-100'"
+              :class="!isDark ? 'text-gray-950' : 'text-slate-100'"
             >
               {{ t('pricingPage.comparison.headline') }}
             </h2>
           </div>
           <p
             class="max-w-xl text-sm leading-7 lg:text-right"
-            :class="theme === 'light' ? 'text-gray-500' : 'text-slate-400'"
+            :class="!isDark ? 'text-gray-500' : 'text-slate-400'"
           >
             {{ t('pricingPage.comparison.description') }}
           </p>
@@ -262,18 +258,18 @@
         <!-- Table -->
         <div
           class="comparison-table k-main-tile k-glass mt-10 overflow-x-auto border"
-          :class="theme === 'light'
+          :class="!isDark
             ? 'border-gray-300/90 bg-white/86 shadow-[0_24px_80px_-54px_rgba(15,23,42,0.35)]'
             : 'border-cyan-300/22 bg-slate-900/66 shadow-[0_28px_90px_-54px_rgba(0,0,0,0.82)]'"
         >
           <!-- Table header -->
           <div
             class="grid min-w-[760px] grid-cols-[1fr_repeat(3,140px)] items-center gap-4 border-b px-6 py-5"
-            :class="theme === 'light' ? 'border-gray-300/90 bg-gray-50/95' : 'border-cyan-300/18 bg-slate-950/52'"
+            :class="!isDark ? 'border-gray-300/90 bg-gray-50/95' : 'border-cyan-300/18 bg-slate-950/52'"
           >
             <span
               class="text-xs font-semibold uppercase tracking-[0.14em]"
-              :class="theme === 'light' ? 'text-gray-400' : 'text-slate-500'"
+              :class="!isDark ? 'text-gray-400' : 'text-slate-500'"
             >
               {{ t('pricingPage.comparison.feature') }}
             </span>
@@ -281,7 +277,7 @@
               v-for="col in ['Demo', 'Light', 'Professional']"
               :key="col"
               class="border-l text-center text-xs font-bold uppercase tracking-[0.14em]"
-              :class="theme === 'light' ? 'border-gray-300/70 text-gray-700' : 'border-cyan-300/12 text-slate-300'"
+              :class="!isDark ? 'border-gray-300/70 text-gray-700' : 'border-cyan-300/12 text-slate-300'"
             >
               {{ col }}
             </span>
@@ -292,11 +288,11 @@
             <!-- Category header -->
             <div
               class="grid min-w-[760px] grid-cols-[1fr_repeat(3,140px)] items-center gap-4 border-b px-6 py-4"
-              :class="theme === 'light' ? 'border-gray-200/90 bg-[#4e9b91]/12' : 'border-cyan-300/12 bg-cyan-400/8'"
+              :class="!isDark ? 'border-gray-200/90 bg-[#4e9b91]/12' : 'border-cyan-300/12 bg-cyan-400/8'"
             >
               <span
                 class="text-sm font-bold uppercase tracking-[0.16em]"
-                :class="theme === 'light' ? 'text-[#4e9b91]' : 'text-cyan-400'"
+                :class="!isDark ? 'text-[#4e9b91]' : 'text-cyan-400'"
               >
                 {{ group.category }}
               </span>
@@ -308,11 +304,11 @@
               v-for="(row, ri) in group.rows"
               :key="ri"
               class="grid min-w-[760px] grid-cols-[1fr_repeat(3,140px)] items-center gap-4 border-b px-6 py-4"
-              :class="theme === 'light' ? 'border-gray-200/90' : 'border-cyan-300/12'"
+              :class="!isDark ? 'border-gray-200/90' : 'border-cyan-300/12'"
             >
               <span
                 class="text-sm"
-                :class="theme === 'light' ? 'text-gray-600' : 'text-slate-300'"
+                :class="!isDark ? 'text-gray-600' : 'text-slate-300'"
               >
                 {{ row.label }}
               </span>
@@ -320,19 +316,19 @@
                 v-for="(val, vi) in [row.demo, row.light, row.pro]"
                 :key="vi"
                 class="border-l text-center text-sm"
-                :class="theme === 'light' ? 'border-gray-200/90' : 'border-cyan-300/10'"
+                :class="!isDark ? 'border-gray-200/90' : 'border-cyan-300/10'"
               >
                 <template v-if="val === true">
                   <span
                     class="inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold"
-                    :class="theme === 'light' ? 'bg-[#4e9b91]/8 text-[#4e9b91] ring-1 ring-[#4e9b91]/24' : 'bg-cyan-400/10 text-cyan-200 ring-1 ring-cyan-300/20'"
+                    :class="!isDark ? 'bg-[#4e9b91]/8 text-[#4e9b91] ring-1 ring-[#4e9b91]/24' : 'bg-cyan-400/10 text-cyan-200 ring-1 ring-cyan-300/20'"
                   >✓</span>
                 </template>
                 <template v-else-if="val === false">
-                  <span :class="theme === 'light' ? 'text-gray-300' : 'text-slate-600'">—</span>
+                  <span :class="!isDark ? 'text-gray-300' : 'text-slate-600'">—</span>
                 </template>
                 <template v-else>
-                  <span :class="theme === 'light' ? 'text-gray-600' : 'text-slate-300'">{{ val }}</span>
+                  <span :class="!isDark ? 'text-gray-600' : 'text-slate-300'">{{ val }}</span>
                 </template>
               </span>
             </div>
@@ -346,31 +342,31 @@
       <div class="mx-auto max-w-5xl">
         <div
           class="cta-block k-main-tile k-glass relative overflow-hidden border px-8 py-16 text-center sm:px-12"
-          :class="theme === 'light'
+          :class="!isDark
             ? 'border-gray-200 bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.1)]'
             : 'border-slate-800/60 bg-slate-900/60 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]'"
         >
           <div
             aria-hidden="true"
             class="pointer-events-none absolute inset-x-8 top-0 h-px"
-            :class="theme === 'light' ? 'bg-gradient-to-r from-transparent via-[#4e9b91]/38 to-transparent' : 'bg-gradient-to-r from-transparent via-cyan-300/30 to-transparent'"
+            :class="!isDark ? 'bg-gradient-to-r from-transparent via-[#4e9b91]/38 to-transparent' : 'bg-gradient-to-r from-transparent via-cyan-300/30 to-transparent'"
           />
           <div class="relative">
             <p
               class="text-xs font-semibold uppercase tracking-[0.2em]"
-              :class="theme === 'light' ? 'text-[#4e9b91]' : 'text-cyan-400'"
+              :class="!isDark ? 'text-[#4e9b91]' : 'text-cyan-400'"
             >
               {{ t('pricingPage.cta.label') }}
             </p>
             <h3
               class="mt-4 text-4xl font-semibold tracking-[-0.02em] sm:text-5xl"
-              :class="theme === 'light' ? 'text-gray-900' : 'text-slate-100'"
+              :class="!isDark ? 'text-gray-900' : 'text-slate-100'"
             >
               {{ t('pricingPage.cta.headline') }}
             </h3>
             <p
               class="mx-auto mt-5 max-w-lg text-[0.9375rem] leading-relaxed"
-              :class="theme === 'light' ? 'text-gray-500' : 'text-slate-400'"
+              :class="!isDark ? 'text-gray-500' : 'text-slate-400'"
             >
               {{ t('pricingPage.cta.description') }}
             </p>
@@ -378,7 +374,7 @@
               <RouterLink
                 :to="appHomePath"
                 class="rounded-full px-7 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
-                :class="theme === 'light'
+                :class="!isDark
                   ? 'bg-[#4e9b91] text-white hover:bg-[#438b82] hover:shadow-lg'
                   : 'bg-cyan-400 text-slate-950 hover:bg-cyan-300 hover:shadow-[0_10px_40px_-10px_rgba(34,211,238,0.5)]'"
               >
@@ -387,7 +383,7 @@
               <RouterLink
                 :to="pagePath('features')"
                 class="rounded-full border px-7 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
-                :class="theme === 'light'
+                :class="!isDark
                   ? 'border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50'
                   : 'border-slate-700/80 bg-transparent text-slate-300 hover:border-slate-500 hover:bg-slate-800/50'"
               >
@@ -402,28 +398,28 @@
     <!-- ── FOOTER ─────────────────────────────────────────────────── -->
     <footer
       class="k-section-layer border-t px-6 py-5 lg:px-10"
-      :class="theme === 'light' ? 'border-gray-200/90 bg-white/88' : 'border-blue-400/20 bg-slate-950/95'"
+      :class="!isDark ? 'border-gray-200/90 bg-white/88' : 'border-blue-400/20 bg-slate-950/95'"
     >
       <div
         class="mx-auto flex max-w-5xl items-center justify-between text-xs"
-        :class="theme === 'light' ? 'text-gray-400' : 'text-slate-500'"
+        :class="!isDark ? 'text-gray-400' : 'text-slate-500'"
       >
         <span>&copy; {{ year }} Katsumii</span>
         <div class="flex gap-5">
           <RouterLink
             :to="appHomePath"
             class="transition-colors duration-150"
-            :class="theme === 'light' ? 'hover:text-gray-700' : 'hover:text-slate-300'"
+            :class="!isDark ? 'hover:text-gray-700' : 'hover:text-slate-300'"
           >{{ t('pricingPage.nav.home') }}</RouterLink>
           <RouterLink
             :to="pagePath('features')"
             class="transition-colors duration-150"
-            :class="theme === 'light' ? 'hover:text-gray-700' : 'hover:text-slate-300'"
+            :class="!isDark ? 'hover:text-gray-700' : 'hover:text-slate-300'"
           >{{ t('pricingPage.nav.features') }}</RouterLink>
           <RouterLink
             :to="pagePath('faq')"
             class="transition-colors duration-150"
-            :class="theme === 'light' ? 'hover:text-gray-700' : 'hover:text-slate-300'"
+            :class="!isDark ? 'hover:text-gray-700' : 'hover:text-slate-300'"
           >{{ t('pricingPage.nav.faq') }}</RouterLink>
         </div>
       </div>
@@ -432,7 +428,7 @@
 </template>
 
 <script setup>
-import { computed, nextTick, onMounted, ref, watch } from "vue"
+import { computed, inject, nextTick, onMounted } from "vue"
 import { useI18n } from "vue-i18n"
 import AppNav from "./AppNav.vue"
 import KbBackground from "../backgrounds/KbBackground.vue"
@@ -525,44 +521,8 @@ const tiers = computed(() => {
 
 const comparisonGroups = computed(() => tm('pricingPage.comparison.groups'))
 
-// ── Background ─────────────────────────────────────────────────────
-const BG_MIGRATE = { flow: 'lines' }
-const _savedBg = localStorage.getItem('katsumii-bg') || 'lines'
-const bg = ref(BG_MIGRATE[_savedBg] ?? _savedBg)
-
-const changeBg = (val) => {
-  bg.value = val
-  localStorage.setItem('katsumii-bg', val)
-}
-
-// ── Theme ──────────────────────────────────────────────────────────
-const getInitialTheme = () => {
-  const saved = localStorage.getItem('katsumii-theme')
-  if (saved === 'light' || saved === 'dark') return saved
-  if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light'
-  return 'dark'
-}
-
-const theme = ref(getInitialTheme())
-
-const applyTheme = (value) => {
-  theme.value = value
-  localStorage.setItem("katsumii-theme", value)
-  document.documentElement.classList.toggle("dark", value === "dark")
-}
-
-const toggleTheme = () => {
-  const next = theme.value === "dark" ? "light" : "dark"
-  if (next === "light" && bg.value === "stars") changeBg("lines")
-  applyTheme(next)
-}
-
-watch(theme, (value) => {
-  document.documentElement.classList.toggle("dark", value === "dark")
-  nextTick(() => {
-    markVisibleContent()
-  })
-})
+const isDark = inject("isDark")
+const bg = inject("bg")
 
 const markVisibleContent = () => {
   const heroEls = [
@@ -580,8 +540,6 @@ const markVisibleContent = () => {
 }
 
 onMounted(() => {
-  document.documentElement.classList.toggle("dark", theme.value === "dark")
-
   const heroEls = [
     [".hero-label", 0],
     [".hero-title", 80],

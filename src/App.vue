@@ -1,30 +1,22 @@
 <template>
   <div :class="pageClass">
-    <KbBackground :pattern="bg" :isDark="theme === 'dark'" />
+    <KbBackground :pattern="bg" :isDark="isDark" />
 
     <AppNav
-      :theme="theme"
-      :bg="bg"
       :navigation="navigation"
       brand-title="Katsumii"
       :brand-subtitle="t('brand.subtitle')"
       brand-href="#top"
-      @toggle-theme="toggleTheme"
-      @change-bg="changeBg"
     />
 
     <main>
-      <HomeHero
-        :theme="theme"
-        :asset-url="assetUrl"
-      />
-      <HomeFeatures :theme="theme" :asset-url="assetUrl" />
-      <HomeShowcase :theme="theme" :asset-url="assetUrl" />
-      <HomeDemoCta :theme="theme" />
+      <HomeHero :asset-url="assetUrl" />
+      <HomeFeatures :asset-url="assetUrl" />
+      <HomeShowcase :asset-url="assetUrl" />
+      <HomeDemoCta />
     </main>
 
     <HomeFooter
-      :theme="theme"
       :asset-url="assetUrl"
       :checkout-url="checkoutUrl"
       :link-target="linkTarget"
@@ -34,7 +26,7 @@
 </template>
 
 <script setup>
-import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue"
+import { computed, inject, nextTick, onMounted, onUnmounted, ref } from "vue"
 import { useI18n } from "vue-i18n"
 import AppNav from "./components/AppNav.vue"
 import KbBackground from "./backgrounds/KbBackground.vue"
@@ -47,15 +39,8 @@ import { pagePath } from "./utils/routes.js"
 
 const { t } = useI18n()
 
-const BG_MIGRATE = { flow: 'lines', stars: 'lines', sky: 'honeycomb', seasonal: 'honeycomb' }
-const _savedBg = localStorage.getItem('katsumii-bg') || 'lines'
-const _isMobile = /Mobi|Android/i.test(navigator.userAgent) || window.innerWidth < 768
-const bg = ref(_isMobile ? 'honeycomb' : (BG_MIGRATE[_savedBg] ?? _savedBg))
-
-const changeBg = (val) => {
-  bg.value = val
-  localStorage.setItem('katsumii-bg', val)
-}
+const isDark = inject("isDark")
+const bg = inject("bg")
 
 const baseUrl = import.meta.env.BASE_URL
 const assetUrl = (path) => `${baseUrl}${path.replace(/^\/+/, "")}`
@@ -69,20 +54,11 @@ const navigation = computed(() => [
   { name: "Manual", href: pagePath("manual") },
 ])
 
-const getInitialTheme = () => {
-  const saved = localStorage.getItem('katsumii-theme')
-  if (saved === 'light' || saved === 'dark') return saved
-  if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light'
-  return 'dark'
-}
-
-const theme = ref(getInitialTheme())
 const observer = ref(null)
 
 const isExternalLink = (href) => {
   if (!href) return false
   if (href.startsWith("mailto:") || href.startsWith("tel:")) return true
-
   const url = new URL(href, window.location.origin)
   return url.origin !== window.location.origin
 }
@@ -90,17 +66,8 @@ const isExternalLink = (href) => {
 const linkTarget = (href) => (isExternalLink(href) ? "_blank" : undefined)
 const linkRel = (href) => (isExternalLink(href) ? "noreferrer noopener" : undefined)
 
-const applyTheme = (value) => {
-  theme.value = value
-  localStorage.setItem("katsumii-theme", value)
-}
-
-const toggleTheme = () => {
-  applyTheme(theme.value === "dark" ? "light" : "dark")
-}
-
 const pageClass = computed(() =>
-  theme.value === "light"
+  !isDark.value
     ? "k-page-light relative min-h-screen overflow-x-hidden bg-slate-50 text-gray-900 transition-colors duration-300"
     : "k-page-dark relative min-h-screen overflow-x-hidden bg-slate-950 text-slate-100 transition-colors duration-300"
 )
@@ -152,11 +119,6 @@ onMounted(() => {
 
 onUnmounted(() => {
   observer.value?.disconnect()
-})
-
-watch(theme, (value) => {
-  document.documentElement.classList.toggle("dark", value === "dark")
-  nextTick(setupRevealAnimations)
 })
 </script>
 

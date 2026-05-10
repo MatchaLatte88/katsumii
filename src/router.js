@@ -16,17 +16,17 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: "/", redirect: "/app" },
-    { path: "/app", component: App },
-    { path: "/features", component: FeaturesPage },
-    { path: "/pricing", component: PricingPage },
-    { path: "/manual", component: ManualPage },
-    { path: "/faq", component: FaqPage },
-    { path: "/contact", component: ContactPage },
-    { path: "/impressum", component: ImpressumPage },
-    { path: "/privacy", component: PrivacyPage },
-    { path: "/terms", component: TermsPage },
-    { path: "/welcome", component: WelcomePage },
-    { path: "/:pathMatch(.*)*", component: NotFoundPage },
+    { path: "/app",       component: App,           meta: { title: "Katsumii – Offline Trading Journal" } },
+    { path: "/features",  component: FeaturesPage,  meta: { title: "Features – Katsumii" } },
+    { path: "/pricing",   component: PricingPage,   meta: { title: "Pricing – Katsumii" } },
+    { path: "/manual",    component: ManualPage,    meta: { title: "Manual – Katsumii" } },
+    { path: "/faq",       component: FaqPage,       meta: { title: "FAQ – Katsumii" } },
+    { path: "/contact",   component: ContactPage,   meta: { title: "Contact – Katsumii" } },
+    { path: "/impressum", component: ImpressumPage, meta: { title: "Impressum – Katsumii" } },
+    { path: "/privacy",   component: PrivacyPage,   meta: { title: "Datenschutz – Katsumii" } },
+    { path: "/terms",     component: TermsPage,     meta: { title: "Terms – Katsumii" } },
+    { path: "/welcome",   component: WelcomePage,   meta: { title: "Welcome – Katsumii" } },
+    { path: "/:pathMatch(.*)*", component: NotFoundPage, meta: { title: "404 – Katsumii" } },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) return savedPosition
@@ -56,6 +56,10 @@ router.beforeEach((to) => {
 
     return { path: "/app", replace: true }
   }
+})
+
+router.afterEach((to) => {
+  document.title = typeof to.meta.title === "string" ? to.meta.title : "Katsumii"
 })
 
 export default router

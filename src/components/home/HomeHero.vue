@@ -5,9 +5,9 @@
         <p
           :class="[
             'inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] shadow-sm',
-            theme === 'light'
-              ? 'border-teal-200 bg-teal-50 text-teal-700'
-              : 'border-cyan-300/30 bg-cyan-400/10 text-cyan-200'
+            isDark
+              ? 'border-cyan-300/30 bg-cyan-400/10 text-cyan-200'
+              : 'border-teal-200 bg-teal-50 text-teal-700'
           ]"
         >
           {{ t('hero.badge') }}
@@ -19,19 +19,19 @@
             <h1
               :class="[
                 'font-display text-5xl font-semibold leading-none tracking-tight sm:text-6xl lg:text-7xl',
-                theme === 'light' ? 'text-gray-900' : 'text-slate-100'
+                isDark ? 'text-slate-100' : 'text-gray-900'
               ]"
             >
               KATSUMII
             </h1>
-            <p :class="['mt-2 text-lg font-medium tracking-tight sm:text-2xl', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">
+            <p :class="['mt-2 text-lg font-medium tracking-tight sm:text-2xl', isDark ? 'text-slate-400' : 'text-gray-500']">
               {{ t('hero.tagline') }}
               <span
                 ref="typedWordEl"
-                :class="['font-semibold', theme === 'light' ? 'text-teal-600' : 'text-cyan-300']"
+                :class="['font-semibold', isDark ? 'text-cyan-300' : 'text-teal-600']"
               >clarity</span><span
                 class="typed-cursor"
-                :class="theme === 'light' ? 'text-teal-600' : 'text-cyan-300'"
+                :class="isDark ? 'text-cyan-300' : 'text-teal-600'"
               >|</span>
             </p>
           </div>
@@ -40,7 +40,7 @@
         <p
           :class="[
             'mt-7 max-w-2xl text-base leading-8 sm:text-lg',
-            theme === 'light' ? 'text-gray-600' : 'text-slate-300'
+            isDark ? 'text-slate-300' : 'text-gray-600'
           ]"
         >
           {{ t('hero.description') }}
@@ -51,9 +51,9 @@
             :to="pagePath('pricing')"
             :class="[
               'inline-flex min-h-12 items-center justify-center rounded-full px-6 py-3 text-sm font-bold transition-all duration-300 hover:-translate-y-0.5',
-              theme === 'light'
-                ? 'bg-teal-600 text-white shadow-[0_16px_42px_-20px_rgba(13,148,136,0.9)] hover:bg-teal-500'
-                : 'bg-cyan-300 text-slate-950 shadow-[0_16px_42px_-20px_rgba(34,211,238,0.9)] hover:bg-cyan-200'
+              isDark
+                ? 'bg-cyan-300 text-slate-950 shadow-[0_16px_42px_-20px_rgba(34,211,238,0.9)] hover:bg-cyan-200'
+                : 'bg-teal-600 text-white shadow-[0_16px_42px_-20px_rgba(13,148,136,0.9)] hover:bg-teal-500'
             ]"
           >
             {{ t('hero.ctaBuy') }}
@@ -62,9 +62,9 @@
             href="#showcase"
             :class="[
               'inline-flex min-h-12 items-center justify-center rounded-full border px-6 py-3 text-sm font-bold transition-all duration-300 hover:-translate-y-0.5',
-              theme === 'light'
-                ? 'border-gray-300 bg-white/80 text-gray-700 hover:bg-white'
-                : 'border-blue-400/30 bg-slate-900/70 text-slate-200 hover:bg-slate-800/80'
+              isDark
+                ? 'border-blue-400/30 bg-slate-900/70 text-slate-200 hover:bg-slate-800/80'
+                : 'border-gray-300 bg-white/80 text-gray-700 hover:bg-white'
             ]"
           >
             {{ t('hero.ctaTour') }}
@@ -73,15 +73,15 @@
 
         <div
           class="mt-8 grid max-w-xl grid-cols-3 overflow-hidden rounded-2xl border"
-          :class="theme === 'light' ? 'border-gray-200/80 bg-white/68 shadow-sm' : 'border-cyan-300/15 bg-slate-950/35'"
+          :class="isDark ? 'border-cyan-300/15 bg-slate-950/35' : 'border-gray-200/80 bg-white/68 shadow-sm'"
         >
           <div
             v-for="item in heroStats"
             :key="`hero-proof-${item.label}`"
             class="px-3 py-3 text-center"
           >
-            <p :class="['text-sm font-bold sm:text-base', theme === 'light' ? 'text-gray-950' : 'text-slate-50']">{{ item.value }}</p>
-            <p :class="['mt-1 text-[11px] leading-tight', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">{{ item.label }}</p>
+            <p :class="['text-sm font-bold sm:text-base', isDark ? 'text-slate-50' : 'text-gray-950']">{{ item.value }}</p>
+            <p :class="['mt-1 text-[11px] leading-tight', isDark ? 'text-slate-400' : 'text-gray-500']">{{ item.label }}</p>
           </div>
         </div>
       </div>
@@ -90,18 +90,18 @@
         <div
           :class="[
             'k-card hero-window k-main-tile k-glass overflow-hidden border',
-            theme === 'light'
-              ? 'border-gray-200/90 bg-white/88 shadow-[0_30px_90px_-42px_rgba(15,23,42,0.42)]'
-              : 'border-cyan-300/20 bg-slate-900/82 shadow-[0_34px_100px_-46px_rgba(0,0,0,0.86)]'
+            isDark
+              ? 'border-cyan-300/20 bg-slate-900/82 shadow-[0_34px_100px_-46px_rgba(0,0,0,0.86)]'
+              : 'border-gray-200/90 bg-white/88 shadow-[0_30px_90px_-42px_rgba(15,23,42,0.42)]'
           ]"
         >
           <div
             :class="[
               'flex items-center justify-between border-b px-4 py-2.5',
-              theme === 'light' ? 'border-gray-200 bg-gray-50/80' : 'border-blue-400/20 bg-slate-950/60'
+              isDark ? 'border-blue-400/20 bg-slate-950/60' : 'border-gray-200 bg-gray-50/80'
             ]"
           >
-            <span :class="['text-xs font-semibold uppercase tracking-[0.16em]', theme === 'light' ? 'text-teal-700' : 'text-cyan-300']">{{ t('showcase.dashboardWindowLabel') }}</span>
+            <span :class="['text-xs font-semibold uppercase tracking-[0.16em]', isDark ? 'text-cyan-300' : 'text-teal-700']">{{ t('showcase.dashboardWindowLabel') }}</span>
             <div class="flex items-center gap-1.5">
               <span class="h-2.5 w-2.5 rounded-full bg-red-400/50" />
               <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/50" />
@@ -111,20 +111,20 @@
 
           <div class="relative overflow-hidden" style="max-height: 260px;">
             <img
-              :src="theme === 'light' ? assetUrl('Dashboard_light.png') : assetUrl('Dashboard_dark.png')"
+              :src="isDark ? assetUrl('Dashboard_dark.png') : assetUrl('Dashboard_light.png')"
               alt="Katsumii dashboard"
               class="w-full object-cover object-top"
             />
             <div
               class="pointer-events-none absolute inset-x-0 bottom-0 h-20"
-              :class="theme === 'light' ? 'bg-gradient-to-t from-white/80 to-transparent' : 'bg-gradient-to-t from-slate-900/80 to-transparent'"
+              :class="isDark ? 'bg-gradient-to-t from-slate-900/80 to-transparent' : 'bg-gradient-to-t from-white/80 to-transparent'"
             />
           </div>
 
           <div
             :class="[
               'grid grid-cols-3 divide-x border-t',
-              theme === 'light' ? 'divide-gray-200 border-gray-200' : 'divide-blue-400/20 border-blue-400/20'
+              isDark ? 'divide-blue-400/20 border-blue-400/20' : 'divide-gray-200 border-gray-200'
             ]"
           >
             <div
@@ -132,8 +132,8 @@
               :key="item.label"
               class="px-3 py-3 text-center"
             >
-              <p :class="['text-base font-semibold', theme === 'light' ? 'text-gray-900' : 'text-slate-100']">{{ item.value }}</p>
-              <p :class="['text-[11px] mt-0.5', theme === 'light' ? 'text-gray-500' : 'text-slate-400']">{{ item.label }}</p>
+              <p :class="['text-base font-semibold', isDark ? 'text-slate-100' : 'text-gray-900']">{{ item.value }}</p>
+              <p :class="['text-[11px] mt-0.5', isDark ? 'text-slate-400' : 'text-gray-500']">{{ item.label }}</p>
             </div>
           </div>
         </div>
@@ -143,20 +143,21 @@
 </template>
 
 <script setup>
-import { computed, onMounted, onUnmounted, ref } from "vue"
+import { computed, inject, onMounted, onUnmounted, ref } from "vue"
 import { useI18n } from "vue-i18n"
 import { pagePath } from "../../utils/routes.js"
 
 defineProps({
-  theme: { type: String, required: true },
   assetUrl: { type: Function, required: true },
 })
 
+const isDark = inject("isDark")
 const { t, tm } = useI18n()
 const heroStats = computed(() => tm('heroStats'))
 const heroFeatureStats = computed(() => tm('heroFeatureStats'))
 const typedWordEl = ref(null)
 let typingTimer = null
+let tickFn = null
 
 const startTypewriter = () => {
   const words = ['discipline.', 'consistency.', 'precision.', 'confidence.', 'clarity.']
@@ -165,7 +166,8 @@ const startTypewriter = () => {
   let deleting = false
 
   const tick = () => {
-    if (!typedWordEl.value) return
+    tickFn = tick
+    if (!typedWordEl.value || document.hidden) return
     const word = words[wordIdx]
     if (deleting) {
       charIdx--
@@ -182,7 +184,7 @@ const startTypewriter = () => {
       typedWordEl.value.textContent = word.slice(0, charIdx)
       if (charIdx === word.length) {
         deleting = true
-        typingTimer = setTimeout(tick, 3500)
+        typingTimer = setTimeout(tick, 1800)
       } else {
         typingTimer = setTimeout(tick, 85)
       }
@@ -192,6 +194,19 @@ const startTypewriter = () => {
   typingTimer = setTimeout(() => { deleting = true; tick() }, 2200)
 }
 
-onMounted(startTypewriter)
-onUnmounted(() => clearTimeout(typingTimer))
+const handleVisibility = () => {
+  if (!document.hidden && tickFn) {
+    clearTimeout(typingTimer)
+    typingTimer = setTimeout(tickFn, 120)
+  }
+}
+
+onMounted(() => {
+  startTypewriter()
+  document.addEventListener('visibilitychange', handleVisibility)
+})
+onUnmounted(() => {
+  clearTimeout(typingTimer)
+  document.removeEventListener('visibilitychange', handleVisibility)
+})
 </script>

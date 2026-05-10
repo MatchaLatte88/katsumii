@@ -1,5 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap");
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   color-scheme: light;
@@ -82,6 +83,26 @@ img {
 
 .k-glass {
   backdrop-filter: blur(18px) saturate(150%);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .k-glass {
+    backdrop-filter: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .k-glass {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .k-glass {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
 
 .k-hover-lift {

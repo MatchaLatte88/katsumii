@@ -1,6 +1,6 @@
 <template>
-  <div :class="[theme === 'light' ? 'relative overflow-x-hidden min-h-screen bg-slate-50 text-gray-900' : 'relative overflow-x-hidden min-h-screen bg-slate-950 text-slate-100']">
-    <div class="k-bg" :class="theme === 'light' ? 'k-bg-light' : 'k-bg-dark'" aria-hidden="true">
+  <div :class="[!isDark ? 'relative overflow-x-hidden min-h-screen bg-slate-50 text-gray-900' : 'relative overflow-x-hidden min-h-screen bg-slate-950 text-slate-100']">
+    <div class="k-bg" :class="!isDark ? 'k-bg-light' : 'k-bg-dark'" aria-hidden="true">
       <div class="k-bg-gradient" />
       <svg class="k-bg-grid" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
@@ -13,28 +13,26 @@
       <div class="k-bg-band" />
     </div>
     <AppNav
-      :theme="theme"
       :navigation="navigation"
       brand-title="Katsumii"
       brand-subtitle="Impressum"
       :brand-href="appHomePath"
-      @toggle-theme="toggleTheme"
     />
 
     <section class="relative isolate px-6 pb-20 pt-28 lg:px-8">
       <div class="mx-auto max-w-4xl text-center">
-        <p :class="['text-sm font-semibold tracking-[0.2em] uppercase', theme === 'light' ? 'text-teal-600' : 'text-teal-300']">
+        <p :class="['text-sm font-semibold tracking-[0.2em] uppercase', !isDark ? 'text-teal-600' : 'text-teal-300']">
           Legal
         </p>
         <h1
           :class="[
             'mt-4 text-4xl font-semibold tracking-tight sm:text-6xl',
-            theme === 'light' ? 'text-gray-900' : 'text-white'
+            !isDark ? 'text-gray-900' : 'text-white'
           ]"
         >
           Impressum
         </h1>
-        <p :class="['mx-auto mt-6 max-w-2xl text-lg', theme === 'light' ? 'text-gray-600' : 'text-gray-300']">
+        <p :class="['mx-auto mt-6 max-w-2xl text-lg', !isDark ? 'text-gray-600' : 'text-gray-300']">
           Anbieterkennzeichnung gemaess 5 TMG. Bitte ersetze die Platzhalter mit deinen echten Firmendaten.
         </p>
       </div>
@@ -43,11 +41,11 @@
         <article
           :class="[
             'rounded-2xl border p-6 backdrop-blur sm:p-7',
-            theme === 'light' ? 'border-gray-200 bg-white/85' : 'border-white/10 bg-gray-800/70'
+            !isDark ? 'border-gray-200 bg-white/85' : 'border-white/10 bg-gray-800/70'
           ]"
         >
-          <h2 :class="['text-sm font-semibold uppercase tracking-[0.12em]', theme === 'light' ? 'text-teal-600' : 'text-teal-300']">Anbieter</h2>
-          <p :class="['mt-3 leading-7', theme === 'light' ? 'text-gray-700' : 'text-gray-300']">
+          <h2 :class="['text-sm font-semibold uppercase tracking-[0.12em]', !isDark ? 'text-teal-600' : 'text-teal-300']">Anbieter</h2>
+          <p :class="['mt-3 leading-7', !isDark ? 'text-gray-700' : 'text-gray-300']">
             Katsumii GmbH
             <br />
             Max Mustermann
@@ -63,11 +61,11 @@
         <article
           :class="[
             'rounded-2xl border p-6 backdrop-blur sm:p-7',
-            theme === 'light' ? 'border-gray-200 bg-white/85' : 'border-white/10 bg-gray-800/70'
+            !isDark ? 'border-gray-200 bg-white/85' : 'border-white/10 bg-gray-800/70'
           ]"
         >
-          <h2 :class="['text-sm font-semibold uppercase tracking-[0.12em]', theme === 'light' ? 'text-teal-600' : 'text-teal-300']">Kontakt</h2>
-          <p :class="['mt-3 leading-7', theme === 'light' ? 'text-gray-700' : 'text-gray-300']">
+          <h2 :class="['text-sm font-semibold uppercase tracking-[0.12em]', !isDark ? 'text-teal-600' : 'text-teal-300']">Kontakt</h2>
+          <p :class="['mt-3 leading-7', !isDark ? 'text-gray-700' : 'text-gray-300']">
             E-Mail: info@katsumii.com
             <br />
             Telefon: +49 000 0000000
@@ -79,11 +77,11 @@
         <article
           :class="[
             'rounded-2xl border p-6 backdrop-blur sm:p-7',
-            theme === 'light' ? 'border-gray-200 bg-white/85' : 'border-white/10 bg-gray-800/70'
+            !isDark ? 'border-gray-200 bg-white/85' : 'border-white/10 bg-gray-800/70'
           ]"
         >
-          <h2 :class="['text-sm font-semibold uppercase tracking-[0.12em]', theme === 'light' ? 'text-teal-600' : 'text-teal-300']">Vertretungsberechtigt</h2>
-          <p :class="['mt-3 leading-7', theme === 'light' ? 'text-gray-700' : 'text-gray-300']">
+          <h2 :class="['text-sm font-semibold uppercase tracking-[0.12em]', !isDark ? 'text-teal-600' : 'text-teal-300']">Vertretungsberechtigt</h2>
+          <p :class="['mt-3 leading-7', !isDark ? 'text-gray-700' : 'text-gray-300']">
             Geschaeftsfuehrer: Max Mustermann
           </p>
         </article>
@@ -91,11 +89,11 @@
         <article
           :class="[
             'rounded-2xl border p-6 backdrop-blur sm:p-7',
-            theme === 'light' ? 'border-gray-200 bg-white/85' : 'border-white/10 bg-gray-800/70'
+            !isDark ? 'border-gray-200 bg-white/85' : 'border-white/10 bg-gray-800/70'
           ]"
         >
-          <h2 :class="['text-sm font-semibold uppercase tracking-[0.12em]', theme === 'light' ? 'text-teal-600' : 'text-teal-300']">Registereintrag</h2>
-          <p :class="['mt-3 leading-7', theme === 'light' ? 'text-gray-700' : 'text-gray-300']">
+          <h2 :class="['text-sm font-semibold uppercase tracking-[0.12em]', !isDark ? 'text-teal-600' : 'text-teal-300']">Registereintrag</h2>
+          <p :class="['mt-3 leading-7', !isDark ? 'text-gray-700' : 'text-gray-300']">
             Handelsregister: HRB 123456
             <br />
             Registergericht: Amtsgericht Musterstadt
@@ -109,11 +107,11 @@
         <article
           :class="[
             'rounded-2xl border p-6 backdrop-blur sm:p-7',
-            theme === 'light' ? 'border-gray-200 bg-white/85' : 'border-white/10 bg-gray-800/70'
+            !isDark ? 'border-gray-200 bg-white/85' : 'border-white/10 bg-gray-800/70'
           ]"
         >
-          <h2 :class="['text-sm font-semibold uppercase tracking-[0.12em]', theme === 'light' ? 'text-teal-600' : 'text-teal-300']">Inhaltlich verantwortlich</h2>
-          <p :class="['mt-3 leading-7', theme === 'light' ? 'text-gray-700' : 'text-gray-300']">
+          <h2 :class="['text-sm font-semibold uppercase tracking-[0.12em]', !isDark ? 'text-teal-600' : 'text-teal-300']">Inhaltlich verantwortlich</h2>
+          <p :class="['mt-3 leading-7', !isDark ? 'text-gray-700' : 'text-gray-300']">
             Max Mustermann, Anschrift wie oben.
           </p>
         </article>
@@ -123,39 +121,17 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from "vue"
+import { inject } from "vue"
 import AppNav from "./AppNav.vue"
 import { appHomePath, pagePath } from "../utils/routes.js"
 
-const baseUrl = import.meta.env.BASE_URL
+const isDark = inject("isDark")
 
 const navigation = [
   { name: "Manual", href: pagePath("manual") },
   { name: "FAQ", href: pagePath("faq") },
   { name: "Back Home", href: appHomePath },
 ]
-
-const theme = ref("light")
-
-const applyTheme = (value) => {
-  theme.value = value
-  localStorage.setItem("katsumii-theme", value)
-}
-
-const toggleTheme = () => {
-  applyTheme(theme.value === "dark" ? "light" : "dark")
-}
-
-onMounted(() => {
-  const savedTheme = localStorage.getItem("katsumii-theme")
-  if (savedTheme === "light" || savedTheme === "dark") {
-    theme.value = savedTheme
-  }
-})
-
-watch(theme, (value) => {
-  document.documentElement.classList.toggle("dark", value === "dark")
-})
 </script>
 
 <style scoped>

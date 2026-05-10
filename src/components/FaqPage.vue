@@ -1,6 +1,6 @@
 <template>
-  <div :class="[theme === 'light' ? 'relative overflow-x-hidden min-h-screen bg-slate-50 text-gray-900' : 'relative overflow-x-hidden min-h-screen bg-slate-950 text-slate-100']">
-    <div class="k-bg" :class="theme === 'light' ? 'k-bg-light' : 'k-bg-dark'" aria-hidden="true">
+  <div :class="[!isDark ? 'relative overflow-x-hidden min-h-screen bg-slate-50 text-gray-900' : 'relative overflow-x-hidden min-h-screen bg-slate-950 text-slate-100']">
+    <div class="k-bg" :class="!isDark ? 'k-bg-light' : 'k-bg-dark'" aria-hidden="true">
       <div class="k-bg-gradient" />
       <svg class="k-bg-grid" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
@@ -14,12 +14,10 @@
     </div>
 
     <AppNav
-      :theme="theme"
       :navigation="navigation"
       brand-title="Katsumii"
       brand-subtitle="FAQ"
       :brand-href="appHomePath"
-      @toggle-theme="toggleTheme"
     />
 
     <section class="relative isolate px-6 pb-24 pt-28 lg:px-8">
@@ -28,7 +26,7 @@
         <p
           :class="[
             'faq-hero-label inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em]',
-            theme === 'light'
+            !isDark
               ? 'border-teal-200 bg-teal-50 text-teal-700'
               : 'border-cyan-300/30 bg-cyan-400/10 text-cyan-300'
           ]"
@@ -38,12 +36,12 @@
         <h1
           :class="[
             'faq-hero-title mt-5 text-4xl font-semibold tracking-tight sm:text-6xl',
-            theme === 'light' ? 'text-gray-900' : 'text-white'
+            !isDark ? 'text-gray-900' : 'text-white'
           ]"
         >
           {{ t('faq.hero.title') }}
         </h1>
-        <p :class="['faq-hero-sub mx-auto mt-5 max-w-2xl text-lg', theme === 'light' ? 'text-gray-500' : 'text-gray-400']">
+        <p :class="['faq-hero-sub mx-auto mt-5 max-w-2xl text-lg', !isDark ? 'text-gray-500' : 'text-gray-400']">
           {{ t('faq.hero.subtitle') }}
         </p>
       </div>
@@ -53,25 +51,25 @@
         <div
           :class="[
             'flex items-center gap-3 rounded-2xl border px-4 py-3 k-glass transition-all duration-200',
-            theme === 'light'
+            !isDark
               ? 'border-gray-200 bg-white/80 focus-within:border-teal-400 focus-within:shadow-[0_0_0_3px_rgba(20,184,166,0.12)]'
               : 'border-white/10 bg-slate-800/60 focus-within:border-cyan-400/50 focus-within:shadow-[0_0_0_3px_rgba(34,211,238,0.1)]'
           ]"
         >
-          <MagnifyingGlassIcon :class="['size-5 shrink-0', theme === 'light' ? 'text-gray-400' : 'text-gray-500']" />
+          <MagnifyingGlassIcon :class="['size-5 shrink-0', !isDark ? 'text-gray-400' : 'text-gray-500']" />
           <input
             v-model="searchQuery"
             type="search"
             :placeholder="t('faq.search.placeholder')"
             :class="[
               'w-full bg-transparent text-sm outline-none placeholder:text-gray-400',
-              theme === 'light' ? 'text-gray-900' : 'text-slate-100'
+              !isDark ? 'text-gray-900' : 'text-slate-100'
             ]"
           />
           <button
             v-if="searchQuery"
             @click="searchQuery = ''"
-            :class="['shrink-0 rounded-full p-0.5 transition-colors', theme === 'light' ? 'text-gray-400 hover:text-gray-700' : 'text-gray-500 hover:text-gray-300']"
+            :class="['shrink-0 rounded-full p-0.5 transition-colors', !isDark ? 'text-gray-400 hover:text-gray-700' : 'text-gray-500 hover:text-gray-300']"
             aria-label="Clear search"
           >
             <XMarkIcon class="size-4" />
@@ -89,10 +87,10 @@
             :class="[
               'shrink-0 rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-200',
               selectedCategory === cat
-                ? theme === 'light'
+                ? !isDark
                   ? 'border-teal-500 bg-teal-600 text-white shadow-sm'
                   : 'border-cyan-400/50 bg-cyan-400/15 text-cyan-300'
-                : theme === 'light'
+                : !isDark
                   ? 'border-gray-200 bg-white/70 text-gray-500 hover:border-teal-300 hover:text-teal-700'
                   : 'border-white/10 bg-white/5 text-gray-400 hover:border-cyan-400/30 hover:text-gray-300'
             ]"
@@ -116,10 +114,10 @@
               :class="[
                 'k-glass rounded-2xl border transition-all duration-300',
                 open
-                  ? theme === 'light'
+                  ? !isDark
                     ? 'border-teal-300/70 shadow-[0_8px_24px_-12px_rgba(20,184,166,0.25)]'
                     : 'border-cyan-400/30 shadow-[0_8px_24px_-12px_rgba(34,211,238,0.15)]'
-                  : theme === 'light'
+                  : !isDark
                     ? 'border-gray-200/80 bg-white/80 hover:border-teal-200 hover:shadow-[0_8px_24px_-16px_rgba(15,23,42,0.2)]'
                     : 'border-white/8 bg-slate-800/55 hover:border-cyan-400/20',
               ]"
@@ -129,14 +127,14 @@
                   <span
                     :class="[
                       'inline-flex rounded-full border px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.13em]',
-                      theme === 'light'
+                      !isDark
                         ? 'border-teal-200 bg-teal-50 text-teal-600'
                         : 'border-cyan-400/25 bg-cyan-400/8 text-cyan-400'
                     ]"
                   >
                     {{ item.category }}
                   </span>
-                  <h2 :class="['mt-2 text-base font-semibold sm:text-lg', theme === 'light' ? 'text-gray-900' : 'text-white']">
+                  <h2 :class="['mt-2 text-base font-semibold sm:text-lg', !isDark ? 'text-gray-900' : 'text-white']">
                     {{ item.question }}
                   </h2>
                 </div>
@@ -144,7 +142,7 @@
                   :class="[
                     'size-5 shrink-0 transition-transform duration-300',
                     open ? 'rotate-180' : 'rotate-0',
-                    theme === 'light' ? 'text-teal-500' : 'text-cyan-400'
+                    !isDark ? 'text-teal-500' : 'text-cyan-400'
                   ]"
                 />
               </DisclosureButton>
@@ -153,7 +151,7 @@
                 <div
                   :class="[
                     'border-t px-5 pb-5 pt-4 text-sm leading-relaxed sm:px-6 sm:pb-6 sm:text-base',
-                    theme === 'light' ? 'border-gray-100 text-gray-600' : 'border-white/6 text-gray-300'
+                    !isDark ? 'border-gray-100 text-gray-600' : 'border-white/6 text-gray-300'
                   ]"
                 >
                   {{ item.answer }}
@@ -169,14 +167,14 @@
           v-else
           :class="[
             'rounded-2xl border py-14 text-center k-glass',
-            theme === 'light' ? 'border-gray-200 bg-white/70' : 'border-white/8 bg-slate-800/40'
+            !isDark ? 'border-gray-200 bg-white/70' : 'border-white/8 bg-slate-800/40'
           ]"
         >
-          <MagnifyingGlassIcon :class="['mx-auto mb-3 size-8 opacity-30', theme === 'light' ? 'text-gray-500' : 'text-gray-400']" />
-          <p :class="['text-sm font-medium', theme === 'light' ? 'text-gray-500' : 'text-gray-400']">{{ t('faq.empty') }}</p>
+          <MagnifyingGlassIcon :class="['mx-auto mb-3 size-8 opacity-30', !isDark ? 'text-gray-500' : 'text-gray-400']" />
+          <p :class="['text-sm font-medium', !isDark ? 'text-gray-500' : 'text-gray-400']">{{ t('faq.empty') }}</p>
           <button
             @click="searchQuery = ''; selectedCategory = 'all'"
-            :class="['mt-4 text-xs font-semibold underline underline-offset-2', theme === 'light' ? 'text-teal-600' : 'text-cyan-400']"
+            :class="['mt-4 text-xs font-semibold underline underline-offset-2', !isDark ? 'text-teal-600' : 'text-cyan-400']"
           >
             {{ t('faq.filter.all') }}
           </button>
@@ -188,7 +186,7 @@
         <div
           :class="[
             'faq-cta k-main-tile k-glass border p-8 text-center sm:p-10',
-            theme === 'light'
+            !isDark
               ? 'border-gray-200/80 bg-white/70 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.18)]'
               : 'border-white/8 bg-slate-800/40 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.5)]'
           ]"
@@ -196,20 +194,20 @@
           <div
             :class="[
               'mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border',
-              theme === 'light' ? 'border-teal-200 bg-teal-50' : 'border-cyan-400/25 bg-cyan-400/8'
+              !isDark ? 'border-teal-200 bg-teal-50' : 'border-cyan-400/25 bg-cyan-400/8'
             ]"
           >
-            <EnvelopeIcon :class="['size-5', theme === 'light' ? 'text-teal-600' : 'text-cyan-400']" />
+            <EnvelopeIcon :class="['size-5', !isDark ? 'text-teal-600' : 'text-cyan-400']" />
           </div>
-          <h3 :class="['text-xl font-semibold', theme === 'light' ? 'text-gray-900' : 'text-white']">{{ t('faq.cta.title') }}</h3>
-          <p :class="['mx-auto mt-2 max-w-sm text-sm', theme === 'light' ? 'text-gray-500' : 'text-gray-400']">
+          <h3 :class="['text-xl font-semibold', !isDark ? 'text-gray-900' : 'text-white']">{{ t('faq.cta.title') }}</h3>
+          <p :class="['mx-auto mt-2 max-w-sm text-sm', !isDark ? 'text-gray-500' : 'text-gray-400']">
             {{ t('faq.cta.body') }}
           </p>
           <a
             href="mailto:info@katsumii.com"
             :class="[
               'mt-6 inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5',
-              theme === 'light'
+              !isDark
                 ? 'bg-teal-600 text-white hover:bg-teal-500 shadow-[0_8px_20px_-8px_rgba(13,148,136,0.5)]'
                 : 'bg-cyan-400/15 text-cyan-300 border border-cyan-400/30 hover:bg-cyan-400/25'
             ]"
@@ -223,7 +221,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref, watch } from "vue"
+import { computed, inject, onMounted, ref } from "vue"
 import { useI18n } from "vue-i18n"
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue"
 import { ChevronDownIcon, MagnifyingGlassIcon, XMarkIcon, EnvelopeIcon } from "@heroicons/vue/24/outline"
@@ -237,7 +235,7 @@ const navigation = [
   { name: "Back Home", href: appHomePath },
 ]
 
-const theme = ref("light")
+const isDark = inject("isDark")
 const searchQuery = ref("")
 const selectedCategory = ref("all")
 
@@ -261,17 +259,7 @@ const filteredItems = computed(() => {
   })
 })
 
-const applyTheme = (value) => {
-  theme.value = value
-  localStorage.setItem("katsumii-theme", value)
-}
-
-const toggleTheme = () => applyTheme(theme.value === "dark" ? "light" : "dark")
-
 onMounted(() => {
-  const savedTheme = localStorage.getItem("katsumii-theme")
-  if (savedTheme === "light" || savedTheme === "dark") theme.value = savedTheme
-
   const io = new IntersectionObserver(
     (entries) => {
       entries.forEach((e) => {

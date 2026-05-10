@@ -3,7 +3,7 @@
     KbBackground.vue — Portable background component (Vue 3, no Pinia required)
 
     Props:
-      pattern  String  'honeycomb' | 'lines' | 'sky' | 'seasonal'   default: 'lines'
+      pattern  String  'honeycomb' | 'lines'                         default: 'lines'
       isDark   Boolean                                                default: false
 
     Requires in your project:

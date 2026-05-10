@@ -1,6 +1,6 @@
 <template>
-  <div :class="[theme === 'light' ? 'relative overflow-x-hidden min-h-screen bg-slate-50 text-gray-900' : 'relative overflow-x-hidden min-h-screen bg-slate-950 text-slate-100']">
-    <div class="k-bg" :class="theme === 'light' ? 'k-bg-light' : 'k-bg-dark'" aria-hidden="true">
+  <div :class="[!isDark ? 'relative overflow-x-hidden min-h-screen bg-slate-50 text-gray-900' : 'relative overflow-x-hidden min-h-screen bg-slate-950 text-slate-100']">
+    <div class="k-bg" :class="!isDark ? 'k-bg-light' : 'k-bg-dark'" aria-hidden="true">
       <div class="k-bg-gradient" />
       <svg class="k-bg-grid" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
@@ -13,23 +13,21 @@
       <div class="k-bg-band" />
     </div>
     <AppNav
-      :theme="theme"
       :navigation="navigation"
       brand-title="Katsumii"
       brand-subtitle="Datenschutz"
       :brand-href="appHomePath"
-      @toggle-theme="toggleTheme"
     />
 
     <section class="relative isolate px-6 pb-20 pt-28 lg:px-8">
       <div class="mx-auto max-w-4xl text-center">
-        <p :class="['text-sm font-semibold tracking-[0.2em] uppercase', theme === 'light' ? 'text-teal-600' : 'text-teal-300']">
+        <p :class="['text-sm font-semibold tracking-[0.2em] uppercase', !isDark ? 'text-teal-600' : 'text-teal-300']">
           Legal
         </p>
-        <h1 :class="['mt-4 text-4xl font-semibold tracking-tight sm:text-6xl', theme === 'light' ? 'text-gray-900' : 'text-white']">
+        <h1 :class="['mt-4 text-4xl font-semibold tracking-tight sm:text-6xl', !isDark ? 'text-gray-900' : 'text-white']">
           Datenschutzerklarung
         </h1>
-        <p :class="['mx-auto mt-6 max-w-2xl text-lg', theme === 'light' ? 'text-gray-600' : 'text-gray-300']">
+        <p :class="['mx-auto mt-6 max-w-2xl text-lg', !isDark ? 'text-gray-600' : 'text-gray-300']">
           Informationen gemaess Art. 13 DSGVO zum Umgang mit deinen Daten auf katsumii.com.
         </p>
       </div>
@@ -64,7 +62,7 @@
           <p :class="textClass">
             Diese Website nutzt Umami, ein datenschutzfreundliches Analyse-Tool.
           </p>
-          <ul :class="['mt-4 space-y-2 text-sm', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <ul :class="['mt-4 space-y-2 text-sm', !isDark ? 'text-gray-600' : 'text-gray-400']">
             <li class="flex items-start gap-2">
               <span :class="dotClass" aria-hidden="true" />
               <span><strong>Keine Cookies</strong> – Umami setzt keinerlei Cookies und benoetigt daher keine Cookie-Einwilligung.</span>
@@ -82,7 +80,7 @@
               <span><strong>Kein Opt-out erforderlich</strong> – Da keine personenbezogenen Daten verarbeitet werden, ist eine Abmeldeoption nicht notwendig.</span>
             </li>
           </ul>
-          <p :class="['mt-4 text-sm', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <p :class="['mt-4 text-sm', !isDark ? 'text-gray-600' : 'text-gray-400']">
             Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Verbesserung des Angebots
             bei gleichzeitig minimialer Datenverar­beitung).
           </p>
@@ -98,12 +96,12 @@
             auftritt und die gesamte Zahlungsverarbeitung, Rechnungsstellung sowie die steuerliche Abwicklung
             eigenverantwortlich uebernimmt.
           </p>
-          <p :class="['mt-4 text-sm', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <p :class="['mt-4 text-sm', !isDark ? 'text-gray-600' : 'text-gray-400']">
             Im Rahmen des Kaufvorgangs verarbeitet Lemon Squeezy die fuer die Transaktion erforderlichen
             Daten (z. B. Name, E-Mail-Adresse, Zahlungsdaten) in eigener Verantwortung. Katsumii erhaelt
             nach einem Kauf lediglich eine Bestaetigung (Kauf-ID, E-Mail-Adresse) zur Lizenzauslieferung.
           </p>
-          <p :class="['mt-4 text-sm', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <p :class="['mt-4 text-sm', !isDark ? 'text-gray-600' : 'text-gray-400']">
             Weitere Informationen zum Datenschutz bei Lemon Squeezy findest du unter:
             <a href="https://www.lemonsqueezy.com/privacy" target="_blank" rel="noopener noreferrer" :class="linkClass">
               lemonsqueezy.com/privacy
@@ -129,7 +127,7 @@
           <p :class="textClass">
             Nach der DSGVO stehen dir folgende Rechte zu:
           </p>
-          <ul :class="['mt-4 space-y-2 text-sm', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <ul :class="['mt-4 space-y-2 text-sm', !isDark ? 'text-gray-600' : 'text-gray-400']">
             <li class="flex items-start gap-2"><span :class="dotClass" aria-hidden="true" /><span><strong>Auskunft</strong> (Art. 15) – Welche Daten wir ueber dich gespeichert haben.</span></li>
             <li class="flex items-start gap-2"><span :class="dotClass" aria-hidden="true" /><span><strong>Berichtigung</strong> (Art. 16) – Korrektur unrichtiger Daten.</span></li>
             <li class="flex items-start gap-2"><span :class="dotClass" aria-hidden="true" /><span><strong>Loeschung</strong> (Art. 17) – Entfernung deiner Daten, soweit keine gesetzliche Aufbewahrungspflicht besteht.</span></li>
@@ -137,7 +135,7 @@
             <li class="flex items-start gap-2"><span :class="dotClass" aria-hidden="true" /><span><strong>Widerspruch</strong> (Art. 21) – Widerspruch gegen Verarbeitungen auf Basis berechtigten Interesses.</span></li>
             <li class="flex items-start gap-2"><span :class="dotClass" aria-hidden="true" /><span><strong>Beschwerde</strong> – Du hast das Recht, dich bei einer Datenschutz-Aufsichtsbehoerde zu beschweren.</span></li>
           </ul>
-          <p :class="['mt-4 text-sm', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <p :class="['mt-4 text-sm', !isDark ? 'text-gray-600' : 'text-gray-400']">
             Fur Anfragen wende dich an:
             <a href="mailto:info@katsumii.com" :class="linkClass">info@katsumii.com</a>
           </p>
@@ -158,11 +156,11 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref, watch } from "vue"
+import { computed, inject } from "vue"
 import AppNav from "./AppNav.vue"
 import { appHomePath, pagePath } from "../utils/routes.js"
 
-const baseUrl = import.meta.env.BASE_URL
+const isDark = inject("isDark")
 
 const navigation = [
   { name: "FAQ", href: pagePath("faq") },
@@ -170,51 +168,29 @@ const navigation = [
   { name: "Zuruck", href: appHomePath },
 ]
 
-const theme = ref("light")
-
-const applyTheme = (value) => {
-  theme.value = value
-  localStorage.setItem("katsumii-theme", value)
-}
-
-const toggleTheme = () => {
-  applyTheme(theme.value === "dark" ? "light" : "dark")
-}
-
-onMounted(() => {
-  const savedTheme = localStorage.getItem("katsumii-theme")
-  if (savedTheme === "light" || savedTheme === "dark") {
-    theme.value = savedTheme
-  }
-})
-
-watch(theme, (value) => {
-  document.documentElement.classList.toggle("dark", value === "dark")
-})
-
 const cardClass = computed(() => [
   "rounded-2xl border p-6 backdrop-blur sm:p-8",
-  theme.value === "light" ? "border-gray-200 bg-white/85" : "border-white/10 bg-gray-800/70",
+  !isDark.value ? "border-gray-200 bg-white/85" : "border-white/10 bg-gray-800/70",
 ])
 
 const headingClass = computed(() => [
   "text-sm font-semibold uppercase tracking-[0.12em]",
-  theme.value === "light" ? "text-teal-600" : "text-teal-300",
+  !isDark.value ? "text-teal-600" : "text-teal-300",
 ])
 
 const textClass = computed(() => [
   "mt-3 text-sm leading-7",
-  theme.value === "light" ? "text-gray-700" : "text-gray-300",
+  !isDark.value ? "text-gray-700" : "text-gray-300",
 ])
 
 const linkClass = computed(() => [
   "underline underline-offset-2 transition-colors",
-  theme.value === "light" ? "text-teal-600 hover:text-teal-500" : "text-cyan-400 hover:text-cyan-300",
+  !isDark.value ? "text-teal-600 hover:text-teal-500" : "text-cyan-400 hover:text-cyan-300",
 ])
 
 const dotClass = computed(() => [
   "mt-1.5 h-1.5 w-1.5 flex-none rounded-full",
-  theme.value === "light" ? "bg-teal-500" : "bg-cyan-400",
+  !isDark.value ? "bg-teal-500" : "bg-cyan-400",
 ])
 </script>
 

@@ -1,6 +1,6 @@
 <template>
-  <div :class="[theme === 'light' ? 'relative overflow-x-hidden min-h-screen bg-slate-50 text-gray-900' : 'relative overflow-x-hidden min-h-screen bg-slate-950 text-slate-100']">
-    <div class="k-bg" :class="theme === 'light' ? 'k-bg-light' : 'k-bg-dark'" aria-hidden="true">
+  <div :class="[!isDark ? 'relative overflow-x-hidden min-h-screen bg-slate-50 text-gray-900' : 'relative overflow-x-hidden min-h-screen bg-slate-950 text-slate-100']">
+    <div class="k-bg" :class="!isDark ? 'k-bg-light' : 'k-bg-dark'" aria-hidden="true">
       <div class="k-bg-gradient" />
       <svg class="k-bg-grid" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
@@ -14,23 +14,21 @@
     </div>
 
     <AppNav
-      :theme="theme"
       :navigation="navigation"
       brand-title="Katsumii"
       brand-subtitle="Terms of Service"
       :brand-href="appHomePath"
-      @toggle-theme="toggleTheme"
     />
 
     <section class="relative isolate px-6 pb-20 pt-28 lg:px-8">
       <div class="mx-auto max-w-4xl text-center">
-        <p :class="['text-sm font-semibold tracking-[0.2em] uppercase', theme === 'light' ? 'text-teal-600' : 'text-teal-300']">
+        <p :class="['text-sm font-semibold tracking-[0.2em] uppercase', !isDark ? 'text-teal-600' : 'text-teal-300']">
           Legal
         </p>
-        <h1 :class="['mt-4 text-4xl font-semibold tracking-tight sm:text-6xl', theme === 'light' ? 'text-gray-900' : 'text-white']">
+        <h1 :class="['mt-4 text-4xl font-semibold tracking-tight sm:text-6xl', !isDark ? 'text-gray-900' : 'text-white']">
           Terms of Service
         </h1>
-        <p :class="['mx-auto mt-6 max-w-2xl text-lg', theme === 'light' ? 'text-gray-600' : 'text-gray-300']">
+        <p :class="['mx-auto mt-6 max-w-2xl text-lg', !isDark ? 'text-gray-600' : 'text-gray-300']">
           Please read these terms carefully before purchasing or using Katsumii.
           Last updated: May 2025.
         </p>
@@ -47,7 +45,7 @@
             E-Mail: <a href="mailto:info@katsumii.com" :class="linkClass">info@katsumii.com</a><br />
             Website: katsumii.com
           </p>
-          <p :class="['mt-4 text-sm leading-7', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <p :class="['mt-4 text-sm leading-7', !isDark ? 'text-gray-600' : 'text-gray-400']">
             By purchasing a license or downloading and using the Software, you agree to be bound by these Terms.
             If you do not agree, do not use the Software.
           </p>
@@ -59,7 +57,7 @@
             Upon successful payment, you receive a non-exclusive, non-transferable, revocable license to install
             and use Katsumii on your own devices for personal or professional trading documentation purposes.
           </p>
-          <ul :class="['mt-4 space-y-2 text-sm', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <ul :class="['mt-4 space-y-2 text-sm', !isDark ? 'text-gray-600' : 'text-gray-400']">
             <li class="flex items-start gap-2">
               <span :class="dotClass" aria-hidden="true" />
               <span>The license is granted to a single user and may not be shared, resold, or sublicensed.</span>
@@ -78,7 +76,7 @@
         <article :class="cardClass">
           <h2 :class="headingClass">3. Restrictions</h2>
           <p :class="textClass">You may not:</p>
-          <ul :class="['mt-4 space-y-2 text-sm', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <ul :class="['mt-4 space-y-2 text-sm', !isDark ? 'text-gray-600' : 'text-gray-400']">
             <li class="flex items-start gap-2">
               <span :class="dotClass" aria-hidden="true" />
               <span>Copy, modify, distribute, sell, or sublicense the Software or any part of it.</span>
@@ -104,13 +102,13 @@
             Payments are processed by <strong>Lemon Squeezy</strong> (Lemon Squeezy, LLC), who acts as Merchant
             of Record. All payment, tax, and invoicing obligations are handled by Lemon Squeezy on our behalf.
           </p>
-          <p :class="['mt-4 text-sm leading-7', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <p :class="['mt-4 text-sm leading-7', !isDark ? 'text-gray-600' : 'text-gray-400']">
             As the Software is a digital product delivered immediately upon purchase, the right of withdrawal
             under EU consumer law (14-day cooling-off period) expires upon download or activation, in accordance
             with Art. 16(m) of Directive 2011/83/EU — provided you have given prior explicit consent and
             acknowledged the loss of the right of withdrawal.
           </p>
-          <p :class="['mt-4 text-sm leading-7', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <p :class="['mt-4 text-sm leading-7', !isDark ? 'text-gray-600' : 'text-gray-400']">
             Refund requests outside this scope are handled on a case-by-case basis. Contact
             <a href="mailto:info@katsumii.com" :class="linkClass">info@katsumii.com</a> within 14 days
             of purchase.
@@ -134,13 +132,13 @@
             for practice purposes. The Software is <strong>not</strong> intended to be used as a basis for
             making real-money trading or investment decisions.
           </p>
-          <p :class="['mt-4 text-sm leading-7', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <p :class="['mt-4 text-sm leading-7', !isDark ? 'text-gray-600' : 'text-gray-400']">
             Any data, statistics, charts, scores, ratings, or other outputs displayed within Katsumii are
             intended solely for <strong>informational and self-reflective purposes</strong>. They do not
             constitute a recommendation, signal, strategy, or instruction to buy, sell, or hold any financial
             instrument, asset, or contract.
           </p>
-          <p :class="['mt-4 text-sm leading-7', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <p :class="['mt-4 text-sm leading-7', !isDark ? 'text-gray-600' : 'text-gray-400']">
             You must not use any output of this Software as the primary or sole basis for entering, exiting,
             or managing any real-money trade or investment position. All real-money trading decisions must be
             made based on your own independent research, analysis, and judgment.
@@ -155,7 +153,7 @@
             applicable financial services law (including but not limited to MiFID II, the German Securities
             Trading Act (WpHG), or equivalent regulations in other jurisdictions).
           </p>
-          <p :class="['mt-4 text-sm leading-7', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <p :class="['mt-4 text-sm leading-7', !isDark ? 'text-gray-600' : 'text-gray-400']">
             Frederik Morbe is not a licensed financial advisor, investment advisor, broker, or regulated
             financial services provider. If you require financial or investment advice, you should consult
             a qualified and regulated professional in your jurisdiction.
@@ -170,7 +168,7 @@
             drawdown, profit factor, and setup scores — <strong>may contain errors, inaccuracies, or
             omissions</strong>.
           </p>
-          <ul :class="['mt-4 space-y-2 text-sm', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <ul :class="['mt-4 space-y-2 text-sm', !isDark ? 'text-gray-600' : 'text-gray-400']">
             <li class="flex items-start gap-2">
               <span :class="dotClass" aria-hidden="true" />
               <span>Results depend entirely on data entered by the user. Incorrect or incomplete input will produce incorrect output.</span>
@@ -188,7 +186,7 @@
               <span>No guarantee is made that any figure displayed is complete, current, or free from error.</span>
             </li>
           </ul>
-          <p :class="['mt-4 text-sm leading-7', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <p :class="['mt-4 text-sm leading-7', !isDark ? 'text-gray-600' : 'text-gray-400']">
             You are solely responsible for verifying all data and calculations before drawing any conclusions.
             Under no circumstances should any figure produced by Katsumii be relied upon as accurate without
             independent verification.
@@ -202,7 +200,7 @@
             difference (CFDs), options, and cryptocurrencies — involves a <strong>substantial risk of financial
             loss</strong> and is not suitable for all individuals.
           </p>
-          <ul :class="['mt-4 space-y-2 text-sm', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <ul :class="['mt-4 space-y-2 text-sm', !isDark ? 'text-gray-600' : 'text-gray-400']">
             <li class="flex items-start gap-2">
               <span :class="dotClass" aria-hidden="true" />
               <span>Past performance, whether real or recorded in this Software, is not indicative of future results.</span>
@@ -220,7 +218,7 @@
               <span>Market conditions, execution quality, slippage, fees, and other real-world factors are not accounted for by the Software.</span>
             </li>
           </ul>
-          <p :class="['mt-4 text-sm leading-7', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <p :class="['mt-4 text-sm leading-7', !isDark ? 'text-gray-600' : 'text-gray-400']">
             You acknowledge that you use Katsumii entirely at your own risk and that Frederik Morbe bears no
             responsibility whatsoever for any financial losses incurred in connection with your trading activity,
             whether or not the Software was used in any part of your decision-making process.
@@ -244,7 +242,7 @@
             direct, indirect, incidental, special, consequential, or punitive damages of any kind arising
             from or related to your use of or inability to use the Software, including but not limited to:
           </p>
-          <ul :class="['mt-4 space-y-2 text-sm', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <ul :class="['mt-4 space-y-2 text-sm', !isDark ? 'text-gray-600' : 'text-gray-400']">
             <li class="flex items-start gap-2">
               <span :class="dotClass" aria-hidden="true" />
               <span>Any trading losses, investment losses, or financial harm — whether or not Katsumii was involved in the decision.</span>
@@ -262,7 +260,7 @@
               <span>Loss of profits, revenue, business opportunities, or goodwill.</span>
             </li>
           </ul>
-          <p :class="['mt-4 text-sm leading-7', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <p :class="['mt-4 text-sm leading-7', !isDark ? 'text-gray-600' : 'text-gray-400']">
             In any case, total aggregate liability of Frederik Morbe shall not exceed the amount you paid for
             the Software in the twelve months preceding the claim. Statutory liability for wilful misconduct
             and gross negligence, as well as liability under mandatory applicable law (e.g. product liability),
@@ -277,7 +275,7 @@
             Convention on Contracts for the International Sale of Goods (CISG). Mandatory consumer
             protection provisions of your country of residence remain unaffected.
           </p>
-          <p :class="['mt-4 text-sm leading-7', theme === 'light' ? 'text-gray-600' : 'text-gray-400']">
+          <p :class="['mt-4 text-sm leading-7', !isDark ? 'text-gray-600' : 'text-gray-400']">
             Any disputes arising from these Terms shall be subject to the jurisdiction of the courts competent
             for the registered address of Frederik Morbe, unless mandatory law provides otherwise.
           </p>
@@ -306,11 +304,11 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref, watch } from "vue"
+import { computed, inject } from "vue"
 import AppNav from "./AppNav.vue"
 import { appHomePath, pagePath } from "../utils/routes.js"
 
-const baseUrl = import.meta.env.BASE_URL
+const isDark = inject("isDark")
 
 const navigation = [
   { name: "FAQ", href: pagePath("faq") },
@@ -318,51 +316,29 @@ const navigation = [
   { name: "Back", href: appHomePath },
 ]
 
-const theme = ref("light")
-
-const applyTheme = (value) => {
-  theme.value = value
-  localStorage.setItem("katsumii-theme", value)
-}
-
-const toggleTheme = () => {
-  applyTheme(theme.value === "dark" ? "light" : "dark")
-}
-
-onMounted(() => {
-  const savedTheme = localStorage.getItem("katsumii-theme")
-  if (savedTheme === "light" || savedTheme === "dark") {
-    theme.value = savedTheme
-  }
-})
-
-watch(theme, (value) => {
-  document.documentElement.classList.toggle("dark", value === "dark")
-})
-
 const cardClass = computed(() => [
   "rounded-2xl border p-6 backdrop-blur sm:p-8",
-  theme.value === "light" ? "border-gray-200 bg-white/85" : "border-white/10 bg-gray-800/70",
+  !isDark.value ? "border-gray-200 bg-white/85" : "border-white/10 bg-gray-800/70",
 ])
 
 const headingClass = computed(() => [
   "text-sm font-semibold uppercase tracking-[0.12em]",
-  theme.value === "light" ? "text-teal-600" : "text-teal-300",
+  !isDark.value ? "text-teal-600" : "text-teal-300",
 ])
 
 const textClass = computed(() => [
   "mt-3 text-sm leading-7",
-  theme.value === "light" ? "text-gray-700" : "text-gray-300",
+  !isDark.value ? "text-gray-700" : "text-gray-300",
 ])
 
 const linkClass = computed(() => [
   "underline underline-offset-2 transition-colors",
-  theme.value === "light" ? "text-teal-600 hover:text-teal-500" : "text-cyan-400 hover:text-cyan-300",
+  !isDark.value ? "text-teal-600 hover:text-teal-500" : "text-cyan-400 hover:text-cyan-300",
 ])
 
 const dotClass = computed(() => [
   "mt-1.5 h-1.5 w-1.5 flex-none rounded-full",
-  theme.value === "light" ? "bg-teal-500" : "bg-cyan-400",
+  !isDark.value ? "bg-teal-500" : "bg-cyan-400",
 ])
 </script>
 
