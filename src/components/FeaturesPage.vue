@@ -342,6 +342,11 @@ const activeFeatureId = ref(null)
 const isDark = inject("isDark")
 const bg = inject("bg")
 
+const markVisible = (el) => {
+  el.dataset.revealed = "true"
+  el.classList.add("is-visible")
+}
+
 onMounted(() => {
   // Hero entrance
   const heroEls = [
@@ -353,7 +358,7 @@ onMounted(() => {
   ]
   heroEls.forEach(([sel, delay]) => {
     const el = document.querySelector(sel)
-    if (el) setTimeout(() => el.classList.add("is-visible"), delay)
+    if (el) setTimeout(() => markVisible(el), delay)
   })
 
   // Chapter scroll-reveal
@@ -363,8 +368,8 @@ onMounted(() => {
         if (!entry.isIntersecting) return
         const text = entry.target.querySelector(".chapter-text")
         const image = entry.target.querySelector(".chapter-image")
-        setTimeout(() => text?.classList.add("is-visible"), 0)
-        setTimeout(() => image?.classList.add("is-visible"), 130)
+        setTimeout(() => text && markVisible(text), 0)
+        setTimeout(() => image && markVisible(image), 130)
         chapterObserver.unobserve(entry.target)
       })
     },
@@ -377,7 +382,7 @@ onMounted(() => {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible")
+          markVisible(entry.target)
           ctaObserver.unobserve(entry.target)
         }
       })
@@ -426,9 +431,14 @@ onMounted(() => {
 .hero-label.is-visible,
 .hero-title.is-visible,
 .hero-meta.is-visible,
-.feature-nav.is-visible { opacity: 1; transform: translateY(0); }
+.feature-nav.is-visible,
+.hero-label[data-revealed="true"],
+.hero-title[data-revealed="true"],
+.hero-meta[data-revealed="true"],
+.feature-nav[data-revealed="true"] { opacity: 1; transform: translateY(0); }
 
-.hero-screen.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+.hero-screen.is-visible,
+.hero-screen[data-revealed="true"] { opacity: 1; transform: translateY(0) scale(1); }
 
 /* ── Chapter scroll-reveal ──────────────────────────────────────── */
 .chapter-text {
@@ -451,7 +461,9 @@ onMounted(() => {
 .feature-chapter:nth-child(even) .chapter-image { transform: translateX(-24px); }
 
 .chapter-text.is-visible,
-.chapter-image.is-visible { opacity: 1; transform: translateX(0); }
+.chapter-image.is-visible,
+.chapter-text[data-revealed="true"],
+.chapter-image[data-revealed="true"] { opacity: 1; transform: translateX(0); }
 
 /* ── CTA ──────────────────────────────────────────────────────── */
 .cta-block {
@@ -461,5 +473,6 @@ onMounted(() => {
     opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.cta-block.is-visible { opacity: 1; transform: translateY(0); }
+.cta-block.is-visible,
+.cta-block[data-revealed="true"] { opacity: 1; transform: translateY(0); }
 </style>

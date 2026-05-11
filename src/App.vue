@@ -71,6 +71,10 @@ const setupRevealAnimations = () => {
 
   const revealItems = Array.from(document.querySelectorAll(".reveal"))
   const revealGroups = document.querySelectorAll("section, footer")
+  const markVisible = (item) => {
+    item.dataset.revealed = "true"
+    item.classList.add("is-visible")
+  }
 
   revealGroups.forEach((group) => {
     const groupItems = group.querySelectorAll(".reveal")
@@ -84,7 +88,7 @@ const setupRevealAnimations = () => {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible")
+          markVisible(entry.target)
           observer.value?.unobserve(entry.target)
         }
       })
@@ -93,13 +97,16 @@ const setupRevealAnimations = () => {
   )
 
   revealItems.forEach((item) => {
-    if (item.classList.contains("is-visible")) return
+    if (item.dataset.revealed === "true" || item.classList.contains("is-visible")) {
+      markVisible(item)
+      return
+    }
 
     const rect = item.getBoundingClientRect()
     const inView = rect.top < window.innerHeight * 0.92 && rect.bottom > window.innerHeight * 0.08
 
     if (inView) {
-      item.classList.add("is-visible")
+      markVisible(item)
       return
     }
 
@@ -233,7 +240,8 @@ onUnmounted(() => {
   will-change: transform, opacity, filter;
 }
 
-.reveal.is-visible {
+.reveal.is-visible,
+.reveal[data-revealed="true"] {
   opacity: 1;
   filter: blur(0);
   transform: translate3d(0, 0, 0) scale(1);

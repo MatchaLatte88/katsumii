@@ -521,6 +521,11 @@ const comparisonGroups = computed(() => tm('pricingPage.comparison.groups'))
 const isDark = inject("isDark")
 const bg = inject("bg")
 
+const markVisible = (el) => {
+  el.dataset.revealed = "true"
+  el.classList.add("is-visible")
+}
+
 const markVisibleContent = () => {
   const heroEls = [
     ".hero-label",
@@ -532,7 +537,7 @@ const markVisibleContent = () => {
     ".cta-block",
   ]
   heroEls.forEach((sel) => {
-    document.querySelectorAll(sel).forEach((el) => el.classList.add("is-visible"))
+    document.querySelectorAll(sel).forEach(markVisible)
   })
 }
 
@@ -544,7 +549,7 @@ onMounted(() => {
   ]
   heroEls.forEach(([sel, delay]) => {
     const el = document.querySelector(sel)
-    if (el) setTimeout(() => el.classList.add("is-visible"), delay)
+    if (el) setTimeout(() => markVisible(el), delay)
   })
 
   const cardObserver = new IntersectionObserver(
@@ -552,7 +557,7 @@ onMounted(() => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const idx = parseInt(entry.target.dataset.index || '0', 10)
-          setTimeout(() => entry.target.classList.add("is-visible"), idx * 120)
+          setTimeout(() => markVisible(entry.target), idx * 120)
           cardObserver.unobserve(entry.target)
         }
       })
@@ -565,7 +570,7 @@ onMounted(() => {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible")
+          markVisible(entry.target)
           revealObserver.unobserve(entry.target)
         }
       })
@@ -592,7 +597,10 @@ onMounted(() => {
 
 .hero-label.is-visible,
 .hero-title.is-visible,
-.hero-meta.is-visible { opacity: 1; transform: translateY(0); }
+.hero-meta.is-visible,
+.hero-label[data-revealed="true"],
+.hero-title[data-revealed="true"],
+.hero-meta[data-revealed="true"] { opacity: 1; transform: translateY(0); }
 
 .pricing-card {
   opacity: 0;
@@ -632,26 +640,31 @@ onMounted(() => {
   pointer-events: none;
 }
 
-.pricing-card.is-visible { opacity: 1; transform: translateY(0); }
+.pricing-card.is-visible,
+.pricing-card[data-revealed="true"] { opacity: 1; transform: translateY(0); }
 
 @media (min-width: 1024px) {
   .pricing-card--side {
     transform: translateY(28px);
   }
 
-  .pricing-card--side.is-visible {
+  .pricing-card--side.is-visible,
+  .pricing-card--side[data-revealed="true"] {
     transform: translateY(0);
   }
 
-  .pricing-card--side.is-visible:hover {
+  .pricing-card--side.is-visible:hover,
+  .pricing-card--side[data-revealed="true"]:hover {
     transform: translateY(-4px);
   }
 
-  .recommended-card.is-visible {
+  .recommended-card.is-visible,
+  .recommended-card[data-revealed="true"] {
     transform: translateY(0) scale(1.04);
   }
 
-  .recommended-card.is-visible:hover {
+  .recommended-card.is-visible:hover,
+  .recommended-card[data-revealed="true"]:hover {
     transform: translateY(-5px) scale(1.04);
   }
 }
@@ -692,7 +705,9 @@ onMounted(() => {
 }
 
 .comparison-title.is-visible,
-.comparison-table.is-visible { opacity: 1; transform: translateY(0); }
+.comparison-table.is-visible,
+.comparison-title[data-revealed="true"],
+.comparison-table[data-revealed="true"] { opacity: 1; transform: translateY(0); }
 
 .cta-block {
   opacity: 0;
@@ -701,10 +716,12 @@ onMounted(() => {
     opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.cta-block.is-visible { opacity: 1; transform: translateY(0); }
+.cta-block.is-visible,
+.cta-block[data-revealed="true"] { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 640px) {
-  .pricing-card.is-visible:hover {
+  .pricing-card.is-visible:hover,
+  .pricing-card[data-revealed="true"]:hover {
     transform: translateY(0);
   }
 }
@@ -722,7 +739,8 @@ onMounted(() => {
     transition: none;
   }
 
-  .pricing-card.is-visible:hover {
+  .pricing-card.is-visible:hover,
+  .pricing-card[data-revealed="true"]:hover {
     transform: none;
   }
 }
