@@ -46,3 +46,31 @@ do not create new style classes if not necessary, reuse as many as possible.
 - Tailwind v4 via `@tailwindcss/postcss` plugin — configured in `postcss.config.js`, no `tailwind.config.js` needed
 - Dark mode uses `dark:` Tailwind prefix classes (not inline ternaries). Configured via `@custom-variant dark (&:where(.dark, .dark *))` in `style.css`.
 - CSS custom properties (`--hc-stroke`, `--orb-a`, etc.) are used for theme-aware backgrounds and are toggled via `html.dark`
+
+## The product this site markets (Katsumii / X25V)
+
+This repo is the marketing/landing site. The actual product being sold is a trading journal app, developed in a separate repo at `D:\X25V` (codename **X25V**). Knowing its shape helps write accurate feature/pricing/manual copy.
+
+**Stack:** Vue 3 frontend + Python FastAPI backend, communicating over a local HTTP API (desktop-style app, not a hosted SaaS backend). Run via `RUN_X25.bat` (starts both servers); frontend dev server on `:5173`, backend (`uvicorn main:app --reload`) on `:8000`.
+
+### Core concept: Three Trading Modes
+The whole app is scoped to one of three modes, switched via a Pinia store (`appMode`) and persisted to localStorage (or `?mode=` query param):
+- **Funded** — live prop-firm trading
+- **Challenge** — demo/evaluation accounts
+- **Personal** — personal trading
+
+Each mode has its own DB tables (`trades`, `challenge_trades`, `personal_trades`) and API endpoints — data is fully siloed per mode. This three-mode split is a key selling point/feature to reflect accurately on the marketing site (features/pricing/manual pages).
+
+### Frontend shape (`X25V/src/`)
+Pinia stores: `appMode`, `filter` (account/setup/date filters), `settings`, `theme`. Views include AccountStats, TradeList, Dashboard, AdvStatistics, etc. Components organized into `Charts/`, `Modals/`, `Sidebars/`, `Nav/`, `Utility/`. Tailwind v4, class-based dark mode, custom brand colors: orange, teal, indigo.
+
+### Backend shape (`X25V/backend/`)
+~79 FastAPI endpoints (`main.py`). SQLAlchemy ORM models: `Trade`, `ChallengeTrade`, `PersonalTrades`, `Credentials`, `Challenges`, `PersonalAccounts`, `Setup`, `TradePreset`, `Settings`. Notable capabilities worth mentioning in marketing copy:
+- Advanced analytics: equity curves, setup performance, account-level stats, win rate / R:R / ratios
+- Alerts/notifications system
+- Per-mode screenshot uploads (trade screenshots, setup screenshots)
+- Automated weekly/monthly DB backups (daemon thread)
+- SQLite (WAL mode) — local-first data storage, no external DB dependency
+
+### Working across the two repos
+The X25V repo has its own CLAUDE.md at `D:\X25V\CLAUDE.md`. Do not edit files there from this workspace unless explicitly asked — this repo (Katsumii Website) is separate and should only *reference* X25V's product facts for accurate copy, not modify its code.

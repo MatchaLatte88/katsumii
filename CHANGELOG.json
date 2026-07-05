@@ -1,0 +1,13 @@
+[
+  {
+    "date": "2026-06-18",
+    "title": "Add bug report page",
+    "changes": [
+      "Add /bugreport route with Tally form embed (placeholder ID, to be replaced once form is created)",
+      "Add 'Report a Bug' link in footer Company section across all locales",
+      "Add full translations for bug report page (EN, DE, ES, ZH)",
+      "Tally embed.js is loaded dynamically on the bug report page only",
+      "Direct email fallback to bugs@katsumii.com shown below the form"
+    ]
+  }
+]

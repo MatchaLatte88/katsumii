@@ -157,6 +157,7 @@ const footerProductLinks = computed(() => [
 const footerCompanyLinks = computed(() => [
   { name: tm('footer.companyLinks')[0], href: pagePath("faq") },
   { name: tm('footer.companyLinks')[1], href: pagePath("contact") },
+  { name: tm('footer.companyLinks')[2], href: pagePath("bugreport") },
 ])
 
 const footerLegalLinks = computed(() => [

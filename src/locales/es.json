@@ -799,7 +799,7 @@
     "companyLinks": [
       "FAQ",
       "Contacto",
-      "Soporte por email"
+      "Reportar error"
     ],
     "support": {
       "label": "Soporte",
@@ -946,6 +946,7 @@
       "privacy": "Privacidad - Katsumii",
       "terms": "Términos - Katsumii",
       "welcome": "Bienvenida - Katsumii",
+      "bugreport": "Reportar error - Katsumii",
       "notFound": "404 - Katsumii"
     }
   },
@@ -986,6 +987,17 @@
     "mailtoName": "Nombre",
     "mailtoEmail": "Email"
   },
+  "bugReportPage": {
+    "brandSubtitle": "Reportar error",
+    "hero": {
+      "label": "Reporte de error",
+      "title": "¿Encontraste un error?",
+      "description": "Cuéntanos qué ocurrió y lo investigaremos. Incluye los pasos para reproducir el problema si es posible."
+    },
+    "direct": {
+      "prefix": "¿Prefieres escribir directamente?"
+    }
+  },
   "notFoundPage": {
     "brandSubtitle": "Página no encontrada",
     "nav": {
@@ -1007,108 +1019,228 @@
     },
     "hero": {
       "label": "Legal",
-      "title": "Términos del servicio",
-      "description": "Lee estos términos con atención antes de comprar o usar Katsumii. Última actualización: mayo de 2025."
+      "title": "Términos de Servicio",
+      "description": "Lee estos términos cuidadosamente antes de comprar, descargar o usar Katsumii. Última actualización: julio de 2026."
     },
     "sections": [
       {
-        "title": "1. Alcance y parte contratante",
+        "title": "1. Traducción informativa",
         "paragraphs": [
-          "Estos términos regulan la compra y el uso de Katsumii, una aplicación de escritorio para journaling de trading proporcionada por Frederik Morbe. Contacto: info{'@'}katsumii.com. Web: katsumii.com.",
-          "Al comprar una licencia o descargar y usar el software, aceptas estos términos. Si no estás de acuerdo, no uses el software."
+          "Esta versión en español es una traducción informativa para facilitar la lectura. La versión alemana y la versión inglesa contienen el texto contractual completo y deben revisarse para cualquier decisión legal.",
+          "Si esta traducción difiere de la versión alemana o inglesa, prevalecerá la versión alemana en la medida permitida por la ley. Tus derechos obligatorios como consumidor no se ven afectados."
         ]
       },
       {
-        "title": "2. Licencia",
+        "title": "2. Scope, Provider, and Merchant of Record",
         "paragraphs": [
-          "Tras el pago correcto, recibes una licencia no exclusiva, no transferible y revocable para instalar y usar Katsumii en tus propios dispositivos con fines de documentación de trading personal o profesional."
+          "These Terms of Service govern access to and use of Katsumii, including the katsumii.com website, the Katsumii desktop application, demo versions, documentation, license keys, updates, and support communications.",
+          "Katsumii is provided by Frederik Morbe (the Provider, we, us). Contact: info@katsumii.com. Website: katsumii.com.",
+          "Where the checkout identifies Lemon Squeezy, LLC or another merchant of record as seller, that merchant handles the payment transaction, taxes, invoices, chargebacks, and statutory purchase processing duties. These Terms continue to govern your software license and use of Katsumii."
+        ]
+      },
+      {
+        "title": "3. Acceptance and Eligibility",
+        "paragraphs": [
+          "By purchasing, downloading, installing, activating, or using Katsumii, you agree to these Terms. If you do not agree, do not use Katsumii.",
+          "You must be at least 18 years old, or the age of legal majority in your jurisdiction, and legally able to enter into a binding contract. If you use Katsumii for a company, fund, prop-firm team, trading desk, or other organization, you confirm that you are authorized to bind that organization.",
+          "You are responsible for ensuring that your use of Katsumii is lawful in your jurisdiction and does not violate sanctions, export-control, financial-services, market-abuse, tax, or other applicable laws."
+        ]
+      },
+      {
+        "title": "4. License Grant",
+        "paragraphs": [
+          "After a valid purchase or other authorized grant, you receive a limited, non-exclusive, non-transferable license to install and use Katsumii on devices you own or control for your own trading documentation, journaling, review, and analysis.",
+          "Unless the checkout or license document says otherwise, the license is issued to one individual user and may not be shared with other people. The license is perpetual for the purchased version, subject to termination for material breach and subject to the update rules below."
         ],
         "list": [
-          "La licencia es para una sola persona y no puede compartirse, revenderse ni sublicenciarse.",
-          "Se permite instalarla en varios dispositivos personales propiedad de la misma persona titular.",
-          "La licencia es perpetua para la versión comprada. Algunas actualizaciones pueden requerir una nueva compra según el tipo de lanzamiento."
+          "You may install Katsumii on multiple personal devices used by the same licensed user.",
+          "Business or team use requires a license for each individual user unless we agree otherwise in writing.",
+          "No ownership rights are transferred. All rights not expressly granted remain reserved."
         ]
       },
       {
-        "title": "3. Restricciones",
+        "title": "5. License Restrictions",
         "paragraphs": [
-          "No puedes copiar, modificar, distribuir, vender, sublicenciar, aplicar ingeniería inversa, descompilar, desensamblar, eliminar avisos del software ni usarlo con fines ilícitos."
+          "Except where mandatory law allows it, you must not copy, rent, lease, lend, sell, resell, sublicense, distribute, publish, host, or make Katsumii available to third parties.",
+          "You must not reverse engineer, decompile, disassemble, modify, create derivative works from, remove proprietary notices from, bypass license activation, circumvent technical protection measures, or use Katsumii to build a competing product.",
+          "You must not use Katsumii for unlawful trading activity, market manipulation, fraud, unauthorized financial services, infringement of third-party rights, or any use that could damage, overload, or interfere with our systems or third-party systems."
         ]
       },
       {
-        "title": "4. Pago y reembolsos",
+        "title": "6. Delivery, Activation, Technical Requirements, and Updates",
         "paragraphs": [
-          "Los pagos se procesan mediante Lemon Squeezy, que actúa como Merchant of Record y gestiona pagos, impuestos y facturación.",
-          "Como Katsumii es un producto digital entregado inmediatamente tras la compra, los derechos de desistimiento pueden expirar al descargarlo o activarlo cuando la ley lo permita. Otras solicitudes de reembolso se revisan caso por caso. Contacta con info{'@'}katsumii.com dentro de los 14 días posteriores a la compra."
+          "Katsumii is digital software delivered by download, license key, account page, or another electronic method. You are responsible for using a compatible operating system, device, storage location, security configuration, and backup process.",
+          "Core journaling features are designed to work locally. Certain functions, such as license activation, update checks, downloads, support, payment, or future optional integrations, may require an internet connection.",
+          "We may provide maintenance, bug fixes, security updates, compatibility updates, or feature updates. Some updates may be required for security, legal, or technical reasons. Major upgrades, new paid editions, or materially expanded features may require a separate purchase unless stated otherwise.",
+          "We may discontinue legacy versions, platforms, or features where maintaining them is no longer reasonable, provided mandatory consumer rights and required security or conformity updates remain unaffected."
         ]
       },
       {
-        "title": "5. Propiedad intelectual",
+        "title": "7. Prices, Taxes, Payment, Refunds, and Withdrawal Rights",
         "paragraphs": [
-          "Todos los derechos de propiedad intelectual del software, incluido código fuente, gráficos, diseño de interfaz y documentación, pertenecen a Frederik Morbe. Estos términos no te transfieren derechos de propiedad."
+          "Prices, included features, currencies, discounts, taxes, and payment methods are shown at checkout and may change for future purchases. The merchant of record may apply its own checkout terms, fraud checks, tax handling, invoicing process, and refund workflow.",
+          "For consumers in the EU, EEA, UK, or any jurisdiction with mandatory withdrawal or cancellation rights, those rights remain unaffected. Where the law allows the withdrawal right for digital content or digital services to expire, this requires the legally required consent, acknowledgement, and confirmation during checkout before immediate delivery or performance begins.",
+          "Voluntary refunds outside mandatory rights are reviewed case by case and may be handled by the merchant of record. Asking for or receiving a refund does not waive any mandatory statutory rights you may have."
         ]
       },
       {
-        "title": "6. Solo con fines informativos",
+        "title": "8. Mandatory Consumer Rights and Legal Guarantee",
         "paragraphs": [
-          "Katsumii es únicamente una herramienta de documentación y journaling. Ayuda a registrar, revisar y reflexionar sobre trades. No está pensada como base para decisiones de trading con dinero real o inversión.",
-          "Los gráficos, estadísticas, puntuaciones y demás resultados son solo informativos y de autoevaluación. No son recomendaciones, señales, estrategias ni instrucciones."
+          "Nothing in these Terms excludes, limits, or overrides mandatory consumer protection rights, statutory warranty rights, legal guarantees of conformity for digital content or digital services, or remedies that cannot lawfully be waived.",
+          "For EU and EEA consumers, this includes mandatory rights under national laws implementing EU rules on consumer rights, unfair contract terms, and digital content or digital services. For United States users, this includes non-waivable rights under applicable federal and state law.",
+          "If a clause in these Terms conflicts with mandatory law, the mandatory law prevails and the clause applies only to the maximum extent permitted."
         ]
       },
       {
-        "title": "7. No es asesoramiento financiero",
+        "title": "9. Your Data, Backups, Imports, and Local Storage",
         "paragraphs": [
-          "Nada en Katsumii, en katsumii.com o en comunicaciones de Frederik Morbe constituye asesoramiento financiero, de inversión, de trading ni asesoramiento regulado. Si necesitas asesoramiento, consulta a un profesional cualificado en tu jurisdicción."
+          "Katsumii is designed as a local-first trading journal. Your trades, accounts, journal entries, screenshots, settings, reports, and backups are primarily stored on your device unless a specific feature clearly states otherwise.",
+          "You are responsible for the correctness of the information you enter or import, for maintaining independent backups, and for protecting your device, operating system account, license key, files, and database from loss, theft, malware, unauthorized access, or corruption.",
+          "CSV imports, manual entries, screenshots, copied broker data, and exported reports may contain errors, formatting problems, missing fees, timezone mismatches, duplicate trades, partial fills, currency conversion issues, or other inaccuracies. You must verify imported and displayed data against your broker, exchange, prop firm, bank, tax records, or other authoritative source."
         ]
       },
       {
-        "title": "8. Exactitud de cálculos y estadísticas",
+        "title": "10. Informational Journal Only",
         "paragraphs": [
-          "Todos los cálculos, estadísticas, métricas, puntuaciones, ratios y proyecciones pueden contener errores, inexactitudes u omisiones. Eres responsable de verificar los datos antes de sacar conclusiones."
+          "Katsumii is a journaling, recordkeeping, review, and analytics tool. It is not a broker, exchange, trading platform, execution venue, signal service, portfolio manager, account manager, investment club, prop firm, or financial institution.",
+          "Katsumii does not place, route, execute, clear, settle, finance, custody, or monitor live trades. Any trading decision, order, position, leverage, stop loss, take profit, allocation, instrument selection, or account action is made solely by you outside Katsumii.",
+          "You must not use Katsumii outputs as the sole or primary basis for real-money trading, investment, tax, legal, prop-firm, or risk-management decisions."
+        ]
+      },
+      {
+        "title": "11. No Financial, Investment, Trading, Tax, or Legal Advice",
+        "paragraphs": [
+          "Nothing in Katsumii, on katsumii.com, in documentation, in analytics, in example data, in support messages, or in marketing materials is financial, investment, trading, commodity trading, securities, tax, legal, accounting, or other regulated advice.",
+          "We do not provide individualized recommendations and do not consider your full financial situation, investment objectives, risk tolerance, experience, tax position, legal obligations, or suitability for any trade or strategy.",
+          "We are not acting as your fiduciary, broker-dealer, investment adviser, commodity trading advisor, commodity pool operator, futures commission merchant, introducing broker, tax adviser, attorney, or accountant. We are not registered with the SEC, CFTC, FINRA, NFA, or equivalent regulator as a regulated financial adviser or broker for your use of Katsumii.",
+          "If you need advice, you must consult a qualified, licensed professional in your jurisdiction before making decisions."
+        ]
+      },
+      {
+        "title": "12. No Trading Signals, Recommendations, or Reliance",
+        "paragraphs": [
+          "Analytics, dashboards, performance scores, win rates, expectancy, R multiples, risk metrics, drawdown metrics, calendar views, setup labels, consistency metrics, alerts, reports, and similar outputs are not trading signals, recommendations, instructions, confirmations, guarantees, or calls to action.",
+          "Katsumii may help you reflect on past trades, but it does not know whether any future trade is suitable, lawful, affordable, tax-efficient, compliant with your prop-firm rules, or appropriate for your financial situation.",
+          "You remain solely responsible for independently reviewing every trade and for deciding whether, when, how, and with what size to trade."
+        ]
+      },
+      {
+        "title": "13. Calculations, Statistics, and Data May Be Wrong",
+        "paragraphs": [
+          "All calculations, statistics, metrics, charts, ratios, scores, limits, progress bars, reports, exports, alerts, and derived values may be incomplete, delayed, inaccurate, misconfigured, or wrong.",
+          "Errors can arise from software bugs, formula assumptions, rounding, timezone handling, exchange calendars, commissions, fees, swaps, spreads, slippage, partial fills, position sizing, contract specifications, currency conversion, account settings, prop-firm rule settings, imported CSV formats, user input, or changes by third parties.",
+          "You must verify all figures before relying on them. Broker statements, exchange records, bank records, tax records, and the official prop-firm dashboard or contract control over Katsumii if there is any discrepancy."
         ],
         "list": [
-          "Los resultados dependen por completo de los datos introducidos por el usuario.",
-          "El software puede contener bugs o errores de cálculo.",
-          "Las salidas estadísticas se basan solo en la muestra registrada y no tienen validez predictiva.",
-          "No se garantiza que ninguna cifra mostrada sea completa, actual o libre de errores."
+          "A profitable statistic in Katsumii does not mean that a setup has a real edge.",
+          "A displayed risk, drawdown, or rule status can be wrong or outdated.",
+          "A report can omit trades, fees, screenshots, notes, or other relevant context.",
+          "An alert can be late, fail to appear, or be based on incorrect data."
         ]
       },
       {
-        "title": "9. Advertencia de riesgo",
+        "title": "14. Prop-Firm Rules and Challenge Tracking",
         "paragraphs": [
-          "Operar instrumentos financieros, incluidas acciones, futuros, forex, CFDs, opciones y criptomonedas, implica un riesgo sustancial de pérdida y no es adecuado para todo el mundo.",
-          "Usas Katsumii bajo tu propia responsabilidad. Frederik Morbe no responde por pérdidas financieras relacionadas con tu actividad de trading."
+          "Prop-firm accounts, funded accounts, evaluation accounts, demo challenges, rule tracking, daily-loss tracking, drawdown tracking, consistency tracking, inactivity alerts, profit-target progress, and similar features are convenience tools only.",
+          "Prop-firm rules vary between firms, programs, account types, instruments, time zones, platforms, and dates. Firms may change, interpret, suspend, or enforce rules differently from the way they are modeled in Katsumii.",
+          "Katsumii does not guarantee that you will pass a challenge, keep a funded account, avoid a rule breach, receive a payout, satisfy consistency rules, or comply with any third-party trading program. You must read and follow the official rules and dashboard of the relevant firm."
         ]
       },
       {
-        "title": "10. Software tal cual",
+        "title": "15. Trading Risk Warning",
         "paragraphs": [
-          "El software se proporciona tal cual y según disponibilidad, sin garantías de ningún tipo. No garantizamos que esté libre de errores, que funcione sin interrupciones o que los defectos se corrijan."
+          "Trading and investing involve substantial risk of loss. This includes stocks, futures, forex, CFDs, options, commodities, crypto assets, leveraged products, margin products, and any other financial instrument.",
+          "Markets can move rapidly and unpredictably. Leverage, margin, volatility, liquidity, gaps, slippage, fees, spreads, platform outages, execution delays, exchange rules, broker rules, and psychological factors can increase losses. You may lose some or all of your capital and, in some products or jurisdictions, more than your initial deposit.",
+          "Trading is not suitable for everyone. You are solely responsible for understanding the risks, using independent judgment, and ensuring that any trading activity is lawful and suitable for you."
         ]
       },
       {
-        "title": "11. Limitación de responsabilidad",
+        "title": "16. Historical, Hypothetical, Simulated, and Sample Results",
         "paragraphs": [
-          "En la máxima medida permitida por la ley, Frederik Morbe no será responsable de daños directos, indirectos, incidentales, especiales, consecuentes o punitivos derivados del uso o imposibilidad de uso del software.",
-          "La responsabilidad total queda limitada al importe pagado por el software en los doce meses anteriores a la reclamación, salvo que la ley obligatoria disponga otra cosa."
+          "Past performance, historical statistics, backtests, simulated results, hypothetical examples, sample data, strategy reports, and screenshots do not guarantee future results.",
+          "Hypothetical or simulated results have inherent limitations. They may benefit from hindsight, incomplete assumptions, small sample sizes, missing costs, missing execution effects, idealized fills, or selective data. Real trading can differ materially.",
+          "You must not assume that any metric, report, example, or sample account shown in Katsumii can or will be replicated in live trading."
         ]
       },
       {
-        "title": "12. Ley aplicable y jurisdicción",
+        "title": "17. Third-Party Services, Brokers, Payment Providers, and Integrations",
         "paragraphs": [
-          "Estos términos se rigen por las leyes de la República Federal de Alemania, excluido el CISG. Las normas obligatorias de protección al consumidor de tu país de residencia permanecen intactas."
+          "Katsumii may refer to or interact with third-party services, including payment providers, operating systems, brokers, exchanges, prop firms, data formats, update services, email clients, analytics-free hosting providers, or future optional integrations.",
+          "Third-party services are not controlled by us. We are not responsible for their availability, rules, data accuracy, security, fees, decisions, terms, outages, API changes, account actions, or losses caused by them.",
+          "Mentioning a broker, prop firm, platform, import preset, file format, or integration does not mean endorsement, partnership, authorization, or certification unless expressly stated in writing."
         ]
       },
       {
-        "title": "13. Cambios en estos términos",
+        "title": "18. Support, Feedback, and Beta Features",
         "paragraphs": [
-          "Podemos actualizar estos términos en cualquier momento. Los cambios importantes se anunciarán en katsumii.com. Seguir usando el software tras su entrada en vigor implica aceptar los cambios."
+          "Support is provided on a commercially reasonable basis and is limited to Katsumii-related technical or license questions. Support does not include trading advice, financial advice, tax advice, legal advice, prop-firm compliance advice, or review of your trading strategy.",
+          "Demo, preview, beta, experimental, in-development, or early-access features may be incomplete, unstable, inaccurate, changed, limited, or removed at any time. You use them at your own risk.",
+          "If you send suggestions, bug reports, feature requests, or other feedback, you grant us a free, worldwide, perpetual right to use that feedback for improving Katsumii without owing compensation, while you keep ownership of your own underlying content."
         ]
       },
       {
-        "title": "14. Contacto",
+        "title": "19. Intellectual Property",
         "paragraphs": [
-          "Para preguntas sobre estos términos, escribe a info{'@'}katsumii.com."
+          "Katsumii, including its source code, object code, design, user interface, visual assets, text, documentation, workflows, logos, trademarks, trade names, and other materials, is owned by the Provider or its licensors and is protected by intellectual property laws.",
+          "You may not remove copyright, trademark, license, or proprietary notices. You may not use our names, logos, or branding in a way that suggests sponsorship, partnership, or endorsement without prior written permission.",
+          "Third-party components may be subject to their own open-source or commercial license terms."
+        ]
+      },
+      {
+        "title": "20. Warranty Disclaimer",
+        "paragraphs": [
+          "To the maximum extent permitted by law, Katsumii is provided as is and as available, without warranties, representations, guarantees, or conditions of any kind, whether express, implied, or statutory.",
+          "We do not guarantee that Katsumii will be uninterrupted, error-free, secure, compatible with every system, suitable for your trading workflow, free of data loss, free of calculation errors, or available forever.",
+          "For consumers, this disclaimer does not limit mandatory legal guarantees, statutory warranty rights, conformity rights, or remedies that cannot be excluded under applicable law."
+        ]
+      },
+      {
+        "title": "21. Limitation of Liability",
+        "paragraphs": [
+          "Nothing in these Terms limits liability for intent, gross negligence, fraud, fraudulent concealment, injury to life, body, or health, mandatory product liability, expressly assumed guarantees, or any liability that cannot legally be limited.",
+          "Subject to the previous sentence and to the maximum extent permitted by law, we are not liable for trading losses, investment losses, lost profits, lost revenue, missed payouts, failed prop-firm challenges, rule breaches, loss of business opportunities, loss or corruption of data, missed alerts, inaccurate calculations, market movements, broker actions, prop-firm decisions, or your reliance on Katsumii outputs.",
+          "For slight negligence under German law, we are liable only for breach of a material contractual obligation and only for typical, foreseeable damage. For business users and, where permitted, all other users, aggregate liability is limited to the amount you paid for Katsumii in the twelve months before the event giving rise to the claim.",
+          "To the maximum extent permitted by United States law and other applicable law, we are not liable for indirect, incidental, special, consequential, exemplary, or punitive damages."
+        ]
+      },
+      {
+        "title": "22. Indemnity for Misuse",
+        "paragraphs": [
+          "If you are a business user or use Katsumii on behalf of an organization, you will indemnify and hold us harmless from third-party claims, damages, fines, costs, and reasonable legal fees arising from your unlawful use of Katsumii, your violation of these Terms, your infringement of third-party rights, or your trading, tax, legal, broker, or prop-firm obligations.",
+          "For consumers, this clause applies only to the extent permitted by mandatory consumer law and only where you are responsible for the relevant violation."
+        ]
+      },
+      {
+        "title": "23. Termination",
+        "paragraphs": [
+          "We may suspend or terminate your license if you materially breach these Terms, circumvent licensing, share license keys unlawfully, misuse the software, or use Katsumii in a way that creates legal or security risk.",
+          "After termination, you must stop using Katsumii and uninstall it unless mandatory law gives you a different right. Termination does not affect rights and obligations that by their nature should survive, including payment obligations, intellectual property rights, disclaimers, liability limits, and dispute provisions.",
+          "You remain responsible for exporting or backing up your local data before uninstalling or changing devices."
+        ]
+      },
+      {
+        "title": "24. Changes to Terms and Software",
+        "paragraphs": [
+          "We may update these Terms for future purchases, future versions, new features, legal changes, security reasons, or changes in how Katsumii is offered. The version available on katsumii.com at the time of purchase applies unless you later accept updated terms or mandatory law allows a change.",
+          "For ongoing services or features, material changes will be communicated in a reasonable way. If mandatory law gives you a right to reject a change, terminate, or keep existing rights, that law remains unaffected.",
+          "Continuing to use a new version, update, or feature after being informed of updated Terms may require acceptance of those updated Terms."
+        ]
+      },
+      {
+        "title": "25. Governing Law, Jurisdiction, and Dispute Resolution",
+        "paragraphs": [
+          "These Terms are governed by the laws of the Federal Republic of Germany, excluding the United Nations Convention on Contracts for the International Sale of Goods (CISG) and excluding conflict-of-law rules where legally possible.",
+          "If you are a consumer, mandatory consumer protection laws and mandatory jurisdiction rights in your country or state of residence remain unaffected. If you are a business user, the courts at the Provider's place of business have exclusive jurisdiction where legally permitted.",
+          "We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board unless mandatory law requires participation. This does not limit your right to contact us directly or to use courts or other mandatory remedies available to you.",
+          "For United States users, these Terms do not create arbitration, class-action waiver, jury-trial waiver, or waiver of non-waivable federal or state rights."
+        ]
+      },
+      {
+        "title": "26. Language, Severability, and Contact",
+        "paragraphs": [
+          "The German and English versions are intended to be equivalent. Translations into other languages are provided for convenience. If a non-German or non-English translation conflicts with the German or English wording, the German wording prevails to the extent legally permitted.",
+          "If any provision of these Terms is invalid or unenforceable, the remaining provisions remain in effect. The invalid provision will be replaced or interpreted by a valid provision that comes closest to the original economic and legal purpose, where legally permitted.",
+          "For questions about these Terms, licensing, refunds, or technical support, contact info@katsumii.com."
         ]
       }
     ]
@@ -1123,56 +1255,174 @@
     "hero": {
       "label": "Legal",
       "title": "Política de privacidad",
-      "description": "Información sobre cómo katsumii.com trata tus datos siguiendo principios de GDPR."
+      "description": "Cómo tratan tus datos el sitio web katsumii.com y la aplicación de escritorio Katsumii — información conforme a los arts. 13 y 14 del RGPD, incluidos avisos para usuarios de Estados Unidos."
     },
     "sections": [
       {
-        "title": "1. Responsable",
+        "title": "1. Responsable y ámbito de aplicación",
         "paragraphs": [
-          "El responsable de este sitio web es Frederik Morbe. Contacto: info{'@'}katsumii.com. Web: katsumii.com."
+          "El responsable del tratamiento en el sentido del Reglamento General de Protección de Datos (RGPD) es: Frederik Morbe, [dirección postal pendiente de añadir antes de la publicación], Alemania. Email: info@katsumii.com. Web: katsumii.com.",
+          "Esta política de privacidad se aplica al sitio web katsumii.com, incluidas todas sus subpáginas, y a la aplicación de escritorio Katsumii (la app). No se ha designado delegado de protección de datos, ya que no se cumplen los requisitos legales que obligan a su nombramiento."
         ]
       },
       {
-        "title": "2. Hosting",
+        "title": "2. Resumen y principios",
         "paragraphs": [
-          "Este sitio web se opera mediante un proveedor externo de hosting. Al visitarlo, datos técnicos necesarios como dirección IP, hora y página solicitada pueden procesarse brevemente en logs del servidor para mantener un funcionamiento seguro y estable."
-        ]
-      },
-      {
-        "title": "3. Analítica con Umami",
-        "paragraphs": [
-          "Este sitio usa Umami, una herramienta de analítica respetuosa con la privacidad."
+          "Katsumii está construido deliberadamente sobre el principio de minimización de datos. Lo esencial, por adelantado:"
         ],
         "list": [
-          "No se usan cookies.",
-          "No se almacenan direcciones IP; solo se recopilan estadísticas anónimas de uso.",
-          "No hay seguimiento entre sitios.",
-          "No se requiere opt-out porque no se procesan datos personales de tracking."
+          "Tus datos de trading (operaciones, entradas del diario, capturas, ajustes) permanecen exclusivamente en tu dispositivo. No hay cuenta en la nube y no tenemos acceso a ellos.",
+          "El sitio web no usa cookies ni rastreadores publicitarios.",
+          "No vendemos datos personales ni los compartimos con fines publicitarios.",
+          "Los datos personales solo se tratan según lo descrito en esta política."
         ]
       },
       {
-        "title": "4. Pagos mediante Lemon Squeezy",
+        "title": "3. Alojamiento del sitio web (GitHub Pages)",
         "paragraphs": [
-          "Las compras se procesan mediante Lemon Squeezy, que actúa como Merchant of Record y gestiona pagos, facturación e impuestos de forma independiente.",
-          "Durante el checkout, Lemon Squeezy procesa datos de transacción como nombre, email y datos de pago. Katsumii solo recibe la información necesaria para entregar la licencia."
+          "Este sitio web se aloja como sitio estático mediante GitHub Pages, un servicio de GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, EE. UU. (filial de Microsoft Corporation).",
+          "Al visitar el sitio, GitHub trata en sus registros de servidor datos de conexión técnicamente necesarios, en particular la dirección IP, la fecha y hora del acceso, el recurso solicitado, el tipo de navegador (user agent) y la URL de referencia. Este tratamiento sirve para entregar el sitio web y garantizar su seguridad y estabilidad.",
+          "La base jurídica es el art. 6.1.f del RGPD (interés legítimo en la prestación segura y eficiente del sitio web). GitHub está certificado bajo el Marco de Privacidad de Datos UE-EE. UU. Más información en la declaración de privacidad de GitHub: docs.github.com/privacy."
         ]
       },
       {
-        "title": "5. Contacto por email",
+        "title": "4. Cookies y almacenamiento local",
         "paragraphs": [
-          "Si nos contactas por email, guardamos tu dirección y el contenido del mensaje para tramitar la solicitud. No compartimos estos datos sin tu consentimiento y los eliminamos cuando la solicitud queda resuelta, salvo obligación legal de conservación."
+          "Este sitio web no instala ninguna cookie, ni propia ni de terceros. Por ello no se necesita un banner de cookies.",
+          "Para recordar tus preferencias de visualización, el sitio utiliza el almacenamiento local (local storage) de tu navegador. Allí solo se guardan los siguientes ajustes:"
+        ],
+        "list": [
+          "katsumii-theme — esquema de color elegido (claro u oscuro)",
+          "katsumii-locale — idioma elegido",
+          "katsumii-bg — estilo de fondo elegido"
+        ],
+        "paragraphsAfter": [
+          "Estos valores permanecen en tu navegador, nunca se transmiten a nosotros ni a terceros y puedes borrarlos en cualquier momento desde la configuración del navegador. Su almacenamiento es estrictamente necesario para la función que solicitas (recordar tus preferencias); conforme a las normas europeas de ePrivacy (art. 25.2.2 de la ley alemana TDDDG), no se requiere consentimiento."
         ]
       },
       {
-        "title": "6. Tus derechos",
+        "title": "5. Analítica web (Umami)",
         "paragraphs": [
-          "Bajo GDPR puedes tener derecho de acceso, rectificación, eliminación, limitación, oposición y reclamación ante una autoridad supervisora. Para solicitudes, escribe a info{'@'}katsumii.com."
+          "Para medir la audiencia utilizamos Umami Cloud, un servicio de analítica respetuoso con la privacidad de Umami Software, Inc. (EE. UU.). Umami está configurado de modo que no se crean perfiles de uso personales:"
+        ],
+        "list": [
+          "No se instalan cookies ni se guarda información en tu dispositivo.",
+          "Las direcciones IP no se almacenan; solo se procesan de forma transitoria para la entrega técnica de la solicitud.",
+          "Únicamente se recopilan estadísticas agregadas y anonimizadas: páginas vistas, referencia, tipo de navegador y dispositivo, y país de origen.",
+          "No hay seguimiento entre sitios ni elaboración de perfiles de usuario."
+        ],
+        "paragraphsAfter": [
+          "La base jurídica es el art. 6.1.f del RGPD (interés legítimo en el análisis estadístico y la mejora de nuestros servicios). En la medida en que se transfieran datos a EE. UU., dicha transferencia se basa en las cláusulas contractuales tipo de la UE (art. 46.2.c del RGPD)."
         ]
       },
       {
-        "title": "7. Actualizaciones de esta política",
+        "title": "6. Lista de espera, newsletter y formularios (Tally)",
         "paragraphs": [
-          "Esta política de privacidad está actualizada a mayo de 2025. Podemos modificarla si cambian nuestros servicios o los requisitos legales."
+          "Para los formularios de este sitio (p. ej. lista de espera, informes de errores) utilizamos Tally, un servicio de Tally B.V., Bélgica. Tally trata los datos de los formularios por encargo nuestro como encargado del tratamiento (art. 28 del RGPD) en servidores de la UE.",
+          "Lista de espera: si te apuntas a la lista de espera, tratamos tu dirección de email y los datos voluntarios que facilites para informarte del lanzamiento del producto y de las condiciones asociadas (p. ej. descuento early bird). La base jurídica es tu consentimiento (art. 6.1.a del RGPD). Puedes retirarlo en cualquier momento con efectos futuros, por ejemplo escribiendo a info@katsumii.com; tus datos se eliminarán entonces.",
+          "Newsletter: si en el futuro ofrecemos un boletín periódico, solo lo enviaremos con tu consentimiento expreso obtenido mediante doble opt-in. Cada email incluirá un enlace para darte de baja; tras la baja, tu dirección se eliminará de la lista de distribución.",
+          "Informes de errores: los datos enviados a través del formulario de errores se tratan exclusivamente para analizar y corregir el problema comunicado (art. 6.1.f del RGPD, interés legítimo en la calidad del producto, o art. 6.1.b del RGPD para clientes existentes). Los datos se eliminan una vez resuelto el informe."
+        ]
+      },
+      {
+        "title": "7. Compras y procesamiento de pagos (Lemon Squeezy)",
+        "paragraphs": [
+          "Las licencias de Katsumii se venden a través de Lemon Squeezy, LLC (EE. UU.), que actúa como Merchant of Record. Lemon Squeezy es tu contraparte contractual en la compra y actúa como responsable independiente del tratamiento en el procesamiento del pago.",
+          "Durante el checkout, Lemon Squeezy trata en particular tu nombre, dirección de email, datos de facturación y fiscales, y datos de pago. A este tratamiento se aplica además la propia política de privacidad de Lemon Squeezy (lemonsqueezy.com/privacy).",
+          "De Lemon Squeezy solo recibimos la información necesaria para la gestión de licencias y el soporte (en particular nombre, email, datos de pedido y licencia) — nunca datos de pago completos. La base jurídica es el art. 6.1.b del RGPD (ejecución de un contrato); los registros de facturación y contabilidad se conservan además para cumplir obligaciones legales (art. 6.1.c del RGPD)."
+        ]
+      },
+      {
+        "title": "8. App Katsumii: almacenamiento local de datos",
+        "paragraphs": [
+          "La app Katsumii sigue un principio local-first: todo el contenido que creas en la app — operaciones, entradas del diario, capturas de pantalla, datos de cuentas y challenges, ajustes y copias de seguridad automáticas — se guarda exclusivamente en tu dispositivo, en una base de datos local.",
+          "No hay sincronización con la nube. No tenemos acceso a estos datos, no podemos verlos ni restaurarlos. El almacenamiento, las copias de seguridad y el borrado están completamente bajo tu control (p. ej. mediante las funciones de la app, borrando los archivos de datos o desinstalando la app)."
+        ]
+      },
+      {
+        "title": "9. App Katsumii: activación de licencia y comprobación de actualizaciones",
+        "paragraphs": [
+          "Activación de licencia: al activar la app, tu clave de licencia se valida en línea contra la API de licencias de Lemon Squeezy. En ese proceso se tratan la clave de licencia, el estado de activación, un identificador de instancia y datos técnicos de conexión (dirección IP, marca de tiempo). La finalidad es gestionar tu licencia y prevenir abusos. La base jurídica es el art. 6.1.b del RGPD (ejecución de un contrato) y el art. 6.1.f del RGPD (protección frente al uso indebido).",
+          "Comprobación de actualizaciones: la app puede comprobar si hay una versión nueva disponible. Para ello se transmiten al servidor de actualizaciones el número de versión instalada y datos técnicos de conexión (dirección IP, marca de tiempo). No se transmiten datos de uso ni de trading, y no se crean perfiles. La base jurídica es el art. 6.1.f del RGPD (interés legítimo en un producto seguro y actualizado).",
+          "Más allá de esto, la app no envía datos de telemetría, de uso ni de errores a nosotros ni a terceros."
+        ]
+      },
+      {
+        "title": "10. Contacto por email",
+        "paragraphs": [
+          "Si nos contactas por email, tratamos tu dirección de email, el contenido que nos facilites y, en su caso, tu nombre, únicamente para gestionar tu solicitud. La base jurídica es el art. 6.1.b del RGPD cuando tu solicitud esté relacionada con un contrato o con medidas precontractuales, y en los demás casos el art. 6.1.f del RGPD (interés legítimo en responder a las consultas).",
+          "No compartimos estos datos sin tu consentimiento y los eliminamos una vez resuelta tu solicitud, salvo que existan obligaciones legales de conservación."
+        ]
+      },
+      {
+        "title": "11. Destinatarios y encargados del tratamiento",
+        "paragraphs": [
+          "Solo recurrimos a proveedores de servicios en los términos descritos en esta política: GitHub (alojamiento), Umami Software (analítica web) y Tally (formularios) tratan datos como encargados del tratamiento o en virtud de los acuerdos de protección de datos correspondientes; Lemon Squeezy actúa como responsable independiente.",
+          "Aparte de ello, no se ceden datos personales a terceros, salvo que estemos legalmente obligados (p. ej. ante autoridades) o la cesión sea necesaria para formular, ejercer o defender reclamaciones legales."
+        ]
+      },
+      {
+        "title": "12. Transferencias internacionales de datos",
+        "paragraphs": [
+          "Algunos de los proveedores mencionados tienen su sede en EE. UU. Cuando se transfieren datos personales a EE. UU. u otros terceros países, nos basamos en una decisión de adecuación de la Comisión Europea — en particular el Marco de Privacidad de Datos UE-EE. UU. para proveedores certificados como GitHub — o en las cláusulas contractuales tipo de la UE conforme al art. 46.2.c del RGPD, complementadas con salvaguardias adicionales cuando sea necesario."
+        ]
+      },
+      {
+        "title": "13. Plazos de conservación",
+        "paragraphs": [
+          "Tratamos los datos personales solo durante el tiempo necesario para los fines indicados o mientras existan obligaciones legales de conservación (en Alemania, por ejemplo, seis o diez años para documentación mercantil y fiscal). Después, los datos se eliminan o se anonimizan."
+        ]
+      },
+      {
+        "title": "14. Tus derechos según el RGPD",
+        "paragraphs": [
+          "Como interesado, el RGPD te reconoce los siguientes derechos:"
+        ],
+        "list": [
+          "Acceso a los datos tratados sobre ti (art. 15 RGPD)",
+          "Rectificación de datos inexactos (art. 16 RGPD)",
+          "Supresión (art. 17 RGPD)",
+          "Limitación del tratamiento (art. 18 RGPD)",
+          "Portabilidad de los datos (art. 20 RGPD)",
+          "Retirada del consentimiento con efectos futuros (art. 7.3 RGPD)",
+          "Reclamación ante una autoridad de control de protección de datos, por ejemplo la de tu lugar de residencia (art. 77 RGPD)"
+        ],
+        "paragraphsAfter": [
+          "Para ejercer tus derechos basta un email informal a info@katsumii.com."
+        ]
+      },
+      {
+        "title": "15. Derecho de oposición (art. 21 RGPD)",
+        "paragraphs": [
+          "Tienes derecho a oponerte en cualquier momento, por motivos relacionados con tu situación particular, al tratamiento de tus datos personales basado en el art. 6.1.f del RGPD (interés legítimo). En tal caso dejaremos de tratar los datos, salvo que podamos acreditar motivos legítimos imperiosos que prevalezcan sobre tus intereses, derechos y libertades, o que el tratamiento sirva para formular, ejercer o defender reclamaciones legales."
+        ]
+      },
+      {
+        "title": "16. Avisos para usuarios de Estados Unidos",
+        "paragraphs": [
+          "Para los usuarios de Estados Unidos, en particular de California (CCPA/CPRA) y otros estados con leyes de privacidad, se aplica adicionalmente lo siguiente:",
+          "No vendemos información personal ni la compartimos para publicidad conductual entre contextos (no hay sale ni sharing en el sentido de la CCPA/CPRA). No usamos información personal sensible ni tomamos decisiones automatizadas con efectos jurídicos.",
+          "Categorías tratadas: identificadores (nombre, dirección de email), información comercial (historial de compras a través de Lemon Squeezy) y actividad en internet (exclusivamente estadísticas web agregadas y anonimizadas). Las fuentes son la información que tú facilitas y tu visita automática al sitio; las finalidades y los destinatarios se describen en esta política.",
+          "Según tu estado, tienes derecho a conocer, eliminar y corregir tu información personal, y a no ser discriminado por ejercer estos derechos. Atendemos estas solicitudes enviadas a info@katsumii.com incluso cuando los umbrales legales no nos resulten aplicables.",
+          "Como no vendemos ni compartimos datos y no usamos rastreo, señales del navegador como Global Privacy Control o Do Not Track no dan lugar a ningún tratamiento distinto — los opt-outs que representan ya son nuestro comportamiento por defecto."
+        ]
+      },
+      {
+        "title": "17. Menores",
+        "paragraphs": [
+          "Nuestro sitio web y la app no están dirigidos a menores de 16 años. No recopilamos conscientemente datos personales de menores. Si tienes conocimiento de que un menor nos ha facilitado datos personales, contáctanos en info@katsumii.com — eliminaremos los datos de inmediato."
+        ]
+      },
+      {
+        "title": "18. Seguridad de los datos",
+        "paragraphs": [
+          "El sitio web se sirve exclusivamente a través de una conexión cifrada TLS (HTTPS). Las fuentes tipográficas están alojadas localmente; al visitar el sitio no se establece ninguna conexión con servidores de Google. Gracias a la arquitectura local-first de la app, tus datos de trading permanecen en tu dispositivo y no están expuestos a ningún riesgo de acceso del lado del servidor por nuestra parte."
+        ]
+      },
+      {
+        "title": "19. Actualizaciones de esta política",
+        "paragraphs": [
+          "Esta política de privacidad está vigente desde el 3 de julio de 2026. La actualizaremos si cambian nuestros servicios, los proveedores utilizados o los requisitos legales. La versión vigente está siempre disponible en katsumii.com/privacy."
         ]
       }
     ]
@@ -1196,7 +1446,7 @@
       },
       {
         "title": "Contacto",
-        "body": "Email: info{'@'}katsumii.com\nTeléfono: +49 000 0000000\nWeb: katsumii.app"
+        "body": "Email: info@katsumii.com\nTeléfono: +49 000 0000000\nWeb: katsumii.app"
       },
       {
         "title": "Representante autorizado",

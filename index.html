@@ -8,15 +8,9 @@
   <meta name="description" content="Katsumii is a trading journal built for serious traders. Pre-launch." />
 
   <link rel="icon" type="image/x-icon" href="./favicon.ico" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap"
-    rel="stylesheet" />
+  <link rel="stylesheet" href="./fonts/fonts.css" />
 
   <script defer src="https://cloud.umami.is/script.js" data-website-id="e5a8e4a5-cf96-4053-8fa4-9245f4fe5af4"></script>
-  <script async src="https://tally.so/widgets/embed.js"></script>
-
   <style>
     *,
     *::before,
@@ -1227,14 +1221,8 @@
         for traders who take self discipline seriously.
       </p>
 
-      <span class="early-badge" id="cs-early-badge">🎁 Early Bird Discount</span>
-
-      <button class="cta-btn" id="cs-cta"
-        data-tally-open="lbWr8B"
-        data-tally-layout="modal"
-        data-tally-width="800"
-        data-tally-auto-close="15000">
-        Join the Waitlist →
+      <button class="cta-btn" id="cs-cta" disabled style="opacity:0.45;cursor:default;pointer-events:none;">
+        Coming Soon
       </button>
 
       <div class="meta-row">
@@ -1305,6 +1293,7 @@
   <footer>
     <span>&copy; 2026 Frederik Morbe</span>
     <div class="footer-r">
+      <a href="/privacy" id="footer-privacy">Privacy</a>
       <a href="mailto:info@katsumii.com" id="footer-email">Write us an E-Mail</a>
       <span>katsumii.com</span>
     </div>
@@ -1535,10 +1524,6 @@
       }
       document.getElementById("cs-badge").textContent = tr.badge
       document.getElementById("cs-eyebrow").textContent = tr.eyebrow
-      const ctaBtn = document.getElementById("cs-cta")
-      ctaBtn.textContent = tr.cta
-      ctaBtn.setAttribute("data-tally-open", lang === "tw" ? "lbWr8B" : "BzADW1")
-      document.getElementById("cs-early-badge").textContent = tr.earlyBadge
       document.getElementById("cs-tagline").textContent = tr.tagline
       document.getElementById("headline-suffix").textContent = tr.typeSuffix
       document.querySelector("h1").classList.toggle("tw-layout", lang === "tw")

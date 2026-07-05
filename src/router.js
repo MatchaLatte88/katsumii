@@ -8,6 +8,7 @@ import ManualPage from "./components/ManualPage.vue"
 import PricingPage from "./components/PricingPage.vue"
 import PrivacyPage from "./components/PrivacyPage.vue"
 import ContactPage from "./components/ContactPage.vue"
+import BugReportPage from "./components/BugReportPage.vue"
 import TermsPage from "./components/TermsPage.vue"
 import NotFoundPage from "./components/NotFoundPage.vue"
 import { legacyPageToPath } from "./utils/routes.js"
@@ -22,6 +23,7 @@ const router = createRouter({
     { path: "/manual",    component: ManualPage,    meta: { titleKey: "common.pageTitles.manual" } },
     { path: "/faq",       component: FaqPage,       meta: { titleKey: "common.pageTitles.faq" } },
     { path: "/contact",   component: ContactPage,   meta: { titleKey: "common.pageTitles.contact" } },
+    { path: "/bugreport", component: BugReportPage, meta: { titleKey: "common.pageTitles.bugreport" } },
     { path: "/impressum", component: ImpressumPage, meta: { titleKey: "common.pageTitles.impressum" } },
     { path: "/privacy",   component: PrivacyPage,   meta: { titleKey: "common.pageTitles.privacy" } },
     { path: "/terms",     component: TermsPage,     meta: { titleKey: "common.pageTitles.terms" } },

@@ -21,5 +21,6 @@ export const legacyPageToPath = {
   pricing: pagePath("pricing"),
   privacy: pagePath("privacy"),
   contact: pagePath("contact"),
+  bugreport: pagePath("bugreport"),
   terms: pagePath("terms"),
 }
