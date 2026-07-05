@@ -6,7 +6,7 @@
       :navigation="navigation"
       :brand-title="t('common.brandTitle')"
       :brand-subtitle="t('welcomePage.brandSubtitle')"
-      :brand-href="appHomePath"
+      :brand-href="pagePath('app')"
     />
 
     <section class="relative isolate px-6 pb-28 pt-32 lg:px-8">
@@ -87,7 +87,7 @@
           <ArrowRightIcon class="size-4" />
         </RouterLink>
         <RouterLink
-          :to="appHomePath"
+          :to="pagePath('app')"
           :class="['text-sm font-medium transition-colors duration-300', !isDark ? 'text-gray-500 hover:text-gray-800' : 'text-slate-400 hover:text-slate-200']"
         >
           {{ t('welcomePage.nav.home') }}
@@ -104,7 +104,7 @@ import { ArrowRightIcon, CheckCircleIcon, SparklesIcon } from "@heroicons/vue/24
 import AppNav from "./AppNav.vue"
 import KbBackground from "../backgrounds/KbBackground.vue"
 import { useSiteNavigation } from "../composables/useSiteNavigation.js"
-import { appHomePath, pagePath } from "../utils/routes.js"
+import { pagePath } from "../utils/routes.js"
 
 const { t, tm } = useI18n()
 

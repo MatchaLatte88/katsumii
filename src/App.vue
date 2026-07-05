@@ -13,12 +13,13 @@
       <HomeHero :asset-url="assetUrl" />
       <HomeFeatures :asset-url="assetUrl" />
       <HomeShowcase :asset-url="assetUrl" />
+      <HomeCompatibility />
       <HomeDemoCta />
     </main>
 
     <HomeFooter
       :asset-url="assetUrl"
-      :checkout-url="checkoutUrl"
+      :checkout-url="pagePath('app')"
       :link-target="linkTarget"
       :link-rel="linkRel"
     />
@@ -30,12 +31,14 @@ import { computed, inject, nextTick, onMounted, onUnmounted, ref } from "vue"
 import { useI18n } from "vue-i18n"
 import AppNav from "./components/AppNav.vue"
 import KbBackground from "./backgrounds/KbBackground.vue"
+import HomeCompatibility from "./components/home/HomeCompatibility.vue"
 import HomeDemoCta from "./components/home/HomeDemoCta.vue"
 import HomeFeatures from "./components/home/HomeFeatures.vue"
 import HomeFooter from "./components/home/HomeFooter.vue"
 import HomeHero from "./components/home/HomeHero.vue"
 import HomeShowcase from "./components/home/HomeShowcase.vue"
 import { useSiteNavigation } from "./composables/useSiteNavigation.js"
+import { pagePath } from "./utils/routes.js"
 
 const { t } = useI18n()
 
@@ -44,7 +47,6 @@ const bg = inject("bg")
 
 const baseUrl = import.meta.env.BASE_URL
 const assetUrl = (path) => `${baseUrl}${path.replace(/^\/+/, "")}`
-const checkoutUrl = baseUrl
 
 const navigation = useSiteNavigation()
 

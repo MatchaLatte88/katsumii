@@ -17,7 +17,7 @@
       :navigation="navigation"
       :brand-title="t('common.brandTitle')"
       :brand-subtitle="t('faq.brandSubtitle')"
-      :brand-href="appHomePath"
+      :brand-href="pagePath('app')"
     />
 
     <section class="relative isolate px-6 pb-24 pt-28 lg:px-8">
@@ -229,7 +229,7 @@ import { useI18n } from "vue-i18n"
 import { ChevronDownIcon, MagnifyingGlassIcon, XMarkIcon, EnvelopeIcon } from "@heroicons/vue/24/outline"
 import AppNav from "./AppNav.vue"
 import { useSiteNavigation } from "../composables/useSiteNavigation.js"
-import { appHomePath } from "../utils/routes.js"
+import { pagePath } from "../utils/routes.js"
 
 const { locale, t, tm } = useI18n()
 

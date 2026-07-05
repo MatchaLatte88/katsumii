@@ -14,10 +14,9 @@
       ]"
     >
       <div class="relative mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-3 sm:px-4">
-        <component
-          :is="isRouteLink(brandHref) ? 'RouterLink' : 'a'"
-          :to="isRouteLink(brandHref) ? brandHref : undefined"
-          :href="isRouteLink(brandHref) ? undefined : brandHref"
+        <a
+          :href="brandHref"
+          @click="navigateToRoute($event, brandHref)"
           class="group flex items-center gap-3"
         >
           <div class="brand-mark size-11 overflow-hidden rounded-xl transition-transform duration-300 group-hover:scale-[1.04]">
@@ -36,17 +35,16 @@
               {{ brandSubtitle }}
             </div>
           </div>
-        </component>
+        </a>
 
         <div class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full border px-1.5 py-1 lg:flex"
           :class="isDark ? 'border-cyan-300/12 bg-white/[0.03]' : 'border-gray-200/75 bg-white/44'"
         >
-          <component
+          <a
             v-for="item in visibleNavigation"
             :key="item.name"
-            :is="isRouteLink(item.href) ? 'RouterLink' : 'a'"
-            :to="isRouteLink(item.href) ? item.href : undefined"
-            :href="isRouteLink(item.href) ? undefined : item.href"
+            :href="item.href"
+            @click="navigateToRoute($event, item.href)"
             :class="[
               isTopLink(item)
                 ? 'inline-flex h-9 w-9 items-center justify-center rounded-full p-0 transition-all duration-300'
@@ -59,7 +57,7 @@
             <ArrowUpIcon v-if="isTopLink(item)" class="h-4 w-4" aria-hidden="true" />
             <span v-if="isTopLink(item)" class="sr-only">{{ item.name }}</span>
             <template v-else>{{ item.name }}</template>
-          </component>
+          </a>
         </div>
 
         <div class="nav-actions flex items-center gap-0.5">
@@ -98,12 +96,11 @@
       ]"
     >
       <div class="mx-auto max-w-7xl space-y-1 px-4 py-3">
-        <component
+        <a
           v-for="item in visibleNavigation"
           :key="item.name"
-          :is="isRouteLink(item.href) ? 'RouterLink' : 'a'"
-          :to="isRouteLink(item.href) ? item.href : undefined"
-          :href="isRouteLink(item.href) ? undefined : item.href"
+          :href="item.href"
+          @click="navigateToRoute($event, item.href)"
           :class="[
             isTopLink(item)
               ? 'flex h-11 items-center justify-center rounded-xl px-3 py-2.5 transition-all duration-300 hover:translate-x-0.5'
@@ -116,7 +113,7 @@
           <ArrowUpIcon v-if="isTopLink(item)" class="h-5 w-5" aria-hidden="true" />
           <span v-if="isTopLink(item)" class="sr-only">{{ item.name }}</span>
           <template v-else>{{ item.name }}</template>
-        </component>
+        </a>
       </div>
     </DisclosurePanel>
   </Disclosure>
@@ -125,6 +122,7 @@
 <script setup>
 import { computed, inject, onMounted, onUnmounted, ref } from "vue"
 import { useI18n } from "vue-i18n"
+import { useRouter } from "vue-router"
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/vue"
 import { ArrowUpIcon, Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline"
 import DarkLightSwitch from "./DarkLightSwitch.vue"
@@ -134,6 +132,7 @@ import BgSwitch from "./BgSwitch.vue"
 const isDark = inject("isDark")
 const toggleTheme = inject("toggleTheme")
 const { t } = useI18n()
+const router = useRouter()
 
 const baseUrl = import.meta.env.BASE_URL
 const assetUrl = (path) => `${baseUrl}${path.replace(/^\/+/, "")}`
@@ -154,6 +153,14 @@ const isRouteLink = (href) => Boolean(href?.startsWith("/") && !href.startsWith(
 const visibleNavigation = computed(() =>
   props.navigation.filter((item) => !isTopLink(item) || hasScrolled.value)
 )
+
+const navigateToRoute = (event, href) => {
+  if (!isRouteLink(href) || event.defaultPrevented || event.button !== 0) return
+  if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return
+
+  event.preventDefault()
+  void router.push(href)
+}
 
 const updateScrollState = () => {
   hasScrolled.value = window.scrollY > 140

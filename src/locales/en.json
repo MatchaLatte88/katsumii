@@ -202,6 +202,37 @@
     ],
     "cta": "Try Free Demo"
   },
+  "compatibility": {
+    "label": "Compatibility",
+    "headline": "Runs on Windows and macOS.",
+    "description": "The core journal, analytics, reports, backups, manual imports, and supported API integrations are available across supported desktop platforms.",
+    "platforms": {
+      "title": "Runs on",
+      "items": [
+        "Windows 10 or newer",
+        "Windows 11 recommended",
+        "macOS 12 Monterey or newer",
+        "Intel/AMD 64-bit and Apple Silicon"
+      ]
+    },
+    "requirements": {
+      "title": "System requirements",
+      "items": [
+        "8 GB RAM",
+        "1 GB free storage",
+        "1440 x 900 display or larger",
+        "Internet connection for product activation, updates, API sync, and integrations"
+      ]
+    },
+    "integration": {
+      "title": "Integration note",
+      "body": "MetaTrader 5 sync is currently Windows-only and requires a locally installed, running MT5 terminal. On macOS, Katsumii supports manual imports, analytics, reports, backups, and supported API integrations."
+    },
+    "api": {
+      "title": "API access",
+      "body": "API usage may be paid and depends on your broker. Katsumii works with broker integrations only when you have a matching API key."
+    }
+  },
   "featuresPage": {
     "brandSubtitle": "Feature Overview",
     "liveScreen": "Live screen",
@@ -842,7 +873,12 @@
       {
         "category": "General",
         "question": "Which operating systems are supported?",
-        "answer": "Katsumii runs on Windows and macOS. Both platforms are officially supported and receive updates."
+        "answer": "Katsumii supports Windows 10 or newer and macOS 12 Monterey or newer. Windows 11 is recommended, and both Intel/AMD 64-bit and Apple Silicon systems are supported."
+      },
+      {
+        "category": "General",
+        "question": "Does Katsumii work on macOS?",
+        "answer": "Yes. Katsumii supports macOS 12 Monterey or newer. MetaTrader 5 sync is Windows-only, but macOS users can use manual imports, analytics, reports, backups, and supported API integrations. API usage may be paid, depends on your broker, and requires a matching API key."
       },
       {
         "category": "License",
@@ -867,7 +903,7 @@
       {
         "category": "Privacy",
         "question": "Does Katsumii need an internet connection?",
-        "answer": "No. Journal, accounts, trades, and reports are fully local features. Your core data is always available offline."
+        "answer": "Not for the core journal. Journal, accounts, trades, and reports are fully local features, and your core data is available offline. Internet is required for product activation, updates, API sync, and integrations."
       },
       {
         "category": "Features",
@@ -948,6 +984,21 @@
       "welcome": "Welcome - Katsumii",
       "bugreport": "Report a Bug - Katsumii",
       "notFound": "404 - Katsumii"
+    },
+    "pageDescriptions": {
+      "default": "Katsumii is an offline trading journal for disciplined traders with trade logging, prop firm tracking, analytics, reports, and local data control.",
+      "app": "Katsumii is an offline trading journal for disciplined traders with trade logging, prop firm tracking, analytics, reports, and local data control.",
+      "features": "Explore Katsumii features for trade journaling, account rules, prop challenge tracking, performance analytics, reports, and calendar reviews.",
+      "pricing": "Compare Katsumii Demo, Light, and Professional licenses for an offline trading journal with no subscription and local data storage.",
+      "manual": "Learn how to set up Katsumii, log trades, manage accounts, review analytics, use the calendar, and keep your trading data organized.",
+      "faq": "Answers to common questions about Katsumii licenses, offline data storage, demo access, platform support, imports, and trading journal workflows.",
+      "contact": "Contact Katsumii for license questions, demo support, app help, and trading workflow questions.",
+      "impressum": "Legal provider information for katsumii.com and the Katsumii offline trading journal.",
+      "privacy": "Learn how katsumii.com and the Katsumii desktop app handle privacy, local data, analytics, emails, and user rights.",
+      "terms": "Read the terms for purchasing, downloading, licensing, and using Katsumii.",
+      "welcome": "A guided introduction to Katsumii and the first steps for getting value from your trading journal.",
+      "bugreport": "Report a Katsumii bug and share reproduction steps so the issue can be investigated.",
+      "notFound": "This Katsumii page does not exist or has moved."
     }
   },
   "contactPage": {

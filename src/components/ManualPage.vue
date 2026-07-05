@@ -18,7 +18,7 @@
       :navigation="navLinks"
       :brand-title="t('common.brandTitle')"
       :brand-subtitle="t('manualPage.brandSubtitle')"
-      :brand-href="appHomePath"
+      :brand-href="pagePath('app')"
     />
 
     <!-- Layout wrapper: sidebar + content -->
@@ -311,7 +311,7 @@ import {
 } from "@heroicons/vue/24/outline"
 import AppNav from "./AppNav.vue"
 import { useSiteNavigation } from "../composables/useSiteNavigation.js"
-import { appHomePath } from "../utils/routes.js"
+import { pagePath } from "../utils/routes.js"
 
 const { t, tm } = useI18n()
 

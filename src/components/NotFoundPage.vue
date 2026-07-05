@@ -6,7 +6,7 @@
       :navigation="navigation"
       :brand-title="t('common.brandTitle')"
       :brand-subtitle="t('notFoundPage.brandSubtitle')"
-      :brand-href="appHomePath"
+      :brand-href="pagePath('app')"
     />
 
     <main class="relative z-10 flex min-h-screen items-center justify-center px-6 py-32">
@@ -24,7 +24,7 @@
           {{ t('notFoundPage.description') }}
         </p>
         <RouterLink
-          :to="appHomePath"
+          :to="pagePath('app')"
           class="mt-8 inline-flex rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
           :class="!isDark ? 'bg-teal-600 text-white hover:bg-teal-500' : 'bg-cyan-300 text-slate-950 hover:bg-cyan-200'"
         >
@@ -41,7 +41,7 @@ import { useI18n } from "vue-i18n"
 import AppNav from "./AppNav.vue"
 import KbBackground from "../backgrounds/KbBackground.vue"
 import { useSiteNavigation } from "../composables/useSiteNavigation.js"
-import { appHomePath } from "../utils/routes.js"
+import { pagePath } from "../utils/routes.js"
 
 const isDark = inject("isDark")
 const { t } = useI18n()

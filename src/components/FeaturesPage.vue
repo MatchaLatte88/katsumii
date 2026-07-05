@@ -11,7 +11,7 @@
       :navigation="navigation"
       :brand-title="t('common.brandTitle')"
       :brand-subtitle="t('featuresPage.brandSubtitle')"
-      :brand-href="appHomePath"
+      :brand-href="pagePath('app')"
     />
 
     <!-- ── HERO ─────────────────────────────────────────────────────── -->
@@ -264,7 +264,7 @@
                 {{ t('featuresPage.cta.buyLicense') }}
               </RouterLink>
               <RouterLink
-                :to="appHomePath"
+                :to="pagePath('app')"
                 class="rounded-full border px-7 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
                 :class="!isDark
                   ? 'border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50'
@@ -290,7 +290,7 @@
         <span>&copy; {{ year }} Katsumii</span>
         <div class="flex gap-5">
           <RouterLink
-            :to="appHomePath"
+            :to="pagePath('app')"
             class="transition-colors duration-150"
             :class="!isDark ? 'hover:text-gray-700' : 'hover:text-slate-300'"
           >{{ t('featuresPage.nav.home') }}</RouterLink>
@@ -316,7 +316,7 @@ import { useI18n } from "vue-i18n"
 import AppNav from "./AppNav.vue"
 import KbBackground from "../backgrounds/KbBackground.vue"
 import { useSiteNavigation } from "../composables/useSiteNavigation.js"
-import { appHomePath, pagePath } from "../utils/routes.js"
+import { pagePath } from "../utils/routes.js"
 
 const { t, tm } = useI18n()
 

@@ -4,11 +4,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Katsumii | Coming Soon</title>
-  <meta name="description" content="Katsumii is a trading journal built for serious traders. Pre-launch." />
+  <title>Katsumii | Offline Trading Journal</title>
+  <meta name="description" content="Katsumii is an offline trading journal for disciplined traders with trade logging, prop firm tracking, analytics, reports, and local data control." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.katsumii.com/" />
+  <meta property="og:site_name" content="Katsumii" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Katsumii | Offline Trading Journal" />
+  <meta property="og:description" content="Katsumii is an offline trading journal for disciplined traders with trade logging, prop firm tracking, analytics, reports, and local data control." />
+  <meta property="og:url" content="https://www.katsumii.com/" />
+  <meta property="og:image" content="https://www.katsumii.com/Dashboard_dark.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Katsumii | Offline Trading Journal" />
+  <meta name="twitter:description" content="Katsumii is an offline trading journal for disciplined traders with trade logging, prop firm tracking, analytics, reports, and local data control." />
+  <meta name="twitter:image" content="https://www.katsumii.com/Dashboard_dark.png" />
+  <meta name="theme-color" content="#020617" />
 
-  <link rel="icon" type="image/x-icon" href="./favicon.ico" />
-  <link rel="stylesheet" href="./fonts/fonts.css" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.katsumii.com/#organization",
+          "name": "Katsumii",
+          "url": "https://www.katsumii.com",
+          "logo": "https://www.katsumii.com/logo.png",
+          "email": "info@katsumii.com"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.katsumii.com/#website",
+          "name": "Katsumii",
+          "url": "https://www.katsumii.com",
+          "publisher": { "@id": "https://www.katsumii.com/#organization" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://www.katsumii.com/en/app#software",
+          "name": "Katsumii",
+          "url": "https://www.katsumii.com/en/app",
+          "description": "Katsumii is an offline trading journal for disciplined traders with trade logging, prop firm tracking, analytics, reports, and local data control.",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Windows 10, Windows 11, macOS 12 or newer",
+          "image": "https://www.katsumii.com/Dashboard_dark.png",
+          "publisher": { "@id": "https://www.katsumii.com/#organization" }
+        }
+      ]
+    }
+  </script>
 
   <script defer src="https://cloud.umami.is/script.js" data-website-id="e5a8e4a5-cf96-4053-8fa4-9245f4fe5af4"></script>
   <style>
@@ -890,6 +936,132 @@
       font-size: 0.82rem;
     }
 
+    /* --- Compatibility --- */
+    .compatibility-section {
+      grid-column: 1 / -1;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+      gap: 1rem;
+      align-items: start;
+      margin-top: clamp(0.5rem, 2vh, 1.5rem);
+      scroll-margin-top: 5rem;
+      opacity: 0;
+      animation: riseIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.52s forwards;
+    }
+
+    .compatibility-copy {
+      padding: 0.35rem 0;
+    }
+
+    .compatibility-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-family: "DM Mono", monospace;
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .compatibility-kicker::before {
+      content: "";
+      width: 18px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.75;
+    }
+
+    .compatibility-title {
+      margin-top: 0.8rem;
+      max-width: 430px;
+      color: var(--text);
+      font-size: clamp(1.55rem, 2.6vw, 2.35rem);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+    }
+
+    .compatibility-desc {
+      max-width: 440px;
+      margin-top: 0.85rem;
+      color: var(--text-muted);
+      font-size: 0.86rem;
+      line-height: 1.65;
+    }
+
+    .compatibility-grid,
+    .compatibility-notes {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .compatibility-notes {
+      grid-column: 1 / -1;
+    }
+
+    .compatibility-card,
+    .compatibility-note {
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 74%, transparent);
+      backdrop-filter: blur(18px) saturate(145%);
+      -webkit-backdrop-filter: blur(18px) saturate(145%);
+    }
+
+    .compatibility-card {
+      min-height: 210px;
+      border-radius: 18px;
+      padding: 1rem;
+    }
+
+    .compatibility-card h3,
+    .compatibility-note strong {
+      color: var(--text);
+      font-size: 0.88rem;
+      line-height: 1.2;
+    }
+
+    .compatibility-list {
+      list-style: none;
+      display: grid;
+      gap: 0.62rem;
+      margin-top: 0.9rem;
+    }
+
+    .compatibility-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      line-height: 1.45;
+    }
+
+    .compatibility-list li::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      margin-top: 0.5em;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 60%, transparent);
+      flex: 0 0 auto;
+    }
+
+    .compatibility-note {
+      border-radius: 16px;
+      padding: 0.9rem 1rem;
+    }
+
+    .compatibility-note p {
+      margin-top: 0.35rem;
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      line-height: 1.5;
+    }
+
     /* --- Footer --- */
     footer {
       position: relative;
@@ -1003,6 +1175,19 @@
         margin: 0 auto;
       }
 
+      .compatibility-section {
+        grid-template-columns: 1fr;
+        width: min(100%, 760px);
+        margin-inline: auto;
+        text-align: left;
+      }
+
+      .compatibility-copy,
+      .compatibility-title,
+      .compatibility-desc {
+        max-width: none;
+      }
+
       footer {
         padding: 0.9rem 1.75rem;
         flex-direction: column;
@@ -1031,8 +1216,14 @@
       }
 
       .trust-strip,
-      .preview-metrics {
+      .preview-metrics,
+      .compatibility-grid,
+      .compatibility-notes {
         grid-template-columns: 1fr;
+      }
+
+      .compatibility-card {
+        min-height: auto;
       }
 
       .preview-metric {
@@ -1287,6 +1478,57 @@
         </div>
       </div>
     </aside>
+
+    <section id="compatibility" class="compatibility-section" aria-label="Compatibility">
+      <div class="compatibility-copy">
+        <p class="compatibility-kicker" id="compatibility-kicker">Compatibility</p>
+        <h2 class="compatibility-title" id="compatibility-title">Runs on Windows and macOS.</h2>
+        <p class="compatibility-desc" id="compatibility-desc">
+          The core journal, analytics, reports, backups, manual imports, and supported API integrations are available
+          across supported desktop platforms.
+        </p>
+      </div>
+
+      <div class="compatibility-grid">
+        <article class="compatibility-card">
+          <h3 id="compatibility-platforms-title">Runs on</h3>
+          <ul class="compatibility-list">
+            <li id="compatibility-platform-0">Windows 10 or newer</li>
+            <li id="compatibility-platform-1">Windows 11 recommended</li>
+            <li id="compatibility-platform-2">macOS 12 Monterey or newer</li>
+            <li id="compatibility-platform-3">Intel/AMD 64-bit and Apple Silicon</li>
+          </ul>
+        </article>
+
+        <article class="compatibility-card">
+          <h3 id="compatibility-requirements-title">System requirements</h3>
+          <ul class="compatibility-list">
+            <li id="compatibility-requirement-0">8 GB RAM</li>
+            <li id="compatibility-requirement-1">1 GB free storage</li>
+            <li id="compatibility-requirement-2">1440 x 900 display or larger</li>
+            <li id="compatibility-requirement-3">Internet connection for product activation, updates, API sync, and integrations</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="compatibility-notes">
+        <article class="compatibility-note">
+          <strong id="compatibility-integration-title">Integration note</strong>
+          <p id="compatibility-integration-text">
+            MetaTrader 5 sync is currently Windows-only and requires a locally installed, running MT5 terminal. On
+            macOS, Katsumii supports manual imports, analytics, reports, backups, and supported API integrations.
+          </p>
+        </article>
+
+        <article class="compatibility-note">
+          <strong id="compatibility-api-title">API access</strong>
+          <p id="compatibility-api-text">
+            API usage may be paid and depends on your broker. Katsumii works with broker integrations only when you have
+            a matching API key.
+          </p>
+        </article>
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
@@ -1328,6 +1570,19 @@
           ["CSV/API import", "Built for repeatable journal routines."],
           ["Performance export", "Share clean reports when it matters."],
         ],
+        compatibility: {
+          label: "Compatibility",
+          title: "Runs on Windows and macOS.",
+          description: "The core journal, analytics, reports, backups, manual imports, and supported API integrations are available across supported desktop platforms.",
+          platformsTitle: "Runs on",
+          platforms: ["Windows 10 or newer", "Windows 11 recommended", "macOS 12 Monterey or newer", "Intel/AMD 64-bit and Apple Silicon"],
+          requirementsTitle: "System requirements",
+          requirements: ["8 GB RAM", "1 GB free storage", "1440 x 900 display or larger", "Internet connection for product activation, updates, API sync, and integrations"],
+          integrationTitle: "Integration note",
+          integrationText: "MetaTrader 5 sync is currently Windows-only and requires a locally installed, running MT5 terminal. On macOS, Katsumii supports manual imports, analytics, reports, backups, and supported API integrations.",
+          apiTitle: "API access",
+          apiText: "API usage may be paid and depends on your broker. Katsumii works with broker integrations only when you have a matching API key.",
+        },
         footerPrivacy: "Privacy",
         footerImpressum: "Imprint",
         footerEmail: "Write us an E-Mail",
@@ -1365,6 +1620,19 @@
           ["CSV/API-Import", "Entwickelt für wiederholbare Journal-Routinen."],
           ["Performance-Export", "Saubere Berichte teilen, wenn es zählt."],
         ],
+        compatibility: {
+          label: "Kompatibilität",
+          title: "Läuft auf Windows und macOS.",
+          description: "Das Kern-Journal, Analytics, Reports, Backups, manuelle Importe und unterstützte API-Integrationen funktionieren auf den unterstützten Desktop-Plattformen.",
+          platformsTitle: "Läuft auf",
+          platforms: ["Windows 10 oder neuer", "Windows 11 empfohlen", "macOS 12 Monterey oder neuer", "Intel/AMD 64-bit und Apple Silicon"],
+          requirementsTitle: "Systemanforderungen",
+          requirements: ["8 GB RAM", "1 GB freier Speicherplatz", "1440 x 900 Display oder größer", "Internetverbindung für Produktaktivierung, Updates, API-Sync und Integrationen"],
+          integrationTitle: "Integrationshinweis",
+          integrationText: "MetaTrader 5 Sync ist aktuell nur unter Windows verfügbar und erfordert ein lokal installiertes, laufendes MT5-Terminal. Unter macOS unterstützt Katsumii manuelle Importe, Analytics, Reports, Backups und unterstützte API-Integrationen.",
+          apiTitle: "API-Zugriff",
+          apiText: "Die API-Nutzung kann kostenpflichtig sein und hängt von deinem Broker ab. Katsumii funktioniert mit Broker-Integrationen nur mit einem passenden API-Key.",
+        },
         footerPrivacy: "Datenschutz",
         footerImpressum: "Impressum",
         footerEmail: "Schreib uns eine E-Mail",
@@ -1402,6 +1670,19 @@
           ["Importación CSV/API", "Creado para rutinas de diario repetibles."],
           ["Exportación de rendimiento", "Comparte informes limpios cuando importa."],
         ],
+        compatibility: {
+          label: "Compatibilidad",
+          title: "Funciona en Windows y macOS.",
+          description: "El diario principal, analytics, informes, copias de seguridad, importaciones manuales e integraciones API compatibles están disponibles en las plataformas de escritorio soportadas.",
+          platformsTitle: "Funciona en",
+          platforms: ["Windows 10 o posterior", "Windows 11 recomendado", "macOS 12 Monterey o posterior", "Intel/AMD 64-bit y Apple Silicon"],
+          requirementsTitle: "Requisitos del sistema",
+          requirements: ["8 GB RAM", "1 GB de almacenamiento libre", "Pantalla de 1440 x 900 o superior", "Conexión a internet para activación del producto, actualizaciones, sincronización API e integraciones"],
+          integrationTitle: "Nota de integración",
+          integrationText: "La sincronización con MetaTrader 5 actualmente solo está disponible en Windows y requiere un terminal MT5 instalado localmente y en ejecución. En macOS, Katsumii admite importaciones manuales, analytics, informes, copias de seguridad e integraciones API compatibles.",
+          apiTitle: "Acceso API",
+          apiText: "El uso de APIs puede ser de pago y depende de tu broker. Katsumii solo funciona con integraciones de broker cuando tienes una API key compatible.",
+        },
         footerPrivacy: "Privacidad",
         footerImpressum: "Aviso legal",
         footerEmail: "Escríbenos un e-mail",
@@ -1440,6 +1721,19 @@
           ["CSV/API 匯入", "專為可重複的日誌流程打造。"],
           ["績效匯出", "在需要時分享乾淨清楚的報告。"],
         ],
+        compatibility: {
+          label: "相容性",
+          title: "支援 Windows 與 macOS。",
+          description: "核心交易日誌、分析、報告、備份、手動匯入與支援的 API 整合，皆可在支援的桌面平台上使用。",
+          platformsTitle: "可執行於",
+          platforms: ["Windows 10 或更新版本", "建議使用 Windows 11", "macOS 12 Monterey 或更新版本", "Intel/AMD 64-bit 與 Apple Silicon"],
+          requirementsTitle: "系統需求",
+          requirements: ["8 GB RAM", "1 GB 可用儲存空間", "1440 x 900 或更大的顯示器", "產品啟用、更新、API 同步與整合功能需要網路連線"],
+          integrationTitle: "整合說明",
+          integrationText: "MetaTrader 5 同步目前僅支援 Windows，且需要本機已安裝並正在執行的 MT5 終端機。macOS 使用者仍可使用手動匯入、分析、報告、備份與支援的 API 整合。",
+          apiTitle: "API 存取",
+          apiText: "API 使用可能需要付費，並取決於你的 Broker。Katsumii 的 Broker 整合只有在你擁有相符 API 金鑰時才能運作。",
+        },
         footerPrivacy: "隱私權",
         footerImpressum: "法律聲明",
         footerEmail: "寫 E-Mail 給我們",
@@ -1553,6 +1847,22 @@
         setText("trust-title-" + i, title)
         setText("trust-text-" + i, text)
       })
+      const compatibility = tr.compatibility
+      if (compatibility) {
+        const compatibilitySection = document.querySelector(".compatibility-section")
+        if (compatibilitySection) compatibilitySection.setAttribute("aria-label", compatibility.label)
+        setText("compatibility-kicker", compatibility.label)
+        setText("compatibility-title", compatibility.title)
+        setText("compatibility-desc", compatibility.description)
+        setText("compatibility-platforms-title", compatibility.platformsTitle)
+        setText("compatibility-requirements-title", compatibility.requirementsTitle)
+        setText("compatibility-integration-title", compatibility.integrationTitle)
+        setText("compatibility-integration-text", compatibility.integrationText)
+        setText("compatibility-api-title", compatibility.apiTitle)
+        setText("compatibility-api-text", compatibility.apiText)
+        compatibility.platforms.forEach((text, i) => setText("compatibility-platform-" + i, text))
+        compatibility.requirements.forEach((text, i) => setText("compatibility-requirement-" + i, text))
+      }
       tr.tags.forEach((t, i) => {
         const el = document.getElementById("tag-" + i)
         if (el) el.textContent = t

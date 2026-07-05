@@ -17,7 +17,7 @@
       :navigation="navigation"
       :brand-title="t('common.brandTitle')"
       :brand-subtitle="t('impressumPage.brandSubtitle')"
-      :brand-href="appHomePath"
+      :brand-href="pagePath('app')"
     />
 
     <section class="relative isolate px-6 pb-20 pt-28 lg:px-8">
@@ -49,7 +49,7 @@ import { computed, inject } from "vue"
 import { useI18n } from "vue-i18n"
 import AppNav from "./AppNav.vue"
 import { useSiteNavigation } from "../composables/useSiteNavigation.js"
-import { appHomePath } from "../utils/routes.js"
+import { pagePath } from "../utils/routes.js"
 
 const isDark = inject("isDark")
 const { t, tm } = useI18n()

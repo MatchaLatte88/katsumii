@@ -202,6 +202,37 @@
     ],
     "cta": "Probar demo gratuita"
   },
+  "compatibility": {
+    "label": "Compatibilidad",
+    "headline": "Funciona en Windows y macOS.",
+    "description": "El diario principal, analytics, informes, copias de seguridad, importaciones manuales e integraciones API compatibles están disponibles en las plataformas de escritorio soportadas.",
+    "platforms": {
+      "title": "Funciona en",
+      "items": [
+        "Windows 10 o posterior",
+        "Windows 11 recomendado",
+        "macOS 12 Monterey o posterior",
+        "Intel/AMD 64-bit y Apple Silicon"
+      ]
+    },
+    "requirements": {
+      "title": "Requisitos del sistema",
+      "items": [
+        "8 GB RAM",
+        "1 GB de almacenamiento libre",
+        "Pantalla de 1440 x 900 o superior",
+        "Conexión a internet para activación del producto, actualizaciones, sincronización API e integraciones"
+      ]
+    },
+    "integration": {
+      "title": "Nota de integración",
+      "body": "La sincronización con MetaTrader 5 actualmente solo está disponible en Windows y requiere un terminal MT5 instalado localmente y en ejecución. En macOS, Katsumii admite importaciones manuales, analytics, informes, copias de seguridad e integraciones API compatibles."
+    },
+    "api": {
+      "title": "Acceso API",
+      "body": "El uso de APIs puede ser de pago y depende de tu broker. Katsumii solo funciona con integraciones de broker cuando tienes una API key compatible."
+    }
+  },
   "featuresPage": {
     "brandSubtitle": "Funciones",
     "liveScreen": "Pantalla en vivo",
@@ -842,7 +873,12 @@
       {
         "category": "General",
         "question": "¿Qué sistemas operativos son compatibles?",
-        "answer": "Katsumii funciona en Windows y macOS. Ambas plataformas están oficialmente soportadas y reciben actualizaciones."
+        "answer": "Katsumii es compatible con Windows 10 o posterior y macOS 12 Monterey o posterior. Se recomienda Windows 11, y se admiten sistemas Intel/AMD 64-bit y Apple Silicon."
+      },
+      {
+        "category": "General",
+        "question": "¿Katsumii funciona en macOS?",
+        "answer": "Sí. Katsumii es compatible con macOS 12 Monterey o posterior. La sincronización con MetaTrader 5 es solo para Windows, pero los usuarios de macOS pueden usar importaciones manuales, analytics, informes, copias de seguridad e integraciones API compatibles. El uso de APIs puede ser de pago, depende del broker y requiere una API key compatible."
       },
       {
         "category": "Licencia",
@@ -867,7 +903,7 @@
       {
         "category": "Privacidad",
         "question": "¿Katsumii necesita conexión a Internet?",
-        "answer": "No. El diario, las cuentas, las operaciones y los informes son funciones completamente locales. Tus datos principales siempre están disponibles sin conexión."
+        "answer": "No para el diario principal. El diario, las cuentas, las operaciones y los informes son funciones completamente locales, y tus datos principales están disponibles sin conexión. Internet es necesario para la activación del producto, actualizaciones, sincronización API e integraciones."
       },
       {
         "category": "Funciones",
@@ -948,6 +984,21 @@
       "welcome": "Bienvenida - Katsumii",
       "bugreport": "Reportar error - Katsumii",
       "notFound": "404 - Katsumii"
+    },
+    "pageDescriptions": {
+      "default": "Katsumii es un diario de trading offline para traders disciplinados, con registro de operaciones, seguimiento prop firm, analitica, informes y datos locales.",
+      "app": "Katsumii es un diario de trading offline para traders disciplinados, con registro de operaciones, seguimiento prop firm, analitica, informes y datos locales.",
+      "features": "Explora las funciones de Katsumii para diario de trading, reglas de cuenta, seguimiento de challenges, analitica de rendimiento, informes y calendario.",
+      "pricing": "Compara Katsumii Demo, Light y Professional para un diario de trading offline sin suscripcion y con almacenamiento local.",
+      "manual": "Aprende a configurar Katsumii, registrar operaciones, gestionar cuentas, revisar analiticas, usar el calendario y organizar tus datos.",
+      "faq": "Respuestas a preguntas frecuentes sobre licencias Katsumii, datos offline, demo, plataformas compatibles, importaciones y flujos de diario de trading.",
+      "contact": "Contacta con Katsumii para preguntas sobre licencias, demo, ayuda de la app y tu flujo de trading.",
+      "impressum": "Informacion legal del proveedor de katsumii.com y del diario de trading offline Katsumii.",
+      "privacy": "Consulta como katsumii.com y la app de escritorio Katsumii tratan privacidad, datos locales, analitica, emails y derechos de usuario.",
+      "terms": "Lee los terminos para comprar, descargar, licenciar y usar Katsumii.",
+      "welcome": "Una introduccion guiada a Katsumii y los primeros pasos para sacar valor a tu diario de trading.",
+      "bugreport": "Reporta un error de Katsumii y comparte pasos de reproduccion para que podamos investigarlo.",
+      "notFound": "Esta pagina de Katsumii no existe o se ha movido."
     }
   },
   "contactPage": {

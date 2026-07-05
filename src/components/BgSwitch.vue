@@ -7,6 +7,7 @@
           ? 'text-slate-300 hover:bg-slate-800/80 hover:text-slate-100'
           : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
       ]"
+      :aria-label="`${t('common.aria.background')}: ${selectedOption?.label ?? t('common.aria.background')}`"
       :title="selectedOption?.label ?? t('common.aria.background')"
     >
       <PaintBrushIcon class="h-4 w-4" />

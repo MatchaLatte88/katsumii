@@ -11,7 +11,7 @@
       :navigation="navigation"
       :brand-title="t('common.brandTitle')"
       :brand-subtitle="t('pricingPage.brandSubtitle')"
-      :brand-href="appHomePath"
+      :brand-href="pagePath('app')"
     />
 
     <!-- ── HERO ─────────────────────────────────────────────────────── -->
@@ -372,7 +372,7 @@
             </p>
             <div class="mt-9 flex flex-wrap justify-center gap-3">
               <RouterLink
-                :to="appHomePath"
+                :to="pagePath('app')"
                 class="rounded-full px-7 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
                 :class="!isDark
                   ? 'bg-[#4e9b91] text-white hover:bg-[#438b82] hover:shadow-lg'
@@ -407,7 +407,7 @@
         <span>&copy; {{ year }} Katsumii</span>
         <div class="flex gap-5">
           <RouterLink
-            :to="appHomePath"
+            :to="pagePath('app')"
             class="transition-colors duration-150"
             :class="!isDark ? 'hover:text-gray-700' : 'hover:text-slate-300'"
           >{{ t('pricingPage.nav.home') }}</RouterLink>
@@ -433,11 +433,10 @@ import { useI18n } from "vue-i18n"
 import AppNav from "./AppNav.vue"
 import KbBackground from "../backgrounds/KbBackground.vue"
 import { useSiteNavigation } from "../composables/useSiteNavigation.js"
-import { appHomePath, pagePath } from "../utils/routes.js"
+import { pagePath } from "../utils/routes.js"
 
 const { t, tm } = useI18n()
 
-const baseUrl = import.meta.env.BASE_URL
 const year = new Date().getFullYear()
 
 const navigation = useSiteNavigation()
@@ -461,7 +460,7 @@ const tiers = computed(() => {
       cardFeatures: t0.features.slice(0, 4),
       displayFeatures: t0.features,
       cta: t0.cta,
-      ctaHref: baseUrl,
+      ctaHref: pagePath('app'),
       highlighted: false,
       metaLabel: meta.demo.label,
       metaValue: meta.demo.value,
@@ -482,7 +481,7 @@ const tiers = computed(() => {
       cardFeatures: t2.features.slice(0, 4),
       displayFeatures: t2.features.slice(1),
       cta: t2.cta,
-      ctaHref: baseUrl,
+      ctaHref: pagePath('app'),
       highlighted: true,
       metaLabel: meta.professional.label,
       metaValue: meta.professional.value,
@@ -503,7 +502,7 @@ const tiers = computed(() => {
       cardFeatures: t1.features.slice(0, 4),
       displayFeatures: t1.features,
       cta: t1.cta,
-      ctaHref: baseUrl,
+      ctaHref: pagePath('app'),
       highlighted: false,
       metaLabel: meta.light.label,
       metaValue: meta.light.value,
