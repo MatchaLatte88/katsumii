@@ -1254,7 +1254,7 @@
       {
         "title": "1. Controller and Scope",
         "paragraphs": [
-          "The controller within the meaning of the EU General Data Protection Regulation (GDPR) is: Frederik Morbe, [postal address to be added before publication], Germany. Email: info@katsumii.com. Website: katsumii.com.",
+          "The controller within the meaning of the EU General Data Protection Regulation (GDPR) is: Frederik Morbe, Schillerstraße 16, 51503 Rösrath, Germany. Email: info@katsumii.com. Website: katsumii.com.",
           "This privacy policy applies to the website katsumii.com, including all subpages, and to the Katsumii desktop application (the app). No data protection officer has been appointed, as the legal requirements for a mandatory appointment are not met."
         ]
       },
@@ -1430,28 +1430,20 @@
     "hero": {
       "label": "Legal",
       "title": "Imprint",
-      "description": "Legal provider information. Replace placeholder company details with your final business data before launch."
+      "description": "Provider identification pursuant to Section 5 of the German Digital Services Act (DDG)."
     },
     "cards": [
       {
         "title": "Provider",
-        "body": "Katsumii GmbH\nMax Mustermann\nMusterstrasse 12\n12345 Musterstadt\nGermany"
+        "body": "Frederik Morbe\nSchillerstraße 16\n51503 Rösrath\nGermany"
       },
       {
         "title": "Contact",
-        "body": "Email: info@katsumii.com\nPhone: +49 000 0000000\nWebsite: katsumii.app"
-      },
-      {
-        "title": "Authorized representative",
-        "body": "Managing Director: Max Mustermann"
-      },
-      {
-        "title": "Commercial register",
-        "body": "Commercial register: HRB 123456\nRegister court: Amtsgericht Musterstadt\nVAT ID: DE123456789"
+        "body": "Email: info@katsumii.com\nWebsite: katsumii.com"
       },
       {
         "title": "Responsible for content",
-        "body": "Max Mustermann, address as above."
+        "body": "Frederik Morbe (address as above) pursuant to Section 18 (2) MStV."
       }
     ]
   }

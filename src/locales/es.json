@@ -1261,7 +1261,7 @@
       {
         "title": "1. Responsable y ámbito de aplicación",
         "paragraphs": [
-          "El responsable del tratamiento en el sentido del Reglamento General de Protección de Datos (RGPD) es: Frederik Morbe, [dirección postal pendiente de añadir antes de la publicación], Alemania. Email: info@katsumii.com. Web: katsumii.com.",
+          "El responsable del tratamiento en el sentido del Reglamento General de Protección de Datos (RGPD) es: Frederik Morbe, Schillerstraße 16, 51503 Rösrath, Alemania. Email: info@katsumii.com. Web: katsumii.com.",
           "Esta política de privacidad se aplica al sitio web katsumii.com, incluidas todas sus subpáginas, y a la aplicación de escritorio Katsumii (la app). No se ha designado delegado de protección de datos, ya que no se cumplen los requisitos legales que obligan a su nombramiento."
         ]
       },
@@ -1437,28 +1437,20 @@
     "hero": {
       "label": "Legal",
       "title": "Aviso legal",
-      "description": "Información legal del proveedor. Sustituye los datos de ejemplo por los datos finales de tu empresa antes del lanzamiento."
+      "description": "Identificación del proveedor conforme al art. 5 de la ley alemana de servicios digitales (DDG)."
     },
     "cards": [
       {
         "title": "Proveedor",
-        "body": "Katsumii GmbH\nMax Mustermann\nMusterstrasse 12\n12345 Musterstadt\nAlemania"
+        "body": "Frederik Morbe\nSchillerstraße 16\n51503 Rösrath\nAlemania"
       },
       {
         "title": "Contacto",
-        "body": "Email: info@katsumii.com\nTeléfono: +49 000 0000000\nWeb: katsumii.app"
-      },
-      {
-        "title": "Representante autorizado",
-        "body": "Director gerente: Max Mustermann"
-      },
-      {
-        "title": "Registro mercantil",
-        "body": "Registro mercantil: HRB 123456\nJuzgado de registro: Amtsgericht Musterstadt\nNIF-IVA: DE123456789"
+        "body": "Email: info@katsumii.com\nWeb: katsumii.com"
       },
       {
         "title": "Responsable del contenido",
-        "body": "Max Mustermann, dirección indicada arriba."
+        "body": "Frederik Morbe (dirección indicada arriba), conforme al art. 18 (2) MStV."
       }
     ]
   }

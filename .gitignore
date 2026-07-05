@@ -11,6 +11,11 @@ node_modules
 dist
 dist-ssr
 *.local
+__pycache__/
+*.pyc
+
+# Local Codex/Claude worktree copies
+.claude/worktrees/*
 
 # Editor directories and files
 .vscode/*

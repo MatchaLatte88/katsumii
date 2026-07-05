@@ -1261,7 +1261,7 @@
       {
         "title": "1. 資料控制者與適用範圍",
         "paragraphs": [
-          "依歐盟《一般資料保護規則》（GDPR）之資料控制者為：Frederik Morbe，[發布前補充郵寄地址]，德國。Email：info@katsumii.com。網站：katsumii.com。",
+          "依歐盟《一般資料保護規則》（GDPR）之資料控制者為：Frederik Morbe，Schillerstraße 16, 51503 Rösrath，德國。Email：info@katsumii.com。網站：katsumii.com。",
           "本隱私權政策適用於 katsumii.com 網站（含所有子頁面）以及 Katsumii 桌面應用程式（以下稱「本應用程式」）。由於未達法定指派門檻，我們未設置資料保護長。"
         ]
       },
@@ -1437,28 +1437,20 @@
     "hero": {
       "label": "法律資訊",
       "title": "法律聲明",
-      "description": "服務提供者法律資訊。正式上線前，請將範例公司資料替換為你的最終資料。"
+      "description": "依德國《數位服務法》（DDG）第 5 條之服務提供者資訊。"
     },
     "cards": [
       {
         "title": "服務提供者",
-        "body": "Katsumii GmbH\nMax Mustermann\nMusterstrasse 12\n12345 Musterstadt\nGermany"
+        "body": "Frederik Morbe\nSchillerstraße 16\n51503 Rösrath\nGermany"
       },
       {
         "title": "聯絡方式",
-        "body": "Email: info@katsumii.com\n電話: +49 000 0000000\n網站: katsumii.app"
-      },
-      {
-        "title": "授權代表",
-        "body": "董事總經理：Max Mustermann"
-      },
-      {
-        "title": "商業登記",
-        "body": "商業登記：HRB 123456\n登記法院：Amtsgericht Musterstadt\nVAT ID：DE123456789"
+        "body": "Email: info@katsumii.com\n網站: katsumii.com"
       },
       {
         "title": "內容負責人",
-        "body": "Max Mustermann，地址同上。"
+        "body": "Frederik Morbe（地址同上），依 MStV 第 18 條第 2 項。"
       }
     ]
   }

@@ -1254,7 +1254,7 @@
       {
         "title": "1. Verantwortlicher und Geltungsbereich",
         "paragraphs": [
-          "Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist: Frederik Morbe, [Postanschrift vor Veröffentlichung ergänzen], Deutschland. E-Mail: info@katsumii.com. Website: katsumii.com.",
+          "Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist: Frederik Morbe, Schillerstraße 16, 51503 Rösrath, Deutschland. E-Mail: info@katsumii.com. Website: katsumii.com.",
           "Diese Datenschutzerklärung gilt für die Website katsumii.com einschließlich aller Unterseiten sowie für die Desktop-Anwendung Katsumii (die App). Ein Datenschutzbeauftragter ist nicht bestellt, da die gesetzlichen Voraussetzungen für eine Benennungspflicht nicht vorliegen."
         ]
       },
@@ -1430,28 +1430,20 @@
     "hero": {
       "label": "Rechtliches",
       "title": "Impressum",
-      "description": "Anbieterkennzeichnung gemäß § 5 TMG. Bitte ersetze die Platzhalter vor dem Launch durch deine finalen Firmendaten."
+      "description": "Anbieterkennzeichnung gemäß § 5 DDG."
     },
     "cards": [
       {
         "title": "Anbieter",
-        "body": "Katsumii GmbH\nMax Mustermann\nMusterstraße 12\n12345 Musterstadt\nDeutschland"
+        "body": "Frederik Morbe\nSchillerstraße 16\n51503 Rösrath\nDeutschland"
       },
       {
         "title": "Kontakt",
-        "body": "E-Mail: info@katsumii.com\nTelefon: +49 000 0000000\nWebsite: katsumii.app"
-      },
-      {
-        "title": "Vertretungsberechtigt",
-        "body": "Geschäftsführer: Max Mustermann"
-      },
-      {
-        "title": "Registereintrag",
-        "body": "Handelsregister: HRB 123456\nRegistergericht: Amtsgericht Musterstadt\nUSt-IdNr.: DE123456789"
+        "body": "E-Mail: info@katsumii.com\nWebsite: katsumii.com"
       },
       {
         "title": "Inhaltlich verantwortlich",
-        "body": "Max Mustermann, Anschrift wie oben."
+        "body": "Frederik Morbe (Anschrift wie oben) gemäß § 18 Abs. 2 MStV."
       }
     ]
   }
