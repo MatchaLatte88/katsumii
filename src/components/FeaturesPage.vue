@@ -1,478 +1,359 @@
 <template>
-  <div
-    :class="[
-      'relative overflow-x-hidden min-h-screen',
-      !isDark ? 'bg-slate-50 text-gray-900' : 'bg-slate-950 text-slate-100',
-    ]"
-  >
-    <KbBackground :pattern="bg" :isDark="isDark" />
-
-    <AppNav
-      :navigation="navigation"
-      :brand-title="t('common.brandTitle')"
-      :brand-subtitle="t('featuresPage.brandSubtitle')"
-      :brand-href="pagePath('app')"
-    />
-
-    <!-- ── HERO ─────────────────────────────────────────────────────── -->
-    <section class="relative overflow-hidden px-6 pb-0 pt-28 lg:px-10">
-      <div
-        v-if="isDark"
-        aria-hidden="true"
-        class="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full blur-[140px] bg-cyan-500/8"
-      />
-
-      <div class="relative mx-auto max-w-6xl">
-        <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <div class="max-w-2xl">
-            <p
-              class="hero-label text-sm font-semibold uppercase tracking-[0.2em]"
-              :class="!isDark ? 'text-teal-700' : 'text-cyan-400'"
-            >
-              {{ t('featuresPage.hero.label') }}
-            </p>
-            <h1
-              class="hero-title mt-4 text-5xl font-semibold tracking-[-0.02em] sm:text-6xl lg:text-7xl"
-              :class="!isDark ? 'text-gray-900' : 'text-slate-100'"
-            >
-              {{ t('featuresPage.hero.headlineA') }}<br />
-              <span :class="!isDark ? 'text-teal-600' : 'text-cyan-400'">{{ t('featuresPage.hero.headlineB') }}</span>
-            </h1>
-          </div>
-
-          <div class="hero-meta lg:max-w-xs lg:pb-2">
-            <p
-              class="text-sm leading-relaxed"
-              :class="!isDark ? 'text-gray-500' : 'text-slate-400'"
-            >
-              {{ t('featuresPage.hero.description') }}
-            </p>
-            <div class="mt-5 flex flex-wrap gap-2">
-              <span
-                v-for="tag in tm('featuresPage.hero.tags')"
-                :key="tag"
-                class="rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em]"
-                :class="!isDark
-                  ? 'border-teal-200 bg-teal-50 text-teal-700'
-                  : 'border-cyan-400/20 bg-cyan-400/8 text-cyan-300'"
-              >
-                {{ tag }}
-              </span>
-            </div>
-          </div>
+  <main ref="rootEl" class="v6-features">
+    <!-- HERO -->
+    <section class="v6ft-hero">
+      <div class="v6ft-hero-copy">
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('featuresPage.hero.label') }}</p>
+        <h1 class="v6-h1 v6-reveal">{{ featureHeadline }}<b class="v6-dot">.</b></h1>
+        <p class="v6ft-sub v6-reveal">{{ t('featuresPage.hero.description') }}</p>
+        <ul class="v6-card-chips v6ft-chips v6-reveal">
+          <li v-for="tag in heroTags" :key="tag">{{ tag }}</li>
+        </ul>
+        <div class="v6ft-actions v6-reveal">
+          <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-magnetic">{{ t('featuresPage.footerCta.primary') }} <span aria-hidden="true">→</span></RouterLink>
+          <RouterLink :to="`/${lang}/manual`" class="v6-quiet v6-magnetic">{{ t('featuresPage.footerCta.secondary') }}</RouterLink>
         </div>
+      </div>
+      <figure class="v6ft-shot v6-reveal">
+        <img
+          :src="asset(isDark ? 'Dashboard_dark.png' : 'Dashboard_light.png')"
+          :alt="t('featuresPage.alts.hero')"
+          width="2559" height="1599"
+          loading="eager" decoding="async"
+        />
+        <figcaption>{{ t('featuresPage.hero.windowLabel') }}</figcaption>
+      </figure>
+    </section>
 
-        <!-- Hero screenshot -->
-        <div
-          class="hero-screen mt-14 overflow-hidden rounded-t-[2rem] border-x border-t"
-          :class="!isDark ? 'border-gray-200' : 'border-blue-400/20'"
-        >
-          <div
-            class="flex items-center gap-1.5 border-b px-4 py-3"
-            :class="!isDark
-              ? 'border-gray-200 bg-gray-100'
-              : 'border-blue-400/15 bg-slate-900'"
-          >
-            <span class="h-2.5 w-2.5 rounded-full bg-red-400/70" />
-            <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/70" />
-            <span class="h-2.5 w-2.5 rounded-full bg-green-400/70" />
-            <span
-              class="ml-4 rounded-md px-10 py-1 text-[11px]"
-              :class="!isDark ? 'bg-white text-gray-400' : 'bg-slate-800 text-slate-500'"
-            >katsumii.app</span>
-          </div>
-          <img :src="assetUrl('Slide1.png')" :alt="t('featuresPage.alts.hero')" class="w-full" />
+    <!-- MODULES -->
+    <section class="v6ft-modules" :aria-label="t('featuresPage.nav.modules')">
+      <article v-for="(m, i) in modules" :key="m.title" class="v6-card v6ft-module v6-reveal">
+        <p class="v6ft-module-head">
+          <span class="v6ft-idx">{{ pad(i + 1) }}</span>
+          <span class="v6ft-kicker" :style="m.accent ? { color: isDark ? m.accent.dark : m.accent.light } : null">{{ m.kicker }}</span>
+        </p>
+        <h2>{{ m.title }}</h2>
+        <p class="v6ft-benefit">{{ m.benefit }}</p>
+        <ul>
+          <li v-for="point in m.points" :key="point">{{ point }}</li>
+        </ul>
+        <RouterLink v-if="m.path" :to="`/${lang}/${m.path}`" class="v6ft-module-link">
+          {{ t('featuresPage.cardLink') }} <span aria-hidden="true">→</span>
+        </RouterLink>
+      </article>
+    </section>
+
+    <!-- COCKPIT INDEX -->
+    <section class="v6ft-cockpit">
+      <div class="v6ft-cockpit-head">
+        <p class="v6-eyebrow v6-reveal"><i></i>Inside the cockpit</p>
+        <h2 class="v6-h2 v6-reveal">One workspace, every screen a trader needs.</h2>
+      </div>
+      <div class="v6ft-screens v6-reveal">
+        <div v-for="s in COCKPIT_SCREENS" :key="s.name">
+          <b>{{ s.name }}</b>
+          <span>{{ s.desc }}</span>
         </div>
       </div>
     </section>
 
-    <!-- ── STICKY FEATURE NAV ─────────────────────────────────────── -->
-    <div
-      class="feature-nav sticky top-0 z-10 overflow-x-auto border-b"
-      :class="!isDark
-        ? 'border-gray-200 bg-slate-50/90 backdrop-blur-md'
-        : 'border-slate-800/60 bg-slate-950/90 backdrop-blur-md'"
-    >
-      <div class="mx-auto flex max-w-6xl items-center px-6 lg:px-10">
-        <a
-          v-for="feature in features"
-          :key="feature.id"
-          :href="`#${feature.id}`"
-          class="nav-tab shrink-0 border-b-2 px-4 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-200"
-          :class="activeFeatureId === feature.id
-            ? !isDark
-              ? 'border-teal-700 text-teal-700'
-              : 'border-cyan-400 text-cyan-400'
-            : !isDark
-              ? 'border-transparent text-gray-400 hover:border-teal-500 hover:text-gray-700'
-              : 'border-transparent text-slate-500 hover:border-cyan-400 hover:text-slate-200'"
-        >
-          <span class="mr-1.5 opacity-40">{{ feature.num }}</span>{{ feature.eyebrow }}
-        </a>
-      </div>
-    </div>
-
-    <!-- ── FEATURE CHAPTERS ───────────────────────────────────────── -->
-    <section class="px-6 lg:px-10">
-      <div class="mx-auto max-w-6xl">
-        <article
-          v-for="(feature, i) in features"
-          :key="feature.id"
-          :id="feature.id"
-          class="feature-chapter py-20 lg:py-28"
-          :class="i < features.length - 1
-            ? !isDark ? 'border-b border-gray-100' : 'border-b border-slate-800/50'
-            : ''"
-          :data-index="i"
-        >
-          <div
-            class="flex flex-col gap-10 lg:grid lg:gap-16"
-            :class="i % 2 === 0 ? 'lg:grid-cols-[1fr_1.6fr]' : 'lg:grid-cols-[1.6fr_1fr]'"
-          >
-            <!-- Text block -->
-            <div
-              class="chapter-text flex flex-col justify-center"
-              :class="i % 2 === 0 ? 'order-2 lg:order-1' : 'order-2 lg:order-2'"
-            >
-              <div class="flex items-center gap-3">
-                <span
-                  class="font-mono text-[11px] font-bold tracking-[0.2em] opacity-40"
-                  :class="!isDark ? 'text-gray-900' : 'text-slate-100'"
-                >{{ feature.num }}</span>
-                <div class="h-px max-w-[32px] flex-1" :class="!isDark ? 'bg-gray-300' : 'bg-slate-700'" />
-                <span
-                  class="text-xs font-semibold uppercase tracking-[0.16em]"
-                  :class="!isDark ? 'text-teal-700' : 'text-cyan-400'"
-                >{{ feature.eyebrow }}</span>
-              </div>
-
-              <h2
-                class="mt-5 text-3xl font-semibold tracking-[-0.02em] sm:text-4xl"
-                :class="!isDark ? 'text-gray-900' : 'text-slate-100'"
-              >
-                {{ feature.title }}
-              </h2>
-
-              <p
-                class="mt-5 text-[0.9375rem] leading-relaxed"
-                :class="!isDark ? 'text-gray-500' : 'text-slate-400'"
-              >
-                {{ feature.description }}
-              </p>
-
-              <ul class="mt-8 space-y-3">
-                <li v-for="point in feature.points" :key="point" class="flex items-start gap-3">
-                  <span
-                    class="mt-[7px] h-1 w-4 shrink-0 rounded-full"
-                    :class="!isDark ? 'bg-teal-400' : 'bg-cyan-500'"
-                  />
-                  <span
-                    class="text-sm leading-relaxed"
-                    :class="!isDark ? 'text-gray-600' : 'text-slate-300'"
-                  >{{ point }}</span>
-                </li>
-              </ul>
-
-              <div class="mt-8">
-                <span
-                  class="inline-flex rounded-full border px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em]"
-                  :class="!isDark
-                    ? 'border-teal-200 bg-teal-50 text-teal-600'
-                    : 'border-cyan-400/20 bg-cyan-400/8 text-cyan-400'"
-                >{{ feature.badge }}</span>
-              </div>
-            </div>
-
-            <!-- Screenshot block -->
-            <div
-              class="chapter-image relative"
-              :class="i % 2 === 0 ? 'order-1 lg:order-2' : 'order-1 lg:order-1'"
-            >
-              <span
-                aria-hidden="true"
-                class="pointer-events-none absolute -top-6 select-none font-mono text-[7rem] font-black leading-none opacity-[0.04] lg:-top-10 lg:text-[10rem]"
-                :class="[
-                  i % 2 === 0 ? '-right-4 lg:-right-6' : '-left-4 lg:-left-6',
-                  !isDark ? 'text-gray-900' : 'text-slate-100',
-                ]"
-              >{{ feature.num }}</span>
-
-              <div
-                class="k-main-tile k-glass overflow-hidden border transition-all duration-500"
-                :class="!isDark
-                  ? 'border-gray-200 shadow-[0_32px_80px_-20px_rgba(15,23,42,0.18)]'
-                  : 'border-blue-400/15 shadow-[0_32px_80px_-20px_rgba(0,0,0,0.7)]'"
-              >
-                <img :src="assetUrl(feature.image)" :alt="feature.alt" class="w-full" loading="lazy" />
-              </div>
-
-              <div
-                class="absolute -bottom-3 right-4 rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em]"
-                :class="!isDark
-                  ? 'border-gray-200 bg-white text-gray-400 shadow-sm'
-                  : 'border-slate-700/80 bg-slate-900 text-slate-500'"
-              >
-                {{ t('featuresPage.liveScreen') }}
-              </div>
-            </div>
-          </div>
-        </article>
+    <!-- CTA -->
+    <section class="v6ft-cta">
+      <p class="v6-eyebrow v6-reveal" style="justify-content: center"><i></i>{{ t('featuresPage.footerCta.label') }}</p>
+      <h2 class="v6ft-cta-title v6-reveal">{{ t('featuresPage.footerCta.headline') }}</h2>
+      <p class="v6ft-cta-sub v6-reveal">{{ t('featuresPage.footerCta.description') }}</p>
+      <div class="v6ft-cta-actions v6-reveal">
+        <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-btn-lg v6-magnetic">{{ t('featuresPage.footerCta.primary') }} <span aria-hidden="true">→</span></RouterLink>
+        <RouterLink :to="`/${lang}/manual`" class="v6-quiet">{{ t('featuresPage.footerCta.secondary') }} <span aria-hidden="true">→</span></RouterLink>
       </div>
     </section>
-
-    <!-- ── CTA ───────────────────────────────────────────────────── -->
-    <section class="px-6 pb-24 pt-10 lg:px-10">
-      <div class="mx-auto max-w-6xl">
-        <div
-          class="cta-block k-main-tile k-glass relative overflow-hidden border px-8 py-16 text-center sm:px-12"
-          :class="!isDark
-            ? 'border-gray-200 bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.1)]'
-            : 'border-slate-800/60 bg-slate-900/60 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]'"
-        >
-          <div
-            v-if="isDark"
-            aria-hidden="true"
-            class="pointer-events-none absolute left-1/2 top-0 h-64 w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px] bg-cyan-500/6"
-          />
-          <div class="relative">
-            <p
-              class="text-xs font-semibold uppercase tracking-[0.2em]"
-              :class="!isDark ? 'text-teal-700' : 'text-cyan-400'"
-            >
-              {{ t('featuresPage.cta.label') }}
-            </p>
-            <h3
-              class="mt-4 text-4xl font-semibold tracking-[-0.02em] sm:text-5xl"
-              :class="!isDark ? 'text-gray-900' : 'text-slate-100'"
-            >
-              {{ t('featuresPage.cta.headline') }}
-            </h3>
-            <p
-              class="mx-auto mt-5 max-w-lg text-[0.9375rem] leading-relaxed"
-              :class="!isDark ? 'text-gray-500' : 'text-slate-400'"
-            >
-              {{ t('featuresPage.cta.description') }}
-            </p>
-            <div class="mt-9 flex flex-wrap justify-center gap-3">
-              <RouterLink
-                :to="pagePath('pricing')"
-                class="rounded-full px-7 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
-                :class="!isDark
-                  ? 'bg-teal-700 text-white hover:bg-teal-600 hover:shadow-lg'
-                  : 'bg-cyan-400 text-slate-950 hover:bg-cyan-300 hover:shadow-[0_10px_40px_-10px_rgba(34,211,238,0.5)]'"
-              >
-                {{ t('featuresPage.cta.buyLicense') }}
-              </RouterLink>
-              <RouterLink
-                :to="pagePath('app')"
-                class="rounded-full border px-7 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
-                :class="!isDark
-                  ? 'border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50'
-                  : 'border-slate-700/80 bg-transparent text-slate-300 hover:border-slate-500 hover:bg-slate-800/50'"
-              >
-                {{ t('featuresPage.cta.tryDemo') }}
-              </RouterLink>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── FOOTER ─────────────────────────────────────────────────── -->
-    <footer
-      class="relative border-t px-6 py-5 lg:px-10"
-      :class="!isDark ? 'border-gray-200/90 bg-white/88' : 'border-blue-400/20 bg-slate-950/95'"
-    >
-      <div
-        class="mx-auto flex max-w-6xl items-center justify-between text-xs"
-        :class="!isDark ? 'text-gray-400' : 'text-slate-500'"
-      >
-        <span>&copy; {{ year }} Katsumii</span>
-        <div class="flex gap-5">
-          <RouterLink
-            :to="pagePath('app')"
-            class="transition-colors duration-150"
-            :class="!isDark ? 'hover:text-gray-700' : 'hover:text-slate-300'"
-          >{{ t('featuresPage.nav.home') }}</RouterLink>
-          <RouterLink
-            :to="pagePath('pricing')"
-            class="transition-colors duration-150"
-            :class="!isDark ? 'hover:text-gray-700' : 'hover:text-slate-300'"
-          >{{ t('featuresPage.nav.pricing') }}</RouterLink>
-          <RouterLink
-            :to="pagePath('faq')"
-            class="transition-colors duration-150"
-            :class="!isDark ? 'hover:text-gray-700' : 'hover:text-slate-300'"
-          >{{ t('featuresPage.nav.faq') }}</RouterLink>
-        </div>
-      </div>
-    </footer>
-  </div>
+  </main>
 </template>
 
 <script setup>
-import { computed, inject, onMounted, ref } from "vue"
+import { computed, inject, onBeforeUnmount, onMounted, ref } from "vue"
 import { useI18n } from "vue-i18n"
-import AppNav from "./AppNav.vue"
-import KbBackground from "../backgrounds/KbBackground.vue"
-import { useSiteNavigation } from "../composables/useSiteNavigation.js"
-import { pagePath } from "../utils/routes.js"
+import { useRoute } from "vue-router"
+import { initMagnetic, initV6Reveals } from "../v6/motion.js"
+import { normalizeLocale } from "../utils/routes.js"
 
 const { t, tm } = useI18n()
+const isDark = inject("isDark")
 
 const baseUrl = import.meta.env.BASE_URL
-const assetUrl = (path) => `${baseUrl}${path.replace(/^\/+/, "")}`
-const year = new Date().getFullYear()
+const asset = (path) => `${baseUrl}${path}`
+const pad = (n) => String(n).padStart(2, "0")
+const stripTerminalDot = (value) => String(value ?? "").replace(/[.。]\s*$/, "")
 
-const navigation = useSiteNavigation()
+const route = useRoute()
+const lang = computed(() => {
+  const raw = Array.isArray(route.params.locale) ? route.params.locale[0] : route.params.locale
+  return normalizeLocale(raw)
+})
 
-const FEATURE_STATIC = [
-  { id: "journaling", num: "01", image: "Slide3.png", altKey: "featuresPage.alts.journaling" },
-  { id: "accounts",   num: "02", image: "Slide4.png", altKey: "featuresPage.alts.accounts" },
-  { id: "analytics",  num: "03", image: "Slide2.png", altKey: "featuresPage.alts.analytics" },
-  { id: "calendar",   num: "04", image: "Slide5.png", altKey: "featuresPage.alts.calendar" },
+/* deep-dive routes + discipline accents per module position (mirrors V6_ACCENTS) */
+const MODULE_META = [
+  { path: "prop-firm-challenges", accent: { dark: "#facc15", light: "#ab7503" } },
+  { path: "funded-accounts",      accent: { dark: "#22d3ee", light: "#0369a1" } },
+  { path: "personal-trading",     accent: { dark: "#4ade80", light: "#047857" } },
+  { path: "backtesting",          accent: { dark: "#818cf8", light: "#6d28d9" } },
+  { path: "analytics-reviews" },
+  {},
+  {},
+  { path: "local-offline" },
 ]
 
-const features = computed(() =>
-  FEATURE_STATIC.map((s, i) => ({ ...s, alt: t(s.altKey), ...tm('featuresPage.features')[i] }))
-)
+/* primary app screens — see Katsumii_overview.md */
+const COCKPIT_SCREENS = [
+  { name: "Today",     desc: "Daily command center: P&L, streaks, loss-limit status" },
+  { name: "Dashboard", desc: "Net P&L hero, execution quality, edge drivers, equity" },
+  { name: "Accounts",  desc: "Health board with MLL/DLL distance and payout history" },
+  { name: "Trades",    desc: "Full trade log with gallery view and screenshot viewer" },
+  { name: "Calendar",  desc: "Monthly P&L rhythm with day modals and journal markers" },
+  { name: "Analysis",  desc: "Edge summary, diagnostics lab, deep breakdown tabs" },
+  { name: "Journal",   desc: "Daily rich-text reflections with per-day trade stats" },
+  { name: "Sessions",  desc: "Backtest sessions with hypotheses and sparklines" },
+  { name: "Imports",   desc: "CSV wizard, FXReplay import, broker API sync" },
+  { name: "Reports",   desc: "Self-contained HTML performance reports, offline" },
+  { name: "Tools",     desc: "Position size, R:R visualizer, equity simulator" },
+  { name: "Managers",  desc: "Accounts, strategies, assets, tags, and presets" },
+]
 
-const activeFeatureId = ref(null)
+const heroTags = computed(() => {
+  const raw = tm("featuresPage.hero.tags")
+  return Array.isArray(raw) ? raw : []
+})
 
-const isDark = inject("isDark")
-const bg = inject("bg")
+const featureHeadline = computed(() => stripTerminalDot(t("featuresPage.hero.headline")))
 
-const markVisible = (el) => {
-  el.dataset.revealed = "true"
-  el.classList.add("is-visible")
-}
+const modules = computed(() => {
+  const raw = tm("featuresPage.modules")
+  if (!Array.isArray(raw)) return []
+  return raw.map((m, i) => ({ ...m, ...MODULE_META[i] }))
+})
+
+const rootEl = ref(null)
+let cleanups = []
 
 onMounted(() => {
-  // Hero entrance
-  const heroEls = [
-    [".hero-label", 0],
-    [".hero-title", 80],
-    [".hero-meta", 180],
-    [".hero-screen", 300],
-    [".feature-nav", 480],
-  ]
-  heroEls.forEach(([sel, delay]) => {
-    const el = document.querySelector(sel)
-    if (el) setTimeout(() => markVisible(el), delay)
-  })
+  cleanups.push(initV6Reveals(rootEl.value))
+  cleanups.push(initMagnetic(rootEl.value))
+})
 
-  // Chapter scroll-reveal
-  const chapterObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return
-        const text = entry.target.querySelector(".chapter-text")
-        const image = entry.target.querySelector(".chapter-image")
-        setTimeout(() => text && markVisible(text), 0)
-        setTimeout(() => image && markVisible(image), 130)
-        chapterObserver.unobserve(entry.target)
-      })
-    },
-    { threshold: 0.1 }
-  )
-  document.querySelectorAll(".feature-chapter").forEach((el) => chapterObserver.observe(el))
-
-  // CTA reveal
-  const ctaObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          markVisible(entry.target)
-          ctaObserver.unobserve(entry.target)
-        }
-      })
-    },
-    { threshold: 0.15 }
-  )
-  const cta = document.querySelector(".cta-block")
-  if (cta) ctaObserver.observe(cta)
-
-  // Active nav highlight
-  const navObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) activeFeatureId.value = entry.target.id
-      })
-    },
-    { threshold: 0.45 }
-  )
-  document.querySelectorAll(".feature-chapter").forEach((el) => navObserver.observe(el))
+onBeforeUnmount(() => {
+  cleanups.forEach((off) => off && off())
+  cleanups = []
 })
 </script>
 
 <style scoped>
-/* ── Hero entrance ─────────────────────────────────────────────── */
-.hero-label,
-.hero-title,
-.hero-meta,
-.feature-nav {
-  opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+/* Feature hub layout — shared tokens/chrome live in src/styles/v6.css */
+.v6-features { position: relative; z-index: 1; }
+
+/* ── hero ── */
+.v6ft-hero {
+  position: relative;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(8rem, 18vh, 11rem) clamp(1.1rem, 4vw, 3rem) clamp(3rem, 8vh, 5rem);
+  display: grid;
+  grid-template-columns: minmax(320px, 5fr) 6fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+/* soft scrim in page-bg color so the particle river stays quiet behind the copy
+   (same approach as the landing hero) */
+.v6ft-hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 48% 46% at 24% 55%,
+    color-mix(in srgb, var(--v6-bg) 80%, transparent) 42%,
+    transparent 100%
+  );
+}
+.v6ft-hero .v6-h1 { font-size: clamp(2.5rem, 5.4vw, 4.4rem); }
+.v6ft-sub { max-width: 34rem; color: var(--v6-muted); }
+.v6ft-chips { margin-top: 1.6rem; }
+.v6ft-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 2.2rem;
+}
+.v6ft-shot {
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--v6-line-strong);
+  background: var(--v6-bg-soft);
+  box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.8), 0 0 60px -20px var(--v6-line-strong);
+}
+.v6.light .v6ft-shot {
+  box-shadow: 0 30px 70px -32px rgba(20, 60, 50, 0.45), 0 0 50px -24px var(--v6-line-strong);
+}
+.v6ft-shot img { display: block; width: 100%; height: auto; }
+.v6ft-shot figcaption {
+  padding: 0.7rem 1.1rem;
+  border-top: 1px solid var(--v6-line);
+  font-family: var(--v6-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--v6-faint);
 }
 
-.hero-screen {
-  opacity: 0;
-  transform: translateY(36px) scale(0.985);
-  transition:
-    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+/* ── modules ── */
+.v6ft-modules {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(1rem, 4vh, 2.5rem) clamp(1.1rem, 4vw, 3rem) clamp(3rem, 8vh, 5rem);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.1rem;
+}
+.v6ft-module { display: flex; flex-direction: column; }
+.v6ft-module-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin: 0;
+  font-family: var(--v6-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.v6ft-idx { color: var(--v6-faint); font-variant-numeric: tabular-nums; }
+.v6ft-kicker { color: var(--v6-gold); }
+.v6ft-module h2 {
+  margin: 0.8rem 0 0.5rem;
+  font-family: var(--v6-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.015em;
+  color: var(--v6-ink);
+}
+.v6ft-benefit { color: var(--v6-muted); font-size: 0.92rem; margin: 0 0 1rem; }
+.v6ft-module ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  flex: 1;
+}
+.v6ft-module ul li {
+  position: relative;
+  padding-left: 1.1rem;
+  color: var(--v6-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.v6ft-module ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.58em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--v6-gold);
+  opacity: 0.7;
+}
+.v6ft-module-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.2rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--v6-line);
+  text-decoration: none;
+  font-family: var(--v6-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--v6-faint);
+  transition: color 0.2s ease;
+}
+.v6ft-module-link:hover, .v6ft-module-link:focus-visible { color: var(--v6-gold); }
+
+/* ── cockpit index ── */
+.v6ft-cockpit {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vh, 4rem) clamp(1.1rem, 4vw, 3rem) clamp(3rem, 8vh, 5rem);
+}
+.v6ft-cockpit-head { max-width: 40rem; margin-bottom: 2.2rem; }
+.v6ft-screens {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid var(--v6-line);
+  border-radius: 18px;
+  background: linear-gradient(165deg, var(--v6-panel), rgba(12, 21, 18, 0.22));
+  overflow: hidden;
+}
+.v6.light .v6ft-screens {
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.72), rgba(238, 244, 240, 0.4));
+}
+.v6ft-screens div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem clamp(1.2rem, 2.4vw, 1.6rem);
+  border-bottom: 1px solid var(--v6-line);
+}
+.v6ft-screens div:nth-child(odd) { border-right: 1px solid var(--v6-line); }
+.v6ft-screens div:nth-last-child(-n + 2) { border-bottom: 0; }
+.v6ft-screens b {
+  font-family: var(--v6-mono);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--v6-gold);
+}
+.v6ft-screens span { color: var(--v6-muted); font-size: 0.86rem; }
+
+/* ── cta ── */
+.v6ft-cta {
+  text-align: center;
+  padding: clamp(3rem, 9vh, 6rem) clamp(1.1rem, 4vw, 3rem) clamp(6rem, 15vh, 10rem);
+}
+.v6ft-cta-title {
+  font-family: var(--v6-display);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 6vw, 4.4rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 1.4rem 0 1rem;
+}
+.v6ft-cta-sub { color: var(--v6-muted); max-width: 34rem; margin: 0 auto 2.2rem; }
+.v6ft-cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.6rem;
 }
 
-.feature-nav { transform: none; }
-
-.hero-label.is-visible,
-.hero-title.is-visible,
-.hero-meta.is-visible,
-.feature-nav.is-visible,
-.hero-label[data-revealed="true"],
-.hero-title[data-revealed="true"],
-.hero-meta[data-revealed="true"],
-.feature-nav[data-revealed="true"] { opacity: 1; transform: translateY(0); }
-
-.hero-screen.is-visible,
-.hero-screen[data-revealed="true"] { opacity: 1; transform: translateY(0) scale(1); }
-
-/* ── Chapter scroll-reveal ──────────────────────────────────────── */
-.chapter-text {
-  opacity: 0;
-  transform: translateX(-24px);
-  transition:
-    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+/* ── responsive ── */
+@media (max-width: 900px) {
+  .v6ft-hero { grid-template-columns: 1fr; padding-top: 7rem; }
+  .v6ft-modules { grid-template-columns: 1fr; }
+  .v6ft-screens { grid-template-columns: 1fr; }
+  .v6ft-screens div:nth-child(odd) { border-right: 0; }
+  .v6ft-screens div:nth-last-child(-n + 2) { border-bottom: 1px solid var(--v6-line); }
+  .v6ft-screens div:last-child { border-bottom: 0; }
 }
-
-.chapter-image {
-  opacity: 0;
-  transform: translateX(24px);
-  transition:
-    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+@media (max-width: 420px) {
+  .v6ft-actions,
+  .v6ft-cta-actions { display: grid; grid-template-columns: 1fr; gap: 0.45rem; }
+  .v6ft-actions .v6-quiet,
+  .v6ft-cta-actions .v6-quiet { justify-content: center; }
 }
-
-.feature-chapter:nth-child(even) .chapter-text  { transform: translateX(24px); }
-.feature-chapter:nth-child(even) .chapter-image { transform: translateX(-24px); }
-
-.chapter-text.is-visible,
-.chapter-image.is-visible,
-.chapter-text[data-revealed="true"],
-.chapter-image[data-revealed="true"] { opacity: 1; transform: translateX(0); }
-
-/* ── CTA ──────────────────────────────────────────────────────── */
-.cta-block {
-  opacity: 0;
-  transform: translateY(28px);
-  transition:
-    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.cta-block.is-visible,
-.cta-block[data-revealed="true"] { opacity: 1; transform: translateY(0); }
 </style>

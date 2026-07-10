@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KATSUMII SEO Audit</title>
+  <meta name="description" content="Technischer SEO Audit und direkt umsetzbarer Optimierungsplan für die KATSUMII Website.">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #162019;
+      --muted: #5c685f;
+      --paper: #f7f2e8;
+      --paper-2: #fffaf0;
+      --line: #d7cbb8;
+      --green: #245a42;
+      --green-2: #2f7a59;
+      --gold: #b9852d;
+      --red: #9e3d32;
+      --blue: #355f7d;
+      --shadow: 0 24px 80px rgba(22, 32, 25, .14);
+      --radius: 10px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(185, 133, 45, .18), transparent 28rem),
+        radial-gradient(circle at 90% 18%, rgba(47, 122, 89, .13), transparent 30rem),
+        linear-gradient(135deg, #f7f2e8 0%, #fffaf0 44%, #eef3ed 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .28;
+      background-image:
+        linear-gradient(rgba(22, 32, 25, .055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 32, 25, .04) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, #000, transparent 75%);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .deck {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 28px 0 72px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 0;
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font: 700 13px/1 ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(36, 90, 66, .38);
+      border-radius: 50%;
+      color: var(--green);
+      font-weight: 900;
+      letter-spacing: 0;
+      background: rgba(255, 250, 240, .75);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+      font: 650 12px/1 ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+    }
+
+    .nav a {
+      text-decoration: none;
+      padding: 9px 11px;
+      border: 1px solid rgba(36, 90, 66, .18);
+      border-radius: 999px;
+      background: rgba(255, 250, 240, .62);
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      outline: none;
+      border-color: rgba(36, 90, 66, .55);
+      background: rgba(255, 250, 240, .95);
+    }
+
+    .slide {
+      position: relative;
+      min-height: calc(100vh - 76px);
+      display: grid;
+      align-content: center;
+      padding: clamp(42px, 7vw, 86px);
+      margin: 26px 0;
+      border: 1px solid rgba(22, 32, 25, .12);
+      border-radius: var(--radius);
+      background: rgba(255, 250, 240, .82);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .slide::after {
+      content: attr(data-slide);
+      position: absolute;
+      right: 28px;
+      bottom: 20px;
+      color: rgba(22, 32, 25, .22);
+      font: 800 12px/1 ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .slide.compact {
+      min-height: auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--green);
+      font: 800 12px/1.2 ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 930px;
+      font-size: clamp(56px, 9vw, 120px);
+      line-height: .88;
+      font-weight: 760;
+    }
+
+    h2 {
+      max-width: 870px;
+      font-size: clamp(36px, 5.6vw, 72px);
+      line-height: .94;
+      font-weight: 740;
+    }
+
+    h3 {
+      font-size: clamp(20px, 2.2vw, 30px);
+      line-height: 1;
+    }
+
+    p {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: clamp(18px, 1.7vw, 24px);
+      line-height: 1.45;
+    }
+
+    .lead {
+      color: #263229;
+      font-size: clamp(21px, 2.1vw, 31px);
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 34px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 36px;
+      padding: 8px 12px;
+      border: 1px solid rgba(36, 90, 66, .22);
+      border-radius: 999px;
+      color: #1e3227;
+      background: rgba(255, 255, 255, .5);
+      font: 700 12px/1.1 ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .scoreboard {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 38px;
+    }
+
+    .score {
+      padding: 22px;
+      border: 1px solid rgba(22, 32, 25, .12);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .64), rgba(255, 255, 255, .24));
+    }
+
+    .score strong {
+      display: block;
+      color: var(--green);
+      font-size: clamp(34px, 4.5vw, 58px);
+      line-height: .9;
+    }
+
+    .score span {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font: 700 13px/1.35 ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      padding: 24px;
+      border: 1px solid rgba(22, 32, 25, .13);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .42);
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      font: 520 16px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+    }
+
+    .card p {
+      margin-top: 12px;
+    }
+
+    .card ul {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .card li {
+      position: relative;
+      padding-left: 18px;
+      margin: 10px 0;
+    }
+
+    .card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .65em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green-2);
+    }
+
+    .tag {
+      display: inline-flex;
+      margin-bottom: 14px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--green);
+      font: 800 11px/1 ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .tag.red {
+      background: var(--red);
+    }
+
+    .tag.gold {
+      background: var(--gold);
+    }
+
+    .tag.blue {
+      background: var(--blue);
+    }
+
+    .audit-table {
+      width: 100%;
+      margin-top: 34px;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid rgba(22, 32, 25, .13);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .45);
+      font: 530 15px/1.45 ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+    }
+
+    .audit-table th,
+    .audit-table td {
+      padding: 16px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid rgba(22, 32, 25, .1);
+    }
+
+    .audit-table th {
+      color: #203327;
+      background: rgba(36, 90, 66, .08);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .audit-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .priority {
+      display: inline-flex;
+      min-width: 44px;
+      justify-content: center;
+      padding: 5px 8px;
+      border-radius: 999px;
+      color: #fff;
+      font-weight: 850;
+      font-size: 12px;
+      letter-spacing: .06em;
+    }
+
+    .p0 {
+      background: var(--red);
+    }
+
+    .p1 {
+      background: var(--gold);
+    }
+
+    .p2 {
+      background: var(--blue);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+      margin-top: 36px;
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 62px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 22px;
+      border: 1px solid rgba(22, 32, 25, .12);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .42);
+      counter-increment: step;
+    }
+
+    .step::before {
+      content: counter(step, decimal-leading-zero);
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--green);
+      font: 850 15px/1 ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+    }
+
+    .step p {
+      margin-top: 8px;
+      font: 520 16px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+    }
+
+    .quote {
+      max-width: 940px;
+      margin: 34px 0 0;
+      padding-left: 26px;
+      border-left: 5px solid var(--green);
+      color: #213329;
+      font-size: clamp(28px, 3.6vw, 48px);
+      line-height: 1.08;
+    }
+
+    .source-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 30px;
+      padding: 0;
+      list-style: none;
+      font: 560 16px/1.45 ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+    }
+
+    .source-list a {
+      color: var(--green);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
+
+    .small {
+      max-width: none;
+      color: var(--muted);
+      font: 540 14px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+    }
+
+    .print-note {
+      margin-top: 26px;
+      color: var(--muted);
+      font: 600 13px/1.45 ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+    }
+
+    @media (max-width: 860px) {
+      .deck {
+        width: min(100% - 24px, var(--max));
+        padding-top: 12px;
+      }
+
+      .topbar {
+        position: static;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .slide {
+        min-height: auto;
+        padding: 34px 22px 58px;
+      }
+
+      .scoreboard,
+      .grid,
+      .grid.two {
+        grid-template-columns: 1fr;
+      }
+
+      .audit-table,
+      .audit-table tbody,
+      .audit-table tr,
+      .audit-table td {
+        display: block;
+      }
+
+      .audit-table thead {
+        display: none;
+      }
+
+      .audit-table tr {
+        border-bottom: 1px solid rgba(22, 32, 25, .13);
+      }
+
+      .audit-table td {
+        border-bottom: 0;
+        padding: 12px 16px;
+      }
+
+      .audit-table td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 5px;
+        color: var(--green);
+        font-size: 11px;
+        font-weight: 850;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+
+      .step {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      body::before,
+      .topbar {
+        display: none;
+      }
+
+      .deck {
+        width: 100%;
+        padding: 0;
+      }
+
+      .slide {
+        min-height: 100vh;
+        break-after: page;
+        box-shadow: none;
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <header class="topbar" aria-label="Präsentationsnavigation">
+      <div class="brand"><span class="brand-mark">K</span> KATSUMII SEO Audit</div>
+      <nav class="nav">
+        <a href="#summary">Summary</a>
+        <a href="#findings">Findings</a>
+        <a href="#plan">Plan</a>
+        <a href="#proof">Nachweise</a>
+      </nav>
+    </header>
+
+    <section id="summary" class="slide" data-slide="01">
+      <p class="eyebrow">SEO Audit · Juli 2026</p>
+      <h1>KATSUMII ist nah dran, aber noch nicht sauber indexierbar.</h1>
+      <p class="lead">Die Basis ist stark: lokalisierte Metadaten, Sitemap, Robots, Canonicals, Hreflang, Alt-Texte und strukturierte Daten sind vorhanden. Der größte Hebel liegt jetzt in Crawl-Sicherheit, echter statischer HTML-Ausgabe und konsistenter Internationalisierung.</p>
+      <div class="meta-row">
+        <span class="pill">Vue 3 / Vite</span>
+        <span class="pill">4 Locales</span>
+        <span class="pill">60 Sitemap URLs</span>
+        <span class="pill">Audit Fokus: direkt implementierbar</span>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="02">
+      <p class="eyebrow">Kurzurteil</p>
+      <h2>Das Risiko ist nicht Content-Mangel, sondern technische Verlässlichkeit.</h2>
+      <div class="scoreboard" aria-label="SEO Kurzbewertung">
+        <div class="score">
+          <strong>Gut</strong>
+          <span>Meta-Titel, Descriptions, Hreflang und Sitemap sind als System angelegt.</span>
+        </div>
+        <div class="score">
+          <strong>P0</strong>
+          <span>Der generierte HTML-Body bleibt für Bots ohne JavaScript weitgehend leer.</span>
+        </div>
+        <div class="score">
+          <strong>P0</strong>
+          <span>Trailing-Slash URLs und Canonicals zeigen aktuell auf unterschiedliche Formen.</span>
+        </div>
+        <div class="score">
+          <strong>P1</strong>
+          <span>ES und zh-TW sind auf Deep-Dive-Seiten noch nicht voll lokalisiert.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide compact" data-slide="03">
+      <p class="eyebrow">Was bereits solide ist</p>
+      <h2>Die Website hat ein gutes SEO-Gerüst.</h2>
+      <div class="grid">
+        <article class="card">
+          <span class="tag">Indexing</span>
+          <h3>Meta-Basis vorhanden</h3>
+          <ul>
+            <li>Pro Route gibt es Titel, Description, Canonical und Robots-Meta.</li>
+            <li>Indexierbare Routen werden in der Sitemap ausgegeben.</li>
+            <li>404- und Utility-Seiten nutzen noindex.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag">International</span>
+          <h3>Hreflang-Struktur</h3>
+          <ul>
+            <li>Deutsch, Englisch, Spanisch und zh-TW sind technisch vorgesehen.</li>
+            <li>Die Language-Switch-Logik ist schon eine brauchbare Grundlage.</li>
+            <li>x-default kann aus dem gleichen Routensystem abgeleitet werden.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag">Semantik</span>
+          <h3>Content-Signale</h3>
+          <ul>
+            <li>Live-Seiten haben H1/H2-Struktur.</li>
+            <li>Bilder haben Alt-Texte.</li>
+            <li>JSON-LD existiert für Organisation, Website, WebPage und SoftwareApplication.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="findings" class="slide compact" data-slide="04">
+      <p class="eyebrow">Priorisierte Findings</p>
+      <h2>Die wichtigsten Baustellen, sortiert nach SEO-Wirkung.</h2>
+      <table class="audit-table">
+        <thead>
+          <tr>
+            <th>Priorität</th>
+            <th>Finding</th>
+            <th>Impact</th>
+            <th>Direkte Optimierung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Priorität"><span class="priority p0">P0</span></td>
+            <td data-label="Finding">Prerender erzeugt Head-Tags, aber keinen echten Seiteninhalt im HTML.</td>
+            <td data-label="Impact">Bots, Link-Preview-Systeme und schwache Renderer sehen zu wenig verwertbaren Content.</td>
+            <td data-label="Direkte Optimierung">Full static rendering für alle indexierbaren Locale-Routen.</td>
+          </tr>
+          <tr>
+            <td data-label="Priorität"><span class="priority p0">P0</span></td>
+            <td data-label="Finding">Live-URLs enden mit Slash, Canonicals und Sitemap zeigen ohne Slash.</td>
+            <td data-label="Impact">Duplicate-Signale und Crawl-Budget-Verlust durch uneinheitliche URL-Form.</td>
+            <td data-label="Direkte Optimierung">Eine URL-Policy definieren und in Router, Canonical, Hreflang, Sitemap und internen Links erzwingen.</td>
+          </tr>
+          <tr>
+            <td data-label="Priorität"><span class="priority p0">P0</span></td>
+            <td data-label="Finding">404.html leitet über app.html?path=... statt eine klare statische 404 auszuliefern.</td>
+            <td data-label="Impact">Soft-404-Risiko und unklare Crawling-Signale.</td>
+            <td data-label="Direkte Optimierung">Statische 404 mit noindex, ohne Canonical, mit hilfreichen Links.</td>
+          </tr>
+          <tr>
+            <td data-label="Priorität"><span class="priority p1">P1</span></td>
+            <td data-label="Finding">ES und zh-TW fehlen auf mehreren Deep-Dive-Seiten oder fallen auf Englisch zurück.</td>
+            <td data-label="Impact">Hreflang kann qualitativ schwach wirken, wenn Alternates nicht gleichwertig lokalisiert sind.</td>
+            <td data-label="Direkte Optimierung">Fehlende Locale-Keys ergänzen oder nicht übersetzte Routen vorerst aus Sitemap/Hreflang nehmen.</td>
+          </tr>
+          <tr>
+            <td data-label="Priorität"><span class="priority p1">P1</span></td>
+            <td data-label="Finding">Einige Descriptions sind mit ca. 174 bis 191 Zeichen zu lang.</td>
+            <td data-label="Impact">SERP-Snippets werden häufig gekürzt und verlieren Fokus.</td>
+            <td data-label="Direkte Optimierung">Descriptions auf ca. 140 bis 160 Zeichen kürzen, mit sauberer Suchintention je Seite.</td>
+          </tr>
+          <tr>
+            <td data-label="Priorität"><span class="priority p1">P1</span></td>
+            <td data-label="Finding">SoftwareApplication Schema ist vorhanden, aber nicht rich-result-vollständig.</td>
+            <td data-label="Impact">Rich-Result-Chancen bleiben liegen.</td>
+            <td data-label="Direkte Optimierung">offers ergänzen und Bewertungen nur einbauen, falls echte Reviews vorhanden sind.</td>
+          </tr>
+          <tr>
+            <td data-label="Priorität"><span class="priority p1">P1</span></td>
+            <td data-label="Finding">Mehrere große PNGs und schwere JS-Module können LCP und INP belasten.</td>
+            <td data-label="Impact">Core Web Vitals und mobile UX können leiden.</td>
+            <td data-label="Direkte Optimierung">AVIF/WebP, srcset, Lazy Loading, WebGL-Defer und Bundle-Splitting.</td>
+          </tr>
+          <tr>
+            <td data-label="Priorität"><span class="priority p2">P2</span></td>
+            <td data-label="Finding">Sitemap nutzt hartes lastmod sowie priority/changefreq.</td>
+            <td data-label="Impact">priority/changefreq werden ignoriert, falsches lastmod kann Vertrauen kosten.</td>
+            <td data-label="Direkte Optimierung">priority/changefreq entfernen, lastmod nur exakt und automatisiert setzen.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="plan" class="slide compact" data-slide="05">
+      <p class="eyebrow">Implementierungsplan</p>
+      <h2>Alles, was direkt in der Codebase machbar ist.</h2>
+      <div class="timeline">
+        <article class="step">
+          <div>
+            <h3>URL-Signale vereinheitlichen</h3>
+            <p>Eine zentrale Route-Metadata-Quelle für Canonical, Hreflang, Sitemap und interne Links. Trailing-Slash-Form festlegen und überall identisch ausgeben.</p>
+          </div>
+        </article>
+        <article class="step">
+          <div>
+            <h3>Echtes statisches HTML generieren</h3>
+            <p>Alle indexierbaren Routen pro Locale mit sichtbarem H1, Hauptcopy, Links, JSON-LD und Meta-Tags vorgerendert ausgeben. Akzeptanzkriterium: Seite ist ohne JavaScript inhaltlich lesbar.</p>
+          </div>
+        </article>
+        <article class="step">
+          <div>
+            <h3>404 technisch bereinigen</h3>
+            <p>Redirect-Kette entfernen. Eine echte 404-Seite mit noindex, ohne Canonical und mit Rückwegen zu App, Features, Pricing und Manual ausliefern.</p>
+          </div>
+        </article>
+        <article class="step">
+          <div>
+            <h3>Locale-Abdeckung schliessen</h3>
+            <p>Hardcoded English aus Deep-Dive-Komponenten in Locale-Dateien verschieben. Spanisch und zh-TW vollständig ergänzen oder unvollständige Seiten vorerst nicht als hreflang Alternative bewerben.</p>
+          </div>
+        </article>
+        <article class="step">
+          <div>
+            <h3>Snippet- und Intent-Optimierung</h3>
+            <p>Titel und Descriptions pro Route enger an Suchintentionen ausrichten: trading journal, prop firm journal, backtesting journal, trading analytics und local-first trading tracker.</p>
+          </div>
+        </article>
+        <article class="step">
+          <div>
+            <h3>Schema-Daten härten</h3>
+            <p>JSON-LD aus gemeinsamer Datenquelle erzeugen, offers für die App setzen und Review/AggregateRating nur verwenden, wenn echte öffentliche Bewertungen existieren.</p>
+          </div>
+        </article>
+        <article class="step">
+          <div>
+            <h3>Performance-Paket</h3>
+            <p>Hero- und Dashboard-Bilder in AVIF/WebP mit srcset ausliefern, LCP-Asset priorisieren, WebGL später laden, große Bundles trennen und Legacy-Code entfernen.</p>
+          </div>
+        </article>
+        <article class="step">
+          <div>
+            <h3>SEO-Regressionscheck</h3>
+            <p>Ein Script tools/seo-audit.mjs für Build-Prüfungen: H1, Canonical-Slash, Hreflang-Rückverweise, noindex in Sitemap, leere HTML-Bodys, fehlende Alt-Texte und JSON-LD-Validität.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="06">
+      <p class="eyebrow">Empfohlene Reihenfolge</p>
+      <h2>Erst Indexierbarkeit, dann Relevanz, dann Feinschliff.</h2>
+      <p class="quote">Wenn wir nur eine Sache zuerst anfassen: statisches HTML plus konsistente URLs. Das ist der Boden, auf dem alle anderen SEO-Maßnahmen stehen.</p>
+      <div class="grid two">
+        <article class="card">
+          <span class="tag red">Sprint 1</span>
+          <h3>Technische P0s</h3>
+          <p>Prerender, URL-Policy, 404. Danach können Suchmaschinen den Content verlässlich lesen und einordnen.</p>
+        </article>
+        <article class="card">
+          <span class="tag gold">Sprint 2</span>
+          <h3>Content und Sprache</h3>
+          <p>Locale-Lücken, Description-Längen, H1-Intent und sichtbare Breadcrumbs. Das schärft Relevanz und SERP-Auftritt.</p>
+        </article>
+        <article class="card">
+          <span class="tag blue">Sprint 3</span>
+          <h3>Schema und Geschwindigkeit</h3>
+          <p>Rich-Result-Daten, Bilder, JavaScript-Gewicht, Core Web Vitals und Social Preview Assets.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Fortlaufend</span>
+          <h3>Automatischer Audit</h3>
+          <p>SEO Checks in den Build legen, damit dieselben Fehler nicht beim nächsten Feature wieder hineinschleichen.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="slide compact" data-slide="07">
+      <p class="eyebrow">Akzeptanzkriterien</p>
+      <h2>So wissen wir, dass die Optimierungen wirklich sitzen.</h2>
+      <div class="grid">
+        <article class="card">
+          <span class="tag">Crawl</span>
+          <h3>HTML ohne JS lesbar</h3>
+          <ul>
+            <li>Jede indexierbare URL enthält H1, Haupttext und interne Links im gelieferten HTML.</li>
+            <li>Canonical, hreflang und sitemap nutzen exakt dieselbe URL-Form.</li>
+            <li>Keine noindex URL erscheint in sitemap.xml.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag">Content</span>
+          <h3>Lokalisierung konsistent</h3>
+          <ul>
+            <li>Jede beworbene hreflang Alternative ist wirklich lokalisiert.</li>
+            <li>Keine Deep-Dive-Seite fällt in ES oder zh-TW auf englische Kerncopy zurück.</li>
+            <li>Descriptions sind fokussiert und nicht unnötig lang.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag">Performance</span>
+          <h3>Vitals im grünen Bereich</h3>
+          <ul>
+            <li>LCP unter 2,5 Sekunden.</li>
+            <li>INP unter 200 Millisekunden.</li>
+            <li>CLS unter 0,1.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="proof" class="slide compact" data-slide="08">
+      <p class="eyebrow">Audit-Basis</p>
+      <h2>Nachweise und Referenzen.</h2>
+      <div class="grid two">
+        <article class="card">
+          <span class="tag">Codebase</span>
+          <h3>Geprüfte Bereiche</h3>
+          <ul>
+            <li>Vite Static Route Generator und sitemap.xml Erstellung</li>
+            <li>public/404.html Redirect-Verhalten</li>
+            <li>Locale-Dateien für en, de, es und tw</li>
+            <li>Live-Seiten /en/app und /de/features</li>
+            <li>Structured Data und Head-Tag Ausgabe</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag">Docs</span>
+          <h3>Offizielle Quellen</h3>
+          <ul class="source-list">
+            <li><a href="https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics">Google: JavaScript SEO Basics</a></li>
+            <li><a href="https://developers.google.com/search/docs/advanced/crawling/managing-multi-regional-sites">Google: Multi-regional and multilingual sites</a></li>
+            <li><a href="https://developers.google.com/search/docs/appearance/structured-data/software-app">Google: Software App structured data</a></li>
+            <li><a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap">Google: Build and submit a sitemap</a></li>
+            <li><a href="https://web.dev/articles/vitals">web.dev: Core Web Vitals thresholds</a></li>
+          </ul>
+        </article>
+      </div>
+      <p class="print-note">Tipp: Im Browser mit Strg+P als PDF exportieren. Jede Slide ist für den Druck als eigene Seite angelegt.</p>
+    </section>
+  </main>
+</body>
+</html>

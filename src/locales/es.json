@@ -563,13 +563,14 @@
   "pricingPage": {
     "brandSubtitle": "Precios",
     "popular": "Más Popular",
+    "taxNote": "Todos los precios son precios finales con IVA incluido.",
     "highlights": [
       {
         "title": "Licencia de por vida",
         "text": "Paga una vez y conserva el flujo."
       },
       {
-        "title": "Offline-first",
+        "title": "Funciona offline",
         "text": "No requiere cuenta en la nube."
       },
       {
@@ -815,7 +816,7 @@
     "tagline": "Diario de Trading Offline",
     "description": "Diseñado para traders que trabajan con claridad, respetan las reglas y quieren mejorar su rendimiento de forma sistemática.",
     "highlights": [
-      "100% Offline-first",
+      "100% offline",
       "Revisiones estructuradas",
       "Flujo optimizado para Prop"
     ],
@@ -1071,7 +1072,7 @@
     "hero": {
       "label": "Legal",
       "title": "Términos de Servicio",
-      "description": "Lee estos términos cuidadosamente antes de comprar, descargar o usar Katsumii. Última actualización: julio de 2026."
+      "description": "Lee estos términos cuidadosamente antes de comprar, descargar o usar Katsumii. Última actualización: 9 de julio de 2026."
     },
     "sections": [
       {
@@ -1082,216 +1083,216 @@
         ]
       },
       {
-        "title": "2. Scope, Provider, and Merchant of Record",
+        "title": "2. Alcance, proveedor y Merchant of Record",
         "paragraphs": [
-          "These Terms of Service govern access to and use of Katsumii, including the katsumii.com website, the Katsumii desktop application, demo versions, documentation, license keys, updates, and support communications.",
-          "Katsumii is provided by Frederik Morbe (the Provider, we, us). Contact: info@katsumii.com. Website: katsumii.com.",
-          "Where the checkout identifies Lemon Squeezy, LLC or another merchant of record as seller, that merchant handles the payment transaction, taxes, invoices, chargebacks, and statutory purchase processing duties. These Terms continue to govern your software license and use of Katsumii."
+          "Estos Términos de Servicio regulan el acceso y el uso de Katsumii, incluido el sitio web katsumii.com, la aplicación de escritorio Katsumii, las versiones demo, la documentación, las claves de licencia, las actualizaciones y las comunicaciones de soporte.",
+          "Katsumii es ofrecido por Frederik Morbe (el Proveedor, nosotros). Contacto: info@katsumii.com. Sitio web: katsumii.com.",
+          "Cuando el checkout identifique a Lemon Squeezy, LLC u otro Merchant of Record como vendedor, dicho vendedor registrado se encarga de la transacción de pago, impuestos, facturas, contracargos y obligaciones legales relacionadas con el procesamiento de la compra. Estos Términos siguen regulando tu licencia de software y el uso de Katsumii."
         ]
       },
       {
-        "title": "3. Acceptance and Eligibility",
+        "title": "3. Aceptación y elegibilidad",
         "paragraphs": [
-          "By purchasing, downloading, installing, activating, or using Katsumii, you agree to these Terms. If you do not agree, do not use Katsumii.",
-          "You must be at least 18 years old, or the age of legal majority in your jurisdiction, and legally able to enter into a binding contract. If you use Katsumii for a company, fund, prop-firm team, trading desk, or other organization, you confirm that you are authorized to bind that organization.",
-          "You are responsible for ensuring that your use of Katsumii is lawful in your jurisdiction and does not violate sanctions, export-control, financial-services, market-abuse, tax, or other applicable laws."
+          "Al comprar, descargar, instalar, activar o usar Katsumii, aceptas estos Términos. Si no estás de acuerdo, no uses Katsumii.",
+          "Debes tener al menos 18 años, o la mayoría de edad legal en tu jurisdicción, y capacidad legal para celebrar un contrato vinculante. Si usas Katsumii para una empresa, fondo, equipo de prop firm, mesa de trading u otra organización, confirmas que tienes autorización para vincular a dicha organización.",
+          "Eres responsable de asegurarte de que tu uso de Katsumii sea legal en tu jurisdicción y no infrinja sanciones, controles de exportación, normas de servicios financieros, abuso de mercado, obligaciones fiscales u otras leyes aplicables."
         ]
       },
       {
-        "title": "4. License Grant",
+        "title": "4. Concesión de licencia",
         "paragraphs": [
-          "After a valid purchase or other authorized grant, you receive a limited, non-exclusive, non-transferable license to install and use Katsumii on devices you own or control for your own trading documentation, journaling, review, and analysis.",
-          "Unless the checkout or license document says otherwise, the license is issued to one individual user and may not be shared with other people. The license is perpetual for the purchased version, subject to termination for material breach and subject to the update rules below."
+          "Tras una compra válida u otra concesión autorizada, recibes una licencia limitada, no exclusiva e intransferible para instalar y usar Katsumii en dispositivos de tu propiedad o bajo tu control, para tu propia documentación de trading, journaling, revisión y análisis.",
+          "Salvo que el checkout o el documento de licencia indiquen otra cosa, la licencia se emite para un único usuario individual y no puede compartirse con otras personas. La licencia es perpetua para la versión adquirida, sujeta a terminación por incumplimiento material y a las reglas de actualización indicadas más abajo."
         ],
         "list": [
-          "You may install Katsumii on multiple personal devices used by the same licensed user.",
-          "Business or team use requires a license for each individual user unless we agree otherwise in writing.",
-          "No ownership rights are transferred. All rights not expressly granted remain reserved."
+          "Puedes instalar Katsumii en varios dispositivos personales utilizados por el mismo usuario con licencia.",
+          "El uso empresarial o en equipo requiere una licencia para cada usuario individual, salvo que acordemos otra cosa por escrito.",
+          "No se transfiere ningún derecho de propiedad. Todos los derechos no concedidos expresamente quedan reservados."
         ]
       },
       {
-        "title": "5. License Restrictions",
+        "title": "5. Restricciones de licencia",
         "paragraphs": [
-          "Except where mandatory law allows it, you must not copy, rent, lease, lend, sell, resell, sublicense, distribute, publish, host, or make Katsumii available to third parties.",
-          "You must not reverse engineer, decompile, disassemble, modify, create derivative works from, remove proprietary notices from, bypass license activation, circumvent technical protection measures, or use Katsumii to build a competing product.",
-          "You must not use Katsumii for unlawful trading activity, market manipulation, fraud, unauthorized financial services, infringement of third-party rights, or any use that could damage, overload, or interfere with our systems or third-party systems."
+          "Salvo cuando la ley imperativa lo permita, no debes copiar, alquilar, arrendar, prestar, vender, revender, sublicenciar, distribuir, publicar, alojar ni poner Katsumii a disposición de terceros.",
+          "No debes aplicar ingeniería inversa, descompilar, desensamblar, modificar, crear obras derivadas, eliminar avisos de propiedad, eludir la activación de licencia, sortear medidas técnicas de protección ni usar Katsumii para crear un producto competidor.",
+          "No debes usar Katsumii para actividades de trading ilegales, manipulación de mercado, fraude, servicios financieros no autorizados, infracción de derechos de terceros ni cualquier uso que pueda dañar, sobrecargar o interferir con nuestros sistemas o con sistemas de terceros."
         ]
       },
       {
-        "title": "6. Delivery, Activation, Technical Requirements, and Updates",
+        "title": "6. Entrega, activación, requisitos técnicos y actualizaciones",
         "paragraphs": [
-          "Katsumii is digital software delivered by download, license key, account page, or another electronic method. You are responsible for using a compatible operating system, device, storage location, security configuration, and backup process.",
-          "Core journaling features are designed to work locally. Certain functions, such as license activation, update checks, downloads, support, payment, or future optional integrations, may require an internet connection.",
-          "We may provide maintenance, bug fixes, security updates, compatibility updates, or feature updates. Some updates may be required for security, legal, or technical reasons. Major upgrades, new paid editions, or materially expanded features may require a separate purchase unless stated otherwise.",
-          "We may discontinue legacy versions, platforms, or features where maintaining them is no longer reasonable, provided mandatory consumer rights and required security or conformity updates remain unaffected."
+          "Katsumii es software digital entregado mediante descarga, clave de licencia, página de cuenta u otro método electrónico. Eres responsable de usar un sistema operativo, dispositivo, ubicación de almacenamiento, configuración de seguridad y proceso de copias de seguridad compatibles.",
+          "Las funciones principales de journaling están diseñadas para funcionar localmente. Algunas funciones, como la activación de licencia, comprobación de actualizaciones, descargas, soporte, pagos o futuras integraciones opcionales, pueden requerir conexión a internet.",
+          "Podemos proporcionar mantenimiento, correcciones de errores, actualizaciones de seguridad, actualizaciones de compatibilidad o nuevas funciones. Algunas actualizaciones pueden ser necesarias por motivos de seguridad, legales o técnicos. Las grandes actualizaciones, nuevas ediciones de pago o funciones ampliadas de forma material pueden requerir una compra separada, salvo que se indique otra cosa.",
+          "Podemos dejar de mantener versiones antiguas, plataformas o funciones cuando su mantenimiento ya no sea razonable, siempre que no se vean afectados los derechos obligatorios del consumidor ni las actualizaciones de seguridad o conformidad exigidas."
         ]
       },
       {
-        "title": "7. Prices, Taxes, Payment, Refunds, and Withdrawal Rights",
+        "title": "7. Precios, impuestos, pago, reembolsos y derecho de desistimiento",
         "paragraphs": [
-          "Prices, included features, currencies, discounts, taxes, and payment methods are shown at checkout and may change for future purchases. The merchant of record may apply its own checkout terms, fraud checks, tax handling, invoicing process, and refund workflow.",
-          "For consumers in the EU, EEA, UK, or any jurisdiction with mandatory withdrawal or cancellation rights, those rights remain unaffected. Where the law allows the withdrawal right for digital content or digital services to expire, this requires the legally required consent, acknowledgement, and confirmation during checkout before immediate delivery or performance begins.",
-          "Voluntary refunds outside mandatory rights are reviewed case by case and may be handled by the merchant of record. Asking for or receiving a refund does not waive any mandatory statutory rights you may have."
+          "Los precios, funciones incluidas, divisas, descuentos, impuestos y métodos de pago se muestran en el checkout y pueden cambiar para compras futuras. El Merchant of Record puede aplicar sus propios términos de checkout, comprobaciones antifraude, gestión fiscal, proceso de facturación y flujo de reembolso.",
+          "Para consumidores de la UE, EEE, Reino Unido o cualquier jurisdicción con derechos obligatorios de desistimiento o cancelación, dichos derechos permanecen intactos. Cuando la ley permite que el derecho de desistimiento para contenido digital o servicios digitales expire, se requiere el consentimiento, reconocimiento y confirmación legalmente exigidos durante el checkout antes de que comience la entrega o prestación inmediata.",
+          "Los reembolsos voluntarios fuera de derechos obligatorios se revisan caso por caso y pueden ser gestionados por el Merchant of Record. Solicitar o recibir un reembolso no supone renunciar a ningún derecho legal obligatorio que puedas tener."
         ]
       },
       {
-        "title": "8. Mandatory Consumer Rights and Legal Guarantee",
+        "title": "8. Derechos obligatorios del consumidor y garantía legal",
         "paragraphs": [
-          "Nothing in these Terms excludes, limits, or overrides mandatory consumer protection rights, statutory warranty rights, legal guarantees of conformity for digital content or digital services, or remedies that cannot lawfully be waived.",
-          "For EU and EEA consumers, this includes mandatory rights under national laws implementing EU rules on consumer rights, unfair contract terms, and digital content or digital services. For United States users, this includes non-waivable rights under applicable federal and state law.",
-          "If a clause in these Terms conflicts with mandatory law, the mandatory law prevails and the clause applies only to the maximum extent permitted."
+          "Nada en estos Términos excluye, limita ni sustituye derechos obligatorios de protección del consumidor, derechos legales de garantía, garantías legales de conformidad para contenido digital o servicios digitales, ni recursos que no puedan renunciarse legalmente.",
+          "Para consumidores de la UE y del EEE, esto incluye los derechos obligatorios bajo las leyes nacionales que implementan las normas de la UE sobre derechos del consumidor, cláusulas abusivas y contenido o servicios digitales. Para usuarios de Estados Unidos, incluye derechos irrenunciables bajo la ley federal y estatal aplicable.",
+          "Si una cláusula de estos Términos entra en conflicto con una ley imperativa, prevalece dicha ley y la cláusula solo se aplica en la máxima medida permitida."
         ]
       },
       {
-        "title": "9. Your Data, Backups, Imports, and Local Storage",
+        "title": "9. Tus datos, copias de seguridad, importaciones y almacenamiento local",
         "paragraphs": [
-          "Katsumii is designed as a local-first trading journal. Your trades, accounts, journal entries, screenshots, settings, reports, and backups are primarily stored on your device unless a specific feature clearly states otherwise.",
-          "You are responsible for the correctness of the information you enter or import, for maintaining independent backups, and for protecting your device, operating system account, license key, files, and database from loss, theft, malware, unauthorized access, or corruption.",
-          "CSV imports, manual entries, screenshots, copied broker data, and exported reports may contain errors, formatting problems, missing fees, timezone mismatches, duplicate trades, partial fills, currency conversion issues, or other inaccuracies. You must verify imported and displayed data against your broker, exchange, prop firm, bank, tax records, or other authoritative source."
+          "Katsumii está diseñado como un diario de trading local y offline. Tus trades, cuentas, entradas del diario, capturas, ajustes, informes y copias de seguridad se almacenan principalmente en tu dispositivo, salvo que una función concreta indique claramente lo contrario.",
+          "Eres responsable de la exactitud de la información que introduces o importas, de mantener copias de seguridad independientes y de proteger tu dispositivo, cuenta del sistema operativo, clave de licencia, archivos y base de datos frente a pérdida, robo, malware, acceso no autorizado o corrupción.",
+          "Las importaciones CSV, entradas manuales, capturas, datos copiados del broker e informes exportados pueden contener errores, problemas de formato, comisiones faltantes, desfases de zona horaria, trades duplicados, ejecuciones parciales, problemas de conversión de divisa u otras inexactitudes. Debes verificar los datos importados y mostrados frente a tu broker, exchange, prop firm, banco, registros fiscales u otra fuente autorizada."
         ]
       },
       {
-        "title": "10. Informational Journal Only",
+        "title": "10. Diario únicamente informativo",
         "paragraphs": [
-          "Katsumii is a journaling, recordkeeping, review, and analytics tool. It is not a broker, exchange, trading platform, execution venue, signal service, portfolio manager, account manager, investment club, prop firm, or financial institution.",
-          "Katsumii does not place, route, execute, clear, settle, finance, custody, or monitor live trades. Any trading decision, order, position, leverage, stop loss, take profit, allocation, instrument selection, or account action is made solely by you outside Katsumii.",
-          "You must not use Katsumii outputs as the sole or primary basis for real-money trading, investment, tax, legal, prop-firm, or risk-management decisions."
+          "Katsumii es una herramienta de journaling, registro, revisión y análisis. No es un broker, exchange, plataforma de trading, centro de ejecución, servicio de señales, gestor de cartera, gestor de cuentas, club de inversión, prop firm ni entidad financiera.",
+          "Katsumii no coloca, enruta, ejecuta, compensa, liquida, financia, custodia ni monitoriza trades en vivo. Cualquier decisión de trading, orden, posición, apalancamiento, stop loss, take profit, asignación, selección de instrumento o acción sobre una cuenta la tomas exclusivamente tú fuera de Katsumii.",
+          "No debes usar los resultados de Katsumii como única o principal base para decisiones de trading con dinero real, inversión, fiscalidad, asuntos legales, cumplimiento de reglas prop firm o gestión de riesgo."
         ]
       },
       {
-        "title": "11. No Financial, Investment, Trading, Tax, or Legal Advice",
+        "title": "11. Sin asesoramiento financiero, de inversión, trading, fiscal o legal",
         "paragraphs": [
-          "Nothing in Katsumii, on katsumii.com, in documentation, in analytics, in example data, in support messages, or in marketing materials is financial, investment, trading, commodity trading, securities, tax, legal, accounting, or other regulated advice.",
-          "We do not provide individualized recommendations and do not consider your full financial situation, investment objectives, risk tolerance, experience, tax position, legal obligations, or suitability for any trade or strategy.",
-          "We are not acting as your fiduciary, broker-dealer, investment adviser, commodity trading advisor, commodity pool operator, futures commission merchant, introducing broker, tax adviser, attorney, or accountant. We are not registered with the SEC, CFTC, FINRA, NFA, or equivalent regulator as a regulated financial adviser or broker for your use of Katsumii.",
-          "If you need advice, you must consult a qualified, licensed professional in your jurisdiction before making decisions."
+          "Nada en Katsumii, en katsumii.com, en la documentación, en los analytics, en datos de ejemplo, en mensajes de soporte o en materiales de marketing constituye asesoramiento financiero, de inversión, trading, trading de commodities, valores, fiscal, legal, contable u otro asesoramiento regulado.",
+          "No proporcionamos recomendaciones individualizadas y no tenemos en cuenta tu situación financiera completa, objetivos de inversión, tolerancia al riesgo, experiencia, situación fiscal, obligaciones legales ni idoneidad de ningún trade o estrategia.",
+          "No actuamos como tu fiduciario, broker-dealer, asesor de inversión, asesor de trading de commodities, operador de commodity pool, futures commission merchant, introducing broker, asesor fiscal, abogado ni contable. No estamos registrados ante la SEC, CFTC, FINRA, NFA ni regulador equivalente como asesor financiero o broker regulado para tu uso de Katsumii.",
+          "Si necesitas asesoramiento, debes consultar a un profesional cualificado y autorizado en tu jurisdicción antes de tomar decisiones."
         ]
       },
       {
-        "title": "12. No Trading Signals, Recommendations, or Reliance",
+        "title": "12. Sin señales de trading, recomendaciones ni dependencia",
         "paragraphs": [
-          "Analytics, dashboards, performance scores, win rates, expectancy, R multiples, risk metrics, drawdown metrics, calendar views, setup labels, consistency metrics, alerts, reports, and similar outputs are not trading signals, recommendations, instructions, confirmations, guarantees, or calls to action.",
-          "Katsumii may help you reflect on past trades, but it does not know whether any future trade is suitable, lawful, affordable, tax-efficient, compliant with your prop-firm rules, or appropriate for your financial situation.",
-          "You remain solely responsible for independently reviewing every trade and for deciding whether, when, how, and with what size to trade."
+          "Analytics, dashboards, puntuaciones de rendimiento, winrate, expectancy, múltiplos R, métricas de riesgo, métricas de drawdown, vistas de calendario, etiquetas de setup, métricas de consistencia, alertas, informes y resultados similares no son señales de trading, recomendaciones, instrucciones, confirmaciones, garantías ni llamadas a la acción.",
+          "Katsumii puede ayudarte a reflexionar sobre trades pasados, pero no sabe si un trade futuro es adecuado, legal, asumible, eficiente fiscalmente, compatible con las reglas de tu prop firm o apropiado para tu situación financiera.",
+          "Sigues siendo el único responsable de revisar cada trade de forma independiente y de decidir si operar, cuándo operar, cómo operar y con qué tamaño de posición."
         ]
       },
       {
-        "title": "13. Calculations, Statistics, and Data May Be Wrong",
+        "title": "13. Los cálculos, estadísticas y datos pueden ser incorrectos",
         "paragraphs": [
-          "All calculations, statistics, metrics, charts, ratios, scores, limits, progress bars, reports, exports, alerts, and derived values may be incomplete, delayed, inaccurate, misconfigured, or wrong.",
-          "Errors can arise from software bugs, formula assumptions, rounding, timezone handling, exchange calendars, commissions, fees, swaps, spreads, slippage, partial fills, position sizing, contract specifications, currency conversion, account settings, prop-firm rule settings, imported CSV formats, user input, or changes by third parties.",
-          "You must verify all figures before relying on them. Broker statements, exchange records, bank records, tax records, and the official prop-firm dashboard or contract control over Katsumii if there is any discrepancy."
+          "Todos los cálculos, estadísticas, métricas, gráficos, ratios, puntuaciones, límites, barras de progreso, informes, exportaciones, alertas y valores derivados pueden estar incompletos, retrasados, ser inexactos, estar mal configurados o ser incorrectos.",
+          "Los errores pueden surgir por bugs de software, supuestos de fórmulas, redondeos, manejo de zonas horarias, calendarios de mercados, comisiones, fees, swaps, spreads, slippage, ejecuciones parciales, tamaño de posición, especificaciones de contratos, conversión de divisas, ajustes de cuenta, configuración de reglas prop firm, formatos CSV importados, entradas del usuario o cambios de terceros.",
+          "Debes verificar todas las cifras antes de confiar en ellas. Los extractos del broker, registros del exchange, registros bancarios, registros fiscales y el dashboard o contrato oficial de la prop firm prevalecen sobre Katsumii si existe cualquier discrepancia."
         ],
         "list": [
-          "A profitable statistic in Katsumii does not mean that a setup has a real edge.",
-          "A displayed risk, drawdown, or rule status can be wrong or outdated.",
-          "A report can omit trades, fees, screenshots, notes, or other relevant context.",
-          "An alert can be late, fail to appear, or be based on incorrect data."
+          "Una estadística rentable en Katsumii no significa que un setup tenga un edge real.",
+          "Un riesgo, drawdown o estado de regla mostrado puede ser incorrecto o estar desactualizado.",
+          "Un informe puede omitir trades, comisiones, capturas, notas u otro contexto relevante.",
+          "Una alerta puede llegar tarde, no aparecer o basarse en datos incorrectos."
         ]
       },
       {
-        "title": "14. Prop-Firm Rules and Challenge Tracking",
+        "title": "14. Reglas de prop firm y seguimiento de challenges",
         "paragraphs": [
-          "Prop-firm accounts, funded accounts, evaluation accounts, demo challenges, rule tracking, daily-loss tracking, drawdown tracking, consistency tracking, inactivity alerts, profit-target progress, and similar features are convenience tools only.",
-          "Prop-firm rules vary between firms, programs, account types, instruments, time zones, platforms, and dates. Firms may change, interpret, suspend, or enforce rules differently from the way they are modeled in Katsumii.",
-          "Katsumii does not guarantee that you will pass a challenge, keep a funded account, avoid a rule breach, receive a payout, satisfy consistency rules, or comply with any third-party trading program. You must read and follow the official rules and dashboard of the relevant firm."
+          "Las cuentas prop firm, cuentas funded, cuentas de evaluación, challenges demo, seguimiento de reglas, seguimiento de pérdida diaria, seguimiento de drawdown, seguimiento de consistencia, alertas de inactividad, progreso hacia objetivos de beneficio y funciones similares son solo herramientas de apoyo.",
+          "Las reglas de prop firm varían según la firma, programa, tipo de cuenta, instrumentos, zonas horarias, plataformas y fechas. Las firmas pueden cambiar, interpretar, suspender o aplicar sus reglas de forma distinta a como están modeladas en Katsumii.",
+          "Katsumii no garantiza que vayas a pasar un challenge, conservar una cuenta funded, evitar una infracción de reglas, recibir un payout, cumplir reglas de consistencia o cumplir cualquier programa de trading de terceros. Debes leer y seguir las reglas oficiales y el dashboard de la firma correspondiente."
         ]
       },
       {
-        "title": "15. Trading Risk Warning",
+        "title": "15. Advertencia de riesgo de trading",
         "paragraphs": [
-          "Trading and investing involve substantial risk of loss. This includes stocks, futures, forex, CFDs, options, commodities, crypto assets, leveraged products, margin products, and any other financial instrument.",
-          "Markets can move rapidly and unpredictably. Leverage, margin, volatility, liquidity, gaps, slippage, fees, spreads, platform outages, execution delays, exchange rules, broker rules, and psychological factors can increase losses. You may lose some or all of your capital and, in some products or jurisdictions, more than your initial deposit.",
-          "Trading is not suitable for everyone. You are solely responsible for understanding the risks, using independent judgment, and ensuring that any trading activity is lawful and suitable for you."
+          "El trading y la inversión implican un riesgo sustancial de pérdida. Esto incluye acciones, futuros, forex, CFDs, opciones, commodities, criptoactivos, productos apalancados, productos con margen y cualquier otro instrumento financiero.",
+          "Los mercados pueden moverse rápida e imprevisiblemente. El apalancamiento, margen, volatilidad, liquidez, gaps, slippage, comisiones, spreads, caídas de plataforma, retrasos de ejecución, reglas de mercados, reglas de brokers y factores psicológicos pueden aumentar las pérdidas. Puedes perder parte o la totalidad de tu capital y, en algunos productos o jurisdicciones, más que tu depósito inicial.",
+          "El trading no es adecuado para todo el mundo. Eres el único responsable de comprender los riesgos, usar tu propio criterio y asegurarte de que cualquier actividad de trading sea legal y adecuada para ti."
         ]
       },
       {
-        "title": "16. Historical, Hypothetical, Simulated, and Sample Results",
+        "title": "16. Resultados históricos, hipotéticos, simulados y de ejemplo",
         "paragraphs": [
-          "Past performance, historical statistics, backtests, simulated results, hypothetical examples, sample data, strategy reports, and screenshots do not guarantee future results.",
-          "Hypothetical or simulated results have inherent limitations. They may benefit from hindsight, incomplete assumptions, small sample sizes, missing costs, missing execution effects, idealized fills, or selective data. Real trading can differ materially.",
-          "You must not assume that any metric, report, example, or sample account shown in Katsumii can or will be replicated in live trading."
+          "El rendimiento pasado, las estadísticas históricas, backtests, resultados simulados, ejemplos hipotéticos, datos de muestra, informes de estrategia y capturas no garantizan resultados futuros.",
+          "Los resultados hipotéticos o simulados tienen limitaciones inherentes. Pueden beneficiarse de hindsight, supuestos incompletos, muestras pequeñas, costes omitidos, efectos de ejecución no considerados, fills idealizados o datos seleccionados. El trading real puede diferir de forma material.",
+          "No debes asumir que ninguna métrica, informe, ejemplo o cuenta de muestra mostrada en Katsumii pueda o vaya a replicarse en trading real."
         ]
       },
       {
-        "title": "17. Third-Party Services, Brokers, Payment Providers, and Integrations",
+        "title": "17. Servicios de terceros, brokers, proveedores de pago e integraciones",
         "paragraphs": [
-          "Katsumii may refer to or interact with third-party services, including payment providers, operating systems, brokers, exchanges, prop firms, data formats, update services, email clients, analytics-free hosting providers, or future optional integrations.",
-          "Third-party services are not controlled by us. We are not responsible for their availability, rules, data accuracy, security, fees, decisions, terms, outages, API changes, account actions, or losses caused by them.",
-          "Mentioning a broker, prop firm, platform, import preset, file format, or integration does not mean endorsement, partnership, authorization, or certification unless expressly stated in writing."
+          "Katsumii puede hacer referencia o interactuar con servicios de terceros, incluidos proveedores de pago, sistemas operativos, brokers, exchanges, prop firms, formatos de datos, servicios de actualización, clientes de email, proveedores de hosting y de analítica o futuras integraciones opcionales.",
+          "Los servicios de terceros no están bajo nuestro control. No somos responsables de su disponibilidad, reglas, exactitud de datos, seguridad, fees, decisiones, términos, caídas, cambios de API, acciones sobre cuentas ni pérdidas causadas por ellos.",
+          "La mención de un broker, prop firm, plataforma, preset de importación, formato de archivo o integración no implica respaldo, partnership, autorización ni certificación, salvo que se indique expresamente por escrito."
         ]
       },
       {
-        "title": "18. Support, Feedback, and Beta Features",
+        "title": "18. Soporte, feedback y funciones beta",
         "paragraphs": [
-          "Support is provided on a commercially reasonable basis and is limited to Katsumii-related technical or license questions. Support does not include trading advice, financial advice, tax advice, legal advice, prop-firm compliance advice, or review of your trading strategy.",
-          "Demo, preview, beta, experimental, in-development, or early-access features may be incomplete, unstable, inaccurate, changed, limited, or removed at any time. You use them at your own risk.",
-          "If you send suggestions, bug reports, feature requests, or other feedback, you grant us a free, worldwide, perpetual right to use that feedback for improving Katsumii without owing compensation, while you keep ownership of your own underlying content."
+          "El soporte se presta de forma comercialmente razonable y se limita a cuestiones técnicas o de licencia relacionadas con Katsumii. El soporte no incluye asesoramiento de trading, financiero, fiscal, legal, cumplimiento de reglas prop firm ni revisión de tu estrategia de trading.",
+          "Las funciones demo, preview, beta, experimentales, en desarrollo o de acceso anticipado pueden estar incompletas, ser inestables, inexactas, cambiar, limitarse o eliminarse en cualquier momento. Las usas bajo tu propio riesgo.",
+          "Si envías sugerencias, informes de bugs, solicitudes de funciones u otro feedback, nos concedes un derecho gratuito, mundial y perpetuo para usar ese feedback con el fin de mejorar Katsumii sin obligación de compensación, mientras conservas la titularidad de tu propio contenido subyacente."
         ]
       },
       {
-        "title": "19. Intellectual Property",
+        "title": "19. Propiedad intelectual",
         "paragraphs": [
-          "Katsumii, including its source code, object code, design, user interface, visual assets, text, documentation, workflows, logos, trademarks, trade names, and other materials, is owned by the Provider or its licensors and is protected by intellectual property laws.",
-          "You may not remove copyright, trademark, license, or proprietary notices. You may not use our names, logos, or branding in a way that suggests sponsorship, partnership, or endorsement without prior written permission.",
-          "Third-party components may be subject to their own open-source or commercial license terms."
+          "Katsumii, incluido su código fuente, código objeto, diseño, interfaz de usuario, recursos visuales, textos, documentación, workflows, logos, marcas, nombres comerciales y otros materiales, pertenece al Proveedor o a sus licenciantes y está protegido por las leyes de propiedad intelectual.",
+          "No puedes eliminar avisos de copyright, marca, licencia o propiedad. No puedes usar nuestros nombres, logos o branding de forma que sugiera patrocinio, partnership o respaldo sin permiso previo por escrito.",
+          "Los componentes de terceros pueden estar sujetos a sus propios términos de licencia open-source o comercial."
         ]
       },
       {
-        "title": "20. Warranty Disclaimer",
+        "title": "20. Exclusión de garantías",
         "paragraphs": [
-          "To the maximum extent permitted by law, Katsumii is provided as is and as available, without warranties, representations, guarantees, or conditions of any kind, whether express, implied, or statutory.",
-          "We do not guarantee that Katsumii will be uninterrupted, error-free, secure, compatible with every system, suitable for your trading workflow, free of data loss, free of calculation errors, or available forever.",
-          "For consumers, this disclaimer does not limit mandatory legal guarantees, statutory warranty rights, conformity rights, or remedies that cannot be excluded under applicable law."
+          "En la máxima medida permitida por la ley, Katsumii se proporciona tal cual y según disponibilidad, sin garantías, declaraciones, compromisos o condiciones de ningún tipo, ya sean expresas, implícitas o legales.",
+          "No garantizamos que Katsumii funcione sin interrupciones, sin errores, de forma segura, compatible con todos los sistemas, adecuado para tu flujo de trading, libre de pérdida de datos, libre de errores de cálculo o disponible para siempre.",
+          "Para consumidores, esta exclusión no limita garantías legales obligatorias, derechos legales de garantía, derechos de conformidad ni recursos que no puedan excluirse bajo la ley aplicable."
         ]
       },
       {
-        "title": "21. Limitation of Liability",
+        "title": "21. Limitación de responsabilidad",
         "paragraphs": [
-          "Nothing in these Terms limits liability for intent, gross negligence, fraud, fraudulent concealment, injury to life, body, or health, mandatory product liability, expressly assumed guarantees, or any liability that cannot legally be limited.",
-          "Subject to the previous sentence and to the maximum extent permitted by law, we are not liable for trading losses, investment losses, lost profits, lost revenue, missed payouts, failed prop-firm challenges, rule breaches, loss of business opportunities, loss or corruption of data, missed alerts, inaccurate calculations, market movements, broker actions, prop-firm decisions, or your reliance on Katsumii outputs.",
-          "For slight negligence under German law, we are liable only for breach of a material contractual obligation and only for typical, foreseeable damage. For business users and, where permitted, all other users, aggregate liability is limited to the amount you paid for Katsumii in the twelve months before the event giving rise to the claim.",
-          "To the maximum extent permitted by United States law and other applicable law, we are not liable for indirect, incidental, special, consequential, exemplary, or punitive damages."
+          "Nada en estos Términos limita la responsabilidad por dolo, negligencia grave, fraude, ocultación fraudulenta, lesión a la vida, cuerpo o salud, responsabilidad obligatoria por productos, garantías asumidas expresamente o cualquier responsabilidad que legalmente no pueda limitarse.",
+          "Sujeto a la frase anterior y en la máxima medida permitida por la ley, no somos responsables de pérdidas de trading, pérdidas de inversión, lucro cesante, pérdida de ingresos, payouts no recibidos, challenges prop firm fallidos, infracciones de reglas, pérdida de oportunidades de negocio, pérdida o corrupción de datos, alertas omitidas, cálculos inexactos, movimientos de mercado, acciones de brokers, decisiones de prop firms ni de tu confianza en resultados de Katsumii.",
+          "En caso de negligencia leve bajo la ley alemana, solo respondemos por el incumplimiento de una obligación contractual esencial y únicamente por daños típicos y previsibles. Para usuarios empresariales y, cuando esté permitido, todos los demás usuarios, la responsabilidad agregada se limita al importe que pagaste por Katsumii en los doce meses anteriores al hecho que dio lugar a la reclamación.",
+          "En la máxima medida permitida por la ley de Estados Unidos y otras leyes aplicables, no somos responsables de daños indirectos, incidentales, especiales, consecuenciales, ejemplares o punitivos."
         ]
       },
       {
-        "title": "22. Indemnity for Misuse",
+        "title": "22. Indemnización por uso indebido",
         "paragraphs": [
-          "If you are a business user or use Katsumii on behalf of an organization, you will indemnify and hold us harmless from third-party claims, damages, fines, costs, and reasonable legal fees arising from your unlawful use of Katsumii, your violation of these Terms, your infringement of third-party rights, or your trading, tax, legal, broker, or prop-firm obligations.",
-          "For consumers, this clause applies only to the extent permitted by mandatory consumer law and only where you are responsible for the relevant violation."
+          "Si eres usuario empresarial o usas Katsumii en nombre de una organización, nos indemnizarás y mantendrás indemnes frente a reclamaciones de terceros, daños, multas, costes y honorarios legales razonables derivados de tu uso ilícito de Katsumii, tu incumplimiento de estos Términos, tu infracción de derechos de terceros o tus obligaciones de trading, fiscales, legales, de broker o de prop firm.",
+          "Para consumidores, esta cláusula se aplica solo en la medida permitida por la normativa imperativa de consumo y únicamente cuando seas responsable de la infracción correspondiente."
         ]
       },
       {
-        "title": "23. Termination",
+        "title": "23. Terminación",
         "paragraphs": [
-          "We may suspend or terminate your license if you materially breach these Terms, circumvent licensing, share license keys unlawfully, misuse the software, or use Katsumii in a way that creates legal or security risk.",
-          "After termination, you must stop using Katsumii and uninstall it unless mandatory law gives you a different right. Termination does not affect rights and obligations that by their nature should survive, including payment obligations, intellectual property rights, disclaimers, liability limits, and dispute provisions.",
-          "You remain responsible for exporting or backing up your local data before uninstalling or changing devices."
+          "Podemos suspender o terminar tu licencia si incumples materialmente estos Términos, eludes el sistema de licencias, compartes claves de licencia ilegalmente, haces un uso indebido del software o usas Katsumii de una forma que genere riesgo legal o de seguridad.",
+          "Tras la terminación, debes dejar de usar Katsumii y desinstalarlo, salvo que una ley imperativa te conceda un derecho diferente. La terminación no afecta a derechos y obligaciones que por su naturaleza deban sobrevivir, incluidas obligaciones de pago, derechos de propiedad intelectual, disclaimers, límites de responsabilidad y disposiciones de resolución de disputas.",
+          "Sigues siendo responsable de exportar o hacer copias de seguridad de tus datos locales antes de desinstalar o cambiar de dispositivo."
         ]
       },
       {
-        "title": "24. Changes to Terms and Software",
+        "title": "24. Cambios en los Términos y en el software",
         "paragraphs": [
-          "We may update these Terms for future purchases, future versions, new features, legal changes, security reasons, or changes in how Katsumii is offered. The version available on katsumii.com at the time of purchase applies unless you later accept updated terms or mandatory law allows a change.",
-          "For ongoing services or features, material changes will be communicated in a reasonable way. If mandatory law gives you a right to reject a change, terminate, or keep existing rights, that law remains unaffected.",
-          "Continuing to use a new version, update, or feature after being informed of updated Terms may require acceptance of those updated Terms."
+          "Podemos actualizar estos Términos para compras futuras, versiones futuras, nuevas funciones, cambios legales, razones de seguridad o cambios en la forma en que se ofrece Katsumii. La versión disponible en katsumii.com en el momento de la compra se aplica salvo que posteriormente aceptes términos actualizados o una ley imperativa permita un cambio.",
+          "Para servicios o funciones continuas, los cambios materiales se comunicarán de forma razonable. Si una ley imperativa te otorga derecho a rechazar un cambio, terminar el servicio o conservar derechos existentes, dicha ley permanece intacta.",
+          "Seguir usando una nueva versión, actualización o función después de haber sido informado de Términos actualizados puede requerir la aceptación de dichos Términos actualizados."
         ]
       },
       {
-        "title": "25. Governing Law, Jurisdiction, and Dispute Resolution",
+        "title": "25. Ley aplicable, jurisdicción y resolución de disputas",
         "paragraphs": [
-          "These Terms are governed by the laws of the Federal Republic of Germany, excluding the United Nations Convention on Contracts for the International Sale of Goods (CISG) and excluding conflict-of-law rules where legally possible.",
-          "If you are a consumer, mandatory consumer protection laws and mandatory jurisdiction rights in your country or state of residence remain unaffected. If you are a business user, the courts at the Provider's place of business have exclusive jurisdiction where legally permitted.",
-          "We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board unless mandatory law requires participation. This does not limit your right to contact us directly or to use courts or other mandatory remedies available to you.",
-          "For United States users, these Terms do not create arbitration, class-action waiver, jury-trial waiver, or waiver of non-waivable federal or state rights."
+          "Estos Términos se rigen por las leyes de la República Federal de Alemania, excluyendo la Convención de las Naciones Unidas sobre los Contratos de Compraventa Internacional de Mercaderías (CISG) y, cuando sea legalmente posible, las normas de conflicto de leyes.",
+          "Si eres consumidor, las normas imperativas de protección del consumidor y los derechos obligatorios de jurisdicción de tu país o estado de residencia permanecen intactos. Si eres usuario empresarial, los tribunales del lugar de actividad del Proveedor tendrán jurisdicción exclusiva cuando la ley lo permita.",
+          "No estamos dispuestos ni obligados a participar en procedimientos de resolución de disputas ante una junta arbitral de consumo, salvo que una ley imperativa exija la participación. Esto no limita tu derecho a contactarnos directamente ni a utilizar tribunales u otros recursos obligatorios disponibles para ti.",
+          "Para usuarios de Estados Unidos, estos Términos no crean arbitraje, renuncia a acciones colectivas, renuncia a juicio por jurado ni renuncia a derechos federales o estatales irrenunciables."
         ]
       },
       {
-        "title": "26. Language, Severability, and Contact",
+        "title": "26. Idioma, divisibilidad y contacto",
         "paragraphs": [
-          "The German and English versions are intended to be equivalent. Translations into other languages are provided for convenience. If a non-German or non-English translation conflicts with the German or English wording, the German wording prevails to the extent legally permitted.",
-          "If any provision of these Terms is invalid or unenforceable, the remaining provisions remain in effect. The invalid provision will be replaced or interpreted by a valid provision that comes closest to the original economic and legal purpose, where legally permitted.",
-          "For questions about these Terms, licensing, refunds, or technical support, contact info@katsumii.com."
+          "Las versiones alemana e inglesa pretenden ser equivalentes. Las traducciones a otros idiomas se ofrecen por comodidad. Si una traducción que no sea alemana o inglesa entra en conflicto con el texto alemán o inglés, prevalecerá el texto alemán en la medida permitida por la ley.",
+          "Si alguna disposición de estos Términos es inválida o inexigible, las demás disposiciones seguirán vigentes. La disposición inválida será sustituida o interpretada por una disposición válida que se acerque lo máximo posible al objetivo económico y legal original, cuando la ley lo permita.",
+          "Para preguntas sobre estos Términos, licencias, reembolsos o soporte técnico, contacta con info@katsumii.com."
         ]
       }
     ]
@@ -1340,12 +1341,7 @@
         "title": "4. Cookies y almacenamiento local",
         "paragraphs": [
           "Este sitio web no instala ninguna cookie, ni propia ni de terceros. Por ello no se necesita un banner de cookies.",
-          "Para recordar tus preferencias de visualización, el sitio utiliza el almacenamiento local (local storage) de tu navegador. Allí solo se guardan los siguientes ajustes:"
-        ],
-        "list": [
-          "katsumii-theme — esquema de color elegido (claro u oscuro)",
-          "katsumii-locale — idioma elegido",
-          "katsumii-bg — estilo de fondo elegido"
+          "Para recordar tus preferencias de visualización, el sitio utiliza el almacenamiento local (local storage) de tu navegador. Allí solo se guardan ajustes de software de Katsumii, como el esquema de color, el idioma y el estilo de fondo elegidos."
         ],
         "paragraphsAfter": [
           "Estos valores permanecen en tu navegador, nunca se transmiten a nosotros ni a terceros y puedes borrarlos en cualquier momento desde la configuración del navegador. Su almacenamiento es estrictamente necesario para la función que solicitas (recordar tus preferencias); conforme a las normas europeas de ePrivacy (art. 25.2.2 de la ley alemana TDDDG), no se requiere consentimiento."
@@ -1386,7 +1382,7 @@
       {
         "title": "8. App Katsumii: almacenamiento local de datos",
         "paragraphs": [
-          "La app Katsumii sigue un principio local-first: todo el contenido que creas en la app — operaciones, entradas del diario, capturas de pantalla, datos de cuentas y challenges, ajustes y copias de seguridad automáticas — se guarda exclusivamente en tu dispositivo, en una base de datos local.",
+          "La app Katsumii sigue un modelo de almacenamiento local y offline: todo el contenido que creas en la app — operaciones, entradas del diario, capturas de pantalla, datos de cuentas y challenges, ajustes y copias de seguridad automáticas — se guarda exclusivamente en tu dispositivo, en una base de datos local.",
           "No hay sincronización con la nube. No tenemos acceso a estos datos, no podemos verlos ni restaurarlos. El almacenamiento, las copias de seguridad y el borrado están completamente bajo tu control (p. ej. mediante las funciones de la app, borrando los archivos de datos o desinstalando la app)."
         ]
       },
@@ -1467,7 +1463,7 @@
       {
         "title": "18. Seguridad de los datos",
         "paragraphs": [
-          "El sitio web se sirve exclusivamente a través de una conexión cifrada TLS (HTTPS). Las fuentes tipográficas están alojadas localmente; al visitar el sitio no se establece ninguna conexión con servidores de Google. Gracias a la arquitectura local-first de la app, tus datos de trading permanecen en tu dispositivo y no están expuestos a ningún riesgo de acceso del lado del servidor por nuestra parte."
+          "El sitio web se sirve exclusivamente a través de una conexión cifrada TLS (HTTPS). Las fuentes tipográficas están alojadas localmente; al visitar el sitio no se establece ninguna conexión con servidores de Google. Gracias a la arquitectura local y offline de la app, tus datos de trading permanecen en tu dispositivo y no están expuestos a ningún riesgo de acceso del lado del servidor por nuestra parte."
         ]
       },
       {

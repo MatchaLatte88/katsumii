@@ -59,6 +59,7 @@ import { useI18n } from "vue-i18n"
 import { useRoute, useRouter } from "vue-router"
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue"
 import { GlobeAltIcon } from "@heroicons/vue/24/outline"
+import { setI18nLocale } from "../i18n.js"
 import { localizedPathForRoute, unlocalizedPathFromRoute } from "../utils/routes.js"
 
 const isDark = inject("isDark")
@@ -79,12 +80,12 @@ const NAMES = {
   tw: "繁體中文",
 }
 
-const setLocale = (lang) => {
-  locale.value = lang
-  localStorage.setItem("katsumii-locale", lang)
+const setLocale = async (lang) => {
+  const normalized = await setI18nLocale(lang)
+  localStorage.setItem("katsumii-locale", normalized)
   const canonicalPath = route.meta.canonicalPath || unlocalizedPathFromRoute(route.path)
   void router.push({
-    path: localizedPathForRoute(canonicalPath, lang),
+    path: localizedPathForRoute(canonicalPath, normalized),
     query: route.query,
     hash: route.hash,
   })

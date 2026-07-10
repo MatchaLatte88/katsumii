@@ -1,330 +1,155 @@
 <template>
-  <div :class="[!isDark ? 'relative min-h-screen bg-slate-50 text-gray-900' : 'relative min-h-screen bg-slate-950 text-slate-100']">
-    <!-- Background -->
-    <div class="k-bg" :class="!isDark ? 'k-bg-light' : 'k-bg-dark'" aria-hidden="true">
-      <div class="k-bg-gradient" />
-      <svg class="k-bg-grid" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <pattern id="hc-manual" x="0" y="0" width="69.28" height="60" patternUnits="userSpaceOnUse">
-            <path d="M34.64,0 L51.96,10 L51.96,30 L34.64,40 L17.32,30 L17.32,10 Z M0,0 L17.32,10 M17.32,30 L0,40 M51.96,10 L69.28,0 M69.28,40 L51.96,30 M34.64,40 L34.64,60 M0,40 L0,60" style="fill:none;stroke:var(--hc-stroke);stroke-width:1.5"/>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#hc-manual)"/>
-      </svg>
-      <div class="k-bg-band" />
-    </div>
+  <main ref="rootEl" class="v6-manual">
+    <div class="v6man-layout">
+      <!-- SCRIM (mobile sidebar) -->
+      <div v-if="sidebarOpen" class="v6man-scrim" @click="sidebarOpen = false"></div>
 
-    <AppNav
-      :navigation="navLinks"
-      :brand-title="t('common.brandTitle')"
-      :brand-subtitle="t('manualPage.brandSubtitle')"
-      :brand-href="pagePath('app')"
-    />
+      <!-- SIDEBAR -->
+      <aside class="v6man-side" :class="{ open: sidebarOpen }">
+        <div class="v6man-search">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <circle cx="9" cy="9" r="5.5" />
+            <path d="m13.2 13.2 3.6 3.6" />
+          </svg>
+          <input
+            v-model="searchQuery"
+            type="search"
+            :placeholder="t('manualPage.search.placeholder')"
+            @keydown.esc="searchQuery = ''"
+          />
+        </div>
 
-    <!-- Layout wrapper: sidebar + content -->
-    <div class="relative flex pt-24">
+        <button
+          type="button"
+          class="v6man-overview-link"
+          :class="{ active: !activeTopic }"
+          @click="goOverview(); sidebarOpen = false"
+        >
+          {{ t('manualPage.nav.overview') }}
+        </button>
 
-      <!-- ===== Desktop sidebar ===== -->
-      <aside
-        :class="[
-          'hidden md:flex flex-col w-64 shrink-0 sticky top-24 self-start max-h-[calc(100vh-6rem)] overflow-y-auto pb-10 border-r',
-          !isDark ? 'border-gray-200 bg-white/50 backdrop-blur' : 'border-blue-400/15 bg-slate-950/50 backdrop-blur'
-        ]"
-      >
-        <div class="flex flex-col gap-1 px-3 py-4">
-          <!-- Overview -->
-          <button
-            :class="['flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm font-semibold transition-all duration-200',
-              !activeTopic
-                ? (!isDark ? 'bg-teal-50 text-teal-700' : 'bg-cyan-400/10 text-cyan-300')
-                : (!isDark ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200')
-            ]"
-            @click="goOverview"
-          >
-            <HomeIcon class="size-4 shrink-0" />
-            {{ t('manualPage.nav.overview') }}
-          </button>
-
-          <div :class="['my-2 border-t', !isDark ? 'border-gray-100' : 'border-white/5']" />
-
-          <!-- Topics -->
-          <div v-for="topic in TOPICS" :key="topic.id">
+        <nav class="v6man-topics" :aria-label="t('manualPage.nav.overview')">
+          <div v-for="(topic, ti) in visibleTopics" :key="topic.id" class="v6man-topic">
             <button
-              :class="['flex w-full items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-sm font-semibold transition-all duration-200',
-                activeTopic?.id === topic.id
-                  ? (!isDark ? 'bg-teal-50 text-teal-700' : 'bg-cyan-400/10 text-cyan-300')
-                  : (!isDark ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200')
-              ]"
-              @click="selectTopic(topic)"
+              type="button"
+              class="v6man-topic-btn"
+              :class="{ active: activeTopic?.id === topic.id }"
+              :aria-expanded="isExpanded(topic)"
+              @click="selectTopic(topic); sidebarOpen = false"
             >
-              <div class="flex items-center gap-2.5">
-                <component :is="topic.icon" class="size-4 shrink-0" />
-                {{ t(topic.titleKey) }}
-              </div>
-              <ChevronDownIcon
-                :class="['size-3.5 shrink-0 transition-transform duration-300',
-                  activeTopic?.id === topic.id ? 'rotate-180' : 'rotate-0'
-                ]"
-              />
+              <span class="v6man-idx">{{ pad(topicIndex(topic) + 1) }}</span>
+              <span>{{ t(topic.titleKey) }}</span>
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" :class="{ open: isExpanded(topic) }" aria-hidden="true">
+                <path d="m3 4.5 3 3 3-3" />
+              </svg>
             </button>
-
-            <!-- Article sub-list -->
-            <div v-if="activeTopic?.id === topic.id" class="mt-1 ml-4 flex flex-col gap-0.5">
+            <div v-if="isExpanded(topic)" class="v6man-articles">
               <button
-                v-for="article in topic.articles"
+                v-for="article in matchingArticles(topic)"
                 :key="article.id"
-                :class="['flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-all duration-200',
-                  activeArticle?.id === article.id
-                    ? (!isDark ? 'bg-teal-600/10 font-semibold text-teal-700' : 'bg-cyan-400/15 font-semibold text-cyan-300')
-                    : (!isDark ? 'text-gray-500 hover:bg-gray-50 hover:text-gray-800' : 'text-slate-500 hover:bg-slate-800/40 hover:text-slate-300')
-                ]"
-                @click="selectArticle(article)"
+                type="button"
+                :class="{ active: activeArticle?.id === article.id && activeTopic?.id === topic.id }"
+                @click="selectTopic(topic, article); sidebarOpen = false"
               >
-                <div
-                  :class="['size-1.5 shrink-0 rounded-full',
-                    activeArticle?.id === article.id
-                      ? (!isDark ? 'bg-teal-600' : 'bg-cyan-400')
-                      : (!isDark ? 'bg-gray-300' : 'bg-slate-600')
-                  ]"
-                />
                 {{ t(article.titleKey) }}
               </button>
             </div>
           </div>
-        </div>
+          <p v-if="query && visibleTopics.length === 0" class="v6man-noresults">{{ t('manualPage.search.noResults') }}</p>
+        </nav>
       </aside>
 
-      <!-- ===== Mobile sidebar overlay ===== -->
-      <Transition name="sidebar-fade">
-        <div v-if="sidebarOpen" class="fixed inset-0 z-50 flex md:hidden">
-          <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" @click="sidebarOpen = false" />
-          <aside
-            :class="[
-              'relative z-10 flex w-72 flex-col overflow-y-auto pb-10 pt-20 shadow-2xl',
-              !isDark ? 'bg-white border-r border-gray-200' : 'bg-slate-900 border-r border-blue-400/15'
-            ]"
-          >
-            <!-- Same sidebar content as desktop -->
-            <div class="flex flex-col gap-1 px-3 py-4">
-              <button
-                :class="['flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm font-semibold transition-all duration-200',
-                  !activeTopic
-                    ? (!isDark ? 'bg-teal-50 text-teal-700' : 'bg-cyan-400/10 text-cyan-300')
-                    : (!isDark ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200')
-                ]"
-                @click="() => { goOverview(); sidebarOpen = false }"
-              >
-                <HomeIcon class="size-4 shrink-0" />
-                {{ t('manualPage.nav.overview') }}
-              </button>
-
-              <div :class="['my-2 border-t', !isDark ? 'border-gray-100' : 'border-white/5']" />
-
-              <div v-for="topic in TOPICS" :key="`mob-${topic.id}`">
-                <button
-                  :class="['flex w-full items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-sm font-semibold transition-all duration-200',
-                    activeTopic?.id === topic.id
-                      ? (!isDark ? 'bg-teal-50 text-teal-700' : 'bg-cyan-400/10 text-cyan-300')
-                      : (!isDark ? 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200')
-                  ]"
-                  @click="() => { selectTopic(topic); sidebarOpen = false }"
-                >
-                  <div class="flex items-center gap-2.5">
-                    <component :is="topic.icon" class="size-4 shrink-0" />
-                    {{ t(topic.titleKey) }}
-                  </div>
-                  <ChevronDownIcon :class="['size-3.5 shrink-0 transition-transform duration-300', activeTopic?.id === topic.id ? 'rotate-180' : 'rotate-0']" />
-                </button>
-
-                <div v-if="activeTopic?.id === topic.id" class="mt-1 ml-4 flex flex-col gap-0.5">
-                  <button
-                    v-for="article in topic.articles"
-                    :key="article.id"
-                    :class="['flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-all duration-200',
-                      activeArticle?.id === article.id
-                        ? (!isDark ? 'bg-teal-600/10 font-semibold text-teal-700' : 'bg-cyan-400/15 font-semibold text-cyan-300')
-                        : (!isDark ? 'text-gray-500 hover:bg-gray-50 hover:text-gray-800' : 'text-slate-500 hover:bg-slate-800/40 hover:text-slate-300')
-                    ]"
-                    @click="() => { selectArticle(article); sidebarOpen = false }"
-                  >
-                    <div :class="['size-1.5 shrink-0 rounded-full', activeArticle?.id === article.id ? (!isDark ? 'bg-teal-600' : 'bg-cyan-400') : (!isDark ? 'bg-gray-300' : 'bg-slate-600')]" />
-                    {{ t(article.titleKey) }}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </Transition>
-
-      <!-- ===== Main content ===== -->
-      <main class="flex-1 min-w-0 px-6 py-8 lg:px-12 xl:px-16">
-
-        <!-- OVERVIEW VIEW -->
+      <!-- CONTENT -->
+      <div class="v6man-content">
+        <!-- OVERVIEW -->
         <template v-if="!activeTopic">
-          <div class="mx-auto max-w-4xl">
-            <p :class="['text-sm font-semibold tracking-[0.2em] uppercase', !isDark ? 'text-teal-600' : 'text-teal-300']">
-              {{ t('manualPage.hero.eyebrow') }}
-            </p>
-            <h1 :class="['mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl', !isDark ? 'text-gray-900' : 'text-white']">
-              {{ t('manualPage.hero.heading') }}
-            </h1>
-            <p :class="['mt-4 max-w-2xl text-lg', !isDark ? 'text-gray-600' : 'text-slate-400']">
-              {{ t('manualPage.hero.description') }}
-            </p>
+          <section :key="'overview'" class="v6man-view">
+            <p class="v6-eyebrow"><i></i>{{ t('manualPage.hero.eyebrow') }}</p>
+            <h1 class="v6-h1 v6man-title">{{ t('manualPage.hero.heading') }}<b class="v6-dot">.</b></h1>
+            <p class="v6man-sub">{{ t('manualPage.hero.description') }}</p>
 
-            <!-- Topic cards -->
-            <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="v6man-cards">
               <button
-                v-for="topic in TOPICS"
+                v-for="(topic, ti) in TOPICS"
                 :key="topic.id"
-                class="group relative rounded-2xl border p-5 text-left backdrop-blur transition-all duration-300 hover:-translate-y-0.5"
-                :class="!isDark
-                  ? 'border-gray-200 bg-white/85 shadow-[0_6px_22px_-14px_rgba(15,23,42,0.2)] hover:shadow-[0_12px_32px_-14px_rgba(15,23,42,0.28)]'
-                  : 'border-white/10 bg-gray-800/70 hover:bg-gray-800/80'"
+                type="button"
+                class="v6man-card"
                 @click="selectTopic(topic)"
               >
-                <component
-                  :is="topic.icon"
-                  :class="['size-7 transition-colors duration-300', !isDark ? 'text-teal-600 group-hover:text-teal-500' : 'text-cyan-400 group-hover:text-cyan-300']"
-                />
-                <h3 :class="['mt-3 font-semibold', !isDark ? 'text-gray-900' : 'text-white']">
-                  {{ t(topic.titleKey) }}
-                </h3>
-                <p :class="['mt-1 text-sm leading-relaxed', !isDark ? 'text-gray-500' : 'text-slate-400']">
-                  {{ t(topic.descriptionKey) }}
-                </p>
-                <div class="mt-4 flex items-center justify-between">
-                  <span :class="['text-xs font-medium', !isDark ? 'text-gray-400' : 'text-slate-500']">
-                    {{ topic.articles.length }}&thinsp;{{ topic.articles.length === 1 ? t('manualPage.article') : t('manualPage.articles') }}
-                  </span>
-                  <ChevronRightIcon :class="['size-4 transition-transform duration-300 group-hover:translate-x-0.5', !isDark ? 'text-gray-400' : 'text-slate-500']" />
-                </div>
+                <span class="v6man-idx">{{ pad(ti + 1) }}</span>
+                <h2>{{ t(topic.titleKey) }}</h2>
+                <p>{{ t(topic.descriptionKey) }}</p>
+                <span class="v6man-card-foot">
+                  <span>{{ topic.articles.length }} {{ topic.articles.length === 1 ? t('manualPage.article') : t('manualPage.articles') }}</span>
+                  <span aria-hidden="true">→</span>
+                </span>
               </button>
             </div>
-          </div>
+          </section>
         </template>
 
-        <!-- ARTICLE VIEW -->
+        <!-- ARTICLE -->
         <template v-else>
-          <div class="mx-auto max-w-3xl">
-            <!-- Breadcrumb -->
-            <nav class="flex flex-wrap items-center gap-1.5 text-sm">
-              <button
-                :class="['font-medium transition-colors duration-200', !isDark ? 'text-teal-600 hover:text-teal-800' : 'text-cyan-400 hover:text-cyan-300']"
-                @click="goOverview"
-              >
-                {{ t('manualPage.nav.overview') }}
-              </button>
-              <ChevronRightIcon :class="['size-3.5 shrink-0', !isDark ? 'text-gray-400' : 'text-slate-500']" />
-              <span :class="[activeArticle ? 'cursor-pointer font-medium transition-colors duration-200 ' + (!isDark ? 'text-teal-600 hover:text-teal-800' : 'text-cyan-400 hover:text-cyan-300') : (!isDark ? 'text-gray-900 font-medium' : 'text-white font-medium')]"
-                @click="activeArticle && (activeArticle = activeTopic.articles[0])"
-              >
-                {{ t(activeTopic.titleKey) }}
-              </span>
+          <section :key="articleViewKey" class="v6man-view v6man-article">
+            <nav class="v6man-crumb" aria-label="Breadcrumb">
+              <button type="button" @click="goOverview">{{ t('manualPage.nav.overview') }}</button>
+              <span aria-hidden="true">/</span>
+              <button type="button" @click="selectTopic(activeTopic)">{{ t(activeTopic.titleKey) }}</button>
               <template v-if="activeArticle">
-                <ChevronRightIcon :class="['size-3.5 shrink-0', !isDark ? 'text-gray-400' : 'text-slate-500']" />
-                <span :class="['font-medium', !isDark ? 'text-gray-900' : 'text-white']">{{ t(activeArticle.titleKey) }}</span>
+                <span aria-hidden="true">/</span>
+                <span class="v6man-crumb-here" aria-current="page">{{ t(activeArticle.titleKey) }}</span>
               </template>
             </nav>
 
-            <!-- Article -->
-            <article v-if="activeArticle" class="mt-8">
-              <span :class="['inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em]', !isDark ? 'border-teal-200 bg-teal-50 text-teal-700' : 'border-cyan-300/30 bg-cyan-400/10 text-cyan-300']">
-                <component :is="activeTopic.icon" class="size-3" />
-                {{ t(activeTopic.titleKey) }}
-              </span>
-
-              <h1 :class="['mt-4 font-display text-3xl font-semibold tracking-tight sm:text-4xl', !isDark ? 'text-gray-900' : 'text-white']">
-                {{ t(activeArticle.titleKey) }}
-              </h1>
-
-              <div :class="['mt-8 space-y-5 text-[1.02rem] leading-relaxed', !isDark ? 'text-gray-700' : 'text-slate-300']">
+            <article v-if="activeArticle">
+              <p class="v6-eyebrow"><i></i>{{ t(activeTopic.titleKey) }} — {{ pad(currentIndex + 1) }} / {{ pad(activeTopic.articles.length) }}</p>
+              <h1 class="v6-h2 v6man-article-title">{{ t(activeArticle.titleKey) }}</h1>
+              <div class="v6man-body">
                 <p v-for="(para, i) in articleContent" :key="i">{{ para }}</p>
               </div>
             </article>
 
-            <!-- Prev / Next -->
-            <div :class="['mt-14 flex items-center justify-between gap-4 border-t pt-6', !isDark ? 'border-gray-200' : 'border-white/10']">
-              <button
-                v-if="prevArticle"
-                :class="[
-                  'group flex items-center gap-2 rounded-xl border px-4 py-3 text-sm font-medium transition-all duration-200 hover:-translate-x-0.5',
-                  !isDark ? 'border-gray-200 bg-white text-gray-700 hover:border-teal-200 hover:text-teal-700' : 'border-white/10 bg-gray-800/60 text-slate-300 hover:border-cyan-400/30 hover:text-cyan-300'
-                ]"
-                @click="selectArticle(prevArticle)"
-              >
-                <ArrowLeftIcon class="size-4" />
-                {{ t(prevArticle.titleKey) }}
+            <!-- prev / next -->
+            <nav class="v6man-pager" aria-label="Article navigation">
+              <button v-if="prevArticle" type="button" @click="selectTopic(activeTopic, prevArticle)">
+                <span class="v6man-pager-label"><span aria-hidden="true">←</span> {{ t('manualPage.prev') }}</span>
+                <span class="v6man-pager-title">{{ t(prevArticle.titleKey) }}</span>
               </button>
-              <div v-else />
-
-              <button
-                v-if="nextArticle"
-                :class="[
-                  'group ml-auto flex items-center gap-2 rounded-xl border px-4 py-3 text-sm font-medium transition-all duration-200 hover:translate-x-0.5',
-                  !isDark ? 'border-gray-200 bg-white text-gray-700 hover:border-teal-200 hover:text-teal-700' : 'border-white/10 bg-gray-800/60 text-slate-300 hover:border-cyan-400/30 hover:text-cyan-300'
-                ]"
-                @click="selectArticle(nextArticle)"
-              >
-                {{ t(nextArticle.titleKey) }}
-                <ArrowRightIcon class="size-4" />
+              <button v-else type="button" class="v6man-pager-home" @click="goOverview">
+                <span class="v6man-pager-label"><span aria-hidden="true">←</span> {{ t('manualPage.backToOverview') }}</span>
               </button>
-            </div>
-          </div>
+              <button v-if="nextArticle" type="button" class="v6man-pager-next" @click="selectTopic(activeTopic, nextArticle)">
+                <span class="v6man-pager-label">{{ t('manualPage.next') }} <span aria-hidden="true">→</span></span>
+                <span class="v6man-pager-title">{{ t(nextArticle.titleKey) }}</span>
+              </button>
+            </nav>
+          </section>
         </template>
-
-        <div class="h-20" />
-      </main>
+      </div>
     </div>
 
-    <!-- Mobile FAB -->
-    <button
-      class="fixed bottom-6 left-6 z-40 flex items-center gap-2 rounded-full px-4 py-3 shadow-lg transition-all duration-300 hover:scale-105 md:hidden"
-      :class="!isDark ? 'bg-white border border-gray-200 text-gray-700' : 'bg-slate-800 border border-white/10 text-slate-300'"
-      @click="sidebarOpen = !sidebarOpen"
-    >
-      <XMarkIcon v-if="sidebarOpen" class="size-5" />
-      <Bars3Icon v-else class="size-5" />
-      <span class="text-sm font-medium">{{ sidebarOpen ? t('manualPage.mobile.closeTopics') : t('manualPage.mobile.openTopics') }}</span>
+    <!-- MOBILE FAB -->
+    <button type="button" class="v6man-fab" @click="sidebarOpen = !sidebarOpen">
+      <svg v-if="sidebarOpen" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+        <path d="m4 4 8 8M12 4l-8 8" />
+      </svg>
+      <svg v-else viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+        <path d="M2.5 4.5h11M2.5 8h11M2.5 11.5h11" />
+      </svg>
+      {{ sidebarOpen ? t('manualPage.mobile.closeTopics') : t('manualPage.mobile.openTopics') }}
     </button>
-  </div>
+  </main>
 </template>
 
 <script setup>
-import { computed, inject, onMounted, ref } from "vue"
+import { computed, onBeforeUnmount, onMounted, ref } from "vue"
 import { useI18n } from "vue-i18n"
-import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  Bars3Icon,
-  BookOpenIcon,
-  BriefcaseIcon,
-  CalendarDaysIcon,
-  ChartBarIcon,
-  ChevronDownIcon,
-  ChevronRightIcon,
-  Cog6ToothIcon,
-  HomeIcon,
-  RocketLaunchIcon,
-  XMarkIcon,
-} from "@heroicons/vue/24/outline"
-import AppNav from "./AppNav.vue"
-import { useSiteNavigation } from "../composables/useSiteNavigation.js"
-import { pagePath } from "../utils/routes.js"
 
 const { t, tm } = useI18n()
 
-const isDark = inject("isDark")
-
-// ---------- Nav ----------
-const navLinks = useSiteNavigation()
-
-// ---------- Topics ----------
 const TOPICS = [
   {
     id: "getting-started",
-    icon: RocketLaunchIcon,
     titleKey: "manualPage.topics.gettingStarted.title",
     descriptionKey: "manualPage.topics.gettingStarted.description",
     articles: [
@@ -335,7 +160,6 @@ const TOPICS = [
   },
   {
     id: "journal",
-    icon: BookOpenIcon,
     titleKey: "manualPage.topics.journal.title",
     descriptionKey: "manualPage.topics.journal.description",
     articles: [
@@ -347,7 +171,6 @@ const TOPICS = [
   },
   {
     id: "accounts",
-    icon: BriefcaseIcon,
     titleKey: "manualPage.topics.accounts.title",
     descriptionKey: "manualPage.topics.accounts.description",
     articles: [
@@ -358,7 +181,6 @@ const TOPICS = [
   },
   {
     id: "analytics",
-    icon: ChartBarIcon,
     titleKey: "manualPage.topics.analytics.title",
     descriptionKey: "manualPage.topics.analytics.description",
     articles: [
@@ -369,7 +191,6 @@ const TOPICS = [
   },
   {
     id: "calendar",
-    icon: CalendarDaysIcon,
     titleKey: "manualPage.topics.calendar.title",
     descriptionKey: "manualPage.topics.calendar.description",
     articles: [
@@ -379,7 +200,6 @@ const TOPICS = [
   },
   {
     id: "settings",
-    icon: Cog6ToothIcon,
     titleKey: "manualPage.topics.settings.title",
     descriptionKey: "manualPage.topics.settings.description",
     articles: [
@@ -391,99 +211,445 @@ const TOPICS = [
 ]
 
 // ---------- State ----------
+const rootEl = ref(null)
 const activeTopic = ref(null)
 const activeArticle = ref(null)
 const sidebarOpen = ref(false)
+const searchQuery = ref("")
 
-const articleContent = computed(() => {
-  if (!activeArticle.value) return []
-  return tm(activeArticle.value.contentKey)
+const pad = (n) => String(n).padStart(2, "0")
+const topicIndex = (topic) => TOPICS.findIndex((tp) => tp.id === topic.id)
+const articleViewKey = computed(() => `${activeTopic.value?.id}:${activeArticle.value?.id}`)
+
+// ---------- Search (sidebar) ----------
+const query = computed(() => searchQuery.value.trim().toLowerCase())
+
+const topicMatches = (topic) => t(topic.titleKey).toLowerCase().includes(query.value)
+
+const matchingArticles = (topic) => {
+  if (!query.value || topicMatches(topic)) return topic.articles
+  return topic.articles.filter((a) => t(a.titleKey).toLowerCase().includes(query.value))
+}
+
+const visibleTopics = computed(() => {
+  if (!query.value) return TOPICS
+  return TOPICS.filter((tp) => topicMatches(tp) || matchingArticles(tp).length > 0)
 })
 
-const allArticlesFlat = computed(() => activeTopic.value?.articles ?? [])
+/* topics expand when active or while a search narrows them down */
+const isExpanded = (topic) => activeTopic.value?.id === topic.id || (!!query.value && matchingArticles(topic).length > 0)
+
+// ---------- Article context ----------
+const articleContent = computed(() => {
+  if (!activeArticle.value) return []
+  const raw = tm(activeArticle.value.contentKey)
+  return Array.isArray(raw) ? raw : []
+})
 
 const currentIndex = computed(() =>
-  allArticlesFlat.value.findIndex((a) => a.id === activeArticle.value?.id)
+  (activeTopic.value?.articles ?? []).findIndex((a) => a.id === activeArticle.value?.id)
 )
 
 const prevArticle = computed(() => {
   const i = currentIndex.value
-  return i > 0 ? allArticlesFlat.value[i - 1] : null
+  return i > 0 ? activeTopic.value.articles[i - 1] : null
 })
 
 const nextArticle = computed(() => {
   const i = currentIndex.value
-  return i >= 0 && i < allArticlesFlat.value.length - 1 ? allArticlesFlat.value[i + 1] : null
+  const list = activeTopic.value?.articles ?? []
+  return i >= 0 && i < list.length - 1 ? list[i + 1] : null
 })
 
-// ---------- Actions ----------
-const selectTopic = (topic) => {
-  activeTopic.value = topic
-  activeArticle.value = topic.articles[0]
+// ---------- Actions / deep-link ----------
+const syncUrl = () => {
   const url = new URL(window.location.href)
-  url.searchParams.set("topic", topic.id)
+  if (activeTopic.value) {
+    url.searchParams.set("topic", activeTopic.value.id)
+    if (activeArticle.value) url.searchParams.set("article", activeArticle.value.id)
+    else url.searchParams.delete("article")
+  } else {
+    url.searchParams.delete("topic")
+    url.searchParams.delete("article")
+  }
   history.replaceState(null, "", url.toString())
-  window.scrollTo({ top: 0, behavior: "smooth" })
 }
 
-const selectArticle = (article) => {
-  activeArticle.value = article
+const selectTopic = (topic, article) => {
+  activeTopic.value = topic
+  activeArticle.value = article || topic.articles[0]
+  syncUrl()
   window.scrollTo({ top: 0, behavior: "smooth" })
 }
 
 const goOverview = () => {
   activeTopic.value = null
   activeArticle.value = null
-  const url = new URL(window.location.href)
-  url.searchParams.delete("topic")
-  history.replaceState(null, "", url.toString())
+  syncUrl()
   window.scrollTo({ top: 0, behavior: "smooth" })
 }
 
-// ---------- Deep-link ----------
+// ---------- Keyboard: ← / → between articles ----------
+const onKeydown = (e) => {
+  if (!activeTopic.value || e.ctrlKey || e.metaKey || e.altKey) return
+  const tag = document.activeElement?.tagName
+  if (tag === "INPUT" || tag === "TEXTAREA") return
+  if (e.key === "ArrowLeft" && prevArticle.value) selectTopic(activeTopic.value, prevArticle.value)
+  if (e.key === "ArrowRight" && nextArticle.value) selectTopic(activeTopic.value, nextArticle.value)
+}
+
 onMounted(() => {
-  const topicParam = new URLSearchParams(window.location.search).get("topic")
-  if (topicParam) {
-    const found = TOPICS.find((tp) => tp.id === topicParam)
-    if (found) {
-      activeTopic.value = found
-      activeArticle.value = found.articles[0]
-    }
+  const params = new URLSearchParams(window.location.search)
+  const found = TOPICS.find((tp) => tp.id === params.get("topic"))
+  if (found) {
+    activeTopic.value = found
+    activeArticle.value = found.articles.find((a) => a.id === params.get("article")) || found.articles[0]
   }
+  window.addEventListener("keydown", onKeydown)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener("keydown", onKeydown)
 })
 </script>
 
 <style scoped>
-.font-display { font-family: "Sora", sans-serif; }
+/* Manual layout — shared tokens/chrome live in src/styles/v6.css */
+.v6-manual { position: relative; z-index: 1; }
 
-.k-bg {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-}
-.k-bg-dark  { --orb-a: rgba(59,130,246,0.22); --orb-b: rgba(34,211,238,0.18); --hc-stroke: rgba(34,211,238,0.02); }
-.k-bg-light { --orb-a: rgba(6,182,212,0.13);  --orb-b: rgba(59,130,246,0.10); --hc-stroke: rgba(8,145,178,0.04); }
-.k-bg-gradient {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 60% 50% at 5% 15%, var(--orb-a), transparent 60%),
-    radial-gradient(ellipse 50% 40% at 90% 75%, var(--orb-b), transparent 55%);
-}
-.k-bg-grid {
-  position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.8;
-  mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 80%, transparent 100%);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 80%, transparent 100%);
-}
-.k-bg-band {
-  position: absolute; top: -30%; right: 0; width: 52%; height: 160%;
-  background: linear-gradient(to bottom, transparent, rgba(34,211,238,0.015) 40%, transparent);
-  transform: skewX(-6deg); border-left: 1px solid rgba(34,211,238,0.04); transform-origin: top right;
+.v6man-layout {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(6.5rem, 12vh, 8rem) clamp(1.1rem, 4vw, 3rem) clamp(4rem, 10vh, 7rem);
+  display: grid;
+  grid-template-columns: 264px 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: start;
 }
 
-.sidebar-fade-enter-active,
-.sidebar-fade-leave-active { transition: opacity 0.2s ease; }
-.sidebar-fade-enter-from,
-.sidebar-fade-leave-to { opacity: 0; }
+/* ── sidebar ── */
+.v6man-side {
+  position: sticky;
+  top: 6rem;
+  max-height: calc(100vh - 8rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.v6man-search {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 1.1rem;
+  border: 1px solid var(--v6-line);
+  border-radius: 10px;
+  background: var(--v6-panel);
+  transition: border-color 0.25s ease;
+}
+.v6man-search:focus-within { border-color: var(--v6-line-strong); }
+.v6man-search svg { flex: none; width: 15px; height: 15px; color: var(--v6-faint); }
+.v6man-search:focus-within svg { color: var(--v6-gold); }
+.v6man-search input {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: var(--v6-ink);
+  font-size: 0.85rem;
+}
+.v6man-search input::placeholder { color: var(--v6-faint); }
+.v6man-search input::-webkit-search-cancel-button { display: none; }
+
+.v6man-overview-link {
+  display: block;
+  width: 100%;
+  padding: 0.7rem 0.2rem;
+  border: 0;
+  border-bottom: 1px solid var(--v6-line);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--v6-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--v6-muted);
+  transition: color 0.2s ease;
+}
+.v6man-overview-link:hover { color: var(--v6-ink); }
+.v6man-overview-link.active { color: var(--v6-gold); }
+
+.v6man-topic { border-bottom: 1px solid var(--v6-line); }
+.v6man-topic-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  padding: 0.75rem 0.2rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--v6-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--v6-muted);
+  transition: color 0.2s ease;
+}
+.v6man-topic-btn:hover { color: var(--v6-ink); }
+.v6man-topic-btn.active { color: var(--v6-gold); }
+.v6man-topic-btn svg {
+  width: 12px;
+  height: 12px;
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+.v6man-topic-btn svg.open { transform: rotate(180deg); }
+.v6man-idx {
+  font-family: var(--v6-mono);
+  font-size: 0.64rem;
+  color: var(--v6-faint);
+  font-variant-numeric: tabular-nums;
+}
+.v6man-topic-btn.active .v6man-idx { color: var(--v6-gold); }
+
+.v6man-articles {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 0.7rem;
+  border-left: 1px solid var(--v6-line);
+  margin-left: 0.55rem;
+}
+.v6man-articles button {
+  padding: 0.42rem 0 0.42rem 1rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.86rem;
+  color: var(--v6-muted);
+  transition: color 0.2s ease;
+  position: relative;
+}
+.v6man-articles button:hover { color: var(--v6-ink); }
+.v6man-articles button.active { color: var(--v6-gold); }
+.v6man-articles button.active::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 20%;
+  bottom: 20%;
+  width: 2px;
+  background: var(--v6-gold);
+}
+.v6man-noresults {
+  margin: 1rem 0 0;
+  font-family: var(--v6-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--v6-faint);
+}
+
+/* ── content views ── */
+.v6man-view { animation: v6man-in 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes v6man-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .v6man-view { animation: none; }
+}
+.v6man-title { font-size: clamp(2.2rem, 4.6vw, 3.6rem); }
+.v6man-sub { max-width: 34rem; color: var(--v6-muted); margin: 0; }
+
+/* overview cards */
+.v6man-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.1rem;
+  margin-top: 2.6rem;
+}
+.v6man-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.4rem 1.4rem 1.2rem;
+  border: 1px solid var(--v6-line);
+  border-radius: 16px;
+  background: linear-gradient(165deg, var(--v6-panel), rgba(12, 21, 18, 0.22));
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.v6.light .v6man-card {
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.72), rgba(238, 244, 240, 0.4));
+}
+.v6man-card:hover { border-color: var(--v6-line-strong); transform: translateY(-3px); }
+.v6man-card h2 {
+  margin: 0.8rem 0 0.4rem;
+  font-family: var(--v6-display);
+  font-weight: 700;
+  font-size: 1.08rem;
+  letter-spacing: -0.01em;
+  color: var(--v6-ink);
+}
+.v6man-card p {
+  margin: 0;
+  color: var(--v6-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+.v6man-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1.1rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--v6-line);
+  font-family: var(--v6-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--v6-faint);
+}
+.v6man-card:hover .v6man-card-foot { color: var(--v6-gold); }
+
+/* article view */
+.v6man-crumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+  font-family: var(--v6-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--v6-faint);
+}
+.v6man-crumb button {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: var(--v6-muted);
+  padding: 0;
+  transition: color 0.2s ease;
+}
+.v6man-crumb button:hover { color: var(--v6-gold-hi); }
+.v6man-crumb-here { color: var(--v6-gold); }
+.v6man-article-title { margin: 1.2rem 0 0; }
+.v6man-body { margin-top: 2rem; max-width: 44rem; }
+.v6man-body p {
+  margin: 0 0 1.2rem;
+  color: var(--v6-muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.v6man-body p:first-child { color: var(--v6-ink); }
+
+/* prev / next */
+.v6man-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+  margin-top: 3.2rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--v6-line);
+  max-width: 44rem;
+}
+.v6man-pager button {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.95rem 1.1rem;
+  border: 1px solid var(--v6-line);
+  border-radius: 12px;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.25s ease;
+}
+.v6man-pager button:hover { border-color: var(--v6-line-strong); }
+.v6man-pager-next { align-items: flex-end; text-align: right; grid-column: 2; }
+.v6man-pager-label {
+  font-family: var(--v6-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--v6-faint);
+}
+.v6man-pager button:hover .v6man-pager-label { color: var(--v6-gold); }
+.v6man-pager-title {
+  font-family: var(--v6-display);
+  font-weight: 700;
+  font-size: 0.94rem;
+  color: var(--v6-ink);
+}
+.v6man-pager-home { justify-content: center; }
+
+/* ── mobile ── */
+.v6man-scrim { display: none; }
+.v6man-fab { display: none; }
+
+@media (max-width: 900px) {
+  .v6man-layout { grid-template-columns: 1fr; }
+  .v6man-cards { grid-template-columns: 1fr; }
+  .v6man-pager { grid-template-columns: 1fr; }
+  .v6man-pager-next { grid-column: auto; }
+  .v6man-search input { font-size: 1rem; }
+
+  .v6man-scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background: rgba(2, 8, 14, 0.55);
+    backdrop-filter: blur(4px);
+  }
+  .v6man-side {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 41;
+    width: min(20rem, 85vw);
+    max-height: none;
+    padding: 5.5rem 1.2rem 6rem;
+    background: rgba(9, 14, 22, 0.97);
+    border-right: 1px solid var(--v6-line);
+    transform: translateX(-100%);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .v6.light .v6man-side { background: rgba(250, 252, 253, 0.98); }
+  .v6man-side.open { transform: translateX(0); }
+
+  .v6man-fab {
+    position: fixed;
+    bottom: 1.4rem;
+    left: 1.4rem;
+    z-index: 42;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.7rem 1.1rem;
+    border: 1px solid var(--v6-line-strong);
+    border-radius: 999px;
+    background: rgba(9, 14, 22, 0.92);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    font-family: var(--v6-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--v6-gold);
+  }
+  .v6.light .v6man-fab { background: rgba(250, 252, 253, 0.95); }
+  .v6man-fab svg { width: 14px; height: 14px; }
+}
 </style>

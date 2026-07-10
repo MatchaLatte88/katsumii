@@ -26,11 +26,7 @@ body::before {
   );
 }
 
-/* Indigo blob — upper-right */
+/* Indigo blob — upper-right, intentionally disabled globally */
 body::after {
-  background: radial-gradient(
-    ellipse 500px 400px at 78% 25%,
-    rgba(99, 102, 241, var(--blob2-opacity)),
-    transparent 70%
-  );
+  background: none;
 }

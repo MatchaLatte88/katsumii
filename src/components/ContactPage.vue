@@ -1,160 +1,83 @@
 <template>
-  <div :class="[!isDark ? 'relative overflow-x-hidden min-h-screen bg-slate-50 text-gray-900' : 'relative overflow-x-hidden min-h-screen bg-slate-950 text-slate-100']">
-    <div class="k-bg" :class="!isDark ? 'k-bg-light' : 'k-bg-dark'" aria-hidden="true">
-      <div class="k-bg-gradient" />
-      <svg class="k-bg-grid" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <pattern id="hc-contact" x="0" y="0" width="69.28" height="60" patternUnits="userSpaceOnUse">
-            <path d="M34.64,0 L51.96,10 L51.96,30 L34.64,40 L17.32,30 L17.32,10 Z M0,0 L17.32,10 M17.32,30 L0,40 M51.96,10 L69.28,0 M69.28,40 L51.96,30 M34.64,40 L34.64,60 M0,40 L0,60" style="fill:none;stroke:var(--hc-stroke);stroke-width:1.5"/>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#hc-contact)"/>
-      </svg>
-      <div class="k-bg-band" />
-    </div>
+  <main class="v6-contact">
+    <section class="v6c-wrap">
+      <header class="v6c-hero">
+        <p class="v6-eyebrow"><i></i>{{ t('contactPage.hero.label') }}</p>
+        <h1 class="v6-h1 v6c-title">{{ t('contactPage.hero.title') }}<b class="v6-dot">.</b></h1>
+        <p class="v6c-sub">{{ t('contactPage.hero.description') }}</p>
+      </header>
 
-    <AppNav
-      :navigation="navigation"
-      :brand-title="t('common.brandTitle')"
-      :brand-subtitle="t('contactPage.brandSubtitle')"
-      :brand-href="pagePath('app')"
-    />
-
-    <section class="relative isolate px-6 pb-24 pt-28 lg:px-8">
-      <div class="mx-auto max-w-4xl text-center">
-        <p :class="['text-sm font-semibold tracking-[0.2em] uppercase', !isDark ? 'text-teal-600' : 'text-teal-300']">
-          {{ t('contactPage.hero.label') }}
+      <!-- success state -->
+      <div v-if="submitted" class="v6c-panel v6c-success">
+        <span class="v6c-success-icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m4 10.6 4.2 4.2L16 6.4" />
+          </svg>
+        </span>
+        <h2>{{ t('contactPage.success.title') }}</h2>
+        <p>
+          {{ t('contactPage.success.description') }}
+          <a href="mailto:info@katsumii.com">{{ t('contactPage.success.directLink') }}</a>.
         </p>
-        <h1 :class="['mt-4 text-4xl font-semibold tracking-tight sm:text-6xl', !isDark ? 'text-gray-900' : 'text-white']">
-          {{ t('contactPage.hero.title') }}
-        </h1>
-        <p :class="['mx-auto mt-6 max-w-2xl text-lg', !isDark ? 'text-gray-600' : 'text-gray-300']">
-          {{ t('contactPage.hero.description') }}
-        </p>
+        <button type="button" class="v6-quiet" @click="reset">{{ t('contactPage.success.reset') }} <span aria-hidden="true">→</span></button>
       </div>
 
-      <div class="mx-auto mt-14 max-w-2xl">
-        <!-- Success state -->
-        <div
-          v-if="submitted"
-          :class="['rounded-2xl border p-8 text-center backdrop-blur', !isDark ? 'border-teal-200 bg-teal-50/80' : 'border-teal-400/20 bg-teal-400/8']"
-        >
-          <div :class="['mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full', !isDark ? 'bg-teal-100' : 'bg-teal-400/15']">
-            <CheckIcon :class="['h-6 w-6', !isDark ? 'text-teal-600' : 'text-teal-300']" />
+      <!-- form -->
+      <form v-else class="v6c-panel" @submit.prevent="handleSubmit">
+        <div class="v6c-grid">
+          <div class="v6c-field">
+            <label for="contact-name">{{ t('contactPage.form.name') }}</label>
+            <input
+              id="contact-name" v-model="form.name" type="text" required
+              autocomplete="name" :placeholder="t('contactPage.form.namePlaceholder')"
+            />
           </div>
-          <h2 :class="['text-lg font-semibold', !isDark ? 'text-gray-900' : 'text-slate-100']">{{ t('contactPage.success.title') }}</h2>
-          <p :class="['mt-2 text-sm', !isDark ? 'text-gray-600' : 'text-slate-300']">
-            {{ t('contactPage.success.description') }}
-            <a href="mailto:info@katsumii.com" :class="linkClass">{{ t('contactPage.success.directLink') }}</a>.
-          </p>
-          <button
-            @click="reset"
-            :class="['mt-6 rounded-full border px-5 py-2 text-sm font-semibold transition-all hover:-translate-y-0.5', !isDark ? 'border-gray-300 text-gray-700 hover:bg-gray-50' : 'border-blue-400/30 text-slate-200 hover:bg-slate-800/60']"
-          >
-            {{ t('contactPage.success.reset') }}
-          </button>
+          <div class="v6c-field">
+            <label for="contact-email">{{ t('contactPage.form.email') }}</label>
+            <input
+              id="contact-email" v-model="form.email" type="email" required
+              autocomplete="email" :placeholder="t('contactPage.form.emailPlaceholder')"
+            />
+          </div>
         </div>
 
-        <!-- Contact form -->
-        <form
-          v-else
-          @submit.prevent="handleSubmit"
-          :class="['rounded-2xl border p-6 backdrop-blur sm:p-8', !isDark ? 'border-gray-200 bg-white/85' : 'border-white/10 bg-gray-800/70']"
-        >
-          <div class="grid gap-5 sm:grid-cols-2">
-            <div>
-              <label :for="'contact-name'" :class="labelClass">{{ t('contactPage.form.name') }}</label>
-              <input
-                id="contact-name"
-                v-model="form.name"
-                type="text"
-                required
-                autocomplete="name"
-                :placeholder="t('contactPage.form.namePlaceholder')"
-                :class="inputClass"
-              />
-            </div>
-            <div>
-              <label :for="'contact-email'" :class="labelClass">{{ t('contactPage.form.email') }}</label>
-              <input
-                id="contact-email"
-                v-model="form.email"
-                type="email"
-                required
-                autocomplete="email"
-                :placeholder="t('contactPage.form.emailPlaceholder')"
-                :class="inputClass"
-              />
-            </div>
-          </div>
+        <div class="v6c-field">
+          <label for="contact-subject">{{ t('contactPage.form.subject') }}</label>
+          <input
+            id="contact-subject" v-model="form.subject" type="text" required
+            :placeholder="t('contactPage.form.subjectPlaceholder')"
+          />
+        </div>
 
-          <div class="mt-5">
-            <label :for="'contact-subject'" :class="labelClass">{{ t('contactPage.form.subject') }}</label>
-            <input
-              id="contact-subject"
-              v-model="form.subject"
-              type="text"
-              required
-              :placeholder="t('contactPage.form.subjectPlaceholder')"
-              :class="inputClass"
-            />
-          </div>
+        <div class="v6c-field">
+          <label for="contact-message">{{ t('contactPage.form.message') }}</label>
+          <textarea
+            id="contact-message" v-model="form.message" required rows="7"
+            :placeholder="t('contactPage.form.messagePlaceholder')"
+          ></textarea>
+        </div>
 
-          <div class="mt-5">
-            <label :for="'contact-message'" :class="labelClass">{{ t('contactPage.form.message') }}</label>
-            <textarea
-              id="contact-message"
-              v-model="form.message"
-              required
-              rows="6"
-              :placeholder="t('contactPage.form.messagePlaceholder')"
-              :class="[inputClass, 'resize-none']"
-            />
-          </div>
+        <div class="v6c-foot">
+          <p>{{ t('contactPage.form.mailHint') }} <b>info@katsumii.com</b></p>
+          <button type="submit" class="v6-btn v6-magnetic">{{ t('contactPage.form.submit') }} <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
 
-          <div class="mt-6 flex items-center justify-between gap-4">
-            <p :class="['text-xs', !isDark ? 'text-gray-400' : 'text-slate-500']">
-              {{ t('contactPage.form.mailHint') }} <strong>info@katsumii.com</strong>
-            </p>
-            <button
-              type="submit"
-              :class="[
-                'inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5',
-                !isDark
-                  ? 'bg-teal-600 text-white shadow-[0_12px_32px_-16px_rgba(13,148,136,0.8)] hover:bg-teal-500'
-                  : 'bg-cyan-300 text-slate-950 shadow-[0_12px_32px_-16px_rgba(34,211,238,0.7)] hover:bg-cyan-200'
-              ]"
-            >
-              {{ t('contactPage.form.submit') }}
-            </button>
-          </div>
-        </form>
-
-        <!-- Direct email fallback -->
-        <p :class="['mt-8 text-center text-sm', !isDark ? 'text-gray-500' : 'text-slate-400']">
-          {{ t('contactPage.direct.prefix') }}
-          <a href="mailto:info@katsumii.com" :class="linkClass">info@katsumii.com</a>
-        </p>
-      </div>
+      <p class="v6c-direct">
+        {{ t('contactPage.direct.prefix') }}
+        <a href="mailto:info@katsumii.com">info@katsumii.com</a>
+      </p>
     </section>
-  </div>
+  </main>
 </template>
 
 <script setup>
-import { computed, inject, reactive, ref } from "vue"
+import { reactive, ref } from "vue"
 import { useI18n } from "vue-i18n"
-import { CheckIcon } from "@heroicons/vue/20/solid"
-import AppNav from "./AppNav.vue"
-import { useSiteNavigation } from "../composables/useSiteNavigation.js"
-import { pagePath } from "../utils/routes.js"
 
 const { t } = useI18n()
 
-const navigation = useSiteNavigation()
-
-const isDark = inject("isDark")
 const submitted = ref(false)
-
 const form = reactive({ name: "", email: "", subject: "", message: "" })
 
 const handleSubmit = () => {
@@ -173,50 +96,137 @@ const reset = () => {
   form.message = ""
   submitted.value = false
 }
-
-const labelClass = computed(() => [
-  "mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em]",
-  !isDark.value ? "text-gray-600" : "text-slate-400",
-])
-
-const inputClass = computed(() => [
-  "mt-1 block w-full rounded-xl border px-4 py-2.5 text-sm outline-none transition-colors duration-200",
-  "focus:ring-2",
-  !isDark.value
-    ? "border-gray-200 bg-white text-gray-900 placeholder-gray-400 focus:border-teal-400 focus:ring-teal-100"
-    : "border-white/10 bg-slate-900/80 text-slate-100 placeholder-slate-500 focus:border-cyan-400/50 focus:ring-cyan-400/10",
-])
-
-const linkClass = computed(() => [
-  "underline underline-offset-2 transition-colors",
-  !isDark.value ? "text-teal-600 hover:text-teal-500" : "text-cyan-400 hover:text-cyan-300",
-])
 </script>
 
 <style scoped>
-.k-bg {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
+/* Contact layout — shared tokens/chrome live in src/styles/v6.css */
+.v6-contact { position: relative; z-index: 1; }
+
+.v6c-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: clamp(8rem, 18vh, 11rem) clamp(1.1rem, 4vw, 3rem) clamp(6rem, 15vh, 10rem);
 }
-.k-bg-dark { --orb-a: rgba(59,130,246,0.28); --orb-b: rgba(34,211,238,0.22); --hc-stroke: rgba(34,211,238,0.02); }
-.k-bg-light { --orb-a: rgba(6,182,212,0.16); --orb-b: rgba(59,130,246,0.12); --hc-stroke: rgba(8,145,178,0.04); }
-.k-bg-gradient {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 70% 55% at 8% 18%, var(--orb-a), transparent 60%),
-    radial-gradient(ellipse 55% 45% at 88% 80%, var(--orb-b), transparent 55%);
+.v6c-hero { text-align: center; margin-bottom: clamp(2.2rem, 5vh, 3.5rem); }
+.v6c-hero .v6-eyebrow { justify-content: center; }
+.v6c-title { font-size: clamp(2.2rem, 4.6vw, 3.6rem); }
+.v6c-sub { max-width: 32rem; margin: 0 auto; color: var(--v6-muted); }
+
+.v6c-panel {
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  border: 1px solid var(--v6-line);
+  border-radius: 18px;
+  background: linear-gradient(165deg, var(--v6-panel), rgba(12, 21, 18, 0.22));
 }
-.k-bg-grid {
-  position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.8;
-  mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 80%, transparent 100%);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 80%, transparent 100%);
+.v6.light .v6c-panel {
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.72), rgba(238, 244, 240, 0.4));
 }
-.k-bg-band {
-  position: absolute; top: -30%; right: 0; width: 52%; height: 160%;
-  background: linear-gradient(to bottom, transparent, rgba(34,211,238,0.018) 40%, transparent);
-  transform: skewX(-6deg); border-left: 1px solid rgba(34,211,238,0.055); transform-origin: top right;
+
+.v6c-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+}
+.v6c-field { margin-bottom: 1.1rem; }
+.v6c-field label {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-family: var(--v6-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--v6-faint);
+}
+.v6c-field input,
+.v6c-field textarea {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--v6-line);
+  border-radius: 10px;
+  background: rgba(2, 8, 14, 0.25);
+  color: var(--v6-ink);
+  font-size: 0.92rem;
+  font-family: var(--v6-body);
+  outline: none;
+  resize: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.v6.light .v6c-field input,
+.v6.light .v6c-field textarea { background: rgba(255, 255, 255, 0.6); }
+.v6c-field input::placeholder,
+.v6c-field textarea::placeholder { color: var(--v6-faint); }
+.v6c-field input:focus,
+.v6c-field textarea:focus {
+  border-color: var(--v6-line-strong);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--v6-gold) 10%, transparent);
+}
+
+.v6c-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin-top: 0.4rem;
+}
+.v6c-foot p {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--v6-faint);
+}
+.v6c-foot b { color: var(--v6-muted); font-weight: 600; }
+
+/* success */
+.v6c-success { text-align: center; padding: clamp(2.2rem, 5vw, 3.2rem); }
+.v6c-success-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid var(--v6-line-strong);
+  border-radius: 50%;
+  color: var(--v6-gold);
+}
+.v6c-success-icon svg { width: 20px; height: 20px; }
+.v6c-success h2 {
+  margin: 0 0 0.6rem;
+  font-family: var(--v6-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+}
+.v6c-success p {
+  max-width: 26rem;
+  margin: 0 auto 1.6rem;
+  color: var(--v6-muted);
+  font-size: 0.92rem;
+}
+.v6c-success a,
+.v6c-direct a {
+  color: var(--v6-gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--v6-line-strong);
+  transition: color 0.2s ease;
+}
+.v6c-success a:hover,
+.v6c-direct a:hover { color: var(--v6-gold-hi); }
+
+.v6c-direct {
+  margin: 1.8rem 0 0;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--v6-muted);
+}
+
+@media (max-width: 640px) {
+  .v6c-wrap { padding-top: 7rem; }
+  .v6c-grid { grid-template-columns: 1fr; gap: 0; }
+  .v6c-field input,
+  .v6c-field textarea { min-height: 48px; font-size: 1rem; }
+  .v6c-field textarea { min-height: 9rem; }
+  .v6c-foot { align-items: stretch; }
+  .v6c-foot .v6-btn { width: 100%; }
 }
 </style>

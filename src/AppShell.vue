@@ -1,16 +1,26 @@
 <template>
-  <RouterView />
+  <V6Shell v-if="isV6Route">
+    <RouterView />
+  </V6Shell>
+  <template v-else>
+    <RouterView />
+    <LegalFooter />
+  </template>
 </template>
 
 <script setup>
-import { provide, watch } from "vue"
+import { computed, defineAsyncComponent, provide, watch } from "vue"
 import { useI18n } from "vue-i18n"
 import { useRoute } from "vue-router"
+const V6Shell = defineAsyncComponent(() => import("./components/v6/V6Shell.vue"))
+import LegalFooter from "./components/LegalFooter.vue"
 import { useTheme } from "./composables/useTheme.js"
 import { useBg } from "./composables/useBg.js"
+import { setI18nLocale } from "./i18n.js"
 import { localizedAlternatesForPath, localizedPathForRoute, normalizeLocale, unlocalizedPathFromRoute } from "./utils/routes.js"
 
 const route = useRoute()
+const isV6Route = computed(() => route.meta.v6 === true)
 const { locale, t } = useI18n()
 const { theme, isDark, toggleTheme } = useTheme()
 const { bg, changeBg } = useBg()
@@ -27,6 +37,12 @@ provide("bg", bg)
 provide("changeBg", changeBg)
 
 const absoluteUrl = (path = "/") => new URL(path, SITE_URL).href
+
+const trackPageView = () => {
+  const umami = window.umami
+  if (!umami || typeof umami.track !== "function") return
+  umami.track()
+}
 
 const routeLocale = () => {
   const rawLocale = Array.isArray(route.params.locale) ? route.params.locale[0] : route.params.locale
@@ -172,12 +188,12 @@ const buildStructuredData = (title, description, canonicalUrl) => {
 
 watch(
   () => route.params.locale,
-  () => {
+  async () => {
     const nextLocale = routeLocale()
     if (!nextLocale) return
     const normalized = normalizeLocale(nextLocale)
     if (locale.value !== normalized) {
-      locale.value = normalized
+      await setI18nLocale(normalized)
       localStorage.setItem("katsumii-locale", normalized)
     }
   },
@@ -214,6 +230,8 @@ watch(
     upsertMeta('meta[name="twitter:image"]', { name: "twitter:image", content: DEFAULT_SOCIAL_IMAGE })
 
     upsertJsonLd("katsumii-structured-data", buildStructuredData(title, description, canonicalUrl))
+
+    trackPageView()
   },
   { immediate: true },
 )

@@ -1,244 +1,123 @@
 <template>
-  <div :class="[!isDark ? 'relative overflow-x-hidden min-h-screen bg-slate-50 text-gray-900' : 'relative overflow-x-hidden min-h-screen bg-slate-950 text-slate-100']">
-    <div class="k-bg" :class="!isDark ? 'k-bg-light' : 'k-bg-dark'" aria-hidden="true">
-      <div class="k-bg-gradient" />
-      <svg class="k-bg-grid" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <pattern id="hc-faq" x="0" y="0" width="69.28" height="60" patternUnits="userSpaceOnUse">
-            <path d="M34.64,0 L51.96,10 L51.96,30 L34.64,40 L17.32,30 L17.32,10 Z M0,0 L17.32,10 M17.32,30 L0,40 M51.96,10 L69.28,0 M69.28,40 L51.96,30 M34.64,40 L34.64,60 M0,40 L0,60" style="fill:none;stroke:var(--hc-stroke);stroke-width:1.5"/>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#hc-faq)"/>
-      </svg>
-      <div class="k-bg-band" />
-    </div>
+  <main ref="rootEl" class="v6-faq">
+    <!-- HERO -->
+    <section class="v6f-hero">
+      <p class="v6-eyebrow v6-reveal"><i></i>{{ t('faq.hero.label') }}</p>
+      <h1 class="v6-h1 v6-reveal">{{ t('faq.hero.title') }}<b class="v6-dot">.</b></h1>
+      <p class="v6f-sub v6-reveal">{{ t('faq.hero.subtitle') }}</p>
 
-    <AppNav
-      :navigation="navigation"
-      :brand-title="t('common.brandTitle')"
-      :brand-subtitle="t('faq.brandSubtitle')"
-      :brand-href="pagePath('app')"
-    />
-
-    <section class="relative isolate px-6 pb-24 pt-28 lg:px-8">
-      <!-- Hero -->
-      <div class="faq-hero mx-auto max-w-4xl text-center">
-        <p
-          :class="[
-            'faq-hero-label inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em]',
-            !isDark
-              ? 'border-teal-200 bg-teal-50 text-teal-700'
-              : 'border-cyan-300/30 bg-cyan-400/10 text-cyan-300'
-          ]"
-        >
-          {{ t('faq.hero.label') }}
-        </p>
-        <h1
-          :class="[
-            'faq-hero-title mt-5 text-4xl font-semibold tracking-tight sm:text-6xl',
-            !isDark ? 'text-gray-900' : 'text-white'
-          ]"
-        >
-          {{ t('faq.hero.title') }}
-        </h1>
-        <p :class="['faq-hero-sub mx-auto mt-5 max-w-2xl text-lg', !isDark ? 'text-gray-500' : 'text-gray-400']">
-          {{ t('faq.hero.subtitle') }}
-        </p>
+      <div class="v6f-search v6-reveal">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+          <circle cx="9" cy="9" r="5.5" />
+          <path d="m13.2 13.2 3.6 3.6" />
+        </svg>
+        <input
+          ref="searchEl"
+          v-model="searchQuery"
+          type="search"
+          :placeholder="t('faq.search.placeholder')"
+          @keydown.esc="searchQuery = ''"
+        />
+        <button
+          v-if="searchQuery"
+          type="button"
+          class="v6f-clear"
+          :aria-label="t('common.aria.clearSearch')"
+          @click="searchQuery = ''; searchEl?.focus()"
+        >×</button>
+        <kbd v-else aria-hidden="true">/</kbd>
       </div>
+    </section>
 
-      <!-- Search -->
-      <div class="faq-search mx-auto mt-10 max-w-2xl">
-        <div
-          :class="[
-            'flex items-center gap-3 rounded-2xl border px-4 py-3 k-glass transition-all duration-200',
-            !isDark
-              ? 'border-gray-200 bg-white/80 focus-within:border-teal-400 focus-within:shadow-[0_0_0_3px_rgba(20,184,166,0.12)]'
-              : 'border-white/10 bg-slate-800/60 focus-within:border-cyan-400/50 focus-within:shadow-[0_0_0_3px_rgba(34,211,238,0.1)]'
-          ]"
-        >
-          <MagnifyingGlassIcon :class="['size-5 shrink-0', !isDark ? 'text-gray-400' : 'text-gray-500']" />
-          <input
-            v-model="searchQuery"
-            type="search"
-            :placeholder="t('faq.search.placeholder')"
-            :class="[
-              'w-full bg-transparent text-sm outline-none placeholder:text-gray-400',
-              !isDark ? 'text-gray-900' : 'text-slate-100'
-            ]"
-          />
-          <button
-            v-if="searchQuery"
-            @click="searchQuery = ''"
-            :class="['shrink-0 rounded-full p-0.5 transition-colors', !isDark ? 'text-gray-400 hover:text-gray-700' : 'text-gray-500 hover:text-gray-300']"
-            :aria-label="t('common.aria.clearSearch')"
-          >
-            <XMarkIcon class="size-4" />
-          </button>
-        </div>
-      </div>
-
-      <!-- Category filter -->
-      <div class="faq-filter mx-auto mt-5 max-w-4xl">
-        <div class="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+    <!-- BODY -->
+    <section class="v6f-body">
+      <aside class="v6f-side v6-reveal">
+        <nav class="v6f-cats" :aria-label="t('faq.hero.label')">
           <button
             v-for="cat in categories"
             :key="cat"
+            type="button"
+            :class="{ active: selectedCategory === cat }"
             @click="selectedCategory = cat"
-            :class="[
-              'shrink-0 rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-200',
-              selectedCategory === cat
-                ? !isDark
-                  ? 'border-teal-500 bg-teal-600 text-white shadow-sm'
-                  : 'border-cyan-400/50 bg-cyan-400/15 text-cyan-300'
-                : !isDark
-                  ? 'border-gray-200 bg-white/70 text-gray-500 hover:border-teal-300 hover:text-teal-700'
-                  : 'border-white/10 bg-white/5 text-gray-400 hover:border-cyan-400/30 hover:text-gray-300'
-            ]"
           >
-            {{ cat === 'all' ? t('faq.filter.all') : cat }}
+            <span>{{ cat === 'all' ? t('faq.filter.all') : cat }}</span>
+            <span class="v6f-cat-count">{{ pad(categoryCounts[cat]) }}</span>
           </button>
+        </nav>
+        <div class="v6f-side-contact">
+          <p>{{ t('faq.cta.title') }}</p>
+          <a href="mailto:info@katsumii.com" class="v6-quiet">{{ t('faq.cta.button') }} <span aria-hidden="true">→</span></a>
         </div>
-      </div>
+      </aside>
 
-      <!-- FAQ items -->
-      <div class="mx-auto mt-8 max-w-4xl space-y-3">
+      <div class="v6f-list v6-reveal">
+        <div class="v6f-list-head" aria-hidden="true">
+          <span>{{ selectedCategory === 'all' ? t('faq.filter.all') : selectedCategory }}</span>
+          <span>{{ pad(filteredItems.length) }} / {{ pad(faqItems.length) }}</span>
+        </div>
+
         <template v-if="filteredItems.length > 0">
-          <div
-            v-for="(item, idx) in filteredItems"
-            :key="itemKey(item)"
-            class="faq-item revealed"
-            :style="{ '--stagger': idx }"
-          >
-            <div
-              :class="[
-                'k-glass rounded-2xl border transition-all duration-300',
-                isOpen(item)
-                  ? !isDark
-                    ? 'border-teal-300/70 shadow-[0_8px_24px_-12px_rgba(20,184,166,0.25)]'
-                    : 'border-cyan-400/30 shadow-[0_8px_24px_-12px_rgba(34,211,238,0.15)]'
-                  : !isDark
-                    ? 'border-gray-200/80 bg-white/80 hover:border-teal-200 hover:shadow-[0_8px_24px_-16px_rgba(15,23,42,0.2)]'
-                    : 'border-white/8 bg-slate-800/55 hover:border-cyan-400/20',
-              ]"
-            >
+          <article v-for="(item, idx) in filteredItems" :key="itemKey(item)" class="v6f-item">
+            <h2 class="v6f-q-wrap">
               <button
                 type="button"
-                class="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5"
+                class="v6f-q"
                 :aria-expanded="isOpen(item)"
                 @click="toggleItem(item)"
               >
-                <div class="min-w-0">
-                  <span
-                    :class="[
-                      'inline-flex rounded-full border px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.13em]',
-                      !isDark
-                        ? 'border-teal-200 bg-teal-50 text-teal-600'
-                        : 'border-cyan-400/25 bg-cyan-400/8 text-cyan-400'
-                    ]"
-                  >
-                    {{ item.category }}
-                  </span>
-                  <h2 :class="['mt-2 text-base font-semibold sm:text-lg', !isDark ? 'text-gray-900' : 'text-white']">
-                    {{ item.question }}
-                  </h2>
-                </div>
-                <ChevronDownIcon
-                  :class="[
-                    'size-5 shrink-0 transition-transform duration-300',
-                    isOpen(item) ? 'rotate-180' : 'rotate-0',
-                    !isDark ? 'text-teal-500' : 'text-cyan-400'
-                  ]"
-                />
+                <span class="v6f-idx" :class="{ lit: isOpen(item) }">{{ pad(idx + 1) }}</span>
+                <span class="v6f-q-text">
+                  <template v-for="(seg, i) in highlight(item.question)" :key="i"><mark v-if="seg.hit">{{ seg.text }}</mark><template v-else>{{ seg.text }}</template></template>
+                </span>
+                <span class="v6f-toggle" :class="{ open: isOpen(item) }" aria-hidden="true"><i></i><i></i></span>
               </button>
-
-              <div v-show="isOpen(item)">
-                <div
-                  :class="[
-                    'border-t px-5 pb-5 pt-4 text-sm leading-relaxed sm:px-6 sm:pb-6 sm:text-base',
-                    !isDark ? 'border-gray-100 text-gray-600' : 'border-white/6 text-gray-300'
-                  ]"
-                >
-                  {{ item.answer }}
+            </h2>
+            <div class="v6f-a" :class="{ open: isOpen(item) }">
+              <div class="v6f-a-clip">
+                <div class="v6f-a-inner">
+                  <p>
+                    <template v-for="(seg, i) in highlight(item.answer)" :key="i"><mark v-if="seg.hit">{{ seg.text }}</mark><template v-else>{{ seg.text }}</template></template>
+                  </p>
+                  <span class="v6f-chip">{{ item.category }}</span>
                 </div>
               </div>
             </div>
-          </div>
+          </article>
         </template>
 
-        <!-- Empty state -->
-        <div
-          v-else
-          :class="[
-            'rounded-2xl border py-14 text-center k-glass',
-            !isDark ? 'border-gray-200 bg-white/70' : 'border-white/8 bg-slate-800/40'
-          ]"
-        >
-          <MagnifyingGlassIcon :class="['mx-auto mb-3 size-8 opacity-30', !isDark ? 'text-gray-500' : 'text-gray-400']" />
-          <p :class="['text-sm font-medium', !isDark ? 'text-gray-500' : 'text-gray-400']">{{ t('faq.empty') }}</p>
-          <button
-            @click="searchQuery = ''; selectedCategory = 'all'"
-            :class="['mt-4 text-xs font-semibold underline underline-offset-2', !isDark ? 'text-teal-600' : 'text-cyan-400']"
-          >
-            {{ t('faq.filter.all') }}
+        <div v-else class="v6f-empty">
+          <p>{{ t('faq.empty') }}</p>
+          <button type="button" class="v6-quiet" @click="searchQuery = ''; selectedCategory = 'all'">
+            {{ t('faq.filter.all') }} <span aria-hidden="true">→</span>
           </button>
         </div>
       </div>
+    </section>
 
-      <!-- CTA -->
-      <div class="mx-auto mt-14 max-w-4xl">
-        <div
-          :class="[
-            'faq-cta k-main-tile k-glass border p-8 text-center sm:p-10',
-            !isDark
-              ? 'border-gray-200/80 bg-white/70 shadow-[0_20px_60px_-30px_rgba(15,23,42,0.18)]'
-              : 'border-white/8 bg-slate-800/40 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.5)]'
-          ]"
-        >
-          <div
-            :class="[
-              'mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border',
-              !isDark ? 'border-teal-200 bg-teal-50' : 'border-cyan-400/25 bg-cyan-400/8'
-            ]"
-          >
-            <EnvelopeIcon :class="['size-5', !isDark ? 'text-teal-600' : 'text-cyan-400']" />
-          </div>
-          <h3 :class="['text-xl font-semibold', !isDark ? 'text-gray-900' : 'text-white']">{{ t('faq.cta.title') }}</h3>
-          <p :class="['mx-auto mt-2 max-w-sm text-sm', !isDark ? 'text-gray-500' : 'text-gray-400']">
-            {{ t('faq.cta.body') }}
-          </p>
-          <a
-            href="mailto:info@katsumii.com"
-            :class="[
-              'mt-6 inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5',
-              !isDark
-                ? 'bg-teal-600 text-white hover:bg-teal-500 shadow-[0_8px_20px_-8px_rgba(13,148,136,0.5)]'
-                : 'bg-cyan-400/15 text-cyan-300 border border-cyan-400/30 hover:bg-cyan-400/25'
-            ]"
-          >
-            {{ t('faq.cta.button') }}
-          </a>
-        </div>
+    <!-- CTA -->
+    <section class="v6f-cta">
+      <h2 class="v6f-cta-title v6-reveal">{{ t('faq.cta.title') }}</h2>
+      <p class="v6f-cta-sub v6-reveal">{{ t('faq.cta.body') }}</p>
+      <div class="v6f-cta-actions v6-reveal">
+        <a href="mailto:info@katsumii.com" class="v6-btn v6-magnetic">{{ t('faq.cta.button') }} <span aria-hidden="true">→</span></a>
       </div>
     </section>
-  </div>
+  </main>
 </template>
 
 <script setup>
-import { computed, inject, ref, watch } from "vue"
+import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue"
 import { useI18n } from "vue-i18n"
-import { ChevronDownIcon, MagnifyingGlassIcon, XMarkIcon, EnvelopeIcon } from "@heroicons/vue/24/outline"
-import AppNav from "./AppNav.vue"
-import { useSiteNavigation } from "../composables/useSiteNavigation.js"
-import { pagePath } from "../utils/routes.js"
+import { initMagnetic, initV6Reveals } from "../v6/motion.js"
 
 const { locale, t, tm } = useI18n()
 
-const navigation = useSiteNavigation()
-
-const isDark = inject("isDark")
+const rootEl = ref(null)
+const searchEl = ref(null)
 const searchQuery = ref("")
 const selectedCategory = ref("all")
 const openItems = ref(new Set())
+let cleanups = []
 
 const faqItems = computed(() => {
   const raw = tm("faq.items")
@@ -250,8 +129,16 @@ const categories = computed(() => {
   return ["all", ...cats]
 })
 
+const categoryCounts = computed(() => {
+  const counts = { all: faqItems.value.length }
+  faqItems.value.forEach((i) => { counts[i.category] = (counts[i.category] || 0) + 1 })
+  return counts
+})
+
+const query = computed(() => searchQuery.value.trim().toLowerCase())
+
 const filteredItems = computed(() => {
-  const q = searchQuery.value.trim().toLowerCase()
+  const q = query.value
   return faqItems.value.filter((item) => {
     const matchCat = selectedCategory.value === "all" || item.category === selectedCategory.value
     if (!matchCat) return false
@@ -260,16 +147,47 @@ const filteredItems = computed(() => {
   })
 })
 
+const pad = (n) => String(n ?? 0).padStart(2, "0")
+
 const itemKey = (item) => `${item.category}:${item.question}`
 
-const isOpen = (item) => openItems.value.has(itemKey(item))
+/* while searching, matches stay expanded so hits in answers are visible */
+const isOpen = (item) => query.value.length >= 2 || openItems.value.has(itemKey(item))
 
 const toggleItem = (item) => {
+  if (query.value.length >= 2) return
   const next = new Set(openItems.value)
   const key = itemKey(item)
   if (next.has(key)) next.delete(key)
   else next.add(key)
   openItems.value = next
+}
+
+/* split text into plain/hit segments for <mark> rendering without v-html */
+const highlight = (text) => {
+  const q = query.value
+  if (q.length < 2) return [{ text, hit: false }]
+  const segments = []
+  const lower = text.toLowerCase()
+  let pos = 0
+  let hit = lower.indexOf(q)
+  while (hit !== -1) {
+    if (hit > pos) segments.push({ text: text.slice(pos, hit), hit: false })
+    segments.push({ text: text.slice(hit, hit + q.length), hit: true })
+    pos = hit + q.length
+    hit = lower.indexOf(q, pos)
+  }
+  if (pos < text.length) segments.push({ text: text.slice(pos), hit: false })
+  return segments
+}
+
+/* "/" focuses the search from anywhere on the page */
+const onKeydown = (e) => {
+  if (e.key !== "/" || e.ctrlKey || e.metaKey || e.altKey) return
+  const tag = document.activeElement?.tagName
+  if (tag === "INPUT" || tag === "TEXTAREA") return
+  e.preventDefault()
+  searchEl.value?.focus()
 }
 
 watch([categories, locale], () => {
@@ -279,53 +197,305 @@ watch([categories, locale], () => {
   openItems.value = new Set()
 })
 
+onMounted(() => {
+  cleanups.push(initV6Reveals(rootEl.value))
+  cleanups.push(initMagnetic(rootEl.value))
+  window.addEventListener("keydown", onKeydown)
+  cleanups.push(() => window.removeEventListener("keydown", onKeydown))
+})
+
+onBeforeUnmount(() => {
+  cleanups.forEach((off) => off && off())
+  cleanups = []
+})
 </script>
 
 <style scoped>
-.k-bg {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 0;
+/* FAQ layout — shared tokens/chrome live in src/styles/v6.css */
+.v6-faq { position: relative; z-index: 1; }
+
+/* ── hero ── */
+.v6f-hero {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: clamp(8rem, 18vh, 11rem) clamp(1.1rem, 4vw, 3rem) clamp(2.5rem, 6vh, 4rem);
+  text-align: center;
+}
+.v6f-hero .v6-eyebrow { justify-content: center; }
+.v6f-hero .v6-h1 { font-size: clamp(2.5rem, 5.4vw, 4.4rem); }
+.v6f-sub {
+  max-width: 36rem;
+  margin: 0 auto;
+  color: var(--v6-muted);
+}
+
+/* ── search ── */
+.v6f-search {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  max-width: 34rem;
+  margin: 2.4rem auto 0;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid var(--v6-line);
+  border-radius: 12px;
+  background: var(--v6-panel);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.v6f-search:focus-within {
+  border-color: var(--v6-line-strong);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--v6-gold) 12%, transparent);
+}
+.v6f-search svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  color: var(--v6-faint);
+}
+.v6f-search:focus-within svg { color: var(--v6-gold); }
+.v6f-search input {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: var(--v6-ink);
+  font-size: 0.95rem;
+}
+.v6f-search input::placeholder { color: var(--v6-faint); }
+.v6f-search input::-webkit-search-cancel-button { display: none; }
+.v6f-search kbd {
+  flex: none;
+  font-family: var(--v6-mono);
+  font-size: 0.68rem;
+  color: var(--v6-faint);
+  border: 1px solid var(--v6-line);
+  border-radius: 5px;
+  padding: 0.1rem 0.45rem;
+}
+.v6f-clear {
+  flex: none;
+  border: 0;
+  background: transparent;
+  color: var(--v6-faint);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.v6f-clear:hover { color: var(--v6-ink); }
+
+/* ── body grid ── */
+.v6f-body {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(1rem, 4vh, 2.5rem) clamp(1.1rem, 4vw, 3rem) clamp(3rem, 8vh, 5rem);
+  display: grid;
+  grid-template-columns: minmax(220px, 3fr) 8fr;
+  gap: clamp(1.6rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+/* ── sidebar ── */
+.v6f-side { position: sticky; top: 6rem; }
+.v6f-cats {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--v6-line);
+}
+.v6f-cats button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: 0.75rem 0.2rem;
+  border: 0;
+  border-bottom: 1px solid var(--v6-line);
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--v6-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--v6-muted);
+  text-align: left;
+  transition: color 0.2s ease, padding-left 0.25s ease;
+}
+.v6f-cats button:hover { color: var(--v6-ink); }
+.v6f-cats button.active { color: var(--v6-gold); padding-left: 0.6rem; }
+.v6f-cat-count { color: var(--v6-faint); font-size: 0.66rem; }
+.v6f-cats button.active .v6f-cat-count { color: var(--v6-gold); }
+.v6f-side-contact { margin-top: 2rem; }
+.v6f-side-contact p {
+  margin: 0 0 0.6rem;
+  color: var(--v6-muted);
+  font-size: 0.88rem;
+}
+
+/* ── list panel ── */
+.v6f-list {
+  border: 1px solid var(--v6-line);
+  border-radius: 18px;
+  background: linear-gradient(165deg, var(--v6-panel), rgba(12, 21, 18, 0.22));
   overflow: hidden;
 }
-.k-bg-dark { --orb-a: rgba(59,130,246,0.28); --orb-b: rgba(34,211,238,0.22); --hc-stroke: rgba(34,211,238,0.02); }
-.k-bg-light { --orb-a: rgba(6,182,212,0.16); --orb-b: rgba(59,130,246,0.12); --hc-stroke: rgba(8,145,178,0.04); }
-.k-bg-gradient {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 70% 55% at 8% 18%, var(--orb-a), transparent 60%),
-    radial-gradient(ellipse 55% 45% at 88% 80%, var(--orb-b), transparent 55%);
+.v6.light .v6f-list {
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.72), rgba(238, 244, 240, 0.4));
 }
-.k-bg-grid {
-  position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.8;
-  mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 80%, transparent 100%);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 12%, black 80%, transparent 100%);
+.v6f-list-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem clamp(1.2rem, 2.4vw, 1.8rem);
+  border-bottom: 1px solid var(--v6-line);
+  font-family: var(--v6-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--v6-faint);
 }
-.k-bg-band {
-  position: absolute; top: -30%; right: 0; width: 52%; height: 160%;
-  background: linear-gradient(to bottom, transparent, rgba(34,211,238,0.018) 40%, transparent);
-  transform: skewX(-6deg); border-left: 1px solid rgba(34,211,238,0.055); transform-origin: top right;
+.v6f-item { border-bottom: 1px solid var(--v6-line); }
+.v6f-item:last-child { border-bottom: 0; }
+.v6f-q-wrap { margin: 0; }
+.v6f-q {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: 1.1rem;
+  width: 100%;
+  padding: 1.15rem clamp(1.2rem, 2.4vw, 1.8rem);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+.v6f-q:hover { background: rgba(255, 255, 255, 0.025); }
+.v6.light .v6f-q:hover { background: rgba(2, 12, 20, 0.03); }
+.v6f-idx {
+  font-family: var(--v6-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--v6-faint);
+  font-variant-numeric: tabular-nums;
+  transition: color 0.25s ease;
+}
+.v6f-idx.lit { color: var(--v6-gold); }
+.v6f-q-text {
+  font-family: var(--v6-display);
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
+  color: var(--v6-ink);
+}
+.v6f-toggle {
+  position: relative;
+  align-self: center;
+  width: 14px;
+  height: 14px;
+}
+.v6f-toggle i {
+  position: absolute;
+  top: 50%; left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--v6-faint);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s ease;
+}
+.v6f-toggle i:last-child { transform: rotate(90deg); }
+.v6f-toggle.open i { background: var(--v6-gold); }
+.v6f-toggle.open i:last-child { transform: rotate(0deg); }
+
+/* answer expands via grid-rows — no JS height measuring */
+.v6f-a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.v6f-a.open { grid-template-rows: 1fr; }
+.v6f-a-clip { overflow: hidden; }
+.v6f-a-inner { padding: 0 clamp(1.2rem, 2.4vw, 1.8rem) 1.3rem calc(clamp(1.2rem, 2.4vw, 1.8rem) + 1.1rem + 1.6ch); }
+.v6f-a-inner p {
+  margin: 0;
+  color: var(--v6-muted);
+  font-size: 0.94rem;
+  line-height: 1.65;
+  max-width: 46rem;
+}
+.v6f-chip {
+  display: inline-block;
+  margin-top: 0.9rem;
+  font-family: var(--v6-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--v6-gold);
+  border: 1px solid var(--v6-line-strong);
+  border-radius: 999px;
+  padding: 0.22rem 0.6rem;
+}
+mark {
+  background: color-mix(in srgb, var(--v6-gold) 24%, transparent);
+  color: var(--v6-ink);
+  border-radius: 3px;
+  padding: 0 0.1em;
 }
 
-/* Scroll reveal */
-.faq-item,
-.faq-hero,
-.faq-search,
-.faq-filter,
-.faq-cta {
-  opacity: 1;
-  transform: none;
-  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+/* ── empty state ── */
+.v6f-empty {
+  padding: 3.5rem 1.5rem;
+  text-align: center;
 }
-.faq-search { transition-delay: 0.06s; }
-.faq-filter { transition-delay: 0.1s; }
-.revealed {
-  opacity: 1;
-  transform: none;
+.v6f-empty p {
+  margin: 0 0 1rem;
+  font-family: var(--v6-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--v6-faint);
 }
 
-/* Hide scrollbar on filter row */
-.scrollbar-hide { scrollbar-width: none; }
-.scrollbar-hide::-webkit-scrollbar { display: none; }
+/* ── cta ── */
+.v6f-cta {
+  text-align: center;
+  padding: clamp(3rem, 9vh, 6rem) clamp(1.1rem, 4vw, 3rem) clamp(6rem, 15vh, 10rem);
+}
+.v6f-cta-title {
+  font-family: var(--v6-display);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 4.6vw, 3.2rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 1rem;
+}
+.v6f-cta-sub {
+  color: var(--v6-muted);
+  max-width: 30rem;
+  margin: 0 auto 2.2rem;
+}
+.v6f-cta-actions {
+  display: flex;
+  justify-content: center;
+}
+
+/* ── responsive ── */
+@media (max-width: 900px) {
+  .v6f-body { grid-template-columns: 1fr; }
+  .v6f-side { position: static; }
+  .v6f-cats { flex-direction: row; flex-wrap: wrap; gap: 0.5rem; border-top: 0; }
+  .v6f-cats button {
+    border: 1px solid var(--v6-line);
+    border-radius: 999px;
+    padding: 0.45rem 0.9rem;
+  }
+  .v6f-cats button.active { border-color: var(--v6-line-strong); padding-left: 0.9rem; }
+  .v6f-side-contact { display: none; }
+  .v6f-search kbd { display: none; }
+  .v6f-a-inner { padding-left: clamp(1.2rem, 2.4vw, 1.8rem); }
+}
+@media (max-width: 640px) {
+  .v6f-q { grid-template-columns: auto 1fr auto; gap: 0.7rem; padding: 1rem; }
+  .v6f-list-head { padding-inline: 1rem; }
+  .v6f-a-inner { padding: 0 1rem 1.15rem; }
+  .v6f-search input { font-size: 1rem; }
+}
 </style>

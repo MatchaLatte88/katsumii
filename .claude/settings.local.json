@@ -31,7 +31,8 @@
       "Bash(git -C \"C:/Users/Matcha/Desktop/ClaudeWorkspace/Katsumii Website\" status)",
       "Bash(git -C \"C:/Users/Matcha/Desktop/ClaudeWorkspace/Katsumii Website\" diff)",
       "Bash(cd \"C:\\\\Users\\\\Matcha\\\\Desktop\\\\ClaudeWorkspace\\\\Katsumii Website\" && cat package.json 2>/dev/null | head -30; ls .. 2>/dev/null)",
-      "Bash(git fetch *)"
+      "Bash(git fetch *)",
+      "PowerShell(\\(Get-Content \"src\\\\components\\\\LandingV4.vue\" | Measure-Object -Line\\).Lines; \\(Get-Content \"src\\\\components\\\\LandingV2.vue\" | Measure-Object -Line\\).Lines; Get-ChildItem public\\\\fonts -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Name)"
     ]
   }
 }

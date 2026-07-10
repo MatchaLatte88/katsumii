@@ -127,3 +127,68 @@ img {
   }
 }
 
+/* Katsumii custom scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(15, 159, 143, 0.7) #f8fafc;
+  background: #f8fafc;
+}
+
+html.dark {
+  scrollbar-color: rgba(34, 211, 238, 0.55) #070d16;
+  background: #070d16;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track-piece {
+  background: #f8fafc;
+}
+
+html.dark *::-webkit-scrollbar-track,
+html.dark *::-webkit-scrollbar-track-piece {
+  background: #070d16;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(15, 159, 143, 0.7),
+    rgba(34, 211, 238, 0.7)
+  );
+  border-radius: 999px;
+  transition: background 0.3s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(15, 159, 143, 0.95),
+    rgba(34, 211, 238, 0.95)
+  );
+}
+
+html.dark *::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(34, 211, 238, 0.55),
+    rgba(45, 212, 191, 0.65)
+  );
+}
+
+html.dark *::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(34, 211, 238, 0.9),
+    rgba(45, 212, 191, 0.95)
+  );
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+

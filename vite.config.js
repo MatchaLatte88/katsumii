@@ -7,6 +7,13 @@ import vue from '@vitejs/plugin-vue'
 const appRoutes = new Set([
   '/app',
   '/features',
+  '/prop-firm-challenges',
+  '/funded-accounts',
+  '/personal-trading',
+  '/backtesting',
+  '/analytics-reviews',
+  '/local-offline',
+  '/local' + '-first',
   '/pricing',
   '/manual',
   '/faq',
@@ -56,6 +63,42 @@ const staticRouteMeta = [
     titleKey: 'common.pageTitles.features',
     descriptionKey: 'common.pageDescriptions.features',
     priority: '0.9',
+  },
+  {
+    path: '/prop-firm-challenges',
+    titleKey: 'common.pageTitles.propFirmChallenges',
+    descriptionKey: 'common.pageDescriptions.propFirmChallenges',
+    priority: '0.8',
+  },
+  {
+    path: '/funded-accounts',
+    titleKey: 'common.pageTitles.fundedAccounts',
+    descriptionKey: 'common.pageDescriptions.fundedAccounts',
+    priority: '0.8',
+  },
+  {
+    path: '/personal-trading',
+    titleKey: 'common.pageTitles.personalTrading',
+    descriptionKey: 'common.pageDescriptions.personalTrading',
+    priority: '0.8',
+  },
+  {
+    path: '/backtesting',
+    titleKey: 'common.pageTitles.backtesting',
+    descriptionKey: 'common.pageDescriptions.backtesting',
+    priority: '0.8',
+  },
+  {
+    path: '/analytics-reviews',
+    titleKey: 'common.pageTitles.analyticsReviews',
+    descriptionKey: 'common.pageDescriptions.analyticsReviews',
+    priority: '0.8',
+  },
+  {
+    path: '/local-offline',
+    titleKey: 'common.pageTitles.localFirst',
+    descriptionKey: 'common.pageDescriptions.localFirst',
+    priority: '0.8',
   },
   {
     path: '/pricing',
@@ -128,6 +171,18 @@ const localizedRoutePath = (route, locale) => `/${locale}${route.path}`
 
 const routeUrl = (route, locale) => `${SITE_URL}${localizedRoutePath(route, locale)}`
 
+const normalizePreviewPath = (pathname = '/') => pathname.replace(/\/+$/, '') || '/'
+
+const staticPreviewPaths = new Set([
+  ...staticRouteMeta.flatMap((route) => [
+    route.path,
+    ...SUPPORTED_LOCALES.map((locale) => localizedRoutePath(route, locale)),
+  ]),
+  ...SUPPORTED_LOCALES.map((locale) => `/${locale}`),
+])
+
+const hasStaticPreviewPage = (pathname) => staticPreviewPaths.has(normalizePreviewPath(pathname))
+
 const alternateTags = (route) => [
   ...SUPPORTED_LOCALES.map((locale) =>
     `<link rel="alternate" hreflang="${HREFLANG_BY_LOCALE[locale]}" href="${routeUrl(route, locale)}" data-katsumii-hreflang="true" />`
@@ -138,13 +193,93 @@ const alternateTags = (route) => [
 const stripAlternateTags = (html) =>
   html.replace(/\n\s*<link\s+rel="alternate"[^>]*data-katsumii-hreflang="true"[^>]*>/gi, '')
 
+const structuredDataJson = (route, locale, title, description, canonical) => {
+  const appRoute = staticRouteMeta.find((item) => item.path === '/app')
+  const softwareUrl = routeUrl(appRoute, 'en')
+  const lang = HREFLANG_BY_LOCALE[locale]
+  const graph = [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: 'Katsumii',
+      url: SITE_URL,
+      logo: `${SITE_URL}/logo.png`,
+      email: 'info@katsumii.com',
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      name: 'Katsumii',
+      url: SITE_URL,
+      publisher: { '@id': `${SITE_URL}/#organization` },
+      inLanguage: lang,
+    },
+    {
+      '@type': 'SoftwareApplication',
+      '@id': `${softwareUrl}#software`,
+      name: 'Katsumii',
+      url: softwareUrl,
+      description: localeText(locale, 'common.pageDescriptions.app'),
+      applicationCategory: 'FinanceApplication',
+      operatingSystem: 'Windows 10, Windows 11, macOS 12 or newer',
+      image: SOCIAL_IMAGE,
+      publisher: { '@id': `${SITE_URL}/#organization` },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${canonical}#webpage`,
+      url: canonical,
+      name: title,
+      description,
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+      about: { '@id': `${softwareUrl}#software` },
+      inLanguage: lang,
+    },
+  ]
+
+  if (route.path !== '/app') {
+    graph.push({
+      '@type': 'BreadcrumbList',
+      '@id': `${canonical}#breadcrumb`,
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Katsumii',
+          item: softwareUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: title.replace(/\s-\sKatsumii$/, ''),
+          item: canonical,
+        },
+      ],
+    })
+  }
+
+  return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2)
+    .replace(/</g, '\\u003c')
+}
+
+const upsertStructuredData = (html, payload) => {
+  const json = payload.split('\n').map((line) => `    ${line}`).join('\n')
+  const tag = `<script id="katsumii-structured-data" type="application/ld+json">\n${json}\n  </script>`
+  const matcher = /<script\s+id="katsumii-structured-data"[^>]*>[\s\S]*?<\/script>/i
+  if (matcher.test(html)) return html.replace(matcher, tag)
+  return html.replace('</head>', `  ${tag}\n</head>`)
+}
+
 const routeHtml = (html, route, locale, options = {}) => {
   const canonical = options.canonical || routeUrl(route, locale)
-  const title = escapeHtml(localeText(locale, route.titleKey))
-  const description = escapeHtml(localeText(locale, route.descriptionKey))
+  const rawTitle = localeText(locale, route.titleKey)
+  const rawDescription = localeText(locale, route.descriptionKey)
+  const title = escapeHtml(rawTitle)
+  const description = escapeHtml(rawDescription)
   const robots = options.robots || route.robots || 'index, follow'
   const lang = HREFLANG_BY_LOCALE[locale]
   const alternates = alternateTags(route)
+  const structuredData = structuredDataJson(route, locale, rawTitle, rawDescription, canonical)
 
   return [
     (value) => value.replace(/<html\s+lang="[^"]*">/i, `<html lang="${lang}">`),
@@ -161,6 +296,7 @@ const routeHtml = (html, route, locale, options = {}) => {
     (value) => upsertMetaTag(value, /<meta\s+name="twitter:description"[^>]*>/i, `<meta name="twitter:description" content="${description}" />`),
     (value) => upsertMetaTag(value, /<meta\s+name="twitter:image"[^>]*>/i, `<meta name="twitter:image" content="${SOCIAL_IMAGE}" />`),
     (value) => stripAlternateTags(value).replace('</head>', `  ${alternates}\n</head>`),
+    (value) => upsertStructuredData(value, structuredData),
   ].reduce((value, transform) => transform(value), html)
 }
 
@@ -212,7 +348,7 @@ const routeFallbackPlugin = () => ({
     server.middlewares.use((req, res, next) => {
       const pathname = new URL(req.url, 'http://localhost').pathname
       const acceptsHtml = req.headers.accept?.includes('text/html')
-      if (acceptsHtml && (appRoutes.has(pathname) || (pathname !== '/' && !pathname.includes('.')))) {
+      if (acceptsHtml && pathname !== '/' && !pathname.includes('.') && !hasStaticPreviewPage(pathname)) {
         req.url = '/app.html'
       }
       next()
