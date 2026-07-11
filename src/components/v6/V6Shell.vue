@@ -6,19 +6,6 @@
 
     <PreviewNoticeModal v-if="isLandingRoute" />
 
-    <div class="v6-bgswitch" role="group" aria-label="Background style">
-      <button
-        v-for="option in V6_BG_OPTIONS"
-        :key="option.key"
-        type="button"
-        :class="{ active: bgMode === option.key }"
-        :aria-pressed="bgMode === option.key"
-        @click="setBg(option.key)"
-      >
-        {{ option.label }}
-      </button>
-    </div>
-
     <!-- NAV -->
     <header ref="navEl" class="v6-nav" :class="{ scrolled }">
       <RouterLink class="v6-brand" :to="`/${lang}/app`">
@@ -47,6 +34,27 @@
               <span class="v6-nav-menu-text">
                 {{ item.label }}
                 <small>{{ item.sub }}</small>
+              </span>
+              <svg class="v6-nav-menu-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+                <path d="M2.5 6h7M6.6 3.1 9.5 6l-2.9 2.9" />
+              </svg>
+            </RouterLink>
+            <p class="v6-nav-menu-head" aria-hidden="true">Go deeper</p>
+            <RouterLink role="menuitem" :to="`/${lang}/analytics-reviews`">
+              <span class="v6-nav-menu-idx" aria-hidden="true">05</span>
+              <span class="v6-nav-menu-text">
+                Analytics
+                <small>Edge, breakdowns & reports</small>
+              </span>
+              <svg class="v6-nav-menu-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+                <path d="M2.5 6h7M6.6 3.1 9.5 6l-2.9 2.9" />
+              </svg>
+            </RouterLink>
+            <RouterLink role="menuitem" :to="`/${lang}/customization`">
+              <span class="v6-nav-menu-idx" aria-hidden="true">06</span>
+              <span class="v6-nav-menu-text">
+                Customization
+                <small>Focus mode & themes</small>
               </span>
               <svg class="v6-nav-menu-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
                 <path d="M2.5 6h7M6.6 3.1 9.5 6l-2.9 2.9" />
@@ -96,22 +104,14 @@
         <button class="v6-mobile-backdrop" type="button" aria-label="Close menu" @click="mobileOpen = false"></button>
         <nav ref="mobilePanelEl" class="v6-mobile-panel" aria-label="Mobile navigation">
           <p class="v6-mobile-kicker">Explore Katsumii</p>
-          <RouterLink :to="`/${lang}/features`" class="v6-mobile-primary">Features <span>→</span></RouterLink>
-          <div class="v6-mobile-disciplines">
+          <div class="v6-mobile-nav">
             <RouterLink
-              v-for="(item, index) in FEATURE_PAGES"
+              v-for="item in MOBILE_LINKS"
               :key="item.path"
               :to="`/${lang}/${item.path}`"
             >
-              <span class="v6-mobile-index" :style="{ color: isDark ? item.dot.dark : item.dot.light }">0{{ index + 1 }}</span>
-              <span><b>{{ item.label }}</b><small>{{ item.sub }}</small></span>
+              {{ item.label }}<small v-if="item.sub">{{ item.sub }}</small>
             </RouterLink>
-          </div>
-          <div class="v6-mobile-links">
-            <RouterLink :to="`/${lang}/pricing`">Pricing</RouterLink>
-            <RouterLink :to="`/${lang}/manual`">Manual</RouterLink>
-            <RouterLink :to="`/${lang}/faq`">FAQ</RouterLink>
-            <RouterLink :to="`/${lang}/contact`">Contact</RouterLink>
           </div>
           <span class="v6-btn v6-btn-static" aria-disabled="true">Coming soon</span>
           <p class="v6-mobile-note">Local. Offline. Entirely yours.</p>
@@ -136,7 +136,7 @@
 <script setup>
 import { computed, inject, nextTick, onBeforeUnmount, onMounted, provide, ref, watch } from "vue"
 import { useRoute } from "vue-router"
-import { createV6Background, V6_BG_OPTIONS } from "../../v6/gl.js"
+import { createV6Background } from "../../v6/gl.js"
 import { initMagnetic, prefersReducedMotion } from "../../v6/motion.js"
 import { normalizeLocale } from "../../utils/routes.js"
 import PreviewNoticeModal from "./PreviewNoticeModal.vue"
@@ -153,6 +153,18 @@ const FEATURE_PAGES = [
   { label: "Backtest", sub: "Sessions & replay", path: "backtesting", dot: { dark: "#818cf8", light: "#6d28d9" } },
 ]
 
+/* Mobile menu: every page gets the same row treatment */
+const MOBILE_LINKS = [
+  { label: "Features", sub: "Overview", path: "features" },
+  ...FEATURE_PAGES.map(({ label, sub, path }) => ({ label, sub, path })),
+  { label: "Analytics", sub: "Edge, breakdowns & reports", path: "analytics-reviews" },
+  { label: "Customization", sub: "Focus mode & themes", path: "customization" },
+  { label: "Pricing", path: "pricing" },
+  { label: "Manual", path: "manual" },
+  { label: "FAQ", path: "faq" },
+  { label: "Contact", path: "contact" },
+]
+
 const route = useRoute()
 const isDark = inject("isDark")
 const toggleTheme = inject("toggleTheme")
@@ -165,7 +177,6 @@ const progressEl = ref(null)
 const menuToggleEl = ref(null)
 const mobilePanelEl = ref(null)
 const scrolled = ref(false)
-const bgMode = ref("river")
 const mobileOpen = ref(false)
 let glApi = null
 let cleanups = []
@@ -216,13 +227,6 @@ watch(mobileOpen, async (open) => {
 })
 watch(accent, (value) => glApi?.setAccent(value[0], value[1]))
 
-const setBg = (key) => {
-  if (bgMode.value === key) return
-  bgMode.value = key
-  try { localStorage.setItem("katsumii-v6-bg", key) } catch { /* private mode */ }
-  glApi?.setMode(key)
-}
-
 const onScroll = () => {
   const y = window.scrollY
   scrolled.value = y > 60
@@ -253,15 +257,8 @@ const onKeydown = (event) => {
 }
 
 onMounted(() => {
-  try {
-    const saved = localStorage.getItem("katsumii-v6-bg")
-    if (V6_BG_OPTIONS.some((option) => option.key === saved)) bgMode.value = saved
-  } catch { /* private mode */ }
-
   glApi = createV6Background(glEl.value, {
     light: !isDark.value,
-    mode: bgMode.value,
-    logoUrl: asset("logo.png"),
     accent: accent.value,
   })
   if (glApi) {

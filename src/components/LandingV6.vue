@@ -751,7 +751,7 @@ onBeforeUnmount(() => {
   inset: 0;
   pointer-events: none;
   background: radial-gradient(
-    ellipse 33% 14% at 28% 67%,
+    ellipse 33% 14% at 25% 67%,
     color-mix(in srgb, var(--v6-bg) 90%, transparent) 42%,
     transparent 100%
   );
