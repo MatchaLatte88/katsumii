@@ -1,0 +1,752 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.katsumii.com/en/app</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/app" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/app" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/app" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/app" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/app" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/de/app</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/app" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/app" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/app" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/app" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/app" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/es/app</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/app" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/app" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/app" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/app" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/app" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/tw/app</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/app" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/app" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/app" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/app" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/app" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/en/features</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/features" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/features" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/features" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/features" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/features" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/de/features</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/features" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/features" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/features" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/features" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/features" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/es/features</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/features" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/features" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/features" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/features" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/features" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/tw/features</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/features" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/features" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/features" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/features" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/features" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/en/prop-firm-challenges</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/prop-firm-challenges" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/prop-firm-challenges" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/prop-firm-challenges" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/prop-firm-challenges" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/prop-firm-challenges" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/de/prop-firm-challenges</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/prop-firm-challenges" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/prop-firm-challenges" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/prop-firm-challenges" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/prop-firm-challenges" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/prop-firm-challenges" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/es/prop-firm-challenges</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/prop-firm-challenges" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/prop-firm-challenges" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/prop-firm-challenges" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/prop-firm-challenges" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/prop-firm-challenges" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/tw/prop-firm-challenges</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/prop-firm-challenges" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/prop-firm-challenges" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/prop-firm-challenges" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/prop-firm-challenges" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/prop-firm-challenges" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/en/funded-accounts</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/funded-accounts" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/funded-accounts" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/funded-accounts" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/funded-accounts" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/funded-accounts" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/de/funded-accounts</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/funded-accounts" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/funded-accounts" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/funded-accounts" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/funded-accounts" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/funded-accounts" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/es/funded-accounts</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/funded-accounts" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/funded-accounts" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/funded-accounts" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/funded-accounts" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/funded-accounts" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/tw/funded-accounts</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/funded-accounts" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/funded-accounts" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/funded-accounts" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/funded-accounts" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/funded-accounts" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/en/personal-trading</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/personal-trading" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/personal-trading" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/personal-trading" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/personal-trading" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/personal-trading" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/de/personal-trading</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/personal-trading" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/personal-trading" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/personal-trading" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/personal-trading" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/personal-trading" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/es/personal-trading</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/personal-trading" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/personal-trading" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/personal-trading" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/personal-trading" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/personal-trading" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/tw/personal-trading</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/personal-trading" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/personal-trading" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/personal-trading" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/personal-trading" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/personal-trading" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/en/backtesting</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/backtesting" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/backtesting" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/backtesting" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/backtesting" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/backtesting" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/de/backtesting</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/backtesting" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/backtesting" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/backtesting" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/backtesting" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/backtesting" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/es/backtesting</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/backtesting" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/backtesting" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/backtesting" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/backtesting" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/backtesting" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/tw/backtesting</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/backtesting" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/backtesting" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/backtesting" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/backtesting" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/backtesting" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/en/analytics-reviews</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/analytics-reviews" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/analytics-reviews" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/analytics-reviews" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/analytics-reviews" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/analytics-reviews" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/de/analytics-reviews</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/analytics-reviews" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/analytics-reviews" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/analytics-reviews" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/analytics-reviews" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/analytics-reviews" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/es/analytics-reviews</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/analytics-reviews" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/analytics-reviews" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/analytics-reviews" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/analytics-reviews" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/analytics-reviews" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/tw/analytics-reviews</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/analytics-reviews" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/analytics-reviews" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/analytics-reviews" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/analytics-reviews" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/analytics-reviews" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/en/customization</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/customization" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/customization" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/customization" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/customization" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/customization" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/de/customization</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/customization" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/customization" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/customization" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/customization" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/customization" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/es/customization</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/customization" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/customization" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/customization" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/customization" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/customization" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/tw/customization</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/customization" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/customization" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/customization" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/customization" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/customization" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/en/workflow</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/workflow" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/workflow" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/workflow" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/workflow" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/workflow" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/de/workflow</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/workflow" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/workflow" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/workflow" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/workflow" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/workflow" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/es/workflow</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/workflow" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/workflow" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/workflow" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/workflow" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/workflow" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/tw/workflow</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/workflow" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/workflow" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/workflow" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/workflow" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/workflow" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/en/local-offline</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/local-offline" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/local-offline" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/local-offline" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/local-offline" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/local-offline" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/de/local-offline</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/local-offline" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/local-offline" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/local-offline" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/local-offline" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/local-offline" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/es/local-offline</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/local-offline" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/local-offline" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/local-offline" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/local-offline" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/local-offline" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/tw/local-offline</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/local-offline" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/local-offline" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/local-offline" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/local-offline" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/local-offline" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/en/pricing</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/pricing" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/pricing" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/pricing" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/pricing" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/pricing" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/de/pricing</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/pricing" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/pricing" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/pricing" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/pricing" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/pricing" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/es/pricing</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/pricing" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/pricing" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/pricing" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/pricing" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/pricing" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/tw/pricing</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/pricing" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/pricing" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/pricing" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/pricing" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/pricing" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/en/manual</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/manual" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/manual" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/manual" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/manual" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/manual" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/de/manual</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/manual" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/manual" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/manual" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/manual" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/manual" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/es/manual</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/manual" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/manual" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/manual" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/manual" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/manual" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/tw/manual</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/manual" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/manual" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/manual" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/manual" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/manual" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/en/faq</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/faq" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/faq" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/faq" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/faq" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/de/faq</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/faq" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/faq" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/faq" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/faq" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/es/faq</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/faq" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/faq" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/faq" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/faq" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/tw/faq</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/faq" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/faq" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/faq" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/faq" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/faq" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/en/contact</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/contact" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/de/contact</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/contact" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/es/contact</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/contact" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/tw/contact</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/contact" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/contact" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/contact" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/en/privacy</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/privacy" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/privacy" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/privacy" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/de/privacy</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/privacy" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/privacy" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/privacy" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/es/privacy</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/privacy" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/privacy" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/privacy" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/tw/privacy</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/privacy" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/privacy" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/privacy" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/privacy" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/en/terms</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/terms" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/terms" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/terms" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/terms" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/de/terms</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/terms" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/terms" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/terms" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/terms" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/es/terms</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/terms" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/terms" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/terms" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/terms" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/tw/terms</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/terms" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/terms" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/terms" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/terms" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/en/impressum</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/impressum" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/impressum" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/impressum" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/impressum" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/impressum" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/de/impressum</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/impressum" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/impressum" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/impressum" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/impressum" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/impressum" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/es/impressum</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/impressum" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/impressum" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/impressum" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/impressum" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/impressum" />
+  </url>
+  <url>
+    <loc>https://www.katsumii.com/tw/impressum</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.katsumii.com/en/impressum" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.katsumii.com/de/impressum" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.katsumii.com/es/impressum" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.katsumii.com/tw/impressum" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.katsumii.com/en/impressum" />
+  </url>
+</urlset>

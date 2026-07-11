@@ -414,29 +414,55 @@
 
 /* ── footer ── */
 .v6-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
   max-width: 1240px;
   margin: 0 auto;
-  padding: 2rem clamp(1.1rem, 4vw, 3rem) 2.6rem;
+  padding: 3rem clamp(1.1rem, 4vw, 3rem) 2.4rem;
   border-top: 1px solid var(--v6-line);
   color: var(--v6-faint);
   font-size: 0.85rem;
 }
 .v6-footer p { margin: 0; }
-.v6-footer nav { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+.v6-footer-cols {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(4, 1fr);
+  gap: 2rem clamp(1rem, 2.4vw, 2rem);
+  align-items: flex-start;
+}
+.v6-footer-brand { display: flex; flex-direction: column; gap: 0.8rem; }
+.v6-footer-brand-link { font-size: 1rem; color: var(--v6-ink); }
+.v6-footer-tagline {
+  color: var(--v6-faint);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  max-width: 18rem;
+}
+.v6-footer-col { display: flex; flex-direction: column; gap: 0.6rem; }
+.v6-footer-head {
+  font-family: var(--v6-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--v6-gold);
+  font-weight: 500;
+  margin: 0 0 0.35rem;
+}
 .v6-footer a {
   color: var(--v6-faint);
   text-decoration: none;
   transition: color 0.25s ease;
 }
 .v6-footer a:hover, .v6-footer a:focus-visible { color: var(--v6-gold-hi); }
+.v6-footer-bottom {
+  margin-top: 2.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--v6-line);
+}
 
 /* ── responsive chrome ── */
 @media (max-width: 900px) {
+  .v6-footer-cols { grid-template-columns: 1fr 1fr 1fr; }
+  .v6-footer-brand { grid-column: 1 / -1; }
+
   .v6-nav-links { display: none; }
 
   .v6-nav {
@@ -557,13 +583,11 @@
   .v6-nav-ghost { display: none; }
   .v6-brand img { width: 30px; height: 30px; }
   .v6-footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.35rem;
     padding-bottom: calc(6rem + env(safe-area-inset-bottom));
   }
-  .v6-footer nav { display: grid; grid-template-columns: 1fr 1fr; width: 100%; gap: 0; }
-  .v6-footer a { display: flex; align-items: center; min-height: 44px; }
+  .v6-footer-cols { grid-template-columns: 1fr 1fr; }
+  .v6-footer-brand { grid-column: 1 / -1; }
+  .v6-footer a { display: flex; align-items: center; min-height: 40px; }
   .v6-card { padding: 1.35rem 1.2rem; border-radius: 14px; }
   .v6-card:hover { transform: none; }
   .v6-h1 { font-size: clamp(2.35rem, 12vw, 2.9rem); }

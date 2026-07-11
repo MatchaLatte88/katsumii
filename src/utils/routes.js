@@ -78,6 +78,7 @@ export const legacyPageToPath = {
   personalTrading: (locale) => pagePath("personal-trading", locale),
   backtesting: (locale) => pagePath("backtesting", locale),
   analyticsReviews: (locale) => pagePath("analytics-reviews", locale),
+  workflow: (locale) => pagePath("workflow", locale),
   localFirst: (locale) => pagePath("local-offline", locale),
   welcome: (locale) => pagePath("welcome", locale),
   manual: (locale) => pagePath("manual", locale),

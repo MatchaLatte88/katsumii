@@ -5,6 +5,7 @@ const FaqPage = () => import("./components/FaqPage.vue")
 const ImpressumPage = () => import("./components/ImpressumPage.vue")
 const FeaturesPage = () => import("./components/FeaturesPage.vue")
 const CustomizationPage = () => import("./components/CustomizationPage.vue")
+const WorkflowPage = () => import("./components/WorkflowPage.vue")
 const PropFirmChallengesPage = () => import("./components/PropFirmChallengesPage.vue")
 const FundedAccountsPage = () => import("./components/FundedAccountsPage.vue")
 const PersonalTradingPage = () => import("./components/PersonalTradingPage.vue")
@@ -91,6 +92,7 @@ const router = createRouter({
     withLocale("/personal-trading", PersonalTradingPage, { titleKey: "common.pageTitles.personalTrading", descriptionKey: "common.pageDescriptions.personalTrading", v6: true, v6Accent: V6_ACCENTS.personal }),
     withLocale("/backtesting", BacktestingPage, { titleKey: "common.pageTitles.backtesting", descriptionKey: "common.pageDescriptions.backtesting", v6: true, v6Accent: V6_ACCENTS.backtest }),
     withLocale("/customization", CustomizationPage, { titleKey: "common.pageTitles.customization", descriptionKey: "common.pageDescriptions.customization", v6: true }),
+    withLocale("/workflow", WorkflowPage, { titleKey: "common.pageTitles.workflow", descriptionKey: "common.pageDescriptions.workflow", v6: true }),
     withLocale("/analytics-reviews", AnalyticsReviewsPage, { titleKey: "common.pageTitles.analyticsReviews", descriptionKey: "common.pageDescriptions.analyticsReviews", v6: true }),
     withLocale(LOCAL_OFFLINE_PATH, LocalFirstPage, { titleKey: "common.pageTitles.localFirst", descriptionKey: "common.pageDescriptions.localFirst" }),
     withLocale("/pricing",   PricingPage,   { titleKey: "common.pageTitles.pricing",   descriptionKey: "common.pageDescriptions.pricing", v6: true, v6DimBg: true }),
@@ -111,6 +113,7 @@ const router = createRouter({
     legacyRedirect("/personal-trading"),
     legacyRedirect("/backtesting"),
     legacyRedirect("/customization"),
+    legacyRedirect("/workflow"),
     legacyRedirect("/analytics-reviews"),
     legacyRedirectTo(LEGACY_LOCAL_OFFLINE_PATH, LOCAL_OFFLINE_PATH),
     legacyRedirect("/pricing"),

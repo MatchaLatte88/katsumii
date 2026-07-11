@@ -60,6 +60,16 @@
                 <path d="M2.5 6h7M6.6 3.1 9.5 6l-2.9 2.9" />
               </svg>
             </RouterLink>
+            <RouterLink role="menuitem" :to="`/${lang}/workflow`">
+              <span class="v6-nav-menu-idx" aria-hidden="true">07</span>
+              <span class="v6-nav-menu-text">
+                Workflow
+                <small>Imports, journal & tools</small>
+              </span>
+              <svg class="v6-nav-menu-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+                <path d="M2.5 6h7M6.6 3.1 9.5 6l-2.9 2.9" />
+              </svg>
+            </RouterLink>
           </div>
         </div>
         <RouterLink :to="`/${lang}/pricing`">Pricing</RouterLink>
@@ -122,13 +132,52 @@
     <slot />
 
     <footer class="v6-footer">
-      <p>© {{ year }} Katsumii — local & offline trading journal</p>
-      <nav aria-label="Legal">
-        <RouterLink :to="`/${lang}/contact`">Contact</RouterLink>
-        <RouterLink :to="`/${lang}/privacy`">Privacy</RouterLink>
-        <RouterLink :to="`/${lang}/terms`">Terms</RouterLink>
-        <RouterLink :to="`/${lang}/impressum`">Impressum</RouterLink>
-      </nav>
+      <div class="v6-footer-cols">
+        <div class="v6-footer-brand">
+          <RouterLink class="v6-brand v6-footer-brand-link" :to="`/${lang}/app`">
+            <img :src="asset('logo.png')" alt="Katsumii logo" width="28" height="28" />
+            <span>Katsumii<b class="v6-dot" aria-hidden="true">.</b></span>
+          </RouterLink>
+          <p class="v6-footer-tagline">Local &amp; offline trading journal for prop-firm and personal traders.</p>
+        </div>
+
+        <nav class="v6-footer-col" aria-label="Product">
+          <p class="v6-footer-head">Product</p>
+          <RouterLink :to="`/${lang}/app`">Home</RouterLink>
+          <RouterLink :to="`/${lang}/features`">Features</RouterLink>
+          <RouterLink :to="`/${lang}/pricing`">Pricing</RouterLink>
+          <RouterLink :to="`/${lang}/manual`">Manual</RouterLink>
+          <RouterLink :to="`/${lang}/local-offline`">Local &amp; offline</RouterLink>
+        </nav>
+
+        <nav class="v6-footer-col" aria-label="Disciplines">
+          <p class="v6-footer-head">Disciplines</p>
+          <RouterLink :to="`/${lang}/funded-accounts`">Funded</RouterLink>
+          <RouterLink :to="`/${lang}/prop-firm-challenges`">Challenge</RouterLink>
+          <RouterLink :to="`/${lang}/personal-trading`">Personal</RouterLink>
+          <RouterLink :to="`/${lang}/backtesting`">Backtest</RouterLink>
+        </nav>
+
+        <nav class="v6-footer-col" aria-label="Go deeper">
+          <p class="v6-footer-head">Go deeper</p>
+          <RouterLink :to="`/${lang}/analytics-reviews`">Analytics</RouterLink>
+          <RouterLink :to="`/${lang}/customization`">Customization</RouterLink>
+          <RouterLink :to="`/${lang}/workflow`">Workflow</RouterLink>
+        </nav>
+
+        <nav class="v6-footer-col" aria-label="Support and legal">
+          <p class="v6-footer-head">Support &amp; legal</p>
+          <RouterLink :to="`/${lang}/faq`">FAQ</RouterLink>
+          <RouterLink :to="`/${lang}/contact`">Contact</RouterLink>
+          <RouterLink :to="`/${lang}/privacy`">Privacy</RouterLink>
+          <RouterLink :to="`/${lang}/terms`">Terms</RouterLink>
+          <RouterLink :to="`/${lang}/impressum`">Impressum</RouterLink>
+        </nav>
+      </div>
+
+      <div class="v6-footer-bottom">
+        <p>© {{ year }} Katsumii — local &amp; offline trading journal</p>
+      </div>
     </footer>
   </div>
 </template>
@@ -159,6 +208,7 @@ const MOBILE_LINKS = [
   ...FEATURE_PAGES.map(({ label, sub, path }) => ({ label, sub, path })),
   { label: "Analytics", sub: "Edge, breakdowns & reports", path: "analytics-reviews" },
   { label: "Customization", sub: "Focus mode & themes", path: "customization" },
+  { label: "Workflow", sub: "Imports, journal & tools", path: "workflow" },
   { label: "Pricing", path: "pricing" },
   { label: "Manual", path: "manual" },
   { label: "FAQ", path: "faq" },

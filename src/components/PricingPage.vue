@@ -100,6 +100,78 @@
       </div>
     </section>
 
+    <!-- SYSTEM REQUIREMENTS (mirrors the landing page block) -->
+    <section class="v6p-sysreq" aria-label="Compatibility">
+      <div class="v6p-sysreq-head">
+        <p class="v6-eyebrow v6-reveal"><i></i>Compatibility</p>
+        <h2 class="v6-h2 v6-reveal">Runs on Windows and macOS.</h2>
+        <p class="v6p-sysreq-sub v6-reveal">The core journal, analytics, reports, backups, manual imports, and supported API integrations are available across supported desktop platforms.</p>
+      </div>
+      <div class="v6p-sysreq-grid v6-reveal">
+        <div>
+          <h3>Runs on</h3>
+          <ul>
+            <li>Windows 10 or newer</li>
+            <li>Windows 11 recommended</li>
+            <li>macOS 12 Monterey or newer</li>
+            <li>Intel/AMD 64-bit and Apple Silicon</li>
+          </ul>
+        </div>
+        <div>
+          <h3>System requirements</h3>
+          <ul>
+            <li>8 GB RAM</li>
+            <li>1 GB free storage</li>
+            <li>1440 x 900 display or larger</li>
+            <li>Internet connection for product activation, updates, API sync, and integrations</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Integration note</h3>
+          <p>MetaTrader 5 sync is currently Windows-only and requires a locally installed, running MT5 terminal. On macOS, Katsumii supports manual imports, analytics, reports, backups, and supported API integrations.</p>
+        </div>
+        <div>
+          <h3>API access</h3>
+          <p>API usage may be paid and depends on your broker. Katsumii works with broker integrations only when you have a matching API key.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GETTING STARTED -->
+    <section class="v6p-getstart" aria-label="How to get Katsumii">
+      <div class="v6p-getstart-head">
+        <p class="v6-eyebrow v6-reveal"><i></i>From purchase to first trade</p>
+        <h2 class="v6-h2 v6-reveal">Three steps between the checkout and your first trade.</h2>
+        <p class="v6p-getstart-sub v6-reveal">No account to create, no cloud to sync. The installer arrives with your purchase and the app is ready to use the moment it opens.</p>
+      </div>
+      <ol class="v6p-steps v6-reveal">
+        <li>
+          <span class="v6p-step-idx">01</span>
+          <div>
+            <h3>Get the installer</h3>
+            <p>Checkout runs on Lemon Squeezy. Once payment clears, they email you the installer download link and your license key — the same email also links to your Lemon Squeezy customer portal, where the download stays available. Katsumii itself has no user account. The Windows installer is a signed <code>.exe</code>; macOS ships as a signed <code>.dmg</code>.</p>
+          </div>
+        </li>
+        <li>
+          <span class="v6p-step-idx">02</span>
+          <div>
+            <h3>Install &amp; unlock</h3>
+            <p>Run the installer — no admin rights needed on Windows, standard drag-to-Applications on macOS. On first launch, paste your license key once. Everything after that is local.</p>
+          </div>
+        </li>
+        <li>
+          <span class="v6p-step-idx">03</span>
+          <div>
+            <h3>Start journaling</h3>
+            <p>Pick a mode (Funded, Challenge, Personal, Backtest), add your first account, and log a trade — or import an existing broker CSV and let Katsumii backfill the log. The manual walks you through the first week if you want a guided path.</p>
+          </div>
+        </li>
+      </ol>
+      <p class="v6p-getstart-foot v6-reveal">
+        Lost your download or license key? Check your Lemon Squeezy customer portal (linked in the purchase email) first — or reach out via <RouterLink :to="pagePath('contact')">Contact</RouterLink> and we'll resend it.
+      </p>
+    </section>
+
     <!-- CTA -->
     <section class="v6p-cta">
       <p class="v6-eyebrow v6-reveal" style="justify-content: center"><i></i>{{ t('pricingPage.cta.label') }}</p>
@@ -386,6 +458,144 @@ onBeforeUnmount(() => {
   height: 13px;
   margin-top: 0.28em;
   color: var(--v6-gold);
+}
+
+/* ── system requirements (mirrors LandingV6 block) ── */
+.v6p-sysreq {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vh, 3.5rem) clamp(1.1rem, 4vw, 3rem) clamp(2.5rem, 7vh, 4rem);
+}
+.v6p-sysreq-head { max-width: 44rem; margin-bottom: 2.2rem; }
+.v6p-sysreq-sub { color: var(--v6-muted); font-size: 0.94rem; margin: 1.2rem 0 0; }
+.v6p-sysreq-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--v6-line);
+  border-radius: 18px;
+  background: linear-gradient(165deg, var(--v6-panel), rgba(12, 21, 18, 0.22));
+  overflow: hidden;
+}
+.v6.light .v6p-sysreq-grid {
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.72), rgba(238, 244, 240, 0.4));
+}
+.v6p-sysreq-grid > div {
+  padding: 1.4rem clamp(1.1rem, 2vw, 1.5rem);
+  border-right: 1px solid var(--v6-line);
+}
+.v6p-sysreq-grid > div:last-child { border-right: 0; }
+.v6p-sysreq-grid h3 {
+  margin: 0 0 0.9rem;
+  font-family: var(--v6-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--v6-gold);
+  font-weight: 500;
+}
+.v6p-sysreq-grid ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.v6p-sysreq-grid li {
+  position: relative;
+  padding-left: 1rem;
+  color: var(--v6-muted);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+.v6p-sysreq-grid li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.56em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--v6-gold);
+  opacity: 0.7;
+}
+.v6p-sysreq-grid p {
+  margin: 0;
+  color: var(--v6-muted);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+@media (max-width: 900px) {
+  .v6p-sysreq-grid { grid-template-columns: 1fr; }
+  .v6p-sysreq-grid > div { border-right: 0; border-bottom: 1px solid var(--v6-line); }
+  .v6p-sysreq-grid > div:last-child { border-bottom: 0; }
+}
+
+/* ── getting started (from purchase to first trade) ── */
+.v6p-getstart {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vh, 3.5rem) clamp(1.1rem, 4vw, 3rem);
+}
+.v6p-getstart-head { max-width: 44rem; margin-bottom: 2rem; }
+.v6p-getstart-sub { color: var(--v6-muted); font-size: 0.94rem; margin: 1.2rem 0 0; }
+.v6p-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.v6p-steps > li {
+  display: flex;
+  gap: 1rem;
+  padding: 1.3rem 1.3rem 1.4rem;
+  border: 1px solid var(--v6-line);
+  border-radius: 18px;
+  background: linear-gradient(165deg, var(--v6-panel), rgba(12, 21, 18, 0.22));
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+.v6.light .v6p-steps > li {
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.72), rgba(238, 244, 240, 0.4));
+}
+.v6p-steps > li:hover { border-color: var(--v6-line-strong); transform: translateY(-2px); }
+.v6p-step-idx {
+  flex: none;
+  font-family: var(--v6-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  color: var(--v6-gold);
+  padding-top: 0.15rem;
+}
+.v6p-steps h3 {
+  font-family: var(--v6-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.4rem;
+}
+.v6p-steps p { margin: 0; color: var(--v6-muted); font-size: 0.88rem; line-height: 1.55; }
+.v6p-steps code {
+  font-family: var(--v6-mono);
+  font-size: 0.82em;
+  color: var(--v6-ink);
+  background: var(--v6-panel);
+  border: 1px solid var(--v6-line);
+  border-radius: 4px;
+  padding: 0 0.35em;
+}
+.v6p-getstart-foot {
+  margin: 1.6rem 0 0;
+  color: var(--v6-faint);
+  font-size: 0.85rem;
+}
+.v6p-getstart-foot a { color: var(--v6-gold); text-decoration: none; }
+.v6p-getstart-foot a:hover { color: var(--v6-gold-hi); }
+@media (max-width: 900px) {
+  .v6p-steps { grid-template-columns: 1fr; }
 }
 
 /* ── comparison ── */
