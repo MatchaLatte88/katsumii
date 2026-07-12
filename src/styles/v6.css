@@ -9,6 +9,7 @@
   --v6-bg-soft: #0d1626;
   --v6-panel: rgba(30, 41, 59, 0.42);
   --v6-line: rgba(226, 232, 240, 0.08);
+  --v6-menu-section-line: rgba(226, 232, 240, 0.22);
   --v6-line-strong: rgba(34, 211, 238, 0.3);
   --v6-ink: #eef2f7;
   --v6-muted: #94a3b8;
@@ -40,6 +41,7 @@
   --v6-bg-soft: #eef2f7;
   --v6-panel: rgba(255, 255, 255, 0.68);
   --v6-line: rgba(15, 23, 42, 0.10);
+  --v6-menu-section-line: rgba(15, 23, 42, 0.24);
   --v6-line-strong: rgba(3, 105, 161, 0.4);
   --v6-ink: #0f172a;
   --v6-muted: #475569;
@@ -147,6 +149,19 @@
 }
 .v6-nav-links a:hover, .v6-nav-links a:focus-visible { color: var(--v6-gold-hi); }
 .v6-nav-links a.router-link-active { color: var(--v6-gold); }
+.v6-nav-home-slot {
+  display: inline-flex;
+  width: 2.7rem;
+  flex: none;
+}
+.v6-nav-home-slot a {
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(-2px);
+  pointer-events: none;
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.v6-nav-home-slot.is-visible a { opacity: 1; transform: translateY(0); pointer-events: auto; }
 .v6-nav-drop {
   position: relative;
   display: inline-flex;
@@ -187,13 +202,14 @@
 }
 .v6-nav-menu-head {
   margin: 0;
-  padding: 0.7rem 1rem 0.6rem;
+  padding: 0.42rem 1rem 0.38rem;
   font-family: var(--v6-mono);
   font-size: 0.6rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--v6-faint);
-  border-bottom: 1px solid var(--v6-line);
+  background: rgba(148, 163, 184, 0.06);
+  border-bottom: 0.5px solid var(--v6-menu-section-line);
 }
 .v6-nav-menu a {
   display: flex;
@@ -204,7 +220,7 @@
   transition: color 0.2s ease, background-color 0.2s ease;
 }
 .v6-nav-menu a + a { border-top: 1px solid var(--v6-line); }
-.v6-nav-menu a + .v6-nav-menu-head { border-top: 1px solid var(--v6-line); }
+.v6-nav-menu a + .v6-nav-menu-head { border-top: 0.5px solid var(--v6-menu-section-line); }
 .v6-nav-menu a:hover, .v6-nav-menu a:focus-visible {
   background: rgba(255, 255, 255, 0.04);
   color: var(--v6-ink);
@@ -424,7 +440,7 @@
 .v6-footer p { margin: 0; }
 .v6-footer-cols {
   display: grid;
-  grid-template-columns: 1.4fr repeat(4, 1fr);
+  grid-template-columns: 1.4fr repeat(5, 1fr);
   gap: 2rem clamp(1rem, 2.4vw, 2rem);
   align-items: flex-start;
 }
@@ -610,6 +626,7 @@ html.v6-menu-open { overflow: hidden; }
 
 @media (prefers-reduced-motion: reduce) {
   .v6-menu-toggle span,
+  .v6-nav-home-slot a,
   .v6-mobile-menu-enter-active,
   .v6-mobile-menu-leave-active,
   .v6-mobile-menu-enter-active .v6-mobile-panel,

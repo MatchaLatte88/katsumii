@@ -14,9 +14,28 @@
       </RouterLink>
 
       <nav class="v6-nav-links" aria-label="Main navigation">
+        <span class="v6-nav-home-slot" :class="{ 'is-visible': !isLandingRoute }">
+          <RouterLink
+            :to="`/${lang}/app`"
+            :aria-hidden="isLandingRoute"
+          :tabindex="isLandingRoute ? -1 : undefined"
+          >
+            Home
+          </RouterLink>
+        </span>
         <div class="v6-nav-drop">
           <RouterLink :to="`/${lang}/features`" aria-haspopup="true">Features</RouterLink>
           <div class="v6-nav-menu" role="menu" aria-label="Feature pages">
+            <RouterLink role="menuitem" :to="`/${lang}/features`">
+              <span class="v6-nav-menu-idx" aria-hidden="true">00</span>
+              <span class="v6-nav-menu-text">
+                Features
+                <small>Complete overview</small>
+              </span>
+              <svg class="v6-nav-menu-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+                <path d="M2.5 6h7M6.6 3.1 9.5 6l-2.9 2.9" />
+              </svg>
+            </RouterLink>
             <p class="v6-nav-menu-head" aria-hidden="true">Four disciplines</p>
             <RouterLink
               v-for="(item, index) in FEATURE_PAGES"
@@ -73,7 +92,6 @@
           </div>
         </div>
         <RouterLink :to="`/${lang}/pricing`">Pricing</RouterLink>
-        <RouterLink :to="`/${lang}/manual`">Manual</RouterLink>
         <RouterLink :to="`/${lang}/faq`">FAQ</RouterLink>
       </nav>
 
@@ -93,7 +111,6 @@
             <path d="M20.4 14.2A8.4 8.4 0 0 1 9.8 3.6a8.4 8.4 0 1 0 10.6 10.6z" />
           </svg>
         </button>
-        <RouterLink class="v6-nav-ghost" :to="`/${lang}/contact`">Contact</RouterLink>
         <span class="v6-btn v6-btn-sm v6-btn-static" aria-disabled="true">Coming soon</span>
         <button
           type="button"
@@ -144,31 +161,36 @@
         <nav class="v6-footer-col" aria-label="Product">
           <p class="v6-footer-head">Product</p>
           <RouterLink :to="`/${lang}/app`">Home</RouterLink>
-          <RouterLink :to="`/${lang}/features`">Features</RouterLink>
           <RouterLink :to="`/${lang}/pricing`">Pricing</RouterLink>
-          <RouterLink :to="`/${lang}/manual`">Manual</RouterLink>
+          <RouterLink :to="`/${lang}/app#system-requirements`">System requirements</RouterLink>
           <RouterLink :to="`/${lang}/local-offline`">Local &amp; offline</RouterLink>
         </nav>
 
+        <nav class="v6-footer-col" aria-label="Features">
+          <p class="v6-footer-head">Features</p>
+          <RouterLink :to="`/${lang}/features`">Overview</RouterLink>
+          <RouterLink :to="`/${lang}/analytics-reviews`">Analytics</RouterLink>
+          <RouterLink :to="`/${lang}/customization`">Customization</RouterLink>
+          <RouterLink :to="`/${lang}/workflow`">Workflow</RouterLink>
+        </nav>
+
         <nav class="v6-footer-col" aria-label="Disciplines">
-          <p class="v6-footer-head">Disciplines</p>
+          <p class="v6-footer-head">Four disciplines</p>
           <RouterLink :to="`/${lang}/funded-accounts`">Funded</RouterLink>
           <RouterLink :to="`/${lang}/prop-firm-challenges`">Challenge</RouterLink>
           <RouterLink :to="`/${lang}/personal-trading`">Personal</RouterLink>
           <RouterLink :to="`/${lang}/backtesting`">Backtest</RouterLink>
         </nav>
 
-        <nav class="v6-footer-col" aria-label="Go deeper">
-          <p class="v6-footer-head">Go deeper</p>
-          <RouterLink :to="`/${lang}/analytics-reviews`">Analytics</RouterLink>
-          <RouterLink :to="`/${lang}/customization`">Customization</RouterLink>
-          <RouterLink :to="`/${lang}/workflow`">Workflow</RouterLink>
-        </nav>
-
-        <nav class="v6-footer-col" aria-label="Support and legal">
-          <p class="v6-footer-head">Support &amp; legal</p>
+        <nav class="v6-footer-col" aria-label="Support">
+          <p class="v6-footer-head">Support</p>
+          <RouterLink :to="`/${lang}/manual`">Manual</RouterLink>
           <RouterLink :to="`/${lang}/faq`">FAQ</RouterLink>
           <RouterLink :to="`/${lang}/contact`">Contact</RouterLink>
+        </nav>
+
+        <nav class="v6-footer-col" aria-label="Legal">
+          <p class="v6-footer-head">Legal</p>
           <RouterLink :to="`/${lang}/privacy`">Privacy</RouterLink>
           <RouterLink :to="`/${lang}/terms`">Terms</RouterLink>
           <RouterLink :to="`/${lang}/impressum`">Impressum</RouterLink>
@@ -210,9 +232,7 @@ const MOBILE_LINKS = [
   { label: "Customization", sub: "Focus mode & themes", path: "customization" },
   { label: "Workflow", sub: "Imports, journal & tools", path: "workflow" },
   { label: "Pricing", path: "pricing" },
-  { label: "Manual", path: "manual" },
   { label: "FAQ", path: "faq" },
-  { label: "Contact", path: "contact" },
 ]
 
 const route = useRoute()

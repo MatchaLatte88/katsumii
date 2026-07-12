@@ -89,7 +89,10 @@
         <div ref="storyPinEl" class="v4-story-pin">
           <div class="v4-story-copy">
             <p class="v4-eyebrow v4-reveal"><i></i>Inside the cockpit</p>
-            <h2 class="v4-h2 v4-reveal">Four screens,<br />one living picture.</h2>
+            <h2 class="v4-h2 v4-reveal">
+              {{ slides[activeStory].headline }}<br />
+              <span class="v4-story-accent">{{ slides[activeStory].accent }}<span class="v4-dot">.</span></span>
+            </h2>
             <div class="v4-story-steps">
               <div
                 v-for="(s, i) in slides" :key="s.title"
@@ -296,26 +299,30 @@ const slides = [
   {
     img: "Dashboard_dark.png", w: 2559, h: 1599,
     alt: "Katsumii dashboard with net P&L hero, execution quality and equity curve",
+    headline: "Find your edge.", accent: "Sharpen it",
     title: "Dashboard", tag: "the day, distilled",
     caption: "Net P&L, execution quality, edge drivers and your equity curve — one calm screen that carries the whole story.",
   },
   {
+    img: "Main_dark.png", w: 2559, h: 1599,
+    alt: "Katsumii account overview with balance, drawdown distance and billing state",
+    headline: "Know every account.", accent: "Stay ahead of risk",
+    title: "Accounts", tag: "rules, always in sight",
+    caption: "Drawdown distance, winning days, payouts and rebill dates per account — before you take the next trade.",
+  },
+  {
     img: "Calendar_dark.png", w: 2532, h: 1332,
     alt: "Katsumii calendar with color-graded trading days and weekly summaries",
+    headline: "Track every day.", accent: "See the pattern",
     title: "Calendar", tag: "time, color-graded",
     caption: "Every day graded by outcome, weekly and monthly performance in the margins, journal markers where you reflected.",
   },
   {
     img: "Stats_dark.png", w: 1654, h: 1599,
     alt: "Katsumii analysis view with weekday, session and strategy breakdowns",
+    headline: "Go beyond the surface.", accent: "Deep dive into your edge",
     title: "Analysis", tag: "where the edge lives",
     caption: "Slice performance by weekday, session, strategy, emotion or mistake — and find out what actually pays you.",
-  },
-  {
-    img: "Main_dark.png", w: 2559, h: 1599,
-    alt: "Katsumii account overview with balance, drawdown distance and billing state",
-    title: "Accounts", tag: "rules, always in sight",
-    caption: "Drawdown distance, winning days, payouts and rebill dates per account — before you take the next trade.",
   },
 ]
 
@@ -1302,6 +1309,7 @@ onBeforeUnmount(() => {
   font-weight: 600;
   color: var(--v4-gold-hi);
 }
+.v4-story-accent { color: var(--v4-gold-hi); }
 .v4-dot { color: var(--v4-ember); font-style: normal; }
 .v4-hline { display: block; overflow: hidden; }
 .v4-hline-in { display: block; will-change: transform; }

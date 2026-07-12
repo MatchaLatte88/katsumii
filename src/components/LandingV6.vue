@@ -14,7 +14,8 @@
         </h1>
         <p class="v6-hero-sub v6-load v6-load-2">
           The market doesn't remember your trades. Katsumii does — every rule,
-          every drawdown, every pattern, stored on your machine and nowhere else.
+          every drawdown, every pattern, stored on your computer and nowhere else.
+          <span class="v6-hero-ownership">No subscription. Buy it once. Own it forever.</span>
         </p>
         <div class="v6-hero-actions v6-load v6-load-3">
           <span class="v6-btn v6-btn-static" aria-disabled="true">Coming soon</span>
@@ -48,7 +49,10 @@
       <div ref="storyPinEl" class="v6-story-pin">
         <div class="v6-story-copy">
           <p class="v6-eyebrow v6-reveal"><i></i>Inside the cockpit</p>
-          <h2 class="v6-h2 v6-reveal">Four screens,<br />one living picture.</h2>
+          <h2 class="v6-h2 v6-reveal">
+            {{ slides[activeStory].headline }}<br />
+            <span class="v6-story-accent">{{ slides[activeStory].accent }}<span class="v6-type-dot">.</span></span>
+          </h2>
           <div class="v6-story-steps">
             <div
               v-for="(s, i) in slides" :key="s.title"
@@ -264,7 +268,7 @@
     </section>
 
     <!-- SYSTEM REQUIREMENTS (moved from the prelaunch page) -->
-    <section class="v6-sysreq" aria-label="Compatibility">
+    <section id="system-requirements" class="v6-sysreq" aria-label="Compatibility">
       <div class="v6-sysreq-head">
         <p class="v6-eyebrow v6-reveal"><i></i>Compatibility</p>
         <h2 class="v6-h2 v6-reveal">Runs on Windows and macOS.</h2>
@@ -418,26 +422,30 @@ const slides = [
   {
     img: "Dashboard_dark.png", w: 2559, h: 1599,
     alt: "Katsumii dashboard with net P&L hero, execution quality and equity curve",
+    headline: "Find your edge.", accent: "Sharpen it",
     title: "Dashboard", tag: "the day, distilled",
     caption: "Net P&L, execution quality, edge drivers and your equity curve — one calm screen that carries the whole story.",
   },
   {
+    img: "Main_dark.png", w: 2559, h: 1599,
+    alt: "Katsumii account overview with balance, drawdown distance and billing state",
+    headline: "Know every account.", accent: "Stay ahead of risk",
+    title: "Accounts", tag: "rules, always in sight",
+    caption: "Drawdown distance, winning days, payouts and rebill dates per account — before you take the next trade.",
+  },
+  {
     img: "Calendar_dark.png", w: 2532, h: 1332,
     alt: "Katsumii calendar with color-graded trading days and weekly summaries",
+    headline: "Track every day.", accent: "See the pattern",
     title: "Calendar", tag: "time, color-graded",
     caption: "Every day graded by outcome, weekly and monthly performance in the margins, journal markers where you reflected.",
   },
   {
     img: "Stats_dark.png", w: 1654, h: 1599,
     alt: "Katsumii analysis view with weekday, session and strategy breakdowns",
+    headline: "Go beyond the surface.", accent: "Deep dive into your edge",
     title: "Analysis", tag: "where the edge lives",
     caption: "Slice performance by weekday, session, strategy, emotion or mistake — and find out what actually pays you.",
-  },
-  {
-    img: "Main_dark.png", w: 2559, h: 1599,
-    alt: "Katsumii account overview with balance, drawdown distance and billing state",
-    title: "Accounts", tag: "rules, always in sight",
-    caption: "Drawdown distance, winning days, payouts and rebill dates per account — before you take the next trade.",
   },
 ]
 
@@ -718,6 +726,8 @@ onBeforeUnmount(() => {
 <style scoped>
 /* Page-specific styles — shared tokens/chrome live in src/styles/v6.css */
 
+.v6-story-accent { color: var(--v6-gold-hi); }
+
 /* ── hero ── */
 .v6-hero {
   position: relative;
@@ -760,6 +770,16 @@ onBeforeUnmount(() => {
   max-width: 34rem;
   color: var(--v6-muted);
   font-size: clamp(1rem, 1.4vw, 1.15rem);
+}
+.v6-hero-ownership {
+  display: block;
+  margin-top: 0.7rem;
+  color: var(--v6-ink);
+  font-family: var(--v6-mono);
+  font-size: 0.68em;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 /* ── CRT interference on the first H1 word ── */

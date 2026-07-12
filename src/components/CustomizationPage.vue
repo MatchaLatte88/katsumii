@@ -216,7 +216,7 @@ const MODE_SWATCHES = [
     palette: ["#22d3ee", "#facc15", "#4ade80", "#818cf8"],
   },
   {
-    name: "Challenge", sub: "Evaluations & combines",
+    name: "Challenge", sub: "Prop Evaluations",
     light: "#ab7503", dark: "#facc15",
     palette: ["#22d3ee", "#facc15", "#4ade80", "#818cf8"],
   },
