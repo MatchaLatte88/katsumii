@@ -6,6 +6,10 @@
     <RouterView />
     <LegalFooter />
   </template>
+  <ThemeGlitchOverlay
+    v-if="isThemeGlitching"
+    :target-theme="nextTheme"
+  />
 </template>
 
 <script setup>
@@ -14,6 +18,7 @@ import { useI18n } from "vue-i18n"
 import { useRoute } from "vue-router"
 const V6Shell = defineAsyncComponent(() => import("./components/v6/V6Shell.vue"))
 import LegalFooter from "./components/LegalFooter.vue"
+import ThemeGlitchOverlay from "./components/ThemeGlitchOverlay.vue"
 import { useTheme } from "./composables/useTheme.js"
 import { useBg } from "./composables/useBg.js"
 import { setI18nLocale } from "./i18n.js"
@@ -22,7 +27,7 @@ import { localizedAlternatesForPath, localizedPathForRoute, normalizeLocale, unl
 const route = useRoute()
 const isV6Route = computed(() => route.meta.v6 === true)
 const { locale, t } = useI18n()
-const { theme, isDark, toggleTheme } = useTheme()
+const { theme, isDark, toggleTheme, isThemeGlitching, nextTheme } = useTheme()
 const { bg, changeBg } = useBg()
 
 const SITE_URL = "https://www.katsumii.com"

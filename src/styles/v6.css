@@ -445,7 +445,7 @@
   align-items: flex-start;
 }
 .v6-footer-brand { display: flex; flex-direction: column; gap: 0.8rem; }
-.v6-footer-brand-link { font-size: 1rem; color: var(--v6-ink); }
+.v6-footer .v6-footer-brand-link { font-size: 1rem; color: var(--v6-ink); }
 .v6-footer-tagline {
   color: var(--v6-faint);
   font-size: 0.82rem;

@@ -155,7 +155,6 @@
             <img :src="asset('logo.png')" alt="Katsumii logo" width="28" height="28" />
             <span>Katsumii<b class="v6-dot" aria-hidden="true">.</b></span>
           </RouterLink>
-          <p class="v6-footer-tagline">Local &amp; offline trading journal for prop-firm and personal traders.</p>
         </div>
 
         <nav class="v6-footer-col" aria-label="Product">
@@ -198,7 +197,7 @@
       </div>
 
       <div class="v6-footer-bottom">
-        <p>© {{ year }} Katsumii — local &amp; offline trading journal</p>
+        <p>© {{ year }} Katsumii — trading journal</p>
       </div>
     </footer>
   </div>
