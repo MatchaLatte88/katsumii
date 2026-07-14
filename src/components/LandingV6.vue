@@ -669,8 +669,38 @@ onMounted(() => {
         })
     }
 
-    /* pinned story + pinned modes — desktop only */
+    const createHeroScrimFade = (element, property, distance = 140) => {
+      if (!element) return undefined
+
+      const scrimFade = gsap.to(element, {
+        [property]: 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".v6-hero",
+          start: "top top",
+          end: `+=${distance}`,
+          scrub: 0.25,
+        },
+      })
+
+      return () => {
+        scrimFade.scrollTrigger?.kill()
+        scrimFade.kill()
+        element.style.removeProperty(property)
+      }
+    }
+
+    /* responsive scroll behavior: hero scrims fade, desktop stages pin */
     ScrollTrigger.matchMedia({
+      "(max-width: 640px)": () => createHeroScrimFade(
+        rootEl.value?.querySelector(".v6-hero-sub"),
+        "--v6-mobile-scrim-opacity",
+      ),
+      "(min-width: 641px)": () => createHeroScrimFade(
+        rootEl.value?.querySelector(".v6-hero"),
+        "--v6-hero-scrim-opacity",
+        220,
+      ),
       "(min-width: 901px)": () => {
         /* refreshPriority makes ScrollTrigger refresh in document order, so the
            manifesto triggers further down include the pin-spacer offsets —
@@ -730,13 +760,14 @@ onBeforeUnmount(() => {
 
 /* ── hero ── */
 .v6-hero {
+  --v6-hero-scrim-opacity: 1;
   position: relative;
   z-index: 1;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(6rem, 16vh, 9rem) clamp(1.1rem, 4vw, 3rem) 4rem;
+  padding: clamp(6rem, 16vh, 9rem) var(--v6-gutter) 4rem;
 }
 .v6-hero-inner { max-width: 1240px; margin: 0 auto; width: 100%; position: relative; }
 /* brand row: logo + wordmark like the nav brand but larger, dash, tagline in accent */
@@ -759,10 +790,11 @@ onBeforeUnmount(() => {
   position: absolute;
   z-index: -1;
   inset: 0;
+  opacity: var(--v6-hero-scrim-opacity);
   pointer-events: none;
   background: radial-gradient(
-    ellipse 33% 14% at 25% 67%,
-    color-mix(in srgb, var(--v6-bg) 90%, transparent) 42%,
+    ellipse 33% 14% at 22% 65%,
+    color-mix(in srgb, var(--v6-bg) 80%, transparent) 40%,
     transparent 100%
   );
 }
@@ -918,7 +950,7 @@ onBeforeUnmount(() => {
   z-index: 1;
   max-width: 1240px;
   margin: 0 auto;
-  padding: clamp(4rem, 9vh, 6.5rem) clamp(1.1rem, 4vw, 3rem);
+  padding: clamp(4rem, 9vh, 6.5rem) var(--v6-gutter);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
@@ -945,7 +977,7 @@ onBeforeUnmount(() => {
   min-height: 100vh;
   max-width: 1500px;
   margin: 0 auto;
-  padding: clamp(4rem, 10vh, 6rem) clamp(1.1rem, 4vw, 3rem);
+  padding: clamp(4rem, 10vh, 6rem) var(--v6-gutter);
   display: grid;
   grid-template-columns: minmax(320px, 5fr) 7fr;
   gap: clamp(2rem, 5vw, 4.5rem);
@@ -1034,7 +1066,7 @@ onBeforeUnmount(() => {
   align-items: center;
   max-width: 1240px;
   margin: clamp(2.5rem, 6vh, 4rem) auto 0;
-  padding: 0 clamp(1.1rem, 4vw, 3rem);
+  padding: 0 var(--v6-gutter);
   min-height: 46vh;
 }
 .v6-modes-count {
@@ -1162,7 +1194,7 @@ onBeforeUnmount(() => {
   max-width: 1240px;
   height: 540px;
   margin: clamp(2.5rem, 6vh, 4rem) auto 0;
-  padding: 0 clamp(1.1rem, 4vw, 3rem);
+  padding: 0 var(--v6-gutter);
 }
 .v6-fold {
   position: relative;
@@ -1307,7 +1339,7 @@ onBeforeUnmount(() => {
   z-index: 1;
   max-width: 900px;
   margin: 0 auto;
-  padding: clamp(1rem, 3vh, 2.5rem) clamp(1.1rem, 4vw, 3rem) clamp(6rem, 16vh, 11rem);
+  padding: clamp(1rem, 3vh, 2.5rem) var(--v6-gutter) clamp(6rem, 16vh, 11rem);
   text-align: center;
 }
 .v6-branch-divider {
@@ -1388,7 +1420,7 @@ onBeforeUnmount(() => {
   position: relative;
   z-index: 1;
   text-align: center;
-  padding: clamp(6rem, 16vh, 11rem) clamp(1.1rem, 4vw, 3rem) clamp(7rem, 18vh, 12rem);
+  padding: clamp(6rem, 16vh, 11rem) var(--v6-gutter) clamp(7rem, 18vh, 12rem);
   border-top: 1px solid var(--v6-line);
 }
 .v6-cta-logo { margin: 0 auto 1.6rem; display: block; }
@@ -1420,7 +1452,16 @@ onBeforeUnmount(() => {
   z-index: 1;
   max-width: 1240px;
   margin: 0 auto;
-  padding: clamp(3rem, 8vh, 5rem) clamp(1.1rem, 4vw, 3rem) clamp(5rem, 12vh, 8rem);
+  padding: clamp(3rem, 8vh, 5rem) var(--v6-gutter) clamp(5rem, 12vh, 8rem);
+}
+
+/* At the desktop pin exit, the screenshot still occupies the upper part of
+   the viewport. Lift only the following divider so its visible distance to
+   that screenshot and to the next heading reads as one balanced interval. */
+@media (min-width: 901px) {
+  .v6-story + .v6-branch-divider .v6-branch {
+    transform: translateY(clamp(-6rem, -10vh, -4rem));
+  }
 }
 .v6-sysreq-head { max-width: 44rem; margin-bottom: 2.2rem; }
 .v6-sysreq-sub { color: var(--v6-muted); font-size: 0.94rem; margin: 1.2rem 0 0; }
@@ -1535,7 +1576,29 @@ onBeforeUnmount(() => {
 @media (max-width: 640px) {
   .v6-span-5, .v6-span-6, .v6-span-7 { grid-column: span 12; }
   .v6-hero { padding-top: 7.5rem; padding-bottom: 5.5rem; }
-  .v6-hero-sub { line-height: 1.65; }
+  .v6-hero-sub {
+    --v6-mobile-scrim-opacity: 1;
+    position: relative;
+    z-index: 0;
+    isolation: isolate;
+    line-height: 1.65;
+  }
+  /* Keep the particle river quiet exactly where the mobile hero copy wraps. */
+  .v6-hero-sub::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -2.4rem -1.5rem;
+    opacity: var(--v6-mobile-scrim-opacity);
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at center,
+      var(--v6-bg) 0%,
+      var(--v6-bg) 54%,
+      color-mix(in srgb, var(--v6-bg) 92%, transparent) 68%,
+      transparent 86%
+    );
+  }
   .v6-story-stack { gap: 2.6rem; }
   .v6-stack-item figcaption { padding-top: 0.85rem; }
   .v6-modes-stack { gap: 0.9rem; margin-top: 2rem; }

@@ -320,7 +320,7 @@ onBeforeUnmount(() => {
 .v6man-layout {
   max-width: 1240px;
   margin: 0 auto;
-  padding: clamp(6.5rem, 12vh, 8rem) clamp(1.1rem, 4vw, 3rem) clamp(4rem, 10vh, 7rem);
+  padding: var(--v6-document-top) var(--v6-gutter) var(--v6-document-bottom);
   display: grid;
   grid-template-columns: 264px 1fr;
   gap: clamp(2rem, 4vw, 4rem);

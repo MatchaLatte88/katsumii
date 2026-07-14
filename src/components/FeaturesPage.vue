@@ -155,7 +155,7 @@ onBeforeUnmount(() => {
   position: relative;
   max-width: 1240px;
   margin: 0 auto;
-  padding: clamp(8rem, 18vh, 11rem) clamp(1.1rem, 4vw, 3rem) clamp(3rem, 8vh, 5rem);
+  padding: var(--v6-page-hero-top) var(--v6-gutter) var(--v6-page-hero-bottom);
   display: grid;
   grid-template-columns: minmax(320px, 5fr) 6fr;
   gap: clamp(2rem, 5vw, 4.5rem);
@@ -211,7 +211,7 @@ onBeforeUnmount(() => {
 .v6ft-modules {
   max-width: 1240px;
   margin: 0 auto;
-  padding: clamp(1rem, 4vh, 2.5rem) clamp(1.1rem, 4vw, 3rem) clamp(3rem, 8vh, 5rem);
+  padding: var(--v6-section-block-compact) var(--v6-gutter) var(--v6-page-hero-bottom);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.1rem;
@@ -286,7 +286,7 @@ onBeforeUnmount(() => {
 .v6ft-cockpit {
   max-width: 1240px;
   margin: 0 auto;
-  padding: clamp(2rem, 6vh, 4rem) clamp(1.1rem, 4vw, 3rem) clamp(3rem, 8vh, 5rem);
+  padding: clamp(2rem, 6vh, 4rem) var(--v6-gutter) var(--v6-page-hero-bottom);
 }
 .v6ft-cockpit-head { max-width: 40rem; margin-bottom: 2.2rem; }
 .v6ft-screens {
@@ -322,7 +322,7 @@ onBeforeUnmount(() => {
 /* ── cta ── */
 .v6ft-cta {
   text-align: center;
-  padding: clamp(3rem, 9vh, 6rem) clamp(1.1rem, 4vw, 3rem) clamp(6rem, 15vh, 10rem);
+  padding: clamp(3rem, 9vh, 6rem) var(--v6-gutter) var(--v6-page-bottom);
 }
 .v6ft-cta-title {
   font-family: var(--v6-display);

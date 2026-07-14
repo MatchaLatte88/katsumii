@@ -105,7 +105,7 @@ const reset = () => {
 .v6c-wrap {
   max-width: 680px;
   margin: 0 auto;
-  padding: clamp(8rem, 18vh, 11rem) clamp(1.1rem, 4vw, 3rem) clamp(6rem, 15vh, 10rem);
+  padding: var(--v6-page-hero-top) var(--v6-gutter) var(--v6-page-bottom);
 }
 .v6c-hero { text-align: center; margin-bottom: clamp(2.2rem, 5vh, 3.5rem); }
 .v6c-hero .v6-eyebrow { justify-content: center; }

@@ -10,6 +10,7 @@
     v-if="isThemeGlitching"
     :target-theme="nextTheme"
   />
+  <ConsentBanner />
 </template>
 
 <script setup>
@@ -19,8 +20,10 @@ import { useRoute } from "vue-router"
 const V6Shell = defineAsyncComponent(() => import("./components/v6/V6Shell.vue"))
 import LegalFooter from "./components/LegalFooter.vue"
 import ThemeGlitchOverlay from "./components/ThemeGlitchOverlay.vue"
+import ConsentBanner from "./components/ConsentBanner.vue"
 import { useTheme } from "./composables/useTheme.js"
 import { useBg } from "./composables/useBg.js"
+import { useConsent } from "./composables/useConsent.js"
 import { setI18nLocale } from "./i18n.js"
 import { localizedAlternatesForPath, localizedPathForRoute, normalizeLocale, unlocalizedPathFromRoute } from "./utils/routes.js"
 
@@ -29,6 +32,7 @@ const isV6Route = computed(() => route.meta.v6 === true)
 const { locale, t } = useI18n()
 const { theme, isDark, toggleTheme, isThemeGlitching, nextTheme } = useTheme()
 const { bg, changeBg } = useBg()
+const { consent } = useConsent()
 
 const SITE_URL = "https://www.katsumii.com"
 const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/Dashboard_dark.png`
@@ -44,6 +48,7 @@ provide("changeBg", changeBg)
 const absoluteUrl = (path = "/") => new URL(path, SITE_URL).href
 
 const trackPageView = () => {
+  if (consent.value !== "granted") return
   const umami = window.umami
   if (!umami || typeof umami.track !== "function") return
   umami.track()

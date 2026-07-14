@@ -193,6 +193,7 @@
           <RouterLink :to="`/${lang}/privacy`">Privacy</RouterLink>
           <RouterLink :to="`/${lang}/terms`">Terms</RouterLink>
           <RouterLink :to="`/${lang}/impressum`">Impressum</RouterLink>
+          <button type="button" @click="openSettings">{{ t('consent.settings') }}</button>
         </nav>
       </div>
 
@@ -205,11 +206,16 @@
 
 <script setup>
 import { computed, inject, nextTick, onBeforeUnmount, onMounted, provide, ref, watch } from "vue"
+import { useI18n } from "vue-i18n"
 import { useRoute } from "vue-router"
 import { createV6Background } from "../../v6/gl.js"
 import { initMagnetic, prefersReducedMotion } from "../../v6/motion.js"
 import { normalizeLocale } from "../../utils/routes.js"
+import { useConsent } from "../../composables/useConsent.js"
 import PreviewNoticeModal from "./PreviewNoticeModal.vue"
+
+const { t } = useI18n()
+const { openSettings } = useConsent()
 
 const baseUrl = import.meta.env.BASE_URL
 const asset = (path) => `${baseUrl}${path}`

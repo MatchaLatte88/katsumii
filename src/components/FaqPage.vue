@@ -218,7 +218,7 @@ onBeforeUnmount(() => {
 .v6f-hero {
   max-width: 880px;
   margin: 0 auto;
-  padding: clamp(8rem, 18vh, 11rem) clamp(1.1rem, 4vw, 3rem) clamp(2.5rem, 6vh, 4rem);
+  padding: var(--v6-page-hero-top) var(--v6-gutter) var(--v6-page-hero-bottom);
   text-align: center;
 }
 .v6f-hero .v6-eyebrow { justify-content: center; }
@@ -288,7 +288,7 @@ onBeforeUnmount(() => {
 .v6f-body {
   max-width: 1240px;
   margin: 0 auto;
-  padding: clamp(1rem, 4vh, 2.5rem) clamp(1.1rem, 4vw, 3rem) clamp(3rem, 8vh, 5rem);
+  padding: var(--v6-section-block-compact) var(--v6-gutter) var(--v6-page-hero-bottom);
   display: grid;
   grid-template-columns: minmax(220px, 3fr) 8fr;
   gap: clamp(1.6rem, 4vw, 3.5rem);
@@ -457,7 +457,7 @@ mark {
 /* ── cta ── */
 .v6f-cta {
   text-align: center;
-  padding: clamp(3rem, 9vh, 6rem) clamp(1.1rem, 4vw, 3rem) clamp(6rem, 15vh, 10rem);
+  padding: clamp(3rem, 9vh, 6rem) var(--v6-gutter) var(--v6-page-bottom);
 }
 .v6f-cta-title {
   font-family: var(--v6-display);

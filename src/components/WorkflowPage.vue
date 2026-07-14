@@ -242,7 +242,7 @@ onBeforeUnmount(() => {
   position: relative;
   max-width: 1240px;
   margin: 0 auto;
-  padding: clamp(8rem, 18vh, 11rem) clamp(1.1rem, 4vw, 3rem) clamp(3rem, 8vh, 5rem);
+  padding: var(--v6-page-hero-top) var(--v6-gutter) var(--v6-page-hero-bottom);
   display: grid;
   grid-template-columns: minmax(320px, 5fr) 6fr;
   gap: clamp(2rem, 5vw, 4.5rem);
@@ -298,7 +298,7 @@ onBeforeUnmount(() => {
 .v6wf-section {
   max-width: 1240px;
   margin: 0 auto;
-  padding: clamp(2.5rem, 7vh, 4.5rem) clamp(1.1rem, 4vw, 3rem);
+  padding: var(--v6-section-block) var(--v6-gutter);
   display: grid;
   grid-template-columns: minmax(300px, 5fr) 6fr;
   gap: clamp(2rem, 5vw, 4.5rem);
@@ -472,7 +472,7 @@ onBeforeUnmount(() => {
 /* ── cta ── */
 .v6wf-cta {
   text-align: center;
-  padding: clamp(4rem, 12vh, 8rem) clamp(1.1rem, 4vw, 3rem) clamp(6rem, 15vh, 10rem);
+  padding: var(--v6-cta-top) var(--v6-gutter) var(--v6-page-bottom);
 }
 .v6wf-cta-title {
   font-family: var(--v6-display);

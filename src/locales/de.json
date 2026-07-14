@@ -1,4 +1,12 @@
 {
+  "consent": {
+    "title": "Anonyme Statistik",
+    "text": "Wir messen Seitenaufrufe anonym und cookiefrei, um die Website zu verbessern – nur mit deiner Einwilligung. Deine Wahl kannst du jederzeit über „Analyse-Einstellungen“ im Seitenfuß ändern.",
+    "decline": "Ablehnen",
+    "accept": "Akzeptieren",
+    "privacy": "Datenschutzerklärung",
+    "settings": "Analyse-Einstellungen"
+  },
   "brand": {
     "subtitle": "Lokales Offline-Trading-Cockpit"
   },
@@ -2427,11 +2435,11 @@
       {
         "title": "4. Cookies und Local Storage",
         "paragraphs": [
-          "Diese Website setzt keine Cookies ein — weder eigene noch solche von Drittanbietern. Ein Cookie-Banner ist daher nicht erforderlich.",
-          "Zur Speicherung deiner Anzeigeeinstellungen nutzt die Website den Local Storage deines Browsers. Dort werden ausschließlich Katsumii-Softwareeinstellungen gespeichert — etwa das gewählte Farbschema, die Sprache und der Hintergrundstil."
+          "Diese Website setzt keine Cookies ein — weder eigene noch solche von Drittanbietern. Der Hinweis, den du beim ersten Besuch siehst, ist daher kein Cookie-Banner, sondern eine Einwilligungsabfrage für die cookiefreie Webanalyse (siehe Abschnitt 5).",
+          "Zur Speicherung deiner Anzeigeeinstellungen nutzt die Website den Local Storage deines Browsers. Dort werden ausschließlich funktionale Einträge gespeichert — etwa das gewählte Farbschema, die Sprache, der Hintergrundstil sowie deine Entscheidung zur Webanalyse (Eintrag „katsumii-consent“), damit wir dich nicht bei jedem Besuch erneut fragen müssen."
         ],
         "paragraphsAfter": [
-          "Diese Werte verbleiben in deinem Browser, werden weder an uns noch an Dritte übertragen und können jederzeit über die Browser-Einstellungen gelöscht werden. Die Speicherung ist für die von dir gewünschte Funktion (Merken deiner Einstellungen) unbedingt erforderlich; eine Einwilligung ist gemäß § 25 Abs. 2 Nr. 2 TDDDG nicht erforderlich."
+          "Diese Werte verbleiben in deinem Browser, werden weder an uns noch an Dritte übertragen und können jederzeit über die Browser-Einstellungen gelöscht werden. Die Speicherung ist für die von dir gewünschte Funktion (Merken deiner Einstellungen und deiner Einwilligungsentscheidung) unbedingt erforderlich; eine Einwilligung ist gemäß § 25 Abs. 2 Nr. 2 TDDDG nicht erforderlich."
         ]
       },
       {
@@ -2442,20 +2450,17 @@
         "list": [
           "Es werden keine Cookies gesetzt und keine Informationen auf deinem Endgerät gespeichert.",
           "IP-Adressen werden nicht gespeichert; sie werden lediglich zur technischen Auslieferung der Anfrage kurzzeitig verarbeitet.",
-          "Erfasst werden ausschließlich aggregierte, anonymisierte Statistiken: aufgerufene Seiten, Referrer, Browser- und Gerätetyp sowie Herkunftsland.",
+          "Erfasst werden ausschließlich aggregierte, anonymisierte Statistiken: aufgerufene Seiten, Referrer, Browser- und Gerätetyp, Bildschirmauflösung, Spracheinstellung sowie Herkunftsland.",
           "Es findet kein websiteübergreifendes Tracking statt, und es werden keine Nutzerprofile gebildet."
         ],
         "paragraphsAfter": [
-          "Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der statistischen Auswertung und Verbesserung unseres Angebots). Soweit dabei Daten in die USA übermittelt werden, erfolgt dies auf Grundlage der EU-Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO)."
+          "Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die du über den Analyse-Hinweis beim Besuch der Website erteilst. Ohne deine Einwilligung wird Umami nicht geladen. Du kannst deine Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen, indem du im Seitenfuß auf „Analyse-Einstellungen“ klickst und ablehnst. Soweit dabei Daten in die USA übermittelt werden, erfolgt dies auf Grundlage der EU-Standardvertragsklauseln (Art. 46 Abs. 2 lit. c DSGVO)."
         ]
       },
       {
-        "title": "6. Warteliste, Newsletter und Formulare (Tally)",
+        "title": "6. Fehlermeldungen (Bug-Reports)",
         "paragraphs": [
-          "Für Formulare auf dieser Website (z. B. Warteliste, Fehlermeldungen) nutzen wir Tally, einen Dienst der Tally B.V., Belgien. Tally verarbeitet die Formulardaten in unserem Auftrag (Art. 28 DSGVO) auf Servern in der EU.",
-          "Warteliste: Wenn du dich in die Warteliste einträgst, verarbeiten wir deine E-Mail-Adresse sowie etwaige freiwillige Angaben, um dich über den Produktstart und damit verbundene Konditionen (z. B. Early-Bird-Rabatt) zu informieren. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Du kannst die Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen, etwa per E-Mail an info@katsumii.com; deine Daten werden dann gelöscht.",
-          "Newsletter: Sollten wir künftig einen regelmäßigen Newsletter anbieten, versenden wir diesen nur mit deiner ausdrücklichen Einwilligung im Double-Opt-in-Verfahren. Jede E-Mail enthält einen Abmeldelink; nach Abmeldung wird deine E-Mail-Adresse aus dem Verteiler gelöscht.",
-          "Fehlermeldungen (Bug-Reports): Angaben aus dem Bug-Report-Formular verarbeiten wir ausschließlich zur Analyse und Behebung des gemeldeten Problems (Art. 6 Abs. 1 lit. f DSGVO, berechtigtes Interesse an der Produktqualität, bzw. Art. 6 Abs. 1 lit. b DSGVO bei bestehenden Kunden). Nach Abschluss der Bearbeitung werden die Daten gelöscht."
+          "Fehlermeldungen kannst du uns per E-Mail an bugs@katsumii.com senden. Die von dir übermittelten Angaben verarbeiten wir ausschließlich zur Analyse und Behebung des gemeldeten Problems (Art. 6 Abs. 1 lit. f DSGVO, berechtigtes Interesse an der Produktqualität, bzw. Art. 6 Abs. 1 lit. b DSGVO bei bestehenden Kunden). Nach Abschluss der Bearbeitung werden die Daten gelöscht."
         ]
       },
       {
@@ -2491,7 +2496,7 @@
       {
         "title": "11. Empfänger und Auftragsverarbeiter",
         "paragraphs": [
-          "Wir setzen Dienstleister nur ein, soweit dies in dieser Erklärung beschrieben ist: GitHub (Hosting), Umami Software (Webanalyse) und Tally (Formulare) verarbeiten Daten als Auftragsverarbeiter bzw. auf Grundlage entsprechender Datenschutzvereinbarungen; Lemon Squeezy handelt als eigenständiger Verantwortlicher.",
+          "Wir setzen Dienstleister nur ein, soweit dies in dieser Erklärung beschrieben ist: GitHub (Hosting) und Umami Software (Webanalyse) verarbeiten Daten als Auftragsverarbeiter bzw. auf Grundlage entsprechender Datenschutzvereinbarungen; Lemon Squeezy handelt als eigenständiger Verantwortlicher.",
           "Eine darüber hinausgehende Weitergabe personenbezogener Daten findet nicht statt, es sei denn, wir sind gesetzlich dazu verpflichtet (z. B. gegenüber Behörden) oder sie ist zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen erforderlich."
         ]
       },

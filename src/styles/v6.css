@@ -21,6 +21,19 @@
   --v6-body: "Manrope", "Segoe UI", sans-serif;
   --v6-mono: "DM Mono", ui-monospace, monospace;
 
+  /* Shared vertical rhythm. Page heroes, flowing sections and document-style
+     layouts intentionally use different bands, but every page draws from the
+     same scale so adjacent content stays visually even. */
+  --v6-gutter: clamp(1.1rem, 4vw, 3rem);
+  --v6-page-hero-top: clamp(8rem, 18vh, 11rem);
+  --v6-page-hero-bottom: clamp(3rem, 8vh, 5rem);
+  --v6-section-block: clamp(2.5rem, 7vh, 4.5rem);
+  --v6-section-block-compact: clamp(1rem, 4vh, 2.5rem);
+  --v6-cta-top: clamp(4rem, 12vh, 8rem);
+  --v6-page-bottom: clamp(6rem, 15vh, 10rem);
+  --v6-document-top: clamp(6.5rem, 12vh, 8rem);
+  --v6-document-bottom: clamp(4rem, 10vh, 7rem);
+
   position: relative;
   min-height: 100vh;
   background:
@@ -462,12 +475,22 @@
   font-weight: 500;
   margin: 0 0 0.35rem;
 }
-.v6-footer a {
+.v6-footer a,
+.v6-footer-col button {
   color: var(--v6-faint);
   text-decoration: none;
   transition: color 0.25s ease;
 }
-.v6-footer a:hover, .v6-footer a:focus-visible { color: var(--v6-gold-hi); }
+.v6-footer a:hover, .v6-footer a:focus-visible,
+.v6-footer-col button:hover, .v6-footer-col button:focus-visible { color: var(--v6-gold-hi); }
+.v6-footer-col button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
 .v6-footer-bottom {
   margin-top: 2.4rem;
   padding-top: 1.4rem;
@@ -603,7 +626,7 @@
   }
   .v6-footer-cols { grid-template-columns: 1fr 1fr; }
   .v6-footer-brand { grid-column: 1 / -1; }
-  .v6-footer a { display: flex; align-items: center; min-height: 40px; }
+  .v6-footer a, .v6-footer-col button { display: flex; align-items: center; min-height: 40px; }
   .v6-card { padding: 1.35rem 1.2rem; border-radius: 14px; }
   .v6-card:hover { transform: none; }
   .v6-h1 { font-size: clamp(2.35rem, 12vw, 2.9rem); }

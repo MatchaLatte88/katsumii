@@ -1,4 +1,12 @@
 {
+  "consent": {
+    "title": "Estadísticas anónimas",
+    "text": "Medimos las visitas de forma anónima y sin cookies para mejorar el sitio, solo con tu consentimiento. Puedes cambiar tu elección cuando quieras en «Ajustes de analítica», en el pie de página.",
+    "decline": "Rechazar",
+    "accept": "Aceptar",
+    "privacy": "Política de privacidad",
+    "settings": "Ajustes de analítica"
+  },
   "brand": {
     "subtitle": "Diario de Trading Offline"
   },
@@ -1342,11 +1350,11 @@
       {
         "title": "4. Cookies y almacenamiento local",
         "paragraphs": [
-          "Este sitio web no instala ninguna cookie, ni propia ni de terceros. Por ello no se necesita un banner de cookies.",
-          "Para recordar tus preferencias de visualización, el sitio utiliza el almacenamiento local (local storage) de tu navegador. Allí solo se guardan ajustes de software de Katsumii, como el esquema de color, el idioma y el estilo de fondo elegidos."
+          "Este sitio web no instala ninguna cookie, ni propia ni de terceros. Por ello, el aviso que ves en tu primera visita no es un banner de cookies, sino una solicitud de consentimiento para la analítica web sin cookies descrita en la sección 5.",
+          "Para recordar tus preferencias de visualización, el sitio utiliza el almacenamiento local (local storage) de tu navegador. Allí solo se guardan entradas funcionales, como el esquema de color, el idioma, el estilo de fondo elegidos y tu decisión sobre la analítica web (entrada «katsumii-consent»), para no tener que preguntarte de nuevo en cada visita."
         ],
         "paragraphsAfter": [
-          "Estos valores permanecen en tu navegador, nunca se transmiten a nosotros ni a terceros y puedes borrarlos en cualquier momento desde la configuración del navegador. Su almacenamiento es estrictamente necesario para la función que solicitas (recordar tus preferencias); conforme a las normas europeas de ePrivacy (art. 25.2.2 de la ley alemana TDDDG), no se requiere consentimiento."
+          "Estos valores permanecen en tu navegador, nunca se transmiten a nosotros ni a terceros y puedes borrarlos en cualquier momento desde la configuración del navegador. Su almacenamiento es estrictamente necesario para la función que solicitas (recordar tus preferencias y tu decisión de consentimiento); conforme a las normas europeas de ePrivacy (art. 25.2.2 de la ley alemana TDDDG), no se requiere consentimiento."
         ]
       },
       {
@@ -1357,20 +1365,17 @@
         "list": [
           "No se instalan cookies ni se guarda información en tu dispositivo.",
           "Las direcciones IP no se almacenan; solo se procesan de forma transitoria para la entrega técnica de la solicitud.",
-          "Únicamente se recopilan estadísticas agregadas y anonimizadas: páginas vistas, referencia, tipo de navegador y dispositivo, y país de origen.",
+          "Únicamente se recopilan estadísticas agregadas y anonimizadas: páginas vistas, referencia, tipo de navegador y dispositivo, resolución de pantalla, idioma configurado y país de origen.",
           "No hay seguimiento entre sitios ni elaboración de perfiles de usuario."
         ],
         "paragraphsAfter": [
-          "La base jurídica es el art. 6.1.f del RGPD (interés legítimo en el análisis estadístico y la mejora de nuestros servicios). En la medida en que se transfieran datos a EE. UU., dicha transferencia se basa en las cláusulas contractuales tipo de la UE (art. 46.2.c del RGPD)."
+          "La base jurídica es tu consentimiento (art. 6.1.a del RGPD), que otorgas a través del aviso de analítica al visitar el sitio web. Sin tu consentimiento, Umami no se carga. Puedes retirar tu consentimiento en cualquier momento con efectos futuros haciendo clic en «Ajustes de analítica» en el pie de página y rechazándolo. En la medida en que se transfieran datos a EE. UU., dicha transferencia se basa en las cláusulas contractuales tipo de la UE (art. 46.2.c del RGPD)."
         ]
       },
       {
-        "title": "6. Lista de espera, newsletter y formularios (Tally)",
+        "title": "6. Informes de errores",
         "paragraphs": [
-          "Para los formularios de este sitio (p. ej. lista de espera, informes de errores) utilizamos Tally, un servicio de Tally B.V., Bélgica. Tally trata los datos de los formularios por encargo nuestro como encargado del tratamiento (art. 28 del RGPD) en servidores de la UE.",
-          "Lista de espera: si te apuntas a la lista de espera, tratamos tu dirección de email y los datos voluntarios que facilites para informarte del lanzamiento del producto y de las condiciones asociadas (p. ej. descuento early bird). La base jurídica es tu consentimiento (art. 6.1.a del RGPD). Puedes retirarlo en cualquier momento con efectos futuros, por ejemplo escribiendo a info@katsumii.com; tus datos se eliminarán entonces.",
-          "Newsletter: si en el futuro ofrecemos un boletín periódico, solo lo enviaremos con tu consentimiento expreso obtenido mediante doble opt-in. Cada email incluirá un enlace para darte de baja; tras la baja, tu dirección se eliminará de la lista de distribución.",
-          "Informes de errores: los datos enviados a través del formulario de errores se tratan exclusivamente para analizar y corregir el problema comunicado (art. 6.1.f del RGPD, interés legítimo en la calidad del producto, o art. 6.1.b del RGPD para clientes existentes). Los datos se eliminan una vez resuelto el informe."
+          "Puedes enviarnos informes de errores por email a bugs@katsumii.com. Tratamos los datos que nos facilites exclusivamente para analizar y corregir el problema comunicado (art. 6.1.f del RGPD, interés legítimo en la calidad del producto, o art. 6.1.b del RGPD para clientes existentes). Los datos se eliminan una vez resuelto el informe."
         ]
       },
       {
@@ -1406,7 +1411,7 @@
       {
         "title": "11. Destinatarios y encargados del tratamiento",
         "paragraphs": [
-          "Solo recurrimos a proveedores de servicios en los términos descritos en esta política: GitHub (alojamiento), Umami Software (analítica web) y Tally (formularios) tratan datos como encargados del tratamiento o en virtud de los acuerdos de protección de datos correspondientes; Lemon Squeezy actúa como responsable independiente.",
+          "Solo recurrimos a proveedores de servicios en los términos descritos en esta política: GitHub (alojamiento) y Umami Software (analítica web) tratan datos como encargados del tratamiento o en virtud de los acuerdos de protección de datos correspondientes; Lemon Squeezy actúa como responsable independiente.",
           "Aparte de ello, no se ceden datos personales a terceros, salvo que estemos legalmente obligados (p. ej. ante autoridades) o la cesión sea necesaria para formular, ejercer o defender reclamaciones legales."
         ]
       },

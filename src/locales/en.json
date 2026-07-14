@@ -1,4 +1,12 @@
 {
+  "consent": {
+    "title": "Anonymous stats",
+    "text": "We measure page views anonymously and without cookies to improve the site — only with your consent. You can change your choice anytime via \"Analytics settings\" in the footer.",
+    "decline": "Decline",
+    "accept": "Accept",
+    "privacy": "Privacy Policy",
+    "settings": "Analytics settings"
+  },
   "brand": {
     "subtitle": "Local Offline Trading Cockpit"
   },
@@ -2427,11 +2435,11 @@
       {
         "title": "4. Cookies and Local Storage",
         "paragraphs": [
-          "This website does not set any cookies — neither its own nor third-party cookies. A cookie banner is therefore not required.",
-          "To remember your display preferences, the website uses your browser's local storage. Only Katsumii software settings are stored there — such as your selected color scheme, language, and background style."
+          "This website does not set any cookies — neither its own nor third-party cookies. The notice you see on your first visit is therefore not a cookie banner but a consent prompt for the cookie-free web analytics described in Section 5.",
+          "To remember your display preferences, the website uses your browser's local storage. Only functional entries are stored there — such as your selected color scheme, language, background style, and your web analytics decision (entry \"katsumii-consent\"), so that we do not have to ask you again on every visit."
         ],
         "paragraphsAfter": [
-          "These values remain in your browser, are never transmitted to us or to third parties, and can be deleted at any time via your browser settings. Storing them is strictly necessary for the functionality you request (remembering your preferences); under EU ePrivacy rules (Section 25(2) No. 2 of the German TDDDG), no consent is required."
+          "These values remain in your browser, are never transmitted to us or to third parties, and can be deleted at any time via your browser settings. Storing them is strictly necessary for the functionality you request (remembering your preferences and your consent decision); under EU ePrivacy rules (Section 25(2) No. 2 of the German TDDDG), no consent is required."
         ]
       },
       {
@@ -2442,20 +2450,17 @@
         "list": [
           "No cookies are set and no information is stored on your device.",
           "IP addresses are not stored; they are processed only transiently for the technical delivery of the request.",
-          "Only aggregated, anonymized statistics are collected: pages viewed, referrer, browser and device type, and country of origin.",
+          "Only aggregated, anonymized statistics are collected: pages viewed, referrer, browser and device type, screen resolution, language setting, and country of origin.",
           "There is no cross-site tracking and no user profiling."
         ],
         "paragraphsAfter": [
-          "The legal basis is Art. 6(1)(f) GDPR (legitimate interest in statistical analysis and improvement of our services). Insofar as data is transferred to the USA, this is based on the EU Standard Contractual Clauses (Art. 46(2)(c) GDPR)."
+          "The legal basis is your consent (Art. 6(1)(a) GDPR), which you give via the analytics notice when you visit the website. Without your consent, Umami is not loaded. You may withdraw your consent at any time with effect for the future by clicking \"Analytics settings\" in the footer and declining. Insofar as data is transferred to the USA, this is based on the EU Standard Contractual Clauses (Art. 46(2)(c) GDPR)."
         ]
       },
       {
-        "title": "6. Waitlist, Newsletter, and Forms (Tally)",
+        "title": "6. Bug Reports",
         "paragraphs": [
-          "For forms on this website (e.g. waitlist, bug reports) we use Tally, a service of Tally B.V., Belgium. Tally processes form data on our behalf as a processor (Art. 28 GDPR) on servers in the EU.",
-          "Waitlist: If you join the waitlist, we process your email address and any voluntary information you provide in order to notify you about the product launch and related offers (e.g. early-bird discount). The legal basis is your consent (Art. 6(1)(a) GDPR). You may withdraw your consent at any time with effect for the future, for example by emailing info@katsumii.com; your data will then be deleted.",
-          "Newsletter: If we offer a regular newsletter in the future, we will send it only with your express consent obtained via a double-opt-in procedure. Every email will contain an unsubscribe link; after unsubscribing, your email address will be removed from the mailing list.",
-          "Bug reports: We process the information submitted via the bug report form exclusively to analyze and fix the reported issue (Art. 6(1)(f) GDPR, legitimate interest in product quality, or Art. 6(1)(b) GDPR for existing customers). The data is deleted once the report has been resolved."
+          "You can send bug reports to us by email at bugs@katsumii.com. We process the information you provide exclusively to analyze and fix the reported issue (Art. 6(1)(f) GDPR, legitimate interest in product quality, or Art. 6(1)(b) GDPR for existing customers). The data is deleted once the report has been resolved."
         ]
       },
       {
@@ -2491,7 +2496,7 @@
       {
         "title": "11. Recipients and Processors",
         "paragraphs": [
-          "We use service providers only as described in this policy: GitHub (hosting), Umami Software (web analytics), and Tally (forms) process data as processors or under corresponding data protection agreements; Lemon Squeezy acts as an independent controller.",
+          "We use service providers only as described in this policy: GitHub (hosting) and Umami Software (web analytics) process data as processors or under corresponding data protection agreements; Lemon Squeezy acts as an independent controller.",
           "Beyond this, personal data is not disclosed to third parties unless we are legally obliged to do so (e.g. to authorities) or disclosure is necessary to establish, exercise, or defend legal claims."
         ]
       },

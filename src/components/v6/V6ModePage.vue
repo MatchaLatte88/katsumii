@@ -122,7 +122,7 @@ onBeforeUnmount(() => {
   position: relative;
   max-width: 1240px;
   margin: 0 auto;
-  padding: clamp(8rem, 18vh, 11rem) clamp(1.1rem, 4vw, 3rem) clamp(3rem, 8vh, 5rem);
+  padding: var(--v6-page-hero-top) var(--v6-gutter) var(--v6-page-hero-bottom);
 }
 /* soft scrim in page-bg color so the particle river stays quiet behind the copy
    (same approach as the landing hero) */
@@ -153,7 +153,7 @@ onBeforeUnmount(() => {
 .v6m-metrics {
   max-width: 1240px;
   margin: 0 auto;
-  padding: clamp(1rem, 4vh, 2.5rem) clamp(1.1rem, 4vw, 3rem) clamp(3rem, 8vh, 5rem);
+  padding: var(--v6-section-block-compact) var(--v6-gutter) var(--v6-page-hero-bottom);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.1rem;
@@ -209,7 +209,7 @@ onBeforeUnmount(() => {
 .v6m-section {
   max-width: 1240px;
   margin: 0 auto;
-  padding: clamp(2.5rem, 7vh, 4.5rem) clamp(1.1rem, 4vw, 3rem);
+  padding: var(--v6-section-block) var(--v6-gutter);
   display: grid;
   grid-template-columns: minmax(300px, 5fr) 6fr;
   gap: clamp(2rem, 5vw, 4.5rem);
@@ -269,7 +269,7 @@ onBeforeUnmount(() => {
 .v6m-row-pct { color: var(--v6-gold); }
 
 /* ── disclaimer ── */
-.v6m-disclaimer { padding: clamp(3rem, 9vh, 6rem) clamp(1.1rem, 4vw, 3rem); }
+.v6m-disclaimer { padding: clamp(3rem, 9vh, 6rem) var(--v6-gutter); }
 .v6m-disclaimer-inner { max-width: 1240px; margin: 0 auto; }
 .v6m-disclaimer-points {
   display: grid;
@@ -290,7 +290,7 @@ onBeforeUnmount(() => {
 /* ── cta ── */
 .v6m-cta {
   text-align: center;
-  padding: clamp(4rem, 12vh, 8rem) clamp(1.1rem, 4vw, 3rem) clamp(6rem, 15vh, 10rem);
+  padding: var(--v6-cta-top) var(--v6-gutter) var(--v6-page-bottom);
 }
 .v6m-cta-title {
   font-family: var(--v6-display);
