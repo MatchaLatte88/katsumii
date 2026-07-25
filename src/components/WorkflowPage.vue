@@ -25,9 +25,9 @@
       </div>
       <figure class="v6wf-shot v6-reveal">
         <img
-          :src="asset(isDark ? 'Dashboard_dark.png' : 'Dashboard_light.png')"
+          :src="asset(isDark ? 'Screenshots/opt/dash_normal_d.webp' : 'Screenshots/opt/dash_normal_l.webp')"
           alt="Katsumii dashboard combining imported trades, journal entries and reports"
-          width="2559" height="1599"
+          width="1600" height="1000"
           loading="eager" decoding="async"
         />
         <figcaption>Cockpit — everything that follows lands here</figcaption>
@@ -91,9 +91,9 @@
       </div>
       <figure class="v6wf-shot v6-reveal">
         <img
-          :src="asset(isDark ? 'Calendar_dark.png' : 'Calendar_light.png')"
+          :src="asset(isDark ? 'Screenshots/opt/calendar_f_d.webp' : 'Screenshots/opt/calendar_f_l.webp')"
           alt="Katsumii calendar with per-day P&L, trade counts and journal markers"
-          width="2532" height="1332"
+          width="1600" height="1000"
           loading="lazy" decoding="async"
         />
         <figcaption>Calendar — numbers and notes, one grid</figcaption>
@@ -125,6 +125,37 @@
       </div>
     </section>
 
+    <!-- SECTION 3b · PINNED TOOL SCREENSHOTS -->
+    <section
+      ref="scrollerEl" class="v6wf-scroller" :class="{ static: !pinned }"
+      aria-label="Trader tools in Katsumii"
+    >
+      <div class="v6wf-frames">
+        <figure
+          v-for="(s, i) in TOOL_SHOTS" :key="s.key"
+          class="v6wf-shot v6wf-frame" :class="{ on: i === activeShot }"
+          :aria-hidden="pinned && i !== activeShot ? 'true' : null"
+        >
+          <img
+            :src="shotSrc(s)"
+            :alt="s.alt"
+            width="1600" height="1000"
+            loading="lazy" decoding="async"
+          />
+          <figcaption>{{ s.caption }}</figcaption>
+        </figure>
+      </div>
+      <ol class="v6wf-steps">
+        <li v-for="(s, i) in TOOL_SHOTS" :key="s.key" :class="{ on: i === activeShot }">
+          <span class="v6wf-step-n">{{ String(i + 1).padStart(2, "0") }}</span>
+          <span class="v6wf-step-body">
+            <span class="v6wf-step-name">{{ s.name }}</span>
+            <span class="v6wf-step-copy">{{ s.copy }}</span>
+          </span>
+        </li>
+      </ol>
+    </section>
+
     <!-- CTA -->
     <section class="v6wf-cta">
       <h2 class="v6wf-cta-title v6-reveal">The tools, out of the way<b class="v6-dot">.</b></h2>
@@ -140,8 +171,10 @@
 </template>
 
 <script setup>
-import { computed, inject, onBeforeUnmount, onMounted, ref } from "vue"
+import { computed, inject, nextTick, onBeforeUnmount, onMounted, ref } from "vue"
 import { useRoute } from "vue-router"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { initMagnetic, initV6Reveals } from "../v6/motion.js"
 import { normalizeLocale } from "../utils/routes.js"
 
@@ -219,12 +252,85 @@ const TOOLS = [
   { kicker: "R3", name: "Automated backups",      copy: "Weekly and monthly backups run in the background. Keep the last N, restore the latest with one click." },
 ]
 
+/* Pinned scroll-through: the section holds still while these four shots swap.
+   File names differ in shape (tools_l_1 vs. report_l), so each carries its own
+   prefix/suffix around the theme letter. */
+const TOOL_SHOTS = [
+  {
+    key: "tools1", pre: "tools", suf: "_1",
+    name: "Plan & sizing",
+    copy: "R:R visualizer and position size calculator, side by side with the timezone and currency helpers.",
+    alt: "Katsumii R:R visualizer, position size calculator and timezone converter",
+    caption: "Tools — R:R, contracts, sessions",
+  },
+  {
+    key: "tools2", pre: "tools", suf: "_2",
+    name: "Equity simulator",
+    copy: "Project account growth from win rate, RRR and risk per trade — ten possible paths, not one flattering average.",
+    alt: "Katsumii equity simulator projecting possible account paths",
+    caption: "Equity simulator — variance made visible",
+  },
+  {
+    key: "report", pre: "report", suf: "",
+    name: "HTML report",
+    copy: "The current filter, exported as one self-contained file — equity curve, heatmap, breakdowns, dark and light inside.",
+    alt: "Katsumii self-contained HTML performance report",
+    caption: "Report — one file, opens anywhere",
+  },
+  {
+    key: "backup", pre: "backup", suf: "",
+    name: "Automated backups",
+    copy: "Weekly and monthly snapshots run in the background. Keep the last N, restore the latest with one click.",
+    alt: "Katsumii backup settings with scheduled local snapshots",
+    caption: "Backups — scheduled, local, one-click restore",
+  },
+]
+const shotSrc = (s) => asset(`Screenshots/opt/${s.pre}_${isDark.value ? "d" : "l"}${s.suf}.webp`)
+
+const activeShot = ref(0)
+/* stays false on small screens and with reduced motion — there the shots simply
+   stack and scroll normally */
+const pinned = ref(false)
+const scrollerEl = ref(null)
+
 const rootEl = ref(null)
 let cleanups = []
 
 onMounted(() => {
   cleanups.push(initV6Reveals(rootEl.value))
   cleanups.push(initMagnetic(rootEl.value))
+
+  /* Pin the tool section and step through the shots with the scroll distance.
+     Only on wide screens with motion allowed — elsewhere the block stays static. */
+  gsap.registerPlugin(ScrollTrigger)
+  const mm = gsap.matchMedia()
+  mm.add("(min-width: 901px) and (prefers-reduced-motion: no-preference)", () => {
+    pinned.value = true
+    let st
+    /* wait for the .static class to drop so the pin measures the real height */
+    nextTick(() => {
+      st = ScrollTrigger.create({
+        trigger: scrollerEl.value,
+        start: "center center",
+        end: () => `+=${window.innerHeight * (TOOL_SHOTS.length - 1) * 0.75}`,
+        pin: true,
+        pinSpacing: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          const i = Math.floor(self.progress * TOOL_SHOTS.length)
+          activeShot.value = Math.min(TOOL_SHOTS.length - 1, Math.max(0, i))
+        },
+      })
+      ScrollTrigger.refresh()
+    })
+    return () => {
+      st && st.kill()
+      pinned.value = false
+      activeShot.value = 0
+    }
+  })
+  cleanups.push(() => mm.revert())
 })
 
 onBeforeUnmount(() => {
@@ -469,6 +575,85 @@ onBeforeUnmount(() => {
 }
 .v6wf-tool p { margin: 0; color: var(--v6-muted); font-size: 0.86rem; line-height: 1.55; }
 
+/* ── pinned tool screenshots ── */
+.v6wf-scroller {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 var(--v6-gutter) var(--v6-section-block);
+  display: grid;
+  /* same column rhythm as .v6wf-section, so the shots sit in the left column */
+  grid-template-columns: minmax(300px, 5fr) 6fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+/* frames are stacked; the first one in flow sets the height, the rest overlay it */
+.v6wf-frames { position: relative; }
+.v6wf-frame {
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.v6wf-scroller:not(.static) .v6wf-frame {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.015);
+  pointer-events: none;
+}
+.v6wf-scroller:not(.static) .v6wf-frame:first-child { position: relative; }
+.v6wf-scroller:not(.static) .v6wf-frame.on {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.v6wf-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.2rem;
+}
+.v6wf-steps li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.9rem;
+  padding: 0.9rem 1rem;
+  border-left: 2px solid var(--v6-line);
+  border-radius: 0 10px 10px 0;
+  opacity: 0.42;
+  transition: opacity 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+}
+.v6wf-steps li.on {
+  opacity: 1;
+  border-left-color: var(--v6-gold);
+  background: linear-gradient(90deg, var(--v6-panel), transparent 85%);
+}
+.v6wf-step-n {
+  font-family: var(--v6-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  color: var(--v6-gold);
+  padding-top: 0.25rem;
+}
+.v6wf-step-name {
+  display: block;
+  font-family: var(--v6-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+.v6wf-step-copy {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--v6-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+/* static fallback — small screens and reduced motion */
+.v6wf-scroller.static { grid-template-columns: 1fr; gap: 1.6rem; }
+.v6wf-scroller.static .v6wf-frames { display: grid; gap: 1.2rem; }
+.v6wf-scroller.static .v6wf-steps li { opacity: 1; }
+
 /* ── cta ── */
 .v6wf-cta {
   text-align: center;
@@ -498,6 +683,7 @@ onBeforeUnmount(() => {
   .v6wf-section.flip > :first-child { order: 1; }
   .v6wf-section.flip > :last-child { order: 2; }
   .v6wf-tools { grid-template-columns: 1fr; }
+  .v6wf-scroller { grid-template-columns: 1fr; gap: 1.6rem; }
   .v6wf-provider-list li { grid-template-columns: 1fr auto; }
   .v6wf-provider-copy { grid-column: 1 / -1; }
 }

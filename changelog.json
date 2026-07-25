@@ -1,0 +1,28 @@
+[
+  {
+    "version": "0.9.0",
+    "date": "2026-07-25",
+    "title": "Real product screenshots across the site",
+    "changes": [
+      "Replace every marketing image with real product screenshots, served as theme-aware WebP",
+      "Add scripts/optimize-screenshots.mjs — resizes and re-encodes all screenshots (~94% smaller), run via npm run screenshots",
+      "Customization: interactive layout switches (density, sidebars) that drive the screenshot, with idle prefetch of the variants",
+      "Customization: theme comparison frame showing three dark tones / two light papers at once, plus its own light/dark preview toggle",
+      "Move the 'Numbers, your way' section from Customization to Analytics & Reviews",
+      "Workflow: pinned scroll-through of the tools, report and backup screens",
+      "Add a version number to the footer and start maintaining this changelog"
+    ]
+  },
+  {
+    "version": "0.8.0",
+    "date": "2026-06-18",
+    "title": "Add bug report page",
+    "changes": [
+      "Add /bugreport route with Tally form embed (placeholder ID, to be replaced once form is created)",
+      "Add 'Report a Bug' link in footer Company section across all locales",
+      "Add full translations for bug report page (EN, DE, ES, ZH)",
+      "Tally embed.js is loaded dynamically on the bug report page only",
+      "Direct email fallback to bugs@katsumii.com shown below the form"
+    ]
+  }
+]

@@ -1,11 +1,12 @@
 {
   "name": "katsumii_home",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.9.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "sitemap": "node scripts/build-sitemap.mjs",
+    "screenshots": "node scripts/optimize-screenshots.mjs",
     "prebuild": "node scripts/build-sitemap.mjs",
     "build": "vite build",
     "preview": "vite preview"
@@ -24,6 +25,7 @@
     "@vitejs/plugin-vue": "^6.0.2",
     "autoprefixer": "^10.4.27",
     "postcss": "^8.5.8",
+    "sharp": "^0.35.3",
     "tailwindcss": "^4.2.1",
     "vite": "^7.3.1"
   }

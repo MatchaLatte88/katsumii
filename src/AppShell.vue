@@ -35,7 +35,7 @@ const { bg, changeBg } = useBg()
 const { consent } = useConsent()
 
 const SITE_URL = "https://www.katsumii.com"
-const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/Dashboard_dark.png`
+const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/Screenshots/dash_normal_d.png`
 
 const htmlLangForLocale = (lang) => lang === "tw" ? "zh-TW" : lang
 

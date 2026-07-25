@@ -16,9 +16,9 @@
       </div>
       <figure class="v6ft-shot v6-reveal">
         <img
-          :src="asset(isDark ? 'Dashboard_dark.png' : 'Dashboard_light.png')"
+          :src="asset(isDark ? 'Screenshots/opt/dash_normal_d.webp' : 'Screenshots/opt/dash_normal_l.webp')"
           :alt="t('featuresPage.alts.hero')"
-          width="2559" height="1599"
+          width="1600" height="1000"
           loading="eager" decoding="async"
         />
         <figcaption>{{ t('featuresPage.hero.windowLabel') }}</figcaption>

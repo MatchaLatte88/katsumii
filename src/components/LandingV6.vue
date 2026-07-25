@@ -77,7 +77,7 @@
             class="v6-story-shot" :class="{ active: i === activeStory }"
           >
             <img
-              :src="asset(s.img)" :alt="s.alt" :width="s.w" :height="s.h"
+              :src="shot(s)" :alt="s.alt" :width="s.w" :height="s.h"
               :loading="i === 0 ? 'eager' : 'lazy'" decoding="async"
             />
           </figure>
@@ -88,7 +88,7 @@
       <div class="v6-story-stack">
         <figure v-for="(s, i) in slides" :key="`stack-${s.title}`" class="v6-stack-item v6-reveal">
           <div class="v6-stack-frame">
-            <img :src="asset(s.img)" :alt="s.alt" :width="s.w" :height="s.h" loading="lazy" decoding="async" />
+            <img :src="shot(s)" :alt="s.alt" :width="s.w" :height="s.h" loading="lazy" decoding="async" />
           </div>
           <figcaption>
             <span class="v6-story-num" aria-hidden="true">0{{ i + 1 }}</span>
@@ -321,6 +321,9 @@ const route = useRoute()
 const isDark = inject("isDark")
 const v6Accent = inject("v6Accent")
 
+/* Story slides ship a light and a dark screenshot; pick by active theme. */
+const shot = (s) => asset(isDark.value ? s.imgD : s.imgL)
+
 const lang = computed(() => {
   const raw = Array.isArray(route.params.locale) ? route.params.locale[0] : route.params.locale
   return normalizeLocale(raw)
@@ -420,28 +423,28 @@ const stats = [
 
 const slides = [
   {
-    img: "Dashboard_dark.png", w: 2559, h: 1599,
+    imgL: "Screenshots/opt/dash_normal_l.webp", imgD: "Screenshots/opt/dash_normal_d.webp", w: 1600, h: 1000,
     alt: "Katsumii dashboard with net P&L hero, execution quality and equity curve",
     headline: "Find your edge.", accent: "Sharpen it",
     title: "Dashboard", tag: "the day, distilled",
     caption: "Net P&L, execution quality, edge drivers and your equity curve — one calm screen that carries the whole story.",
   },
   {
-    img: "Main_dark.png", w: 2559, h: 1599,
+    imgL: "Screenshots/opt/accounts_f_l.webp", imgD: "Screenshots/opt/accounts_f_d.webp", w: 1600, h: 1000,
     alt: "Katsumii account overview with balance, drawdown distance and billing state",
     headline: "Know every account.", accent: "Stay ahead of risk",
     title: "Accounts", tag: "rules, always in sight",
     caption: "Drawdown distance, winning days, payouts and rebill dates per account — before you take the next trade.",
   },
   {
-    img: "Calendar_dark.png", w: 2532, h: 1332,
+    imgL: "Screenshots/opt/calendar_f_l.webp", imgD: "Screenshots/opt/calendar_f_d.webp", w: 1600, h: 1000,
     alt: "Katsumii calendar with color-graded trading days and weekly summaries",
     headline: "Track every day.", accent: "See the pattern",
     title: "Calendar", tag: "time, color-graded",
     caption: "Every day graded by outcome, weekly and monthly performance in the margins, journal markers where you reflected.",
   },
   {
-    img: "Stats_dark.png", w: 1654, h: 1599,
+    imgL: "Screenshots/opt/analysis_f_l_1.webp", imgD: "Screenshots/opt/analysis_f_d_1.webp", w: 1600, h: 1000,
     alt: "Katsumii analysis view with weekday, session and strategy breakdowns",
     headline: "Go beyond the surface.", accent: "Deep dive into your edge",
     title: "Analysis", tag: "where the edge lives",

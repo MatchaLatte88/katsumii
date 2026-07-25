@@ -23,12 +23,12 @@
       </div>
       <figure class="v6cu-shot v6-reveal">
         <img
-          :src="asset(isDark ? 'Main_dark.png' : 'Main_light.png')"
-          alt="Katsumii cockpit with customized layout"
-          width="2559" height="1599"
+          :src="asset(isDark ? 'Screenshots/opt/customize_d.webp' : 'Screenshots/opt/customize_l.webp')"
+          alt="Katsumii customization settings with theme, accent and layout options"
+          width="1600" height="1000"
           loading="eager" decoding="async"
         />
-        <figcaption>Cockpit — your layout, your palette</figcaption>
+        <figcaption>Settings — every surface, tunable</figcaption>
       </figure>
     </section>
 
@@ -43,20 +43,26 @@
           your attention, not the other way around.
         </p>
         <div class="v6cu-rows v6-reveal">
-          <div v-for="r in FOCUS_ROWS" :key="r.name" class="v6cu-row">
-            <span class="v6cu-row-toggle" :class="{ off: !r.on }" aria-hidden="true"><i></i></span>
-            <div>
-              <h3>{{ r.name }}</h3>
-              <p>{{ r.copy }}</p>
-            </div>
-          </div>
+          <button
+            v-for="c in LAYOUT_CONTROLS" :key="c.key"
+            type="button" class="v6cu-row v6cu-control"
+            role="switch" :aria-checked="c.on.value ? 'true' : 'false'"
+            @click="c.on.value = !c.on.value"
+          >
+            <span class="v6cu-row-toggle" :class="{ off: !c.on.value }" aria-hidden="true"><i></i></span>
+            <span class="v6cu-control-copy">
+              <span class="v6cu-control-name">{{ c.name }}</span>
+              <span class="v6cu-control-note">{{ c.on.value ? c.onCopy : c.offCopy }}</span>
+            </span>
+          </button>
         </div>
+        <p class="v6cu-control-hint v6-reveal">Try it — the screenshot follows your choice.</p>
       </div>
       <figure class="v6cu-shot v6-reveal">
         <img
-          :src="asset(isDark ? 'Dashboard_dark.png' : 'Dashboard_light.png')"
-          alt="Katsumii dashboard reduced to the essentials"
-          width="2559" height="1599"
+          :src="asset(layoutShot)"
+          :alt="layoutAlt"
+          width="1600" height="1000"
           loading="lazy" decoding="async"
         />
         <figcaption>Dashboard — declutter on demand</figcaption>
@@ -115,47 +121,39 @@
           </div>
         </div>
       </div>
-      <figure class="v6cu-shot v6-reveal">
-        <img
-          :src="asset(isDark ? 'Calendar_dark.png' : 'Calendar_light.png')"
-          alt="Katsumii calendar on a customized background"
-          width="2532" height="1332"
-          loading="lazy" decoding="async"
-        />
-        <figcaption>Calendar — same data, your atmosphere</figcaption>
-      </figure>
-    </section>
-
-    <!-- NUMBERS -->
-    <section id="numbers" class="v6cu-section flip">
-      <div class="v6cu-section-copy">
-        <p class="v6-eyebrow v6-reveal"><i></i>Numbers, your way</p>
-        <h2 class="v6-h2 v6-reveal">Read P&amp;L in the language you think in.</h2>
-        <p class="v6cu-section-sub v6-reveal">
-          Some traders think in percent, some in R-multiples, some want both next to every dollar
-          figure. Katsumii renders P&amp;L across the entire app the way you actually reason about
-          risk — and the quick-stats bar keeps win rate, R and profit factor one glance away, or
-          out of sight entirely.
-        </p>
-        <div class="v6cu-rows v6-reveal">
-          <div v-for="r in NUMBER_ROWS" :key="r.name" class="v6cu-row plain">
-            <div>
-              <h3>{{ r.name }}</h3>
-              <p>{{ r.copy }}</p>
+      <div class="v6cu-tone v6-reveal">
+        <figure class="v6cu-shot" @mouseleave="hoveredTone = null">
+          <div class="v6cu-tone-layers">
+            <div
+              v-for="(t, i) in toneLayers" :key="t.file"
+              class="v6cu-tl" :class="{ lifted: hoveredTone === i }"
+              :style="{ zIndex: hoveredTone === i ? toneLayers.length + 1 : i + 1 }"
+            >
+              <div
+                class="v6cu-tl-clip"
+                :style="{ clipPath: hoveredTone === i ? FULL_CLIP : bandClip(i, toneLayers.length) }"
+                @mouseenter="hoveredTone = i"
+              >
+                <img
+                  :src="asset(`Screenshots/opt/themes/${t.file}.webp`)"
+                  :alt="`Katsumii in the ${t.name} theme`"
+                  width="1600" height="1000"
+                  loading="lazy" decoding="async"
+                />
+              </div>
             </div>
-            <span class="v6cu-row-value">{{ r.value }}</span>
           </div>
+          <figcaption>{{ toneCaption }}</figcaption>
+        </figure>
+        <div class="v6cu-tone-switch" role="group" aria-label="Preview theme">
+          <button
+            v-for="o in ['light', 'dark']" :key="o"
+            type="button" class="v6cu-tone-btn"
+            :class="{ on: toneMode === o }" :aria-pressed="toneMode === o ? 'true' : 'false'"
+            @click="toneOverride = o"
+          >{{ o === "light" ? "Light" : "Dark" }}</button>
         </div>
       </div>
-      <figure class="v6cu-shot v6-reveal">
-        <img
-          :src="asset('Stats_dark.png')"
-          alt="Katsumii statistics with percentage and R-multiple display"
-          width="1654" height="1599"
-          loading="lazy" decoding="async"
-        />
-        <figcaption>Stats — %, R-multiples, or both</figcaption>
-      </figure>
     </section>
 
     <!-- CTA -->
@@ -173,7 +171,7 @@
 </template>
 
 <script setup>
-import { computed, inject, onBeforeUnmount, onMounted, ref } from "vue"
+import { computed, inject, onBeforeUnmount, onMounted, ref, watch } from "vue"
 import { useRoute } from "vue-router"
 import { initMagnetic, initV6Reveals } from "../v6/motion.js"
 import { normalizeLocale } from "../utils/routes.js"
@@ -189,24 +187,93 @@ const lang = computed(() => {
   return normalizeLocale(raw)
 })
 
-const FOCUS_ROWS = [
+/* Layout playground — two switches pick one of four screenshots per theme.
+   Only the selected one sits in the DOM; the other three are warmed during
+   browser idle time so switching never waits on a download. */
+const sidebars = ref(true)
+const compact = ref(false)
+
+const LAYOUT_CONTROLS = [
   {
-    name: "Right sidebar", on: true,
-    copy: "Weekly performance, risk monitor and strategy stats — there when you review, gone when you execute.",
+    key: "sidebars", name: "Sidebars", on: sidebars,
+    onCopy: "Left navigation and the right stats rail are in view.",
+    offCopy: "Both rails hidden — only the board you trade on.",
   },
   {
-    name: "Quick-stats bar", on: true,
-    copy: "P&L, win rate, R and profit factor below the filter bar. One toggle shows or hides the whole strip.",
-  },
-  {
-    name: "Copy follower accounts", on: false,
-    copy: "Keep follower accounts tucked behind the group leader card until you actually need them.",
-  },
-  {
-    name: "Global mode tabs", on: true,
-    copy: "Only trade two of the four modes? Hide the tabs you never use and the top bar stays clean.",
+    key: "compact", name: "Compact density", on: compact,
+    onCopy: "Tighter spacing — more of the session on one screen.",
+    offCopy: "Full spacing, the way the cockpit ships.",
   },
 ]
+
+const LAYOUT_VARIANTS = ["full_S1", "full_S0", "compact_S1", "compact_S0"]
+const layoutShotFor = (variant, dark) =>
+  `Screenshots/opt/layout/dash_${variant}_${dark ? "d" : "l"}.webp`
+
+const layoutShot = computed(() =>
+  layoutShotFor(`${compact.value ? "compact" : "full"}_${sidebars.value ? "S1" : "S0"}`, isDark.value)
+)
+const layoutAlt = computed(() =>
+  `Katsumii dashboard at ${compact.value ? "compact" : "full"} density, sidebars ${sidebars.value ? "shown" : "hidden"}`
+)
+
+const warmed = new Set()
+const warmLayoutShots = (dark) => {
+  /* metered or slow connections keep on-demand loading instead */
+  const conn = navigator.connection
+  if (conn && (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || ""))) return
+  for (const variant of LAYOUT_VARIANTS) {
+    const path = layoutShotFor(variant, dark)
+    if (warmed.has(path)) continue
+    warmed.add(path)
+    const img = new Image()
+    img.decoding = "async"
+    img.src = asset(path)
+  }
+}
+const whenIdle = (fn) =>
+  typeof requestIdleCallback === "function"
+    ? requestIdleCallback(fn, { timeout: 3000 })
+    : setTimeout(fn, 1200)
+
+/* Dark base tones / light papers, shown side by side in one frame: each variant
+   is clipped to its own diagonal band, hovering one expands it to the full shot.
+   The preview starts on the site's theme but can be switched independently. */
+const TONE_SETS = {
+  dark: [
+    { name: "Ink", file: "theme_ink_d" },
+    { name: "Midnight", file: "theme_midnight_d" },
+    { name: "Black", file: "theme_black_d" },
+  ],
+  light: [
+    { name: "Paper", file: "theme_paper_l" },
+    { name: "Snow", file: "theme_snow_l" },
+  ],
+}
+
+const toneOverride = ref(null)
+const toneMode = computed(() => toneOverride.value ?? (isDark.value ? "dark" : "light"))
+const toneLayers = computed(() => TONE_SETS[toneMode.value])
+const hoveredTone = ref(null)
+const toneCaption = computed(() => {
+  const layers = toneLayers.value
+  const hovered = layers[hoveredTone.value]
+  return hovered
+    ? `${hovered.name} — hover another band to compare`
+    : layers.map((t) => t.name).join(" · ")
+})
+/* switching the set must not leave a stale index hovered */
+watch(toneMode, () => { hoveredTone.value = null })
+
+const FULL_CLIP = "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
+const TONE_SKEW = 5.5 // how far the separator leans, in % of the frame width
+/* band i spans boundary i → i+1; the +1px keeps antialiasing from showing a seam */
+const bandClip = (i, count) => {
+  const top = (n) => (n === 0 ? "0%" : n === count ? "100%" : `${(n / count) * 100 + TONE_SKEW}%`)
+  const bot = (n) => (n === 0 ? "0%" : n === count ? "100%" : `${(n / count) * 100 - TONE_SKEW}%`)
+  const pad = i + 1 === count ? "" : " + 1px"
+  return `polygon(${top(i)} 0, calc(${top(i + 1)}${pad}) 0, calc(${bot(i + 1)}${pad}) 100%, ${bot(i)} 100%)`
+}
 
 /* Mode accents — mirror V6_ACCENTS in router.js / app mode themes */
 const MODE_SWATCHES = [
@@ -247,24 +314,17 @@ const CANVAS_ROWS = [
   },
 ]
 
-const NUMBER_ROWS = [
-  {
-    name: "PnL extra info", value: "% · R · Both",
-    copy: "Percentages, R-multiples or both — shown next to every P&L value across the entire app.",
-  },
-  {
-    name: "Quick-stats bar", value: "On / Off",
-    copy: "The at-a-glance strip with P&L, WR, R and PF — visible when you want feedback, hidden when you don't.",
-  },
-]
-
 const rootEl = ref(null)
 let cleanups = []
 
 onMounted(() => {
   cleanups.push(initV6Reveals(rootEl.value))
   cleanups.push(initMagnetic(rootEl.value))
+  whenIdle(() => warmLayoutShots(isDark.value))
 })
+
+/* the other theme's set is only worth fetching once the user switches */
+watch(isDark, (dark) => whenIdle(() => warmLayoutShots(dark)))
 
 onBeforeUnmount(() => {
   cleanups.forEach((off) => off && off())
@@ -335,6 +395,56 @@ onBeforeUnmount(() => {
   color: var(--v6-faint);
 }
 
+/* ── tone comparison stack ── */
+.v6cu-tone-layers { position: relative; aspect-ratio: 16 / 10; }
+/* the drop-shadow lives on the outer element: on the same element as clip-path
+   the clip would cut the shadow away */
+.v6cu-tl {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  filter: drop-shadow(-4px 0 9px rgba(0, 0, 0, 0.5));
+}
+.v6.light .v6cu-tl { filter: drop-shadow(-4px 0 9px rgba(20, 60, 50, 0.28)); }
+.v6cu-tl-clip {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: clip-path 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.v6cu-tl img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.v6cu-tone-switch {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+}
+.v6cu-tone-btn {
+  border: 1px solid var(--v6-line-strong);
+  border-radius: 999px;
+  padding: 0.34rem 0.95rem;
+  background: none;
+  color: var(--v6-muted);
+  font-family: var(--v6-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.v6cu-tone-btn:hover { color: var(--v6-ink); }
+.v6cu-tone-btn.on {
+  color: var(--v6-gold);
+  border-color: var(--v6-gold);
+  background: color-mix(in srgb, var(--v6-gold) 10%, transparent);
+}
+.v6cu-tone-btn:focus-visible { outline: 2px solid var(--v6-gold); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .v6cu-tl-clip { transition: none; }
+}
+
 /* ── sections ── */
 .v6cu-section {
   max-width: 1240px;
@@ -399,6 +509,44 @@ onBeforeUnmount(() => {
   padding: 0.28rem 0.7rem;
   white-space: nowrap;
 }
+/* real switches — same row look, but a button, so keyboard and AT get it too */
+.v6cu-control {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--v6-line);
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.v6cu-control:last-child { border-bottom: 0; }
+.v6cu-control:hover { background: color-mix(in srgb, var(--v6-gold) 7%, transparent); }
+.v6cu-control:focus-visible { outline: 2px solid var(--v6-gold); outline-offset: -3px; }
+.v6cu-control-copy { display: block; }
+.v6cu-control-name {
+  display: block;
+  font-family: var(--v6-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+.v6cu-control-note {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--v6-muted);
+  font-size: 0.88rem;
+}
+.v6cu-control-hint {
+  margin: 0.9rem 0 0;
+  font-family: var(--v6-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--v6-faint);
+}
+
 /* decorative toggle echoing the in-app switches */
 .v6cu-row-toggle {
   flex: none;

@@ -199,6 +199,7 @@
 
       <div class="v6-footer-bottom">
         <p>© {{ year }} Katsumii — trading journal</p>
+        <p class="v6-footer-version">v{{ siteVersion }}</p>
       </div>
     </footer>
   </div>
@@ -213,6 +214,10 @@ import { initMagnetic, prefersReducedMotion } from "../../v6/motion.js"
 import { normalizeLocale } from "../../utils/routes.js"
 import { useConsent } from "../../composables/useConsent.js"
 import PreviewNoticeModal from "./PreviewNoticeModal.vue"
+import changelog from "../../../changelog.json"
+
+/* newest changelog entry is the deployed version — see changelog.json */
+const siteVersion = changelog[0].version
 
 const { t } = useI18n()
 const { openSettings } = useConsent()

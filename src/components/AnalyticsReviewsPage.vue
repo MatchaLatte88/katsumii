@@ -23,12 +23,12 @@
       </div>
       <figure class="v6an-shot v6-reveal">
         <img
-          :src="asset(isDark ? 'Dashboard_dark.png' : 'Dashboard_light.png')"
-          alt="Katsumii dashboard with net P&L hero, execution quality and equity curve"
-          width="2559" height="1599"
+          :src="asset(isDark ? 'Screenshots/opt/analysis_f_d_1.webp' : 'Screenshots/opt/analysis_f_l_1.webp')"
+          alt="Katsumii analysis view with key metrics, ratios and diagnostics"
+          width="1600" height="1000"
           loading="eager" decoding="async"
         />
-        <figcaption>Dashboard — your performance, distilled</figcaption>
+        <figcaption>Analysis — your edge, quantified</figcaption>
       </figure>
     </section>
 
@@ -54,9 +54,9 @@
       </div>
       <figure class="v6an-shot v6-reveal">
         <img
-          :src="asset('Stats_dark.png')"
+          :src="asset(isDark ? 'Screenshots/opt/analysis_f_d_2.webp' : 'Screenshots/opt/analysis_f_l_2.webp')"
           alt="Katsumii execution quality and edge driver statistics"
-          width="1654" height="1599"
+          width="1600" height="1000"
           loading="lazy" decoding="async"
         />
         <figcaption>Execution quality — winrate, R:R, profit factor</figcaption>
@@ -110,6 +110,38 @@
       </ul>
     </section>
 
+    <!-- NUMBERS -->
+    <section id="numbers" class="v6an-section flip">
+      <div class="v6an-section-copy">
+        <p class="v6-eyebrow v6-reveal"><i></i>Numbers, your way</p>
+        <h2 class="v6-h2 v6-reveal">Read P&amp;L in the language you think in.</h2>
+        <p class="v6an-section-sub v6-reveal">
+          Some traders think in percent, some in R-multiples, some want both next to every dollar
+          figure. Katsumii renders P&amp;L across the entire app the way you actually reason about
+          risk — and the quick-stats bar keeps win rate, R and profit factor one glance away, or
+          out of sight entirely.
+        </p>
+        <div class="v6an-rows v6-reveal">
+          <div v-for="r in NUMBER_ROWS" :key="r.name" class="v6an-row">
+            <div>
+              <h3>{{ r.name }}</h3>
+              <p>{{ r.copy }}</p>
+            </div>
+            <span class="v6an-row-value">{{ r.value }}</span>
+          </div>
+        </div>
+      </div>
+      <figure class="v6an-shot v6-reveal">
+        <img
+          :src="asset(isDark ? 'Screenshots/opt/analysis_f_d_3.webp' : 'Screenshots/opt/analysis_f_l_3.webp')"
+          alt="Katsumii statistics with percentage and R-multiple display"
+          width="1600" height="1000"
+          loading="lazy" decoding="async"
+        />
+        <figcaption>Stats — %, R-multiples, or both</figcaption>
+      </figure>
+    </section>
+
     <!-- CALENDAR & REPORTS -->
     <section id="reviews" class="v6an-section">
       <div class="v6an-section-copy">
@@ -133,12 +165,12 @@
       </div>
       <figure class="v6an-shot v6-reveal">
         <img
-          :src="asset(isDark ? 'Calendar_dark.png' : 'Calendar_light.png')"
-          alt="Katsumii calendar with color-graded trading days and weekly summaries"
-          width="2532" height="1332"
+          :src="asset(isDark ? 'Screenshots/opt/report_d.webp' : 'Screenshots/opt/report_l.webp')"
+          alt="Katsumii self-contained HTML performance report with equity curve and breakdowns"
+          width="1600" height="1000"
           loading="lazy" decoding="async"
         />
-        <figcaption>Calendar — time, color-graded</figcaption>
+        <figcaption>Report — one file, opens anywhere</figcaption>
       </figure>
     </section>
 
@@ -241,6 +273,17 @@ const DIMENSIONS = [
   "Account", "Strategy", "Asset", "Timeframe", "Direction", "Market session",
   "Tag", "Emotion", "Mistake", "Color tag", "Closed by", "Scaled trades",
   "What-if outcome", "Date range",
+]
+
+const NUMBER_ROWS = [
+  {
+    name: "PnL extra info", value: "% · R · Both",
+    copy: "Percentages, R-multiples or both — shown next to every P&L value across the entire app.",
+  },
+  {
+    name: "Quick-stats bar", value: "On / Off",
+    copy: "The at-a-glance strip with P&L, WR, R and PF — visible when you want feedback, hidden when you don't.",
+  },
 ]
 
 const REVIEW_ROWS = [

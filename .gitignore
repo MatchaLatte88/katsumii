@@ -14,6 +14,10 @@ dist-ssr
 __pycache__/
 *.pyc
 
+# Full-size screenshot sources — only the optimized WebPs in Screenshots/opt/
+# are served, so the PNG originals stay local (see npm run screenshots)
+public/Screenshots/**/*.png
+
 # Local Codex/Claude worktree copies
 .claude/worktrees/*
 
