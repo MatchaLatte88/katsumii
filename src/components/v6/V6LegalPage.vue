@@ -101,7 +101,7 @@ onBeforeUnmount(() => observer?.disconnect())
 .v6-legal { position: relative; z-index: 1; }
 
 .v6l-layout {
-  max-width: 1240px;
+  max-width: var(--v6-container);
   margin: 0 auto;
   padding: var(--v6-document-top) var(--v6-gutter) var(--v6-document-bottom);
   display: grid;

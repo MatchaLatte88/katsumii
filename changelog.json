@@ -1,5 +1,18 @@
 [
   {
+    "version": "0.10.0",
+    "date": "2026-07-26",
+    "title": "Unified page rhythm and full-viewport section bands",
+    "changes": [
+      "Introduce a shared --v6-container width so subpages read at the same rhythm as the home story pin",
+      "Analytics & Reviews, Features and Workflow: sections snap as full-viewport bands while scrolling (off on small screens and with reduced motion)",
+      "Workflow: replace the pinned tool-screenshot scroller with an accessible tabbed showcase (keyboard-navigable, ARIA tabs)",
+      "Features: modules grid reflows from 2 to 4 columns to fit within one band",
+      "Customization: rename light theme presets 'Paper' → 'Soft' and 'Snow' → 'Whiteout'",
+      "Re-export theme comparison screenshots"
+    ]
+  },
+  {
     "version": "0.9.0",
     "date": "2026-07-25",
     "title": "Real product screenshots across the site",

@@ -1,7 +1,7 @@
 <template>
   <main ref="rootEl" class="v6-custom">
     <!-- HERO -->
-    <section class="v6cu-hero">
+    <section class="v6cu-hero v6-band v6-band-snap">
       <div class="v6cu-hero-copy">
         <p class="v6-eyebrow v6-reveal"><i></i>Customization</p>
         <h1 class="v6-h1 v6-reveal">Your journal. <em>Your rules</em><b class="v6-dot">.</b></h1>
@@ -33,7 +33,7 @@
     </section>
 
     <!-- FOCUS / HIDE UI -->
-    <section id="focus" class="v6cu-section">
+    <section id="focus" class="v6cu-section v6-band v6-band-snap">
       <div class="v6cu-section-copy">
         <p class="v6-eyebrow v6-reveal"><i></i>Focus mode</p>
         <h2 class="v6-h2 v6-reveal">Show only what earns its place on screen.</h2>
@@ -70,7 +70,7 @@
     </section>
 
     <!-- MODE COLOR THEMES -->
-    <section id="mode-colors" class="v6cu-section flip">
+    <section id="mode-colors" class="v6cu-section flip v6-band v6-band-snap">
       <div class="v6cu-section-copy">
         <p class="v6-eyebrow v6-reveal"><i></i>Mode color themes</p>
         <h2 class="v6-h2 v6-reveal">Four disciplines, four colors — you pick them.</h2>
@@ -102,7 +102,7 @@
     </section>
 
     <!-- BACKGROUNDS & TONE -->
-    <section id="backgrounds" class="v6cu-section">
+    <section id="backgrounds" class="v6cu-section v6-band v6-band-snap">
       <div class="v6cu-section-copy">
         <p class="v6-eyebrow v6-reveal"><i></i>Backgrounds &amp; tone</p>
         <h2 class="v6-h2 v6-reveal">A canvas for day sessions, another for the night.</h2>
@@ -246,8 +246,8 @@ const TONE_SETS = {
     { name: "Black", file: "theme_black_d" },
   ],
   light: [
-    { name: "Paper", file: "theme_paper_l" },
-    { name: "Snow", file: "theme_snow_l" },
+    { name: "Soft", file: "theme_paper_l" },
+    { name: "Whiteout", file: "theme_snow_l" },
   ],
 }
 
@@ -321,12 +321,16 @@ onMounted(() => {
   cleanups.push(initV6Reveals(rootEl.value))
   cleanups.push(initMagnetic(rootEl.value))
   whenIdle(() => warmLayoutShots(isDark.value))
+
+  /* full-viewport bands snap while this page is mounted — see v6.css */
+  document.documentElement.classList.add("v6-snap")
 })
 
 /* the other theme's set is only worth fetching once the user switches */
 watch(isDark, (dark) => whenIdle(() => warmLayoutShots(dark)))
 
 onBeforeUnmount(() => {
+  document.documentElement.classList.remove("v6-snap")
   cleanups.forEach((off) => off && off())
   cleanups = []
 })
@@ -336,15 +340,14 @@ onBeforeUnmount(() => {
 /* Customization page layout — shared tokens/chrome live in src/styles/v6.css */
 .v6-custom { position: relative; z-index: 1; }
 
+/* Bands (.v6-band / .v6-band-snap) live in src/styles/v6.css */
+
 /* ── hero ── */
 .v6cu-hero {
   position: relative;
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: var(--v6-page-hero-top) var(--v6-gutter) var(--v6-page-hero-bottom);
-  display: grid;
-  grid-template-columns: minmax(320px, 5fr) 6fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
+  /* text column deliberately narrow — the screenshot carries the section */
+  grid-template-columns: minmax(300px, 4fr) 8fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
   align-items: center;
 }
 /* soft scrim in page-bg color so the particle river stays quiet behind the copy
@@ -361,15 +364,24 @@ onBeforeUnmount(() => {
     transparent 100%
   );
 }
-.v6cu-hero .v6-h1 { font-size: clamp(2.5rem, 5.4vw, 4.4rem); }
-.v6cu-sub { max-width: 34rem; color: var(--v6-muted); }
-.v6cu-chips { margin-top: 1.6rem; }
+.v6cu-hero .v6-h1 {
+  font-size: clamp(2.1rem, 3.5vw, 3.3rem);
+  margin: 1rem 0 1rem;
+}
+.v6cu-sub {
+  max-width: 32rem;
+  color: var(--v6-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.v6cu-chips { margin-top: 1.2rem; }
+.v6cu-chips li { font-size: 0.62rem; padding: 0.24rem 0.6rem; }
 .v6cu-actions {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 1.2rem;
-  margin-top: 2.2rem;
+  margin-top: 1.7rem;
 }
 
 /* ── screenshots ── */
@@ -447,31 +459,35 @@ onBeforeUnmount(() => {
 
 /* ── sections ── */
 .v6cu-section {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: var(--v6-section-block) var(--v6-gutter);
-  display: grid;
-  grid-template-columns: minmax(300px, 5fr) 6fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
+  grid-template-columns: minmax(300px, 5.2fr) 6.8fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
   align-items: center;
 }
 .v6cu-section.flip > :first-child { order: 2; }
 .v6cu-section.flip > :last-child { order: 1; }
-.v6cu-section-sub { color: var(--v6-muted); margin: 1.2rem 0 0; max-width: 30rem; }
+.v6cu-section .v6-h2 { font-size: clamp(1.6rem, 2.8vw, 2.4rem); }
+.v6cu-section-sub {
+  color: var(--v6-muted);
+  margin: 0.9rem 0 0;
+  max-width: 33rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
 .v6cu-note {
-  margin: 1.6rem 0 0;
-  padding: 0.9rem 1.1rem;
+  margin: 1.2rem 0 0;
+  padding: 0.8rem 1rem;
   border-left: 2px solid var(--v6-ember);
   color: var(--v6-muted);
-  font-size: 0.9rem;
+  font-size: 0.86rem;
+  line-height: 1.55;
   background: linear-gradient(90deg, var(--v6-panel), transparent 80%);
   border-radius: 0 10px 10px 0;
-  max-width: 30rem;
+  max-width: 33rem;
 }
 
 /* ── setting rows ── */
 .v6cu-rows {
-  margin-top: 1.8rem;
+  margin-top: 1.4rem;
   border: 1px solid var(--v6-line);
   border-radius: 18px;
   background: linear-gradient(165deg, var(--v6-panel), rgba(12, 21, 18, 0.22));
@@ -483,19 +499,19 @@ onBeforeUnmount(() => {
 .v6cu-row {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
-  padding: 1.1rem clamp(1.1rem, 2.2vw, 1.5rem);
+  gap: 0.9rem;
+  padding: 0.85rem clamp(1rem, 2vw, 1.4rem);
   border-bottom: 1px solid var(--v6-line);
 }
 .v6cu-row:last-child { border-bottom: 0; }
 .v6cu-row h3 {
   font-family: var(--v6-display);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.94rem;
   letter-spacing: -0.01em;
   margin: 0;
 }
-.v6cu-row p { color: var(--v6-muted); font-size: 0.88rem; margin: 0.4rem 0 0; }
+.v6cu-row p { color: var(--v6-muted); font-size: 0.83rem; line-height: 1.5; margin: 0.3rem 0 0; }
 .v6cu-row.plain { justify-content: space-between; align-items: center; }
 .v6cu-row-value {
   flex: none;
@@ -529,14 +545,15 @@ onBeforeUnmount(() => {
   display: block;
   font-family: var(--v6-display);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.94rem;
   letter-spacing: -0.01em;
 }
 .v6cu-control-note {
   display: block;
-  margin-top: 0.4rem;
+  margin-top: 0.3rem;
   color: var(--v6-muted);
-  font-size: 0.88rem;
+  font-size: 0.83rem;
+  line-height: 1.5;
 }
 .v6cu-control-hint {
   margin: 0.9rem 0 0;
@@ -586,13 +603,13 @@ onBeforeUnmount(() => {
   grid-template-columns: auto 1fr auto auto;
   align-items: center;
   gap: 1rem;
-  padding: 1.1rem clamp(1.1rem, 2.2vw, 1.5rem);
+  padding: 0.85rem clamp(1rem, 2vw, 1.4rem);
   border-bottom: 1px solid var(--v6-line);
 }
 .v6cu-swatch-name {
   font-family: var(--v6-display);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.94rem;
   letter-spacing: -0.01em;
   color: var(--v6-ink);
 }
@@ -659,7 +676,7 @@ onBeforeUnmount(() => {
 
 /* ── responsive ── */
 @media (max-width: 900px) {
-  .v6cu-hero { grid-template-columns: 1fr; padding-top: 7rem; }
+  .v6cu-hero { grid-template-columns: 1fr; }
   .v6cu-section { grid-template-columns: 1fr; gap: 1.6rem; }
   .v6cu-section.flip > :first-child { order: 1; }
   .v6cu-section.flip > :last-child { order: 2; }

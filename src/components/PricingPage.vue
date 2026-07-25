@@ -285,7 +285,7 @@ onBeforeUnmount(() => {
 
 /* ── cards ── */
 .v6p-taxnote {
-  max-width: 1240px;
+  max-width: var(--v6-container);
   margin: -1.6rem auto 0;
   padding: 0 clamp(1.1rem, 4vw, 3rem);
   text-align: center;
@@ -293,7 +293,7 @@ onBeforeUnmount(() => {
   color: var(--v6-faint);
 }
 .v6p-cards {
-  max-width: 1240px;
+  max-width: var(--v6-container);
   margin: 0 auto;
   padding: var(--v6-section-block-compact) var(--v6-gutter) var(--v6-page-hero-bottom);
   display: grid;
@@ -464,7 +464,7 @@ onBeforeUnmount(() => {
 .v6p-sysreq {
   position: relative;
   z-index: 1;
-  max-width: 1240px;
+  max-width: var(--v6-container);
   margin: 0 auto;
   padding: clamp(2rem, 6vh, 3.5rem) var(--v6-gutter) clamp(2.5rem, 7vh, 4rem);
 }
@@ -535,7 +535,7 @@ onBeforeUnmount(() => {
 
 /* ── getting started (from purchase to first trade) ── */
 .v6p-getstart {
-  max-width: 1240px;
+  max-width: var(--v6-container);
   margin: 0 auto;
   padding: clamp(2rem, 6vh, 3.5rem) var(--v6-gutter);
 }
@@ -600,7 +600,7 @@ onBeforeUnmount(() => {
 
 /* ── comparison ── */
 .v6p-compare {
-  max-width: 1240px;
+  max-width: var(--v6-container);
   margin: 0 auto;
   padding: clamp(2rem, 6vh, 4rem) var(--v6-gutter) var(--v6-page-hero-bottom);
 }

@@ -1,7 +1,7 @@
 <template>
   <main ref="rootEl" class="v6-features">
     <!-- HERO -->
-    <section class="v6ft-hero">
+    <section class="v6ft-hero v6-band v6-band-snap">
       <div class="v6ft-hero-copy">
         <p class="v6-eyebrow v6-reveal"><i></i>{{ t('featuresPage.hero.label') }}</p>
         <h1 class="v6-h1 v6-reveal">{{ featureHeadline }}<b class="v6-dot">.</b></h1>
@@ -26,7 +26,7 @@
     </section>
 
     <!-- MODULES -->
-    <section class="v6ft-modules" :aria-label="t('featuresPage.nav.modules')">
+    <section class="v6ft-modules v6-band v6-band-snap" :aria-label="t('featuresPage.nav.modules')">
       <article v-for="(m, i) in modules" :key="m.title" class="v6-card v6ft-module v6-reveal">
         <p class="v6ft-module-head">
           <span class="v6ft-idx">{{ pad(i + 1) }}</span>
@@ -44,7 +44,7 @@
     </section>
 
     <!-- COCKPIT INDEX -->
-    <section class="v6ft-cockpit">
+    <section class="v6ft-cockpit v6-band v6-band-snap">
       <div class="v6ft-cockpit-head">
         <p class="v6-eyebrow v6-reveal"><i></i>Inside the cockpit</p>
         <h2 class="v6-h2 v6-reveal">One workspace, every screen a trader needs.</h2>
@@ -138,9 +138,13 @@ let cleanups = []
 onMounted(() => {
   cleanups.push(initV6Reveals(rootEl.value))
   cleanups.push(initMagnetic(rootEl.value))
+
+  /* full-viewport bands snap while this page is mounted — see v6.css */
+  document.documentElement.classList.add("v6-snap")
 })
 
 onBeforeUnmount(() => {
+  document.documentElement.classList.remove("v6-snap")
   cleanups.forEach((off) => off && off())
   cleanups = []
 })
@@ -150,15 +154,14 @@ onBeforeUnmount(() => {
 /* Feature hub layout — shared tokens/chrome live in src/styles/v6.css */
 .v6-features { position: relative; z-index: 1; }
 
+/* Bands (.v6-band / .v6-band-snap) live in src/styles/v6.css */
+
 /* ── hero ── */
 .v6ft-hero {
   position: relative;
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: var(--v6-page-hero-top) var(--v6-gutter) var(--v6-page-hero-bottom);
-  display: grid;
-  grid-template-columns: minmax(320px, 5fr) 6fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
+  /* text column deliberately narrow — the screenshot carries the section */
+  grid-template-columns: minmax(300px, 4fr) 8fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
   align-items: center;
 }
 /* soft scrim in page-bg color so the particle river stays quiet behind the copy
@@ -175,15 +178,24 @@ onBeforeUnmount(() => {
     transparent 100%
   );
 }
-.v6ft-hero .v6-h1 { font-size: clamp(2.5rem, 5.4vw, 4.4rem); }
-.v6ft-sub { max-width: 34rem; color: var(--v6-muted); }
-.v6ft-chips { margin-top: 1.6rem; }
+.v6ft-hero .v6-h1 {
+  font-size: clamp(2.1rem, 3.5vw, 3.3rem);
+  margin: 1rem 0 1rem;
+}
+.v6ft-sub {
+  max-width: 32rem;
+  color: var(--v6-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.v6ft-chips { margin-top: 1.2rem; }
+.v6ft-chips li { font-size: 0.62rem; padding: 0.24rem 0.6rem; }
 .v6ft-actions {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 1.2rem;
-  margin-top: 2.2rem;
+  margin-top: 1.7rem;
 }
 .v6ft-shot {
   margin: 0;
@@ -207,16 +219,14 @@ onBeforeUnmount(() => {
   color: var(--v6-faint);
 }
 
-/* ── modules ── */
+/* ── modules ──
+   Eight cards read as two rows of four rather than four rows of two, which is
+   what lets the whole set land inside one band. */
 .v6ft-modules {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: var(--v6-section-block-compact) var(--v6-gutter) var(--v6-page-hero-bottom);
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.1rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.9rem;
 }
-.v6ft-module { display: flex; flex-direction: column; }
+.v6ft-module { display: flex; flex-direction: column; padding: 1.2rem 1.2rem 1.1rem; }
 .v6ft-module-head {
   display: flex;
   align-items: baseline;
@@ -230,29 +240,29 @@ onBeforeUnmount(() => {
 .v6ft-idx { color: var(--v6-faint); font-variant-numeric: tabular-nums; }
 .v6ft-kicker { color: var(--v6-gold); }
 .v6ft-module h2 {
-  margin: 0.8rem 0 0.5rem;
+  margin: 0.6rem 0 0.4rem;
   font-family: var(--v6-display);
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   letter-spacing: -0.015em;
   color: var(--v6-ink);
 }
-.v6ft-benefit { color: var(--v6-muted); font-size: 0.92rem; margin: 0 0 1rem; }
+.v6ft-benefit { color: var(--v6-muted); font-size: 0.84rem; line-height: 1.5; margin: 0 0 0.8rem; }
 .v6ft-module ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 0.35rem;
   flex: 1;
 }
 .v6ft-module ul li {
   position: relative;
-  padding-left: 1.1rem;
+  padding-left: 1rem;
   color: var(--v6-muted);
-  font-size: 0.88rem;
-  line-height: 1.5;
+  font-size: 0.8rem;
+  line-height: 1.45;
 }
 .v6ft-module ul li::before {
   content: "";
@@ -269,8 +279,8 @@ onBeforeUnmount(() => {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  margin-top: 1.2rem;
-  padding-top: 0.9rem;
+  margin-top: 0.9rem;
+  padding-top: 0.75rem;
   border-top: 1px solid var(--v6-line);
   text-decoration: none;
   font-family: var(--v6-mono);
@@ -283,12 +293,9 @@ onBeforeUnmount(() => {
 .v6ft-module-link:hover, .v6ft-module-link:focus-visible { color: var(--v6-gold); }
 
 /* ── cockpit index ── */
-.v6ft-cockpit {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: clamp(2rem, 6vh, 4rem) var(--v6-gutter) var(--v6-page-hero-bottom);
-}
-.v6ft-cockpit-head { max-width: 40rem; margin-bottom: 2.2rem; }
+.v6ft-cockpit { grid-template-rows: auto auto; }
+.v6ft-cockpit .v6-h2 { font-size: clamp(1.6rem, 2.8vw, 2.4rem); }
+.v6ft-cockpit-head { max-width: 40rem; margin-bottom: clamp(1.4rem, 3vh, 2rem); }
 .v6ft-screens {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -303,8 +310,8 @@ onBeforeUnmount(() => {
 .v6ft-screens div {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  padding: 1rem clamp(1.2rem, 2.4vw, 1.6rem);
+  gap: 0.2rem;
+  padding: 0.8rem clamp(1.1rem, 2.2vw, 1.5rem);
   border-bottom: 1px solid var(--v6-line);
 }
 .v6ft-screens div:nth-child(odd) { border-right: 1px solid var(--v6-line); }
@@ -317,7 +324,7 @@ onBeforeUnmount(() => {
   text-transform: uppercase;
   color: var(--v6-gold);
 }
-.v6ft-screens span { color: var(--v6-muted); font-size: 0.86rem; }
+.v6ft-screens span { color: var(--v6-muted); font-size: 0.82rem; line-height: 1.45; }
 
 /* ── cta ── */
 .v6ft-cta {
@@ -342,8 +349,14 @@ onBeforeUnmount(() => {
 }
 
 /* ── responsive ── */
+@media (max-width: 1400px) {
+  .v6ft-modules { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 1100px) {
+  .v6ft-modules { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 900px) {
-  .v6ft-hero { grid-template-columns: 1fr; padding-top: 7rem; }
+  .v6ft-hero { grid-template-columns: 1fr; }
   .v6ft-modules { grid-template-columns: 1fr; }
   .v6ft-screens { grid-template-columns: 1fr; }
   .v6ft-screens div:nth-child(odd) { border-right: 0; }

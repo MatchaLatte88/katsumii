@@ -772,7 +772,7 @@ onBeforeUnmount(() => {
   justify-content: center;
   padding: clamp(6rem, 16vh, 9rem) var(--v6-gutter) 4rem;
 }
-.v6-hero-inner { max-width: 1240px; margin: 0 auto; width: 100%; position: relative; }
+.v6-hero-inner { max-width: var(--v6-container); margin: 0 auto; width: 100%; position: relative; }
 /* brand row: logo + wordmark like the nav brand but larger, dash, tagline in accent */
 .v6-hero-brand { gap: 0.8rem; }
 .v6-hero-brand img { display: block; border-radius: 10px; }
@@ -951,7 +951,7 @@ onBeforeUnmount(() => {
 .v6-numbers {
   position: relative;
   z-index: 1;
-  max-width: 1240px;
+  max-width: var(--v6-container);
   margin: 0 auto;
   padding: clamp(4rem, 9vh, 6.5rem) var(--v6-gutter);
   display: grid;
@@ -978,7 +978,7 @@ onBeforeUnmount(() => {
 .v6-story { position: relative; z-index: 1; }
 .v6-story-pin {
   min-height: 100vh;
-  max-width: 1500px;
+  max-width: var(--v6-container);
   margin: 0 auto;
   padding: clamp(4rem, 10vh, 6rem) var(--v6-gutter);
   display: grid;
@@ -1067,7 +1067,7 @@ onBeforeUnmount(() => {
   grid-template-columns: minmax(280px, 0.9fr) 1.4fr;
   gap: clamp(2rem, 5vw, 5rem);
   align-items: center;
-  max-width: 1240px;
+  max-width: var(--v6-container);
   margin: clamp(2.5rem, 6vh, 4rem) auto 0;
   padding: 0 var(--v6-gutter);
   min-height: 46vh;
@@ -1194,7 +1194,7 @@ onBeforeUnmount(() => {
 .v6-folds {
   display: flex;
   gap: 0.8rem;
-  max-width: 1240px;
+  max-width: var(--v6-container);
   height: 540px;
   margin: clamp(2.5rem, 6vh, 4rem) auto 0;
   padding: 0 var(--v6-gutter);
@@ -1325,7 +1325,7 @@ onBeforeUnmount(() => {
   padding: clamp(5rem, 12vh, 9rem) 0;
 }
 .v6-craft-grid {
-  max-width: 1240px;
+  max-width: var(--v6-container);
   margin: 3.2rem auto 0;
   padding: 0 clamp(1.1rem, 4vw, 3rem);
   display: grid;
@@ -1453,7 +1453,7 @@ onBeforeUnmount(() => {
 .v6-sysreq {
   position: relative;
   z-index: 1;
-  max-width: 1240px;
+  max-width: var(--v6-container);
   margin: 0 auto;
   padding: clamp(3rem, 8vh, 5rem) var(--v6-gutter) clamp(5rem, 12vh, 8rem);
 }
@@ -1540,7 +1540,7 @@ onBeforeUnmount(() => {
     display: flex;
     flex-direction: column;
     gap: 3.4rem;
-    max-width: 1240px;
+    max-width: var(--v6-container);
     margin: 0 auto;
     padding: clamp(4rem, 10vh, 6rem) clamp(1.1rem, 4vw, 3rem);
   }
@@ -1571,7 +1571,7 @@ onBeforeUnmount(() => {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
-    max-width: 1240px;
+    max-width: var(--v6-container);
     margin: 2.5rem auto 0;
     padding: 0 clamp(1.1rem, 4vw, 3rem);
   }

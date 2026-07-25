@@ -25,6 +25,12 @@
      layouts intentionally use different bands, but every page draws from the
      same scale so adjacent content stays visually even. */
   --v6-gutter: clamp(1.1rem, 4vw, 3rem);
+  /* Shared content width so every page reads at the same rhythm as the
+     home story pin — subsections may still constrain narrower. */
+  --v6-container: 1500px;
+  /* .v6-band padding: the top clears the fixed nav when a band is snapped */
+  --v6-band-top: clamp(5.5rem, 11vh, 7rem);
+  --v6-band-bottom: clamp(2.5rem, 6vh, 4rem);
   --v6-page-hero-top: clamp(8rem, 18vh, 11rem);
   --v6-page-hero-bottom: clamp(3rem, 8vh, 5rem);
   --v6-section-block: clamp(2.5rem, 7vh, 4.5rem);
@@ -392,7 +398,31 @@
   letter-spacing: -0.025em;
   margin: 1rem 0 0;
 }
-.v6-section-head { max-width: 1240px; margin: 0 auto; padding: 0 clamp(1.1rem, 4vw, 3rem); }
+.v6-section-head { max-width: var(--v6-container); margin: 0 auto; padding: 0 clamp(1.1rem, 4vw, 3rem); }
+
+/* ── full-viewport section bands ──
+   A band is one screen tall with its content optically centred, so a page reads
+   as a sequence of complete views instead of one long scroll. Add .v6-band to
+   the section, .v6-band-snap to also make it a snap stop, and have the page add
+   .v6-snap to <html> while mounted (see WorkflowPage).
+
+   Proximity snapping keeps it forgiving — the scroll never gets trapped. Both
+   the full height and the snapping are off on small or short viewports and with
+   reduced motion, where bands fall back to normal flow. */
+.v6-band {
+  display: grid;
+  max-width: var(--v6-container);
+  margin: 0 auto;
+  padding: var(--v6-band-top) var(--v6-gutter) var(--v6-band-bottom);
+}
+@media (min-width: 901px) and (min-height: 640px) {
+  html.v6-snap { scroll-snap-type: y proximity; }
+  .v6-band { min-height: 100dvh; align-content: center; }
+  .v6-band-snap { scroll-snap-align: start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.v6-snap { scroll-snap-type: none; }
+}
 
 /* ── cards + chips (craft grid, subpage grids) ── */
 .v6-card {
@@ -443,7 +473,7 @@
 
 /* ── footer ── */
 .v6-footer {
-  max-width: 1240px;
+  max-width: var(--v6-container);
   margin: 0 auto;
   padding: 3rem clamp(1.1rem, 4vw, 3rem) 2.4rem;
   border-top: 1px solid var(--v6-line);
@@ -512,6 +542,8 @@
 
 /* ── responsive chrome ── */
 @media (max-width: 900px) {
+  .v6 { --v6-band-top: 7rem; --v6-band-bottom: var(--v6-section-block); }
+
   .v6-footer-cols { grid-template-columns: 1fr 1fr 1fr; }
   .v6-footer-brand { grid-column: 1 / -1; }
 

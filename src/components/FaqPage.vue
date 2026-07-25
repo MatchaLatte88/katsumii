@@ -286,7 +286,7 @@ onBeforeUnmount(() => {
 
 /* ── body grid ── */
 .v6f-body {
-  max-width: 1240px;
+  max-width: var(--v6-container);
   margin: 0 auto;
   padding: var(--v6-section-block-compact) var(--v6-gutter) var(--v6-page-hero-bottom);
   display: grid;

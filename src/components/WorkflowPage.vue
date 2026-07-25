@@ -1,7 +1,7 @@
 <template>
   <main ref="rootEl" class="v6-workflow">
     <!-- HERO -->
-    <section class="v6wf-hero">
+    <section class="v6wf-hero v6-band v6-band-snap">
       <div class="v6wf-hero-copy">
         <p class="v6-eyebrow v6-reveal"><i></i>Workflow &amp; automation</p>
         <h1 class="v6-h1 v6-reveal">Less <em>bookkeeping</em>, more <em>trading</em><b class="v6-dot">.</b></h1>
@@ -35,7 +35,7 @@
     </section>
 
     <!-- SECTION 1 · IMPORTS & SYNC -->
-    <section id="imports" class="v6wf-section">
+    <section id="imports" class="v6wf-section v6-band v6-band-snap">
       <div class="v6wf-section-copy">
         <p class="v6-eyebrow v6-reveal"><i></i>Imports &amp; broker sync</p>
         <h2 class="v6-h2 v6-reveal">Your fills, from anywhere, without retyping.</h2>
@@ -69,7 +69,7 @@
     </section>
 
     <!-- SECTION 2 · DAILY WORKFLOW & JOURNAL -->
-    <section id="journal" class="v6wf-section flip">
+    <section id="journal" class="v6wf-section flip v6-band v6-band-snap">
       <div class="v6wf-section-copy">
         <p class="v6-eyebrow v6-reveal"><i></i>Daily workflow &amp; journal</p>
         <h2 class="v6-h2 v6-reveal">The day, the trade and the reason — in one place.</h2>
@@ -101,20 +101,24 @@
     </section>
 
     <!-- SECTION 3 · TOOLS & REPORTS -->
-    <section id="tools" class="v6wf-section">
-      <div class="v6wf-section-copy">
-        <p class="v6-eyebrow v6-reveal"><i></i>Tools &amp; reports</p>
-        <h2 class="v6-h2 v6-reveal">The utilities you were already keeping in tabs.</h2>
-        <p class="v6wf-section-sub v6-reveal">
-          Every desk gets cluttered with the same six utilities — a position size
-          calculator, an R:R visualizer, a timezone helper. Katsumii ships them inside
-          the app, next to the data they act on, and turns any filter into a shareable
-          offline report.
-        </p>
-        <p class="v6wf-note v6-reveal">
-          Automated local backups run in the background on a schedule you set — restore
-          your last known-good state with one click.
-        </p>
+    <section id="tools" class="v6wf-toolbox v6-band v6-band-snap">
+      <div class="v6wf-toolbox-head">
+        <div>
+          <p class="v6-eyebrow v6-reveal"><i></i>Tools &amp; reports</p>
+          <h2 class="v6-h2 v6-reveal">The utilities you were already keeping in tabs.</h2>
+        </div>
+        <div class="v6wf-toolbox-aside">
+          <p class="v6wf-section-sub v6-reveal">
+            Every desk gets cluttered with the same six utilities — a position size
+            calculator, an R:R visualizer, a timezone helper. Katsumii ships them inside
+            the app, next to the data they act on, and turns any filter into a shareable
+            offline report.
+          </p>
+          <p class="v6wf-note v6-reveal">
+            Automated local backups run in the background on a schedule you set — restore
+            your last known-good state with one click.
+          </p>
+        </div>
       </div>
       <div class="v6wf-tools v6-reveal">
         <div v-for="tool in TOOLS" :key="tool.name" class="v6wf-tool">
@@ -125,16 +129,16 @@
       </div>
     </section>
 
-    <!-- SECTION 3b · PINNED TOOL SCREENSHOTS -->
+    <!-- SECTION 3b · TOOL SHOWCASE (tabbed) -->
     <section
-      ref="scrollerEl" class="v6wf-scroller" :class="{ static: !pinned }"
+      ref="showcaseEl" class="v6wf-showcase v6-band"
       aria-label="Trader tools in Katsumii"
     >
-      <div class="v6wf-frames">
+      <div id="v6wf-frames" class="v6wf-frames v6-reveal" role="tabpanel" :aria-labelledby="`v6wf-tab-${TOOL_SHOTS[activeShot].key}`">
         <figure
           v-for="(s, i) in TOOL_SHOTS" :key="s.key"
           class="v6wf-shot v6wf-frame" :class="{ on: i === activeShot }"
-          :aria-hidden="pinned && i !== activeShot ? 'true' : null"
+          :aria-hidden="i !== activeShot ? 'true' : null"
         >
           <img
             :src="shotSrc(s)"
@@ -145,13 +149,27 @@
           <figcaption>{{ s.caption }}</figcaption>
         </figure>
       </div>
-      <ol class="v6wf-steps">
-        <li v-for="(s, i) in TOOL_SHOTS" :key="s.key" :class="{ on: i === activeShot }">
-          <span class="v6wf-step-n">{{ String(i + 1).padStart(2, "0") }}</span>
-          <span class="v6wf-step-body">
-            <span class="v6wf-step-name">{{ s.name }}</span>
-            <span class="v6wf-step-copy">{{ s.copy }}</span>
-          </span>
+      <ol
+        ref="tablistEl" class="v6wf-steps v6-reveal"
+        role="tablist" aria-label="Trader tools" aria-orientation="vertical"
+        @keydown="onTabKey"
+      >
+        <li v-for="(s, i) in TOOL_SHOTS" :key="s.key">
+          <button
+            type="button" role="tab"
+            :id="`v6wf-tab-${s.key}`"
+            :class="{ on: i === activeShot }"
+            :aria-selected="i === activeShot"
+            :tabindex="i === activeShot ? 0 : -1"
+            aria-controls="v6wf-frames"
+            @click="selectShot(i)"
+          >
+            <span class="v6wf-step-n">{{ String(i + 1).padStart(2, "0") }}</span>
+            <span class="v6wf-step-body">
+              <span class="v6wf-step-name">{{ s.name }}</span>
+              <span class="v6wf-step-copy">{{ s.copy }}</span>
+            </span>
+          </button>
         </li>
       </ol>
     </section>
@@ -252,7 +270,7 @@ const TOOLS = [
   { kicker: "R3", name: "Automated backups",      copy: "Weekly and monthly backups run in the background. Keep the last N, restore the latest with one click." },
 ]
 
-/* Pinned scroll-through: the section holds still while these four shots swap.
+/* Tabbed showcase: the four shots swap in place, driven by the step list.
    File names differ in shape (tools_l_1 vs. report_l), so each carries its own
    prefix/suffix around the theme letter. */
 const TOOL_SHOTS = [
@@ -288,10 +306,39 @@ const TOOL_SHOTS = [
 const shotSrc = (s) => asset(`Screenshots/opt/${s.pre}_${isDark.value ? "d" : "l"}${s.suf}.webp`)
 
 const activeShot = ref(0)
-/* stays false on small screens and with reduced motion — there the shots simply
-   stack and scroll normally */
-const pinned = ref(false)
-const scrollerEl = ref(null)
+const showcaseEl = ref(null)
+const tablistEl = ref(null)
+
+/* The section holds still while the scroll steps through the four shots, so the
+   whole set is seen before the page moves on. Null on small screens and with
+   reduced motion — there the steps are plain buttons. */
+let showcasePin = null
+
+/* Clicking a step means "take me to that shot": inside the pin that is a scroll
+   position, outside it a plain state change. */
+const selectShot = (i) => {
+  if (!showcasePin) {
+    activeShot.value = i
+    return
+  }
+  const { start, end } = showcasePin
+  const top = start + ((end - start) * i) / (TOOL_SHOTS.length - 1)
+  window.scrollTo({ top, behavior: "smooth" })
+}
+
+const onTabKey = (event) => {
+  const last = TOOL_SHOTS.length - 1
+  let next = activeShot.value
+  if (event.key === "ArrowDown" || event.key === "ArrowRight") next = next === last ? 0 : next + 1
+  else if (event.key === "ArrowUp" || event.key === "ArrowLeft") next = next === 0 ? last : next - 1
+  else if (event.key === "Home") next = 0
+  else if (event.key === "End") next = last
+  else return
+
+  event.preventDefault()
+  selectShot(next)
+  nextTick(() => tablistEl.value?.querySelectorAll("button")[next]?.focus())
+}
 
 const rootEl = ref(null)
 let cleanups = []
@@ -300,33 +347,38 @@ onMounted(() => {
   cleanups.push(initV6Reveals(rootEl.value))
   cleanups.push(initMagnetic(rootEl.value))
 
-  /* Pin the tool section and step through the shots with the scroll distance.
-     Only on wide screens with motion allowed — elsewhere the block stays static. */
+  /* Full-viewport sections snap while this page is mounted — see v6.css.
+     The showcase deliberately carries no snap point of its own; the pin below
+     owns the scroll there and the two would fight over it. */
+  document.documentElement.classList.add("v6-snap")
+
   gsap.registerPlugin(ScrollTrigger)
   const mm = gsap.matchMedia()
-  mm.add("(min-width: 901px) and (prefers-reduced-motion: no-preference)", () => {
-    pinned.value = true
-    let st
-    /* wait for the .static class to drop so the pin measures the real height */
-    nextTick(() => {
-      st = ScrollTrigger.create({
-        trigger: scrollerEl.value,
-        start: "center center",
-        end: () => `+=${window.innerHeight * (TOOL_SHOTS.length - 1) * 0.75}`,
-        pin: true,
-        pinSpacing: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          const i = Math.floor(self.progress * TOOL_SHOTS.length)
-          activeShot.value = Math.min(TOOL_SHOTS.length - 1, Math.max(0, i))
-        },
-      })
-      ScrollTrigger.refresh()
+  mm.add("(min-width: 901px) and (min-height: 640px) and (prefers-reduced-motion: no-preference)", () => {
+    const steps = TOOL_SHOTS.length
+    const st = ScrollTrigger.create({
+      trigger: showcaseEl.value,
+      start: "top top",
+      /* one viewport of scroll per step after the first */
+      end: () => `+=${window.innerHeight * (steps - 1)}`,
+      pin: true,
+      pinSpacing: true,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+      /* rest on a shot instead of between two */
+      snap: { snapTo: 1 / (steps - 1), duration: 0.25, delay: 0.04, ease: "power2.inOut" },
+      onUpdate: (self) => {
+        activeShot.value = Math.round(self.progress * (steps - 1))
+      },
+      onRefresh: (self) => {
+        showcasePin = { start: self.start, end: self.end }
+      },
     })
+    showcasePin = { start: st.start, end: st.end }
+
     return () => {
-      st && st.kill()
-      pinned.value = false
+      st.kill()
+      showcasePin = null
       activeShot.value = 0
     }
   })
@@ -334,6 +386,7 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
+  document.documentElement.classList.remove("v6-snap")
   cleanups.forEach((off) => off && off())
   cleanups = []
 })
@@ -343,15 +396,16 @@ onBeforeUnmount(() => {
 /* Workflow page layout — shared tokens/chrome live in src/styles/v6.css */
 .v6-workflow { position: relative; z-index: 1; }
 
+/* Bands (.v6-band / .v6-band-snap) live in src/styles/v6.css. The showcase is a
+   band without a snap point: it is pinned and steps through its shots on
+   scroll, so it owns that stretch outright and a snap point would fight it. */
+
 /* ── hero ── */
 .v6wf-hero {
   position: relative;
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: var(--v6-page-hero-top) var(--v6-gutter) var(--v6-page-hero-bottom);
-  display: grid;
-  grid-template-columns: minmax(320px, 5fr) 6fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
+  /* text column deliberately narrow — the screenshot carries the section */
+  grid-template-columns: minmax(300px, 4fr) 8fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
   align-items: center;
 }
 .v6wf-hero::before {
@@ -366,15 +420,24 @@ onBeforeUnmount(() => {
     transparent 100%
   );
 }
-.v6wf-hero .v6-h1 { font-size: clamp(2.5rem, 5.4vw, 4.4rem); }
-.v6wf-sub { max-width: 34rem; color: var(--v6-muted); }
-.v6wf-chips { margin-top: 1.6rem; }
+.v6wf-hero .v6-h1 {
+  font-size: clamp(2.1rem, 3.5vw, 3.3rem);
+  margin: 1rem 0 1rem;
+}
+.v6wf-sub {
+  max-width: 32rem;
+  color: var(--v6-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.v6wf-chips { margin-top: 1.2rem; }
+.v6wf-chips li { font-size: 0.62rem; padding: 0.24rem 0.6rem; }
 .v6wf-actions {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 1.2rem;
-  margin-top: 2.2rem;
+  margin-top: 1.7rem;
 }
 
 /* ── shared screenshot frame ── */
@@ -402,31 +465,35 @@ onBeforeUnmount(() => {
 
 /* ── sections ── */
 .v6wf-section {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: var(--v6-section-block) var(--v6-gutter);
-  display: grid;
-  grid-template-columns: minmax(300px, 5fr) 6fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
+  grid-template-columns: minmax(300px, 5.2fr) 6.8fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
   align-items: center;
 }
 .v6wf-section.flip > :first-child { order: 2; }
 .v6wf-section.flip > :last-child { order: 1; }
-.v6wf-section-sub { color: var(--v6-muted); margin: 1.2rem 0 0; max-width: 30rem; }
+.v6wf-section .v6-h2 { font-size: clamp(1.6rem, 2.8vw, 2.4rem); }
+.v6wf-section-sub {
+  color: var(--v6-muted);
+  margin: 0.9rem 0 0;
+  max-width: 33rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
 .v6wf-note {
-  margin: 1.6rem 0 0;
-  padding: 0.9rem 1.1rem;
+  margin: 1.2rem 0 0;
+  padding: 0.8rem 1rem;
   border-left: 2px solid var(--v6-ember);
   color: var(--v6-muted);
-  font-size: 0.9rem;
+  font-size: 0.86rem;
+  line-height: 1.55;
   background: linear-gradient(90deg, var(--v6-panel), transparent 80%);
   border-radius: 0 10px 10px 0;
-  max-width: 30rem;
+  max-width: 33rem;
 }
 
 /* ── setting rows (shared shape with Customization) ── */
 .v6wf-rows {
-  margin-top: 1.8rem;
+  margin-top: 1.4rem;
   border: 1px solid var(--v6-line);
   border-radius: 18px;
   background: linear-gradient(165deg, var(--v6-panel), rgba(12, 21, 18, 0.22));
@@ -438,19 +505,19 @@ onBeforeUnmount(() => {
 .v6wf-row {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
-  padding: 1.1rem clamp(1.1rem, 2.2vw, 1.5rem);
+  gap: 0.9rem;
+  padding: 0.85rem clamp(1rem, 2vw, 1.4rem);
   border-bottom: 1px solid var(--v6-line);
 }
 .v6wf-row:last-child { border-bottom: 0; }
 .v6wf-row h3 {
   font-family: var(--v6-display);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.94rem;
   letter-spacing: -0.01em;
   margin: 0;
 }
-.v6wf-row p { color: var(--v6-muted); font-size: 0.88rem; margin: 0.4rem 0 0; }
+.v6wf-row p { color: var(--v6-muted); font-size: 0.83rem; line-height: 1.5; margin: 0.3rem 0 0; }
 .v6wf-row.plain { justify-content: space-between; align-items: center; }
 .v6wf-row-value {
   flex: none;
@@ -516,18 +583,18 @@ onBeforeUnmount(() => {
   grid-template-columns: minmax(140px, 1fr) 2fr auto;
   align-items: center;
   gap: 1rem;
-  padding: 1rem clamp(1.1rem, 2.2vw, 1.5rem);
+  padding: 0.8rem clamp(1rem, 2vw, 1.4rem);
   border-bottom: 1px solid var(--v6-line);
 }
 .v6wf-provider-list li:last-child { border-bottom: 0; }
 .v6wf-provider-name {
   font-family: var(--v6-display);
   font-weight: 700;
-  font-size: 0.98rem;
+  font-size: 0.92rem;
   letter-spacing: -0.01em;
   color: var(--v6-ink);
 }
-.v6wf-provider-copy { color: var(--v6-muted); font-size: 0.86rem; line-height: 1.5; }
+.v6wf-provider-copy { color: var(--v6-muted); font-size: 0.82rem; line-height: 1.45; }
 .v6wf-tag {
   flex: none;
   font-family: var(--v6-mono);
@@ -542,16 +609,28 @@ onBeforeUnmount(() => {
 }
 .v6wf-tag.soon { color: var(--v6-faint); }
 
-/* ── tools grid ── */
+/* ── tools ──
+   Nine utilities read better as a full-width 3×3 index than as a tall column
+   beside the copy, and it keeps the whole set inside one screen. */
+.v6wf-toolbox { grid-template-rows: auto auto; }
+.v6wf-toolbox-head {
+  display: grid;
+  grid-template-columns: minmax(300px, 5.2fr) 6.8fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+  margin-bottom: clamp(1.6rem, 3.5vh, 2.4rem);
+}
+.v6wf-toolbox-head .v6-h2 { font-size: clamp(1.6rem, 2.8vw, 2.4rem); }
+.v6wf-toolbox-aside .v6wf-section-sub { margin-top: 0; }
 .v6wf-tools {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 0.9rem;
 }
 .v6wf-tool {
   border: 1px solid var(--v6-line);
   border-radius: 14px;
-  padding: 1.1rem 1.15rem;
+  padding: 1rem 1.1rem;
   background: linear-gradient(165deg, var(--v6-panel), rgba(12, 21, 18, 0.22));
   transition: border-color 0.25s ease, transform 0.25s ease;
 }
@@ -569,37 +648,33 @@ onBeforeUnmount(() => {
 .v6wf-tool h3 {
   font-family: var(--v6-display);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.96rem;
   letter-spacing: -0.01em;
-  margin: 0.4rem 0 0.35rem;
+  margin: 0.35rem 0 0.3rem;
 }
-.v6wf-tool p { margin: 0; color: var(--v6-muted); font-size: 0.86rem; line-height: 1.55; }
+.v6wf-tool p { margin: 0; color: var(--v6-muted); font-size: 0.82rem; line-height: 1.5; }
 
-/* ── pinned tool screenshots ── */
-.v6wf-scroller {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 var(--v6-gutter) var(--v6-section-block);
-  display: grid;
-  /* same column rhythm as .v6wf-section, so the shots sit in the left column */
-  grid-template-columns: minmax(300px, 5fr) 6fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
+/* ── tool showcase ──
+   The step list drives the shots directly, so the whole set is reachable
+   without spending scroll distance on it. */
+.v6wf-showcase {
+  /* screenshot column deliberately dominant */
+  grid-template-columns: 7fr minmax(280px, 4.4fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
   align-items: center;
 }
 /* frames are stacked; the first one in flow sets the height, the rest overlay it */
 .v6wf-frames { position: relative; }
 .v6wf-frame {
   transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.v6wf-scroller:not(.static) .v6wf-frame {
   position: absolute;
   inset: 0;
   opacity: 0;
   transform: scale(1.015);
   pointer-events: none;
 }
-.v6wf-scroller:not(.static) .v6wf-frame:first-child { position: relative; }
-.v6wf-scroller:not(.static) .v6wf-frame.on {
+.v6wf-frame:first-child { position: relative; }
+.v6wf-frame.on {
   opacity: 1;
   transform: none;
   pointer-events: auto;
@@ -612,17 +687,25 @@ onBeforeUnmount(() => {
   display: grid;
   gap: 0.2rem;
 }
-.v6wf-steps li {
+.v6wf-steps button {
+  width: 100%;
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 0.9rem;
-  padding: 0.9rem 1rem;
+  padding: 0.8rem 1rem;
+  border: 0;
   border-left: 2px solid var(--v6-line);
   border-radius: 0 10px 10px 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
   opacity: 0.42;
   transition: opacity 0.4s ease, border-color 0.4s ease, background 0.4s ease;
 }
-.v6wf-steps li.on {
+.v6wf-steps button:hover { opacity: 0.75; }
+.v6wf-steps button.on {
   opacity: 1;
   border-left-color: var(--v6-gold);
   background: linear-gradient(90deg, var(--v6-panel), transparent 85%);
@@ -632,27 +715,22 @@ onBeforeUnmount(() => {
   font-size: 0.6rem;
   letter-spacing: 0.16em;
   color: var(--v6-gold);
-  padding-top: 0.25rem;
+  padding-top: 0.3rem;
 }
 .v6wf-step-name {
   display: block;
   font-family: var(--v6-display);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1rem;
   letter-spacing: -0.01em;
 }
 .v6wf-step-copy {
   display: block;
-  margin-top: 0.3rem;
+  margin-top: 0.25rem;
   color: var(--v6-muted);
-  font-size: 0.88rem;
-  line-height: 1.55;
+  font-size: 0.84rem;
+  line-height: 1.5;
 }
-
-/* static fallback — small screens and reduced motion */
-.v6wf-scroller.static { grid-template-columns: 1fr; gap: 1.6rem; }
-.v6wf-scroller.static .v6wf-frames { display: grid; gap: 1.2rem; }
-.v6wf-scroller.static .v6wf-steps li { opacity: 1; }
 
 /* ── cta ── */
 .v6wf-cta {
@@ -677,13 +755,17 @@ onBeforeUnmount(() => {
 }
 
 /* ── responsive ── */
+@media (max-width: 1200px) {
+  .v6wf-tools { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 900px) {
-  .v6wf-hero { grid-template-columns: 1fr; padding-top: 7rem; }
+  .v6wf-hero { grid-template-columns: 1fr; }
   .v6wf-section { grid-template-columns: 1fr; gap: 1.6rem; }
   .v6wf-section.flip > :first-child { order: 1; }
   .v6wf-section.flip > :last-child { order: 2; }
+  .v6wf-toolbox-head { grid-template-columns: 1fr; gap: 1.2rem; }
   .v6wf-tools { grid-template-columns: 1fr; }
-  .v6wf-scroller { grid-template-columns: 1fr; gap: 1.6rem; }
+  .v6wf-showcase { grid-template-columns: 1fr; gap: 1.6rem; }
   .v6wf-provider-list li { grid-template-columns: 1fr auto; }
   .v6wf-provider-copy { grid-column: 1 / -1; }
 }

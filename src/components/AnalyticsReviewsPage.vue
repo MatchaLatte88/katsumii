@@ -1,7 +1,7 @@
 <template>
   <main ref="rootEl" class="v6-analytics">
     <!-- HERO -->
-    <section class="v6an-hero">
+    <section class="v6an-hero v6-band v6-band-snap">
       <div class="v6an-hero-copy">
         <p class="v6-eyebrow v6-reveal"><i></i>Analytics &amp; Reviews</p>
         <h1 class="v6-h1 v6-reveal">Find your edge. <em>Keep it</em><b class="v6-dot">.</b></h1>
@@ -33,7 +33,7 @@
     </section>
 
     <!-- DASHBOARD -->
-    <section id="dashboard" class="v6an-section">
+    <section id="dashboard" class="v6an-section v6-band v6-band-snap">
       <div class="v6an-section-copy">
         <p class="v6-eyebrow v6-reveal"><i></i>Dashboard</p>
         <h2 class="v6-h2 v6-reveal">One calm screen that carries the whole story.</h2>
@@ -64,7 +64,7 @@
     </section>
 
     <!-- ANALYSIS LAB -->
-    <section id="analysis" class="v6an-section flip">
+    <section id="analysis" class="v6an-section flip v6-band v6-band-snap">
       <div class="v6an-section-copy">
         <p class="v6-eyebrow v6-reveal"><i></i>Analysis lab</p>
         <h2 class="v6-h2 v6-reveal">A diagnostics lab for your trading, not just charts.</h2>
@@ -92,7 +92,7 @@
     </section>
 
     <!-- SLICING / FILTERS -->
-    <section id="breakdowns" class="v6an-slice">
+    <section id="breakdowns" class="v6an-slice v6-band v6-band-snap">
       <div class="v6an-slice-head">
         <p class="v6-eyebrow v6-reveal"><i></i>Deep breakdowns</p>
         <h2 class="v6-h2 v6-reveal">Slice performance by anything you tag.</h2>
@@ -111,7 +111,7 @@
     </section>
 
     <!-- NUMBERS -->
-    <section id="numbers" class="v6an-section flip">
+    <section id="numbers" class="v6an-section flip v6-band v6-band-snap">
       <div class="v6an-section-copy">
         <p class="v6-eyebrow v6-reveal"><i></i>Numbers, your way</p>
         <h2 class="v6-h2 v6-reveal">Read P&amp;L in the language you think in.</h2>
@@ -143,7 +143,7 @@
     </section>
 
     <!-- CALENDAR & REPORTS -->
-    <section id="reviews" class="v6an-section">
+    <section id="reviews" class="v6an-section v6-band v6-band-snap">
       <div class="v6an-section-copy">
         <p class="v6-eyebrow v6-reveal"><i></i>Reviews &amp; reports</p>
         <h2 class="v6-h2 v6-reveal">Review in rhythm, report with one click.</h2>
@@ -307,9 +307,13 @@ let cleanups = []
 onMounted(() => {
   cleanups.push(initV6Reveals(rootEl.value))
   cleanups.push(initMagnetic(rootEl.value))
+
+  /* full-viewport bands snap while this page is mounted — see v6.css */
+  document.documentElement.classList.add("v6-snap")
 })
 
 onBeforeUnmount(() => {
+  document.documentElement.classList.remove("v6-snap")
   cleanups.forEach((off) => off && off())
   cleanups = []
 })
@@ -319,15 +323,14 @@ onBeforeUnmount(() => {
 /* Analytics page layout — shared tokens/chrome live in src/styles/v6.css */
 .v6-analytics { position: relative; z-index: 1; }
 
+/* Bands (.v6-band / .v6-band-snap) live in src/styles/v6.css */
+
 /* ── hero ── */
 .v6an-hero {
   position: relative;
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: var(--v6-page-hero-top) var(--v6-gutter) var(--v6-page-hero-bottom);
-  display: grid;
-  grid-template-columns: minmax(320px, 5fr) 6fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
+  /* text column deliberately narrow — the screenshot carries the section */
+  grid-template-columns: minmax(300px, 4fr) 8fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
   align-items: center;
 }
 /* soft scrim in page-bg color so the particle river stays quiet behind the copy
@@ -344,15 +347,24 @@ onBeforeUnmount(() => {
     transparent 100%
   );
 }
-.v6an-hero .v6-h1 { font-size: clamp(2.5rem, 5.4vw, 4.4rem); }
-.v6an-sub { max-width: 34rem; color: var(--v6-muted); }
-.v6an-chips { margin-top: 1.6rem; }
+.v6an-hero .v6-h1 {
+  font-size: clamp(2.1rem, 3.5vw, 3.3rem);
+  margin: 1rem 0 1rem;
+}
+.v6an-sub {
+  max-width: 32rem;
+  color: var(--v6-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.v6an-chips { margin-top: 1.2rem; }
+.v6an-chips li { font-size: 0.62rem; padding: 0.24rem 0.6rem; }
 .v6an-actions {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 1.2rem;
-  margin-top: 2.2rem;
+  margin-top: 1.7rem;
 }
 
 /* ── screenshots ── */
@@ -380,31 +392,36 @@ onBeforeUnmount(() => {
 
 /* ── sections ── */
 .v6an-section {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: var(--v6-section-block) var(--v6-gutter);
-  display: grid;
-  grid-template-columns: minmax(300px, 5fr) 6fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
+  grid-template-columns: minmax(300px, 5.2fr) 6.8fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
   align-items: center;
 }
 .v6an-section.flip > :first-child { order: 2; }
 .v6an-section.flip > :last-child { order: 1; }
-.v6an-section-sub { color: var(--v6-muted); margin: 1.2rem 0 0; max-width: 30rem; }
+.v6an-section .v6-h2,
+.v6an-slice .v6-h2 { font-size: clamp(1.6rem, 2.8vw, 2.4rem); }
+.v6an-section-sub {
+  color: var(--v6-muted);
+  margin: 0.9rem 0 0;
+  max-width: 33rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
 .v6an-note {
-  margin: 1.6rem 0 0;
-  padding: 0.9rem 1.1rem;
+  margin: 1.2rem 0 0;
+  padding: 0.8rem 1rem;
   border-left: 2px solid var(--v6-ember);
   color: var(--v6-muted);
-  font-size: 0.9rem;
+  font-size: 0.86rem;
+  line-height: 1.55;
   background: linear-gradient(90deg, var(--v6-panel), transparent 80%);
   border-radius: 0 10px 10px 0;
-  max-width: 30rem;
+  max-width: 33rem;
 }
 
 /* ── metric rows ── */
 .v6an-rows {
-  margin-top: 1.8rem;
+  margin-top: 1.4rem;
   border: 1px solid var(--v6-line);
   border-radius: 18px;
   background: linear-gradient(165deg, var(--v6-panel), rgba(12, 21, 18, 0.22));
@@ -419,18 +436,18 @@ onBeforeUnmount(() => {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.1rem clamp(1.1rem, 2.2vw, 1.5rem);
+  padding: 0.85rem clamp(1rem, 2vw, 1.4rem);
   border-bottom: 1px solid var(--v6-line);
 }
 .v6an-row:last-child { border-bottom: 0; }
 .v6an-row h3 {
   font-family: var(--v6-display);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.94rem;
   letter-spacing: -0.01em;
   margin: 0;
 }
-.v6an-row p { color: var(--v6-muted); font-size: 0.88rem; margin: 0.4rem 0 0; }
+.v6an-row p { color: var(--v6-muted); font-size: 0.83rem; line-height: 1.5; margin: 0.3rem 0 0; }
 .v6an-row-value {
   flex: none;
   font-family: var(--v6-mono);
@@ -445,15 +462,12 @@ onBeforeUnmount(() => {
 }
 
 /* ── slicing ── */
-.v6an-slice {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: var(--v6-section-block) var(--v6-gutter);
-}
-.v6an-slice-head { max-width: 40rem; }
+.v6an-slice { grid-template-rows: auto auto; }
+.v6an-slice-head { max-width: 44rem; }
+.v6an-slice .v6an-section-sub { max-width: 44rem; }
 .v6an-dimensions {
   list-style: none;
-  margin: 2rem 0 0;
+  margin: 1.6rem 0 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
@@ -473,7 +487,7 @@ onBeforeUnmount(() => {
 
 /* ── disclaimer ── */
 .v6an-disclaimer { padding: clamp(3rem, 9vh, 6rem) var(--v6-gutter); }
-.v6an-disclaimer-inner { max-width: 1240px; margin: 0 auto; }
+.v6an-disclaimer-inner { max-width: var(--v6-container); margin: 0 auto; }
 .v6an-disclaimer-points {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -519,7 +533,7 @@ onBeforeUnmount(() => {
 
 /* ── responsive ── */
 @media (max-width: 900px) {
-  .v6an-hero { grid-template-columns: 1fr; padding-top: 7rem; }
+  .v6an-hero { grid-template-columns: 1fr; }
   .v6an-section { grid-template-columns: 1fr; gap: 1.6rem; }
   .v6an-section.flip > :first-child { order: 1; }
   .v6an-section.flip > :last-child { order: 2; }
