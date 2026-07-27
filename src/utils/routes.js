@@ -69,22 +69,3 @@ export const localizedAlternatesForPath = (path = "/app") =>
     path: localizedPathForRoute(path, locale),
   }))
 
-export const legacyPageToPath = {
-  faq: (locale) => pagePath("faq", locale),
-  impressum: (locale) => pagePath("impressum", locale),
-  features: (locale) => pagePath("features", locale),
-  propFirmChallenges: (locale) => pagePath("prop-firm-challenges", locale),
-  fundedAccounts: (locale) => pagePath("funded-accounts", locale),
-  personalTrading: (locale) => pagePath("personal-trading", locale),
-  backtesting: (locale) => pagePath("backtesting", locale),
-  analyticsReviews: (locale) => pagePath("analytics-reviews", locale),
-  workflow: (locale) => pagePath("workflow", locale),
-  localFirst: (locale) => pagePath("local-offline", locale),
-  welcome: (locale) => pagePath("welcome", locale),
-  manual: (locale) => pagePath("manual", locale),
-  pricing: (locale) => pagePath("pricing", locale),
-  privacy: (locale) => pagePath("privacy", locale),
-  contact: (locale) => pagePath("contact", locale),
-  bugreport: (locale) => pagePath("bugreport", locale),
-  terms: (locale) => pagePath("terms", locale),
-}

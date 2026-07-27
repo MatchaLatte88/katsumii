@@ -1,11 +1,7 @@
 <template>
-  <V6Shell v-if="isV6Route">
+  <V6Shell>
     <RouterView />
   </V6Shell>
-  <template v-else>
-    <RouterView />
-    <LegalFooter />
-  </template>
   <ThemeGlitchOverlay
     v-if="isThemeGlitching"
     :target-theme="nextTheme"
@@ -14,36 +10,30 @@
 </template>
 
 <script setup>
-import { computed, defineAsyncComponent, provide, watch } from "vue"
+import { defineAsyncComponent, provide, watch } from "vue"
 import { useI18n } from "vue-i18n"
 import { useRoute } from "vue-router"
 const V6Shell = defineAsyncComponent(() => import("./components/v6/V6Shell.vue"))
-import LegalFooter from "./components/LegalFooter.vue"
 import ThemeGlitchOverlay from "./components/ThemeGlitchOverlay.vue"
 import ConsentBanner from "./components/ConsentBanner.vue"
 import { useTheme } from "./composables/useTheme.js"
-import { useBg } from "./composables/useBg.js"
 import { useConsent } from "./composables/useConsent.js"
 import { setI18nLocale } from "./i18n.js"
 import { localizedAlternatesForPath, localizedPathForRoute, normalizeLocale, unlocalizedPathFromRoute } from "./utils/routes.js"
 
 const route = useRoute()
-const isV6Route = computed(() => route.meta.v6 === true)
 const { locale, t } = useI18n()
 const { theme, isDark, toggleTheme, isThemeGlitching, nextTheme } = useTheme()
-const { bg, changeBg } = useBg()
 const { consent } = useConsent()
 
 const SITE_URL = "https://www.katsumii.com"
-const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/Screenshots/dash_normal_d.png`
+const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/og-image.png`
 
 const htmlLangForLocale = (lang) => lang === "tw" ? "zh-TW" : lang
 
 provide("theme", theme)
 provide("isDark", isDark)
 provide("toggleTheme", toggleTheme)
-provide("bg", bg)
-provide("changeBg", changeBg)
 
 const absoluteUrl = (path = "/") => new URL(path, SITE_URL).href
 

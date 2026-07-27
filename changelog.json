@@ -1,5 +1,22 @@
 [
   {
+    "version": "0.11.0",
+    "date": "2026-07-28",
+    "title": "Every page on the V6 design, and a working social preview",
+    "changes": [
+      "Local & offline, Welcome and the 404 page rebuilt in the V6 design — the last three pages still running the old shell",
+      "Local & offline rewritten: where the data sits, what actually touches the network, and how backups work",
+      "Add a real Open Graph image — link previews in chat apps and social networks were pointing at a file that no longer existed",
+      "Customization and Workflow are now pre-rendered and listed in the sitemap; direct links to them no longer take a detour",
+      "Retire the /v2–/v5 design prototypes and the entire legacy page shell that came with them",
+      "Add the Instagram profile to the footer and the contact page",
+      "Add Local & offline to the Features menu and the mobile navigation",
+      "Contact form keeps your message and offers to copy it, in case the mail client never opened",
+      "Replace the dashboard hero screenshot on the landing, Features and Workflow pages",
+      "Retire the /local-first URL in favour of /local-offline and drop the dead translation data behind it (~30% smaller page bundle)"
+    ]
+  },
+  {
     "version": "0.10.1",
     "date": "2026-07-27",
     "title": "Re-export layout and theme screenshots",

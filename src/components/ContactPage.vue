@@ -19,7 +19,17 @@
           {{ t('contactPage.success.description') }}
           <a href="mailto:info@katsumii.com">{{ t('contactPage.success.directLink') }}</a>.
         </p>
-        <button type="button" class="v6-quiet" @click="reset">{{ t('contactPage.success.reset') }} <span aria-hidden="true">→</span></button>
+
+        <!-- the mailto may silently do nothing (no mail client, blocked handler),
+             so keep the composed text reachable instead of losing it -->
+        <pre class="v6c-transcript">{{ transcript }}</pre>
+
+        <div class="v6c-success-actions">
+          <button type="button" class="v6-quiet" @click="copyTranscript">
+            {{ copied ? t('contactPage.success.copied') : t('contactPage.success.copy') }}
+          </button>
+          <button type="button" class="v6-quiet" @click="backToForm">{{ t('contactPage.success.back') }} <span aria-hidden="true">→</span></button>
+        </div>
       </div>
 
       <!-- form -->
@@ -66,35 +76,45 @@
       <p class="v6c-direct">
         {{ t('contactPage.direct.prefix') }}
         <a href="mailto:info@katsumii.com">info@katsumii.com</a>
+        <span class="v6c-direct-sep" aria-hidden="true">·</span>
+        <a href="https://instagram.com/katsumii.journal" target="_blank" rel="noopener">@katsumii.journal</a>
       </p>
     </section>
   </main>
 </template>
 
 <script setup>
-import { reactive, ref } from "vue"
+import { computed, reactive, ref } from "vue"
 import { useI18n } from "vue-i18n"
 
 const { t } = useI18n()
 
 const submitted = ref(false)
+const copied = ref(false)
 const form = reactive({ name: "", email: "", subject: "", message: "" })
 
+const mailBody = computed(() =>
+  `${t("contactPage.mailtoName")}: ${form.name}\n${t("contactPage.mailtoEmail")}: ${form.email}\n\n${form.message}`
+)
+const mailSubject = computed(() => form.subject || t("contactPage.mailtoFallbackSubject"))
+const transcript = computed(() => `${mailSubject.value}\n\n${mailBody.value}`)
+
 const handleSubmit = () => {
-  const subject = encodeURIComponent(form.subject || t("contactPage.mailtoFallbackSubject"))
-  const body = encodeURIComponent(
-    `${t("contactPage.mailtoName")}: ${form.name}\n${t("contactPage.mailtoEmail")}: ${form.email}\n\n${form.message}`
-  )
-  window.location.href = `mailto:info@katsumii.com?subject=${subject}&body=${body}`
+  window.location.href =
+    `mailto:info@katsumii.com?subject=${encodeURIComponent(mailSubject.value)}&body=${encodeURIComponent(mailBody.value)}`
   submitted.value = true
 }
 
-const reset = () => {
-  form.name = ""
-  form.email = ""
-  form.subject = ""
-  form.message = ""
+const copyTranscript = async () => {
+  await navigator.clipboard.writeText(transcript.value)
+  copied.value = true
+  setTimeout(() => { copied.value = false }, 2400)
+}
+
+/* keeps the typed message — the mailto hand-off may have gone nowhere */
+const backToForm = () => {
   submitted.value = false
+  copied.value = false
 }
 </script>
 
@@ -213,12 +233,36 @@ const reset = () => {
 .v6c-success a:hover,
 .v6c-direct a:hover { color: var(--v6-gold-hi); }
 
+.v6c-transcript {
+  max-width: 32rem;
+  margin: 0 auto;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--v6-line);
+  border-radius: 12px;
+  background: var(--v6-bg-soft);
+  text-align: left;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: var(--v6-mono);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--v6-muted);
+}
+.v6c-success-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.4rem;
+  margin-top: 1.6rem;
+}
+
 .v6c-direct {
   margin: 1.8rem 0 0;
   text-align: center;
   font-size: 0.88rem;
   color: var(--v6-muted);
 }
+.v6c-direct-sep { margin: 0 0.5rem; color: var(--v6-faint); }
 
 @media (max-width: 640px) {
   .v6c-wrap { padding-top: 7rem; }

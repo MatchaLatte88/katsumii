@@ -25,7 +25,7 @@
       </div>
       <figure class="v6wf-shot v6-reveal">
         <img
-          :src="asset(isDark ? 'Screenshots/opt/dash_normal_d.webp' : 'Screenshots/opt/dash_normal_l.webp')"
+          :src="asset(isDark ? 'Screenshots/opt/hero_d.webp' : 'Screenshots/opt/hero_l.webp')"
           alt="Katsumii dashboard combining imported trades, journal entries and reports"
           width="1600" height="1000"
           loading="eager" decoding="async"

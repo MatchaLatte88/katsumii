@@ -89,6 +89,16 @@
                 <path d="M2.5 6h7M6.6 3.1 9.5 6l-2.9 2.9" />
               </svg>
             </RouterLink>
+            <RouterLink role="menuitem" :to="`/${lang}/local-offline`">
+              <span class="v6-nav-menu-idx" aria-hidden="true">08</span>
+              <span class="v6-nav-menu-text">
+                Local &amp; offline
+                <small>Your data, on your disk</small>
+              </span>
+              <svg class="v6-nav-menu-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+                <path d="M2.5 6h7M6.6 3.1 9.5 6l-2.9 2.9" />
+              </svg>
+            </RouterLink>
           </div>
         </div>
         <RouterLink :to="`/${lang}/pricing`">Pricing</RouterLink>
@@ -155,6 +165,30 @@
             <img :src="asset('logo.png')" alt="Katsumii logo" width="28" height="28" />
             <span>Katsumii<b class="v6-dot" aria-hidden="true">.</b></span>
           </RouterLink>
+          <a
+            class="v6-social"
+            :href="INSTAGRAM_URL"
+            target="_blank"
+            rel="noopener"
+            aria-label="Katsumii on Instagram"
+          >
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <defs>
+                <!-- Instagram brand gradient, corner-to-corner as in the official mark -->
+                <linearGradient id="v6-ig" x1="2" y1="22" x2="22" y2="2" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#FFC107" />
+                  <stop offset="28%" stop-color="#F76B1C" />
+                  <stop offset="55%" stop-color="#E1306C" />
+                  <stop offset="80%" stop-color="#C13584" />
+                  <stop offset="100%" stop-color="#5851DB" />
+                </linearGradient>
+              </defs>
+              <rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.4" stroke="url(#v6-ig)" stroke-width="1.9" />
+              <circle cx="12" cy="12" r="4.1" stroke="url(#v6-ig)" stroke-width="1.9" />
+              <circle cx="17.5" cy="6.5" r="1.2" fill="url(#v6-ig)" />
+            </svg>
+            <span>@katsumii.journal</span>
+          </a>
         </div>
 
         <nav class="v6-footer-col" aria-label="Product">
@@ -186,6 +220,7 @@
           <RouterLink :to="`/${lang}/manual`">Manual</RouterLink>
           <RouterLink :to="`/${lang}/faq`">FAQ</RouterLink>
           <RouterLink :to="`/${lang}/contact`">Contact</RouterLink>
+          <a :href="INSTAGRAM_URL" target="_blank" rel="noopener">Instagram</a>
         </nav>
 
         <nav class="v6-footer-col" aria-label="Legal">
@@ -226,6 +261,8 @@ const baseUrl = import.meta.env.BASE_URL
 const asset = (path) => `${baseUrl}${path}`
 const year = new Date().getFullYear()
 
+const INSTAGRAM_URL = "https://instagram.com/katsumii.journal"
+
 /* Discipline pages in the Features dropdown — dots mirror V6_ACCENTS in router.js */
 const FEATURE_PAGES = [
   { label: "Funded", sub: "Live prop accounts", path: "funded-accounts", dot: { dark: "#22d3ee", light: "#0369a1" } },
@@ -241,6 +278,7 @@ const MOBILE_LINKS = [
   { label: "Analytics", sub: "Edge, breakdowns & reports", path: "analytics-reviews" },
   { label: "Customization", sub: "Focus mode & themes", path: "customization" },
   { label: "Workflow", sub: "Imports, journal & tools", path: "workflow" },
+  { label: "Local & offline", sub: "Your data, on your disk", path: "local-offline" },
   { label: "Pricing", path: "pricing" },
   { label: "FAQ", path: "faq" },
 ]

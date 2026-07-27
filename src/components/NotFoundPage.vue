@@ -1,56 +1,115 @@
 <template>
-  <div :class="pageClass">
-    <KbBackground pattern="lines" :isDark="isDark" />
+  <main ref="rootEl" class="v6-notfound">
+    <section class="v6nf-wrap">
+      <p class="v6-eyebrow v6-reveal"><i></i>404</p>
+      <h1 class="v6-h1 v6nf-title">Nothing logged here<b class="v6-dot">.</b></h1>
+      <p class="v6nf-sub v6-reveal">
+        This page does not exist, or it moved somewhere else. The links below cover
+        everything the site has.
+      </p>
 
-    <AppNav
-      :navigation="navigation"
-      :brand-title="t('common.brandTitle')"
-      :brand-subtitle="t('notFoundPage.brandSubtitle')"
-      :brand-href="pagePath('app')"
-    />
+      <div class="v6nf-actions v6-reveal">
+        <RouterLink :to="`/${lang}/app`" class="v6-btn v6-magnetic">Back to the start <span aria-hidden="true">→</span></RouterLink>
+      </div>
 
-    <main class="relative z-10 flex min-h-screen items-center justify-center px-6 py-32">
-      <section
-        class="k-main-tile k-glass max-w-2xl border p-8 text-center sm:p-12"
-        :class="!isDark ? 'border-gray-200 bg-white/85 shadow-xl' : 'border-cyan-300/20 bg-slate-900/75'"
-      >
-        <p :class="['text-sm font-semibold uppercase tracking-[0.18em]', !isDark ? 'text-teal-700' : 'text-cyan-300']">
-          {{ t('notFoundPage.label') }}
-        </p>
-        <h1 :class="['mt-4 font-display text-4xl font-semibold tracking-tight sm:text-5xl', !isDark ? 'text-gray-900' : 'text-slate-100']">
-          {{ t('notFoundPage.title') }}
-        </h1>
-        <p :class="['mx-auto mt-4 max-w-md text-sm leading-relaxed sm:text-base', !isDark ? 'text-gray-600' : 'text-slate-300']">
-          {{ t('notFoundPage.description') }}
-        </p>
-        <RouterLink
-          :to="pagePath('app')"
-          class="mt-8 inline-flex rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
-          :class="!isDark ? 'bg-teal-600 text-white hover:bg-teal-500' : 'bg-cyan-300 text-slate-950 hover:bg-cyan-200'"
-        >
-          {{ t('notFoundPage.cta') }}
+      <nav class="v6nf-links v6-reveal" aria-label="Popular pages">
+        <RouterLink v-for="l in LINKS" :key="l.path" :to="`/${lang}${l.path}`">
+          <span class="v6nf-link-name">{{ l.name }}</span>
+          <span class="v6nf-link-copy">{{ l.copy }}</span>
         </RouterLink>
-      </section>
-    </main>
-  </div>
+      </nav>
+    </section>
+  </main>
 </template>
 
 <script setup>
-import { computed, inject } from "vue"
-import { useI18n } from "vue-i18n"
-import AppNav from "./AppNav.vue"
-import KbBackground from "../backgrounds/KbBackground.vue"
-import { useSiteNavigation } from "../composables/useSiteNavigation.js"
-import { pagePath } from "../utils/routes.js"
+import { computed, onBeforeUnmount, onMounted, ref } from "vue"
+import { useRoute } from "vue-router"
+import { initMagnetic, initV6Reveals } from "../v6/motion.js"
+import { normalizeLocale } from "../utils/routes.js"
 
-const isDark = inject("isDark")
-const { t } = useI18n()
+const route = useRoute()
+const lang = computed(() => {
+  const raw = Array.isArray(route.params.locale) ? route.params.locale[0] : route.params.locale
+  return normalizeLocale(raw)
+})
 
-const navigation = useSiteNavigation()
+const LINKS = [
+  { path: "/features", name: "Features", copy: "Every module in the cockpit" },
+  { path: "/pricing", name: "Pricing", copy: "One purchase, no subscription" },
+  { path: "/manual", name: "Manual", copy: "How the app works, screen by screen" },
+  { path: "/faq", name: "FAQ", copy: "The questions that come up most" },
+]
 
-const pageClass = computed(() =>
-  isDark.value
-    ? "relative min-h-screen overflow-x-hidden bg-slate-950 text-slate-100"
-    : "relative min-h-screen overflow-x-hidden bg-slate-50 text-gray-900"
-)
+const rootEl = ref(null)
+let cleanups = []
+
+onMounted(() => {
+  cleanups.push(initV6Reveals(rootEl.value))
+  cleanups.push(initMagnetic(rootEl.value))
+})
+
+onBeforeUnmount(() => {
+  cleanups.forEach((off) => off && off())
+  cleanups = []
+})
 </script>
+
+<style scoped>
+/* 404 layout — shared tokens/chrome live in src/styles/v6.css */
+.v6-notfound { position: relative; z-index: 1; }
+
+.v6nf-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--v6-page-hero-top) var(--v6-gutter) var(--v6-page-bottom);
+  text-align: center;
+}
+.v6nf-wrap .v6-eyebrow { justify-content: center; }
+.v6nf-title { font-size: clamp(2.2rem, 4.6vw, 3.6rem); }
+.v6nf-sub {
+  max-width: 30rem;
+  margin: 1.2rem auto 0;
+  color: var(--v6-muted);
+  line-height: 1.7;
+}
+.v6nf-actions { margin-top: 2rem; }
+
+.v6nf-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+  margin-top: clamp(2.5rem, 6vh, 3.5rem);
+  text-align: left;
+}
+.v6nf-links a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.95rem 1.1rem;
+  border: 1px solid var(--v6-line);
+  border-radius: 14px;
+  background: var(--v6-panel);
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.v6nf-links a:hover {
+  border-color: var(--v6-line-strong);
+  transform: translateY(-2px);
+}
+.v6nf-link-name {
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--v6-ink);
+}
+.v6nf-link-copy {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--v6-muted);
+}
+
+/* ── responsive ── */
+@media (max-width: 600px) {
+  .v6nf-links { grid-template-columns: 1fr; }
+}
+</style>

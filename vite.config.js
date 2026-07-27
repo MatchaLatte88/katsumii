@@ -12,8 +12,9 @@ const appRoutes = new Set([
   '/personal-trading',
   '/backtesting',
   '/analytics-reviews',
+  '/customization',
+  '/workflow',
   '/local-offline',
-  '/local' + '-first',
   '/pricing',
   '/manual',
   '/faq',
@@ -26,7 +27,7 @@ const appRoutes = new Set([
 ])
 
 const SITE_URL = 'https://www.katsumii.com'
-const SOCIAL_IMAGE = `${SITE_URL}/Dashboard_dark.png`
+const SOCIAL_IMAGE = `${SITE_URL}/og-image.png`
 const LASTMOD = '2026-07-05'
 
 const SUPPORTED_LOCALES = ['en', 'de', 'es', 'tw']
@@ -95,9 +96,21 @@ const staticRouteMeta = [
     priority: '0.8',
   },
   {
+    path: '/customization',
+    titleKey: 'common.pageTitles.customization',
+    descriptionKey: 'common.pageDescriptions.customization',
+    priority: '0.8',
+  },
+  {
+    path: '/workflow',
+    titleKey: 'common.pageTitles.workflow',
+    descriptionKey: 'common.pageDescriptions.workflow',
+    priority: '0.8',
+  },
+  {
     path: '/local-offline',
-    titleKey: 'common.pageTitles.localFirst',
-    descriptionKey: 'common.pageDescriptions.localFirst',
+    titleKey: 'common.pageTitles.localOffline',
+    descriptionKey: 'common.pageDescriptions.localOffline',
     priority: '0.8',
   },
   {

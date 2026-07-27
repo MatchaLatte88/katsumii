@@ -423,7 +423,7 @@ const stats = [
 
 const slides = [
   {
-    imgL: "Screenshots/opt/dash_normal_l.webp", imgD: "Screenshots/opt/dash_normal_d.webp", w: 1600, h: 1000,
+    imgL: "Screenshots/opt/hero_l.webp", imgD: "Screenshots/opt/hero_d.webp", w: 1600, h: 1000,
     alt: "Katsumii dashboard with net P&L hero, execution quality and equity curve",
     headline: "Find your edge.", accent: "Sharpen it",
     title: "Dashboard", tag: "the day, distilled",

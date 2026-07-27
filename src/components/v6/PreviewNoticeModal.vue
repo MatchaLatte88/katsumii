@@ -31,10 +31,10 @@
             </div>
           </div>
 
-          <h1 id="preview-notice-title">
+          <h2 id="preview-notice-title">
             A first look at<br />
             <em>what’s taking shape.</em>
-          </h1>
+          </h2>
         </div>
 
         <div class="preview-notice__body">
@@ -230,7 +230,7 @@ onBeforeUnmount(() => {
   color: var(--v6-gold-hi);
 }
 
-.preview-notice h1 {
+.preview-notice h2 {
   margin: clamp(1.6rem, 4vw, 2.6rem) 0 0;
   font-family: var(--v6-display);
   font-size: clamp(2.35rem, 6.8vw, 4.75rem);
@@ -239,7 +239,7 @@ onBeforeUnmount(() => {
   letter-spacing: -0.04em;
 }
 
-.preview-notice h1 em {
+.preview-notice h2 em {
   color: var(--v6-gold-hi);
   font-style: italic;
   font-weight: 600;
@@ -351,7 +351,7 @@ onBeforeUnmount(() => {
   .preview-notice { padding: 0.65rem; }
   .preview-notice__dialog { max-height: calc(100dvh - 1.3rem); border-radius: 14px; }
   .preview-notice__brand img { border-radius: 12px; }
-  .preview-notice h1 { font-size: clamp(2.15rem, 11vw, 3rem); }
+  .preview-notice h2 { font-size: clamp(2.15rem, 11vw, 3rem); }
   .preview-notice__body { background: color-mix(in srgb, var(--v6-panel) 58%, transparent); }
   .preview-notice__copy { line-height: 1.6; }
   .preview-notice__actions { display: grid; gap: 0.9rem; }
@@ -362,7 +362,7 @@ onBeforeUnmount(() => {
 @media (max-height: 720px) and (min-width: 561px) {
   .preview-notice__hero { padding-block: 1.6rem; }
   .preview-notice__brand img { width: 70px; height: 70px; border-radius: 12px; }
-  .preview-notice h1 { margin-top: 1.35rem; font-size: clamp(2.5rem, 7vh, 3.4rem); }
+  .preview-notice h2 { margin-top: 1.35rem; font-size: clamp(2.5rem, 7vh, 3.4rem); }
   .preview-notice__body { padding-block: 1.3rem; }
   .preview-notice__copy { line-height: 1.55; }
   .preview-notice__actions { margin-top: 1.1rem; }

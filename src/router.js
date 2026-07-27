@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router"
-import { SUPPORTED_LOCALES, legacyPageToPath, localeFromPath, localizedPathForRoute, preferredLocale } from "./utils/routes.js"
+import { SUPPORTED_LOCALES, localeFromPath, localizedPathForRoute, preferredLocale } from "./utils/routes.js"
 
 const FaqPage = () => import("./components/FaqPage.vue")
 const ImpressumPage = () => import("./components/ImpressumPage.vue")
@@ -11,7 +11,7 @@ const FundedAccountsPage = () => import("./components/FundedAccountsPage.vue")
 const PersonalTradingPage = () => import("./components/PersonalTradingPage.vue")
 const BacktestingPage = () => import("./components/BacktestingPage.vue")
 const AnalyticsReviewsPage = () => import("./components/AnalyticsReviewsPage.vue")
-const LocalFirstPage = () => import("./components/LocalFirstPage.vue")
+const LocalOfflinePage = () => import("./components/LocalOfflinePage.vue")
 const WelcomePage = () => import("./components/WelcomePage.vue")
 const ManualPage = () => import("./components/ManualPage.vue")
 const PricingPage = () => import("./components/PricingPage.vue")
@@ -20,10 +20,6 @@ const ContactPage = () => import("./components/ContactPage.vue")
 const BugReportPage = () => import("./components/BugReportPage.vue")
 const TermsPage = () => import("./components/TermsPage.vue")
 const NotFoundPage = () => import("./components/NotFoundPage.vue")
-const LandingV2 = () => import("./components/LandingV2.vue")
-const LandingV3 = () => import("./components/LandingV3.vue")
-const LandingV4 = () => import("./components/LandingV4.vue")
-const LandingV5 = () => import("./components/LandingV5.vue")
 const LandingV6 = () => import("./components/LandingV6.vue")
 
 const localePattern = SUPPORTED_LOCALES.join("|")
@@ -42,33 +38,11 @@ const withLocale = (path, component, meta) => ({
   meta: { ...meta, canonicalPath: path },
 })
 
-const LOCAL_OFFLINE_PATH = "/local-offline"
-const LEGACY_LOCAL_OFFLINE_PATH = "/local" + "-first"
-
-const legacyRedirect = (path) => ({
+/* an unlocalized URL (katsumii.com/pricing) picks up the visitor's locale */
+const unlocalizedRedirect = (path) => ({
   path,
   redirect: (to) => ({
     path: localizedPathForRoute(path, preferredLocale()),
-    query: to.query,
-    hash: to.hash,
-    replace: true,
-  }),
-})
-
-const legacyRedirectTo = (fromPath, toPath) => ({
-  path: fromPath,
-  redirect: (to) => ({
-    path: localizedPathForRoute(toPath, preferredLocale()),
-    query: to.query,
-    hash: to.hash,
-    replace: true,
-  }),
-})
-
-const localizedLegacyRedirectTo = (fromPath, toPath) => ({
-  path: `/:locale(${localePattern})${fromPath}`,
-  redirect: (to) => ({
-    path: localizedPathForRoute(toPath, to.params.locale),
     query: to.query,
     hash: to.hash,
     replace: true,
@@ -79,53 +53,52 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: "/", redirect: () => localizedPathForRoute("/app", preferredLocale()) },
-    { path: "/v2", component: LandingV2, meta: { titleKey: "common.pageTitles.app", descriptionKey: "common.pageDescriptions.app", robots: "noindex, follow" } },
-    { path: "/v3", component: LandingV3, meta: { titleKey: "common.pageTitles.app", descriptionKey: "common.pageDescriptions.app", robots: "noindex, follow" } },
-    { path: "/v4", component: LandingV4, meta: { titleKey: "common.pageTitles.app", descriptionKey: "common.pageDescriptions.app", robots: "noindex, follow" } },
-    { path: "/v5", component: LandingV5, meta: { titleKey: "common.pageTitles.app", descriptionKey: "common.pageDescriptions.app", robots: "noindex, follow" } },
-    { path: "/v6", redirect: () => localizedPathForRoute("/app", preferredLocale()) },
+    /* the retired /v2–/v6 design prototypes now all point at the live landing */
+    ...["/v2", "/v3", "/v4", "/v5", "/v6"].map((path) => ({
+      path,
+      redirect: () => localizedPathForRoute("/app", preferredLocale()),
+    })),
     { path: `/:locale(${localePattern})`, redirect: (to) => localizedPathForRoute("/app", to.params.locale) },
-    withLocale("/app",       LandingV6,     { titleKey: "common.pageTitles.app",       descriptionKey: "common.pageDescriptions.app", v6: true }),
-    withLocale("/features",  FeaturesPage,  { titleKey: "common.pageTitles.features",  descriptionKey: "common.pageDescriptions.features", v6: true }),
-    withLocale("/prop-firm-challenges", PropFirmChallengesPage, { titleKey: "common.pageTitles.propFirmChallenges", descriptionKey: "common.pageDescriptions.propFirmChallenges", v6: true, v6Accent: V6_ACCENTS.challenge }),
-    withLocale("/funded-accounts", FundedAccountsPage, { titleKey: "common.pageTitles.fundedAccounts", descriptionKey: "common.pageDescriptions.fundedAccounts", v6: true, v6Accent: V6_ACCENTS.funded }),
-    withLocale("/personal-trading", PersonalTradingPage, { titleKey: "common.pageTitles.personalTrading", descriptionKey: "common.pageDescriptions.personalTrading", v6: true, v6Accent: V6_ACCENTS.personal }),
-    withLocale("/backtesting", BacktestingPage, { titleKey: "common.pageTitles.backtesting", descriptionKey: "common.pageDescriptions.backtesting", v6: true, v6Accent: V6_ACCENTS.backtest }),
-    withLocale("/customization", CustomizationPage, { titleKey: "common.pageTitles.customization", descriptionKey: "common.pageDescriptions.customization", v6: true }),
-    withLocale("/workflow", WorkflowPage, { titleKey: "common.pageTitles.workflow", descriptionKey: "common.pageDescriptions.workflow", v6: true }),
-    withLocale("/analytics-reviews", AnalyticsReviewsPage, { titleKey: "common.pageTitles.analyticsReviews", descriptionKey: "common.pageDescriptions.analyticsReviews", v6: true }),
-    withLocale(LOCAL_OFFLINE_PATH, LocalFirstPage, { titleKey: "common.pageTitles.localFirst", descriptionKey: "common.pageDescriptions.localFirst" }),
-    withLocale("/pricing",   PricingPage,   { titleKey: "common.pageTitles.pricing",   descriptionKey: "common.pageDescriptions.pricing", v6: true, v6DimBg: true }),
-    withLocale("/manual",    ManualPage,    { titleKey: "common.pageTitles.manual",    descriptionKey: "common.pageDescriptions.manual", v6: true, v6NoBg: true }),
-    withLocale("/faq",       FaqPage,       { titleKey: "common.pageTitles.faq",       descriptionKey: "common.pageDescriptions.faq", v6: true, v6DimBg: true }),
-    withLocale("/contact",   ContactPage,   { titleKey: "common.pageTitles.contact",   descriptionKey: "common.pageDescriptions.contact", v6: true, v6DimBg: true }),
-    withLocale("/bugreport", BugReportPage, { titleKey: "common.pageTitles.bugreport", descriptionKey: "common.pageDescriptions.bugreport", robots: "noindex, follow", v6: true, v6DimBg: true }),
-    withLocale("/impressum", ImpressumPage, { titleKey: "common.pageTitles.impressum", descriptionKey: "common.pageDescriptions.impressum", v6: true, v6NoBg: true }),
-    withLocale("/privacy",   PrivacyPage,   { titleKey: "common.pageTitles.privacy",   descriptionKey: "common.pageDescriptions.privacy", v6: true, v6NoBg: true }),
-    withLocale("/terms",     TermsPage,     { titleKey: "common.pageTitles.terms",     descriptionKey: "common.pageDescriptions.terms", v6: true, v6NoBg: true }),
-    withLocale("/welcome",   WelcomePage,   { titleKey: "common.pageTitles.welcome",   descriptionKey: "common.pageDescriptions.welcome", robots: "noindex, follow" }),
-    localizedLegacyRedirectTo(LEGACY_LOCAL_OFFLINE_PATH, LOCAL_OFFLINE_PATH),
-    { path: `/:locale(${localePattern})/:pathMatch(.*)*`, component: NotFoundPage, meta: { titleKey: "common.pageTitles.notFound", descriptionKey: "common.pageDescriptions.notFound", robots: "noindex, follow" } },
-    legacyRedirect("/app"),
-    legacyRedirect("/features"),
-    legacyRedirect("/prop-firm-challenges"),
-    legacyRedirect("/funded-accounts"),
-    legacyRedirect("/personal-trading"),
-    legacyRedirect("/backtesting"),
-    legacyRedirect("/customization"),
-    legacyRedirect("/workflow"),
-    legacyRedirect("/analytics-reviews"),
-    legacyRedirectTo(LEGACY_LOCAL_OFFLINE_PATH, LOCAL_OFFLINE_PATH),
-    legacyRedirect("/pricing"),
-    legacyRedirect("/manual"),
-    legacyRedirect("/faq"),
-    legacyRedirect("/contact"),
-    legacyRedirect("/bugreport"),
-    legacyRedirect("/impressum"),
-    legacyRedirect("/privacy"),
-    legacyRedirect("/terms"),
-    legacyRedirect("/welcome"),
-    { path: "/:pathMatch(.*)*", component: NotFoundPage, meta: { titleKey: "common.pageTitles.notFound", descriptionKey: "common.pageDescriptions.notFound", robots: "noindex, follow" } },
+    withLocale("/app",       LandingV6,     { titleKey: "common.pageTitles.app",       descriptionKey: "common.pageDescriptions.app" }),
+    withLocale("/features",  FeaturesPage,  { titleKey: "common.pageTitles.features",  descriptionKey: "common.pageDescriptions.features" }),
+    withLocale("/prop-firm-challenges", PropFirmChallengesPage, { titleKey: "common.pageTitles.propFirmChallenges", descriptionKey: "common.pageDescriptions.propFirmChallenges", v6Accent: V6_ACCENTS.challenge }),
+    withLocale("/funded-accounts", FundedAccountsPage, { titleKey: "common.pageTitles.fundedAccounts", descriptionKey: "common.pageDescriptions.fundedAccounts", v6Accent: V6_ACCENTS.funded }),
+    withLocale("/personal-trading", PersonalTradingPage, { titleKey: "common.pageTitles.personalTrading", descriptionKey: "common.pageDescriptions.personalTrading", v6Accent: V6_ACCENTS.personal }),
+    withLocale("/backtesting", BacktestingPage, { titleKey: "common.pageTitles.backtesting", descriptionKey: "common.pageDescriptions.backtesting", v6Accent: V6_ACCENTS.backtest }),
+    withLocale("/customization", CustomizationPage, { titleKey: "common.pageTitles.customization", descriptionKey: "common.pageDescriptions.customization" }),
+    withLocale("/workflow", WorkflowPage, { titleKey: "common.pageTitles.workflow", descriptionKey: "common.pageDescriptions.workflow" }),
+    withLocale("/analytics-reviews", AnalyticsReviewsPage, { titleKey: "common.pageTitles.analyticsReviews", descriptionKey: "common.pageDescriptions.analyticsReviews" }),
+    withLocale("/local-offline", LocalOfflinePage, { titleKey: "common.pageTitles.localOffline", descriptionKey: "common.pageDescriptions.localOffline", v6DimBg: true }),
+    withLocale("/pricing",   PricingPage,   { titleKey: "common.pageTitles.pricing",   descriptionKey: "common.pageDescriptions.pricing", v6DimBg: true }),
+    withLocale("/manual",    ManualPage,    { titleKey: "common.pageTitles.manual",    descriptionKey: "common.pageDescriptions.manual", v6NoBg: true }),
+    withLocale("/faq",       FaqPage,       { titleKey: "common.pageTitles.faq",       descriptionKey: "common.pageDescriptions.faq", v6DimBg: true }),
+    withLocale("/contact",   ContactPage,   { titleKey: "common.pageTitles.contact",   descriptionKey: "common.pageDescriptions.contact", v6DimBg: true }),
+    withLocale("/bugreport", BugReportPage, { titleKey: "common.pageTitles.bugreport", descriptionKey: "common.pageDescriptions.bugreport", robots: "noindex, follow", v6DimBg: true }),
+    withLocale("/impressum", ImpressumPage, { titleKey: "common.pageTitles.impressum", descriptionKey: "common.pageDescriptions.impressum", v6NoBg: true }),
+    withLocale("/privacy",   PrivacyPage,   { titleKey: "common.pageTitles.privacy",   descriptionKey: "common.pageDescriptions.privacy", v6NoBg: true }),
+    withLocale("/terms",     TermsPage,     { titleKey: "common.pageTitles.terms",     descriptionKey: "common.pageDescriptions.terms", v6NoBg: true }),
+    withLocale("/welcome",   WelcomePage,   { titleKey: "common.pageTitles.welcome",   descriptionKey: "common.pageDescriptions.welcome", robots: "noindex, follow", v6DimBg: true }),
+    { path: `/:locale(${localePattern})/:pathMatch(.*)*`, component: NotFoundPage, meta: { titleKey: "common.pageTitles.notFound", descriptionKey: "common.pageDescriptions.notFound", robots: "noindex, follow", v6DimBg: true } },
+    unlocalizedRedirect("/app"),
+    unlocalizedRedirect("/features"),
+    unlocalizedRedirect("/prop-firm-challenges"),
+    unlocalizedRedirect("/funded-accounts"),
+    unlocalizedRedirect("/personal-trading"),
+    unlocalizedRedirect("/backtesting"),
+    unlocalizedRedirect("/customization"),
+    unlocalizedRedirect("/workflow"),
+    unlocalizedRedirect("/analytics-reviews"),
+    unlocalizedRedirect("/local-offline"),
+    unlocalizedRedirect("/pricing"),
+    unlocalizedRedirect("/manual"),
+    unlocalizedRedirect("/faq"),
+    unlocalizedRedirect("/contact"),
+    unlocalizedRedirect("/bugreport"),
+    unlocalizedRedirect("/impressum"),
+    unlocalizedRedirect("/privacy"),
+    unlocalizedRedirect("/terms"),
+    unlocalizedRedirect("/welcome"),
+    { path: "/:pathMatch(.*)*", component: NotFoundPage, meta: { titleKey: "common.pageTitles.notFound", descriptionKey: "common.pageDescriptions.notFound", robots: "noindex, follow", v6DimBg: true } },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) return savedPosition
@@ -134,14 +107,11 @@ const router = createRouter({
   },
 })
 
+/* GitHub Pages serves 404.html for unknown paths; it hands the original URL over
+   as /app.html?path=… so the SPA can restore the route — see public/404.html */
 router.beforeEach((to) => {
   if (to.path === "/app.html") {
-    const legacyPage = Array.isArray(to.query.page) ? to.query.page[0] : to.query.page
     const fallbackPath = Array.isArray(to.query.path) ? to.query.path[0] : to.query.path
-
-    if (legacyPage && legacyPageToPath[legacyPage]) {
-      return { path: legacyPageToPath[legacyPage](preferredLocale()), replace: true }
-    }
 
     if (fallbackPath && fallbackPath.startsWith("/")) {
       const target = new URL(fallbackPath, window.location.origin)
