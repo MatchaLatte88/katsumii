@@ -1,5 +1,13 @@
 [
   {
+    "version": "0.10.1",
+    "date": "2026-07-27",
+    "title": "Re-export layout and theme screenshots",
+    "changes": [
+      "Re-run the screenshot optimizer to refresh dashboard layout and snow theme WebP exports"
+    ]
+  },
+  {
     "version": "0.10.0",
     "date": "2026-07-26",
     "title": "Unified page rhythm and full-viewport section bands",
