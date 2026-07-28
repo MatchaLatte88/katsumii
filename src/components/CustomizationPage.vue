@@ -23,6 +23,7 @@
       </div>
       <figure class="v6cu-shot v6-reveal">
         <img
+          v-zoom
           :src="asset(isDark ? 'Screenshots/opt/customize_d.webp' : 'Screenshots/opt/customize_l.webp')"
           alt="Katsumii customization settings with theme, accent and layout options"
           width="1600" height="1000"
@@ -60,6 +61,7 @@
       </div>
       <figure class="v6cu-shot v6-reveal">
         <img
+          v-zoom
           :src="asset(layoutShot)"
           :alt="layoutAlt"
           width="1600" height="1000"

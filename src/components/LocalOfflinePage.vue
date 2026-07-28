@@ -25,6 +25,7 @@
 
       <figure class="v6lo-shot v6-reveal">
         <img
+          v-zoom
           :src="asset(isDark ? 'Screenshots/opt/hero_d.webp' : 'Screenshots/opt/hero_l.webp')"
           alt="Katsumii dashboard running as a local desktop application"
           width="1600" height="1000"

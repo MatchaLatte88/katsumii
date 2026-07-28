@@ -124,6 +124,13 @@
   transform-origin: left;
 }
 
+/* ── zoomable screenshots (v-zoom, see src/v6/zoom.js) ── */
+.v6-zoomable { cursor: zoom-in; }
+.v6-zoomable:focus-visible {
+  outline: 2px solid var(--v6-gold-hi);
+  outline-offset: 3px;
+}
+
 /* ── nav ── */
 .v6-nav {
   position: fixed;

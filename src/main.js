@@ -4,7 +4,8 @@ import "./styles/v6.css"
 import AppShell from "./AppShell.vue"
 import router from "./router.js"
 import i18n, { initialLocale, loadLocaleMessages } from "./i18n.js"
+import { vZoom } from "./v6/zoom.js"
 
 loadLocaleMessages(initialLocale).then(() => {
-  createApp(AppShell).use(router).use(i18n).mount("#app")
+  createApp(AppShell).use(router).use(i18n).directive("zoom", vZoom).mount("#app")
 })

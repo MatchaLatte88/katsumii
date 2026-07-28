@@ -16,6 +16,7 @@
       </div>
       <figure class="v6ft-shot v6-reveal">
         <img
+          v-zoom
           :src="asset(isDark ? 'Screenshots/opt/hero_d.webp' : 'Screenshots/opt/hero_l.webp')"
           :alt="t('featuresPage.alts.hero')"
           width="1600" height="1000"

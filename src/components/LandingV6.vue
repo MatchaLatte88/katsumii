@@ -75,8 +75,10 @@
           <figure
             v-for="(s, i) in slides" :key="`shot-${s.title}`"
             class="v6-story-shot" :class="{ active: i === activeStory }"
+            :inert="i !== activeStory"
           >
             <img
+              v-zoom
               :src="shot(s)" :alt="s.alt" :width="s.w" :height="s.h"
               :loading="i === 0 ? 'eager' : 'lazy'" decoding="async"
             />
@@ -88,7 +90,7 @@
       <div class="v6-story-stack">
         <figure v-for="(s, i) in slides" :key="`stack-${s.title}`" class="v6-stack-item v6-reveal">
           <div class="v6-stack-frame">
-            <img :src="shot(s)" :alt="s.alt" :width="s.w" :height="s.h" loading="lazy" decoding="async" />
+            <img v-zoom :src="shot(s)" :alt="s.alt" :width="s.w" :height="s.h" loading="lazy" decoding="async" />
           </div>
           <figcaption>
             <span class="v6-story-num" aria-hidden="true">0{{ i + 1 }}</span>

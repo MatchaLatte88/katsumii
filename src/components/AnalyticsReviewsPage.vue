@@ -23,6 +23,7 @@
       </div>
       <figure class="v6an-shot v6-reveal">
         <img
+          v-zoom
           :src="asset(isDark ? 'Screenshots/opt/analysis_f_d_1.webp' : 'Screenshots/opt/analysis_f_l_1.webp')"
           alt="Katsumii analysis view with key metrics, ratios and diagnostics"
           width="1600" height="1000"
@@ -54,6 +55,7 @@
       </div>
       <figure class="v6an-shot v6-reveal">
         <img
+          v-zoom
           :src="asset(isDark ? 'Screenshots/opt/analysis_f_d_2.webp' : 'Screenshots/opt/analysis_f_l_2.webp')"
           alt="Katsumii execution quality and edge driver statistics"
           width="1600" height="1000"
@@ -133,6 +135,7 @@
       </div>
       <figure class="v6an-shot v6-reveal">
         <img
+          v-zoom
           :src="asset(isDark ? 'Screenshots/opt/analysis_f_d_3.webp' : 'Screenshots/opt/analysis_f_l_3.webp')"
           alt="Katsumii statistics with percentage and R-multiple display"
           width="1600" height="1000"
@@ -165,6 +168,7 @@
       </div>
       <figure class="v6an-shot v6-reveal">
         <img
+          v-zoom
           :src="asset(isDark ? 'Screenshots/opt/report_d.webp' : 'Screenshots/opt/report_l.webp')"
           alt="Katsumii self-contained HTML performance report with equity curve and breakdowns"
           width="1600" height="1000"

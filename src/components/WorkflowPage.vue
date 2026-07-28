@@ -25,6 +25,7 @@
       </div>
       <figure class="v6wf-shot v6-reveal">
         <img
+          v-zoom
           :src="asset(isDark ? 'Screenshots/opt/hero_d.webp' : 'Screenshots/opt/hero_l.webp')"
           alt="Katsumii dashboard combining imported trades, journal entries and reports"
           width="1600" height="1000"
@@ -91,6 +92,7 @@
       </div>
       <figure class="v6wf-shot v6-reveal">
         <img
+          v-zoom
           :src="asset(isDark ? 'Screenshots/opt/calendar_f_d.webp' : 'Screenshots/opt/calendar_f_l.webp')"
           alt="Katsumii calendar with per-day P&L, trade counts and journal markers"
           width="1600" height="1000"
@@ -138,9 +140,10 @@
         <figure
           v-for="(s, i) in TOOL_SHOTS" :key="s.key"
           class="v6wf-shot v6wf-frame" :class="{ on: i === activeShot }"
-          :aria-hidden="i !== activeShot ? 'true' : null"
+          :inert="i !== activeShot"
         >
           <img
+            v-zoom
             :src="shotSrc(s)"
             :alt="s.alt"
             width="1600" height="1000"
