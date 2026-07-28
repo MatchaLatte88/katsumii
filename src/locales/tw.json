@@ -968,6 +968,9 @@
       "switchToDark": "切換至深色模式",
       "background": "背景"
     },
+    "legal": {
+      "contents": "目錄"
+    },
     "backgrounds": {
       "honeycomb": "蜂巢",
       "lines": "線條"

@@ -2,7 +2,7 @@
   <main ref="rootEl" class="v6-features">
     <!-- HERO -->
     <section class="v6ft-hero v6-band v6-band-snap">
-      <div class="v6ft-hero-copy">
+      <div ref="heroCopyEl" class="v6ft-hero-copy v6-copy-glow">
         <p class="v6-eyebrow v6-reveal"><i></i>{{ t('featuresPage.hero.label') }}</p>
         <h1 class="v6-h1 v6-reveal">{{ featureHeadline }}<b class="v6-dot">.</b></h1>
         <p class="v6ft-sub v6-reveal">{{ t('featuresPage.hero.description') }}</p>
@@ -132,12 +132,18 @@ const modules = computed(() => {
   return raw.map((m, i) => ({ ...m, ...MODULE_META[i] }))
 })
 
+const v6Quiet = inject("v6Quiet")
 const rootEl = ref(null)
+const heroCopyEl = ref(null)
 let cleanups = []
 
 onMounted(() => {
   cleanups.push(initV6Reveals(rootEl.value))
   cleanups.push(initMagnetic(rootEl.value))
+
+  /* the particle river thins out behind the hero copy — see v6Quiet in V6Shell */
+  v6Quiet?.set(heroCopyEl.value)
+  cleanups.push(() => v6Quiet?.clear())
 
   /* full-viewport bands snap while this page is mounted — see v6.css */
   document.documentElement.classList.add("v6-snap")
@@ -163,20 +169,6 @@ onBeforeUnmount(() => {
   grid-template-columns: minmax(300px, 4fr) 8fr;
   gap: clamp(2rem, 4vw, 3.5rem);
   align-items: center;
-}
-/* soft scrim in page-bg color so the particle river stays quiet behind the copy
-   (same approach as the landing hero) */
-.v6ft-hero::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    ellipse 48% 46% at 24% 55%,
-    color-mix(in srgb, var(--v6-bg) 80%, transparent) 42%,
-    transparent 100%
-  );
 }
 .v6ft-hero .v6-h1 {
   font-size: clamp(2.1rem, 3.5vw, 3.3rem);

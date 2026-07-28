@@ -143,7 +143,47 @@
           <p class="v6-mobile-kicker">Explore Katsumii</p>
           <div class="v6-mobile-nav">
             <RouterLink
-              v-for="item in MOBILE_LINKS"
+              v-for="item in MOBILE_TOP_LINKS"
+              :key="item.path"
+              :to="`/${lang}/${item.path}`"
+            >
+              {{ item.label }}<small v-if="item.sub">{{ item.sub }}</small>
+            </RouterLink>
+
+            <div v-for="group in MOBILE_GROUPS" :key="group.key" class="v6-mobile-group">
+              <button
+                type="button"
+                class="v6-mobile-group-head"
+                :class="{ open: openGroup === group.key }"
+                :aria-expanded="openGroup === group.key"
+                :aria-controls="`v6-mobile-group-${group.key}`"
+                @click="openGroup = openGroup === group.key ? null : group.key"
+              >
+                {{ group.label }}
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+                  <path d="M3.1 4.6 6 7.5l2.9-2.9" />
+                </svg>
+              </button>
+              <div
+                :id="`v6-mobile-group-${group.key}`"
+                class="v6-mobile-sub"
+                :class="{ open: openGroup === group.key }"
+              >
+                <div class="v6-mobile-sub-inner">
+                  <RouterLink
+                    v-for="item in group.items"
+                    :key="item.path"
+                    :to="`/${lang}/${item.path}`"
+                    :tabindex="openGroup === group.key ? undefined : -1"
+                  >
+                    {{ item.label }}<small v-if="item.sub">{{ item.sub }}</small>
+                  </RouterLink>
+                </div>
+              </div>
+            </div>
+
+            <RouterLink
+              v-for="item in MOBILE_END_LINKS"
               :key="item.path"
               :to="`/${lang}/${item.path}`"
             >
@@ -271,14 +311,30 @@ const FEATURE_PAGES = [
   { label: "Backtest", sub: "Sessions & replay", path: "backtesting", dot: { dark: "#818cf8", light: "#6d28d9" } },
 ]
 
-/* Mobile menu: every page gets the same row treatment */
-const MOBILE_LINKS = [
+/* Mobile menu: same grouping as the desktop dropdown, but collapsible */
+const MOBILE_TOP_LINKS = [
   { label: "Features", sub: "Overview", path: "features" },
-  ...FEATURE_PAGES.map(({ label, sub, path }) => ({ label, sub, path })),
-  { label: "Analytics", sub: "Edge, breakdowns & reports", path: "analytics-reviews" },
-  { label: "Customization", sub: "Focus mode & themes", path: "customization" },
-  { label: "Workflow", sub: "Imports, journal & tools", path: "workflow" },
-  { label: "Local & offline", sub: "Your data, on your disk", path: "local-offline" },
+]
+
+const MOBILE_GROUPS = [
+  {
+    key: "disciplines",
+    label: "Four disciplines",
+    items: FEATURE_PAGES.map(({ label, sub, path }) => ({ label, sub, path })),
+  },
+  {
+    key: "deeper",
+    label: "Go deeper",
+    items: [
+      { label: "Analytics", sub: "Edge, breakdowns & reports", path: "analytics-reviews" },
+      { label: "Customization", sub: "Focus mode & themes", path: "customization" },
+      { label: "Workflow", sub: "Imports, journal & tools", path: "workflow" },
+      { label: "Local & offline", sub: "Your data, on your disk", path: "local-offline" },
+    ],
+  },
+]
+
+const MOBILE_END_LINKS = [
   { label: "Pricing", path: "pricing" },
   { label: "FAQ", path: "faq" },
 ]
@@ -296,6 +352,7 @@ const menuToggleEl = ref(null)
 const mobilePanelEl = ref(null)
 const scrolled = ref(false)
 const mobileOpen = ref(false)
+const openGroup = ref(null)
 let glApi = null
 let cleanups = []
 
@@ -332,12 +389,113 @@ provide("v6Accent", {
   clear: () => { accentOverride.value = null },
 })
 
+/* ── background quiet zone ──────────────────────────────────────
+   Readability over the particle river is solved in the river, not on top of
+   it: pages hand us the elements holding their copy, we measure the real text
+   box and the shader thins the stream out there. Dimming the page instead
+   always left a visible scrim edge once the copy went near-full-width. */
+const QUIET_PAD_X = 26
+const QUIET_PAD_Y = 20
+let quietEls = []
+let quietRight = 0
+let quietActive = false
+let quietSettleTimers = []
+
+/* tight bounds of an element's inline content — a Range hugs the line boxes,
+   so a left-aligned headline doesn't claim its whole block width */
+const contentRect = (el) => {
+  const range = document.createRange()
+  range.selectNodeContents(el)
+  const r = range.getBoundingClientRect()
+  return r.width > 0 && r.height > 0 ? r : el.getBoundingClientRect()
+}
+
+/* only clears when a zone is actually set — setQuiet repaints the still frame
+   under reduced motion, so a no-op call per scroll event would be costly */
+const clearQuiet = () => {
+  quietSettleTimers.forEach(clearTimeout)
+  quietSettleTimers = []
+  if (!quietActive) return
+  glApi?.setQuiet(null)
+  quietActive = false
+}
+
+const measureQuiet = () => {
+  if (!glApi) return
+  const live = quietEls.filter((el) => el?.isConnected)
+  if (!live.length || window.scrollY > window.innerHeight * 1.5) {
+    clearQuiet()
+    return
+  }
+
+  let left = Infinity
+  let right = -Infinity
+  let top = Infinity
+  let bottom = -Infinity
+  for (const el of live) {
+    const r = contentRect(el)
+    if (!r.width || !r.height) continue
+    left = Math.min(left, r.left)
+    right = Math.max(right, r.right)
+    top = Math.min(top, r.top)
+    bottom = Math.max(bottom, r.bottom)
+  }
+  if (left === Infinity) {
+    clearQuiet()
+    return
+  }
+
+  /* the landing headline types itself in and out — hold the widest edge seen
+     so the zone settles instead of breathing with every character */
+  quietRight = Math.max(quietRight, right)
+
+  const w = window.innerWidth
+  const h = window.innerHeight
+  const x0 = left - QUIET_PAD_X
+  const x1 = quietRight + QUIET_PAD_X
+  const y0 = top - QUIET_PAD_Y
+  const y1 = bottom + QUIET_PAD_Y
+  glApi.setQuiet({
+    x: ((x0 + x1) / 2 / w) * 2 - 1,
+    y: -((((y0 + y1) / 2) / h) * 2 - 1),
+    halfW: (x1 - x0) / w,
+    halfH: (y1 - y0) / h,
+  })
+  quietActive = true
+}
+
+provide("v6Quiet", {
+  /* target: a container whose element children hold the copy, or an explicit
+     element list when the copy sits deeper (the landing h1 wraps its lines) */
+  set: (target) => {
+    const list = Array.isArray(target) ? target : [...(target?.children ?? [])]
+    clearQuiet()
+    quietEls = list.filter(Boolean)
+    quietRight = 0
+    measureQuiet()
+    /* hero copy animates in on most pages — settle the zone once it has landed */
+    quietSettleTimers = [400, 1400].map((ms) => setTimeout(measureQuiet, ms))
+  },
+  clear: () => {
+    quietEls = []
+    quietRight = 0
+    clearQuiet()
+  },
+  /* set() always measures once; live refreshes are skipped under reduced
+     motion for the same reason as in onScroll */
+  refresh: () => { if (!prefersReducedMotion()) measureQuiet() },
+})
+
 watch(() => route.path, () => {
   accentOverride.value = null
   mobileOpen.value = false
+  quietEls = []
+  quietRight = 0
+  clearQuiet()
   onScroll()
 })
 watch(mobileOpen, async (open) => {
+  if (!open) openGroup.value = null
   document.documentElement.classList.toggle("v6-menu-open", open)
   await nextTick()
   if (open) mobilePanelEl.value?.querySelector("a")?.focus()
@@ -354,14 +512,23 @@ const onScroll = () => {
   }
   if (glApi && !prefersReducedMotion()) {
     glApi.setScroll(route.meta.v6DimBg ? 0 : Math.min(1, y / (window.innerHeight * 0.35)) * 0.8)
+    /* reduced motion keeps a still frame — leave its zone where it was measured
+       instead of repainting the whole scene on every scroll event */
+    measureQuiet()
   }
+}
+
+const onResize = () => {
+  quietRight = 0
+  measureQuiet()
 }
 
 const onKeydown = (event) => {
   if (event.key === "Escape" && mobileOpen.value) mobileOpen.value = false
   if (event.key !== "Tab" || !mobileOpen.value || !mobilePanelEl.value) return
 
-  const focusable = [...mobilePanelEl.value.querySelectorAll("a[href], button:not([disabled])")]
+  /* links inside a collapsed group carry tabindex="-1" and stay out of the cycle */
+  const focusable = [...mobilePanelEl.value.querySelectorAll('a[href]:not([tabindex="-1"]), button:not([disabled])')]
   if (!focusable.length) return
   const first = focusable[0]
   const last = focusable[focusable.length - 1]
@@ -394,6 +561,8 @@ onMounted(() => {
 
   window.addEventListener("scroll", onScroll, { passive: true })
   cleanups.push(() => window.removeEventListener("scroll", onScroll))
+  window.addEventListener("resize", onResize)
+  cleanups.push(() => window.removeEventListener("resize", onResize))
   window.addEventListener("keydown", onKeydown)
   cleanups.push(() => window.removeEventListener("keydown", onKeydown))
   onScroll()
@@ -401,6 +570,8 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   document.documentElement.classList.remove("v6-menu-open")
+  quietSettleTimers.forEach(clearTimeout)
+  quietSettleTimers = []
   cleanups.forEach((off) => off && off())
   cleanups = []
   glApi = null

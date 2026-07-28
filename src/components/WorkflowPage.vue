@@ -2,7 +2,7 @@
   <main ref="rootEl" class="v6-workflow">
     <!-- HERO -->
     <section class="v6wf-hero v6-band v6-band-snap">
-      <div class="v6wf-hero-copy">
+      <div ref="heroCopyEl" class="v6wf-hero-copy v6-copy-glow">
         <p class="v6-eyebrow v6-reveal"><i></i>Workflow &amp; automation</p>
         <h1 class="v6-h1 v6-reveal">Less <em>bookkeeping</em>, more <em>trading</em><b class="v6-dot">.</b></h1>
         <p class="v6wf-sub v6-reveal">
@@ -340,12 +340,18 @@ const onTabKey = (event) => {
   nextTick(() => tablistEl.value?.querySelectorAll("button")[next]?.focus())
 }
 
+const v6Quiet = inject("v6Quiet")
 const rootEl = ref(null)
+const heroCopyEl = ref(null)
 let cleanups = []
 
 onMounted(() => {
   cleanups.push(initV6Reveals(rootEl.value))
   cleanups.push(initMagnetic(rootEl.value))
+
+  /* the particle river thins out behind the hero copy — see v6Quiet in V6Shell */
+  v6Quiet?.set(heroCopyEl.value)
+  cleanups.push(() => v6Quiet?.clear())
 
   /* Full-viewport sections snap while this page is mounted — see v6.css.
      The showcase deliberately carries no snap point of its own; the pin below
@@ -407,18 +413,6 @@ onBeforeUnmount(() => {
   grid-template-columns: minmax(300px, 4fr) 8fr;
   gap: clamp(2rem, 4vw, 3.5rem);
   align-items: center;
-}
-.v6wf-hero::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    ellipse 48% 46% at 24% 55%,
-    color-mix(in srgb, var(--v6-bg) 80%, transparent) 42%,
-    transparent 100%
-  );
 }
 .v6wf-hero .v6-h1 {
   font-size: clamp(2.1rem, 3.5vw, 3.3rem);

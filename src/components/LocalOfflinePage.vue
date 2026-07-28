@@ -2,7 +2,7 @@
   <main ref="rootEl" class="v6-local">
     <!-- HERO -->
     <section class="v6lo-hero v6-band v6-band-snap">
-      <div class="v6lo-hero-copy">
+      <div ref="heroCopyEl" class="v6lo-hero-copy v6-copy-glow">
         <p class="v6-eyebrow v6-reveal"><i></i>Local &amp; offline</p>
         <h1 class="v6-h1 v6-reveal">Your records live <em>on your disk</em><b class="v6-dot">.</b></h1>
         <p class="v6lo-sub v6-reveal">
@@ -203,12 +203,18 @@ const BACKUP_STEPS = [
   },
 ]
 
+const v6Quiet = inject("v6Quiet")
 const rootEl = ref(null)
+const heroCopyEl = ref(null)
 let cleanups = []
 
 onMounted(() => {
   cleanups.push(initV6Reveals(rootEl.value))
   cleanups.push(initMagnetic(rootEl.value))
+
+  /* the particle river thins out behind the hero copy — see v6Quiet in V6Shell */
+  v6Quiet?.set(heroCopyEl.value)
+  cleanups.push(() => v6Quiet?.clear())
 
   /* full-viewport bands snap while this page is mounted — see v6.css */
   document.documentElement.classList.add("v6-snap")
@@ -233,16 +239,6 @@ onBeforeUnmount(() => {
   grid-template-columns: 1fr 1fr;
   gap: clamp(2rem, 4vw, 4rem);
   align-items: center;
-}
-/* soft scrim in page-bg color so the particle river stays quiet behind the copy
-   (same approach as the landing hero) */
-.v6lo-hero::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(58% 62% at 22% 46%, var(--v6-bg) 34%, transparent 78%);
 }
 .v6lo-hero .v6-h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
 .v6lo-sub {

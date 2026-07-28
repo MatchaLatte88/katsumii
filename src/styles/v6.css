@@ -24,7 +24,9 @@
   /* Shared vertical rhythm. Page heroes, flowing sections and document-style
      layouts intentionally use different bands, but every page draws from the
      same scale so adjacent content stays visually even. */
-  --v6-gutter: clamp(1.1rem, 4vw, 3rem);
+  /* index.html sets viewport-fit=cover, so the page draws under a notch — the
+     gutter absorbs the insets symmetrically to keep landscape content clear of it */
+  --v6-gutter: max(clamp(1.1rem, 4vw, 3rem), env(safe-area-inset-left), env(safe-area-inset-right));
   /* Shared content width so every page reads at the same rhythm as the
      home story pin — subsections may still constrain narrower. */
   --v6-container: 1500px;
@@ -357,6 +359,18 @@
   border-radius: 4px;
 }
 
+/* Glyph-hugging halo in page-bg colour, for copy sitting over the particle
+   river. Second half of the readability pair — the shader's quiet zone thins
+   the river out (see v6Quiet in V6Shell), this carries the rest. It follows the
+   letters, so unlike the scrims it replaced it has no edge that can show at any
+   viewport width. Filled buttons opt out — they bring their own contrast. */
+.v6-copy-glow {
+  text-shadow:
+    0 0 12px color-mix(in srgb, var(--v6-bg) 88%, transparent),
+    0 0 30px color-mix(in srgb, var(--v6-bg) 62%, transparent);
+}
+.v6-copy-glow .v6-btn { text-shadow: none; }
+
 /* ── shared type ── */
 .v6-eyebrow {
   display: inline-flex;
@@ -661,6 +675,39 @@
     letter-spacing: 0.01em;
     text-align: right;
   }
+  .v6-mobile-group-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 52px;
+    padding: 0;
+    border: 0;
+    border-bottom: 1px solid var(--v6-line);
+    background: none;
+    color: var(--v6-faint);
+    font-family: var(--v6-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .v6-mobile-group-head svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .v6-mobile-group-head.open { color: var(--v6-ink); }
+  .v6-mobile-group-head.open svg { transform: rotate(180deg); }
+  /* max-height instead of the 0fr/1fr grid trick — the value only needs to clear
+     the tallest group (4 rows a 52px) */
+  .v6-mobile-sub {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .v6-mobile-sub.open { max-height: 340px; }
+  .v6-mobile-sub-inner a { padding-left: 0.9rem; }
   .v6-mobile-panel > .v6-btn { width: 100%; justify-content: center; }
   .v6-mobile-note { margin-top: 1.25rem; text-align: center; }
   .v6-mobile-menu-enter-active,

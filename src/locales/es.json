@@ -968,6 +968,9 @@
       "switchToDark": "Cambiar al modo oscuro",
       "background": "Fondo"
     },
+    "legal": {
+      "contents": "Contenido"
+    },
     "backgrounds": {
       "honeycomb": "Panal",
       "lines": "Líneas"

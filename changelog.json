@@ -1,5 +1,19 @@
 [
   {
+    "version": "0.12.0",
+    "date": "2026-07-28",
+    "title": "A phone-first pass over navigation, pricing and the background",
+    "changes": [
+      "The mobile menu now groups the feature pages the same way the desktop menu does — two collapsible sections, one open at a time",
+      "Pricing comparison on phones shows one plan at a time with a picker instead of a table you have to scroll sideways",
+      "Legal pages get a collapsible table of contents on phones instead of a long list above the text",
+      "The particle background now thins out behind headlines and body copy instead of being covered by a soft patch, so no edge shows at any width",
+      "Fewer particles on narrow screens, where the old count read far too dense",
+      "The manual's chapter button steps out of the way over the footer and the cookie banner",
+      "Content keeps clear of notches and rounded corners in landscape"
+    ]
+  },
+  {
     "version": "0.11.0",
     "date": "2026-07-28",
     "title": "Every page on the V6 design, and a working social preview",

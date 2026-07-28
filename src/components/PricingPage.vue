@@ -73,21 +73,40 @@
         <p class="v6p-compare-sub v6-reveal">{{ t('pricingPage.comparison.description') }}</p>
       </div>
 
+      <!-- Phones show one plan column at a time — three plans plus the feature
+           labels cannot fit, and scrolling them sideways hides the row names.
+           The picker is mobile-only; from 641px up the full table is shown. -->
+      <div class="v6p-plan-picker">
+        <button
+          v-for="(col, ci) in COMPARE_PLANS"
+          :key="col"
+          type="button"
+          :class="{ active: activePlan === ci }"
+          :aria-pressed="activePlan === ci"
+          aria-controls="v6p-compare-table"
+          @click="activePlan = ci"
+        >
+          {{ col }}
+        </button>
+      </div>
+
       <div class="v6p-table-wrap v6-reveal">
-        <table class="v6p-table">
+        <table id="v6p-compare-table" class="v6p-table" :data-plan="activePlan">
           <thead>
             <tr>
               <th scope="col">{{ t('pricingPage.comparison.feature') }}</th>
-              <th v-for="col in ['Demo', 'Light', 'Professional']" :key="col" scope="col">{{ col }}</th>
+              <th v-for="(col, ci) in COMPARE_PLANS" :key="col" scope="col" :class="`v6p-col-${ci}`">{{ col }}</th>
             </tr>
           </thead>
           <tbody v-for="(group, gi) in comparisonGroups" :key="gi">
             <tr class="v6p-group">
-              <th scope="rowgroup" colspan="4">{{ group.category }}</th>
+              <!-- the span carries the sticky offset: the cell itself spans the full
+                   table, so it has no overhang for position:sticky to work with -->
+              <th scope="rowgroup" colspan="4"><span>{{ group.category }}</span></th>
             </tr>
             <tr v-for="(row, ri) in group.rows" :key="ri">
               <th scope="row">{{ row.label }}</th>
-              <td v-for="(val, vi) in [row.demo, row.light, row.pro]" :key="vi">
+              <td v-for="(val, vi) in [row.demo, row.light, row.pro]" :key="vi" :class="`v6p-col-${vi}`">
                 <svg v-if="val === true" class="v6p-check" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M2.2 7.4 5.4 10.6 11.8 3.6" />
                 </svg>
@@ -194,6 +213,11 @@ import { pagePath } from "../utils/routes.js"
 const { t, tm } = useI18n()
 
 const stripTerminalDot = (value) => String(value ?? "").replace(/[.。]\s*$/, "")
+
+/* comparison table columns, in table order — Professional is the default on mobile
+   because it is the highlighted tier on the cards above */
+const COMPARE_PLANS = ["Demo", "Light", "Professional"]
+const activePlan = ref(2)
 
 /* product facts every license shares — see Katsumii_overview.md */
 const EVERY_LICENSE = [
@@ -624,10 +648,31 @@ onBeforeUnmount(() => {
 .v6.light .v6p-table-wrap {
   background: linear-gradient(165deg, rgba(255, 255, 255, 0.72), rgba(238, 244, 240, 0.4));
 }
+.v6p-plan-picker { display: none; }
 .v6p-table {
   width: 100%;
-  min-width: 720px;
   border-collapse: collapse;
+}
+/* the sideways-scrolling full table starts where two columns stop fitting */
+@media (min-width: 641px) {
+  .v6p-table { min-width: 720px; }
+}
+/* 641–819px is the only band that still scrolls sideways (the table fits from
+   820px up) — pin the labels there so a scrolled row keeps its name. The opaque
+   fill breaks the wrap gradient, hence the tight upper bound. */
+@media (min-width: 641px) and (max-width: 819px) {
+  .v6p-table thead th:first-child,
+  .v6p-table tbody th[scope="row"] {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: var(--v6-bg-soft);
+  }
+  .v6p-group th span {
+    position: sticky;
+    left: 0;
+    display: inline-block;
+  }
 }
 .v6p-table th, .v6p-table td {
   padding: 0.85rem clamp(1.2rem, 2.4vw, 1.8rem);
@@ -711,5 +756,54 @@ onBeforeUnmount(() => {
   .v6p-table-wrap { border-radius: 14px; }
   .v6p-cta-actions { display: grid; grid-template-columns: 1fr; gap: 0.45rem; }
   .v6p-cta-actions .v6-quiet { justify-content: center; }
+
+  /* ── one plan at a time ── */
+  .v6p-plan-picker {
+    position: sticky;
+    top: 4.2rem;
+    z-index: 3;
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 0.9rem;
+    padding: 0.4rem;
+    border: 1px solid var(--v6-line);
+    border-radius: 999px;
+    /* opaque: the table scrolls underneath this */
+    background: var(--v6-bg-soft);
+  }
+  .v6p-plan-picker button {
+    flex: 1;
+    min-height: 44px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+    font-family: var(--v6-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--v6-muted);
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .v6p-plan-picker button.active {
+    border-color: var(--v6-line-strong);
+    background: color-mix(in srgb, var(--v6-gold) 12%, transparent);
+    color: var(--v6-gold);
+  }
+
+  .v6p-table-wrap { overflow-x: hidden; }
+  .v6p-table[data-plan="0"] .v6p-col-1,
+  .v6p-table[data-plan="0"] .v6p-col-2,
+  .v6p-table[data-plan="1"] .v6p-col-0,
+  .v6p-table[data-plan="1"] .v6p-col-2,
+  .v6p-table[data-plan="2"] .v6p-col-0,
+  .v6p-table[data-plan="2"] .v6p-col-1 { display: none; }
+  .v6p-table th, .v6p-table td { padding: 0.8rem 0.9rem; }
+  .v6p-table thead th:not(:first-child),
+  .v6p-table td { width: 38%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v6p-plan-picker button { transition: none; }
 }
 </style>

@@ -1021,6 +1021,9 @@
       "switchToDark": "Switch to dark mode",
       "background": "Background"
     },
+    "legal": {
+      "contents": "Contents"
+    },
     "backgrounds": {
       "honeycomb": "Honeycomb",
       "lines": "Lines"

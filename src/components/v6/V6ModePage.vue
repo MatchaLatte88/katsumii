@@ -2,7 +2,7 @@
   <main ref="rootEl" class="v6-mode-page">
     <!-- HERO -->
     <section class="v6m-hero">
-      <div class="v6m-hero-copy">
+      <div ref="heroCopyEl" class="v6m-hero-copy v6-copy-glow">
         <p class="v6-eyebrow v6-reveal"><i></i>{{ page.eyebrow }}</p>
         <h1 class="v6-h1 v6-reveal">
           {{ page.h1.pre }} <em>{{ page.h1.em }}</em><b class="v6-dot">.</b>
@@ -84,7 +84,7 @@
 </template>
 
 <script setup>
-import { computed, onBeforeUnmount, onMounted, ref } from "vue"
+import { computed, inject, onBeforeUnmount, onMounted, ref } from "vue"
 import { useRoute } from "vue-router"
 import { initMagnetic, initV6Reveals } from "../../v6/motion.js"
 import { normalizeLocale } from "../../utils/routes.js"
@@ -99,12 +99,18 @@ const lang = computed(() => {
   return normalizeLocale(raw)
 })
 
+const v6Quiet = inject("v6Quiet")
 const rootEl = ref(null)
+const heroCopyEl = ref(null)
 let cleanups = []
 
 onMounted(() => {
   cleanups.push(initV6Reveals(rootEl.value))
   cleanups.push(initMagnetic(rootEl.value))
+
+  /* the particle river thins out behind the hero copy — see v6Quiet in V6Shell */
+  v6Quiet?.set(heroCopyEl.value)
+  cleanups.push(() => v6Quiet?.clear())
 })
 
 onBeforeUnmount(() => {
@@ -123,20 +129,6 @@ onBeforeUnmount(() => {
   max-width: var(--v6-container);
   margin: 0 auto;
   padding: var(--v6-page-hero-top) var(--v6-gutter) var(--v6-page-hero-bottom);
-}
-/* soft scrim in page-bg color so the particle river stays quiet behind the copy
-   (same approach as the landing hero) */
-.v6m-hero::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    ellipse 52% 46% at 30% 55%,
-    color-mix(in srgb, var(--v6-bg) 80%, transparent) 42%,
-    transparent 100%
-  );
 }
 .v6m-hero .v6-h1 { font-size: clamp(2.5rem, 5.4vw, 4.4rem); }
 .v6m-hero-sub { max-width: 34rem; color: var(--v6-muted); }

@@ -3,7 +3,7 @@
     <!-- HERO -->
     <section class="v6-hero">
       <div class="v6-hero-inner">
-        <p class="v6-eyebrow v6-hero-brand v6-load v6-load-1">
+        <p class="v6-eyebrow v6-hero-brand v6-copy-glow v6-load v6-load-1">
           <img :src="asset('logo.png')" alt="" width="64" height="64" />
           <b>Katsumii<span class="v6-type-dot">.</span></b>
           <i></i>offline trading journal
@@ -12,17 +12,17 @@
           <span class="v6-hline"><span class="v6-hline-in v6-load-h1a"><span class="v6-crt" :class="{ on: glitchOn }" :data-text="glitchWord">{{ glitchWord }}</span> with</span></span>
           <span class="v6-hline"><span class="v6-hline-in v6-load-h1b v6-typed-line"><em>{{ typedBody }}<b class="v6-type-dot">{{ typedDot }}</b></em><b class="v6-type-cursor" aria-hidden="true">|</b></span></span>
         </h1>
-        <p class="v6-hero-sub v6-load v6-load-2">
+        <p class="v6-hero-sub v6-copy-glow v6-load v6-load-2">
           The market doesn't remember your trades. Katsumii does — every rule,
           every drawdown, every pattern, stored on your computer and nowhere else.
           <span class="v6-hero-ownership">No subscription. Buy it once. Own it forever.</span>
         </p>
-        <div class="v6-hero-actions v6-load v6-load-3">
+        <div class="v6-hero-actions v6-copy-glow v6-load v6-load-3">
           <span class="v6-btn v6-btn-static" aria-disabled="true">Coming soon</span>
           <a href="#story" class="v6-quiet v6-magnetic">See it breathe <span aria-hidden="true">↓</span></a>
         </div>
       </div>
-      <p class="v6-hero-hint v6-load v6-load-4" aria-hidden="true"><span></span>scroll</p>
+      <p class="v6-hero-hint v6-copy-glow v6-load v6-load-4" aria-hidden="true"><span></span>scroll</p>
     </section>
 
     <!-- MARQUEE -->
@@ -320,6 +320,7 @@ const asset = (path) => `${baseUrl}${path}`
 const route = useRoute()
 const isDark = inject("isDark")
 const v6Accent = inject("v6Accent")
+const v6Quiet = inject("v6Quiet")
 
 /* Story slides ship a light and a dark screenshot; pick by active theme. */
 const shot = (s) => asset(isDark.value ? s.imgD : s.imgL)
@@ -378,6 +379,9 @@ const startTypewriter = () => {
     } else {
       charIdx++
       typed.value = TYPE_WORDS[wordIdx].slice(0, charIdx)
+      /* headline grows — let the shell re-measure so the quiet zone covers
+         the widest word (it keeps the widest edge it has seen) */
+      requestAnimationFrame(() => v6Quiet?.refresh())
       if (charIdx === TYPE_WORDS[wordIdx].length) {
         scheduleHold(HOLD_MS)
       } else {
@@ -594,6 +598,13 @@ onMounted(() => {
 
   cleanups.push(initMagnetic(rootEl.value))
 
+  /* hand the hero copy to the shell so the particle river thins out behind it
+     — replaces the old scrim, which showed its edge once the copy went wide */
+  v6Quiet?.set([
+    ...rootEl.value.querySelectorAll(".v6-hero-brand, .v6-hline-in, .v6-hero-sub, .v6-hero-actions"),
+  ])
+  cleanups.push(() => v6Quiet?.clear())
+
   startTypewriter()
   cleanups.push(() => { clearTimeout(typingTimer); clearTimeout(holdMidpointTimer); onHoldMidpoint = null })
 
@@ -672,38 +683,8 @@ onMounted(() => {
         })
     }
 
-    const createHeroScrimFade = (element, property, distance = 140) => {
-      if (!element) return undefined
-
-      const scrimFade = gsap.to(element, {
-        [property]: 0,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".v6-hero",
-          start: "top top",
-          end: `+=${distance}`,
-          scrub: 0.25,
-        },
-      })
-
-      return () => {
-        scrimFade.scrollTrigger?.kill()
-        scrimFade.kill()
-        element.style.removeProperty(property)
-      }
-    }
-
-    /* responsive scroll behavior: hero scrims fade, desktop stages pin */
+    /* responsive scroll behavior: desktop stages pin */
     ScrollTrigger.matchMedia({
-      "(max-width: 640px)": () => createHeroScrimFade(
-        rootEl.value?.querySelector(".v6-hero-sub"),
-        "--v6-mobile-scrim-opacity",
-      ),
-      "(min-width: 641px)": () => createHeroScrimFade(
-        rootEl.value?.querySelector(".v6-hero"),
-        "--v6-hero-scrim-opacity",
-        220,
-      ),
       "(min-width: 901px)": () => {
         /* refreshPriority makes ScrollTrigger refresh in document order, so the
            manifesto triggers further down include the pin-spacer offsets —
@@ -763,7 +744,6 @@ onBeforeUnmount(() => {
 
 /* ── hero ── */
 .v6-hero {
-  --v6-hero-scrim-opacity: 1;
   position: relative;
   z-index: 1;
   min-height: 100svh;
@@ -784,22 +764,6 @@ onBeforeUnmount(() => {
   text-transform: none;
   line-height: 1;
   color: var(--v6-ink);
-}
-/* soft scrim in page-bg color so the particle river stays quiet behind the copy;
-   solid over the text, then fades out fully inside the section so no edge shows
-   against the tinted page background */
-.v6-hero::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  opacity: var(--v6-hero-scrim-opacity);
-  pointer-events: none;
-  background: radial-gradient(
-    ellipse 33% 14% at 22% 65%,
-    color-mix(in srgb, var(--v6-bg) 80%, transparent) 40%,
-    transparent 100%
-  );
 }
 .v6-hero-sub {
   max-width: 34rem;
@@ -1579,29 +1543,7 @@ onBeforeUnmount(() => {
 @media (max-width: 640px) {
   .v6-span-5, .v6-span-6, .v6-span-7 { grid-column: span 12; }
   .v6-hero { padding-top: 7.5rem; padding-bottom: 5.5rem; }
-  .v6-hero-sub {
-    --v6-mobile-scrim-opacity: 1;
-    position: relative;
-    z-index: 0;
-    isolation: isolate;
-    line-height: 1.65;
-  }
-  /* Keep the particle river quiet exactly where the mobile hero copy wraps. */
-  .v6-hero-sub::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset: -2.4rem -1.5rem;
-    opacity: var(--v6-mobile-scrim-opacity);
-    pointer-events: none;
-    background: radial-gradient(
-      ellipse at center,
-      var(--v6-bg) 0%,
-      var(--v6-bg) 54%,
-      color-mix(in srgb, var(--v6-bg) 92%, transparent) 68%,
-      transparent 86%
-    );
-  }
+  .v6-hero-sub { line-height: 1.65; }
   .v6-story-stack { gap: 2.6rem; }
   .v6-stack-item figcaption { padding-top: 0.85rem; }
   .v6-modes-stack { gap: 0.9rem; margin-top: 2rem; }

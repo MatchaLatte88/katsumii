@@ -33,6 +33,7 @@ export function createV6Background(canvas, { light = false, accent } = {}) {
   const reduced = prefersReducedMotion()
   const pointer = { x: 99, y: 99, tx: 99, ty: 99 }
   let scroll = 0
+  let quiet = null // { x, y, halfW, halfH } in NDC — see setQuiet
   let current = null
   let themeLight = !!light
   let raf = 0
@@ -51,9 +52,13 @@ export function createV6Background(canvas, { light = false, accent } = {}) {
     const halfH = Math.tan((camera.fov * Math.PI) / 360) * camera.position.z
 
     const area = window.innerWidth * window.innerHeight
+    /* phones read much denser at the same particle count — the tall, narrow
+       viewport packs the river into a small area. Thin the field and drop the
+       floor below 720px so per-pixel density matches the desktop look. */
+    const narrow = window.innerWidth < 720
     const count = reduced
       ? 1600
-      : Math.max(2500, Math.min(9000, Math.round(area / 240)))
+      : Math.max(narrow ? 1100 : 2500, Math.min(9000, Math.round(area / (narrow ? 330 : 240))))
 
     const aU = new Float32Array(count)
     const aLane = new Float32Array(count)
@@ -85,6 +90,13 @@ export function createV6Background(canvas, { light = false, accent } = {}) {
       uTime: { value: reduced ? 14 : 0 },
       uScroll: { value: 0 },
       uPointer: { value: { x: 99, y: 99 } },
+      /* xy = quiet-zone center, zw = its half-size, all in NDC. z < 0 disables:
+         the SDF below then never returns a distance inside the feather band. */
+      uQuiet: { value: { x: 0, y: 0, z: -1, w: -1 } },
+      uQuietFade: { value: 0.42 },
+      /* what's left of the river inside the zone — a full cut-out punches a
+         visible hole on phones, where the copy fills most of the viewport */
+      uQuietFloor: { value: 0.15 },
       uPixelRatio: { value: 1 },
       uLight: { value: themeLight ? 1 : 0 },
       uColorA: { value: new Color(accentA) },
@@ -101,6 +113,9 @@ export function createV6Background(canvas, { light = false, accent } = {}) {
         uniform float uTime;
         uniform float uScroll;
         uniform vec2 uPointer;
+        uniform vec4 uQuiet;
+        uniform float uQuietFade;
+        uniform float uQuietFloor;
         uniform float uPixelRatio;
         uniform mediump float uLight;
         attribute float aU;
@@ -134,12 +149,20 @@ export function createV6Background(canvas, { light = false, accent } = {}) {
           pos.xy = mix(pos.xy, uPointer, infl * 0.3);
 
           vec4 mv = modelViewMatrix * vec4(pos, 1.0);
-          gl_Position = projectionMatrix * mv;
+          vec4 clip = projectionMatrix * mv;
+          gl_Position = clip;
           gl_PointSize = aSize * uPixelRatio * (2.4 / -mv.z);
+
+          // quiet zone: the river thins out over the copy instead of the page
+          // dimming it — a box SDF in NDC, so it tracks the real DOM text box
+          vec2 ndc = clip.xy / max(clip.w, 0.0001);
+          vec2 qd = abs(ndc - uQuiet.xy) - uQuiet.zw;
+          float qDist = length(max(qd, 0.0)) + min(max(qd.x, qd.y), 0.0);
+          float quiet = mix(uQuietFloor, 1.0, smoothstep(0.0, uQuietFade, qDist));
 
           float tw = 0.62 + 0.38 * sin(uTime * (1.2 + aSpeed) + aU * 43.0);
           float riverA = (0.2 + 0.8 * env) * tw * (1.0 + 1.6 * uLight);
-          vAlpha = riverA * (1.0 - uScroll);
+          vAlpha = riverA * (1.0 - uScroll) * quiet;
           vShade = aShade;
         }
       `,
@@ -181,6 +204,13 @@ export function createV6Background(canvas, { light = false, accent } = {}) {
         uniforms.uPointer.value.y = smooth.y
       },
       setScroll(v) { uniforms.uScroll.value = v },
+      setQuiet(r) {
+        const u = uniforms.uQuiet.value
+        u.x = r ? r.x : 0
+        u.y = r ? r.y : 0
+        u.z = r ? r.halfW : -1
+        u.w = r ? r.halfH : -1
+      },
       resize(w, h, dpr) {
         camera.aspect = w / h
         camera.updateProjectionMatrix()
@@ -226,6 +256,7 @@ export function createV6Background(canvas, { light = false, accent } = {}) {
     current = buildRiver()
     resize()
     current.setScroll(scroll)
+    current.setQuiet(quiet)
     if (reduced) renderStill()
   }
   rebuild()
@@ -260,6 +291,8 @@ export function createV6Background(canvas, { light = false, accent } = {}) {
       gsap.to(u.uColorB.value, { r: cb.r, g: cb.g, b: cb.b, duration: 0.9, ease: "power2.out" })
     },
     setScroll(v) { scroll = v; current?.setScroll(v) },
+    /* rect = { x, y, halfW, halfH } in NDC (-1..1, y up), or null to disable */
+    setQuiet(rect) { quiet = rect; current?.setQuiet(rect); invalidate() },
     dispose() {
       stop()
       window.removeEventListener("resize", resize)

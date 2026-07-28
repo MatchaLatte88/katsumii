@@ -129,7 +129,7 @@
     </div>
 
     <!-- MOBILE FAB -->
-    <button type="button" class="v6man-fab" @click="sidebarOpen = !sidebarOpen">
+    <button type="button" class="v6man-fab" :class="{ 'is-hidden': fabHidden }" @click="sidebarOpen = !sidebarOpen">
       <svg v-if="sidebarOpen" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
         <path d="m4 4 8 8M12 4l-8 8" />
       </svg>
@@ -144,8 +144,10 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref } from "vue"
 import { useI18n } from "vue-i18n"
+import { useConsent } from "../composables/useConsent.js"
 
 const { t, tm } = useI18n()
+const { bannerVisible } = useConsent()
 
 const TOPICS = [
   {
@@ -216,6 +218,13 @@ const activeTopic = ref(null)
 const activeArticle = ref(null)
 const sidebarOpen = ref(false)
 const searchQuery = ref("")
+
+/* The FAB floats over the viewport, so it lands on top of the footer links once the
+   document runs out — and the consent banner covers it on a first visit. Hide it for
+   both instead of nudging it around: the offsets differ per locale and banner height. */
+const footerVisible = ref(false)
+const fabHidden = computed(() => footerVisible.value || bannerVisible.value)
+let footerObserver = null
 
 const pad = (n) => String(n).padStart(2, "0")
 const topicIndex = (topic) => TOPICS.findIndex((tp) => tp.id === topic.id)
@@ -306,10 +315,18 @@ onMounted(() => {
     activeArticle.value = found.articles.find((a) => a.id === params.get("article")) || found.articles[0]
   }
   window.addEventListener("keydown", onKeydown)
+
+  /* the footer lives in V6Shell, one level above this page */
+  const footer = document.querySelector(".v6-footer")
+  if (footer) {
+    footerObserver = new IntersectionObserver(([entry]) => { footerVisible.value = entry.isIntersecting })
+    footerObserver.observe(footer)
+  }
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener("keydown", onKeydown)
+  footerObserver?.disconnect()
 })
 </script>
 
@@ -631,12 +648,14 @@ onBeforeUnmount(() => {
 
   .v6man-fab {
     position: fixed;
-    bottom: 1.4rem;
-    left: 1.4rem;
+    bottom: calc(1.4rem + env(safe-area-inset-bottom));
+    left: max(1.4rem, env(safe-area-inset-left));
     z-index: 42;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.55rem;
+    min-height: 44px;
     padding: 0.7rem 1.1rem;
     border: 1px solid var(--v6-line-strong);
     border-radius: 999px;
@@ -651,5 +670,17 @@ onBeforeUnmount(() => {
   }
   .v6.light .v6man-fab { background: rgba(250, 252, 253, 0.95); }
   .v6man-fab svg { width: 14px; height: 14px; }
+  .v6man-fab {
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .v6man-fab.is-hidden {
+    opacity: 0;
+    transform: translateY(0.5rem);
+    pointer-events: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v6man-fab { transition: none; }
 }
 </style>

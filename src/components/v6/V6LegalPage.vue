@@ -1,16 +1,29 @@
 <template>
   <main class="v6-legal">
     <div class="v6l-layout">
-      <!-- TOC -->
+      <!-- TOC — a sticky sidebar on desktop, a collapsible box above the text on mobile -->
       <aside class="v6l-toc">
         <p class="v6l-toc-head">{{ t(`${prefix}.hero.title`) }}</p>
-        <nav :aria-label="t(`${prefix}.hero.title`)">
+        <button
+          type="button"
+          class="v6l-toc-toggle"
+          :aria-expanded="tocOpen"
+          aria-controls="v6l-toc-nav"
+          @click="tocOpen = !tocOpen"
+        >
+          <span>{{ t('common.legal.contents') }}</span>
+          <span class="v6l-toc-count">{{ pad(sections.length) }}</span>
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" :class="{ open: tocOpen }" aria-hidden="true">
+            <path d="m3 4.5 3 3 3-3" />
+          </svg>
+        </button>
+        <nav v-show="tocOpen" id="v6l-toc-nav" :aria-label="t(`${prefix}.hero.title`)">
           <a
             v-for="(section, i) in sections"
             :key="section.title"
             :href="`#section-${i}`"
             :class="{ active: activeSection === i }"
-            @click.prevent="scrollTo(i)"
+            @click.prevent="selectSection(i)"
           >
             <span class="v6l-toc-idx">{{ pad(i + 1) }}</span>
             <span>{{ tocLabel(section.title) }}</span>
@@ -64,6 +77,13 @@ const pad = (n) => String(n).padStart(2, "0")
 /* strip the leading "1. " numbering — the TOC renders its own index */
 const tocLabel = (title) => title.replace(/^\d+\.\s*/, "")
 
+/* The TOC is a permanent sidebar from 901px up and a collapsed box below that —
+   above the text, where it is actually reachable, instead of behind the document. */
+const DESKTOP_TOC = "(min-width: 901px)"
+const desktopToc = window.matchMedia(DESKTOP_TOC)
+const tocOpen = ref(desktopToc.matches)
+const syncToc = () => { tocOpen.value = desktopToc.matches }
+
 // ---------- scrollspy ----------
 const sectionEls = ref([])
 const activeSection = ref(0)
@@ -74,6 +94,11 @@ const scrollTo = (i) => {
   if (!el) return
   const top = el.getBoundingClientRect().top + window.scrollY - 96
   window.scrollTo({ top, behavior: "smooth" })
+}
+
+const selectSection = (i) => {
+  if (!desktopToc.matches) tocOpen.value = false
+  scrollTo(i)
 }
 
 const observe = () => {
@@ -91,9 +116,15 @@ const observe = () => {
   sectionEls.value.forEach((el) => observer.observe(el))
 }
 
-onMounted(observe)
+onMounted(() => {
+  observe()
+  desktopToc.addEventListener("change", syncToc)
+})
 watch(locale, () => requestAnimationFrame(observe))
-onBeforeUnmount(() => observer?.disconnect())
+onBeforeUnmount(() => {
+  observer?.disconnect()
+  desktopToc.removeEventListener("change", syncToc)
+})
 </script>
 
 <style scoped>
@@ -150,6 +181,7 @@ onBeforeUnmount(() => observer?.disconnect())
   font-variant-numeric: tabular-nums;
 }
 .v6l-toc a.active .v6l-toc-idx { color: var(--v6-gold); }
+.v6l-toc-toggle { display: none; }
 
 /* ── content ── */
 .v6l-hero { margin-bottom: clamp(2.5rem, 6vh, 4rem); }
@@ -204,9 +236,68 @@ onBeforeUnmount(() => observer?.disconnect())
   opacity: 0.7;
 }
 
-/* ── responsive ── */
+/* ── responsive ──
+   `display: contents` dissolves the content column so hero, TOC and sections
+   become siblings in the single-column grid — that is what lets the TOC sit
+   between the title and the first section instead of behind the whole document. */
 @media (max-width: 900px) {
-  .v6l-layout { grid-template-columns: 1fr; }
-  .v6l-toc { position: static; max-height: none; order: 2; margin-top: 3rem; }
+  .v6l-layout { grid-template-columns: 1fr; gap: 0; }
+  .v6l-content { display: contents; }
+  .v6l-hero { order: 1; }
+  .v6l-toc { order: 2; }
+  .v6l-section { order: 3; }
+
+  .v6l-toc {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    margin-bottom: 2.5rem;
+    border: 1px solid var(--v6-line);
+    border-radius: 14px;
+  }
+  .v6l-toc-head { display: none; }
+  .v6l-toc-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    width: 100%;
+    min-height: 52px;
+    padding: 0 1rem;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    color: var(--v6-ink);
+    font-family: var(--v6-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  .v6l-toc-count {
+    color: var(--v6-gold);
+    font-variant-numeric: tabular-nums;
+  }
+  .v6l-toc-toggle svg {
+    width: 14px;
+    height: 14px;
+    margin-left: auto;
+    color: var(--v6-faint);
+    transition: transform 0.25s ease;
+  }
+  .v6l-toc-toggle svg.open { transform: rotate(180deg); }
+  .v6l-toc nav {
+    padding: 0.3rem 0.4rem 0.5rem;
+    border-top: 1px solid var(--v6-line);
+  }
+  .v6l-toc a {
+    align-items: center;
+    min-height: 44px;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.86rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v6l-toc-toggle svg { transition: none; }
 }
 </style>

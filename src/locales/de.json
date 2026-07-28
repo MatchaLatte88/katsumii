@@ -1021,6 +1021,9 @@
       "switchToDark": "Zum dunklen Modus wechseln",
       "background": "Hintergrund"
     },
+    "legal": {
+      "contents": "Inhalt"
+    },
     "backgrounds": {
       "honeycomb": "Waben",
       "lines": "Linien"
