@@ -1,5 +1,20 @@
 [
   {
+    "version": "0.14.0",
+    "date": "2026-08-05",
+    "title": "A fact-check across every page, and a FAQ that answers more",
+    "changes": [
+      "Broker sync is now described the way it works: you press Sync now and Katsumii pulls your fills — nothing ever runs in the background",
+      "Landing, pricing, features and the FAQ now name the edition a feature belongs to, so imports, broker sync, HTML reports and automatic backups no longer read as if every licence included them",
+      "The FAQ answers four questions it was missing — trying the app for free, updates after buying, how many devices one licence covers, and what to do if your data is lost",
+      "Its categories went from nine to five, so picking one in the sidebar leads to a real list instead of a single question",
+      "The four discipline pages lost a dozen repeated legal side-notes; the ones that carried real information moved into the disclaimer, and their status labels now use one consistent vocabulary",
+      "Funded is discipline 01 everywhere — the feature hub had numbered it differently from the landing page, the navigation and the pages themselves — and its Journaling and Imports cards finally link to their detail page",
+      "Demo, Light and Professional are described by what they actually contain, down to the five trades the free Demo allows",
+      "The sitemap no longer stamps all 68 URLs with the build date, so search engines can see when a page genuinely changed"
+    ]
+  },
+  {
     "version": "0.13.0",
     "date": "2026-07-28",
     "title": "Screenshots open full screen, with a 100% zoom",

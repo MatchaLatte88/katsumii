@@ -13,10 +13,10 @@
         </p>
         <ul class="v6-card-chips v6wf-chips v6-reveal">
           <li>CSV &amp; FXReplay imports</li>
-          <li>Broker API sync</li>
+          <li>Broker sync on demand</li>
           <li>Daily journal &amp; calendar</li>
           <li>Built-in trader tools</li>
-          <li>Offline HTML reports</li>
+          <li>Offline HTML reports (Pro)</li>
         </ul>
         <div class="v6wf-actions v6-reveal">
           <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-magnetic">Get Katsumii <span aria-hidden="true">→</span></RouterLink>
@@ -43,8 +43,9 @@
         <p class="v6wf-section-sub v6-reveal">
           Every broker exports data a little differently — Katsumii speaks the common
           formats and connects to the platforms most prop-firm traders actually use.
-          Import once, map columns once, and future syncs land straight in the right
-          mode against the right account.
+          Import once, map columns once, and every later sync lands straight in the right
+          mode against the right account — pulled the moment you press Sync now, never
+          while your back is turned.
         </p>
         <div class="v6wf-rows v6-reveal">
           <div v-for="row in IMPORT_ROWS" :key="row.name" class="v6wf-row plain">
@@ -65,7 +66,9 @@
             <span class="v6wf-tag" :class="{ soon: p.soon }">{{ p.tag }}</span>
           </li>
         </ul>
-        <p class="v6wf-panel-foot">Symbol-to-asset mapping remembers what you told it — repeat imports just work.</p>
+        <!-- the six entries sit at two different tiers, so the list needs the split
+             spelled out rather than reading as one uniform feature set -->
+        <p class="v6wf-panel-foot">Symbol-to-asset mapping remembers what you told it — repeat imports just work. CSV and FXReplay imports ship with Light; the four API connections are Professional.</p>
       </div>
     </section>
 
@@ -117,8 +120,8 @@
             offline report.
           </p>
           <p class="v6wf-note v6-reveal">
-            Automated local backups run in the background on a schedule you set — restore
-            your last known-good state with one click.
+            On the paid licences, local backups run in the background on the schedule you
+            set — restore your last known-good state with one click.
           </p>
         </div>
       </div>
@@ -230,7 +233,7 @@ const IMPORT_ROWS = [
 ]
 
 const PROVIDERS = [
-  { name: "MetaTrader 5",     copy: "Reads closed trades from a running local MT5 terminal (Windows).", tag: "Windows" },
+  { name: "MetaTrader 5",     copy: "Reads closed trades from a running local MT5 terminal on your click (Windows).", tag: "Windows" },
   { name: "ProjectX / TopstepX", copy: "ProjectX Gateway API — sync futures fills across mapped accounts.", tag: "API" },
   { name: "Capital.com",      copy: "REST API for demo and live accounts — closed trades on demand.",     tag: "API" },
   { name: "OANDA",            copy: "v20 REST API for practice and live accounts — FX fills, mapped in.", tag: "API" },
@@ -270,7 +273,7 @@ const TOOLS = [
   { kicker: "T6", name: "Futures contract specs", copy: "Tick size, tick value, expiry, session — for every contract you actually trade." },
   { kicker: "R1", name: "HTML performance report", copy: "Self-contained offline report from the current filters — equity curve, calendar heatmap, breakdowns, key metrics. Dark and light modes ship inside the file." },
   { kicker: "R2", name: "CSV export",             copy: "Export the filtered trade log for spreadsheets, tax software or your own analysis pipeline." },
-  { kicker: "R3", name: "Automated backups",      copy: "Weekly and monthly backups run in the background. Keep the last N, restore the latest with one click." },
+  { kicker: "R3", name: "Automated backups",      copy: "Backups run in the background on the schedule you pick — weekly, monthly or both. Decide how many copies to keep, restore the latest with one click." },
 ]
 
 /* Tabbed showcase: the four shots swap in place, driven by the step list.
@@ -301,7 +304,7 @@ const TOOL_SHOTS = [
   {
     key: "backup", pre: "backup", suf: "",
     name: "Automated backups",
-    copy: "Weekly and monthly snapshots run in the background. Keep the last N, restore the latest with one click.",
+    copy: "Snapshots run in the background on the schedule you pick. Decide how many copies to keep, restore the latest with one click.",
     alt: "Katsumii backup settings with scheduled local snapshots",
     caption: "Backups — scheduled, local, one-click restore",
   },

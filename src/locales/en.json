@@ -268,18 +268,6 @@
     },
     "modules": [
       {
-        "shortTitle": "Prop Challenges",
-        "kicker": "Evaluation",
-        "title": "Prop-Firm Challenges",
-        "benefit": "Track challenge progress, rule pressure, and evaluation context without mixing it into your funded or personal trading history.",
-        "points": [
-          "Separate challenge mode for evaluation trades.",
-          "Profit targets, drawdown limits, and rule status in view.",
-          "Minimum trading days and inactivity windows stay visible.",
-          "Progress context connects directly to logged trades."
-        ]
-      },
-      {
         "shortTitle": "Funded",
         "kicker": "Live Control",
         "title": "Funded Accounts",
@@ -289,6 +277,18 @@
           "Daily loss, total drawdown, and risk limits stay readable.",
           "Account-level PnL and trade history support review routines.",
           "Alerts help keep time-based rules on your radar."
+        ]
+      },
+      {
+        "shortTitle": "Prop Challenges",
+        "kicker": "Evaluation",
+        "title": "Prop-Firm Challenges",
+        "benefit": "Track challenge progress, rule pressure, and evaluation context without mixing it into your funded or personal trading history.",
+        "points": [
+          "Separate challenge mode for evaluation trades.",
+          "Profit targets, drawdown limits, and rule status in view.",
+          "Minimum trading days and inactivity windows stay visible.",
+          "Progress context connects directly to logged trades."
         ]
       },
       {
@@ -307,12 +307,12 @@
         "shortTitle": "Backtesting",
         "kicker": "Research",
         "title": "Backtesting",
-        "benefit": "Use test data and structured reviews to validate ideas before treating them like live trading signals.",
+        "benefit": "Test ideas in dedicated sessions, with FXReplay and CSV exports feeding the same review tools your live trades use.",
         "points": [
-          "Separate research mindset from live account decisions.",
+          "Sessions instead of accounts — replay work stays separate.",
+          "FXReplay and CSV exports import straight into a session.",
           "Compare setup quality, R-multiples, and repeatability.",
-          "Review strategy behavior across sessions and conditions.",
-          "Turn tested patterns into journal-ready rules."
+          "Old sessions stay archived for later comparison."
         ]
       },
       {
@@ -343,12 +343,12 @@
         "shortTitle": "Imports",
         "kicker": "Data Flow",
         "title": "Imports & Integrations",
-        "benefit": "Bring trades into Katsumii with manual control, while keeping platform-specific integrations optional and transparent.",
+        "benefit": "Bring trades in the way that fits your broker — a CSV wizard for anything, one-click sync for four platforms.",
         "points": [
-          "Manual imports support a controlled journal workflow.",
-          "CSV and supported API paths fit different broker setups.",
-          "Integration availability can vary by platform and broker.",
-          "Imported data stays part of the same local review system."
+          "CSV wizard with ready-made broker presets.",
+          "One-click sync for MT5, ProjectX, Capital.com and OANDA (Professional).",
+          "FXReplay exports land in backtest sessions.",
+          "Sync runs when you press it — nothing polls in the background."
         ]
       },
       {
@@ -366,8 +366,8 @@
     ],
     "footerCta": {
       "label": "Still comparing?",
-      "headline": "Use the hub as your map.",
-      "description": "The detail routes are prepared for deeper pages. For now, this overview helps you decide which Katsumii workflow matters most to your trading process.",
+      "headline": "Eight workflows. One local file.",
+      "description": "Every area above is part of the same app — no add-ons, no modules to buy separately. The editions differ in how much of it you unlock.",
       "primary": "Compare editions",
       "secondary": "Open manual"
     },
@@ -642,8 +642,8 @@
     "hero": {
       "label": "Pricing",
       "headlineA": "One-time payment.",
-      "headlineB": "Lifetime edge.",
-      "description": "No subscriptions, no cloud dependency. Choose the version that fits your trading workflow and own it forever."
+      "headlineB": "Yours forever.",
+      "description": "No subscriptions, no cloud account, no data leaving your machine. Pick the version that fits how you trade."
     },
     "nav": {
       "home": "Back Home",
@@ -655,14 +655,14 @@
         "name": "Demo",
         "price": "$0",
         "seats": "1",
-        "seatsLabel": "sample account",
+        "seatsLabel": "account",
         "entries": "5",
-        "entriesLabel": "sample trades included",
+        "entriesLabel": "trade entries",
         "inclusionLabel": null,
-        "description": "Explore the full workflow with sample data. No account, no commitment.",
+        "description": "Try the real app with sample data — one account and five trades of your own. No sign-up, no commitment.",
         "features": [
-          "Full UI access with sample data",
-          "All journal features",
+          "See every screen with sample data",
+          "Log up to 5 trades yourself",
           "Basic analytics overview",
           "Runs completely offline"
         ],
@@ -682,7 +682,9 @@
           "Unlimited trade entries",
           "Screenshot journaling",
           "Tags, setups & filters",
-          "Core statistics & reports",
+          "CSV & FXReplay imports",
+          "Backtest sessions",
+          "Core statistics & analytics",
           "Calendar & history view",
           "Lifetime license"
         ],
@@ -702,6 +704,8 @@
           "Everything in Light",
           "Prop account management",
           "Challenge progress tracking",
+          "One-click broker sync: MT5, ProjectX, Capital.com, OANDA",
+          "HTML performance reports",
           "Advanced strategy breakdowns",
           "Consistency metrics",
           "Rule tracking & alerts"
@@ -734,7 +738,7 @@
           "rows": [
             {
               "label": "Trade entries",
-              "demo": "5 sample trades",
+              "demo": "max. 5",
               "light": "Unlimited",
               "pro": "Unlimited"
             },
@@ -769,7 +773,7 @@
           "rows": [
             {
               "label": "Personal accounts",
-              "demo": "1 (read-only)",
+              "demo": "1",
               "light": "max. 6",
               "pro": "Unlimited"
             },
@@ -787,6 +791,29 @@
             },
             {
               "label": "Rule guardrails & alerts",
+              "demo": false,
+              "light": false,
+              "pro": true
+            }
+          ]
+        },
+        {
+          "category": "Imports & backtesting",
+          "rows": [
+            {
+              "label": "Backtest sessions",
+              "demo": false,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "CSV & FXReplay imports",
+              "demo": false,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "One-click broker sync (MT5, ProjectX, Capital.com, OANDA)",
               "demo": false,
               "light": false,
               "pro": true
@@ -831,6 +858,12 @@
               "demo": false,
               "light": false,
               "pro": true
+            },
+            {
+              "label": "HTML performance reports",
+              "demo": false,
+              "light": false,
+              "pro": true
             }
           ]
         },
@@ -867,10 +900,14 @@
     },
     "cta": {
       "label": "Ready to start?",
-      "headline": "Build your edge with clarity.",
+      "headline": "You already do the work. Start keeping the record.",
       "description": "Start with the free demo or go straight to the version that fits your workflow. Buy it, own it. No subscriptions, ever.",
       "backHome": "Back Home",
       "seeFeatures": "See All Features"
+    },
+    "launch": {
+      "free": "Free at launch",
+      "paid": "Available at launch"
     }
   },
   "footer": {
@@ -928,44 +965,49 @@
     },
     "items": [
       {
-        "category": "General",
+        "category": "Getting started",
         "question": "What is Katsumii?",
-        "answer": "Katsumii is a trading journal for logging trades, accounts, setups, screenshots, journal notes, performance statistics, and reports."
+        "answer": "Katsumii is a trading journal that runs on your own computer. It keeps funded, challenge, personal and backtest trading in four separate modes, tracks the prop-firm rules each account lives under, and turns your logged trades into statistics you can act on. Your data stays in one local file — there is no cloud account."
       },
       {
-        "category": "General",
+        "category": "Getting started",
+        "question": "Can I try Katsumii before buying?",
+        "answer": "Yes. The free Demo runs the real application with sample data, so you can open every screen and see how it works. You can log up to five trades of your own in one account. No sign-up and no payment details are required."
+      },
+      {
+        "category": "Getting started",
         "question": "Which operating systems are supported?",
         "answer": "Katsumii supports Windows 10 or newer and macOS 12 Monterey or newer. Windows 11 is recommended, and both Intel/AMD 64-bit and Apple Silicon systems are supported."
       },
       {
-        "category": "General",
-        "question": "Does Katsumii work on macOS?",
-        "answer": "Yes. Katsumii supports macOS 12 Monterey or newer. MetaTrader 5 sync is Windows-only, but macOS users can use manual imports, analytics, reports, backups, and supported API integrations. API usage may be paid, depends on your broker, and requires a matching API key."
+        "category": "Getting started",
+        "question": "Is anything different on macOS?",
+        "answer": "Only one thing: MetaTrader 5 sync needs a running MT5 terminal and therefore Windows. Everything else — manual and CSV imports, the other broker connections, analytics, reports and backups — works identically on macOS. API access may be paid, depends on your broker, and requires a matching API key."
       },
       {
         "category": "License",
         "question": "Is Katsumii a subscription or a one-time purchase?",
-        "answer": "Katsumii is designed as a one-time license. You pay once and can use the app locally with no monthly fees."
+        "answer": "A one-time purchase. You buy the licence once and keep using the app locally — no monthly fees, and nothing expires. Three editions are available: a free Demo, Light and Professional."
       },
       {
-        "category": "Usage",
+        "category": "License",
+        "question": "Do I get updates after buying?",
+        "answer": "Yes. Every update within the version you bought is included at no extra cost. A future major version would be a separate purchase."
+      },
+      {
+        "category": "License",
+        "question": "On how many devices can I use my licence?",
+        "answer": "A licence can be installed up to five times, which covers your desktop, a laptop and a replacement machine. Each installation keeps its own local database — the app does not sync between them."
+      },
+      {
+        "category": "Trading modes",
         "question": "Which account types are supported?",
-        "answer": "Katsumii supports funded accounts, challenge/demo accounts, and personal accounts. Each mode keeps its own accounts and trades separate."
+        "answer": "Katsumii supports funded accounts, challenge/demo accounts, and personal accounts. A fourth mode covers backtesting, which uses sessions instead of accounts. Each mode keeps its own accounts and trades separate."
       },
       {
-        "category": "Prop Trading",
+        "category": "Trading modes",
         "question": "Can I track prop firm challenges?",
         "answer": "Yes. Challenge accounts can model profit targets, max loss, daily loss limits, trailing drawdown, activity requirements, consistency rules, time limits, and other prop firm rules."
-      },
-      {
-        "category": "Privacy",
-        "question": "Where is my data stored?",
-        "answer": "All data lives locally on your device. The backend uses a local SQLite database, and images are stored in local upload folders."
-      },
-      {
-        "category": "Privacy",
-        "question": "Does Katsumii need an internet connection?",
-        "answer": "Not for the core journal. Journal, accounts, trades, and reports are fully local features, and your core data is available offline. Internet is required for product activation, updates, API sync, and integrations."
       },
       {
         "category": "Features",
@@ -973,24 +1015,39 @@
         "answer": "You can store P&L, risk, direction, size, asset, setup, planned R:R, pips/points, entry/exit, times, duration, fees, mood, mistakes, tags, timeframe, color, links, notes, and up to four screenshots."
       },
       {
-        "category": "Import / Export",
+        "category": "Features",
         "question": "Can I import trades from CSV?",
-        "answer": "Yes. The CSV import wizard guides you through upload, column mapping, preview, duplicate checking, and final import. Ready-made presets for Tradovate, NinjaTrader, Rithmic, TopstepX, and Interactive Brokers are included."
+        "answer": "Yes. The import wizard walks you through upload, column mapping, preview, duplicate checking and the final import. Ready-made presets recognise the common broker exports; anything else you map once and save as your own preset. CSV import comes with the Light edition, the direct broker connections with Professional."
       },
       {
-        "category": "Statistics",
+        "category": "Features",
         "question": "What statistics does Katsumii calculate?",
         "answer": "P&L, win rate, profit factor, effective R:R, planned R:R, expectancy, trade count, average win/loss, best/worst trade, streaks, winning days, drawdown distance, daily loss distance, and consistency metrics."
       },
       {
         "category": "Features",
         "question": "Can I create reports?",
-        "answer": "Yes. Katsumii includes a strategy report and an HTML performance report — an offline-capable document with equity curve, calendar heatmap, and breakdowns by day, session, setup, and more."
+        "answer": "Yes. The Professional edition generates a self-contained HTML performance report — an offline document with equity curve, calendar heatmap and breakdowns by day, session, setup and more. It follows your active filters, so you can export the statistics for a single strategy, account or period as a report of its own."
       },
       {
-        "category": "Data",
+        "category": "Data & privacy",
+        "question": "Where is my data stored?",
+        "answer": "All data lives locally on your device. The backend uses a local SQLite database, and images are stored in local upload folders."
+      },
+      {
+        "category": "Data & privacy",
+        "question": "Does Katsumii need an internet connection?",
+        "answer": "Not for the core journal. Journal, accounts, trades, and reports are fully local features, and your core data is available offline. Internet is required for product activation, updates, API sync, and integrations."
+      },
+      {
+        "category": "Data & privacy",
         "question": "Are backups supported?",
-        "answer": "Yes. Katsumii supports backup export and import, last-backup restore, custom backup paths, retention settings, and automatic backups (weekly or monthly)."
+        "answer": "Yes. The paid editions write automatic backups on the schedule you choose — weekly, monthly or both — into a folder you pick, keep as many copies as you set, and restore the last one with a single click. Backups can also be exported and imported by hand."
+      },
+      {
+        "category": "Data & privacy",
+        "question": "What happens if I lose my data?",
+        "answer": "Restore the last backup from inside the app, or copy a snapshot back to where the database belongs — Katsumii picks it up on the next start. Because everything sits in one SQLite file, a copy on a second drive is already a complete safety net."
       }
     ],
     "brandSubtitle": "FAQ",

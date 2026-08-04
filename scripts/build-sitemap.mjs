@@ -2,6 +2,7 @@
 // Run via `node scripts/build-sitemap.mjs` — the prebuild hook does this
 // automatically before `vite build`, so `npm run build` always ships a fresh file.
 
+import { execFileSync } from "node:child_process"
 import { writeFileSync, mkdirSync } from "node:fs"
 import { dirname, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
@@ -40,7 +41,26 @@ const PAGES = [
   { path: "/impressum",            priority: "0.3", changefreq: "yearly" },
 ]
 
-const today = new Date().toISOString().slice(0, 10)
+// lastmod has to describe the last real change, not the moment of the build.
+// Using `new Date()` restamped all 68 URLs on every build — including pages
+// like /impressum that had not changed in months — which teaches crawlers to
+// ignore the field. The HEAD commit date is stable across rebuilds and is
+// available even in CI's shallow (depth=1) checkout.
+const lastmod = (() => {
+  try {
+    return execFileSync("git", ["log", "-1", "--format=%cs"], {
+      cwd: resolve(__dirname, ".."),
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "pipe"],
+    }).trim()
+  } catch (err) {
+    throw new Error(
+      `sitemap: cannot read the HEAD commit date via git — ${err.message}\n` +
+      `The sitemap needs it for <lastmod>; run the build inside the git checkout.`
+    )
+  }
+})()
+
 const urlFor = (locale, path) => `${SITE}/${locale}${path}`
 
 const urls = []
@@ -56,7 +76,7 @@ for (const page of PAGES) {
     urls.push(
       `  <url>\n` +
       `    <loc>${urlFor(locale, page.path)}</loc>\n` +
-      `    <lastmod>${today}</lastmod>\n` +
+      `    <lastmod>${lastmod}</lastmod>\n` +
       `    <changefreq>${page.changefreq}</changefreq>\n` +
       `    <priority>${page.priority}</priority>\n` +
       `${alternates}\n${xDefault}\n` +

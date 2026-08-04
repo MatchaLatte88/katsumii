@@ -34,7 +34,7 @@
         </div>
 
         <span class="v6-btn-static" :class="tier.highlighted ? 'v6-btn' : 'v6p-ghost-btn'" aria-disabled="true">
-          Coming soon
+          {{ tier.free ? t('pricingPage.launch.free') : t('pricingPage.launch.paid') }}
         </span>
 
         <div class="v6p-meta">
@@ -124,7 +124,7 @@
       <div class="v6p-sysreq-head">
         <p class="v6-eyebrow v6-reveal"><i></i>Compatibility</p>
         <h2 class="v6-h2 v6-reveal">Runs on Windows and macOS.</h2>
-        <p class="v6p-sysreq-sub v6-reveal">The core journal, analytics, reports, backups, manual imports, and supported API integrations are available across supported desktop platforms.</p>
+        <p class="v6p-sysreq-sub v6-reveal">Everything works identically on both platforms — except MetaTrader 5 sync, which needs Windows.</p>
       </div>
       <div class="v6p-sysreq-grid v6-reveal">
         <div>
@@ -197,8 +197,10 @@
       <h2 class="v6p-cta-title v6-reveal">{{ t('pricingPage.cta.headline') }}</h2>
       <p class="v6p-cta-sub v6-reveal">{{ t('pricingPage.cta.description') }}</p>
       <div class="v6p-cta-actions v6-reveal">
-        <RouterLink :to="pagePath('app')" class="v6-btn v6-btn-lg v6-magnetic">{{ t('pricingPage.cta.backHome') }} <span aria-hidden="true">→</span></RouterLink>
-        <RouterLink :to="pagePath('features')" class="v6-quiet">{{ t('pricingPage.cta.seeFeatures') }} <span aria-hidden="true">→</span></RouterLink>
+        <!-- buying is not live yet, so the primary action moves the reader deeper
+             into the product rather than back to the start of the funnel -->
+        <RouterLink :to="pagePath('features')" class="v6-btn v6-btn-lg v6-magnetic">{{ t('pricingPage.cta.seeFeatures') }} <span aria-hidden="true">→</span></RouterLink>
+        <RouterLink :to="pagePath('app')" class="v6-quiet">{{ t('pricingPage.cta.backHome') }} <span aria-hidden="true">→</span></RouterLink>
       </div>
     </section>
   </main>
@@ -219,19 +221,21 @@ const stripTerminalDot = (value) => String(value ?? "").replace(/[.。]\s*$/, ""
 const COMPARE_PLANS = ["Demo", "Light", "Professional"]
 const activePlan = ref(2)
 
-/* product facts every license shares — see Katsumii_overview.md */
+/* product facts every license shares — see Katsumii_overview.md.
+   Imports, sync and backups are tier-gated, so they belong in the table below,
+   not here: these four have to hold for the Demo as well. */
 const EVERY_LICENSE = [
-  "Local & offline — SQLite on your machine",
-  "No cloud account required",
-  "CSV / FXReplay imports & broker sync",
-  "Automated local backups",
+  "One local file on your disk",
+  "No Katsumii account",
+  "Works offline",
+  "Windows & macOS",
 ]
 
 const tiers = computed(() => {
   const demo = tm("pricingPage.tiers.demo")
   const light = tm("pricingPage.tiers.light")
   const pro = tm("pricingPage.tiers.professional")
-  const shape = (tier, { highlighted = false, displayFeatures } = {}) => ({
+  const shape = (tier, { highlighted = false, free = false, displayFeatures } = {}) => ({
     key: tier.name,
     name: tier.name,
     price: tier.price,
@@ -240,6 +244,7 @@ const tiers = computed(() => {
     displayFeatures: displayFeatures || tier.features,
     cta: tier.cta,
     highlighted,
+    free,
     seats: tier.seats,
     seatsLabel: tier.seatsLabel,
     entries: tier.entries,
@@ -247,7 +252,7 @@ const tiers = computed(() => {
     inclusionLabel: tier.inclusionLabel,
   })
   return [
-    shape(demo),
+    shape(demo, { free: true }),
     shape(pro, { highlighted: true, displayFeatures: pro.features.slice(1) }),
     shape(light),
   ]

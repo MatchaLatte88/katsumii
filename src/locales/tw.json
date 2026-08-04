@@ -589,8 +589,8 @@
     "hero": {
       "label": "價格",
       "headlineA": "一次付費。",
-      "headlineB": "終身優勢。",
-      "description": "無訂閱、無雲端依賴。選擇適合您交易工作流程的版本，永久擁有。"
+      "headlineB": "永久屬於您。",
+      "description": "無訂閱、無雲端帳號、數據不離開您的電腦。選擇適合您交易方式的版本。"
     },
     "nav": {
       "home": "返回首頁",
@@ -602,14 +602,14 @@
         "name": "Demo",
         "price": "$0",
         "seats": "1",
-        "seatsLabel": "範例帳戶",
+        "seatsLabel": "帳戶",
         "entries": "5",
-        "entriesLabel": "範例交易記錄",
+        "entriesLabel": "交易記錄",
         "inclusionLabel": null,
-        "description": "使用範例數據探索完整工作流程。無需帳號，無需承諾。",
+        "description": "以範例數據試用真實應用程式——一個帳戶與五筆自己的交易。無需註冊，無需承諾。",
         "features": [
-          "完整 UI 存取與範例數據",
-          "所有日誌功能",
+          "以範例數據瀏覽所有畫面",
+          "可自行記錄最多 5 筆交易",
           "基本分析概覽",
           "完全離線運行"
         ],
@@ -629,7 +629,9 @@
           "無限交易記錄",
           "截圖日誌",
           "標籤、策略與篩選",
-          "核心統計與報告",
+          "CSV 與 FXReplay 匯入",
+          "回測 Session",
+          "核心統計與分析",
           "日曆與歷史檢視",
           "終身授權"
         ],
@@ -649,6 +651,8 @@
           "包含 Light 所有功能",
           "Prop 帳戶管理",
           "挑戰進度追蹤",
+          "一鍵券商同步：MT5、ProjectX、Capital.com、OANDA",
+          "HTML 績效報告",
           "進階策略分析",
           "一致性指標",
           "規則追蹤與提醒"
@@ -681,7 +685,7 @@
           "rows": [
             {
               "label": "交易記錄",
-              "demo": "5 筆範例",
+              "demo": "最多 5 筆",
               "light": "無限",
               "pro": "無限"
             },
@@ -716,7 +720,7 @@
           "rows": [
             {
               "label": "個人帳戶",
-              "demo": "1（唯讀）",
+              "demo": "1",
               "light": "最多 6 個",
               "pro": "無限"
             },
@@ -734,6 +738,29 @@
             },
             {
               "label": "規則防護與提醒",
+              "demo": false,
+              "light": false,
+              "pro": true
+            }
+          ]
+        },
+        {
+          "category": "匯入與回測",
+          "rows": [
+            {
+              "label": "回測 Session",
+              "demo": false,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "CSV 與 FXReplay 匯入",
+              "demo": false,
+              "light": true,
+              "pro": true
+            },
+            {
+              "label": "一鍵券商同步（MT5、ProjectX、Capital.com、OANDA）",
               "demo": false,
               "light": false,
               "pro": true
@@ -778,6 +805,12 @@
               "demo": false,
               "light": false,
               "pro": true
+            },
+            {
+              "label": "HTML 績效報告",
+              "demo": false,
+              "light": false,
+              "pro": true
             }
           ]
         },
@@ -814,10 +847,14 @@
     },
     "cta": {
       "label": "準備開始了嗎？",
-      "headline": "用清晰打造你的優勢。",
+      "headline": "工作您早已在做。現在開始留下記錄。",
       "description": "從免費 Demo 開始，或直接選擇適合你工作流程的版本。買下它，擁有它。永遠不收訂閱費。",
       "backHome": "返回首頁",
       "seeFeatures": "查看所有功能"
+    },
+    "launch": {
+      "free": "上線時免費",
+      "paid": "上線時開放購買"
     }
   },
   "footer": {
@@ -875,44 +912,49 @@
     },
     "items": [
       {
-        "category": "一般",
-        "question": "Katsumii 是什麼？",
-        "answer": "Katsumii 是一款交易日誌，用於記錄交易、帳戶、策略設置、截圖、日誌筆記、績效統計與報告。"
+        "category": "入門",
+        "question": "什麼是 Katsumii？",
+        "answer": "Katsumii 是一款在您自己電腦上執行的交易日誌。它將 Funded、Challenge、Personal 與回測交易分成四個獨立模式，追蹤每個帳戶適用的自營商規則，並把您記錄的交易轉化為可實際運用的統計數據。您的資料留在一個本機檔案中——沒有雲端帳號。"
       },
       {
-        "category": "一般",
+        "category": "入門",
+        "question": "購買前可以試用 Katsumii 嗎？",
+        "answer": "可以。免費 Demo 會以範例數據執行真實的應用程式，讓您開啟每一個畫面實際了解。您也可以在一個帳戶中自行記錄最多五筆交易。無需註冊，也不需要付款資料。"
+      },
+      {
+        "category": "入門",
         "question": "支援哪些作業系統？",
         "answer": "Katsumii 支援 Windows 10 或更新版本，以及 macOS 12 Monterey 或更新版本。建議使用 Windows 11，並支援 Intel/AMD 64-bit 與 Apple Silicon 系統。"
       },
       {
-        "category": "一般",
-        "question": "Katsumii 可以在 macOS 上使用嗎？",
-        "answer": "可以。Katsumii 支援 macOS 12 Monterey 或更新版本。MetaTrader 5 同步僅支援 Windows，但 macOS 使用者可以使用手動匯入、分析、報告、備份與支援的 API 整合。API 使用可能需要付費，取決於你的 Broker，並需要相符的 API 金鑰。"
+        "category": "入門",
+        "question": "在 macOS 上有什麼不同嗎？",
+        "answer": "只有一點：MetaTrader 5 同步需要執行中的 MT5 終端機，因此僅限 Windows。其餘功能——手動與 CSV 匯入、其他券商連線、分析、報告與備份——在 macOS 上完全相同。API 存取可能需付費、取決於您的券商，並需要對應的 API 金鑰。"
       },
       {
         "category": "授權",
-        "question": "Katsumii 是訂閱制還是一次性付款？",
-        "answer": "Katsumii 採用一次性授權。您只需付款一次，即可在本地使用，無需每月費用。"
+        "question": "Katsumii 是訂閱制還是一次買斷？",
+        "answer": "一次買斷。授權只需購買一次，即可繼續在本機使用——沒有月費，也不會過期。共有三種版本：免費 Demo、Light 與 Professional。"
       },
       {
-        "category": "使用",
+        "category": "授權",
+        "question": "購買後可以獲得更新嗎？",
+        "answer": "可以。您所購買主版本內的所有更新皆免費包含。未來的重大新版本則需另行購買。"
+      },
+      {
+        "category": "授權",
+        "question": "我的授權可以在幾台裝置上使用？",
+        "answer": "一組授權最多可安裝五次，足以涵蓋桌機、筆電與替換的電腦。每次安裝各自維護自己的本機資料庫——應用程式不會在裝置之間同步。"
+      },
+      {
+        "category": "交易模式",
         "question": "支援哪些帳戶類型？",
-        "answer": "Katsumii 支援資金帳戶、挑戰/模擬帳戶及個人帳戶。每種模式各自管理獨立的帳戶與交易記錄。"
+        "answer": "Katsumii 支援資金帳戶、挑戰/模擬帳戶及個人帳戶。第四種模式用於回測，以 Session 取代帳戶。每種模式各自管理獨立的帳戶與交易記錄。"
       },
       {
-        "category": "Prop Trading",
+        "category": "交易模式",
         "question": "我可以追蹤自營交易挑戰嗎？",
         "answer": "可以。挑戰帳戶可設定盈利目標、最大虧損、每日虧損限額、浮動回撤、活動要求、一致性規則、時間限制及其他自營公司規則。"
-      },
-      {
-        "category": "隱私",
-        "question": "我的資料存放在哪裡？",
-        "answer": "所有資料均儲存於您的本地裝置。後端使用本地 SQLite 資料庫，圖片則存放在本地上傳資料夾中。"
-      },
-      {
-        "category": "隱私",
-        "question": "Katsumii 需要網路連線嗎？",
-        "answer": "核心交易日誌不需要。日誌、帳戶、交易與報告均為完全本地功能，核心資料可離線使用。產品啟用、更新、API 同步與整合功能需要網路連線。"
       },
       {
         "category": "功能",
@@ -920,24 +962,39 @@
         "answer": "您可以儲存損益、風險、方向、規模、資產、策略、計畫 R:R、Pips/點數、進出場、時間、持倉時間、手續費、情緒、錯誤、標籤、時間框架、顏色、連結、筆記，以及最多四張截圖。"
       },
       {
-        "category": "匯入 / 匯出",
-        "question": "我可以從 CSV 匯入交易嗎？",
-        "answer": "可以。CSV 匯入精靈將引導您完成上傳、欄位對應、預覽、重複檢查及最終匯入。內建 Tradovate、NinjaTrader、Rithmic、TopstepX 及 Interactive Brokers 的現成預設。"
+        "category": "功能",
+        "question": "可以從 CSV 匯入交易嗎？",
+        "answer": "可以。匯入精靈會引導您完成上傳、欄位對應、預覽、重複檢查與最終匯入。內建預設可辨識常見的券商匯出格式；其他格式只需對應一次並存成自己的預設。CSV 匯入包含於 Light 版，直接的券商連線則屬於 Professional 版。"
       },
       {
-        "category": "統計",
+        "category": "功能",
         "question": "Katsumii 計算哪些統計數據？",
         "answer": "損益、勝率、獲利因子、實際 R:R、計畫 R:R、期望值、交易次數、平均盈虧、最佳/最差交易、連勝連敗、獲利天數、回撤距離、每日虧損距離及一致性指標。"
       },
       {
         "category": "功能",
-        "question": "我可以建立報告嗎？",
-        "answer": "可以。Katsumii 包含策略報告及 HTML 績效報告 — 一份可離線使用的文件，內含權益曲線、日曆熱圖，以及按日期、時段、策略等維度的分析。"
+        "question": "可以產生報告嗎？",
+        "answer": "可以。Professional 版會產生一份自我包含的 HTML 績效報告——可離線開啟的文件，內含權益曲線、日曆熱力圖，以及依日期、時段、Setup 等維度的細項分析。報告會套用您目前的篩選條件，因此也能將單一策略、單一帳戶或特定期間的統計輸出為獨立報告。"
       },
       {
-        "category": "資料",
+        "category": "資料與隱私",
+        "question": "我的資料存放在哪裡？",
+        "answer": "所有資料均儲存於您的本地裝置。後端使用本地 SQLite 資料庫，圖片則存放在本地上傳資料夾中。"
+      },
+      {
+        "category": "資料與隱私",
+        "question": "Katsumii 需要網路連線嗎？",
+        "answer": "核心交易日誌不需要。日誌、帳戶、交易與報告均為完全本地功能，核心資料可離線使用。產品啟用、更新、API 同步與整合功能需要網路連線。"
+      },
+      {
+        "category": "資料與隱私",
         "question": "支援備份嗎？",
-        "answer": "支援。Katsumii 提供備份匯出與匯入、上次備份還原、自訂備份路徑、保留設定，以及自動備份（每週或每月）。"
+        "answer": "支援。付費版本會依您選擇的排程自動備份——每週、每月或兩者皆可——存入您指定的資料夾，保留您設定的份數，並可一鍵還原最近一次備份。備份也可以手動匯出與匯入。"
+      },
+      {
+        "category": "資料與隱私",
+        "question": "如果資料遺失了怎麼辦？",
+        "answer": "可在應用程式內還原最近一次備份，或把備份檔複製回資料庫原本的位置——Katsumii 會在下次啟動時接手。由於所有資料都在單一 SQLite 檔案中，在第二顆硬碟上存一份副本就已是完整的保險。"
       }
     ],
     "brandSubtitle": "常見問題",

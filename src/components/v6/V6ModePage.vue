@@ -40,7 +40,6 @@
         <p class="v6-eyebrow v6-reveal"><i></i>{{ s.kicker }}</p>
         <h2 class="v6-h2 v6-reveal">{{ s.title }}</h2>
         <p class="v6m-section-sub v6-reveal">{{ s.copy }}</p>
-        <p class="v6m-note v6-reveal">{{ s.note }}</p>
       </div>
       <div class="v6m-rows v6-reveal">
         <div v-for="r in s.rows" :key="r.name" class="v6m-row">
@@ -89,6 +88,10 @@ import { useRoute } from "vue-router"
 import { initMagnetic, initV6Reveals } from "../../v6/motion.js"
 import { normalizeLocale } from "../../utils/routes.js"
 
+/* `status` on a metric or row is drawn from one fixed vocabulary across all four
+   mode pages, so the pills read as app states rather than as adjectives:
+   Live (recalculated from your trades) · Tracked (counted for you) ·
+   Manual (you enter it) · Context (framing, not a measurement) · Archived (kept for later) */
 defineProps({
   page: { type: Object, required: true },
 })
@@ -210,16 +213,6 @@ onBeforeUnmount(() => {
 .v6m-section.flip .v6m-section-copy { order: 2; }
 .v6m-section.flip .v6m-rows { order: 1; }
 .v6m-section-sub { color: var(--v6-muted); margin: 1.2rem 0 0; max-width: 30rem; }
-.v6m-note {
-  margin: 1.6rem 0 0;
-  padding: 0.9rem 1.1rem;
-  border-left: 2px solid var(--v6-ember);
-  color: var(--v6-muted);
-  font-size: 0.9rem;
-  background: linear-gradient(90deg, var(--v6-panel), transparent 80%);
-  border-radius: 0 10px 10px 0;
-  max-width: 30rem;
-}
 .v6m-rows {
   border: 1px solid var(--v6-line);
   border-radius: 18px;
@@ -323,7 +316,6 @@ onBeforeUnmount(() => {
   .v6m-row-head { align-items: flex-start; }
   .v6m-row-meter { grid-template-columns: 1fr auto; }
   .v6m-row-meter .v6m-row-val { grid-column: 1 / -1; }
-  .v6m-note { margin-top: 1.2rem; }
 }
 @media (max-width: 420px) {
   .v6m-hero-actions,

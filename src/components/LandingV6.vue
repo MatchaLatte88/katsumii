@@ -15,11 +15,11 @@
         <p class="v6-hero-sub v6-copy-glow v6-load v6-load-2">
           The market doesn't remember your trades. Katsumii does — every rule,
           every drawdown, every pattern, stored on your computer and nowhere else.
-          <span class="v6-hero-ownership">No subscription. Buy it once. Own it forever.</span>
+          <span class="v6-hero-ownership">Buy it once, from $49. Yours forever.</span>
         </p>
         <div class="v6-hero-actions v6-copy-glow v6-load v6-load-3">
-          <span class="v6-btn v6-btn-static" aria-disabled="true">Coming soon</span>
-          <a href="#story" class="v6-quiet v6-magnetic">See it breathe <span aria-hidden="true">↓</span></a>
+          <span class="v6-btn v6-btn-static" aria-disabled="true">Download coming soon</span>
+          <a href="#story" class="v6-quiet v6-magnetic">See it in action <span aria-hidden="true">↓</span></a>
         </div>
       </div>
       <p class="v6-hero-hint v6-copy-glow v6-load v6-load-4" aria-hidden="true"><span></span>scroll</p>
@@ -237,16 +237,16 @@
 
     <!-- MANIFESTO -->
     <section id="manifesto" class="v6-manifesto">
-      <div class="v6-manifesto-cycle" aria-label="No cloud. No account. One file, on your disk.">
+      <div class="v6-manifesto-cycle" aria-label="No cloud. No sign-up. One file, on your disk.">
         <span v-for="p in cyclePhrases" :key="p" class="v6-cycle-line" aria-hidden="true">{{ p }}</span>
       </div>
       <p ref="manifestoEl" class="v6-manifesto-text">
         <span v-for="(word, i) in manifestoWords" :key="i" class="v6-word">{{ word }}&nbsp;</span>
       </p>
       <div class="v6-manifesto-notes v6-reveal">
-        <span>SQLITE · WAL MODE</span>
+        <span>SQLITE · ONE LOCAL FILE</span>
         <span>WORKS OFFLINE</span>
-        <span>NO ACCOUNT REQUIRED</span>
+        <span>NO KATSUMII ACCOUNT</span>
       </div>
     </section>
 
@@ -264,7 +264,7 @@
       <h2 class="v6-cta-title v6-reveal">The market opens tomorrow.<br /><em>This time, take notes.</em></h2>
       <p class="v6-cta-sub v6-reveal">A journal only works if you keep it. Katsumii makes keeping it the easiest part of your day.</p>
       <div class="v6-cta-actions v6-reveal">
-        <span class="v6-btn v6-btn-lg v6-btn-static" aria-disabled="true">Coming soon</span>
+        <span class="v6-btn v6-btn-lg v6-btn-static" aria-disabled="true">Download coming soon</span>
         <RouterLink :to="`/${lang}/features`" class="v6-quiet">Explore all features</RouterLink>
       </div>
     </section>
@@ -274,7 +274,7 @@
       <div class="v6-sysreq-head">
         <p class="v6-eyebrow v6-reveal"><i></i>Compatibility</p>
         <h2 class="v6-h2 v6-reveal">Runs on Windows and macOS.</h2>
-        <p class="v6-sysreq-sub v6-reveal">The core journal, analytics, reports, backups, manual imports, and supported API integrations are available across supported desktop platforms.</p>
+        <p class="v6-sysreq-sub v6-reveal">Everything works identically on both platforms — except MetaTrader 5 sync, which needs Windows.</p>
       </div>
       <div class="v6-sysreq-grid v6-reveal">
         <div>
@@ -341,7 +341,9 @@ const modesEl = ref(null)
 const manifestoEl = ref(null)
 
 /* ── hero typewriter — timing ported 1:1 from the old prelaunch page ── */
-const TYPE_WORDS = ["discipline.", "consistency.", "precision.", "confidence.", "clarity."]
+/* "a memory." and "proof." carry the local-first promise the sub-line spells out —
+   the rest are virtues any journal could claim, so they stay in the minority */
+const TYPE_WORDS = ["discipline.", "consistency.", "a memory.", "proof.", "clarity."]
 const typed = ref(TYPE_WORDS[0])
 /* trailing dot rendered separately so it can take the ember accent */
 const typedBody = computed(() => typed.value.endsWith(".") ? typed.value.slice(0, -1) : typed.value)
@@ -424,7 +426,7 @@ const stats = [
   { value: 4, suffix: "", label: "trading modes" },
   { value: 100, suffix: "%", label: "local data" },
   { value: 6, suffix: "", label: "built-in tools" },
-  { value: 4, suffix: "", label: "live sync providers" },
+  { value: 4, suffix: "", label: "broker connections" },
 ]
 
 const slides = [
@@ -452,8 +454,8 @@ const slides = [
   {
     imgL: "Screenshots/opt/analysis_f_l_1.webp", imgD: "Screenshots/opt/analysis_f_d_1.webp", w: 1600, h: 1000,
     alt: "Katsumii analysis view with weekday, session and strategy breakdowns",
-    headline: "Go beyond the surface.", accent: "Deep dive into your edge",
-    title: "Analysis", tag: "where the edge lives",
+    headline: "Ask harder questions.", accent: "Get honest answers",
+    title: "Analysis", tag: "where the answers hide",
     caption: "Slice performance by weekday, session, strategy, emotion or mistake — and find out what actually pays you.",
   },
 ]
@@ -501,7 +503,7 @@ const modes = [
   {
     name: "Backtest", tag: "Sessions, not accounts", path: "/backtesting",
     accent: { dark: ["#818cf8", "#c4b5fd"], light: ["#6d28d9", "#5b21b6"] },
-    headline: "Rehearse the edge.",
+    headline: "Rehearse before it counts.",
     copy: "Import FXReplay or CSV sessions, attach a hypothesis, and review backtests with the same analytics as live trading.",
     points: [
       "FXReplay and CSV imports into named sessions",
@@ -511,16 +513,20 @@ const modes = [
   },
 ]
 
-const cyclePhrases = ["No cloud.", "No account.", "One file, on your disk."]
+/* "No sign-up" rather than "no account": buying still runs through Lemon Squeezy,
+   it is the Katsumii app that never asks you to register */
+const cyclePhrases = ["No cloud.", "No sign-up.", "One file, on your disk."]
 
 const manifestoWords =
   ("Your trades are your story. They belong on your machine, not on someone else's server. " +
     "Katsumii keeps everything in a local database — offline, private, and entirely yours.").split(" ")
 
+/* deliberately does not repeat the hero numbers above (4 modes, 100% local) —
+   these answer what the manifesto just claimed */
 const manifestoStats = [
-  { value: 4, suffix: "", label: "trading modes, fully siloed" },
-  { value: 0, suffix: "", label: "cloud dependencies" },
-  { value: 100, suffix: "%", label: "of your data stays local" },
+  { value: 0, suffix: "", label: "accounts to create" },
+  { value: 0, suffix: "", label: "bytes in the cloud" },
+  { value: 1, suffix: "", label: "file you can back up yourself" },
 ]
 
 const icon = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`
@@ -535,7 +541,9 @@ const features = [
   },
   {
     title: "Your history, in minutes",
-    copy: "A CSV wizard with broker presets, FXReplay backtest imports, and live sync for MetaTrader 5, ProjectX, Capital.com and OANDA.",
+    /* sync is manual by design (you press "Sync now") and Professional-only —
+       both facts belong here, since the chips below name the providers */
+    copy: "A CSV wizard with broker presets and FXReplay backtest imports. Professional adds one-click sync for MetaTrader 5, ProjectX, Capital.com and OANDA — pulled when you click, never in the background.",
     icon: icon('<path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 21h16"/>'),
     span: "v6-span-5",
     chips: ["CSV wizard", "FXReplay", "MT5", "ProjectX", "Capital.com", "OANDA"],
@@ -554,7 +562,7 @@ const features = [
     chips: ["Equity curve", "Heatmap", "Dark / light"],
   },
   {
-    title: "Six sharp little blades",
+    title: "Six tools, always at hand",
     copy: "R:R visualizer, position size calculator, equity simulator, timezone and currency converters, futures contract specs — built in.",
     icon: icon('<path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7z"/>'),
     span: "v6-span-6",

@@ -7,24 +7,24 @@ import V6ModePage from "./v6/V6ModePage.vue"
 
 const page = {
   eyebrow: "Discipline 04 — Backtest",
-  h1: { pre: "Rehearse the", em: "edge" },
+  h1: { pre: "Rehearse before", em: "it counts" },
   sub: "Katsumii keeps backtesting structured: sessions, FXReplay and CSV imports, hypotheses, notes, strategy validation context and session analytics that stay separate from live trading records.",
-  chips: ["Backtest sessions", "FXReplay import", "Hypotheses", "Session analytics"],
+  chips: ["Replay work stays separate", "FXReplay exports, mapped", "The thesis before the result", "Sessions you can revisit"],
   metrics: [
     {
-      label: "Backtest sessions", value: "Lab", status: "Separate", progress: "74%",
+      label: "Backtest sessions", value: "Lab", status: "Tracked", progress: "74%",
       copy: "Keep replay work distinct from live and funded account history.",
     },
     {
-      label: "FXReplay import", value: "Ready", status: "Import", progress: "64%",
+      label: "FXReplay import", value: "Ready", status: "Manual", progress: "64%",
       copy: "Bring replay exports into a review workflow built for strategy testing.",
     },
     {
-      label: "Hypotheses", value: "Notes", status: "Tracked", progress: "58%",
+      label: "Hypotheses", value: "Notes", status: "Manual", progress: "58%",
       copy: "Keep the reason for the test next to the trades that tested it.",
     },
     {
-      label: "Validation context", value: "Review", status: "Careful", progress: "52%",
+      label: "Validation context", value: "Review", status: "Context", progress: "52%",
       copy: "Summaries support review discipline without claiming future performance.",
     },
   ],
@@ -34,18 +34,17 @@ const page = {
       kicker: "Backtest sessions",
       title: "Keep replay sessions cleanly separated and importable.",
       copy: "A backtest should be reviewable later, not only remembered. Katsumii gives sessions a structured place for imported trades, manual notes and strategy context.",
-      note: "Imported backtest data depends on export quality and your mapping choices. Always review imported records before using them for conclusions.",
       rows: [
         {
-          name: "Backtest sessions", status: "Separate", value: "Session", progress: "74%",
+          name: "Backtest sessions", status: "Tracked", value: "Session", progress: "74%",
           copy: "Group replay trades into dedicated sessions instead of mixing them with live accounts.",
         },
         {
-          name: "FXReplay import", status: "Mapped", value: "FXReplay", progress: "64%",
+          name: "FXReplay import", status: "Manual", value: "FXReplay", progress: "64%",
           copy: "Use replay exports as the starting point for structured analysis.",
         },
         {
-          name: "CSV import", status: "Flexible", value: "CSV", progress: "60%",
+          name: "CSV import", status: "Manual", value: "CSV", progress: "60%",
           copy: "Bring tabular backtest records into the journal workflow when fields match your setup.",
         },
       ],
@@ -55,18 +54,17 @@ const page = {
       kicker: "Hypotheses & notes",
       title: "Write down what the session is supposed to prove.",
       copy: "Backtesting is easier to trust when the hypothesis, session notes and review criteria are captured before the result becomes tempting to reinterpret.",
-      note: "Katsumii can organize test context, but it does not decide whether a strategy is suitable for live trading.",
       rows: [
         {
-          name: "Hypotheses", status: "Documented", value: "Thesis", progress: "58%",
+          name: "Hypotheses", status: "Manual", value: "Thesis", progress: "58%",
           copy: "Record the idea being tested before reviewing the sample.",
         },
         {
-          name: "Session notes", status: "Context", value: "Notes", progress: "68%",
+          name: "Session notes", status: "Manual", value: "Notes", progress: "68%",
           copy: "Keep market conditions, mistakes and observations attached to the session.",
         },
         {
-          name: "Strategy validation", status: "Review", value: "Validate", progress: "52%",
+          name: "Strategy validation", status: "Context", value: "Validate", progress: "52%",
           copy: "Use validation context as evidence to inspect, not as a performance guarantee.",
         },
       ],
@@ -76,18 +74,17 @@ const page = {
       kicker: "Session analytics",
       title: "Review the session without dragging in unrelated trades.",
       copy: "Session analytics help compare samples, setups and rules inside the backtest workflow, so live account pressure does not distort the analysis.",
-      note: "Historical backtest analysis cannot guarantee live execution quality, liquidity, slippage or future results.",
       rows: [
         {
-          name: "Session metrics", status: "Scoped", value: "Metrics", progress: "72%",
+          name: "Session metrics", status: "Live", value: "Metrics", progress: "72%",
           copy: "Review performance inside the selected session boundary.",
         },
         {
-          name: "Setup comparison", status: "Tagged", value: "Tags", progress: "62%",
+          name: "Setup comparison", status: "Tracked", value: "Tags", progress: "62%",
           copy: "Compare strategies, setups and notes when enough samples are logged.",
         },
         {
-          name: "Review archive", status: "Traceable", value: "Archive", progress: "66%",
+          name: "Review archive", status: "Archived", value: "Archive", progress: "66%",
           copy: "Keep old sessions available so a strategy review can evolve over time.",
         },
       ],
@@ -96,7 +93,7 @@ const page = {
   disclaimer: {
     headline: "Backtesting supports analysis, not certainty.",
     points: [
-      "Katsumii organizes imported and manually documented backtest data.",
+      "Katsumii organizes imported and manually documented backtest data — imports depend on export quality and your mapping choices.",
       "A backtest result is historical analysis and does not guarantee live results.",
       "Strategy validation remains a trader judgment call.",
     ],

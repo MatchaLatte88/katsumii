@@ -13,9 +13,11 @@
         </p>
         <ul class="v6-card-chips v6lo-chips v6-reveal">
           <li>SQLite on your disk</li>
-          <li>No journal account</li>
+          <li>No Katsumii account</li>
           <li>Works offline</li>
-          <li>Automatic backups</li>
+          <!-- deliberately not "automatic backups": those ship with the paid
+               licences, while copying the file is something every licence can do -->
+          <li>One file to back up</li>
         </ul>
         <div class="v6lo-actions v6-reveal">
           <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-magnetic">Get Katsumii <span aria-hidden="true">→</span></RouterLink>
@@ -86,8 +88,9 @@
         <h2 class="v6-h2 v6-reveal">Local does not mean fragile.</h2>
         <p class="v6lo-section-sub v6-reveal">
           The honest trade-off of owning your data is that no one else is holding a copy.
-          Katsumii closes that gap itself: a background task writes weekly and monthly
-          snapshots beside your database, and you can export a full copy whenever you want.
+          The paid licences close that gap for you: a background task writes snapshots
+          beside your database on the schedule you choose, and you can export a full
+          copy by hand whenever you want.
         </p>
         <p class="v6lo-note v6-reveal">
           Snapshots protect against corruption and mistakes — not against a lost laptop.
@@ -176,10 +179,10 @@ const NETWORK = [
     copy: "Asks whether a newer version exists. You can ignore it indefinitely — the version you installed keeps working.",
   },
   {
-    name: "Broker API sync",
-    tag: "You enable it",
+    name: "Broker sync",
+    tag: "On demand",
     tone: "good",
-    copy: "Off until you connect an account. When on, it pulls fills from your broker into the local database. Credentials stay on your machine.",
+    copy: "Off until you connect an account, and silent until you press Sync now — it pulls your fills into the local database on that click, never in the background. Credentials stay on your machine.",
   },
   {
     name: "Your trade history",
@@ -192,7 +195,7 @@ const NETWORK = [
 const BACKUP_STEPS = [
   {
     title: "Automatic snapshots",
-    copy: "A background task writes weekly and monthly copies of the database without you thinking about it.",
+    copy: "On the paid licences, a background task copies the database on your chosen schedule — weekly, monthly, or both — and keeps as many copies as you tell it to.",
   },
   {
     title: "Export on demand",

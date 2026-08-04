@@ -14,7 +14,7 @@
           <li>Execution quality</li>
           <li>Edge drivers</li>
           <li>Diagnostics lab</li>
-          <li>Offline reports</li>
+          <li>Offline reports (Pro)</li>
         </ul>
         <div class="v6an-actions v6-reveal">
           <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-magnetic">Get Katsumii <span aria-hidden="true">→</span></RouterLink>
@@ -71,11 +71,11 @@
         <p class="v6-eyebrow v6-reveal"><i></i>Analysis lab</p>
         <h2 class="v6-h2 v6-reveal">A diagnostics lab for your trading, not just charts.</h2>
         <p class="v6an-section-sub v6-reveal">
-          The Analysis screen goes where dashboards stop: key metrics across trade extremes,
-          ratios, period extremes and trade mechanics, baseline averages down to median win and
-          loss, fee impact against gross — and a diagnostics lab that stress-tests the results.
-          Every panel closes with a plain-English verdict, so "Sharpe 11" also tells you what it
-          means.
+          The Analysis screen goes where dashboards stop. Trade extremes and period extremes,
+          the ratios and mechanics behind them, baseline averages down to your median win and
+          loss, and what fees really cost you against gross — then a diagnostics lab that
+          stress-tests the whole picture. Every panel closes with a plain-English verdict, so
+          "Sharpe 1.8" also tells you what it means.
         </p>
         <p class="v6an-note v6-reveal">
           A configurable BE threshold treats near-zero trades as breakeven, so a handful of
@@ -152,9 +152,9 @@
         <h2 class="v6-h2 v6-reveal">Review in rhythm, report with one click.</h2>
         <p class="v6an-section-sub v6-reveal">
           The calendar grades every day by outcome, with weekly and monthly summaries in the
-          margins and journal markers where you wrote. When it's time to share or archive, Katsumii
-          generates a self-contained HTML performance report — equity curve, heatmap, breakdowns
-          and key metrics in one file that opens anywhere, no server, no upload.
+          margins and journal markers where you wrote. When it's time to share or archive, the
+          Professional licence generates a self-contained HTML performance report — equity curve,
+          heatmap, breakdowns and key metrics in one file that opens anywhere, no server, no upload.
         </p>
         <div class="v6an-rows v6-reveal">
           <div v-for="r in REVIEW_ROWS" :key="r.name" class="v6an-row">

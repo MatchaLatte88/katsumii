@@ -92,15 +92,20 @@ const lang = computed(() => {
   return normalizeLocale(raw)
 })
 
-/* deep-dive routes + discipline accents per module position (mirrors V6_ACCENTS) */
+/* deep-dive routes + discipline accents per module position (mirrors V6_ACCENTS).
+   The first four must stay in the order Funded → Challenge → Personal → Backtest,
+   because the cards are numbered on screen and those numbers are also the
+   "Discipline 0X" labels on the mode pages, the landing and the nav.
+   Journaling and Imports both resolve to /workflow — that page covers
+   "imports, journal & tools" as one workflow. */
 const MODULE_META = [
-  { path: "prop-firm-challenges", accent: { dark: "#facc15", light: "#ab7503" } },
   { path: "funded-accounts",      accent: { dark: "#22d3ee", light: "#0369a1" } },
+  { path: "prop-firm-challenges", accent: { dark: "#facc15", light: "#ab7503" } },
   { path: "personal-trading",     accent: { dark: "#4ade80", light: "#047857" } },
   { path: "backtesting",          accent: { dark: "#818cf8", light: "#6d28d9" } },
   { path: "analytics-reviews" },
-  {},
-  {},
+  { path: "workflow" },
+  { path: "workflow" },
   { path: "local-offline" },
 ]
 
@@ -114,7 +119,7 @@ const COCKPIT_SCREENS = [
   { name: "Analysis",  desc: "Edge summary, diagnostics lab, deep breakdown tabs" },
   { name: "Journal",   desc: "Daily rich-text reflections with per-day trade stats" },
   { name: "Sessions",  desc: "Backtest sessions with hypotheses and sparklines" },
-  { name: "Imports",   desc: "CSV wizard, FXReplay import, broker API sync" },
+  { name: "Imports",   desc: "CSV wizard, FXReplay import, one-click broker sync" },
   { name: "Reports",   desc: "Self-contained HTML performance reports, offline" },
   { name: "Tools",     desc: "Position size, R:R visualizer, equity simulator" },
   { name: "Managers",  desc: "Accounts, strategies, assets, tags, and presets" },

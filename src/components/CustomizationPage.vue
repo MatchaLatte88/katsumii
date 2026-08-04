@@ -14,7 +14,7 @@
           <li>Focus mode</li>
           <li>Per-mode accent colors</li>
           <li>Light &amp; dark backgrounds</li>
-          <li>Three dark base tones</li>
+          <li>Three dark tones, two light</li>
         </ul>
         <div class="v6cu-actions v6-reveal">
           <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-magnetic">Get Katsumii <span aria-hidden="true">→</span></RouterLink>
@@ -110,8 +110,9 @@
         <h2 class="v6-h2 v6-reveal">A canvas for day sessions, another for the night.</h2>
         <p class="v6cu-section-sub v6-reveal">
           Choose separate background styles for light and dark mode — flowing lines for one, a calm
-          honeycomb for the other. Then set the dark base tone itself: Ink for warm navy, Midnight
-          for bluish near-black, or pure Black for OLED silence.
+          honeycomb for the other. Then set the base tone itself: Ink for warm navy, Midnight for
+          bluish near-black or pure Black for OLED silence — and on the bright side, Soft paper or
+          a clean Whiteout.
         </p>
         <div class="v6cu-rows v6-reveal">
           <div v-for="r in CANVAS_ROWS" :key="r.name" class="v6cu-row plain">
@@ -307,8 +308,8 @@ const CANVAS_ROWS = [
     copy: "Pick a different app background for light and dark mode — each half of your day gets its own texture.",
   },
   {
-    name: "Dark base tone", value: "Ink · Midnight · Black",
-    copy: "The dark theme itself has three moods: warm navy, bluish near-black, or true black.",
+    name: "Base tone", value: "3 dark · 2 light",
+    copy: "Dark has three moods — warm navy, bluish near-black or true black. Light has two papers: Soft and Whiteout.",
   },
   {
     name: "Theme", value: "Light / Dark / System",
