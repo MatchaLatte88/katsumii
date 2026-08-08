@@ -1,5 +1,13 @@
 [
   {
+    "version": "0.14.1",
+    "date": "2026-08-09",
+    "title": "The headline promises honesty instead of a memory",
+    "changes": [
+      "The rotating word in the landing headline now reads \"Trade with honesty\" where it used to read \"Trade with a memory\" — the old phrasing never quite worked in either half of the headline"
+    ]
+  },
+  {
     "version": "0.14.0",
     "date": "2026-08-05",
     "title": "A fact-check across every page, and a FAQ that answers more",

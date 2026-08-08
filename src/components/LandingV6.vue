@@ -341,9 +341,9 @@ const modesEl = ref(null)
 const manifestoEl = ref(null)
 
 /* ── hero typewriter — timing ported 1:1 from the old prelaunch page ── */
-/* "a memory." and "proof." carry the local-first promise the sub-line spells out —
-   the rest are virtues any journal could claim, so they stay in the minority */
-const TYPE_WORDS = ["discipline.", "consistency.", "a memory.", "proof.", "clarity."]
+/* "proof." carries the local-first promise the sub-line spells out — the rest are
+   virtues any journal could claim, so they stay the backdrop it lands against */
+const TYPE_WORDS = ["discipline.", "consistency.", "honesty.", "proof.", "clarity."]
 const typed = ref(TYPE_WORDS[0])
 /* trailing dot rendered separately so it can take the ember accent */
 const typedBody = computed(() => typed.value.endsWith(".") ? typed.value.slice(0, -1) : typed.value)
