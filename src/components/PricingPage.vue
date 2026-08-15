@@ -218,7 +218,7 @@ const stripTerminalDot = (value) => String(value ?? "").replace(/[.。]\s*$/, ""
 
 /* comparison table columns, in table order — Professional is the default on mobile
    because it is the highlighted tier on the cards above */
-const COMPARE_PLANS = ["Demo", "Light", "Professional"]
+const COMPARE_PLANS = ["Demo", "Lite", "Professional"]
 const activePlan = ref(2)
 
 /* product facts every license shares — see Katsumii_overview.md.

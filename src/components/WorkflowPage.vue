@@ -68,7 +68,7 @@
         </ul>
         <!-- the six entries sit at two different tiers, so the list needs the split
              spelled out rather than reading as one uniform feature set -->
-        <p class="v6wf-panel-foot">Symbol-to-asset mapping remembers what you told it — repeat imports just work. CSV and FXReplay imports ship with Light; the four API connections are Professional.</p>
+        <p class="v6wf-panel-foot">Symbol-to-asset mapping remembers what you told it — repeat imports just work. CSV and FXReplay imports ship with Lite; the four API connections are Professional.</p>
       </div>
     </section>
 

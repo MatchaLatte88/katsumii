@@ -1,5 +1,15 @@
 [
   {
+    "version": "0.14.2",
+    "date": "2026-08-15",
+    "title": "The middle licence is called Lite, and the nav stays put",
+    "changes": [
+      "The middle licence is named Lite instead of Light — on the pricing cards, in the comparison table, in the FAQ and in all four languages",
+      "Switching between light and dark no longer hides the navigation bar while the glitch effect runs",
+      "On a first visit the app now picks its theme by time of day, the same rule the page already applied before it loaded — no more switch a moment after opening"
+    ]
+  },
+  {
     "version": "0.14.1",
     "date": "2026-08-09",
     "title": "The headline promises honesty instead of a memory",

@@ -91,7 +91,14 @@ defineProps({
   overflow-x: hidden;
 }
 
-:global(html.theme-glitching #app > :not(.theme-glitch)) {
+/* Die Animation darf nicht auf .v6 selbst liegen: ein Vorfahre mit transform wird
+   zum Containing Block für position: fixed, dadurch hängen Nav, Fortschrittsbalken
+   und Overlays für die Dauer des Glitches am Seitenanfang statt am Viewport und
+   sind bei gescrollter Seite unsichtbar. Die Kinder glitchen deshalb einzeln —
+   sie starten synchron, das Ergebnis sieht identisch aus. .v6-gl und .v6-noise
+   bleiben außen vor, deren eigenes filter: brightness() würde überschrieben. */
+:global(html.theme-glitching #app > :not(.theme-glitch):not(.v6)),
+:global(html.theme-glitching .v6 > :not(.v6-gl):not(.v6-noise)) {
   animation: theme-glitch-viewport 720ms steps(1, end) both;
 }
 

@@ -170,7 +170,7 @@
   },
   "tiers": {
     "light": {
-      "name": "Light",
+      "name": "Lite",
       "price": "$49",
       "description": "適合需要乾淨交易日誌與基本分析的交易者。",
       "features": [
@@ -185,7 +185,7 @@
       "price": "$89",
       "description": "適合希望優化交易流程與績效的專業交易者。",
       "features": [
-        "包含 Light 全部功能",
+        "包含 Lite 全部功能",
         "Prop 帳戶管理",
         "進階策略分析",
         "檢討流程與規則追蹤",
@@ -616,7 +616,7 @@
         "cta": "試用 Demo"
       },
       "light": {
-        "name": "Light",
+        "name": "Lite",
         "price": "$49",
         "priceNote": "一次性",
         "seats": "6",
@@ -635,7 +635,7 @@
           "日曆與歷史檢視",
           "終身授權"
         ],
-        "cta": "購買 Light"
+        "cta": "購買 Lite"
       },
       "professional": {
         "name": "Professional",
@@ -645,10 +645,10 @@
         "seatsLabel": "帳戶（含 Prop）",
         "entries": "無限",
         "entriesLabel": "交易記錄",
-        "inclusionLabel": "LIGHT +",
+        "inclusionLabel": "LITE +",
         "description": "適合認真優化流程、管理 Prop 帳戶並深度追蹤績效的交易者。",
         "features": [
-          "包含 Light 所有功能",
+          "包含 Lite 所有功能",
           "Prop 帳戶管理",
           "挑戰進度追蹤",
           "一鍵券商同步：MT5、ProjectX、Capital.com、OANDA",
@@ -934,7 +934,7 @@
       {
         "category": "授權",
         "question": "Katsumii 是訂閱制還是一次買斷？",
-        "answer": "一次買斷。授權只需購買一次，即可繼續在本機使用——沒有月費，也不會過期。共有三種版本：免費 Demo、Light 與 Professional。"
+        "answer": "一次買斷。授權只需購買一次，即可繼續在本機使用——沒有月費，也不會過期。共有三種版本：免費 Demo、Lite 與 Professional。"
       },
       {
         "category": "授權",
@@ -964,7 +964,7 @@
       {
         "category": "功能",
         "question": "可以從 CSV 匯入交易嗎？",
-        "answer": "可以。匯入精靈會引導您完成上傳、欄位對應、預覽、重複檢查與最終匯入。內建預設可辨識常見的券商匯出格式；其他格式只需對應一次並存成自己的預設。CSV 匯入包含於 Light 版，直接的券商連線則屬於 Professional 版。"
+        "answer": "可以。匯入精靈會引導您完成上傳、欄位對應、預覽、重複檢查與最終匯入。內建預設可辨識常見的券商匯出格式；其他格式只需對應一次並存成自己的預設。CSV 匯入包含於 Lite 版，直接的券商連線則屬於 Professional 版。"
       },
       {
         "category": "功能",
@@ -1060,7 +1060,7 @@
       "app": "Katsumii 是為重視紀律的交易者打造的離線交易日誌，包含交易記錄、Prop Firm 追蹤、分析報告與本地資料控制。",
       "features": "探索 Katsumii 的交易日誌、帳戶規則、Prop Challenge 追蹤、績效分析、報告與交易日曆功能。",
       "workflow": "探索 Katsumii 的工作流程層：CSV 與 FXReplay 匯入、MT5 與券商 API 同步、每日日誌與日曆，以及內建交易者工具與離線 HTML 報告。",
-      "pricing": "比較 Katsumii Demo、Light 與 Professional 版本，選擇無訂閱、資料保存在本地的離線交易日誌。",
+      "pricing": "比較 Katsumii Demo、Lite 與 Professional 版本，選擇無訂閱、資料保存在本地的離線交易日誌。",
       "manual": "學習如何設定 Katsumii、記錄交易、管理帳戶、查看分析、使用日曆並整理交易資料。",
       "faq": "查看 Katsumii 授權、離線資料儲存、Demo、支援平台、匯入功能與交易日誌流程的常見問題。",
       "contact": "針對授權、Demo、App 支援或交易流程問題聯絡 Katsumii。",

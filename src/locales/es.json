@@ -170,7 +170,7 @@
   },
   "tiers": {
     "light": {
-      "name": "Light",
+      "name": "Lite",
       "price": "$49",
       "description": "Para journaling limpio con analítica esencial.",
       "features": [
@@ -185,7 +185,7 @@
       "price": "$89",
       "description": "Para traders serios que optimizan proceso y rendimiento.",
       "features": [
-        "Todo lo incluido en Light",
+        "Todo lo incluido en Lite",
         "Gestión de cuentas Prop",
         "Análisis avanzados de estrategias",
         "Rutina de revisión y seguimiento de reglas",
@@ -616,7 +616,7 @@
         "cta": "Probar Demo"
       },
       "light": {
-        "name": "Light",
+        "name": "Lite",
         "price": "$49",
         "priceNote": "pago único",
         "seats": "6",
@@ -635,7 +635,7 @@
           "Vista de calendario e historial",
           "Licencia de por vida"
         ],
-        "cta": "Comprar Light"
+        "cta": "Comprar Lite"
       },
       "professional": {
         "name": "Professional",
@@ -645,10 +645,10 @@
         "seatsLabel": "cuentas (incl. prop)",
         "entries": "Ilimitadas",
         "entriesLabel": "entradas de trades",
-        "inclusionLabel": "LIGHT +",
+        "inclusionLabel": "LITE +",
         "description": "Para traders serios que optimizan su proceso, gestionan cuentas prop y analizan rendimiento en profundidad.",
         "features": [
-          "Todo lo de Light",
+          "Todo lo de Lite",
           "Gestión de cuentas prop",
           "Seguimiento de progreso de challenges",
           "Sync de bróker con un clic: MT5, ProjectX, Capital.com, OANDA",
@@ -934,7 +934,7 @@
       {
         "category": "Licencia",
         "question": "¿Katsumii es una suscripción o una compra única?",
-        "answer": "Una compra única. Compras la licencia una vez y sigues usando la app en local: sin cuotas mensuales y sin nada que caduque. Hay tres ediciones: una Demo gratuita, Light y Professional."
+        "answer": "Una compra única. Compras la licencia una vez y sigues usando la app en local: sin cuotas mensuales y sin nada que caduque. Hay tres ediciones: una Demo gratuita, Lite y Professional."
       },
       {
         "category": "Licencia",
@@ -964,7 +964,7 @@
       {
         "category": "Funciones",
         "question": "¿Puedo importar trades desde CSV?",
-        "answer": "Sí. El asistente de importación te guía por la carga, el mapeo de columnas, la vista previa, la comprobación de duplicados y la importación final. Los presets listos reconocen las exportaciones de bróker más habituales; cualquier otra la mapeas una vez y la guardas como preset propio. La importación CSV viene con la edición Light y las conexiones directas de bróker con Professional."
+        "answer": "Sí. El asistente de importación te guía por la carga, el mapeo de columnas, la vista previa, la comprobación de duplicados y la importación final. Los presets listos reconocen las exportaciones de bróker más habituales; cualquier otra la mapeas una vez y la guardas como preset propio. La importación CSV viene con la edición Lite y las conexiones directas de bróker con Professional."
       },
       {
         "category": "Funciones",
@@ -1060,7 +1060,7 @@
       "app": "Katsumii es un diario de trading offline para traders disciplinados, con registro de operaciones, seguimiento prop firm, analitica, informes y datos locales.",
       "features": "Explora las funciones de Katsumii para diario de trading, reglas de cuenta, seguimiento de challenges, analitica de rendimiento, informes y calendario.",
       "workflow": "Explora la capa de workflow de Katsumii: importaciones CSV y FXReplay, sincronizacion MT5 y APIs de broker, journal diario y calendario, y herramientas de trader integradas con informes HTML offline.",
-      "pricing": "Compara Katsumii Demo, Light y Professional para un diario de trading offline sin suscripcion y con almacenamiento local.",
+      "pricing": "Compara Katsumii Demo, Lite y Professional para un diario de trading offline sin suscripcion y con almacenamiento local.",
       "manual": "Aprende a configurar Katsumii, registrar operaciones, gestionar cuentas, revisar analiticas, usar el calendario y organizar tus datos.",
       "faq": "Respuestas a preguntas frecuentes sobre licencias Katsumii, datos offline, demo, plataformas compatibles, importaciones y flujos de diario de trading.",
       "contact": "Contacta con Katsumii para preguntas sobre licencias, demo, ayuda de la app y tu flujo de trading.",

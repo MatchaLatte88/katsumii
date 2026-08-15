@@ -3,11 +3,16 @@ import { computed, ref } from "vue"
 const GLITCH_SWAP_DELAY = 140
 const GLITCH_DURATION = 720
 
+// Muss mit dem Pre-Render-Script in index.html / app.html übereinstimmen,
+// sonst flackert das Theme beim ersten Besuch.
+const DAY_START_HOUR = 6
+const DAY_END_HOUR = 19
+
 const getInitialTheme = () => {
   const saved = localStorage.getItem("katsumii-theme")
   if (saved === "light" || saved === "dark") return saved
-  if (window.matchMedia("(prefers-color-scheme: light)").matches) return "light"
-  return "dark"
+  const hour = new Date().getHours()
+  return hour >= DAY_START_HOUR && hour < DAY_END_HOUR ? "light" : "dark"
 }
 
 export function useTheme() {
