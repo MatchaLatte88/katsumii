@@ -20,45 +20,37 @@
         <div class="preview-notice__hero">
           <p class="preview-notice__eyebrow">
             <i aria-hidden="true"></i>
-            Development preview
+            {{ t('previewNotice.eyebrow') }}
           </p>
 
-          <div class="preview-notice__brand" aria-label="Katsumii — offline trading journal">
-            <img :src="asset('logo.png')" alt="Katsumii logo" width="96" height="96" />
+          <div class="preview-notice__brand" :aria-label="t('previewNotice.ariaBrand')">
+            <img :src="asset('logo.png')" :alt="t('common.alts.logo')" width="96" height="96" />
             <div>
               <p class="preview-notice__wordmark">Katsumii<span>.</span></p>
-              <p class="preview-notice__tagline">offline trading journal</p>
+              <p class="preview-notice__tagline">{{ t('previewNotice.tagline') }}</p>
             </div>
           </div>
 
           <h2 id="preview-notice-title">
-            A first look at<br />
-            <em>what’s taking shape.</em>
+            {{ t('previewNotice.titleA') }}<br />
+            <em>{{ t('previewNotice.titleB') }}</em>
           </h2>
         </div>
 
         <div class="preview-notice__body">
           <div id="preview-notice-description" class="preview-notice__copy">
-            <p>
-              You’re viewing an early development preview, not the finished Katsumii
-              experience. The data, copy, visuals, and screenshots shown throughout
-              this website are placeholders and do not represent the final Katsumii
-              Trading Journal.
-            </p>
-            <p>
-              If curiosity has already gotten the better of you, you’re more than
-              welcome to take an early look around.
-            </p>
+            <p>{{ t('previewNotice.body1') }}</p>
+            <p>{{ t('previewNotice.body2') }}</p>
           </div>
 
           <div class="preview-notice__actions">
             <button type="button" class="preview-notice__button" @click="dismiss">
-              Explore the preview
+              {{ t('previewNotice.button') }}
               <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M2.5 8h10M8.7 4.2 12.5 8l-3.8 3.8" />
               </svg>
             </button>
-            <p><span aria-hidden="true"></span> Preview content is not final</p>
+            <p><span aria-hidden="true"></span> {{ t('previewNotice.footnote') }}</p>
           </div>
         </div>
       </section>
@@ -68,6 +60,9 @@
 
 <script setup>
 import { inject, nextTick, onBeforeUnmount, onMounted, ref } from "vue"
+import { useI18n } from "vue-i18n"
+
+const { t } = useI18n()
 
 const SESSION_KEY = "katsumii-preview-notice-seen"
 const baseUrl = import.meta.env.BASE_URL
@@ -329,8 +324,10 @@ onBeforeUnmount(() => {
   background: var(--v6-ember);
 }
 
-:global(.v6.light) .preview-notice__backdrop { background: rgba(226, 232, 240, 0.8); }
-:global(.v6.light) .preview-notice__dialog {
+/* the whole selector must sit inside :global() — Vue drops everything after a
+   :global(...) prefix, which leaked these backgrounds onto the .v6 shell */
+:global(.v6.light .preview-notice__backdrop) { background: rgba(226, 232, 240, 0.8); }
+:global(.v6.light .preview-notice__dialog) {
   background:
     radial-gradient(ellipse 75% 62% at 82% 7%, rgba(3, 105, 161, 0.1), transparent 64%),
     var(--v6-bg);

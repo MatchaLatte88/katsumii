@@ -3,52 +3,37 @@
     <!-- HERO -->
     <section class="v6wf-hero v6-band v6-band-snap">
       <div ref="heroCopyEl" class="v6wf-hero-copy v6-copy-glow">
-        <p class="v6-eyebrow v6-reveal"><i></i>Workflow &amp; automation</p>
-        <h1 class="v6-h1 v6-reveal">Less <em>bookkeeping</em>, more <em>trading</em><b class="v6-dot">.</b></h1>
-        <p class="v6wf-sub v6-reveal">
-          Between the first tick and the monthly review sits a lot of quiet work — importing
-          fills, writing down what you saw, running the numbers. Katsumii keeps that layer
-          fast, local and out of your way, so the journal you meant to keep is the journal
-          you actually keep.
-        </p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('workflowPage.hero.eyebrow') }}</p>
+        <h1 class="v6-h1 v6-reveal">{{ t('workflowPage.hero.titleA') }} <em>{{ t('workflowPage.hero.titleEmA') }}</em>{{ t('workflowPage.hero.titleB') }} <em>{{ t('workflowPage.hero.titleEmB') }}</em><b class="v6-dot">.</b></h1>
+        <p class="v6wf-sub v6-reveal">{{ t('workflowPage.hero.sub') }}</p>
         <ul class="v6-card-chips v6wf-chips v6-reveal">
-          <li>CSV &amp; FXReplay imports</li>
-          <li>Broker sync on demand</li>
-          <li>Daily journal &amp; calendar</li>
-          <li>Built-in trader tools</li>
-          <li>Offline HTML reports (Pro)</li>
+          <li v-for="c in heroChips" :key="c">{{ c }}</li>
         </ul>
         <div class="v6wf-actions v6-reveal">
-          <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-magnetic">Get Katsumii <span aria-hidden="true">→</span></RouterLink>
-          <RouterLink :to="`/${lang}/features`" class="v6-quiet v6-magnetic">All features</RouterLink>
+          <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-magnetic">{{ t('common.cta.getKatsumii') }} <span aria-hidden="true">→</span></RouterLink>
+          <RouterLink :to="`/${lang}/features`" class="v6-quiet v6-magnetic">{{ t('common.cta.allFeatures') }}</RouterLink>
         </div>
       </div>
       <figure class="v6wf-shot v6-reveal">
         <img
           v-zoom
           :src="asset(isDark ? 'Screenshots/opt/hero_d.webp' : 'Screenshots/opt/hero_l.webp')"
-          alt="Katsumii dashboard combining imported trades, journal entries and reports"
+          :alt="t('workflowPage.hero.alt')"
           width="1600" height="1000"
           loading="eager" decoding="async"
         />
-        <figcaption>Cockpit — everything that follows lands here</figcaption>
+        <figcaption>{{ t('workflowPage.hero.caption') }}</figcaption>
       </figure>
     </section>
 
     <!-- SECTION 1 · IMPORTS & SYNC -->
     <section id="imports" class="v6wf-section v6-band v6-band-snap">
       <div class="v6wf-section-copy">
-        <p class="v6-eyebrow v6-reveal"><i></i>Imports &amp; broker sync</p>
-        <h2 class="v6-h2 v6-reveal">Your fills, from anywhere, without retyping.</h2>
-        <p class="v6wf-section-sub v6-reveal">
-          Every broker exports data a little differently — Katsumii speaks the common
-          formats and connects to the platforms most prop-firm traders actually use.
-          Import once, map columns once, and every later sync lands straight in the right
-          mode against the right account — pulled the moment you press Sync now, never
-          while your back is turned.
-        </p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('workflowPage.imports.eyebrow') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t('workflowPage.imports.title') }}</h2>
+        <p class="v6wf-section-sub v6-reveal">{{ t('workflowPage.imports.sub') }}</p>
         <div class="v6wf-rows v6-reveal">
-          <div v-for="row in IMPORT_ROWS" :key="row.name" class="v6wf-row plain">
+          <div v-for="row in importRows" :key="row.name" class="v6wf-row plain">
             <div>
               <h3>{{ row.name }}</h3>
               <p>{{ row.copy }}</p>
@@ -58,9 +43,9 @@
         </div>
       </div>
       <div class="v6wf-panel v6-reveal">
-        <p class="v6wf-panel-head">Supported providers</p>
+        <p class="v6wf-panel-head">{{ t('workflowPage.imports.panelHead') }}</p>
         <ul class="v6wf-provider-list">
-          <li v-for="p in PROVIDERS" :key="p.name">
+          <li v-for="p in providers" :key="p.name">
             <span class="v6wf-provider-name">{{ p.name }}</span>
             <span class="v6wf-provider-copy">{{ p.copy }}</span>
             <span class="v6wf-tag" :class="{ soon: p.soon }">{{ p.tag }}</span>
@@ -68,23 +53,18 @@
         </ul>
         <!-- the six entries sit at two different tiers, so the list needs the split
              spelled out rather than reading as one uniform feature set -->
-        <p class="v6wf-panel-foot">Symbol-to-asset mapping remembers what you told it — repeat imports just work. CSV and FXReplay imports ship with Lite; the four API connections are Professional.</p>
+        <p class="v6wf-panel-foot">{{ t('workflowPage.imports.panelFoot') }}</p>
       </div>
     </section>
 
     <!-- SECTION 2 · DAILY WORKFLOW & JOURNAL -->
     <section id="journal" class="v6wf-section flip v6-band v6-band-snap">
       <div class="v6wf-section-copy">
-        <p class="v6-eyebrow v6-reveal"><i></i>Daily workflow &amp; journal</p>
-        <h2 class="v6-h2 v6-reveal">The day, the trade and the reason — in one place.</h2>
-        <p class="v6wf-section-sub v6-reveal">
-          The Today screen keeps the current session's P&amp;L, streaks and account
-          status in view while you trade. Quick Entry captures a fill in seconds; the
-          journal captures the story behind it. When you review, the calendar shows
-          both — the numbers and the notes — day by day.
-        </p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('workflowPage.journal.eyebrow') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t('workflowPage.journal.title') }}</h2>
+        <p class="v6wf-section-sub v6-reveal">{{ t('workflowPage.journal.sub') }}</p>
         <div class="v6wf-rows v6-reveal">
-          <div v-for="r in JOURNAL_ROWS" :key="r.name" class="v6wf-row">
+          <div v-for="r in journalRows" :key="r.name" class="v6wf-row">
             <span class="v6wf-row-dot" aria-hidden="true"></span>
             <div>
               <h3>{{ r.name }}</h3>
@@ -97,11 +77,11 @@
         <img
           v-zoom
           :src="asset(isDark ? 'Screenshots/opt/calendar_f_d.webp' : 'Screenshots/opt/calendar_f_l.webp')"
-          alt="Katsumii calendar with per-day P&L, trade counts and journal markers"
+          :alt="t('workflowPage.journal.alt')"
           width="1600" height="1000"
           loading="lazy" decoding="async"
         />
-        <figcaption>Calendar — numbers and notes, one grid</figcaption>
+        <figcaption>{{ t('workflowPage.journal.caption') }}</figcaption>
       </figure>
     </section>
 
@@ -109,24 +89,16 @@
     <section id="tools" class="v6wf-toolbox v6-band v6-band-snap">
       <div class="v6wf-toolbox-head">
         <div>
-          <p class="v6-eyebrow v6-reveal"><i></i>Tools &amp; reports</p>
-          <h2 class="v6-h2 v6-reveal">The utilities you were already keeping in tabs.</h2>
+          <p class="v6-eyebrow v6-reveal"><i></i>{{ t('workflowPage.tools.eyebrow') }}</p>
+          <h2 class="v6-h2 v6-reveal">{{ t('workflowPage.tools.title') }}</h2>
         </div>
         <div class="v6wf-toolbox-aside">
-          <p class="v6wf-section-sub v6-reveal">
-            Every desk gets cluttered with the same six utilities — a position size
-            calculator, an R:R visualizer, a timezone helper. Katsumii ships them inside
-            the app, next to the data they act on, and turns any filter into a shareable
-            offline report.
-          </p>
-          <p class="v6wf-note v6-reveal">
-            On the paid licences, local backups run in the background on the schedule you
-            set — restore your last known-good state with one click.
-          </p>
+          <p class="v6wf-section-sub v6-reveal">{{ t('workflowPage.tools.sub') }}</p>
+          <p class="v6wf-note v6-reveal">{{ t('workflowPage.tools.note') }}</p>
         </div>
       </div>
       <div class="v6wf-tools v6-reveal">
-        <div v-for="tool in TOOLS" :key="tool.name" class="v6wf-tool">
+        <div v-for="tool in tools" :key="tool.name" class="v6wf-tool">
           <span class="v6wf-tool-kicker">{{ tool.kicker }}</span>
           <h3>{{ tool.name }}</h3>
           <p>{{ tool.copy }}</p>
@@ -137,11 +109,11 @@
     <!-- SECTION 3b · TOOL SHOWCASE (tabbed) -->
     <section
       ref="showcaseEl" class="v6wf-showcase v6-band"
-      aria-label="Trader tools in Katsumii"
+      :aria-label="t('workflowPage.showcase.aria')"
     >
-      <div id="v6wf-frames" class="v6wf-frames v6-reveal" role="tabpanel" :aria-labelledby="`v6wf-tab-${TOOL_SHOTS[activeShot].key}`">
+      <div id="v6wf-frames" class="v6wf-frames v6-reveal" role="tabpanel" :aria-labelledby="`v6wf-tab-${toolShots[activeShot].key}`">
         <figure
-          v-for="(s, i) in TOOL_SHOTS" :key="s.key"
+          v-for="(s, i) in toolShots" :key="s.key"
           class="v6wf-shot v6wf-frame" :class="{ on: i === activeShot }"
           :inert="i !== activeShot"
         >
@@ -157,10 +129,10 @@
       </div>
       <ol
         ref="tablistEl" class="v6wf-steps v6-reveal"
-        role="tablist" aria-label="Trader tools" aria-orientation="vertical"
+        role="tablist" :aria-label="t('workflowPage.showcase.ariaTablist')" aria-orientation="vertical"
         @keydown="onTabKey"
       >
-        <li v-for="(s, i) in TOOL_SHOTS" :key="s.key">
+        <li v-for="(s, i) in toolShots" :key="s.key">
           <button
             type="button" role="tab"
             :id="`v6wf-tab-${s.key}`"
@@ -182,13 +154,11 @@
 
     <!-- CTA -->
     <section class="v6wf-cta">
-      <h2 class="v6wf-cta-title v6-reveal">The tools, out of the way<b class="v6-dot">.</b></h2>
-      <p class="v6wf-cta-sub v6-reveal">
-        Every part of the loop — capture, import, reflect, review — inside one local app.
-      </p>
+      <h2 class="v6wf-cta-title v6-reveal">{{ t('workflowPage.cta.title') }}<b class="v6-dot">.</b></h2>
+      <p class="v6wf-cta-sub v6-reveal">{{ t('workflowPage.cta.sub') }}</p>
       <div class="v6wf-cta-actions v6-reveal">
-        <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-btn-lg v6-magnetic">See pricing <span aria-hidden="true">→</span></RouterLink>
-        <RouterLink :to="`/${lang}/features`" class="v6-quiet">Explore all features <span aria-hidden="true">→</span></RouterLink>
+        <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-btn-lg v6-magnetic">{{ t('common.cta.seePricing') }} <span aria-hidden="true">→</span></RouterLink>
+        <RouterLink :to="`/${lang}/features`" class="v6-quiet">{{ t('common.cta.exploreAllFeatures') }} <span aria-hidden="true">→</span></RouterLink>
       </div>
     </section>
   </main>
@@ -196,11 +166,19 @@
 
 <script setup>
 import { computed, inject, nextTick, onBeforeUnmount, onMounted, ref } from "vue"
+import { useI18n } from "vue-i18n"
 import { useRoute } from "vue-router"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { initMagnetic, initV6Reveals } from "../v6/motion.js"
 import { normalizeLocale } from "../utils/routes.js"
+
+const { t, tm, rt } = useI18n()
+const list = (key) => (tm(key) || []).map(rt)
+const listOf = (key, fields) =>
+  (tm(key) || []).map((entry) => Object.fromEntries(
+    fields.filter((f) => entry?.[f] !== undefined).map((f) => [f, rt(entry[f])])
+  ))
 
 const isDark = inject("isDark")
 
@@ -213,102 +191,39 @@ const lang = computed(() => {
   return normalizeLocale(raw)
 })
 
-const IMPORT_ROWS = [
-  {
-    name: "CSV import wizard", value: "4 steps",
-    copy: "Upload, resolve mapping issues, review, done. Broker presets auto-detect the common formats — or map columns yourself and save it as a custom preset.",
-  },
-  {
-    name: "Execution modes", value: "3 modes",
-    copy: "Import completed trades, raw executions, or executions paired by ID — Katsumii pairs the fills into round-turn trades on the way in.",
-  },
-  {
-    name: "FXReplay imports", value: "Backtest",
-    copy: "Send FXReplay exports straight into a new or existing backtest session with strategy, hypothesis and starting balance attached.",
-  },
-  {
-    name: "Symbol mapping", value: "Persistent",
-    copy: "Map broker symbols to Katsumii assets once. Unknown symbols surface in the mapping modal and can spawn new assets in place.",
-  },
-]
+/* Data blocks below carry only what is not translatable: provider names,
+   tool kickers and the screenshot path pieces. Copy comes from workflowPage.* */
 
-const PROVIDERS = [
-  { name: "MetaTrader 5",     copy: "Reads closed trades from a running local MT5 terminal on your click (Windows).", tag: "Windows" },
-  { name: "ProjectX / TopstepX", copy: "ProjectX Gateway API — sync futures fills across mapped accounts.", tag: "API" },
-  { name: "Capital.com",      copy: "REST API for demo and live accounts — closed trades on demand.",     tag: "API" },
-  { name: "OANDA",            copy: "v20 REST API for practice and live accounts — FX fills, mapped in.", tag: "API" },
-  { name: "Generic CSV",      copy: "Any broker that can export a CSV — map columns, save a preset, reuse.", tag: "Universal" },
-  { name: "FXReplay",         copy: "Backtest exports into dedicated backtest sessions.",                 tag: "Backtest" },
-]
+const heroChips = computed(() => list("workflowPage.hero.chips"))
+const importRows = computed(() => listOf("workflowPage.imports.rows", ["name", "value", "copy"]))
+const journalRows = computed(() => listOf("workflowPage.journal.rows", ["name", "copy"]))
 
-const JOURNAL_ROWS = [
-  {
-    name: "Today screen",
-    copy: "Session P&L, trade count, W/L, streaks, account health and personal goals — the state of the day, at a glance.",
-  },
-  {
-    name: "Quick Entry & Trade Presets",
-    copy: "Log a fill in seconds. Presets pre-fill strategy, risk, session and fees so recurring setups stop costing you clicks.",
-  },
-  {
-    name: "Tiptap journal",
-    copy: "Rich-text entries with autosave, bullet lists, blockquotes and screenshots. Per-day stats stay pinned to the top of the page you're writing on.",
-  },
-  {
-    name: "Emotions, mistakes, tags",
-    copy: "Attach the human context to every trade — moods, execution mistakes, color tags — so the analytics side has something to break down.",
-  },
-  {
-    name: "Calendar with journal markers",
-    copy: "Monthly and yearly heatmaps of P&L, trade count and (crucially) which days you actually wrote something down.",
-  },
-]
+const PROVIDER_NAMES = ["MetaTrader 5", "ProjectX / TopstepX", "Capital.com", "OANDA", "Generic CSV", "FXReplay"]
+const providers = computed(() => {
+  const copy = listOf("workflowPage.imports.providers", ["copy", "tag"])
+  return PROVIDER_NAMES.map((name, i) => ({ name, ...copy[i] }))
+})
 
-const TOOLS = [
-  { kicker: "T1", name: "R:R visualizer",         copy: "Model a trade before you take it — entry, stop, target, risk multiple, planned outcome." },
-  { kicker: "T2", name: "Position size calculator", copy: "From account risk to contract size across futures, FX, CFDs — tick size and value baked in." },
-  { kicker: "T3", name: "Equity simulator",       copy: "Project account growth from win rate, RRR and risk per trade. See variance, not just the average." },
-  { kicker: "T4", name: "Timezone converter",     copy: "Line up session opens, prop-firm cutoffs and your local clock without a browser tab." },
-  { kicker: "T5", name: "Currency converter",     copy: "Cross-currency P&L in one place — useful when the firm settles in a currency you don't quote in." },
-  { kicker: "T6", name: "Futures contract specs", copy: "Tick size, tick value, expiry, session — for every contract you actually trade." },
-  { kicker: "R1", name: "HTML performance report", copy: "Self-contained offline report from the current filters — equity curve, calendar heatmap, breakdowns, key metrics. Dark and light modes ship inside the file." },
-  { kicker: "R2", name: "CSV export",             copy: "Export the filtered trade log for spreadsheets, tax software or your own analysis pipeline." },
-  { kicker: "R3", name: "Automated backups",      copy: "Backups run in the background on the schedule you pick — weekly, monthly or both. Decide how many copies to keep, restore the latest with one click." },
-]
+const TOOL_KICKERS = ["T1", "T2", "T3", "T4", "T5", "T6", "R1", "R2", "R3"]
+const tools = computed(() => {
+  const copy = listOf("workflowPage.tools.items", ["name", "copy"])
+  return TOOL_KICKERS.map((kicker, i) => ({ kicker, ...copy[i] }))
+})
 
 /* Tabbed showcase: the four shots swap in place, driven by the step list.
    File names differ in shape (tools_l_1 vs. report_l), so each carries its own
    prefix/suffix around the theme letter. */
-const TOOL_SHOTS = [
-  {
-    key: "tools1", pre: "tools", suf: "_1",
-    name: "Plan & sizing",
-    copy: "R:R visualizer and position size calculator, side by side with the timezone and currency helpers.",
-    alt: "Katsumii R:R visualizer, position size calculator and timezone converter",
-    caption: "Tools — R:R, contracts, sessions",
-  },
-  {
-    key: "tools2", pre: "tools", suf: "_2",
-    name: "Equity simulator",
-    copy: "Project account growth from win rate, RRR and risk per trade — ten possible paths, not one flattering average.",
-    alt: "Katsumii equity simulator projecting possible account paths",
-    caption: "Equity simulator — variance made visible",
-  },
-  {
-    key: "report", pre: "report", suf: "",
-    name: "HTML report",
-    copy: "The current filter, exported as one self-contained file — equity curve, heatmap, breakdowns, dark and light inside.",
-    alt: "Katsumii self-contained HTML performance report",
-    caption: "Report — one file, opens anywhere",
-  },
-  {
-    key: "backup", pre: "backup", suf: "",
-    name: "Automated backups",
-    copy: "Snapshots run in the background on the schedule you pick. Decide how many copies to keep, restore the latest with one click.",
-    alt: "Katsumii backup settings with scheduled local snapshots",
-    caption: "Backups — scheduled, local, one-click restore",
-  },
+const SHOT_FILES = [
+  { key: "tools1", pre: "tools", suf: "_1" },
+  { key: "tools2", pre: "tools", suf: "_2" },
+  { key: "report", pre: "report", suf: "" },
+  { key: "backup", pre: "backup", suf: "" },
 ]
+const toolShots = computed(() => {
+  const copy = listOf("workflowPage.showcase.shots", ["name", "copy", "alt", "caption"])
+  return SHOT_FILES.map((file, i) => ({ ...file, ...copy[i] }))
+})
+
 const shotSrc = (s) => asset(`Screenshots/opt/${s.pre}_${isDark.value ? "d" : "l"}${s.suf}.webp`)
 
 const activeShot = ref(0)
@@ -328,12 +243,12 @@ const selectShot = (i) => {
     return
   }
   const { start, end } = showcasePin
-  const top = start + ((end - start) * i) / (TOOL_SHOTS.length - 1)
+  const top = start + ((end - start) * i) / (toolShots.value.length - 1)
   window.scrollTo({ top, behavior: "smooth" })
 }
 
 const onTabKey = (event) => {
-  const last = TOOL_SHOTS.length - 1
+  const last = toolShots.value.length - 1
   let next = activeShot.value
   if (event.key === "ArrowDown" || event.key === "ArrowRight") next = next === last ? 0 : next + 1
   else if (event.key === "ArrowUp" || event.key === "ArrowLeft") next = next === 0 ? last : next - 1
@@ -367,7 +282,7 @@ onMounted(() => {
   gsap.registerPlugin(ScrollTrigger)
   const mm = gsap.matchMedia()
   mm.add("(min-width: 901px) and (min-height: 640px) and (prefers-reduced-motion: no-preference)", () => {
-    const steps = TOOL_SHOTS.length
+    const steps = toolShots.value.length
     const st = ScrollTrigger.create({
       trigger: showcaseEl.value,
       start: "top top",

@@ -2,18 +2,15 @@
   <main ref="rootEl" class="v6-notfound">
     <section class="v6nf-wrap">
       <p class="v6-eyebrow v6-reveal"><i></i>404</p>
-      <h1 class="v6-h1 v6nf-title">Nothing logged here<b class="v6-dot">.</b></h1>
-      <p class="v6nf-sub v6-reveal">
-        This page does not exist, or it moved somewhere else. The links below cover
-        everything the site has.
-      </p>
+      <h1 class="v6-h1 v6nf-title">{{ t('notFoundPage.title') }}<b class="v6-dot">.</b></h1>
+      <p class="v6nf-sub v6-reveal">{{ t('notFoundPage.sub') }}</p>
 
       <div class="v6nf-actions v6-reveal">
-        <RouterLink :to="`/${lang}/app`" class="v6-btn v6-magnetic">Back to the start <span aria-hidden="true">→</span></RouterLink>
+        <RouterLink :to="`/${lang}/app`" class="v6-btn v6-magnetic">{{ t('notFoundPage.back') }} <span aria-hidden="true">→</span></RouterLink>
       </div>
 
-      <nav class="v6nf-links v6-reveal" aria-label="Popular pages">
-        <RouterLink v-for="l in LINKS" :key="l.path" :to="`/${lang}${l.path}`">
+      <nav class="v6nf-links v6-reveal" :aria-label="t('notFoundPage.ariaLinks')">
+        <RouterLink v-for="l in links" :key="l.path" :to="`/${lang}${l.path}`">
           <span class="v6nf-link-name">{{ l.name }}</span>
           <span class="v6nf-link-copy">{{ l.copy }}</span>
         </RouterLink>
@@ -24,9 +21,12 @@
 
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref } from "vue"
+import { useI18n } from "vue-i18n"
 import { useRoute } from "vue-router"
 import { initMagnetic, initV6Reveals } from "../v6/motion.js"
 import { normalizeLocale } from "../utils/routes.js"
+
+const { t, tm, rt } = useI18n()
 
 const route = useRoute()
 const lang = computed(() => {
@@ -34,12 +34,12 @@ const lang = computed(() => {
   return normalizeLocale(raw)
 })
 
-const LINKS = [
-  { path: "/features", name: "Features", copy: "Every module in the cockpit" },
-  { path: "/pricing", name: "Pricing", copy: "One purchase, no subscription" },
-  { path: "/manual", name: "Manual", copy: "How the app works, screen by screen" },
-  { path: "/faq", name: "FAQ", copy: "The questions that come up most" },
-]
+const LINK_PATHS = ["/features", "/pricing", "/manual", "/faq"]
+const links = computed(() =>
+  (tm("notFoundPage.links") || []).map((l, i) => ({
+    path: LINK_PATHS[i], name: rt(l.name), copy: rt(l.copy),
+  }))
+)
 
 const rootEl = ref(null)
 let cleanups = []

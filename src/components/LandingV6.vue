@@ -6,38 +6,35 @@
         <p class="v6-eyebrow v6-hero-brand v6-copy-glow v6-load v6-load-1">
           <img :src="asset('logo.png')" alt="" width="64" height="64" />
           <b>Katsumii<span class="v6-type-dot">.</span></b>
-          <i></i>offline trading journal
+          <i></i>{{ t('landing.hero.brandTagline') }}
         </p>
         <h1 class="v6-h1">
-          <span class="v6-hline"><span class="v6-hline-in v6-load-h1a"><span class="v6-crt" :class="{ on: glitchOn }" :data-text="glitchWord">{{ glitchWord }}</span> with</span></span>
+          <span class="v6-hline"><span class="v6-hline-in v6-load-h1a"><span class="v6-crt" :class="{ on: glitchOn }" :data-text="glitchWord">{{ glitchWord }}</span>{{ headlineLeadRest }}</span></span>
           <span class="v6-hline"><span class="v6-hline-in v6-load-h1b v6-typed-line"><em>{{ typedBody }}<b class="v6-type-dot">{{ typedDot }}</b></em><b class="v6-type-cursor" aria-hidden="true">|</b></span></span>
         </h1>
         <p class="v6-hero-sub v6-copy-glow v6-load v6-load-2">
-          The market doesn't remember your trades. Katsumii does — every rule,
-          every drawdown, every pattern, stored on your computer and nowhere else.
-          <span class="v6-hero-ownership">Buy it once, from $49. Yours forever.</span>
+          {{ t('landing.hero.sub') }}
+          <span class="v6-hero-ownership">{{ t('landing.hero.ownership') }}</span>
         </p>
         <div class="v6-hero-actions v6-copy-glow v6-load v6-load-3">
-          <span class="v6-btn v6-btn-static" aria-disabled="true">Download coming soon</span>
-          <a href="#story" class="v6-quiet v6-magnetic">See it in action <span aria-hidden="true">↓</span></a>
+          <span class="v6-btn v6-btn-static" aria-disabled="true">{{ t('landing.hero.ctaPrimary') }}</span>
+          <a href="#story" class="v6-quiet v6-magnetic">{{ t('landing.hero.ctaSecondary') }} <span aria-hidden="true">↓</span></a>
         </div>
       </div>
-      <p class="v6-hero-hint v6-copy-glow v6-load v6-load-4" aria-hidden="true"><span></span>scroll</p>
+      <p class="v6-hero-hint v6-copy-glow v6-load v6-load-4" aria-hidden="true"><span></span>{{ t('landing.hero.scroll') }}</p>
     </section>
 
     <!-- MARQUEE -->
     <div class="v6-marquee" aria-hidden="true">
       <div class="v6-marquee-track">
         <span v-for="n in 2" :key="n" class="v6-marquee-seq">
-          journal <i>·</i> accounts <i>·</i> challenges <i>·</i> backtests <i>·</i>
-          analytics <i>·</i> payouts <i>·</i> drawdown rules <i>·</i> imports <i>·</i>
-          reports <i>·</i> your disk <i>·</i>
+          <template v-for="word in marqueeWords" :key="word">{{ word }} <i>·</i> </template>
         </span>
       </div>
     </div>
 
     <!-- NUMBERS -->
-    <section class="v6-numbers" aria-label="Katsumii in numbers">
+    <section class="v6-numbers" :aria-label="t('landing.numbers.aria')">
       <div v-for="s in stats" :key="s.label" class="v6-num v6-reveal">
         <span class="v6-num-val"><b :data-count="s.value">0</b><i>{{ s.suffix }}</i></span>
         <span class="v6-num-label">{{ s.label }}</span>
@@ -48,7 +45,7 @@
     <section id="story" ref="storyEl" class="v6-story">
       <div ref="storyPinEl" class="v6-story-pin">
         <div class="v6-story-copy">
-          <p class="v6-eyebrow v6-reveal"><i></i>Inside the cockpit</p>
+          <p class="v6-eyebrow v6-reveal"><i></i>{{ t('landing.story.eyebrow') }}</p>
           <h2 class="v6-h2 v6-reveal">
             {{ slides[activeStory].headline }}<br />
             <span class="v6-story-accent">{{ slides[activeStory].accent }}<span class="v6-type-dot">.</span></span>
@@ -66,7 +63,7 @@
           <div class="v6-story-dots" role="presentation">
             <button
               v-for="(s, i) in slides" :key="`dot-${s.title}`" type="button"
-              :class="{ active: i === activeStory }" :aria-label="`Show ${s.title}`"
+              :class="{ active: i === activeStory }" :aria-label="t('landing.story.showAria', { title: s.title })"
               @click="goToStory(i)"
             ></button>
           </div>
@@ -117,8 +114,8 @@
     <section id="modes" ref="modesEl" class="v6-modes">
       <div class="v6-modes-pin">
         <div class="v6-section-head">
-          <p class="v6-eyebrow v6-reveal"><i></i>Four disciplines</p>
-          <h2 class="v6-h2 v6-reveal">One journal.<br />Every way you trade.</h2>
+          <p class="v6-eyebrow v6-reveal"><i></i>{{ t('landing.modes.eyebrow') }}</p>
+          <h2 class="v6-h2 v6-reveal">{{ t('landing.modes.headlineA') }}<br />{{ t('landing.modes.headlineB') }}</h2>
         </div>
 
         <!-- desktop (test): fold accordion, layout concept from V5 -->
@@ -146,7 +143,7 @@
                   <li v-for="p in m.points" :key="p">{{ p }}</li>
                 </ul>
                 <RouterLink :to="`/${lang}${m.path}`" class="v6-quiet v6-mode-link">
-                  Explore {{ m.name }} <span aria-hidden="true">→</span>
+                  {{ t('landing.modes.explore', { name: m.name }) }} <span aria-hidden="true">→</span>
                 </RouterLink>
               </div>
             </div>
@@ -157,7 +154,7 @@
         <div v-else class="v6-modes-stage">
           <div class="v6-modes-side">
             <span class="v6-modes-count" aria-hidden="true">0{{ activeMode + 1 }}</span>
-            <div class="v6-modes-names" role="tablist" aria-label="Trading modes">
+            <div class="v6-modes-names" role="tablist" :aria-label="t('landing.modes.ariaTabs')">
               <button
                 v-for="(m, i) in modes" :key="m.name" type="button" role="tab"
                 :aria-selected="i === activeMode" :class="{ active: i === activeMode }"
@@ -177,7 +174,7 @@
                   <li v-for="p in modes[activeMode].points" :key="p">{{ p }}</li>
                 </ul>
                 <RouterLink :to="`/${lang}${modes[activeMode].path}`" class="v6-quiet v6-mode-link">
-                  Explore {{ modes[activeMode].name }} <span aria-hidden="true">→</span>
+                  {{ t('landing.modes.explore', { name: modes[activeMode].name }) }} <span aria-hidden="true">→</span>
                 </RouterLink>
               </article>
             </Transition>
@@ -198,7 +195,7 @@
               <li v-for="p in m.points" :key="p">{{ p }}</li>
             </ul>
             <RouterLink :to="`/${lang}${m.path}`" class="v6-quiet v6-mode-link">
-              Explore {{ m.name }} <span aria-hidden="true">→</span>
+              {{ t('landing.modes.explore', { name: m.name }) }} <span aria-hidden="true">→</span>
             </RouterLink>
           </article>
         </div>
@@ -208,8 +205,8 @@
     <!-- CRAFT -->
     <section id="craft" class="v6-craft">
       <div class="v6-section-head">
-        <p class="v6-eyebrow v6-reveal"><i></i>The craft</p>
-        <h2 class="v6-h2 v6-reveal">Everything a serious<br />journal should carry.</h2>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('landing.craft.eyebrow') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t('landing.craft.headlineA') }}<br />{{ t('landing.craft.headlineB') }}</h2>
       </div>
       <div class="v6-craft-grid">
         <article v-for="f in features" :key="f.title" :class="['v6-card', 'v6-reveal', f.span]">
@@ -237,16 +234,14 @@
 
     <!-- MANIFESTO -->
     <section id="manifesto" class="v6-manifesto">
-      <div class="v6-manifesto-cycle" aria-label="No cloud. No sign-up. One file, on your disk.">
+      <div class="v6-manifesto-cycle" :aria-label="t('landing.manifesto.aria')">
         <span v-for="p in cyclePhrases" :key="p" class="v6-cycle-line" aria-hidden="true">{{ p }}</span>
       </div>
       <p ref="manifestoEl" class="v6-manifesto-text">
-        <span v-for="(word, i) in manifestoWords" :key="i" class="v6-word">{{ word }}&nbsp;</span>
+        <span v-for="(word, i) in manifestoWords" :key="i" class="v6-word">{{ word }}</span>
       </p>
       <div class="v6-manifesto-notes v6-reveal">
-        <span>SQLITE · ONE LOCAL FILE</span>
-        <span>WORKS OFFLINE</span>
-        <span>NO KATSUMII ACCOUNT</span>
+        <span v-for="note in manifestoNotes" :key="note">{{ note }}</span>
       </div>
     </section>
 
@@ -261,47 +256,41 @@
     <!-- CTA -->
     <section class="v6-cta">
       <img class="v6-cta-logo v6-reveal" :src="asset('logo.png')" alt="" width="72" height="72" loading="lazy" />
-      <h2 class="v6-cta-title v6-reveal">The market opens tomorrow.<br /><em>This time, take notes.</em></h2>
-      <p class="v6-cta-sub v6-reveal">A journal only works if you keep it. Katsumii makes keeping it the easiest part of your day.</p>
+      <h2 class="v6-cta-title v6-reveal">{{ t('landing.cta.titleA') }}<br /><em>{{ t('landing.cta.titleB') }}</em></h2>
+      <p class="v6-cta-sub v6-reveal">{{ t('landing.cta.sub') }}</p>
       <div class="v6-cta-actions v6-reveal">
-        <span class="v6-btn v6-btn-lg v6-btn-static" aria-disabled="true">Download coming soon</span>
-        <RouterLink :to="`/${lang}/features`" class="v6-quiet">Explore all features</RouterLink>
+        <span class="v6-btn v6-btn-lg v6-btn-static" aria-disabled="true">{{ t('landing.cta.primary') }}</span>
+        <RouterLink :to="`/${lang}/features`" class="v6-quiet">{{ t('landing.cta.secondary') }}</RouterLink>
       </div>
     </section>
 
     <!-- SYSTEM REQUIREMENTS (moved from the prelaunch page) -->
-    <section id="system-requirements" class="v6-sysreq" aria-label="Compatibility">
+    <section id="system-requirements" class="v6-sysreq" :aria-label="t('sysreq.aria')">
       <div class="v6-sysreq-head">
-        <p class="v6-eyebrow v6-reveal"><i></i>Compatibility</p>
-        <h2 class="v6-h2 v6-reveal">Runs on Windows and macOS.</h2>
-        <p class="v6-sysreq-sub v6-reveal">Everything works identically on both platforms — except MetaTrader 5 sync, which needs Windows.</p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('sysreq.eyebrow') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t('sysreq.headline') }}</h2>
+        <p class="v6-sysreq-sub v6-reveal">{{ t('sysreq.sub') }}</p>
       </div>
       <div class="v6-sysreq-grid v6-reveal">
         <div>
-          <h3>Runs on</h3>
+          <h3>{{ t('sysreq.runsOn.title') }}</h3>
           <ul>
-            <li>Windows 10 or newer</li>
-            <li>Windows 11 recommended</li>
-            <li>macOS 12 Monterey or newer</li>
-            <li>Intel/AMD 64-bit and Apple Silicon</li>
+            <li v-for="item in sysreqRunsOn" :key="item">{{ item }}</li>
           </ul>
         </div>
         <div>
-          <h3>System requirements</h3>
+          <h3>{{ t('sysreq.requirements.title') }}</h3>
           <ul>
-            <li>8 GB RAM</li>
-            <li>1 GB free storage</li>
-            <li>1440 x 900 display or larger</li>
-            <li>Internet connection for product activation, updates, API sync, and integrations</li>
+            <li v-for="item in sysreqRequirements" :key="item">{{ item }}</li>
           </ul>
         </div>
         <div>
-          <h3>Integration note</h3>
-          <p>MetaTrader 5 sync is currently Windows-only and requires a locally installed, running MT5 terminal. On macOS, Katsumii supports manual imports, analytics, reports, backups, and supported API integrations.</p>
+          <h3>{{ t('sysreq.integration.title') }}</h3>
+          <p>{{ t('sysreq.integration.body') }}</p>
         </div>
         <div>
-          <h3>API access</h3>
-          <p>API usage may be paid and depends on your broker. Katsumii works with broker integrations only when you have a matching API key.</p>
+          <h3>{{ t('sysreq.api.title') }}</h3>
+          <p>{{ t('sysreq.api.body') }}</p>
         </div>
       </div>
     </section>
@@ -310,6 +299,7 @@
 
 <script setup>
 import { computed, inject, onBeforeUnmount, onMounted, ref, watch } from "vue"
+import { useI18n } from "vue-i18n"
 import { useRoute } from "vue-router"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -318,6 +308,17 @@ import { normalizeLocale } from "../utils/routes.js"
 
 const baseUrl = import.meta.env.BASE_URL
 const asset = (path) => `${baseUrl}${path}`
+
+const { t, tm, rt } = useI18n()
+/* tm() returns raw message objects — rt() resolves each leaf to a plain string.
+   Optional fields (a card without chips) must be skipped: rt(undefined) throws. */
+const list = (key) => (tm(key) || []).map(rt)
+const listOf = (key, fields) =>
+  (tm(key) || []).map((entry) => Object.fromEntries(
+    fields
+      .filter((f) => entry?.[f] !== undefined)
+      .map((f) => [f, Array.isArray(entry[f]) ? entry[f].map(rt) : rt(entry[f])])
+  ))
 
 const route = useRoute()
 const isDark = inject("isDark")
@@ -343,12 +344,27 @@ const manifestoEl = ref(null)
 /* ── hero typewriter — timing ported 1:1 from the old prelaunch page ── */
 /* "proof." carries the local-first promise the sub-line spells out — the rest are
    virtues any journal could claim, so they stay the backdrop it lands against */
-const TYPE_WORDS = ["discipline.", "consistency.", "honesty.", "proof.", "clarity."]
-const typed = ref(TYPE_WORDS[0])
-/* trailing dot rendered separately so it can take the ember accent */
-const typedBody = computed(() => typed.value.endsWith(".") ? typed.value.slice(0, -1) : typed.value)
-const typedDot = computed(() => typed.value.endsWith(".") ? "." : "")
+const typeWords = computed(() => list("landing.hero.typedWords"))
+const typed = ref(typeWords.value[0] ?? "")
+/* trailing dot rendered separately so it can take the ember accent —
+   CJK writes it as the full-width 。, so both forms count */
+const TERMINAL_DOT = /[.。]$/
+const typedBody = computed(() => typed.value.replace(TERMINAL_DOT, ""))
+const typedDot = computed(() => (TERMINAL_DOT.test(typed.value) ? typed.value.slice(-1) : ""))
 let typingTimer = null
+
+/* The lead line reads "<glitch word> with". The glitch word needs its own span,
+   so we substitute a sentinel and keep only what follows it — the locale still
+   controls word order (zh trails a particle where English leads with "with"). */
+const LEAD_SENTINEL = "\u0000"
+const headlineLeadRest = computed(() =>
+  t("landing.hero.headlineLead", { word: LEAD_SENTINEL }).split(LEAD_SENTINEL)[1] ?? ""
+)
+const marqueeWords = computed(() => list("landing.marquee"))
+const manifestoNotes = computed(() => list("landing.manifesto.notes"))
+const cyclePhrases = computed(() => list("landing.manifesto.cycle"))
+const sysreqRunsOn = computed(() => list("sysreq.runsOn.items"))
+const sysreqRequirements = computed(() => list("sysreq.requirements.items"))
 
 const HOLD_MS = 5000
 /* fires once per word, exactly at the midpoint of its hold phase (word fully typed,
@@ -359,6 +375,7 @@ let onHoldMidpoint = null
 let holdMidpointTimer = null
 
 const startTypewriter = () => {
+  const TYPE_WORDS = typeWords.value
   let wordIdx = 0
   let charIdx = TYPE_WORDS[0].length
   let deleting = false
@@ -401,64 +418,52 @@ const startTypewriter = () => {
    Swaps only on a typewriter hold-midpoint (never mid-type/-delete). "Trade" rides
    out 2 hold-midpoints before swapping (~9-11s at the 5s hold above), "Journal"
    swaps back on the very next one (~5-6s) — adjust HOLDS_PER_STATE to retune. */
-const glitchWord = ref("Trade")
+const glitchWords = computed(() => list("landing.hero.glitchWords"))
+const glitchIdx = ref(0)
+const glitchWord = computed(() => glitchWords.value[glitchIdx.value] ?? "")
 const glitchOn = ref(false)
 let glitchTimers = []
-const HOLDS_PER_STATE = { Trade: 2, Journal: 1 }
+/* holds each state rides out before swapping — index 0 is the primary word */
+const HOLDS_PER_STATE = [2, 1]
 let holdsSinceSwap = 0
 
 const startGlitchLoop = () => {
   holdsSinceSwap = 0
   onHoldMidpoint = () => {
     holdsSinceSwap++
-    if (holdsSinceSwap < HOLDS_PER_STATE[glitchWord.value]) return
+    if (holdsSinceSwap < HOLDS_PER_STATE[glitchIdx.value]) return
     holdsSinceSwap = 0
     glitchOn.value = true
     /* swap the word mid-burst so the interference masks the change */
     glitchTimers.push(setTimeout(() => {
-      glitchWord.value = glitchWord.value === "Trade" ? "Journal" : "Trade"
+      glitchIdx.value = (glitchIdx.value + 1) % glitchWords.value.length
     }, 300))
     glitchTimers.push(setTimeout(() => { glitchOn.value = false }, 760))
   }
 }
 
-const stats = [
-  { value: 4, suffix: "", label: "trading modes" },
-  { value: 100, suffix: "%", label: "local data" },
-  { value: 6, suffix: "", label: "built-in tools" },
-  { value: 4, suffix: "", label: "broker connections" },
+/* the numbers are structural; only their captions are translated */
+const STAT_VALUES = [
+  { value: 4, suffix: "" },
+  { value: 100, suffix: "%" },
+  { value: 6, suffix: "" },
+  { value: 4, suffix: "" },
 ]
+const stats = computed(() =>
+  STAT_VALUES.map((s, i) => ({ ...s, label: list("landing.numbers.labels")[i] ?? "" }))
+)
 
-const slides = [
-  {
-    imgL: "Screenshots/opt/hero_l.webp", imgD: "Screenshots/opt/hero_d.webp", w: 1600, h: 1000,
-    alt: "Katsumii dashboard with net P&L hero, execution quality and equity curve",
-    headline: "Find your edge.", accent: "Sharpen it",
-    title: "Dashboard", tag: "the day, distilled",
-    caption: "Net P&L, execution quality, edge drivers and your equity curve — one calm screen that carries the whole story.",
-  },
-  {
-    imgL: "Screenshots/opt/accounts_f_l.webp", imgD: "Screenshots/opt/accounts_f_d.webp", w: 1600, h: 1000,
-    alt: "Katsumii account overview with balance, drawdown distance and billing state",
-    headline: "Know every account.", accent: "Stay ahead of risk",
-    title: "Accounts", tag: "rules, always in sight",
-    caption: "Drawdown distance, winning days, payouts and rebill dates per account — before you take the next trade.",
-  },
-  {
-    imgL: "Screenshots/opt/calendar_f_l.webp", imgD: "Screenshots/opt/calendar_f_d.webp", w: 1600, h: 1000,
-    alt: "Katsumii calendar with color-graded trading days and weekly summaries",
-    headline: "Track every day.", accent: "See the pattern",
-    title: "Calendar", tag: "time, color-graded",
-    caption: "Every day graded by outcome, weekly and monthly performance in the margins, journal markers where you reflected.",
-  },
-  {
-    imgL: "Screenshots/opt/analysis_f_l_1.webp", imgD: "Screenshots/opt/analysis_f_d_1.webp", w: 1600, h: 1000,
-    alt: "Katsumii analysis view with weekday, session and strategy breakdowns",
-    headline: "Ask harder questions.", accent: "Get honest answers",
-    title: "Analysis", tag: "where the answers hide",
-    caption: "Slice performance by weekday, session, strategy, emotion or mistake — and find out what actually pays you.",
-  },
+/* screenshots and their intrinsic sizes stay here; copy comes from the locale */
+const SLIDE_MEDIA = [
+  { imgL: "Screenshots/opt/hero_l.webp", imgD: "Screenshots/opt/hero_d.webp", w: 1600, h: 1000 },
+  { imgL: "Screenshots/opt/accounts_f_l.webp", imgD: "Screenshots/opt/accounts_f_d.webp", w: 1600, h: 1000 },
+  { imgL: "Screenshots/opt/calendar_f_l.webp", imgD: "Screenshots/opt/calendar_f_d.webp", w: 1600, h: 1000 },
+  { imgL: "Screenshots/opt/analysis_f_l_1.webp", imgD: "Screenshots/opt/analysis_f_d_1.webp", w: 1600, h: 1000 },
 ]
+const slides = computed(() => {
+  const copy = listOf("landing.story.slides", ["headline", "accent", "title", "tag", "caption", "alt"])
+  return SLIDE_MEDIA.map((media, i) => ({ ...media, ...copy[i] }))
+})
 
 /* Test flag: true = fold accordion (V5 layout concept), false = pinned stage */
 const MODES_FOLDS = true
@@ -466,114 +471,56 @@ const MODES_FOLDS = true
 /* Each discipline retints the page accent AND the background
 cles
    (via the shell's accent API). Funded keeps the legacy brand teal. */
-const modes = [
-  {
-    name: "Funded", tag: "Live prop capital", path: "/funded-accounts",
-    accent: { dark: ["#22d3ee", "#67e8f9"], light: ["#0369a1", "#075985"] },
-    headline: "Guarded, every session.",
-    copy: "Your funded accounts on one board — with the rules that keep them alive always in sight.",
-    points: [
-      "Distance to daily and max loss limits, per account",
-      "Payout history, winning days and consistency tracking",
-      "Rebill dates, billing state and account health at a glance",
-    ],
-  },
-  {
-    name: "Challenge", tag: "Evaluations & combines", path: "/prop-firm-challenges",
-    accent: { dark: ["#facc15", "#fde68a"], light: ["#ab7503", "#8a5e02"] },
-    headline: "Pass with proof.",
-    copy: "Every evaluation tracked from first trade to funded — targets, minimum days and the moment you convert.",
-    points: [
-      "Profit target and minimum-days progress",
-      "Pass / fail state with full trade history behind it",
-      "One step to convert a passed challenge into a funded account",
-    ],
-  },
-  {
-    name: "Personal", tag: "Your own capital", path: "/personal-trading",
-    accent: { dark: ["#4ade80", "#a7f3c0"], light: ["#047857", "#065f46"] },
-    headline: "Same discipline, your money.",
-    copy: "Personal accounts get the same cockpit — daily goals, personal loss limits and streaks that keep you honest.",
-    points: [
-      "Personal daily loss limits and daily goals",
-      "Day and trade streaks across your accounts",
-      "Fully siloed from prop data — clean statistics",
-    ],
-  },
-  {
-    name: "Backtest", tag: "Sessions, not accounts", path: "/backtesting",
-    accent: { dark: ["#818cf8", "#c4b5fd"], light: ["#6d28d9", "#5b21b6"] },
-    headline: "Rehearse before it counts.",
-    copy: "Import FXReplay or CSV sessions, attach a hypothesis, and review backtests with the same analytics as live trading.",
-    points: [
-      "FXReplay and CSV imports into named sessions",
-      "Hypothesis notes, session sparklines and win rates",
-      "Compare strategies before risking a cent",
-    ],
-  },
+const MODE_META = [
+  { path: "/funded-accounts", accent: { dark: ["#22d3ee", "#67e8f9"], light: ["#0369a1", "#075985"] } },
+  { path: "/prop-firm-challenges", accent: { dark: ["#facc15", "#fde68a"], light: ["#ab7503", "#8a5e02"] } },
+  { path: "/personal-trading", accent: { dark: ["#4ade80", "#a7f3c0"], light: ["#047857", "#065f46"] } },
+  { path: "/backtesting", accent: { dark: ["#818cf8", "#c4b5fd"], light: ["#6d28d9", "#5b21b6"] } },
 ]
+const modes = computed(() => {
+  const copy = listOf("landing.modes.items", ["name", "tag", "headline", "copy", "points"])
+  return MODE_META.map((meta, i) => ({ ...meta, ...copy[i] }))
+})
 
-/* "No sign-up" rather than "no account": buying still runs through Lemon Squeezy,
-   it is the Katsumii app that never asks you to register */
-const cyclePhrases = ["No cloud.", "No sign-up.", "One file, on your disk."]
-
-const manifestoWords =
-  ("Your trades are your story. They belong on your machine, not on someone else's server. " +
-    "Katsumii keeps everything in a local database — offline, private, and entirely yours.").split(" ")
+/* The manifesto reveals word by word. CJK has no spaces, so there it staggers
+   per character instead — splitting on " " would yield one giant block. */
+const manifestoWords = computed(() => {
+  const text = t("landing.manifesto.text")
+  if (/[一-鿿]/.test(text)) return [...text]
+  return text.split(" ").map((w) => `${w} `)
+})
 
 /* deliberately does not repeat the hero numbers above (4 modes, 100% local) —
    these answer what the manifesto just claimed */
-const manifestoStats = [
-  { value: 0, suffix: "", label: "accounts to create" },
-  { value: 0, suffix: "", label: "bytes in the cloud" },
-  { value: 1, suffix: "", label: "file you can back up yourself" },
+const MANIFESTO_VALUES = [
+  { value: 0, suffix: "" },
+  { value: 0, suffix: "" },
+  { value: 1, suffix: "" },
 ]
+const manifestoStats = computed(() =>
+  MANIFESTO_VALUES.map((s, i) => ({ ...s, label: list("landing.manifesto.stats")[i] ?? "" }))
+)
 
 const icon = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`
 
-const features = [
-  {
-    title: "A quiet place to think",
-    copy: "A rich-text daily journal with autosave, screenshots and per-day stats pinned to every entry. Your calendar remembers which days you reflected.",
-    icon: icon('<path d="M16.86 4.49a1.87 1.87 0 1 1 2.65 2.65L7.5 19.14 4 20l.86-3.5L16.86 4.49z"/><path d="M15 6.5l2.5 2.5"/>'),
-    span: "v6-span-7",
-    chips: ["Rich text", "Autosave", "Screenshots", "Day markers"],
-  },
-  {
-    title: "Your history, in minutes",
-    /* sync is manual by design (you press "Sync now") and Professional-only —
-       both facts belong here, since the chips below name the providers */
-    copy: "A CSV wizard with broker presets and FXReplay backtest imports. Professional adds one-click sync for MetaTrader 5, ProjectX, Capital.com and OANDA — pulled when you click, never in the background.",
-    icon: icon('<path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 21h16"/>'),
-    span: "v6-span-5",
-    chips: ["CSV wizard", "FXReplay", "MT5", "ProjectX", "Capital.com", "OANDA"],
-  },
-  {
-    title: "Rules that never sleep",
-    copy: "Inactivity alerts before deadlines bite, corrections that keep balances honest, and copy groups for leader–follower accounts.",
-    icon: icon('<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9.5 12l2 2 3.5-3.5"/>'),
-    span: "v6-span-5",
-  },
-  {
-    title: "One file, the whole story",
-    copy: "Self-contained HTML performance reports — equity curve, calendar heatmap, breakdowns — that open offline and travel anywhere.",
-    icon: icon('<path d="M6 3h9l4 4v14H6V3z"/><path d="M15 3v6h4"/><path d="M9 13l2.2 2.2L15 11"/>'),
-    span: "v6-span-7",
-    chips: ["Equity curve", "Heatmap", "Dark / light"],
-  },
-  {
-    title: "Six tools, always at hand",
-    copy: "R:R visualizer, position size calculator, equity simulator, timezone and currency converters, futures contract specs — built in.",
-    icon: icon('<path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7z"/>'),
-    span: "v6-span-6",
-  },
-  {
-    title: "Slice by anything",
-    copy: "Strategy, session, emotion, mistake, asset, timeframe, direction, tags — flip a filter and every metric recalculates instantly.",
-    icon: icon('<path d="M4 5h16"/><path d="M7 12h10"/><path d="M10 19h4"/>'),
-    span: "v6-span-6",
-  },
+/* icon art and grid span are presentation; title/copy/chips come from the locale.
+   Card 2's copy notes that sync is manual by design and Professional-only —
+   both facts belong there, since its chips name the providers. */
+const FEATURE_META = [
+  { icon: icon('<path d="M16.86 4.49a1.87 1.87 0 1 1 2.65 2.65L7.5 19.14 4 20l.86-3.5L16.86 4.49z"/><path d="M15 6.5l2.5 2.5"/>'), span: "v6-span-7" },
+  { icon: icon('<path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 21h16"/>'), span: "v6-span-5" },
+  { icon: icon('<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9.5 12l2 2 3.5-3.5"/>'), span: "v6-span-5" },
+  { icon: icon('<path d="M6 3h9l4 4v14H6V3z"/><path d="M15 3v6h4"/><path d="M9 13l2.2 2.2L15 11"/>'), span: "v6-span-7" },
+  { icon: icon('<path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7z"/>'), span: "v6-span-6" },
+  { icon: icon('<path d="M4 5h16"/><path d="M7 12h10"/><path d="M10 19h4"/>'), span: "v6-span-6" },
 ]
+const features = computed(() => {
+  const copy = listOf("landing.craft.items", ["title", "copy", "chips"])
+  return FEATURE_META.map((meta, i) => {
+    const { chips, ...rest } = copy[i] ?? {}
+    return { ...meta, ...rest, chips: Array.isArray(chips) && chips.length ? chips : null }
+  })
+})
 
 let gsapCtx = null
 let storyTrigger = null
@@ -581,12 +528,12 @@ let modesTrigger = null
 let cleanups = []
 
 /* discipline → shell accent (page vars + background particles) */
-watch(activeMode, (i) => v6Accent?.set(modes[i].accent))
+watch(activeMode, (i) => v6Accent?.set(modes.value[i].accent))
 
 const goToStory = (i) => {
   if (storyTrigger) {
     const { start, end } = storyTrigger
-    const target = start + ((end - start) * (i + 0.5)) / slides.length
+    const target = start + ((end - start) * (i + 0.5)) / slides.value.length
     window.scrollTo({ top: target, behavior: prefersReducedMotion() ? "auto" : "smooth" })
   } else {
     activeStory.value = i
@@ -596,7 +543,7 @@ const goToStory = (i) => {
 const goToMode = (i) => {
   if (modesTrigger) {
     const { start, end } = modesTrigger
-    const target = start + ((end - start) * (i + 0.5)) / modes.length
+    const target = start + ((end - start) * (i + 0.5)) / modes.value.length
     window.scrollTo({ top: target, behavior: prefersReducedMotion() ? "auto" : "smooth" })
   } else {
     activeMode.value = i
@@ -703,11 +650,11 @@ onMounted(() => {
           trigger: storyPinEl.value,
           refreshPriority: 0,
           start: "top top",
-          end: () => `+=${window.innerHeight * (slides.length - 1) * 1.1}`,
+          end: () => `+=${window.innerHeight * (slides.value.length - 1) * 1.1}`,
           pin: true,
           anticipatePin: 1,
           onUpdate: (self) => {
-            const i = Math.min(slides.length - 1, Math.floor(self.progress * slides.length))
+            const i = Math.min(slides.value.length - 1, Math.floor(self.progress * slides.value.length))
             if (activeStory.value !== i) activeStory.value = i
           },
         })
@@ -716,11 +663,11 @@ onMounted(() => {
             trigger: modesEl.value,
             refreshPriority: 0,
             start: "top top",
-            end: () => `+=${modes.length * 90}%`,
+            end: () => `+=${modes.value.length * 90}%`,
             pin: ".v6-modes-pin",
             anticipatePin: 1,
             onUpdate: (self) => {
-              const i = Math.min(modes.length - 1, Math.floor(self.progress * modes.length))
+              const i = Math.min(modes.value.length - 1, Math.floor(self.progress * modes.value.length))
               if (activeMode.value !== i) activeMode.value = i
             },
           })

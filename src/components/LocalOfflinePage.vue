@@ -3,25 +3,15 @@
     <!-- HERO -->
     <section class="v6lo-hero v6-band v6-band-snap">
       <div ref="heroCopyEl" class="v6lo-hero-copy v6-copy-glow">
-        <p class="v6-eyebrow v6-reveal"><i></i>Local &amp; offline</p>
-        <h1 class="v6-h1 v6-reveal">Your records live <em>on your disk</em><b class="v6-dot">.</b></h1>
-        <p class="v6lo-sub v6-reveal">
-          Katsumii is a desktop application, not a hosted service. Your trades, notes and
-          screenshots are written to a SQLite file on your own machine — there is no journal
-          account to create, no server holding your history, and nothing to lose access to
-          if a subscription lapses.
-        </p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('localOfflinePage.hero.eyebrow') }}</p>
+        <h1 class="v6-h1 v6-reveal">{{ t('localOfflinePage.hero.titlePre') }} <em>{{ t('localOfflinePage.hero.titleEm') }}</em><b class="v6-dot">.</b></h1>
+        <p class="v6lo-sub v6-reveal">{{ t('localOfflinePage.hero.sub') }}</p>
         <ul class="v6-card-chips v6lo-chips v6-reveal">
-          <li>SQLite on your disk</li>
-          <li>No Katsumii account</li>
-          <li>Works offline</li>
-          <!-- deliberately not "automatic backups": those ship with the paid
-               licences, while copying the file is something every licence can do -->
-          <li>One file to back up</li>
+          <li v-for="c in heroChips" :key="c">{{ c }}</li>
         </ul>
         <div class="v6lo-actions v6-reveal">
-          <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-magnetic">Get Katsumii <span aria-hidden="true">→</span></RouterLink>
-          <RouterLink :to="`/${lang}/features`" class="v6-quiet v6-magnetic">All features</RouterLink>
+          <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-magnetic">{{ t('common.cta.getKatsumii') }} <span aria-hidden="true">→</span></RouterLink>
+          <RouterLink :to="`/${lang}/features`" class="v6-quiet v6-magnetic">{{ t('common.cta.allFeatures') }}</RouterLink>
         </div>
       </div>
 
@@ -29,28 +19,24 @@
         <img
           v-zoom
           :src="asset(isDark ? 'Screenshots/opt/hero_d.webp' : 'Screenshots/opt/hero_l.webp')"
-          alt="Katsumii dashboard running as a local desktop application"
+          :alt="t('localOfflinePage.hero.alt')"
           width="1600" height="1000"
           loading="eager" decoding="async"
         />
-        <figcaption>Everything on this screen is read from your own disk</figcaption>
+        <figcaption>{{ t('localOfflinePage.hero.caption') }}</figcaption>
       </figure>
     </section>
 
     <!-- WHERE THE DATA SITS -->
     <section id="storage" class="v6lo-section v6-band v6-band-snap">
       <div class="v6lo-section-copy">
-        <p class="v6-eyebrow v6-reveal"><i></i>Where the data sits</p>
-        <h2 class="v6-h2 v6-reveal">One file. On your machine. Yours to move.</h2>
-        <p class="v6lo-section-sub v6-reveal">
-          Every mode — Funded, Challenge, Personal and Backtest — writes into the same local
-          database, in separate tables. You can copy it to a USB stick, drop it in your own
-          cloud folder, or keep it on an air-gapped machine. Katsumii never needs to see it.
-        </p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('localOfflinePage.storage.eyebrow') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t('localOfflinePage.storage.title') }}</h2>
+        <p class="v6lo-section-sub v6-reveal">{{ t('localOfflinePage.storage.sub') }}</p>
       </div>
 
       <div class="v6lo-facts v6-reveal">
-        <article v-for="f in STORAGE_FACTS" :key="f.term" class="v6-card v6lo-fact">
+        <article v-for="f in storageFacts" :key="f.term" class="v6-card v6lo-fact">
           <p class="v6lo-fact-term">{{ f.term }}</p>
           <p class="v6lo-fact-val">{{ f.value }}</p>
           <p class="v6lo-fact-copy">{{ f.copy }}</p>
@@ -61,17 +47,13 @@
     <!-- WHAT TOUCHES THE NETWORK -->
     <section id="network" class="v6lo-section flip v6-band v6-band-snap">
       <div class="v6lo-section-copy">
-        <p class="v6-eyebrow v6-reveal"><i></i>What touches the network</p>
-        <h2 class="v6-h2 v6-reveal">Honest about the few things that go out.</h2>
-        <p class="v6lo-section-sub v6-reveal">
-          "Local-first" is a claim worth spelling out. Here is every part of Katsumii that
-          can reach the internet, and what it sends. Your trade history is not in this list —
-          and each of these keeps working, or fails quietly, when you are offline.
-        </p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('localOfflinePage.network.eyebrow') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t('localOfflinePage.network.title') }}</h2>
+        <p class="v6lo-section-sub v6-reveal">{{ t('localOfflinePage.network.sub') }}</p>
       </div>
 
       <ul class="v6lo-net v6-reveal">
-        <li v-for="n in NETWORK" :key="n.name" class="v6lo-net-row">
+        <li v-for="n in networkRows" :key="n.name" class="v6lo-net-row">
           <div class="v6lo-net-head">
             <h3>{{ n.name }}</h3>
             <span class="v6lo-tag" :class="n.tone">{{ n.tag }}</span>
@@ -84,22 +66,14 @@
     <!-- BACKUPS -->
     <section id="backups" class="v6lo-section v6-band v6-band-snap">
       <div class="v6lo-section-copy">
-        <p class="v6-eyebrow v6-reveal"><i></i>Backups</p>
-        <h2 class="v6-h2 v6-reveal">Local does not mean fragile.</h2>
-        <p class="v6lo-section-sub v6-reveal">
-          The honest trade-off of owning your data is that no one else is holding a copy.
-          The paid licences close that gap for you: a background task writes snapshots
-          beside your database on the schedule you choose, and you can export a full
-          copy by hand whenever you want.
-        </p>
-        <p class="v6lo-note v6-reveal">
-          Snapshots protect against corruption and mistakes — not against a lost laptop.
-          Keep one copy somewhere else; the file is small enough to fit anywhere.
-        </p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('localOfflinePage.backups.eyebrow') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t('localOfflinePage.backups.title') }}</h2>
+        <p class="v6lo-section-sub v6-reveal">{{ t('localOfflinePage.backups.sub') }}</p>
+        <p class="v6lo-note v6-reveal">{{ t('localOfflinePage.backups.note') }}</p>
       </div>
 
       <ol class="v6lo-steps v6-reveal">
-        <li v-for="(s, i) in BACKUP_STEPS" :key="s.title" class="v6lo-step">
+        <li v-for="(s, i) in backupSteps" :key="s.title" class="v6lo-step">
           <span class="v6lo-step-idx">{{ pad(i + 1) }}</span>
           <div>
             <h3>{{ s.title }}</h3>
@@ -111,13 +85,11 @@
 
     <!-- CTA -->
     <section class="v6lo-cta">
-      <h2 class="v6lo-cta-title v6-reveal">Own the record<b class="v6-dot">.</b></h2>
-      <p class="v6lo-cta-sub v6-reveal">
-        Buy the licence once, keep the journal for as long as you keep the file.
-      </p>
+      <h2 class="v6lo-cta-title v6-reveal">{{ t('localOfflinePage.cta.title') }}<b class="v6-dot">.</b></h2>
+      <p class="v6lo-cta-sub v6-reveal">{{ t('localOfflinePage.cta.sub') }}</p>
       <div class="v6lo-cta-actions v6-reveal">
-        <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-btn-lg v6-magnetic">See pricing <span aria-hidden="true">→</span></RouterLink>
-        <RouterLink :to="`/${lang}/faq`" class="v6-quiet v6-magnetic">Read the FAQ</RouterLink>
+        <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-btn-lg v6-magnetic">{{ t('common.cta.seePricing') }} <span aria-hidden="true">→</span></RouterLink>
+        <RouterLink :to="`/${lang}/faq`" class="v6-quiet v6-magnetic">{{ t('localOfflinePage.cta.readFaq') }}</RouterLink>
       </div>
     </section>
   </main>
@@ -125,9 +97,13 @@
 
 <script setup>
 import { computed, inject, onBeforeUnmount, onMounted, ref } from "vue"
+import { useI18n } from "vue-i18n"
 import { useRoute } from "vue-router"
 import { initMagnetic, initV6Reveals } from "../v6/motion.js"
 import { normalizeLocale } from "../utils/routes.js"
+
+const { t, tm, rt } = useI18n()
+const list = (key) => (tm(key) || []).map(rt)
 
 const isDark = inject("isDark")
 
@@ -142,94 +118,26 @@ const lang = computed(() => {
 
 const pad = (n) => String(n).padStart(2, "0")
 
-const STORAGE_FACTS = [
-  {
-    term: "Format",
-    value: "SQLite",
-    copy: "A single, well-documented database file — readable by any SQLite tool, not a proprietary format you need Katsumii to open.",
-  },
-  {
-    term: "Location",
-    value: "Your disk",
-    copy: "Written to your user folder. Move it, sync it through a folder you already trust, or keep it on an external drive.",
-  },
-  {
-    term: "Screenshots",
-    value: "Alongside",
-    copy: "Trade and setup screenshots are stored as ordinary image files next to the database, not uploaded anywhere.",
-  },
-  {
-    term: "Account",
-    value: "None",
-    copy: "No sign-up, no journal login, no password reset. The application starts and your data is simply there.",
-  },
-]
+const heroChips = computed(() => list("localOfflinePage.hero.chips"))
+const storageFacts = computed(() =>
+  (tm("localOfflinePage.storage.facts") || []).map((f) => ({
+    term: rt(f.term), value: rt(f.value), copy: rt(f.copy),
+  }))
+)
 
-const NETWORK = [
-  {
-    name: "Licence check",
-    tag: "Occasional",
-    tone: "info",
-    copy: "Validates your licence key. Sends the key and nothing about your trades. Separate from where the journal is stored.",
-  },
-  {
-    name: "Update check",
-    tag: "Optional",
-    tone: "info",
-    copy: "Asks whether a newer version exists. You can ignore it indefinitely — the version you installed keeps working.",
-  },
-  {
-    name: "Broker sync",
-    tag: "On demand",
-    tone: "good",
-    copy: "Off until you connect an account, and silent until you press Sync now — it pulls your fills into the local database on that click, never in the background. Credentials stay on your machine.",
-  },
-  {
-    name: "Your trade history",
-    tag: "Never leaves",
-    tone: "good",
-    copy: "Trades, notes, journal entries, screenshots and statistics are never transmitted. There is no endpoint that receives them.",
-  },
-]
+/* `tone` picks the pill colour and is presentation, so it stays in the component */
+const NETWORK_TONES = ["info", "info", "good", "good"]
+const networkRows = computed(() =>
+  (tm("localOfflinePage.network.rows") || []).map((n, i) => ({
+    name: rt(n.name), tag: rt(n.tag), copy: rt(n.copy), tone: NETWORK_TONES[i],
+  }))
+)
 
-const BACKUP_STEPS = [
-  {
-    title: "Automatic snapshots",
-    copy: "On the paid licences, a background task copies the database on your chosen schedule — weekly, monthly, or both — and keeps as many copies as you tell it to.",
-  },
-  {
-    title: "Export on demand",
-    copy: "Take a full copy whenever you want — before an update, at the end of a month, or ahead of a machine move.",
-  },
-  {
-    title: "Restore by copying",
-    copy: "Recovery is a file copy. Put the database back where it belongs and the application picks it up on the next start.",
-  },
-]
-
-const v6Quiet = inject("v6Quiet")
-const rootEl = ref(null)
-const heroCopyEl = ref(null)
-let cleanups = []
-
-onMounted(() => {
-  cleanups.push(initV6Reveals(rootEl.value))
-  cleanups.push(initMagnetic(rootEl.value))
-
-  /* the particle river thins out behind the hero copy — see v6Quiet in V6Shell */
-  v6Quiet?.set(heroCopyEl.value)
-  cleanups.push(() => v6Quiet?.clear())
-
-  /* full-viewport bands snap while this page is mounted — see v6.css */
-  document.documentElement.classList.add("v6-snap")
-})
-
-onBeforeUnmount(() => {
-  document.documentElement.classList.remove("v6-snap")
-  cleanups.forEach((off) => off && off())
-  cleanups = []
-})
+const backupSteps = computed(() =>
+  (tm("localOfflinePage.backups.steps") || []).map((s) => ({ title: rt(s.title), copy: rt(s.copy) }))
+)
 </script>
+
 
 <style scoped>
 /* Local & offline layout — shared tokens/chrome live in src/styles/v6.css */

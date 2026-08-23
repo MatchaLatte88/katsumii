@@ -8,7 +8,7 @@
         class="v6lb__dialog"
         role="dialog"
         aria-modal="true"
-        :aria-label="shot.alt || 'Screenshot'"
+        :aria-label="shot.alt || t('common.lightbox.screenshot')"
         tabindex="-1"
       >
         <header class="v6lb__bar">
@@ -21,7 +21,7 @@
               :aria-pressed="zoomed ? 'true' : 'false'"
               @click="toggleZoom()"
             >{{ zoomed ? "Fit" : "100%" }}</button>
-            <button type="button" class="v6lb__close" aria-label="Close" @click="close">
+            <button type="button" class="v6lb__close" :aria-label="t('common.aria.close')" @click="close">
               <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="m4 4 8 8M12 4l-8 8" />
               </svg>
@@ -57,9 +57,11 @@
 
 <script setup>
 import { computed, nextTick, onBeforeUnmount, ref, watch } from "vue"
+import { useI18n } from "vue-i18n"
 import { useRoute } from "vue-router"
 import { useLightbox } from "../../composables/useLightbox.js"
 
+const { t } = useI18n()
 const { shot, closeLightbox } = useLightbox()
 const route = useRoute()
 
@@ -405,8 +407,10 @@ onBeforeUnmount(() => {
 .v6lb__stage.grabbing,
 .v6lb__stage.grabbing img { cursor: grabbing; }
 
-:global(.v6.light) .v6lb__backdrop { background: rgba(226, 232, 240, 0.86); }
-:global(.v6.light) .v6lb__dialog { box-shadow: 0 32px 90px -28px rgba(15, 23, 42, 0.32); }
+/* the whole selector must sit inside :global() — Vue drops everything after a
+   :global(...) prefix, which leaked these backgrounds onto the .v6 shell */
+:global(.v6.light .v6lb__backdrop) { background: rgba(226, 232, 240, 0.86); }
+:global(.v6.light .v6lb__dialog) { box-shadow: 0 32px 90px -28px rgba(15, 23, 42, 0.32); }
 
 .v6lb-enter-active,
 .v6lb-leave-active { transition: opacity 0.25s ease; }

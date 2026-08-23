@@ -15,8 +15,7 @@ const SITE = "https://www.katsumii.com"
 const LOCALES = [
   { locale: "en", hreflang: "en" },
   { locale: "de", hreflang: "de" },
-  { locale: "es", hreflang: "es" },
-  { locale: "tw", hreflang: "zh-TW" },
+  { locale: "zht", hreflang: "zh-TW" },
 ]
 const DEFAULT_LOCALE = "en"
 

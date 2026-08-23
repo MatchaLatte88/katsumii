@@ -2,11 +2,11 @@ import { createI18n } from "vue-i18n"
 import en from "./locales/en.json"
 import { DEFAULT_LOCALE, normalizeLocale, preferredLocale } from "./utils/routes.js"
 
+/* es.json still exists but is not offered — see LEGACY_LOCALES in utils/routes.js */
 const localeLoaders = {
   de: () => import("./locales/de.json"),
   en: () => Promise.resolve({ default: en }),
-  es: () => import("./locales/es.json"),
-  tw: () => import("./locales/tw.json"),
+  zht: () => import("./locales/zht.json"),
 }
 
 export const initialLocale = normalizeLocale(preferredLocale())

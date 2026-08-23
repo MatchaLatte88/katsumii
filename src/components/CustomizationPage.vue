@@ -3,49 +3,38 @@
     <!-- HERO -->
     <section class="v6cu-hero v6-band v6-band-snap">
       <div ref="heroCopyEl" class="v6cu-hero-copy v6-copy-glow">
-        <p class="v6-eyebrow v6-reveal"><i></i>Customization</p>
-        <h1 class="v6-h1 v6-reveal">Your journal. <em>Your rules</em><b class="v6-dot">.</b></h1>
-        <p class="v6cu-sub v6-reveal">
-          No two traders read the market the same way — so no two cockpits should look the same.
-          Katsumii lets you hide what distracts, color what matters and tune every surface until
-          the app disappears behind your process.
-        </p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('customizationPage.hero.eyebrow') }}</p>
+        <h1 class="v6-h1 v6-reveal">{{ t('customizationPage.hero.titlePre') }} <em>{{ t('customizationPage.hero.titleEm') }}</em><b class="v6-dot">.</b></h1>
+        <p class="v6cu-sub v6-reveal">{{ t('customizationPage.hero.sub') }}</p>
         <ul class="v6-card-chips v6cu-chips v6-reveal">
-          <li>Focus mode</li>
-          <li>Per-mode accent colors</li>
-          <li>Light &amp; dark backgrounds</li>
-          <li>Three dark tones, two light</li>
+          <li v-for="c in heroChips" :key="c">{{ c }}</li>
         </ul>
         <div class="v6cu-actions v6-reveal">
-          <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-magnetic">Get Katsumii <span aria-hidden="true">→</span></RouterLink>
-          <RouterLink :to="`/${lang}/features`" class="v6-quiet v6-magnetic">All features</RouterLink>
+          <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-magnetic">{{ t('common.cta.getKatsumii') }} <span aria-hidden="true">→</span></RouterLink>
+          <RouterLink :to="`/${lang}/features`" class="v6-quiet v6-magnetic">{{ t('common.cta.allFeatures') }}</RouterLink>
         </div>
       </div>
       <figure class="v6cu-shot v6-reveal">
         <img
           v-zoom
           :src="asset(isDark ? 'Screenshots/opt/customize_d.webp' : 'Screenshots/opt/customize_l.webp')"
-          alt="Katsumii customization settings with theme, accent and layout options"
+          :alt="t('customizationPage.hero.alt')"
           width="1600" height="1000"
           loading="eager" decoding="async"
         />
-        <figcaption>Settings — every surface, tunable</figcaption>
+        <figcaption>{{ t('customizationPage.hero.caption') }}</figcaption>
       </figure>
     </section>
 
     <!-- FOCUS / HIDE UI -->
     <section id="focus" class="v6cu-section v6-band v6-band-snap">
       <div class="v6cu-section-copy">
-        <p class="v6-eyebrow v6-reveal"><i></i>Focus mode</p>
-        <h2 class="v6-h2 v6-reveal">Show only what earns its place on screen.</h2>
-        <p class="v6cu-section-sub v6-reveal">
-          Every panel in Katsumii can step aside. Strip the interface down to the essentials on
-          execution days, bring the full instrument board back for deep reviews — the app follows
-          your attention, not the other way around.
-        </p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('customizationPage.focus.eyebrow') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t('customizationPage.focus.title') }}</h2>
+        <p class="v6cu-section-sub v6-reveal">{{ t('customizationPage.focus.sub') }}</p>
         <div class="v6cu-rows v6-reveal">
           <button
-            v-for="c in LAYOUT_CONTROLS" :key="c.key"
+            v-for="c in layoutControls" :key="c.key"
             type="button" class="v6cu-row v6cu-control"
             role="switch" :aria-checked="c.on.value ? 'true' : 'false'"
             @click="c.on.value = !c.on.value"
@@ -57,7 +46,7 @@
             </span>
           </button>
         </div>
-        <p class="v6cu-control-hint v6-reveal">Try it — the screenshot follows your choice.</p>
+        <p class="v6cu-control-hint v6-reveal">{{ t('customizationPage.focus.hint') }}</p>
       </div>
       <figure class="v6cu-shot v6-reveal">
         <img
@@ -67,55 +56,42 @@
           width="1600" height="1000"
           loading="lazy" decoding="async"
         />
-        <figcaption>Dashboard — declutter on demand</figcaption>
+        <figcaption>{{ t('customizationPage.focus.caption') }}</figcaption>
       </figure>
     </section>
 
     <!-- MODE COLOR THEMES -->
     <section id="mode-colors" class="v6cu-section flip v6-band v6-band-snap">
       <div class="v6cu-section-copy">
-        <p class="v6-eyebrow v6-reveal"><i></i>Mode color themes</p>
-        <h2 class="v6-h2 v6-reveal">Four disciplines, four colors — you pick them.</h2>
-        <p class="v6cu-section-sub v6-reveal">
-          Funded, Challenge, Personal and Backtest each carry their own accent color, with separate
-          shades for light and dark mode. Start from the curated presets or open the color picker
-          and dial in any shade exactly to your taste. One glance at the screen and you know which
-          capital is on the line — before you read a single number.
-        </p>
-        <p class="v6cu-note v6-reveal">
-          Turn on mode-dependent accents and the ambient background and modal glows follow the
-          active trading mode too — the whole room changes with the stakes.
-        </p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('customizationPage.modeColors.eyebrow') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t('customizationPage.modeColors.title') }}</h2>
+        <p class="v6cu-section-sub v6-reveal">{{ t('customizationPage.modeColors.sub') }}</p>
+        <p class="v6cu-note v6-reveal">{{ t('customizationPage.modeColors.note') }}</p>
       </div>
       <div class="v6cu-swatch-panel v6-reveal">
-        <div v-for="m in MODE_SWATCHES" :key="m.name" class="v6cu-swatch-row">
+        <div v-for="m in modeSwatches" :key="m.name" class="v6cu-swatch-row">
           <span class="v6cu-swatch-name">{{ m.name }}</span>
           <span class="v6cu-swatch-sub">{{ m.sub }}</span>
           <span class="v6cu-swatch-dots" aria-hidden="true">
             <i v-for="c in m.palette" :key="c" :style="{ background: c }" :class="{ active: c === (isDark ? m.dark : m.light) }"></i>
           </span>
           <span class="v6cu-swatch-pair" aria-hidden="true">
-            <b :style="{ background: m.light }"></b><small>Light</small>
-            <b :style="{ background: m.dark }"></b><small>Dark</small>
+            <b :style="{ background: m.light }"></b><small>{{ t('customizationPage.modeColors.light') }}</small>
+            <b :style="{ background: m.dark }"></b><small>{{ t('customizationPage.modeColors.dark') }}</small>
           </span>
         </div>
-        <p class="v6cu-swatch-foot">Presets or free color picker — every mode, tuned separately for light and dark.</p>
+        <p class="v6cu-swatch-foot">{{ t('customizationPage.modeColors.foot') }}</p>
       </div>
     </section>
 
     <!-- BACKGROUNDS & TONE -->
     <section id="backgrounds" class="v6cu-section v6-band v6-band-snap">
       <div class="v6cu-section-copy">
-        <p class="v6-eyebrow v6-reveal"><i></i>Backgrounds &amp; tone</p>
-        <h2 class="v6-h2 v6-reveal">A canvas for day sessions, another for the night.</h2>
-        <p class="v6cu-section-sub v6-reveal">
-          Choose separate background styles for light and dark mode — flowing lines for one, a calm
-          honeycomb for the other. Then set the base tone itself: Ink for warm navy, Midnight for
-          bluish near-black or pure Black for OLED silence — and on the bright side, Soft paper or
-          a clean Whiteout.
-        </p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('customizationPage.backgrounds.eyebrow') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t('customizationPage.backgrounds.title') }}</h2>
+        <p class="v6cu-section-sub v6-reveal">{{ t('customizationPage.backgrounds.sub') }}</p>
         <div class="v6cu-rows v6-reveal">
-          <div v-for="r in CANVAS_ROWS" :key="r.name" class="v6cu-row plain">
+          <div v-for="r in canvasRows" :key="r.name" class="v6cu-row plain">
             <div>
               <h3>{{ r.name }}</h3>
               <p>{{ r.copy }}</p>
@@ -128,7 +104,7 @@
         <figure class="v6cu-shot" @mouseleave="hoveredTone = null">
           <div class="v6cu-tone-layers">
             <div
-              v-for="(t, i) in toneLayers" :key="t.file"
+              v-for="(tone, i) in toneLayers" :key="tone.file"
               class="v6cu-tl" :class="{ lifted: hoveredTone === i }"
               :style="{ zIndex: hoveredTone === i ? toneLayers.length + 1 : i + 1 }"
             >
@@ -138,8 +114,8 @@
                 @mouseenter="hoveredTone = i"
               >
                 <img
-                  :src="asset(`Screenshots/opt/themes/${t.file}.webp`)"
-                  :alt="`Katsumii in the ${t.name} theme`"
+                  :src="asset(`Screenshots/opt/themes/${tone.file}.webp`)"
+                  :alt="t('customizationPage.backgrounds.themeAlt', { name: tone.name })"
                   width="1600" height="1000"
                   loading="lazy" decoding="async"
                 />
@@ -148,26 +124,24 @@
           </div>
           <figcaption>{{ toneCaption }}</figcaption>
         </figure>
-        <div class="v6cu-tone-switch" role="group" aria-label="Preview theme">
+        <div class="v6cu-tone-switch" role="group" :aria-label="t('customizationPage.backgrounds.ariaPreview')">
           <button
             v-for="o in ['light', 'dark']" :key="o"
             type="button" class="v6cu-tone-btn"
             :class="{ on: toneMode === o }" :aria-pressed="toneMode === o ? 'true' : 'false'"
             @click="toneOverride = o"
-          >{{ o === "light" ? "Light" : "Dark" }}</button>
+          >{{ t(`customizationPage.backgrounds.${o}`) }}</button>
         </div>
       </div>
     </section>
 
     <!-- CTA -->
     <section class="v6cu-cta">
-      <h2 class="v6cu-cta-title v6-reveal">Make it <em>yours</em><b class="v6-dot">.</b></h2>
-      <p class="v6cu-cta-sub v6-reveal">
-        A journal you shaped yourself is a journal you actually open every day.
-      </p>
+      <h2 class="v6cu-cta-title v6-reveal">{{ t('customizationPage.cta.titlePre') }} <em>{{ t('customizationPage.cta.titleEm') }}</em><b class="v6-dot">.</b></h2>
+      <p class="v6cu-cta-sub v6-reveal">{{ t('customizationPage.cta.sub') }}</p>
       <div class="v6cu-cta-actions v6-reveal">
-        <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-btn-lg v6-magnetic">Get Katsumii <span aria-hidden="true">→</span></RouterLink>
-        <RouterLink :to="`/${lang}/features`" class="v6-quiet">Explore all features <span aria-hidden="true">→</span></RouterLink>
+        <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-btn-lg v6-magnetic">{{ t('common.cta.getKatsumii') }} <span aria-hidden="true">→</span></RouterLink>
+        <RouterLink :to="`/${lang}/features`" class="v6-quiet">{{ t('common.cta.exploreAllFeatures') }} <span aria-hidden="true">→</span></RouterLink>
       </div>
     </section>
   </main>
@@ -175,9 +149,13 @@
 
 <script setup>
 import { computed, inject, onBeforeUnmount, onMounted, ref, watch } from "vue"
+import { useI18n } from "vue-i18n"
 import { useRoute } from "vue-router"
 import { initMagnetic, initV6Reveals } from "../v6/motion.js"
 import { normalizeLocale } from "../utils/routes.js"
+
+const { t, tm, rt } = useI18n()
+const list = (key) => (tm(key) || []).map(rt)
 
 const isDark = inject("isDark")
 
@@ -196,18 +174,21 @@ const lang = computed(() => {
 const sidebars = ref(true)
 const compact = ref(false)
 
-const LAYOUT_CONTROLS = [
-  {
-    key: "sidebars", name: "Sidebars", on: sidebars,
-    onCopy: "Left navigation and the right stats rail are in view.",
-    offCopy: "Both rails hidden — only the board you trade on.",
-  },
-  {
-    key: "compact", name: "Compact density", on: compact,
-    onCopy: "Tighter spacing — more of the session on one screen.",
-    offCopy: "Full spacing, the way the cockpit ships.",
-  },
+const heroChips = computed(() => list("customizationPage.hero.chips"))
+
+const CONTROL_REFS = [
+  { key: "sidebars", on: sidebars },
+  { key: "compact", on: compact },
 ]
+const layoutControls = computed(() => {
+  const copy = tm("customizationPage.focus.controls") || []
+  return CONTROL_REFS.map((ctrl, i) => ({
+    ...ctrl,
+    name: rt(copy[i]?.name),
+    onCopy: rt(copy[i]?.on),
+    offCopy: rt(copy[i]?.off),
+  }))
+})
 
 const LAYOUT_VARIANTS = ["full_S1", "full_S0", "compact_S1", "compact_S0"]
 const layoutShotFor = (variant, dark) =>
@@ -217,7 +198,10 @@ const layoutShot = computed(() =>
   layoutShotFor(`${compact.value ? "compact" : "full"}_${sidebars.value ? "S1" : "S0"}`, isDark.value)
 )
 const layoutAlt = computed(() =>
-  `Katsumii dashboard at ${compact.value ? "compact" : "full"} density, sidebars ${sidebars.value ? "shown" : "hidden"}`
+  t("customizationPage.focus.alt", {
+    density: t(`customizationPage.focus.${compact.value ? "densityCompact" : "densityFull"}`),
+    rails: t(`customizationPage.focus.${sidebars.value ? "railsShown" : "railsHidden"}`),
+  })
 )
 
 const warmed = new Set()
@@ -262,8 +246,8 @@ const toneCaption = computed(() => {
   const layers = toneLayers.value
   const hovered = layers[hoveredTone.value]
   return hovered
-    ? `${hovered.name} — hover another band to compare`
-    : layers.map((t) => t.name).join(" · ")
+    ? t("customizationPage.backgrounds.compareHint", { name: hovered.name })
+    : layers.map((tone) => tone.name).join(" · ")
 })
 /* switching the set must not leave a stale index hovered */
 watch(toneMode, () => { hoveredTone.value = null })
@@ -279,43 +263,27 @@ const bandClip = (i, count) => {
 }
 
 /* Mode accents — mirror V6_ACCENTS in router.js / app mode themes */
-const MODE_SWATCHES = [
-  {
-    name: "Funded", sub: "Live prop accounts",
-    light: "#0369a1", dark: "#22d3ee",
-    palette: ["#22d3ee", "#facc15", "#4ade80", "#818cf8"],
-  },
-  {
-    name: "Challenge", sub: "Prop Evaluations",
-    light: "#ab7503", dark: "#facc15",
-    palette: ["#22d3ee", "#facc15", "#4ade80", "#818cf8"],
-  },
-  {
-    name: "Personal", sub: "Own capital",
-    light: "#047857", dark: "#4ade80",
-    palette: ["#22d3ee", "#facc15", "#4ade80", "#818cf8"],
-  },
-  {
-    name: "Backtest", sub: "Sessions & replay",
-    light: "#6d28d9", dark: "#818cf8",
-    palette: ["#22d3ee", "#facc15", "#4ade80", "#818cf8"],
-  },
+const SWATCH_PALETTE = ["#22d3ee", "#facc15", "#4ade80", "#818cf8"]
+const SWATCH_COLORS = [
+  { light: "#0369a1", dark: "#22d3ee" },
+  { light: "#ab7503", dark: "#facc15" },
+  { light: "#047857", dark: "#4ade80" },
+  { light: "#6d28d9", dark: "#818cf8" },
 ]
+const modeSwatches = computed(() => {
+  const copy = tm("customizationPage.modeColors.swatches") || []
+  return SWATCH_COLORS.map((colors, i) => ({
+    ...colors,
+    palette: SWATCH_PALETTE,
+    name: rt(copy[i]?.name),
+    sub: rt(copy[i]?.sub),
+  }))
+})
 
-const CANVAS_ROWS = [
-  {
-    name: "Background per theme", value: "Lines / Honeycomb",
-    copy: "Pick a different app background for light and dark mode — each half of your day gets its own texture.",
-  },
-  {
-    name: "Base tone", value: "3 dark · 2 light",
-    copy: "Dark has three moods — warm navy, bluish near-black or true black. Light has two papers: Soft and Whiteout.",
-  },
-  {
-    name: "Theme", value: "Light / Dark / System",
-    copy: "Follow the OS, or lock the cockpit to the side of the day you trade in.",
-  },
-]
+const canvasRows = computed(() => {
+  const copy = tm("customizationPage.backgrounds.rows") || []
+  return copy.map((row) => ({ name: rt(row.name), value: rt(row.value), copy: rt(row.copy) }))
+})
 
 const v6Quiet = inject("v6Quiet")
 const rootEl = ref(null)

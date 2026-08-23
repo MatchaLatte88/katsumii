@@ -91,7 +91,7 @@
         <!-- ARTICLE -->
         <template v-else>
           <section :key="articleViewKey" class="v6man-view v6man-article">
-            <nav class="v6man-crumb" aria-label="Breadcrumb">
+            <nav class="v6man-crumb" :aria-label="t('manualPage.aria.breadcrumb')">
               <button type="button" @click="goOverview">{{ t('manualPage.nav.overview') }}</button>
               <span aria-hidden="true">/</span>
               <button type="button" @click="selectTopic(activeTopic)">{{ t(activeTopic.titleKey) }}</button>
@@ -110,7 +110,7 @@
             </article>
 
             <!-- prev / next -->
-            <nav class="v6man-pager" aria-label="Article navigation">
+            <nav class="v6man-pager" :aria-label="t('manualPage.aria.articleNav')">
               <button v-if="prevArticle" type="button" @click="selectTopic(activeTopic, prevArticle)">
                 <span class="v6man-pager-label"><span aria-hidden="true">←</span> {{ t('manualPage.prev') }}</span>
                 <span class="v6man-pager-title">{{ t(prevArticle.titleKey) }}</span>

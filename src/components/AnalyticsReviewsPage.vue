@@ -3,48 +3,37 @@
     <!-- HERO -->
     <section class="v6an-hero v6-band v6-band-snap">
       <div ref="heroCopyEl" class="v6an-hero-copy v6-copy-glow">
-        <p class="v6-eyebrow v6-reveal"><i></i>Analytics &amp; Reviews</p>
-        <h1 class="v6-h1 v6-reveal">Find your edge. <em>Keep it</em><b class="v6-dot">.</b></h1>
-        <p class="v6an-sub v6-reveal">
-          Logging trades is the easy part. Katsumii turns that log into answers: which setups pay,
-          which sessions bleed, where your sizing breaks down — across every account, mode and
-          backtest, without a single spreadsheet.
-        </p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('analyticsPage.hero.eyebrow') }}</p>
+        <h1 class="v6-h1 v6-reveal">{{ t('analyticsPage.hero.titlePre') }} <em>{{ t('analyticsPage.hero.titleEm') }}</em><b class="v6-dot">.</b></h1>
+        <p class="v6an-sub v6-reveal">{{ t('analyticsPage.hero.sub') }}</p>
         <ul class="v6-card-chips v6an-chips v6-reveal">
-          <li>Execution quality</li>
-          <li>Edge drivers</li>
-          <li>Diagnostics lab</li>
-          <li>Offline reports (Pro)</li>
+          <li v-for="c in heroChips" :key="c">{{ c }}</li>
         </ul>
         <div class="v6an-actions v6-reveal">
-          <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-magnetic">Get Katsumii <span aria-hidden="true">→</span></RouterLink>
-          <RouterLink :to="`/${lang}/features`" class="v6-quiet v6-magnetic">All features</RouterLink>
+          <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-magnetic">{{ t('common.cta.getKatsumii') }} <span aria-hidden="true">→</span></RouterLink>
+          <RouterLink :to="`/${lang}/features`" class="v6-quiet v6-magnetic">{{ t('common.cta.allFeatures') }}</RouterLink>
         </div>
       </div>
       <figure class="v6an-shot v6-reveal">
         <img
           v-zoom
           :src="asset(isDark ? 'Screenshots/opt/analysis_f_d_1.webp' : 'Screenshots/opt/analysis_f_l_1.webp')"
-          alt="Katsumii analysis view with key metrics, ratios and diagnostics"
+          :alt="t('analyticsPage.hero.alt')"
           width="1600" height="1000"
           loading="eager" decoding="async"
         />
-        <figcaption>Analysis — your edge, quantified</figcaption>
+        <figcaption>{{ t('analyticsPage.hero.caption') }}</figcaption>
       </figure>
     </section>
 
     <!-- DASHBOARD -->
     <section id="dashboard" class="v6an-section v6-band v6-band-snap">
       <div class="v6an-section-copy">
-        <p class="v6-eyebrow v6-reveal"><i></i>Dashboard</p>
-        <h2 class="v6-h2 v6-reveal">One calm screen that carries the whole story.</h2>
-        <p class="v6an-section-sub v6-reveal">
-          Net P&amp;L up front, and everything that explains it right behind: gross versus fees,
-          expectancy, effective R:R and a full trade breakdown — scoped to the mode, accounts and
-          date range you're actually asking about.
-        </p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('analyticsPage.dashboard.eyebrow') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t('analyticsPage.dashboard.title') }}</h2>
+        <p class="v6an-section-sub v6-reveal">{{ t('analyticsPage.dashboard.sub') }}</p>
         <div class="v6an-rows v6-reveal">
-          <div v-for="r in DASHBOARD_ROWS" :key="r.name" class="v6an-row">
+          <div v-for="r in dashboardRows" :key="r.name" class="v6an-row">
             <div>
               <h3>{{ r.name }}</h3>
               <p>{{ r.copy }}</p>
@@ -57,33 +46,24 @@
         <img
           v-zoom
           :src="asset(isDark ? 'Screenshots/opt/analysis_f_d_2.webp' : 'Screenshots/opt/analysis_f_l_2.webp')"
-          alt="Katsumii execution quality and edge driver statistics"
+          :alt="t('analyticsPage.dashboard.alt')"
           width="1600" height="1000"
           loading="lazy" decoding="async"
         />
-        <figcaption>Execution quality — winrate, R:R, profit factor</figcaption>
+        <figcaption>{{ t('analyticsPage.dashboard.caption') }}</figcaption>
       </figure>
     </section>
 
     <!-- ANALYSIS LAB -->
     <section id="analysis" class="v6an-section flip v6-band v6-band-snap">
       <div class="v6an-section-copy">
-        <p class="v6-eyebrow v6-reveal"><i></i>Analysis lab</p>
-        <h2 class="v6-h2 v6-reveal">A diagnostics lab for your trading, not just charts.</h2>
-        <p class="v6an-section-sub v6-reveal">
-          The Analysis screen goes where dashboards stop. Trade extremes and period extremes,
-          the ratios and mechanics behind them, baseline averages down to your median win and
-          loss, and what fees really cost you against gross — then a diagnostics lab that
-          stress-tests the whole picture. Every panel closes with a plain-English verdict, so
-          "Sharpe 1.8" also tells you what it means.
-        </p>
-        <p class="v6an-note v6-reveal">
-          A configurable BE threshold treats near-zero trades as breakeven, so a handful of
-          scratches doesn't distort your win rate — include or exclude them with one toggle.
-        </p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('analyticsPage.analysis.eyebrow') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t('analyticsPage.analysis.title') }}</h2>
+        <p class="v6an-section-sub v6-reveal">{{ t('analyticsPage.analysis.sub') }}</p>
+        <p class="v6an-note v6-reveal">{{ t('analyticsPage.analysis.note') }}</p>
       </div>
       <div class="v6an-rows v6-reveal">
-        <div v-for="r in ANALYSIS_ROWS" :key="r.name" class="v6an-row">
+        <div v-for="r in analysisRows" :key="r.name" class="v6an-row">
           <div>
             <h3>{{ r.name }}</h3>
             <p>{{ r.copy }}</p>
@@ -96,35 +76,23 @@
     <!-- SLICING / FILTERS -->
     <section id="breakdowns" class="v6an-slice v6-band v6-band-snap">
       <div class="v6an-slice-head">
-        <p class="v6-eyebrow v6-reveal"><i></i>Deep breakdowns</p>
-        <h2 class="v6-h2 v6-reveal">Slice performance by anything you tag.</h2>
-        <p class="v6an-section-sub v6-reveal">
-          Every stat in Katsumii obeys the global filter bar. Combine dimensions freely — "London
-          session shorts on NQ, tagged FOMO, last quarter" is one filter away, and every dashboard,
-          breakdown and report answers for exactly that slice. The edge profile radar overlays
-          average P&amp;L against trade count across weekdays, sessions, strategies, durations and
-          lot size, and strategy bubble charts plot winrate against average P&amp;L — bubble size is
-          trade count, so thin samples can't fool you.
-        </p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('analyticsPage.breakdowns.eyebrow') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t('analyticsPage.breakdowns.title') }}</h2>
+        <p class="v6an-section-sub v6-reveal">{{ t('analyticsPage.breakdowns.sub') }}</p>
       </div>
-      <ul class="v6an-dimensions v6-reveal" aria-label="Breakdown dimensions">
-        <li v-for="d in DIMENSIONS" :key="d">{{ d }}</li>
+      <ul class="v6an-dimensions v6-reveal" :aria-label="t('analyticsPage.breakdowns.ariaDimensions')">
+        <li v-for="d in dimensions" :key="d">{{ d }}</li>
       </ul>
     </section>
 
     <!-- NUMBERS -->
     <section id="numbers" class="v6an-section flip v6-band v6-band-snap">
       <div class="v6an-section-copy">
-        <p class="v6-eyebrow v6-reveal"><i></i>Numbers, your way</p>
-        <h2 class="v6-h2 v6-reveal">Read P&amp;L in the language you think in.</h2>
-        <p class="v6an-section-sub v6-reveal">
-          Some traders think in percent, some in R-multiples, some want both next to every dollar
-          figure. Katsumii renders P&amp;L across the entire app the way you actually reason about
-          risk — and the quick-stats bar keeps win rate, R and profit factor one glance away, or
-          out of sight entirely.
-        </p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('analyticsPage.numbers.eyebrow') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t('analyticsPage.numbers.title') }}</h2>
+        <p class="v6an-section-sub v6-reveal">{{ t('analyticsPage.numbers.sub') }}</p>
         <div class="v6an-rows v6-reveal">
-          <div v-for="r in NUMBER_ROWS" :key="r.name" class="v6an-row">
+          <div v-for="r in numberRows" :key="r.name" class="v6an-row">
             <div>
               <h3>{{ r.name }}</h3>
               <p>{{ r.copy }}</p>
@@ -137,27 +105,22 @@
         <img
           v-zoom
           :src="asset(isDark ? 'Screenshots/opt/analysis_f_d_3.webp' : 'Screenshots/opt/analysis_f_l_3.webp')"
-          alt="Katsumii statistics with percentage and R-multiple display"
+          :alt="t('analyticsPage.numbers.alt')"
           width="1600" height="1000"
           loading="lazy" decoding="async"
         />
-        <figcaption>Stats — %, R-multiples, or both</figcaption>
+        <figcaption>{{ t('analyticsPage.numbers.caption') }}</figcaption>
       </figure>
     </section>
 
     <!-- CALENDAR & REPORTS -->
     <section id="reviews" class="v6an-section v6-band v6-band-snap">
       <div class="v6an-section-copy">
-        <p class="v6-eyebrow v6-reveal"><i></i>Reviews &amp; reports</p>
-        <h2 class="v6-h2 v6-reveal">Review in rhythm, report with one click.</h2>
-        <p class="v6an-section-sub v6-reveal">
-          The calendar grades every day by outcome, with weekly and monthly summaries in the
-          margins and journal markers where you wrote. When it's time to share or archive, the
-          Professional licence generates a self-contained HTML performance report — equity curve,
-          heatmap, breakdowns and key metrics in one file that opens anywhere, no server, no upload.
-        </p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('analyticsPage.reviews.eyebrow') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t('analyticsPage.reviews.title') }}</h2>
+        <p class="v6an-section-sub v6-reveal">{{ t('analyticsPage.reviews.sub') }}</p>
         <div class="v6an-rows v6-reveal">
-          <div v-for="r in REVIEW_ROWS" :key="r.name" class="v6an-row">
+          <div v-for="r in reviewRows" :key="r.name" class="v6an-row">
             <div>
               <h3>{{ r.name }}</h3>
               <p>{{ r.copy }}</p>
@@ -170,36 +133,32 @@
         <img
           v-zoom
           :src="asset(isDark ? 'Screenshots/opt/report_d.webp' : 'Screenshots/opt/report_l.webp')"
-          alt="Katsumii self-contained HTML performance report with equity curve and breakdowns"
+          :alt="t('analyticsPage.reviews.alt')"
           width="1600" height="1000"
           loading="lazy" decoding="async"
         />
-        <figcaption>Report — one file, opens anywhere</figcaption>
+        <figcaption>{{ t('analyticsPage.reviews.caption') }}</figcaption>
       </figure>
     </section>
 
     <!-- DISCLAIMER -->
     <section class="v6an-disclaimer">
       <div class="v6an-disclaimer-inner">
-        <p class="v6-eyebrow v6-reveal"><i></i>Important context</p>
-        <h2 class="v6-h2 v6-reveal">Built to explain your results, not predict them.</h2>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('modePages.ui.importantContext') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t('analyticsPage.disclaimer.title') }}</h2>
         <div class="v6an-disclaimer-points">
-          <p class="v6-reveal">Analytics describe your recorded trading history; they are documentation and review aids, not trading advice or signals.</p>
-          <p class="v6-reveal">Metrics depend on the data you enter — fees, corrections and BE settings change how results are displayed.</p>
-          <p class="v6-reveal">Past performance patterns do not guarantee future outcomes; no statistic can prevent losses.</p>
+          <p v-for="p in disclaimerPoints" :key="p" class="v6-reveal">{{ p }}</p>
         </div>
       </div>
     </section>
 
     <!-- CTA -->
     <section class="v6an-cta">
-      <h2 class="v6an-cta-title v6-reveal">Know your <em>numbers</em><b class="v6-dot">.</b></h2>
-      <p class="v6an-cta-sub v6-reveal">
-        The market doesn't remember your trades. Katsumii does — and tells you what they mean.
-      </p>
+      <h2 class="v6an-cta-title v6-reveal">{{ t('analyticsPage.cta.titlePre') }} <em>{{ t('analyticsPage.cta.titleEm') }}</em><b class="v6-dot">.</b></h2>
+      <p class="v6an-cta-sub v6-reveal">{{ t('analyticsPage.cta.sub') }}</p>
       <div class="v6an-cta-actions v6-reveal">
-        <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-btn-lg v6-magnetic">Get Katsumii <span aria-hidden="true">→</span></RouterLink>
-        <RouterLink :to="`/${lang}/features`" class="v6-quiet">Explore all features <span aria-hidden="true">→</span></RouterLink>
+        <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-btn-lg v6-magnetic">{{ t('common.cta.getKatsumii') }} <span aria-hidden="true">→</span></RouterLink>
+        <RouterLink :to="`/${lang}/features`" class="v6-quiet">{{ t('common.cta.exploreAllFeatures') }} <span aria-hidden="true">→</span></RouterLink>
       </div>
     </section>
   </main>
@@ -207,9 +166,16 @@
 
 <script setup>
 import { computed, inject, onBeforeUnmount, onMounted, ref } from "vue"
+import { useI18n } from "vue-i18n"
 import { useRoute } from "vue-router"
 import { initMagnetic, initV6Reveals } from "../v6/motion.js"
 import { normalizeLocale } from "../utils/routes.js"
+
+const { t, tm, rt } = useI18n()
+const list = (key) => (tm(key) || []).map(rt)
+const rows = (key) => (tm(key) || []).map((r) => ({
+  name: rt(r.name), value: r.value !== undefined ? rt(r.value) : undefined, copy: rt(r.copy),
+}))
 
 const isDark = inject("isDark")
 
@@ -222,88 +188,17 @@ const lang = computed(() => {
   return normalizeLocale(raw)
 })
 
-const DASHBOARD_ROWS = [
-  {
-    name: "Net P&L hero", value: "$ · % · R",
-    copy: "The number that matters — with funding size, gross vs. fees, expectancy and effective R:R right behind it.",
-  },
-  {
-    name: "Execution quality", value: "Graded",
-    copy: "Winrate donut, effective R:R, profit factor, risk efficiency and average duration — condensed into one quality grade.",
-  },
-  {
-    name: "Edge drivers", value: "Best of",
-    copy: "Best day, best session, best strategy plus your win and loss streaks — the patterns behind the P&L.",
-  },
-  {
-    name: "Equity curve monitor", value: "Trade · Day",
-    copy: "Per trade or per day, in amount, percent or R — last 10, 30 or 100, with corrections included if you want.",
-  },
-  {
-    name: "Daily rhythm", value: "Heatmap",
-    copy: "A mini win/loss calendar and a daily P&L heatmap show your consistency at a glance, month by month.",
-  },
-]
-
-const ANALYSIS_ROWS = [
-  {
-    name: "Edge summary", value: "Headline",
-    copy: "Best tags, best asset, best timeframe and your most expensive mistake — before any digging.",
-  },
-  {
-    name: "Drawdown risk curve", value: "Max · Current DD",
-    copy: "Max and current drawdown, recovery factor, longest streak and time to recover — your pain, quantified.",
-  },
-  {
-    name: "Rolling edge", value: "10 · 20 · 50",
-    copy: "Winrate, profit factor and P&L over your last 10, 20 and 50 trades — is the edge growing or fading right now?",
-  },
-  {
-    name: "Outliers & quality ratios", value: "Sharpe · Sortino",
-    copy: "Top-trade concentration shows if a few outliers carry you; Sharpe, Sortino and consistency grade the rest.",
-  },
-  {
-    name: "Risk & sizing", value: "Kelly",
-    copy: "Declared vs. missing risk, realized R against planned R:R, risk breaks and a Kelly fraction for sane sizing.",
-  },
-  {
-    name: "P&L distribution", value: "Histogram",
-    copy: "The shape of your results, bucket by bucket — how much of your edge lives in a handful of trades.",
-  },
-]
+/* Every row below is copy — the page keeps no data of its own. */
+const heroChips = computed(() => list("analyticsPage.hero.chips"))
+const dashboardRows = computed(() => rows("analyticsPage.dashboard.rows"))
+const analysisRows = computed(() => rows("analyticsPage.analysis.rows"))
+const numberRows = computed(() => rows("analyticsPage.numbers.rows"))
+const reviewRows = computed(() => rows("analyticsPage.reviews.rows"))
+const disclaimerPoints = computed(() => list("analyticsPage.disclaimer.points"))
 
 /* Global filter-bar dimensions — see Katsumii_overview.md */
-const DIMENSIONS = [
-  "Account", "Strategy", "Asset", "Timeframe", "Direction", "Market session",
-  "Tag", "Emotion", "Mistake", "Color tag", "Closed by", "Scaled trades",
-  "What-if outcome", "Date range",
-]
+const dimensions = computed(() => list("analyticsPage.breakdowns.dimensions"))
 
-const NUMBER_ROWS = [
-  {
-    name: "PnL extra info", value: "% · R · Both",
-    copy: "Percentages, R-multiples or both — shown next to every P&L value across the entire app.",
-  },
-  {
-    name: "Quick-stats bar", value: "On / Off",
-    copy: "The at-a-glance strip with P&L, WR, R and PF — visible when you want feedback, hidden when you don't.",
-  },
-]
-
-const REVIEW_ROWS = [
-  {
-    name: "Calendar review", value: "Day · Week · Month",
-    copy: "Color-graded days with trade counts, weekly P&L summaries and day modals with full trade context.",
-  },
-  {
-    name: "Journal markers", value: "Linked",
-    copy: "Days with journal entries are marked on the calendar — your notes stay attached to the numbers.",
-  },
-  {
-    name: "HTML report", value: "1 file",
-    copy: "Self-contained offline performance report with equity curve, heatmap, breakdowns and a dark/light toggle.",
-  },
-]
 
 const v6Quiet = inject("v6Quiet")
 const rootEl = ref(null)

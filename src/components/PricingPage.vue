@@ -11,7 +11,7 @@
 
       <!-- overview facts: what every license is built on -->
       <ul class="v6p-facts v6-reveal" aria-label="Included in every license">
-        <li v-for="f in EVERY_LICENSE" :key="f">{{ f }}</li>
+        <li v-for="f in everyLicense" :key="f">{{ f }}</li>
       </ul>
     </section>
 
@@ -120,74 +120,63 @@
     </section>
 
     <!-- SYSTEM REQUIREMENTS (mirrors the landing page block) -->
-    <section class="v6p-sysreq" aria-label="Compatibility">
+    <section class="v6p-sysreq" :aria-label="t('sysreq.aria')">
       <div class="v6p-sysreq-head">
-        <p class="v6-eyebrow v6-reveal"><i></i>Compatibility</p>
-        <h2 class="v6-h2 v6-reveal">Runs on Windows and macOS.</h2>
-        <p class="v6p-sysreq-sub v6-reveal">Everything works identically on both platforms — except MetaTrader 5 sync, which needs Windows.</p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('sysreq.eyebrow') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t('sysreq.headline') }}</h2>
+        <p class="v6p-sysreq-sub v6-reveal">{{ t('sysreq.sub') }}</p>
       </div>
       <div class="v6p-sysreq-grid v6-reveal">
         <div>
-          <h3>Runs on</h3>
+          <h3>{{ t('sysreq.runsOn.title') }}</h3>
           <ul>
-            <li>Windows 10 or newer</li>
-            <li>Windows 11 recommended</li>
-            <li>macOS 12 Monterey or newer</li>
-            <li>Intel/AMD 64-bit and Apple Silicon</li>
+            <li v-for="item in sysreqRunsOn" :key="item">{{ item }}</li>
           </ul>
         </div>
         <div>
-          <h3>System requirements</h3>
+          <h3>{{ t('sysreq.requirements.title') }}</h3>
           <ul>
-            <li>8 GB RAM</li>
-            <li>1 GB free storage</li>
-            <li>1440 x 900 display or larger</li>
-            <li>Internet connection for product activation, updates, API sync, and integrations</li>
+            <li v-for="item in sysreqRequirements" :key="item">{{ item }}</li>
           </ul>
         </div>
         <div>
-          <h3>Integration note</h3>
-          <p>MetaTrader 5 sync is currently Windows-only and requires a locally installed, running MT5 terminal. On macOS, Katsumii supports manual imports, analytics, reports, backups, and supported API integrations.</p>
+          <h3>{{ t('sysreq.integration.title') }}</h3>
+          <p>{{ t('sysreq.integration.body') }}</p>
         </div>
         <div>
-          <h3>API access</h3>
-          <p>API usage may be paid and depends on your broker. Katsumii works with broker integrations only when you have a matching API key.</p>
+          <h3>{{ t('sysreq.api.title') }}</h3>
+          <p>{{ t('sysreq.api.body') }}</p>
         </div>
       </div>
     </section>
 
     <!-- GETTING STARTED -->
-    <section class="v6p-getstart" aria-label="How to get Katsumii">
+    <section class="v6p-getstart" :aria-label="t('pricingPage.onboarding.aria')">
       <div class="v6p-getstart-head">
-        <p class="v6-eyebrow v6-reveal"><i></i>From purchase to first trade</p>
-        <h2 class="v6-h2 v6-reveal">Three steps between the checkout and your first trade.</h2>
-        <p class="v6p-getstart-sub v6-reveal">No account to create, no cloud to sync. The installer arrives with your purchase and the app is ready to use the moment it opens.</p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('pricingPage.onboarding.eyebrow') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t('pricingPage.onboarding.title') }}</h2>
+        <p class="v6p-getstart-sub v6-reveal">{{ t('pricingPage.onboarding.sub') }}</p>
       </div>
       <ol class="v6p-steps v6-reveal">
-        <li>
-          <span class="v6p-step-idx">01</span>
+        <li v-for="(step, i) in onboardingSteps" :key="step.title">
+          <span class="v6p-step-idx">{{ String(i + 1).padStart(2, "0") }}</span>
           <div>
-            <h3>Get the installer</h3>
-            <p>Checkout runs on Lemon Squeezy. Once payment clears, they email you the installer download link and your license key — the same email also links to your Lemon Squeezy customer portal, where the download stays available. Katsumii itself has no user account. The Windows installer is a signed <code>.exe</code>; macOS ships as a signed <code>.dmg</code>.</p>
-          </div>
-        </li>
-        <li>
-          <span class="v6p-step-idx">02</span>
-          <div>
-            <h3>Install &amp; unlock</h3>
-            <p>Run the installer — no admin rights needed on Windows, standard drag-to-Applications on macOS. On first launch, paste your license key once. Everything after that is local.</p>
-          </div>
-        </li>
-        <li>
-          <span class="v6p-step-idx">03</span>
-          <div>
-            <h3>Start journaling</h3>
-            <p>Pick a mode (Funded, Challenge, Personal, Backtest), add your first account, and log a trade — or import an existing broker CSV and let Katsumii backfill the log. The manual walks you through the first week if you want a guided path.</p>
+            <h3>{{ step.title }}</h3>
+            <!-- the installer extensions render as <code>, so the copy carries
+                 {exe}/{dmg} placeholders instead of literal markup -->
+            <p>
+              <template v-for="(part, j) in step.parts" :key="j">
+                <code v-if="part.code">{{ part.text }}</code>
+                <template v-else>{{ part.text }}</template>
+              </template>
+            </p>
           </div>
         </li>
       </ol>
       <p class="v6p-getstart-foot v6-reveal">
-        Lost your download or license key? Check your Lemon Squeezy customer portal (linked in the purchase email) first — or reach out via <RouterLink :to="pagePath('contact')">Contact</RouterLink> and we'll resend it.
+        {{ t('pricingPage.onboarding.footPre') }}
+        <RouterLink :to="pagePath('contact')">{{ t('pricingPage.onboarding.footLink') }}</RouterLink>
+        {{ t('pricingPage.onboarding.footPost') }}
       </p>
     </section>
 
@@ -212,7 +201,26 @@ import { useI18n } from "vue-i18n"
 import { initMagnetic, initV6Reveals } from "../v6/motion.js"
 import { pagePath } from "../utils/routes.js"
 
-const { t, tm } = useI18n()
+const { t, tm, rt } = useI18n()
+const list = (key) => (tm(key) || []).map(rt)
+
+const sysreqRunsOn = computed(() => list("sysreq.runsOn.items"))
+const sysreqRequirements = computed(() => list("sysreq.requirements.items"))
+
+/* {exe} / {dmg} mark the two spots that render as <code> inside the copy */
+const CODE_TOKENS = { exe: ".exe", dmg: ".dmg" }
+const onboardingSteps = computed(() =>
+  (tm("pricingPage.onboarding.steps") || []).map((step) => ({
+    title: rt(step.title),
+    parts: rt(step.copy)
+      .split(/(\{exe\}|\{dmg\})/)
+      .filter(Boolean)
+      .map((text) => {
+        const token = text.match(/^\{(exe|dmg)\}$/)
+        return token ? { code: true, text: CODE_TOKENS[token[1]] } : { code: false, text }
+      }),
+  }))
+)
 
 const stripTerminalDot = (value) => String(value ?? "").replace(/[.。]\s*$/, "")
 
@@ -224,12 +232,7 @@ const activePlan = ref(2)
 /* product facts every license shares — see Katsumii_overview.md.
    Imports, sync and backups are tier-gated, so they belong in the table below,
    not here: these four have to hold for the Demo as well. */
-const EVERY_LICENSE = [
-  "One local file on your disk",
-  "No Katsumii account",
-  "Works offline",
-  "Windows & macOS",
-]
+const everyLicense = computed(() => list("pricingPage.everyLicense"))
 
 const tiers = computed(() => {
   const demo = tm("pricingPage.tiers.demo")

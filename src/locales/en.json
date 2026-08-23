@@ -7,218 +7,297 @@
     "privacy": "Privacy Policy",
     "settings": "Analytics settings"
   },
-  "brand": {
-    "subtitle": "Local Offline Trading Cockpit"
+  "shell": {
+    "nav": {
+      "home": "Home",
+      "features": "Features",
+      "pricing": "Pricing",
+      "faq": "FAQ",
+      "ariaMain": "Main navigation",
+      "ariaFeaturePages": "Feature pages",
+      "groupDisciplines": "Four disciplines",
+      "groupDeeper": "Go deeper"
+    },
+    "pages": {
+      "featuresOverview": {
+        "label": "Features",
+        "sub": "Complete overview"
+      },
+      "funded": {
+        "label": "Funded",
+        "sub": "Live prop accounts"
+      },
+      "challenge": {
+        "label": "Challenge",
+        "sub": "Evaluations & combines"
+      },
+      "personal": {
+        "label": "Personal",
+        "sub": "Own capital"
+      },
+      "backtest": {
+        "label": "Backtest",
+        "sub": "Sessions & replay"
+      },
+      "analytics": {
+        "label": "Analytics",
+        "sub": "Edge, breakdowns & reports"
+      },
+      "customization": {
+        "label": "Customization",
+        "sub": "Focus mode & themes"
+      },
+      "workflow": {
+        "label": "Workflow",
+        "sub": "Imports, journal & tools"
+      },
+      "localOffline": {
+        "label": "Local & offline",
+        "sub": "Your data, on your disk"
+      }
+    },
+    "mobile": {
+      "kicker": "Explore Katsumii",
+      "note": "Local. Offline. Entirely yours.",
+      "ariaMenu": "Navigation menu",
+      "ariaNav": "Mobile navigation",
+      "featuresSub": "Overview"
+    },
+    "comingSoon": "Coming soon",
+    "footer": {
+      "product": "Product",
+      "features": "Features",
+      "disciplines": "Four disciplines",
+      "support": "Support",
+      "legal": "Legal",
+      "overview": "Overview",
+      "systemRequirements": "System requirements",
+      "manual": "Manual",
+      "contact": "Contact",
+      "instagram": "Instagram",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "imprint": "Impressum",
+      "tagline": "trading journal",
+      "ariaInstagram": "Katsumii on Instagram"
+    }
   },
-  "nav": {
-    "top": "Top",
-    "features": "Features",
-    "showcase": "Showcase",
-    "pricing": "Pricing"
-  },
-  "hero": {
-    "badge": "Local Offline Trading Journal",
-    "tagline": "Trade with",
-    "description": "Katsumii is a local, offline trading journal and prop-firm cockpit for traders who want one calm place to log trades, control accounts, track rules, and review performance without a cloud workflow.",
-    "ctaBuy": "Buy Katsumii",
-    "ctaTour": "Product Tour",
-    "typedWords": [
-      "discipline.",
-      "consistency.",
-      "precision.",
-      "confidence.",
-      "clarity."
+  "landing": {
+    "hero": {
+      "brandTagline": "offline trading journal",
+      "glitchWords": [
+        "Trade",
+        "Journal"
+      ],
+      "headlineLead": "{word} with",
+      "typedWords": [
+        "discipline.",
+        "consistency.",
+        "honesty.",
+        "proof.",
+        "clarity."
+      ],
+      "sub": "The market doesn't remember your trades. Katsumii does — every rule, every drawdown, every pattern, stored on your computer and nowhere else.",
+      "ownership": "Buy it once, from $49. Yours forever.",
+      "ctaPrimary": "Download coming soon",
+      "ctaSecondary": "See it in action",
+      "scroll": "scroll"
+    },
+    "marquee": [
+      "journal",
+      "accounts",
+      "challenges",
+      "backtests",
+      "analytics",
+      "payouts",
+      "drawdown rules",
+      "imports",
+      "reports",
+      "your disk"
     ],
-    "initialTypedWord": "clarity"
-  },
-  "heroStats": [
-    {
-      "label": "Trading data",
-      "value": "Local & offline"
-    },
-    {
-      "label": "Rule tracking",
-      "value": "Prop Rules"
-    },
-    {
-      "label": "Performance review",
-      "value": "Analytics"
-    },
-    {
-      "label": "Strategy testing",
-      "value": "Backtests"
-    }
-  ],
-  "heroFeatureStats": [
-    {
-      "label": "Account modes",
-      "value": "3"
-    },
-    {
-      "label": "Challenge tracking",
-      "value": "Prop Firm"
-    },
-    {
-      "label": "Data storage",
-      "value": "Local"
-    }
-  ],
-  "featureTicker": [
-    "Local & offline data",
-    "Prop firm rule control",
-    "Funded, challenge, personal",
-    "Screenshot journaling",
-    "Performance analytics",
-    "Calendar reviews",
-    "Inactivity alerts",
-    "Local backups"
-  ],
-  "brokerSyncNote": "Katsumii is designed around manual control. Broker/API sync remains optional and depends on platform support, API availability, and your own credentials.",
-  "features": {
-    "label": "Why Katsumii",
-    "headline": "Four promises, one compact trading cockpit",
-    "spotlight": {
-      "label": "Core workflow",
-      "headline": "From trade entry to prop-rule control without switching tools",
-      "description": "Katsumii keeps the daily workflow tight: log the trade, keep account limits visible, attach context, and review the numbers that actually change your next session.",
-      "points": [
-        "Separate funded, challenge, and personal modes keep account data clean.",
-        "Prop rules, limits, and challenge progress stay visible while you work.",
-        "Screenshots, notes, setups, and mistakes stay attached to each trade.",
-        "Reviews connect calendar patterns, sessions, setups, and account results."
+    "numbers": {
+      "aria": "Katsumii in numbers",
+      "labels": [
+        "trading modes",
+        "local data",
+        "built-in tools",
+        "broker connections"
       ]
     },
-    "cards": [
-      {
-        "name": "Local Data",
-        "description": "Trades, screenshots, settings, and backups live on your machine, not in a forced cloud account."
-      },
-      {
-        "name": "Prop-Firm Control",
-        "description": "Manage funded, challenge, and personal accounts with rules, limits, and progress in view."
-      },
-      {
-        "name": "Journaling Workflow",
-        "description": "Capture trades quickly with screenshots, notes, setups, tags, emotions, and mistake context."
-      },
-      {
-        "name": "Analytics & Review",
-        "description": "Review win rate, expectancy, R-multiples, setup quality, timing patterns, and consistency."
-      }
-    ]
-  },
-  "spotlightKpis": [
-    {
-      "value": "A+",
-      "label": "Setup Score"
-    },
-    {
-      "value": "+0.31R",
-      "label": "Average Edge"
-    },
-    {
-      "value": "100%",
-      "label": "Local Data"
-    }
-  ],
-  "showcase": {
-    "dashboardWindowLabel": "Dashboard",
-    "dashboard": {
-      "label": "Account Control",
-      "headline": "Know the account state before the next trade.",
-      "description": "The dashboard combines balance, PnL, rule status, account mode, and setup quality so the next decision starts with context."
-    },
-    "dashboardSteps": [
-      {
-        "title": "Funded, challenge, and personal views",
-        "description": "Keep account types separated while staying in the same review rhythm."
-      },
-      {
-        "title": "Prop limits stay visible",
-        "description": "Track drawdown, daily loss, inactivity windows, and challenge progress before they become problems."
-      },
-      {
-        "title": "Review the drivers",
-        "description": "Connect account results with setups, sessions, mistakes, and risk quality."
-      }
-    ],
-    "calendar": {
-      "label": "Review Timeline",
-      "headline": "Turn sessions into a readable history.",
-      "description": "The calendar links trading days, daily PnL, notes, mistakes, and activity patterns so weekly and monthly reviews stay fast."
-    },
-    "calendarSteps": [
-      {
-        "title": "Daily PnL in context",
-        "description": "Spot profit, loss, and activity inside the month instead of digging through entries."
-      },
-      {
-        "title": "Mistakes become visible",
-        "description": "See recurring timing, rule, and process patterns across sessions."
-      },
-      {
-        "title": "Ready for structured reviews",
-        "description": "Use the timeline as the starting point for weekly, monthly, and challenge reviews."
-      }
-    ],
-    "calendarWindowLabel": "Trading Calendar",
-    "seeAll": "See all features"
-  },
-  "pricing": {
-    "label": "License",
-    "headline": "One-time payment. Lifetime edge.",
-    "description": "No subscription and no cloud dependency. Your data stays local and under your control.",
-    "oneTime": "one-time",
-    "mainProgram": "Main Program",
-    "buy": "Buy"
-  },
-  "tiers": {
-    "light": {
-      "name": "Lite",
-      "price": "$49",
-      "description": "For clean journaling with essential analytics.",
-      "features": [
-        "Trading journal with screenshots",
-        "Tags and basic filters",
-        "Core statistics and reports",
-        "Lifetime license"
+    "story": {
+      "eyebrow": "Inside the cockpit",
+      "showAria": "Show {title}",
+      "slides": [
+        {
+          "headline": "Find your edge.",
+          "accent": "Sharpen it",
+          "title": "Dashboard",
+          "tag": "the day, distilled",
+          "caption": "Net P&L, execution quality, edge drivers and your equity curve — one calm screen that carries the whole story.",
+          "alt": "Katsumii dashboard with net P&L hero, execution quality and equity curve"
+        },
+        {
+          "headline": "Know every account.",
+          "accent": "Stay ahead of risk",
+          "title": "Accounts",
+          "tag": "rules, always in sight",
+          "caption": "Drawdown distance, winning days, payouts and rebill dates per account — before you take the next trade.",
+          "alt": "Katsumii account overview with balance, drawdown distance and billing state"
+        },
+        {
+          "headline": "Track every day.",
+          "accent": "See the pattern",
+          "title": "Calendar",
+          "tag": "time, color-graded",
+          "caption": "Every day graded by outcome, weekly and monthly performance in the margins, journal markers where you reflected.",
+          "alt": "Katsumii calendar with color-graded trading days and weekly summaries"
+        },
+        {
+          "headline": "Ask harder questions.",
+          "accent": "Get honest answers",
+          "title": "Analysis",
+          "tag": "where the answers hide",
+          "caption": "Slice performance by weekday, session, strategy, emotion or mistake — and find out what actually pays you.",
+          "alt": "Katsumii analysis view with weekday, session and strategy breakdowns"
+        }
       ]
     },
-    "professional": {
-      "name": "Professional",
-      "price": "$89",
-      "description": "For serious traders who optimize process and performance.",
-      "features": [
-        "Everything in Lite",
-        "Prop account management",
-        "Advanced strategy breakdowns",
-        "Review routines and rule tracking",
-        "Priority support"
+    "modes": {
+      "eyebrow": "Four disciplines",
+      "headlineA": "One journal.",
+      "headlineB": "Every way you trade.",
+      "explore": "Explore {name}",
+      "ariaTabs": "Trading modes",
+      "items": [
+        {
+          "name": "Funded",
+          "tag": "Live prop capital",
+          "headline": "Guarded, every session.",
+          "copy": "Your funded accounts on one board — with the rules that keep them alive always in sight.",
+          "points": [
+            "Distance to daily and max loss limits, per account",
+            "Payout history, winning days and consistency tracking",
+            "Rebill dates, billing state and account health at a glance"
+          ]
+        },
+        {
+          "name": "Challenge",
+          "tag": "Evaluations & combines",
+          "headline": "Pass with proof.",
+          "copy": "Every evaluation tracked from first trade to funded — targets, minimum days and the moment you convert.",
+          "points": [
+            "Profit target and minimum-days progress",
+            "Pass / fail state with full trade history behind it",
+            "One step to convert a passed challenge into a funded account"
+          ]
+        },
+        {
+          "name": "Personal",
+          "tag": "Your own capital",
+          "headline": "Same discipline, your money.",
+          "copy": "Personal accounts get the same cockpit — daily goals, personal loss limits and streaks that keep you honest.",
+          "points": [
+            "Personal daily loss limits and daily goals",
+            "Day and trade streaks across your accounts",
+            "Fully siloed from prop data — clean statistics"
+          ]
+        },
+        {
+          "name": "Backtest",
+          "tag": "Sessions, not accounts",
+          "headline": "Rehearse before it counts.",
+          "copy": "Import FXReplay or CSV sessions, attach a hypothesis, and review backtests with the same analytics as live trading.",
+          "points": [
+            "FXReplay and CSV imports into named sessions",
+            "Hypothesis notes, session sparklines and win rates",
+            "Compare strategies before risking a cent"
+          ]
+        }
       ]
+    },
+    "craft": {
+      "eyebrow": "The craft",
+      "headlineA": "Everything a serious",
+      "headlineB": "journal should carry.",
+      "items": [
+        {
+          "title": "A quiet place to think",
+          "copy": "A rich-text daily journal with autosave, screenshots and per-day stats pinned to every entry. Your calendar remembers which days you reflected.",
+          "chips": [
+            "Rich text",
+            "Autosave",
+            "Screenshots",
+            "Day markers"
+          ]
+        },
+        {
+          "title": "Your history, in minutes",
+          "copy": "A CSV wizard with broker presets and FXReplay backtest imports. Professional adds one-click sync for MetaTrader 5, ProjectX, Capital.com and OANDA — pulled when you click, never in the background.",
+          "chips": [
+            "CSV wizard",
+            "FXReplay",
+            "MT5",
+            "ProjectX",
+            "Capital.com",
+            "OANDA"
+          ]
+        },
+        {
+          "title": "Rules that never sleep",
+          "copy": "Inactivity alerts before deadlines bite, corrections that keep balances honest, and copy groups for leader–follower accounts."
+        },
+        {
+          "title": "One file, the whole story",
+          "copy": "Self-contained HTML performance reports — equity curve, calendar heatmap, breakdowns — that open offline and travel anywhere.",
+          "chips": [
+            "Equity curve",
+            "Heatmap",
+            "Dark / light"
+          ]
+        },
+        {
+          "title": "Six tools, always at hand",
+          "copy": "R:R visualizer, position size calculator, equity simulator, timezone and currency converters, futures contract specs — built in."
+        },
+        {
+          "title": "Slice by anything",
+          "copy": "Strategy, session, emotion, mistake, asset, timeframe, direction, tags — flip a filter and every metric recalculates instantly."
+        }
+      ]
+    },
+    "manifesto": {
+      "aria": "No cloud. No sign-up. One file, on your disk.",
+      "cycle": [
+        "No cloud.",
+        "No sign-up.",
+        "One file, on your disk."
+      ],
+      "text": "Your trades are your story. They belong on your machine, not on someone else's server. Katsumii keeps everything in a local database — offline, private, and entirely yours.",
+      "notes": [
+        "SQLITE · ONE LOCAL FILE",
+        "WORKS OFFLINE",
+        "NO KATSUMII ACCOUNT"
+      ],
+      "stats": [
+        "accounts to create",
+        "bytes in the cloud",
+        "file you can back up yourself"
+      ]
+    },
+    "cta": {
+      "titleA": "The market opens tomorrow.",
+      "titleB": "This time, take notes.",
+      "sub": "A journal only works if you keep it. Katsumii makes keeping it the easiest part of your day.",
+      "primary": "Download coming soon",
+      "secondary": "Explore all features"
     }
   },
-  "cta": {
-    "headline": "Ready to build your edge with discipline?",
-    "description": "Start with the full version or test the demo first. Same mindset, same clean workflow.",
-    "buyLicense": "Buy License",
-    "tryDemo": "Try Free Demo"
-  },
-  "demo": {
-    "badge": "Product Fit",
-    "headline": "Check whether the workflow fits your trading process.",
-    "description": "Katsumii is built for traders who want local control, structured reviews, and prop-firm visibility in one desktop cockpit.",
-    "points": [
-      "No cloud account for trading data",
-      "Focused on funded, challenge, and personal accounts",
-      "Built around manual review discipline"
-    ],
-    "cta": "Compare editions"
-  },
-  "compatibility": {
-    "label": "Compatibility",
+  "sysreq": {
+    "aria": "Compatibility",
+    "eyebrow": "Compatibility",
     "headline": "Runs on Windows and macOS.",
-    "description": "The core journal, analytics, reports, local backups, and manual imports are available across supported desktop platforms. Platform-specific integrations can vary.",
-    "platforms": {
+    "sub": "Everything works identically on both platforms — except MetaTrader 5 sync, which needs Windows.",
+    "runsOn": {
       "title": "Runs on",
       "items": [
         "Windows 10 or newer",
@@ -243,6 +322,1040 @@
     "api": {
       "title": "API access",
       "body": "API usage may be paid and depends on your broker. Katsumii works with broker integrations only when you have a matching API key."
+    }
+  },
+  "previewNotice": {
+    "eyebrow": "Development preview",
+    "ariaBrand": "Katsumii — offline trading journal",
+    "tagline": "offline trading journal",
+    "titleA": "A first look at",
+    "titleB": "what’s taking shape.",
+    "body1": "You’re viewing an early development preview, not the finished Katsumii experience. The data, copy, visuals, and screenshots shown throughout this website are placeholders and do not represent the final Katsumii Trading Journal.",
+    "body2": "If curiosity has already gotten the better of you, you’re more than welcome to take an early look around.",
+    "button": "Explore the preview",
+    "footnote": "Preview content is not final"
+  },
+  "modePages": {
+    "ui": {
+      "ariaMetrics": "Cockpit metrics",
+      "importantContext": "Important context",
+      "nextDiscipline": "Next discipline: {name}",
+      "status": {
+        "live": "Live",
+        "tracked": "Tracked",
+        "manual": "Manual",
+        "context": "Context",
+        "archived": "Archived"
+      }
+    },
+    "funded": {
+      "eyebrow": "Discipline 01 — Funded",
+      "h1": {
+        "pre": "Guarded, every",
+        "em": "session"
+      },
+      "sub": "Katsumii gives funded accounts their own risk cockpit: MLL/DLL distance, health signals, payout context, winning days, corrections and multi-account review — without mixing modes.",
+      "chips": [
+        "Distance to every limit",
+        "Health before the next trade",
+        "Payouts on the record",
+        "Old accounts stay readable"
+      ],
+      "metrics": [
+        {
+          "label": "Account health",
+          "value": "Healthy",
+          "copy": "Combines account result context with rule distance and recent behavior."
+        },
+        {
+          "label": "MLL/DLL distance",
+          "value": "68%",
+          "copy": "Makes distance to key loss limits visible before adding more exposure."
+        },
+        {
+          "label": "Payout context",
+          "value": "Open",
+          "copy": "Tracks payout-related notes and corrections as documentation context."
+        },
+        {
+          "label": "Account set",
+          "value": "Multi",
+          "copy": "Keeps active and archived funded accounts reviewable without losing history."
+        }
+      ],
+      "sections": [
+        {
+          "kicker": "Account health",
+          "title": "See funded risk state without digging through a journal.",
+          "copy": "Funded accounts need a different mental model than backtesting or personal trading. Katsumii keeps rule distance, account state and recent performance in the same review surface.",
+          "rows": [
+            {
+              "name": "MLL distance",
+              "value": "MLL",
+              "copy": "Max loss distance stays available as a first-order account signal."
+            },
+            {
+              "name": "DLL distance",
+              "value": "DLL",
+              "copy": "Daily loss distance is tracked separately from total account pressure."
+            },
+            {
+              "name": "Funded risk visibility",
+              "value": "Health",
+              "copy": "Account risk is shown in context with recent trades and rule settings."
+            }
+          ]
+        },
+        {
+          "kicker": "Payout context",
+          "title": "Document payout periods, winning days and corrections.",
+          "copy": "Payout workflows often involve more than raw P&L. Katsumii gives payout-related context a place in the account history so reviews stay organized.",
+          "rows": [
+            {
+              "name": "Payout tracking",
+              "value": "Period",
+              "copy": "Track payout-period notes next to account performance and trade history."
+            },
+            {
+              "name": "Winning days",
+              "value": "3 days",
+              "copy": "Winning-day context can be reviewed where it matters for the account."
+            },
+            {
+              "name": "Corrections / payout effects",
+              "value": "Notes",
+              "copy": "Corrections and payout effects can be documented without rewriting history."
+            }
+          ]
+        },
+        {
+          "kicker": "Multi-account overview",
+          "title": "Active and archived funded accounts stay organized.",
+          "copy": "A funded trader may need to review multiple accounts over time. Katsumii keeps account histories separated while preserving the bigger picture.",
+          "rows": [
+            {
+              "name": "Active accounts",
+              "value": "Active",
+              "copy": "Active funded accounts remain available for current health and performance review."
+            },
+            {
+              "name": "Archived accounts",
+              "value": "Archive",
+              "copy": "Archived accounts stay accessible for later analysis without cluttering live work."
+            },
+            {
+              "name": "Multi-account review",
+              "value": "Multi",
+              "copy": "Account-level context helps compare behavior without merging unrelated records."
+            }
+          ]
+        }
+      ],
+      "disclaimer": {
+        "headline": "Built for visibility, not payout promises.",
+        "points": [
+          "Katsumii helps document funded-account activity, rules and review context.",
+          "Payout eligibility and account status remain subject to the prop firm's systems and decisions.",
+          "Risk visibility can support discipline, but it cannot guarantee outcomes or prevent losses."
+        ]
+      },
+      "cta": {
+        "title": "Trade funded.",
+        "em": "Stay funded",
+        "sub": "Every rule that keeps your account alive — always in sight."
+      }
+    },
+    "challenge": {
+      "eyebrow": "Discipline 02 — Challenge",
+      "h1": {
+        "pre": "Pass with",
+        "em": "proof"
+      },
+      "sub": "Katsumii turns prop-firm evaluations into a visible control cockpit: progress, targets, trading days, loss limits, consistency context, inactivity alerts and pass-fail status around the trades you document.",
+      "chips": [
+        "Progress toward the target",
+        "Room left before the limit",
+        "No trading day missed",
+        "Rules you can point at"
+      ],
+      "metrics": [
+        {
+          "label": "Profit target",
+          "value": "72%",
+          "copy": "Shows how logged trades move the account toward the configured target."
+        },
+        {
+          "label": "Daily loss room",
+          "value": "63%",
+          "copy": "Keeps daily-loss distance visible as a review signal before adding more risk."
+        },
+        {
+          "label": "Trading days",
+          "value": "4 / 5",
+          "copy": "Tracks documented active days against the configured minimum."
+        },
+        {
+          "label": "Status context",
+          "value": "Review",
+          "copy": "Frames pass-fail context from your logged data, without replacing firm-side decisions."
+        }
+      ],
+      "sections": [
+        {
+          "kicker": "Challenge progress",
+          "title": "Profit target, trading days and evaluation state in one view.",
+          "copy": "A challenge account should not feel like a normal journal with a few extra notes. Katsumii separates the workflow so every logged trade can be reviewed against the current evaluation context.",
+          "rows": [
+            {
+              "name": "Profit target",
+              "value": "Target",
+              "copy": "Configured target progress is shown alongside account results."
+            },
+            {
+              "name": "Minimum trading days",
+              "value": "4 / 5",
+              "copy": "Logged activity days are counted so reviews do not miss a day requirement."
+            },
+            {
+              "name": "Challenge status",
+              "value": "Review",
+              "copy": "Pass-fail context stays visible as a documentation aid, not an official guarantee."
+            }
+          ]
+        },
+        {
+          "kicker": "Rule distance",
+          "title": "Daily loss, max loss and trailing drawdown stay scannable.",
+          "copy": "The cockpit focuses attention on distance to limits, because a challenge review often depends on understanding where the account sits before the next decision.",
+          "rows": [
+            {
+              "name": "Daily loss limit",
+              "value": "DLL",
+              "copy": "Daily loss room is represented as a distance signal instead of hidden in a report."
+            },
+            {
+              "name": "Max loss",
+              "value": "MLL",
+              "copy": "Overall loss distance helps separate a bad day from broader account pressure."
+            },
+            {
+              "name": "Trailing drawdown",
+              "value": "Trail",
+              "copy": "Trailing logic can be tracked as configured context when the evaluation uses it."
+            }
+          ]
+        },
+        {
+          "kicker": "Consistency & alerts",
+          "title": "Consistency rules and inactivity windows get their own signals.",
+          "copy": "Some evaluations are not only about P&L. Katsumii gives recurring process constraints a place in the account workflow, so they are part of the review instead of a forgotten side note.",
+          "rows": [
+            {
+              "name": "Consistency rules",
+              "value": "Rule",
+              "copy": "Consistency context can be reviewed next to trades and account progress."
+            },
+            {
+              "name": "Inactivity alerts",
+              "value": "Days",
+              "copy": "Time-based reminders keep inactivity windows visible during slower periods."
+            },
+            {
+              "name": "Pass-fail context",
+              "value": "Status",
+              "copy": "Status labels support review discipline without making official firm-side claims."
+            }
+          ]
+        }
+      ],
+      "disclaimer": {
+        "headline": "A control cockpit, not a compliance guarantee.",
+        "points": [
+          "Katsumii documents and analyzes the trades and rules you enter — the prop firm remains the source of truth.",
+          "Prop firms can use their own calculations, rule interpretations and dashboards.",
+          "Challenge success, account approval, payouts or rule compliance are never guaranteed."
+        ]
+      },
+      "cta": {
+        "title": "Track it.",
+        "em": "Convert it",
+        "sub": "From first evaluation trade to funded — one step to convert a passed challenge."
+      }
+    },
+    "personal": {
+      "eyebrow": "Discipline 03 — Personal",
+      "h1": {
+        "pre": "Same discipline, your",
+        "em": "money"
+      },
+      "sub": "Katsumii gives personal traders a focused journal cockpit: personal accounts, daily goals, self-defined DLL/MLL limits, trade notes, calendar reviews and strategy tracking — without turning the page into a report wall.",
+      "chips": [
+        "Accounts that stay separate",
+        "A goal for the day",
+        "Context beside every trade",
+        "Setups you can compare"
+      ],
+      "metrics": [
+        {
+          "label": "Personal accounts",
+          "value": "Multi",
+          "copy": "Keep separate live, swing or practice accounts reviewable without mixing histories."
+        },
+        {
+          "label": "Daily goals",
+          "value": "Set",
+          "copy": "Use daily goals as a planning and review aid, not as a promise of trading results."
+        },
+        {
+          "label": "Personal limits",
+          "value": "DLL/MLL",
+          "copy": "Self-defined daily and max-loss limits stay visible next to the journal."
+        },
+        {
+          "label": "Strategy tracking",
+          "value": "Tagged",
+          "copy": "Connect trades to strategies so reviews can focus on behavior, setup quality and process."
+        }
+      ],
+      "sections": [
+        {
+          "kicker": "Personal accounts",
+          "title": "Keep personal accounts and daily goals in one cockpit.",
+          "copy": "Personal trading still needs structure. Katsumii gives each account its own context, so daily goals, balances, notes and review state do not blur together.",
+          "rows": [
+            {
+              "name": "Personal accounts",
+              "value": "Accounts",
+              "copy": "Review different personal accounts without merging unrelated histories."
+            },
+            {
+              "name": "Daily goals",
+              "value": "Daily",
+              "copy": "Place the day's intended focus beside the trades that followed."
+            },
+            {
+              "name": "Personal DLL/MLL",
+              "value": "Limits",
+              "copy": "Self-defined risk limits stay visible as review context before more trades are added."
+            }
+          ]
+        },
+        {
+          "kicker": "Trade journal",
+          "title": "Document trades, then review the week from the calendar.",
+          "copy": "The journal is built for repeated use: log the trade, attach context, tag behavior, then return through calendar reviews when patterns become easier to see.",
+          "rows": [
+            {
+              "name": "Trade journal",
+              "value": "Entries",
+              "copy": "Capture execution, setup context, screenshots, notes and follow-up observations."
+            },
+            {
+              "name": "Calendar reviews",
+              "value": "Calendar",
+              "copy": "Review daily and weekly behavior from a visual calendar instead of a spreadsheet dump."
+            },
+            {
+              "name": "Process notes",
+              "value": "Notes",
+              "copy": "Keep notes close to the trade so the review has context later."
+            }
+          ]
+        },
+        {
+          "kicker": "Strategy tracking",
+          "title": "Separate strategy behavior from account noise.",
+          "copy": "Personal trading reviews become clearer when setups, tags and mistakes can be compared across accounts and sessions without overloading the trader.",
+          "rows": [
+            {
+              "name": "Strategy tags",
+              "value": "Tags",
+              "copy": "Connect entries to named strategies so review work starts with clean groups."
+            },
+            {
+              "name": "Mistakes & emotions",
+              "value": "Behavior",
+              "copy": "Track behavioral context without burying it inside long journal text."
+            },
+            {
+              "name": "Session context",
+              "value": "Context",
+              "copy": "Review performance by session, asset or timeframe when the sample is large enough."
+            }
+          ]
+        }
+      ],
+      "disclaimer": {
+        "headline": "A journal system, not financial advice.",
+        "points": [
+          "Katsumii helps you document trades, goals, limits and review context.",
+          "Daily goals and strategy labels do not predict future results or reduce market risk.",
+          "Trading decisions remain your responsibility."
+        ]
+      },
+      "cta": {
+        "title": "Your capital.",
+        "em": "Your rules",
+        "sub": "Daily goals, personal loss limits and streaks that keep you honest."
+      }
+    },
+    "backtest": {
+      "eyebrow": "Discipline 04 — Backtest",
+      "h1": {
+        "pre": "Rehearse before",
+        "em": "it counts"
+      },
+      "sub": "Katsumii keeps backtesting structured: sessions, FXReplay and CSV imports, hypotheses, notes, strategy validation context and session analytics that stay separate from live trading records.",
+      "chips": [
+        "Replay work stays separate",
+        "FXReplay exports, mapped",
+        "The thesis before the result",
+        "Sessions you can revisit"
+      ],
+      "metrics": [
+        {
+          "label": "Backtest sessions",
+          "value": "Lab",
+          "copy": "Keep replay work distinct from live and funded account history."
+        },
+        {
+          "label": "FXReplay import",
+          "value": "Ready",
+          "copy": "Bring replay exports into a review workflow built for strategy testing."
+        },
+        {
+          "label": "Hypotheses",
+          "value": "Notes",
+          "copy": "Keep the reason for the test next to the trades that tested it."
+        },
+        {
+          "label": "Validation context",
+          "value": "Review",
+          "copy": "Summaries support review discipline without claiming future performance."
+        }
+      ],
+      "sections": [
+        {
+          "kicker": "Backtest sessions",
+          "title": "Keep replay sessions cleanly separated and importable.",
+          "copy": "A backtest should be reviewable later, not only remembered. Katsumii gives sessions a structured place for imported trades, manual notes and strategy context.",
+          "rows": [
+            {
+              "name": "Backtest sessions",
+              "value": "Session",
+              "copy": "Group replay trades into dedicated sessions instead of mixing them with live accounts."
+            },
+            {
+              "name": "FXReplay import",
+              "value": "FXReplay",
+              "copy": "Use replay exports as the starting point for structured analysis."
+            },
+            {
+              "name": "CSV import",
+              "value": "CSV",
+              "copy": "Bring tabular backtest records into the journal workflow when fields match your setup."
+            }
+          ]
+        },
+        {
+          "kicker": "Hypotheses & notes",
+          "title": "Write down what the session is supposed to prove.",
+          "copy": "Backtesting is easier to trust when the hypothesis, session notes and review criteria are captured before the result becomes tempting to reinterpret.",
+          "rows": [
+            {
+              "name": "Hypotheses",
+              "value": "Thesis",
+              "copy": "Record the idea being tested before reviewing the sample."
+            },
+            {
+              "name": "Session notes",
+              "value": "Notes",
+              "copy": "Keep market conditions, mistakes and observations attached to the session."
+            },
+            {
+              "name": "Strategy validation",
+              "value": "Validate",
+              "copy": "Use validation context as evidence to inspect, not as a performance guarantee."
+            }
+          ]
+        },
+        {
+          "kicker": "Session analytics",
+          "title": "Review the session without dragging in unrelated trades.",
+          "copy": "Session analytics help compare samples, setups and rules inside the backtest workflow, so live account pressure does not distort the analysis.",
+          "rows": [
+            {
+              "name": "Session metrics",
+              "value": "Metrics",
+              "copy": "Review performance inside the selected session boundary."
+            },
+            {
+              "name": "Setup comparison",
+              "value": "Tags",
+              "copy": "Compare strategies, setups and notes when enough samples are logged."
+            },
+            {
+              "name": "Review archive",
+              "value": "Archive",
+              "copy": "Keep old sessions available so a strategy review can evolve over time."
+            }
+          ]
+        }
+      ],
+      "disclaimer": {
+        "headline": "Backtesting supports analysis, not certainty.",
+        "points": [
+          "Katsumii organizes imported and manually documented backtest data — imports depend on export quality and your mapping choices.",
+          "A backtest result is historical analysis and does not guarantee live results.",
+          "Strategy validation remains a trader judgment call."
+        ]
+      },
+      "cta": {
+        "title": "Test first.",
+        "em": "Trade second",
+        "sub": "Compare strategies before risking a cent."
+      }
+    }
+  },
+  "customizationPage": {
+    "hero": {
+      "eyebrow": "Customization",
+      "titlePre": "Your journal.",
+      "titleEm": "Your rules",
+      "sub": "No two traders read the market the same way — so no two cockpits should look the same. Katsumii lets you hide what distracts, color what matters and tune every surface until the app disappears behind your process.",
+      "chips": [
+        "Focus mode",
+        "Per-mode accent colors",
+        "Light & dark backgrounds",
+        "Three dark tones, two light"
+      ],
+      "alt": "Katsumii customization settings with theme, accent and layout options",
+      "caption": "Settings — every surface, tunable"
+    },
+    "focus": {
+      "eyebrow": "Focus mode",
+      "title": "Show only what earns its place on screen.",
+      "sub": "Every panel in Katsumii can step aside. Strip the interface down to the essentials on execution days, bring the full instrument board back for deep reviews — the app follows your attention, not the other way around.",
+      "controls": [
+        {
+          "name": "Sidebars",
+          "on": "Left navigation and the right stats rail are in view.",
+          "off": "Both rails hidden — only the board you trade on."
+        },
+        {
+          "name": "Compact density",
+          "on": "Tighter spacing — more of the session on one screen.",
+          "off": "Full spacing, the way the cockpit ships."
+        }
+      ],
+      "hint": "Try it — the screenshot follows your choice.",
+      "caption": "Dashboard — declutter on demand",
+      "alt": "Katsumii dashboard at {density} density, sidebars {rails}",
+      "densityCompact": "compact",
+      "densityFull": "full",
+      "railsShown": "shown",
+      "railsHidden": "hidden"
+    },
+    "modeColors": {
+      "eyebrow": "Mode color themes",
+      "title": "Four disciplines, four colors — you pick them.",
+      "sub": "Funded, Challenge, Personal and Backtest each carry their own accent color, with separate shades for light and dark mode. Start from the curated presets or open the color picker and dial in any shade exactly to your taste. One glance at the screen and you know which capital is on the line — before you read a single number.",
+      "note": "Turn on mode-dependent accents and the ambient background and modal glows follow the active trading mode too — the whole room changes with the stakes.",
+      "swatches": [
+        {
+          "name": "Funded",
+          "sub": "Live prop accounts"
+        },
+        {
+          "name": "Challenge",
+          "sub": "Prop Evaluations"
+        },
+        {
+          "name": "Personal",
+          "sub": "Own capital"
+        },
+        {
+          "name": "Backtest",
+          "sub": "Sessions & replay"
+        }
+      ],
+      "light": "Light",
+      "dark": "Dark",
+      "foot": "Presets or free color picker — every mode, tuned separately for light and dark."
+    },
+    "backgrounds": {
+      "eyebrow": "Backgrounds & tone",
+      "title": "A canvas for day sessions, another for the night.",
+      "sub": "Choose separate background styles for light and dark mode — flowing lines for one, a calm honeycomb for the other. Then set the base tone itself: Ink for warm navy, Midnight for bluish near-black or pure Black for OLED silence — and on the bright side, Soft paper or a clean Whiteout.",
+      "rows": [
+        {
+          "name": "Background per theme",
+          "value": "Lines / Honeycomb",
+          "copy": "Pick a different app background for light and dark mode — each half of your day gets its own texture."
+        },
+        {
+          "name": "Base tone",
+          "value": "3 dark · 2 light",
+          "copy": "Dark has three moods — warm navy, bluish near-black or true black. Light has two papers: Soft and Whiteout."
+        },
+        {
+          "name": "Theme",
+          "value": "Light / Dark / System",
+          "copy": "Follow the OS, or lock the cockpit to the side of the day you trade in."
+        }
+      ],
+      "themeAlt": "Katsumii in the {name} theme",
+      "compareHint": "{name} — hover another band to compare",
+      "ariaPreview": "Preview theme",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "cta": {
+      "titlePre": "Make it",
+      "titleEm": "yours",
+      "sub": "A journal you shaped yourself is a journal you actually open every day."
+    }
+  },
+  "workflowPage": {
+    "hero": {
+      "eyebrow": "Workflow & automation",
+      "titleA": "Less",
+      "titleEmA": "bookkeeping",
+      "titleB": ", more",
+      "titleEmB": "trading",
+      "sub": "Between the first tick and the monthly review sits a lot of quiet work — importing fills, writing down what you saw, running the numbers. Katsumii keeps that layer fast, local and out of your way, so the journal you meant to keep is the journal you actually keep.",
+      "chips": [
+        "CSV & FXReplay imports",
+        "Broker sync on demand",
+        "Daily journal & calendar",
+        "Built-in trader tools",
+        "Offline HTML reports (Pro)"
+      ],
+      "alt": "Katsumii dashboard combining imported trades, journal entries and reports",
+      "caption": "Cockpit — everything that follows lands here"
+    },
+    "imports": {
+      "eyebrow": "Imports & broker sync",
+      "title": "Your fills, from anywhere, without retyping.",
+      "sub": "Every broker exports data a little differently — Katsumii speaks the common formats and connects to the platforms most prop-firm traders actually use. Import once, map columns once, and every later sync lands straight in the right mode against the right account — pulled the moment you press Sync now, never while your back is turned.",
+      "rows": [
+        {
+          "name": "CSV import wizard",
+          "value": "4 steps",
+          "copy": "Upload, resolve mapping issues, review, done. Broker presets auto-detect the common formats — or map columns yourself and save it as a custom preset."
+        },
+        {
+          "name": "Execution modes",
+          "value": "3 modes",
+          "copy": "Import completed trades, raw executions, or executions paired by ID — Katsumii pairs the fills into round-turn trades on the way in."
+        },
+        {
+          "name": "FXReplay imports",
+          "value": "Backtest",
+          "copy": "Send FXReplay exports straight into a new or existing backtest session with strategy, hypothesis and starting balance attached."
+        },
+        {
+          "name": "Symbol mapping",
+          "value": "Persistent",
+          "copy": "Map broker symbols to Katsumii assets once. Unknown symbols surface in the mapping modal and can spawn new assets in place."
+        }
+      ],
+      "panelHead": "Supported providers",
+      "providers": [
+        {
+          "copy": "Reads closed trades from a running local MT5 terminal on your click (Windows).",
+          "tag": "Windows"
+        },
+        {
+          "copy": "ProjectX Gateway API — sync futures fills across mapped accounts.",
+          "tag": "API"
+        },
+        {
+          "copy": "REST API for demo and live accounts — closed trades on demand.",
+          "tag": "API"
+        },
+        {
+          "copy": "v20 REST API for practice and live accounts — FX fills, mapped in.",
+          "tag": "API"
+        },
+        {
+          "copy": "Any broker that can export a CSV — map columns, save a preset, reuse.",
+          "tag": "Universal"
+        },
+        {
+          "copy": "Backtest exports into dedicated backtest sessions.",
+          "tag": "Backtest"
+        }
+      ],
+      "panelFoot": "Symbol-to-asset mapping remembers what you told it — repeat imports just work. CSV and FXReplay imports ship with Lite; the four API connections are Professional."
+    },
+    "journal": {
+      "eyebrow": "Daily workflow & journal",
+      "title": "The day, the trade and the reason — in one place.",
+      "sub": "The Today screen keeps the current session's P&L, streaks and account status in view while you trade. Quick Entry captures a fill in seconds; the journal captures the story behind it. When you review, the calendar shows both — the numbers and the notes — day by day.",
+      "rows": [
+        {
+          "name": "Today screen",
+          "copy": "Session P&L, trade count, W/L, streaks, account health and personal goals — the state of the day, at a glance."
+        },
+        {
+          "name": "Quick Entry & Trade Presets",
+          "copy": "Log a fill in seconds. Presets pre-fill strategy, risk, session and fees so recurring setups stop costing you clicks."
+        },
+        {
+          "name": "Tiptap journal",
+          "copy": "Rich-text entries with autosave, bullet lists, blockquotes and screenshots. Per-day stats stay pinned to the top of the page you're writing on."
+        },
+        {
+          "name": "Emotions, mistakes, tags",
+          "copy": "Attach the human context to every trade — moods, execution mistakes, color tags — so the analytics side has something to break down."
+        },
+        {
+          "name": "Calendar with journal markers",
+          "copy": "Monthly and yearly heatmaps of P&L, trade count and (crucially) which days you actually wrote something down."
+        }
+      ],
+      "alt": "Katsumii calendar with per-day P&L, trade counts and journal markers",
+      "caption": "Calendar — numbers and notes, one grid"
+    },
+    "tools": {
+      "eyebrow": "Tools & reports",
+      "title": "The utilities you were already keeping in tabs.",
+      "sub": "Every desk gets cluttered with the same six utilities — a position size calculator, an R:R visualizer, a timezone helper. Katsumii ships them inside the app, next to the data they act on, and turns any filter into a shareable offline report.",
+      "note": "On the paid licences, local backups run in the background on the schedule you set — restore your last known-good state with one click.",
+      "items": [
+        {
+          "name": "R:R visualizer",
+          "copy": "Model a trade before you take it — entry, stop, target, risk multiple, planned outcome."
+        },
+        {
+          "name": "Position size calculator",
+          "copy": "From account risk to contract size across futures, FX, CFDs — tick size and value baked in."
+        },
+        {
+          "name": "Equity simulator",
+          "copy": "Project account growth from win rate, RRR and risk per trade. See variance, not just the average."
+        },
+        {
+          "name": "Timezone converter",
+          "copy": "Line up session opens, prop-firm cutoffs and your local clock without a browser tab."
+        },
+        {
+          "name": "Currency converter",
+          "copy": "Cross-currency P&L in one place — useful when the firm settles in a currency you don't quote in."
+        },
+        {
+          "name": "Futures contract specs",
+          "copy": "Tick size, tick value, expiry, session — for every contract you actually trade."
+        },
+        {
+          "name": "HTML performance report",
+          "copy": "Self-contained offline report from the current filters — equity curve, calendar heatmap, breakdowns, key metrics. Dark and light modes ship inside the file."
+        },
+        {
+          "name": "CSV export",
+          "copy": "Export the filtered trade log for spreadsheets, tax software or your own analysis pipeline."
+        },
+        {
+          "name": "Automated backups",
+          "copy": "Backups run in the background on the schedule you pick — weekly, monthly or both. Decide how many copies to keep, restore the latest with one click."
+        }
+      ]
+    },
+    "showcase": {
+      "aria": "Trader tools in Katsumii",
+      "ariaTablist": "Trader tools",
+      "shots": [
+        {
+          "name": "Plan & sizing",
+          "copy": "R:R visualizer and position size calculator, side by side with the timezone and currency helpers.",
+          "alt": "Katsumii R:R visualizer, position size calculator and timezone converter",
+          "caption": "Tools — R:R, contracts, sessions"
+        },
+        {
+          "name": "Equity simulator",
+          "copy": "Project account growth from win rate, RRR and risk per trade — ten possible paths, not one flattering average.",
+          "alt": "Katsumii equity simulator projecting possible account paths",
+          "caption": "Equity simulator — variance made visible"
+        },
+        {
+          "name": "HTML report",
+          "copy": "The current filter, exported as one self-contained file — equity curve, heatmap, breakdowns, dark and light inside.",
+          "alt": "Katsumii self-contained HTML performance report",
+          "caption": "Report — one file, opens anywhere"
+        },
+        {
+          "name": "Automated backups",
+          "copy": "Snapshots run in the background on the schedule you pick. Decide how many copies to keep, restore the latest with one click.",
+          "alt": "Katsumii backup settings with scheduled local snapshots",
+          "caption": "Backups — scheduled, local, one-click restore"
+        }
+      ]
+    },
+    "cta": {
+      "title": "The tools, out of the way",
+      "sub": "Every part of the loop — capture, import, reflect, review — inside one local app."
+    }
+  },
+  "analyticsPage": {
+    "hero": {
+      "eyebrow": "Analytics & Reviews",
+      "titlePre": "Find your edge.",
+      "titleEm": "Keep it",
+      "sub": "Logging trades is the easy part. Katsumii turns that log into answers: which setups pay, which sessions bleed, where your sizing breaks down — across every account, mode and backtest, without a single spreadsheet.",
+      "chips": [
+        "Execution quality",
+        "Edge drivers",
+        "Diagnostics lab",
+        "Offline reports (Pro)"
+      ],
+      "alt": "Katsumii analysis view with key metrics, ratios and diagnostics",
+      "caption": "Analysis — your edge, quantified"
+    },
+    "dashboard": {
+      "eyebrow": "Dashboard",
+      "title": "One calm screen that carries the whole story.",
+      "sub": "Net P&L up front, and everything that explains it right behind: gross versus fees, expectancy, effective R:R and a full trade breakdown — scoped to the mode, accounts and date range you're actually asking about.",
+      "rows": [
+        {
+          "name": "Net P&L hero",
+          "value": "$ · % · R",
+          "copy": "The number that matters — with funding size, gross vs. fees, expectancy and effective R:R right behind it."
+        },
+        {
+          "name": "Execution quality",
+          "value": "Graded",
+          "copy": "Winrate donut, effective R:R, profit factor, risk efficiency and average duration — condensed into one quality grade."
+        },
+        {
+          "name": "Edge drivers",
+          "value": "Best of",
+          "copy": "Best day, best session, best strategy plus your win and loss streaks — the patterns behind the P&L."
+        },
+        {
+          "name": "Equity curve monitor",
+          "value": "Trade · Day",
+          "copy": "Per trade or per day, in amount, percent or R — last 10, 30 or 100, with corrections included if you want."
+        },
+        {
+          "name": "Daily rhythm",
+          "value": "Heatmap",
+          "copy": "A mini win/loss calendar and a daily P&L heatmap show your consistency at a glance, month by month."
+        }
+      ],
+      "alt": "Katsumii execution quality and edge driver statistics",
+      "caption": "Execution quality — winrate, R:R, profit factor"
+    },
+    "analysis": {
+      "eyebrow": "Analysis lab",
+      "title": "A diagnostics lab for your trading, not just charts.",
+      "sub": "The Analysis screen goes where dashboards stop. Trade extremes and period extremes, the ratios and mechanics behind them, baseline averages down to your median win and loss, and what fees really cost you against gross — then a diagnostics lab that stress-tests the whole picture. Every panel closes with a plain-English verdict, so \"Sharpe 1.8\" also tells you what it means.",
+      "note": "A configurable BE threshold treats near-zero trades as breakeven, so a handful of scratches doesn't distort your win rate — include or exclude them with one toggle.",
+      "rows": [
+        {
+          "name": "Edge summary",
+          "value": "Headline",
+          "copy": "Best tags, best asset, best timeframe and your most expensive mistake — before any digging."
+        },
+        {
+          "name": "Drawdown risk curve",
+          "value": "Max · Current DD",
+          "copy": "Max and current drawdown, recovery factor, longest streak and time to recover — your pain, quantified."
+        },
+        {
+          "name": "Rolling edge",
+          "value": "10 · 20 · 50",
+          "copy": "Winrate, profit factor and P&L over your last 10, 20 and 50 trades — is the edge growing or fading right now?"
+        },
+        {
+          "name": "Outliers & quality ratios",
+          "value": "Sharpe · Sortino",
+          "copy": "Top-trade concentration shows if a few outliers carry you; Sharpe, Sortino and consistency grade the rest."
+        },
+        {
+          "name": "Risk & sizing",
+          "value": "Kelly",
+          "copy": "Declared vs. missing risk, realized R against planned R:R, risk breaks and a Kelly fraction for sane sizing."
+        },
+        {
+          "name": "P&L distribution",
+          "value": "Histogram",
+          "copy": "The shape of your results, bucket by bucket — how much of your edge lives in a handful of trades."
+        }
+      ]
+    },
+    "breakdowns": {
+      "eyebrow": "Deep breakdowns",
+      "title": "Slice performance by anything you tag.",
+      "sub": "Every stat in Katsumii obeys the global filter bar. Combine dimensions freely — \"London session shorts on NQ, tagged FOMO, last quarter\" is one filter away, and every dashboard, breakdown and report answers for exactly that slice. The edge profile radar overlays average P&L against trade count across weekdays, sessions, strategies, durations and lot size, and strategy bubble charts plot winrate against average P&L — bubble size is trade count, so thin samples can't fool you.",
+      "ariaDimensions": "Breakdown dimensions",
+      "dimensions": [
+        "Account",
+        "Strategy",
+        "Asset",
+        "Timeframe",
+        "Direction",
+        "Market session",
+        "Tag",
+        "Emotion",
+        "Mistake",
+        "Color tag",
+        "Closed by",
+        "Scaled trades",
+        "What-if outcome",
+        "Date range"
+      ]
+    },
+    "numbers": {
+      "eyebrow": "Numbers, your way",
+      "title": "Read P&L in the language you think in.",
+      "sub": "Some traders think in percent, some in R-multiples, some want both next to every dollar figure. Katsumii renders P&L across the entire app the way you actually reason about risk — and the quick-stats bar keeps win rate, R and profit factor one glance away, or out of sight entirely.",
+      "rows": [
+        {
+          "name": "PnL extra info",
+          "value": "% · R · Both",
+          "copy": "Percentages, R-multiples or both — shown next to every P&L value across the entire app."
+        },
+        {
+          "name": "Quick-stats bar",
+          "value": "On / Off",
+          "copy": "The at-a-glance strip with P&L, WR, R and PF — visible when you want feedback, hidden when you don't."
+        }
+      ],
+      "alt": "Katsumii statistics with percentage and R-multiple display",
+      "caption": "Stats — %, R-multiples, or both"
+    },
+    "reviews": {
+      "eyebrow": "Reviews & reports",
+      "title": "Review in rhythm, report with one click.",
+      "sub": "The calendar grades every day by outcome, with weekly and monthly summaries in the margins and journal markers where you wrote. When it's time to share or archive, the Professional licence generates a self-contained HTML performance report — equity curve, heatmap, breakdowns and key metrics in one file that opens anywhere, no server, no upload.",
+      "rows": [
+        {
+          "name": "Calendar review",
+          "value": "Day · Week · Month",
+          "copy": "Color-graded days with trade counts, weekly P&L summaries and day modals with full trade context."
+        },
+        {
+          "name": "Journal markers",
+          "value": "Linked",
+          "copy": "Days with journal entries are marked on the calendar — your notes stay attached to the numbers."
+        },
+        {
+          "name": "HTML report",
+          "value": "1 file",
+          "copy": "Self-contained offline performance report with equity curve, heatmap, breakdowns and a dark/light toggle."
+        }
+      ],
+      "alt": "Katsumii self-contained HTML performance report with equity curve and breakdowns",
+      "caption": "Report — one file, opens anywhere"
+    },
+    "disclaimer": {
+      "title": "Built to explain your results, not predict them.",
+      "points": [
+        "Analytics describe your recorded trading history; they are documentation and review aids, not trading advice or signals.",
+        "Metrics depend on the data you enter — fees, corrections and BE settings change how results are displayed.",
+        "Past performance patterns do not guarantee future outcomes; no statistic can prevent losses."
+      ]
+    },
+    "cta": {
+      "titlePre": "Know your",
+      "titleEm": "numbers",
+      "sub": "The market doesn't remember your trades. Katsumii does — and tells you what they mean."
+    }
+  },
+  "localOfflinePage": {
+    "hero": {
+      "eyebrow": "Local & offline",
+      "titlePre": "Your records live",
+      "titleEm": "on your disk",
+      "sub": "Katsumii is a desktop application, not a hosted service. Your trades, notes and screenshots are written to a SQLite file on your own machine — there is no journal account to create, no server holding your history, and nothing to lose access to if a subscription lapses.",
+      "chips": [
+        "SQLite on your disk",
+        "No Katsumii account",
+        "Works offline",
+        "One file to back up"
+      ],
+      "alt": "Katsumii dashboard running as a local desktop application",
+      "caption": "Everything on this screen is read from your own disk"
+    },
+    "storage": {
+      "eyebrow": "Where the data sits",
+      "title": "One file. On your machine. Yours to move.",
+      "sub": "Every mode — Funded, Challenge, Personal and Backtest — writes into the same local database, in separate tables. You can copy it to a USB stick, drop it in your own cloud folder, or keep it on an air-gapped machine. Katsumii never needs to see it.",
+      "facts": [
+        {
+          "term": "Format",
+          "value": "SQLite",
+          "copy": "A single, well-documented database file — readable by any SQLite tool, not a proprietary format you need Katsumii to open."
+        },
+        {
+          "term": "Location",
+          "value": "Your disk",
+          "copy": "Written to your user folder. Move it, sync it through a folder you already trust, or keep it on an external drive."
+        },
+        {
+          "term": "Screenshots",
+          "value": "Alongside",
+          "copy": "Trade and setup screenshots are stored as ordinary image files next to the database, not uploaded anywhere."
+        },
+        {
+          "term": "Account",
+          "value": "None",
+          "copy": "No sign-up, no journal login, no password reset. The application starts and your data is simply there."
+        }
+      ]
+    },
+    "network": {
+      "eyebrow": "What touches the network",
+      "title": "Honest about the few things that go out.",
+      "sub": "\"Local-first\" is a claim worth spelling out. Here is every part of Katsumii that can reach the internet, and what it sends. Your trade history is not in this list — and each of these keeps working, or fails quietly, when you are offline.",
+      "rows": [
+        {
+          "name": "Licence check",
+          "tag": "Occasional",
+          "copy": "Validates your licence key. Sends the key and nothing about your trades. Separate from where the journal is stored."
+        },
+        {
+          "name": "Update check",
+          "tag": "Optional",
+          "copy": "Asks whether a newer version exists. You can ignore it indefinitely — the version you installed keeps working."
+        },
+        {
+          "name": "Broker sync",
+          "tag": "On demand",
+          "copy": "Off until you connect an account, and silent until you press Sync now — it pulls your fills into the local database on that click, never in the background. Credentials stay on your machine."
+        },
+        {
+          "name": "Your trade history",
+          "tag": "Never leaves",
+          "copy": "Trades, notes, journal entries, screenshots and statistics are never transmitted. There is no endpoint that receives them."
+        }
+      ]
+    },
+    "backups": {
+      "eyebrow": "Backups",
+      "title": "Local does not mean fragile.",
+      "sub": "The honest trade-off of owning your data is that no one else is holding a copy. The paid licences close that gap for you: a background task writes snapshots beside your database on the schedule you choose, and you can export a full copy by hand whenever you want.",
+      "note": "Snapshots protect against corruption and mistakes — not against a lost laptop. Keep one copy somewhere else; the file is small enough to fit anywhere.",
+      "steps": [
+        {
+          "title": "Automatic snapshots",
+          "copy": "On the paid licences, a background task copies the database on your chosen schedule — weekly, monthly, or both — and keeps as many copies as you tell it to."
+        },
+        {
+          "title": "Export on demand",
+          "copy": "Take a full copy whenever you want — before an update, at the end of a month, or ahead of a machine move."
+        },
+        {
+          "title": "Restore by copying",
+          "copy": "Recovery is a file copy. Put the database back where it belongs and the application picks it up on the next start."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Own the record",
+      "sub": "Buy the licence once, keep the journal for as long as you keep the file.",
+      "readFaq": "Read the FAQ"
     }
   },
   "featuresPage": {
@@ -373,45 +1486,58 @@
     },
     "alts": {
       "hero": "Katsumii dashboard cockpit screenshot"
+    },
+    "cockpit": {
+      "eyebrow": "Inside the cockpit",
+      "title": "One workspace, every screen a trader needs.",
+      "screens": [
+        "Daily command center: P&L, streaks, loss-limit status",
+        "Net P&L hero, execution quality, edge drivers, equity",
+        "Health board with MLL/DLL distance and payout history",
+        "Full trade log with gallery view and screenshot viewer",
+        "Monthly P&L rhythm with day modals and journal markers",
+        "Edge summary, diagnostics lab, deep breakdown tabs",
+        "Daily rich-text reflections with per-day trade stats",
+        "Backtest sessions with hypotheses and sparklines",
+        "CSV wizard, FXReplay import, one-click broker sync",
+        "Self-contained HTML performance reports, offline",
+        "Position size, R:R visualizer, equity simulator",
+        "Accounts, strategies, assets, tags, and presets"
+      ]
     }
   },
   "welcomePage": {
-    "eyebrow": "New Installation",
-    "heading": "Welcome to Katsumii.",
-    "subheading": "Thank you for your purchase. You're now set up with a professional trading journal built for discipline and clarity.",
-    "onboarding": [
+    "eyebrow": "New installation",
+    "titlePre": "Welcome to",
+    "titleEm": "Katsumii",
+    "sub": "Your licence is yours, the journal runs on your machine, and nothing here expires. Three steps and the cockpit starts filling with your own numbers.",
+    "ariaSteps": "Getting started",
+    "steps": [
       {
-        "number": "01",
-        "title": "Connect Your First Account",
-        "description": "Add a personal or prop firm account to begin tracking your trades, balance, and risk rules."
+        "title": "Add your first account",
+        "copy": "Funded, challenge or personal — set the account up with its rules so drawdown limits and targets are tracked from the first trade."
       },
       {
-        "number": "02",
-        "title": "Log Your First Trade",
-        "description": "Enter trade details, attach a screenshot, add your notes, and start building your journal history."
+        "title": "Log your first trade",
+        "copy": "Enter the fill, attach the chart screenshot, write down what you saw. That third part is the one that pays off later."
       },
       {
-        "number": "03",
-        "title": "Review Your Analytics",
-        "description": "After a few sessions, visit the analytics dashboard to measure your edge, patterns, and consistency."
+        "title": "Read the numbers back",
+        "copy": "After a handful of sessions the dashboard has enough to work with — execution quality, edge drivers and your equity curve."
       }
     ],
-    "nextSteps": {
-      "heading": "What to do next",
-      "items": [
-        "Open Katsumii and complete the initial setup",
-        "Add your first trading account",
-        "Log your first trade entry",
-        "Explore the Analytics dashboard",
-        "Read the full Manual for advanced features"
-      ]
-    },
-    "cta": "Explore the Manual",
-    "nav": {
-      "home": "Back Home",
-      "manual": "Manual"
-    },
-    "brandSubtitle": "Welcome"
+    "checklistLabel": "Your first session",
+    "checklistTitle": "Work through this once.",
+    "checklist": [
+      "Pick the trading mode you are starting in",
+      "Add your first trading account and its rules",
+      "Import a CSV or log a trade by hand",
+      "Write one journal entry at the end of the day",
+      "Open the dashboard and check the equity curve"
+    ],
+    "openManual": "Open the manual",
+    "browseFaq": "Browse the FAQ",
+    "notePre": "Something not working as it should? Write to"
   },
   "manualPage": {
     "hero": {
@@ -619,6 +1745,10 @@
     "mobile": {
       "openTopics": "Topics",
       "closeTopics": "Close"
+    },
+    "aria": {
+      "breadcrumb": "Breadcrumb",
+      "articleNav": "Article navigation"
     }
   },
   "pricingPage": {
@@ -908,42 +2038,36 @@
     "launch": {
       "free": "Free at launch",
       "paid": "Available at launch"
-    }
-  },
-  "footer": {
-    "tagline": "Offline Trading Journal",
-    "description": "Built for traders who value clarity, respect rules, and want to systematically improve their performance.",
-    "highlights": [
-      "100% Offline",
-      "Structured Reviews",
-      "Prop-ready Workflow"
-    ],
-    "product": "Product",
-    "productLinks": [
-      "Features",
-      "Showcase",
-      "License",
-      "Buy License"
-    ],
-    "company": "Company",
-    "companyLinks": [
-      "FAQ",
-      "Contact",
-      "Report a Bug"
-    ],
-    "support": {
-      "label": "Support",
-      "description": "Questions about the license, demo, or workflow? We're happy to help.",
-      "contact": "Contact Support"
     },
-    "legalLinks": [
-      "FAQ",
-      "Imprint",
-      "Privacy",
-      "Terms",
-      "Support"
-    ],
-    "copyright": "Copyright {year} Katsumii. Trading involves risk. The app is intended for documentation and analysis only."
+    "onboarding": {
+      "eyebrow": "From purchase to first trade",
+      "title": "Three steps between the checkout and your first trade.",
+      "sub": "No account to create, no cloud to sync. The installer arrives with your purchase and the app is ready to use the moment it opens.",
+      "aria": "How to get Katsumii",
+      "steps": [
+        {
+          "title": "Get the installer",
+          "copy": "Checkout runs on Lemon Squeezy. Once payment clears, they email you the installer download link and your license key — the same email also links to your Lemon Squeezy customer portal, where the download stays available. Katsumii itself has no user account. The Windows installer is a signed {exe}; macOS ships as a signed {dmg}."
+        },
+        {
+          "title": "Install & unlock",
+          "copy": "Run the installer — no admin rights needed on Windows, standard drag-to-Applications on macOS. On first launch, paste your license key once. Everything after that is local."
+        },
+        {
+          "title": "Start journaling",
+          "copy": "Pick a mode (Funded, Challenge, Personal, Backtest), add your first account, and log a trade — or import an existing broker CSV and let Katsumii backfill the log. The manual walks you through the first week if you want a guided path."
+        }
+      ],
+      "footPre": "Lost your download or license key? Check your Lemon Squeezy customer portal (linked in the purchase email) first — or reach out via",
+      "footLink": "Contact",
+      "footPost": "and we'll resend it."
+    },
+    "everyLicense": [
+      "One local file on your disk",
+      "No Katsumii account",
+      "Works offline",
+      "Windows & macOS"
+    ]
   },
   "faq": {
     "hero": {
@@ -1076,7 +2200,10 @@
       "clearSearch": "Clear search",
       "switchToLight": "Switch to light mode",
       "switchToDark": "Switch to dark mode",
-      "background": "Background"
+      "background": "Background",
+      "changeLanguage": "Change language",
+      "closeMenu": "Close menu",
+      "close": "Close"
     },
     "legal": {
       "contents": "Contents"
@@ -1137,6 +2264,16 @@
       "welcome": "A guided introduction to Katsumii and the first steps for getting value from your trading journal.",
       "bugreport": "Report a Katsumii bug and share reproduction steps so the issue can be investigated.",
       "notFound": "This Katsumii page does not exist or has moved."
+    },
+    "cta": {
+      "getKatsumii": "Get Katsumii",
+      "allFeatures": "All features",
+      "exploreAllFeatures": "Explore all features",
+      "seePricing": "See pricing",
+      "openManual": "Open manual"
+    },
+    "lightbox": {
+      "screenshot": "Screenshot"
     }
   },
   "contactPage": {
@@ -1190,16 +2327,28 @@
     }
   },
   "notFoundPage": {
-    "brandSubtitle": "Page not found",
-    "nav": {
-      "features": "Features",
-      "pricing": "Pricing",
-      "faq": "FAQ"
-    },
-    "label": "404",
-    "title": "Page not found",
-    "description": "This Katsumii page does not exist or has moved.",
-    "cta": "Back to Katsumii"
+    "title": "Nothing logged here",
+    "sub": "This page does not exist, or it moved somewhere else. The links below cover everything the site has.",
+    "back": "Back to the start",
+    "ariaLinks": "Popular pages",
+    "links": [
+      {
+        "name": "Features",
+        "copy": "Every module in the cockpit"
+      },
+      {
+        "name": "Pricing",
+        "copy": "One purchase, no subscription"
+      },
+      {
+        "name": "Manual",
+        "copy": "How the app works, screen by screen"
+      },
+      {
+        "name": "FAQ",
+        "copy": "The questions that come up most"
+      }
+    ]
   },
   "termsPage": {
     "brandSubtitle": "Terms of Service",

@@ -70,12 +70,7 @@
   --v6-gold: #0369a1;
   --v6-gold-hi: #075985;
   --v6-ember: #d4531d;
-  background:
-    radial-gradient(ellipse 85% 55% at 65% -8%, rgba(3, 105, 161, 0.10), transparent 62%),
-    radial-gradient(ellipse 55% 45% at 6% 42%, rgba(3, 105, 161, 0.05), transparent 60%),
-    var(--v6-bg);
-}
-.v6.light.v6-landing-shell {
+  /* flat ground in light mode — the landing page set the tone, every page follows */
   background: var(--v6-bg);
 }
 .v6.light .v6-noise { opacity: 0.04; }
@@ -293,6 +288,43 @@
 }
 .v6.light .v6-nav-menu a:hover, .v6.light .v6-nav-menu a:focus-visible { background: rgba(2, 12, 20, 0.04); }
 .v6-nav-right { display: flex; align-items: center; gap: 1.1rem; margin-left: auto; }
+
+/* ── language switch (reuses .v6-theme for the trigger, .v6-nav-menu for the panel) ── */
+.v6-lang { position: relative; display: inline-flex; align-items: center; }
+.v6-lang-btn {
+  font-family: var(--v6-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+.v6-lang-btn.open { color: var(--v6-gold); border-color: var(--v6-line-strong); }
+/* the nav dropdown centres itself under a wide link; this one hangs off the right edge */
+.v6-lang-menu {
+  left: auto;
+  right: 0;
+  min-width: 11.5rem;
+  transform: translate(0, 0.35rem);
+}
+.v6-lang-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, 0);
+}
+/* language names are set like the Katsumii wordmark — same face, size and
+   ember full stop, so the switch reads as part of the brand */
+.v6-lang-name {
+  font-family: var(--v6-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  color: var(--v6-ink);
+}
+.v6-lang-menu .v6-nav-menu-idx {
+  font-family: var(--v6-mono);
+  width: 1.6rem;
+  color: var(--v6-faint);
+}
+.v6-lang-menu svg { width: 12px; height: 12px; margin-left: auto; color: var(--v6-gold); }
 .v6-nav-ghost {
   color: var(--v6-faint);
   text-decoration: none;

@@ -1,5 +1,17 @@
 [
   {
+    "version": "0.15.0",
+    "date": "2026-08-24",
+    "title": "The whole site now speaks your language",
+    "changes": [
+      "Every page is translated end to end — landing page, the three trading mode pages, analytics, customization, workflow, local & offline, welcome, the 404 page and the preview notice no longer fall back to English",
+      "A language switch now sits in the navigation bar of every page, so you can change language without editing the address",
+      "Traditional Chinese moved from /tw/ to /zht/; old /tw/ links land on the same page instead of a dead end",
+      "Spanish is on hold for now — Spanish addresses open the English page rather than a 404",
+      "In light mode every page uses the same bright background as the landing page; the subpages had picked up a grey cast"
+    ]
+  },
+  {
     "version": "0.14.2",
     "date": "2026-08-15",
     "title": "The middle licence is called Lite, and the nav stays put",

@@ -3,28 +3,28 @@
     <!-- HERO -->
     <section class="v6m-hero">
       <div ref="heroCopyEl" class="v6m-hero-copy v6-copy-glow">
-        <p class="v6-eyebrow v6-reveal"><i></i>{{ page.eyebrow }}</p>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t(`${ns}.eyebrow`) }}</p>
         <h1 class="v6-h1 v6-reveal">
-          {{ page.h1.pre }} <em>{{ page.h1.em }}</em><b class="v6-dot">.</b>
+          {{ t(`${ns}.h1.pre`) }} <em>{{ t(`${ns}.h1.em`) }}</em><b class="v6-dot">.</b>
         </h1>
-        <p class="v6m-hero-sub v6-reveal">{{ page.sub }}</p>
+        <p class="v6m-hero-sub v6-reveal">{{ t(`${ns}.sub`) }}</p>
         <ul class="v6-card-chips v6m-hero-chips v6-reveal">
-          <li v-for="c in page.chips" :key="c">{{ c }}</li>
+          <li v-for="c in chips" :key="c">{{ c }}</li>
         </ul>
         <div class="v6m-hero-actions v6-reveal">
-          <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-magnetic">Get Katsumii <span aria-hidden="true">→</span></RouterLink>
-          <RouterLink :to="`/${lang}/features`" class="v6-quiet v6-magnetic">All features</RouterLink>
+          <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-magnetic">{{ t('common.cta.getKatsumii') }} <span aria-hidden="true">→</span></RouterLink>
+          <RouterLink :to="`/${lang}/features`" class="v6-quiet v6-magnetic">{{ t('common.cta.allFeatures') }}</RouterLink>
         </div>
       </div>
     </section>
 
     <!-- METRICS -->
-    <section class="v6m-metrics" aria-label="Cockpit metrics">
-      <article v-for="m in page.metrics" :key="m.label" class="v6-card v6-reveal">
+    <section class="v6m-metrics" :aria-label="t('modePages.ui.ariaMetrics')">
+      <article v-for="m in metrics" :key="m.label" class="v6-card v6-reveal">
         <p class="v6m-metric-label">{{ m.label }}</p>
         <div class="v6m-metric-row">
           <span class="v6m-metric-val">{{ m.value }}</span>
-          <span class="v6m-status">{{ m.status }}</span>
+          <span class="v6m-status">{{ t(`modePages.ui.status.${m.status}`) }}</span>
         </div>
         <span class="v6m-bar" role="presentation"><i :style="{ width: m.progress }"></i></span>
         <p>{{ m.copy }}</p>
@@ -33,7 +33,7 @@
 
     <!-- SECTIONS -->
     <section
-      v-for="(s, idx) in page.sections" :id="s.id" :key="s.id"
+      v-for="(s, idx) in sections" :id="s.id" :key="s.id"
       class="v6m-section" :class="{ flip: idx % 2 === 1 }"
     >
       <div class="v6m-section-copy">
@@ -45,7 +45,7 @@
         <div v-for="r in s.rows" :key="r.name" class="v6m-row">
           <div class="v6m-row-head">
             <h3>{{ r.name }}</h3>
-            <span class="v6m-status">{{ r.status }}</span>
+            <span class="v6m-status">{{ t(`modePages.ui.status.${r.status}`) }}</span>
           </div>
           <p>{{ r.copy }}</p>
           <div class="v6m-row-meter">
@@ -60,22 +60,22 @@
     <!-- DISCLAIMER -->
     <section class="v6m-disclaimer">
       <div class="v6m-disclaimer-inner">
-        <p class="v6-eyebrow v6-reveal"><i></i>Important context</p>
-        <h2 class="v6-h2 v6-reveal">{{ page.disclaimer.headline }}</h2>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('modePages.ui.importantContext') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t(`${ns}.disclaimer.headline`) }}</h2>
         <div class="v6m-disclaimer-points">
-          <p v-for="p in page.disclaimer.points" :key="p" class="v6-reveal">{{ p }}</p>
+          <p v-for="p in disclaimerPoints" :key="p" class="v6-reveal">{{ p }}</p>
         </div>
       </div>
     </section>
 
     <!-- CTA -->
     <section class="v6m-cta">
-      <h2 class="v6m-cta-title v6-reveal">{{ page.cta.title }} <em>{{ page.cta.em }}</em><b class="v6-dot">.</b></h2>
-      <p class="v6m-cta-sub v6-reveal">{{ page.cta.sub }}</p>
+      <h2 class="v6m-cta-title v6-reveal">{{ t(`${ns}.cta.title`) }} <em>{{ t(`${ns}.cta.em`) }}</em><b class="v6-dot">.</b></h2>
+      <p class="v6m-cta-sub v6-reveal">{{ t(`${ns}.cta.sub`) }}</p>
       <div class="v6m-cta-actions v6-reveal">
-        <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-btn-lg v6-magnetic">Get Katsumii <span aria-hidden="true">→</span></RouterLink>
-        <RouterLink v-if="page.cta.next" :to="`/${lang}${page.cta.next.path}`" class="v6-quiet">
-          Next discipline: {{ page.cta.next.name }} <span aria-hidden="true">→</span>
+        <RouterLink :to="`/${lang}/pricing`" class="v6-btn v6-btn-lg v6-magnetic">{{ t('common.cta.getKatsumii') }} <span aria-hidden="true">→</span></RouterLink>
+        <RouterLink v-if="next" :to="`/${lang}${next.path}`" class="v6-quiet">
+          {{ t('modePages.ui.nextDiscipline', { name: t(`shell.pages.${next.key}.label`) }) }} <span aria-hidden="true">→</span>
         </RouterLink>
       </div>
     </section>
@@ -84,16 +84,58 @@
 
 <script setup>
 import { computed, inject, onBeforeUnmount, onMounted, ref } from "vue"
+import { useI18n } from "vue-i18n"
 import { useRoute } from "vue-router"
 import { initMagnetic, initV6Reveals } from "../../v6/motion.js"
 import { normalizeLocale } from "../../utils/routes.js"
 
-/* `status` on a metric or row is drawn from one fixed vocabulary across all four
-   mode pages, so the pills read as app states rather than as adjectives:
-   Live (recalculated from your trades) · Tracked (counted for you) ·
-   Manual (you enter it) · Context (framing, not a measurement) · Archived (kept for later) */
-defineProps({
-  page: { type: Object, required: true },
+/* The page component supplies structure only — which locale block to read, the
+   section ids, meter widths and the status key per row. All copy comes from
+   modePages.<mode> so the four deep-dives translate as one unit.
+
+   `status` is drawn from one fixed vocabulary across all four mode pages, so the
+   pills read as app states rather than as adjectives:
+   live (recalculated from your trades) · tracked (counted for you) ·
+   manual (you enter it) · context (framing, not a measurement) · archived (kept for later) */
+const props = defineProps({
+  mode: { type: String, required: true },
+  metrics: { type: Array, required: true },
+  sections: { type: Array, required: true },
+  next: { type: Object, default: null },
+})
+
+const { t, tm, rt } = useI18n()
+const ns = computed(() => `modePages.${props.mode}`)
+
+const list = (key) => (tm(key) || []).map(rt)
+const chips = computed(() => list(`${ns.value}.chips`))
+const disclaimerPoints = computed(() => list(`${ns.value}.disclaimer.points`))
+
+/* zip the structural meta with the translated copy, position by position */
+const metrics = computed(() => {
+  const copy = tm(`${ns.value}.metrics`) || []
+  return props.metrics.map((meta, i) => ({
+    ...meta,
+    label: rt(copy[i]?.label),
+    value: rt(copy[i]?.value),
+    copy: rt(copy[i]?.copy),
+  }))
+})
+
+const sections = computed(() => {
+  const copy = tm(`${ns.value}.sections`) || []
+  return props.sections.map((meta, i) => ({
+    id: meta.id,
+    kicker: rt(copy[i]?.kicker),
+    title: rt(copy[i]?.title),
+    copy: rt(copy[i]?.copy),
+    rows: meta.rows.map((row, j) => ({
+      ...row,
+      name: rt(copy[i]?.rows?.[j]?.name),
+      value: rt(copy[i]?.rows?.[j]?.value),
+      copy: rt(copy[i]?.rows?.[j]?.copy),
+    })),
+  }))
 })
 
 const route = useRoute()

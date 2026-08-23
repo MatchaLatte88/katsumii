@@ -1,5 +1,5 @@
 <template>
-  <div ref="rootEl" class="v6" :class="{ light: !isDark, 'v6-landing-shell': isLandingRoute }" :style="accentStyle">
+  <div ref="rootEl" class="v6" :class="{ light: !isDark }" :style="accentStyle">
     <canvas ref="glEl" class="v6-gl" :class="{ dim: route.meta.v6DimBg, off: route.meta.v6NoBg }" aria-hidden="true"></canvas>
     <div class="v6-noise" aria-hidden="true"></div>
     <div class="v6-progress" aria-hidden="true"><span ref="progressEl"></span></div>
@@ -10,34 +10,34 @@
     <!-- NAV -->
     <header ref="navEl" class="v6-nav" :class="{ scrolled }">
       <RouterLink class="v6-brand" :to="`/${lang}/app`">
-        <img :src="asset('logo.png')" alt="Katsumii logo" width="32" height="32" />
+        <img :src="asset('logo.png')" :alt="t('common.alts.logo')" width="32" height="32" />
         <span>Katsumii<b class="v6-dot" aria-hidden="true">.</b></span>
       </RouterLink>
 
-      <nav class="v6-nav-links" aria-label="Main navigation">
+      <nav class="v6-nav-links" :aria-label="t('shell.nav.ariaMain')">
         <span class="v6-nav-home-slot" :class="{ 'is-visible': !isLandingRoute }">
           <RouterLink
             :to="`/${lang}/app`"
             :aria-hidden="isLandingRoute"
           :tabindex="isLandingRoute ? -1 : undefined"
           >
-            Home
+            {{ t('shell.nav.home') }}
           </RouterLink>
         </span>
         <div class="v6-nav-drop">
-          <RouterLink :to="`/${lang}/features`" aria-haspopup="true">Features</RouterLink>
-          <div class="v6-nav-menu" role="menu" aria-label="Feature pages">
+          <RouterLink :to="`/${lang}/features`" aria-haspopup="true">{{ t('shell.nav.features') }}</RouterLink>
+          <div class="v6-nav-menu" role="menu" :aria-label="t('shell.nav.ariaFeaturePages')">
             <RouterLink role="menuitem" :to="`/${lang}/features`">
               <span class="v6-nav-menu-idx" aria-hidden="true">00</span>
               <span class="v6-nav-menu-text">
-                Features
-                <small>Complete overview</small>
+                {{ t('shell.pages.featuresOverview.label') }}
+                <small>{{ t('shell.pages.featuresOverview.sub') }}</small>
               </span>
               <svg class="v6-nav-menu-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
                 <path d="M2.5 6h7M6.6 3.1 9.5 6l-2.9 2.9" />
               </svg>
             </RouterLink>
-            <p class="v6-nav-menu-head" aria-hidden="true">Four disciplines</p>
+            <p class="v6-nav-menu-head" aria-hidden="true">{{ t('shell.nav.groupDisciplines') }}</p>
             <RouterLink
               v-for="(item, index) in FEATURE_PAGES"
               :key="item.path"
@@ -52,49 +52,24 @@
                 0{{ index + 1 }}
               </span>
               <span class="v6-nav-menu-text">
-                {{ item.label }}
-                <small>{{ item.sub }}</small>
+                {{ t(`shell.pages.${item.key}.label`) }}
+                <small>{{ t(`shell.pages.${item.key}.sub`) }}</small>
               </span>
               <svg class="v6-nav-menu-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
                 <path d="M2.5 6h7M6.6 3.1 9.5 6l-2.9 2.9" />
               </svg>
             </RouterLink>
-            <p class="v6-nav-menu-head" aria-hidden="true">Go deeper</p>
-            <RouterLink role="menuitem" :to="`/${lang}/analytics-reviews`">
-              <span class="v6-nav-menu-idx" aria-hidden="true">05</span>
+            <p class="v6-nav-menu-head" aria-hidden="true">{{ t('shell.nav.groupDeeper') }}</p>
+            <RouterLink
+              v-for="(item, index) in DEEPER_PAGES"
+              :key="item.path"
+              role="menuitem"
+              :to="`/${lang}/${item.path}`"
+            >
+              <span class="v6-nav-menu-idx" aria-hidden="true">0{{ index + 5 }}</span>
               <span class="v6-nav-menu-text">
-                Analytics
-                <small>Edge, breakdowns & reports</small>
-              </span>
-              <svg class="v6-nav-menu-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
-                <path d="M2.5 6h7M6.6 3.1 9.5 6l-2.9 2.9" />
-              </svg>
-            </RouterLink>
-            <RouterLink role="menuitem" :to="`/${lang}/customization`">
-              <span class="v6-nav-menu-idx" aria-hidden="true">06</span>
-              <span class="v6-nav-menu-text">
-                Customization
-                <small>Focus mode & themes</small>
-              </span>
-              <svg class="v6-nav-menu-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
-                <path d="M2.5 6h7M6.6 3.1 9.5 6l-2.9 2.9" />
-              </svg>
-            </RouterLink>
-            <RouterLink role="menuitem" :to="`/${lang}/workflow`">
-              <span class="v6-nav-menu-idx" aria-hidden="true">07</span>
-              <span class="v6-nav-menu-text">
-                Workflow
-                <small>Imports, journal & tools</small>
-              </span>
-              <svg class="v6-nav-menu-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
-                <path d="M2.5 6h7M6.6 3.1 9.5 6l-2.9 2.9" />
-              </svg>
-            </RouterLink>
-            <RouterLink role="menuitem" :to="`/${lang}/local-offline`">
-              <span class="v6-nav-menu-idx" aria-hidden="true">08</span>
-              <span class="v6-nav-menu-text">
-                Local &amp; offline
-                <small>Your data, on your disk</small>
+                {{ t(`shell.pages.${item.key}.label`) }}
+                <small>{{ t(`shell.pages.${item.key}.sub`) }}</small>
               </span>
               <svg class="v6-nav-menu-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
                 <path d="M2.5 6h7M6.6 3.1 9.5 6l-2.9 2.9" />
@@ -102,16 +77,17 @@
             </RouterLink>
           </div>
         </div>
-        <RouterLink :to="`/${lang}/pricing`">Pricing</RouterLink>
-        <RouterLink :to="`/${lang}/faq`">FAQ</RouterLink>
+        <RouterLink :to="`/${lang}/pricing`">{{ t('shell.nav.pricing') }}</RouterLink>
+        <RouterLink :to="`/${lang}/faq`">{{ t('shell.nav.faq') }}</RouterLink>
       </nav>
 
       <div class="v6-nav-right">
+        <V6LangSwitch />
         <button
           ref="menuToggleEl"
           type="button"
           class="v6-theme"
-          :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
+          :aria-label="isDark ? t('common.aria.switchToLight') : t('common.aria.switchToDark')"
           @click="toggleTheme"
         >
           <svg v-if="isDark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
@@ -122,14 +98,14 @@
             <path d="M20.4 14.2A8.4 8.4 0 0 1 9.8 3.6a8.4 8.4 0 1 0 10.6 10.6z" />
           </svg>
         </button>
-        <span class="v6-btn v6-btn-sm v6-btn-static" aria-disabled="true">Coming soon</span>
+        <span class="v6-btn v6-btn-sm v6-btn-static" aria-disabled="true">{{ t('shell.comingSoon') }}</span>
         <button
           type="button"
           class="v6-menu-toggle"
           :class="{ active: mobileOpen }"
           :aria-expanded="mobileOpen"
           aria-controls="v6-mobile-menu"
-          :aria-label="mobileOpen ? 'Close menu' : 'Open menu'"
+          :aria-label="mobileOpen ? t('common.aria.closeMenu') : t('common.aria.openMenu')"
           @click="mobileOpen = !mobileOpen"
         >
           <span></span><span></span><span></span>
@@ -138,17 +114,13 @@
     </header>
 
     <Transition name="v6-mobile-menu">
-      <div v-if="mobileOpen" id="v6-mobile-menu" class="v6-mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
-        <button class="v6-mobile-backdrop" type="button" aria-label="Close menu" @click="mobileOpen = false"></button>
-        <nav ref="mobilePanelEl" class="v6-mobile-panel" aria-label="Mobile navigation">
-          <p class="v6-mobile-kicker">Explore Katsumii</p>
+      <div v-if="mobileOpen" id="v6-mobile-menu" class="v6-mobile-menu" role="dialog" aria-modal="true" :aria-label="t('shell.mobile.ariaMenu')">
+        <button class="v6-mobile-backdrop" type="button" :aria-label="t('common.aria.closeMenu')" @click="mobileOpen = false"></button>
+        <nav ref="mobilePanelEl" class="v6-mobile-panel" :aria-label="t('shell.mobile.ariaNav')">
+          <p class="v6-mobile-kicker">{{ t('shell.mobile.kicker') }}</p>
           <div class="v6-mobile-nav">
-            <RouterLink
-              v-for="item in MOBILE_TOP_LINKS"
-              :key="item.path"
-              :to="`/${lang}/${item.path}`"
-            >
-              {{ item.label }}<small v-if="item.sub">{{ item.sub }}</small>
+            <RouterLink :to="`/${lang}/features`">
+              {{ t('shell.nav.features') }}<small>{{ t('shell.mobile.featuresSub') }}</small>
             </RouterLink>
 
             <div v-for="group in MOBILE_GROUPS" :key="group.key" class="v6-mobile-group">
@@ -160,7 +132,7 @@
                 :aria-controls="`v6-mobile-group-${group.key}`"
                 @click="openGroup = openGroup === group.key ? null : group.key"
               >
-                {{ group.label }}
+                {{ t(group.labelKey) }}
                 <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
                   <path d="M3.1 4.6 6 7.5l2.9-2.9" />
                 </svg>
@@ -177,22 +149,17 @@
                     :to="`/${lang}/${item.path}`"
                     :tabindex="openGroup === group.key ? undefined : -1"
                   >
-                    {{ item.label }}<small v-if="item.sub">{{ item.sub }}</small>
+                    {{ t(`shell.pages.${item.key}.label`) }}<small>{{ t(`shell.pages.${item.key}.sub`) }}</small>
                   </RouterLink>
                 </div>
               </div>
             </div>
 
-            <RouterLink
-              v-for="item in MOBILE_END_LINKS"
-              :key="item.path"
-              :to="`/${lang}/${item.path}`"
-            >
-              {{ item.label }}<small v-if="item.sub">{{ item.sub }}</small>
-            </RouterLink>
+            <RouterLink :to="`/${lang}/pricing`">{{ t('shell.nav.pricing') }}</RouterLink>
+            <RouterLink :to="`/${lang}/faq`">{{ t('shell.nav.faq') }}</RouterLink>
           </div>
-          <span class="v6-btn v6-btn-static" aria-disabled="true">Coming soon</span>
-          <p class="v6-mobile-note">Local. Offline. Entirely yours.</p>
+          <span class="v6-btn v6-btn-static" aria-disabled="true">{{ t('shell.comingSoon') }}</span>
+          <p class="v6-mobile-note">{{ t('shell.mobile.note') }}</p>
         </nav>
       </div>
     </Transition>
@@ -203,7 +170,7 @@
       <div class="v6-footer-cols">
         <div class="v6-footer-brand">
           <RouterLink class="v6-brand v6-footer-brand-link" :to="`/${lang}/app`">
-            <img :src="asset('logo.png')" alt="Katsumii logo" width="28" height="28" />
+            <img :src="asset('logo.png')" :alt="t('common.alts.logo')" width="28" height="28" />
             <span>Katsumii<b class="v6-dot" aria-hidden="true">.</b></span>
           </RouterLink>
           <a
@@ -211,7 +178,7 @@
             :href="INSTAGRAM_URL"
             target="_blank"
             rel="noopener"
-            aria-label="Katsumii on Instagram"
+            :aria-label="t('shell.footer.ariaInstagram')"
           >
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <defs>
@@ -232,49 +199,49 @@
           </a>
         </div>
 
-        <nav class="v6-footer-col" aria-label="Product">
-          <p class="v6-footer-head">Product</p>
-          <RouterLink :to="`/${lang}/app`">Home</RouterLink>
-          <RouterLink :to="`/${lang}/pricing`">Pricing</RouterLink>
-          <RouterLink :to="`/${lang}/app#system-requirements`">System requirements</RouterLink>
-          <RouterLink :to="`/${lang}/local-offline`">Local &amp; offline</RouterLink>
+        <nav class="v6-footer-col" :aria-label="t('shell.footer.product')">
+          <p class="v6-footer-head">{{ t('shell.footer.product') }}</p>
+          <RouterLink :to="`/${lang}/app`">{{ t('shell.nav.home') }}</RouterLink>
+          <RouterLink :to="`/${lang}/pricing`">{{ t('shell.nav.pricing') }}</RouterLink>
+          <RouterLink :to="`/${lang}/app#system-requirements`">{{ t('shell.footer.systemRequirements') }}</RouterLink>
+          <RouterLink :to="`/${lang}/local-offline`">{{ t('shell.pages.localOffline.label') }}</RouterLink>
         </nav>
 
-        <nav class="v6-footer-col" aria-label="Features">
-          <p class="v6-footer-head">Features</p>
-          <RouterLink :to="`/${lang}/features`">Overview</RouterLink>
-          <RouterLink :to="`/${lang}/analytics-reviews`">Analytics</RouterLink>
-          <RouterLink :to="`/${lang}/customization`">Customization</RouterLink>
-          <RouterLink :to="`/${lang}/workflow`">Workflow</RouterLink>
+        <nav class="v6-footer-col" :aria-label="t('shell.footer.features')">
+          <p class="v6-footer-head">{{ t('shell.footer.features') }}</p>
+          <RouterLink :to="`/${lang}/features`">{{ t('shell.footer.overview') }}</RouterLink>
+          <RouterLink :to="`/${lang}/analytics-reviews`">{{ t('shell.pages.analytics.label') }}</RouterLink>
+          <RouterLink :to="`/${lang}/customization`">{{ t('shell.pages.customization.label') }}</RouterLink>
+          <RouterLink :to="`/${lang}/workflow`">{{ t('shell.pages.workflow.label') }}</RouterLink>
         </nav>
 
-        <nav class="v6-footer-col" aria-label="Disciplines">
-          <p class="v6-footer-head">Four disciplines</p>
-          <RouterLink :to="`/${lang}/funded-accounts`">Funded</RouterLink>
-          <RouterLink :to="`/${lang}/prop-firm-challenges`">Challenge</RouterLink>
-          <RouterLink :to="`/${lang}/personal-trading`">Personal</RouterLink>
-          <RouterLink :to="`/${lang}/backtesting`">Backtest</RouterLink>
+        <nav class="v6-footer-col" :aria-label="t('shell.footer.disciplines')">
+          <p class="v6-footer-head">{{ t('shell.footer.disciplines') }}</p>
+          <RouterLink :to="`/${lang}/funded-accounts`">{{ t('shell.pages.funded.label') }}</RouterLink>
+          <RouterLink :to="`/${lang}/prop-firm-challenges`">{{ t('shell.pages.challenge.label') }}</RouterLink>
+          <RouterLink :to="`/${lang}/personal-trading`">{{ t('shell.pages.personal.label') }}</RouterLink>
+          <RouterLink :to="`/${lang}/backtesting`">{{ t('shell.pages.backtest.label') }}</RouterLink>
         </nav>
 
-        <nav class="v6-footer-col" aria-label="Support">
-          <p class="v6-footer-head">Support</p>
-          <RouterLink :to="`/${lang}/manual`">Manual</RouterLink>
-          <RouterLink :to="`/${lang}/faq`">FAQ</RouterLink>
-          <RouterLink :to="`/${lang}/contact`">Contact</RouterLink>
-          <a :href="INSTAGRAM_URL" target="_blank" rel="noopener">Instagram</a>
+        <nav class="v6-footer-col" :aria-label="t('shell.footer.support')">
+          <p class="v6-footer-head">{{ t('shell.footer.support') }}</p>
+          <RouterLink :to="`/${lang}/manual`">{{ t('shell.footer.manual') }}</RouterLink>
+          <RouterLink :to="`/${lang}/faq`">{{ t('shell.nav.faq') }}</RouterLink>
+          <RouterLink :to="`/${lang}/contact`">{{ t('shell.footer.contact') }}</RouterLink>
+          <a :href="INSTAGRAM_URL" target="_blank" rel="noopener">{{ t('shell.footer.instagram') }}</a>
         </nav>
 
-        <nav class="v6-footer-col" aria-label="Legal">
-          <p class="v6-footer-head">Legal</p>
-          <RouterLink :to="`/${lang}/privacy`">Privacy</RouterLink>
-          <RouterLink :to="`/${lang}/terms`">Terms</RouterLink>
-          <RouterLink :to="`/${lang}/impressum`">Impressum</RouterLink>
+        <nav class="v6-footer-col" :aria-label="t('shell.footer.legal')">
+          <p class="v6-footer-head">{{ t('shell.footer.legal') }}</p>
+          <RouterLink :to="`/${lang}/privacy`">{{ t('shell.footer.privacy') }}</RouterLink>
+          <RouterLink :to="`/${lang}/terms`">{{ t('shell.footer.terms') }}</RouterLink>
+          <RouterLink :to="`/${lang}/impressum`">{{ t('shell.footer.imprint') }}</RouterLink>
           <button type="button" @click="openSettings">{{ t('consent.settings') }}</button>
         </nav>
       </div>
 
       <div class="v6-footer-bottom">
-        <p>© {{ year }} Katsumii — trading journal</p>
+        <p>© {{ year }} Katsumii — {{ t('shell.footer.tagline') }}</p>
         <p class="v6-footer-version">v{{ siteVersion }}</p>
       </div>
     </footer>
@@ -290,6 +257,7 @@ import { initMagnetic, prefersReducedMotion } from "../../v6/motion.js"
 import { normalizeLocale } from "../../utils/routes.js"
 import { useConsent } from "../../composables/useConsent.js"
 import PreviewNoticeModal from "./PreviewNoticeModal.vue"
+import V6LangSwitch from "./V6LangSwitch.vue"
 import V6Lightbox from "./V6Lightbox.vue"
 import changelog from "../../../changelog.json"
 
@@ -305,40 +273,28 @@ const year = new Date().getFullYear()
 
 const INSTAGRAM_URL = "https://instagram.com/katsumii.journal"
 
+/* Nav entries carry only their route and colour — the label and subtitle are
+   looked up as shell.pages.<key> so every menu stays translated. */
+
 /* Discipline pages in the Features dropdown — dots mirror V6_ACCENTS in router.js */
 const FEATURE_PAGES = [
-  { label: "Funded", sub: "Live prop accounts", path: "funded-accounts", dot: { dark: "#22d3ee", light: "#0369a1" } },
-  { label: "Challenge", sub: "Evaluations & combines", path: "prop-firm-challenges", dot: { dark: "#facc15", light: "#ab7503" } },
-  { label: "Personal", sub: "Own capital", path: "personal-trading", dot: { dark: "#4ade80", light: "#047857" } },
-  { label: "Backtest", sub: "Sessions & replay", path: "backtesting", dot: { dark: "#818cf8", light: "#6d28d9" } },
+  { key: "funded", path: "funded-accounts", dot: { dark: "#22d3ee", light: "#0369a1" } },
+  { key: "challenge", path: "prop-firm-challenges", dot: { dark: "#facc15", light: "#ab7503" } },
+  { key: "personal", path: "personal-trading", dot: { dark: "#4ade80", light: "#047857" } },
+  { key: "backtest", path: "backtesting", dot: { dark: "#818cf8", light: "#6d28d9" } },
+]
+
+const DEEPER_PAGES = [
+  { key: "analytics", path: "analytics-reviews" },
+  { key: "customization", path: "customization" },
+  { key: "workflow", path: "workflow" },
+  { key: "localOffline", path: "local-offline" },
 ]
 
 /* Mobile menu: same grouping as the desktop dropdown, but collapsible */
-const MOBILE_TOP_LINKS = [
-  { label: "Features", sub: "Overview", path: "features" },
-]
-
 const MOBILE_GROUPS = [
-  {
-    key: "disciplines",
-    label: "Four disciplines",
-    items: FEATURE_PAGES.map(({ label, sub, path }) => ({ label, sub, path })),
-  },
-  {
-    key: "deeper",
-    label: "Go deeper",
-    items: [
-      { label: "Analytics", sub: "Edge, breakdowns & reports", path: "analytics-reviews" },
-      { label: "Customization", sub: "Focus mode & themes", path: "customization" },
-      { label: "Workflow", sub: "Imports, journal & tools", path: "workflow" },
-      { label: "Local & offline", sub: "Your data, on your disk", path: "local-offline" },
-    ],
-  },
-]
-
-const MOBILE_END_LINKS = [
-  { label: "Pricing", path: "pricing" },
-  { label: "FAQ", path: "faq" },
+  { key: "disciplines", labelKey: "shell.nav.groupDisciplines", items: FEATURE_PAGES },
+  { key: "deeper", labelKey: "shell.nav.groupDeeper", items: DEEPER_PAGES },
 ]
 
 const route = useRoute()

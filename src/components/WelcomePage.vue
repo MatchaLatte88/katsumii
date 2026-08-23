@@ -2,17 +2,14 @@
   <main ref="rootEl" class="v6-welcome">
     <!-- HERO -->
     <section class="v6w-hero">
-      <p class="v6-eyebrow v6-reveal"><i></i>New installation</p>
-      <h1 class="v6-h1 v6-reveal">Welcome to <em>Katsumii</em><b class="v6-dot">.</b></h1>
-      <p class="v6w-sub v6-reveal">
-        Your licence is yours, the journal runs on your machine, and nothing here expires.
-        Three steps and the cockpit starts filling with your own numbers.
-      </p>
+      <p class="v6-eyebrow v6-reveal"><i></i>{{ t('welcomePage.eyebrow') }}</p>
+      <h1 class="v6-h1 v6-reveal">{{ t('welcomePage.titlePre') }} <em>{{ t('welcomePage.titleEm') }}</em><b class="v6-dot">.</b></h1>
+      <p class="v6w-sub v6-reveal">{{ t('welcomePage.sub') }}</p>
     </section>
 
     <!-- ONBOARDING STEPS -->
-    <section class="v6w-steps" aria-label="Getting started">
-      <article v-for="(s, i) in STEPS" :key="s.title" class="v6-card v6w-step v6-reveal">
+    <section class="v6w-steps" :aria-label="t('welcomePage.ariaSteps')">
+      <article v-for="(s, i) in steps" :key="s.title" class="v6-card v6w-step v6-reveal">
         <p class="v6w-step-idx">{{ pad(i + 1) }}</p>
         <h2>{{ s.title }}</h2>
         <p class="v6w-step-copy">{{ s.copy }}</p>
@@ -22,10 +19,10 @@
     <!-- CHECKLIST -->
     <section class="v6w-checklist">
       <div class="v6w-check-panel v6-reveal">
-        <p class="v6-eyebrow"><i></i>Your first session</p>
-        <h2 class="v6-h2 v6w-check-title">Work through this once.</h2>
+        <p class="v6-eyebrow"><i></i>{{ t('welcomePage.checklistLabel') }}</p>
+        <h2 class="v6-h2 v6w-check-title">{{ t('welcomePage.checklistTitle') }}</h2>
         <ul class="v6w-check-list">
-          <li v-for="item in CHECKLIST" :key="item">
+          <li v-for="item in checklist" :key="item">
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M2.2 7.4 5.4 10.6 11.8 3.6" />
             </svg>
@@ -38,11 +35,11 @@
     <!-- CTA -->
     <section class="v6w-cta">
       <div class="v6w-cta-actions v6-reveal">
-        <RouterLink :to="`/${lang}/manual`" class="v6-btn v6-btn-lg v6-magnetic">Open the manual <span aria-hidden="true">→</span></RouterLink>
-        <RouterLink :to="`/${lang}/faq`" class="v6-quiet v6-magnetic">Browse the FAQ</RouterLink>
+        <RouterLink :to="`/${lang}/manual`" class="v6-btn v6-btn-lg v6-magnetic">{{ t('welcomePage.openManual') }} <span aria-hidden="true">→</span></RouterLink>
+        <RouterLink :to="`/${lang}/faq`" class="v6-quiet v6-magnetic">{{ t('welcomePage.browseFaq') }}</RouterLink>
       </div>
       <p class="v6w-cta-note v6-reveal">
-        Something not working as it should? Write to
+        {{ t('welcomePage.notePre') }}
         <a href="mailto:info@katsumii.com">info@katsumii.com</a>.
       </p>
     </section>
@@ -51,9 +48,12 @@
 
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref } from "vue"
+import { useI18n } from "vue-i18n"
 import { useRoute } from "vue-router"
 import { initMagnetic, initV6Reveals } from "../v6/motion.js"
 import { normalizeLocale } from "../utils/routes.js"
+
+const { t, tm, rt } = useI18n()
 
 const route = useRoute()
 const lang = computed(() => {
@@ -63,28 +63,10 @@ const lang = computed(() => {
 
 const pad = (n) => String(n).padStart(2, "0")
 
-const STEPS = [
-  {
-    title: "Add your first account",
-    copy: "Funded, challenge or personal — set the account up with its rules so drawdown limits and targets are tracked from the first trade.",
-  },
-  {
-    title: "Log your first trade",
-    copy: "Enter the fill, attach the chart screenshot, write down what you saw. That third part is the one that pays off later.",
-  },
-  {
-    title: "Read the numbers back",
-    copy: "After a handful of sessions the dashboard has enough to work with — execution quality, edge drivers and your equity curve.",
-  },
-]
-
-const CHECKLIST = [
-  "Pick the trading mode you are starting in",
-  "Add your first trading account and its rules",
-  "Import a CSV or log a trade by hand",
-  "Write one journal entry at the end of the day",
-  "Open the dashboard and check the equity curve",
-]
+const steps = computed(() =>
+  (tm("welcomePage.steps") || []).map((s) => ({ title: rt(s.title), copy: rt(s.copy) }))
+)
+const checklist = computed(() => (tm("welcomePage.checklist") || []).map(rt))
 
 const rootEl = ref(null)
 let cleanups = []

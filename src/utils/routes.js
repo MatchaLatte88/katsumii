@@ -1,18 +1,30 @@
 const baseUrl = import.meta.env.BASE_URL
 
-export const SUPPORTED_LOCALES = ["en", "de", "es", "tw"]
+export const SUPPORTED_LOCALES = ["en", "de", "zht"]
 export const DEFAULT_LOCALE = "en"
 
 export const HREFLANG_BY_LOCALE = {
   en: "en",
   de: "de",
-  es: "es",
-  tw: "zh-TW",
+  zht: "zh-TW",
+}
+
+/* Retired locale prefixes that are still indexed or linked from elsewhere:
+   /tw/… was renamed to /zht/…, and Spanish was withdrawn — both land on a
+   live page instead of a 404. src/locales/es.json is kept for a later revival. */
+const LEGACY_LOCALES = { tw: "zht", es: DEFAULT_LOCALE }
+
+export const rewriteLegacyLocalePath = (pathname = "") => {
+  const cleanPath = pathname.replace(/^\/+/, "")
+  const [segment, ...rest] = cleanPath.split("/")
+  const replacement = LEGACY_LOCALES[segment]
+  if (!replacement) return null
+  return `/${[replacement, ...rest].filter(Boolean).join("/")}`
 }
 
 const normalizeBrowserLocale = (lang = "") => {
   const lower = lang.toLowerCase()
-  if (lower.startsWith("zh")) return "tw"
+  if (lower.startsWith("zh")) return "zht"
   return lower.slice(0, 2)
 }
 
@@ -32,7 +44,8 @@ export const preferredLocale = () => {
   if (pathLocale) return pathLocale
 
   const savedLocale = window.localStorage.getItem("katsumii-locale")
-  if (SUPPORTED_LOCALES.includes(savedLocale)) return savedLocale
+  const migratedLocale = LEGACY_LOCALES[savedLocale] || savedLocale
+  if (SUPPORTED_LOCALES.includes(migratedLocale)) return migratedLocale
 
   const browserLocale = normalizeBrowserLocale(window.navigator.language)
   return SUPPORTED_LOCALES.includes(browserLocale) ? browserLocale : DEFAULT_LOCALE

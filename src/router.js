@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router"
-import { SUPPORTED_LOCALES, localeFromPath, localizedPathForRoute, preferredLocale } from "./utils/routes.js"
+import { SUPPORTED_LOCALES, localeFromPath, localizedPathForRoute, preferredLocale, rewriteLegacyLocalePath } from "./utils/routes.js"
 
 const FaqPage = () => import("./components/FaqPage.vue")
 const ImpressumPage = () => import("./components/ImpressumPage.vue")
@@ -115,9 +115,10 @@ router.beforeEach((to) => {
 
     if (fallbackPath && fallbackPath.startsWith("/")) {
       const target = new URL(fallbackPath, window.location.origin)
-      const targetLocale = localeFromPath(target.pathname) || preferredLocale()
+      const targetPath = rewriteLegacyLocalePath(target.pathname) || target.pathname
+      const targetLocale = localeFromPath(targetPath) || preferredLocale()
       return {
-        path: localizedPathForRoute(target.pathname, targetLocale),
+        path: localizedPathForRoute(targetPath, targetLocale),
         query: Object.fromEntries(target.searchParams.entries()),
         hash: target.hash,
         replace: true,
@@ -125,6 +126,12 @@ router.beforeEach((to) => {
     }
 
     return { path: localizedPathForRoute("/app", preferredLocale()), replace: true }
+  }
+
+  /* the /tw/… locale prefix was renamed to /zht/… */
+  const legacyPath = rewriteLegacyLocalePath(to.path)
+  if (legacyPath) {
+    return { path: legacyPath, query: to.query, hash: to.hash, replace: true }
   }
 })
 

@@ -30,12 +30,11 @@ const SITE_URL = 'https://www.katsumii.com'
 const SOCIAL_IMAGE = `${SITE_URL}/og-image.png`
 const LASTMOD = '2026-07-05'
 
-const SUPPORTED_LOCALES = ['en', 'de', 'es', 'tw']
+const SUPPORTED_LOCALES = ['en', 'de', 'zht']
 const HREFLANG_BY_LOCALE = {
   en: 'en',
   de: 'de',
-  es: 'es',
-  tw: 'zh-TW',
+  zht: 'zh-TW',
 }
 
 const localeMessages = Object.fromEntries(

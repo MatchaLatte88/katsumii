@@ -47,11 +47,11 @@
     <!-- COCKPIT INDEX -->
     <section class="v6ft-cockpit v6-band v6-band-snap">
       <div class="v6ft-cockpit-head">
-        <p class="v6-eyebrow v6-reveal"><i></i>Inside the cockpit</p>
-        <h2 class="v6-h2 v6-reveal">One workspace, every screen a trader needs.</h2>
+        <p class="v6-eyebrow v6-reveal"><i></i>{{ t('featuresPage.cockpit.eyebrow') }}</p>
+        <h2 class="v6-h2 v6-reveal">{{ t('featuresPage.cockpit.title') }}</h2>
       </div>
       <div class="v6ft-screens v6-reveal">
-        <div v-for="s in COCKPIT_SCREENS" :key="s.name">
+        <div v-for="s in cockpitScreens" :key="s.name">
           <b>{{ s.name }}</b>
           <span>{{ s.desc }}</span>
         </div>
@@ -78,7 +78,7 @@ import { useRoute } from "vue-router"
 import { initMagnetic, initV6Reveals } from "../v6/motion.js"
 import { normalizeLocale } from "../utils/routes.js"
 
-const { t, tm } = useI18n()
+const { t, tm, rt } = useI18n()
 const isDark = inject("isDark")
 
 const baseUrl = import.meta.env.BASE_URL
@@ -109,21 +109,15 @@ const MODULE_META = [
   { path: "local-offline" },
 ]
 
-/* primary app screens — see Katsumii_overview.md */
-const COCKPIT_SCREENS = [
-  { name: "Today",     desc: "Daily command center: P&L, streaks, loss-limit status" },
-  { name: "Dashboard", desc: "Net P&L hero, execution quality, edge drivers, equity" },
-  { name: "Accounts",  desc: "Health board with MLL/DLL distance and payout history" },
-  { name: "Trades",    desc: "Full trade log with gallery view and screenshot viewer" },
-  { name: "Calendar",  desc: "Monthly P&L rhythm with day modals and journal markers" },
-  { name: "Analysis",  desc: "Edge summary, diagnostics lab, deep breakdown tabs" },
-  { name: "Journal",   desc: "Daily rich-text reflections with per-day trade stats" },
-  { name: "Sessions",  desc: "Backtest sessions with hypotheses and sparklines" },
-  { name: "Imports",   desc: "CSV wizard, FXReplay import, one-click broker sync" },
-  { name: "Reports",   desc: "Self-contained HTML performance reports, offline" },
-  { name: "Tools",     desc: "Position size, R:R visualizer, equity simulator" },
-  { name: "Managers",  desc: "Accounts, strategies, assets, tags, and presets" },
+/* primary app screens — see Katsumii_overview.md. The names are the app's own
+   navigation labels and stay in English; only the descriptions translate. */
+const COCKPIT_NAMES = [
+  "Today", "Dashboard", "Accounts", "Trades", "Calendar", "Analysis",
+  "Journal", "Sessions", "Imports", "Reports", "Tools", "Managers",
 ]
+const cockpitScreens = computed(() =>
+  COCKPIT_NAMES.map((name, i) => ({ name, desc: (tm("featuresPage.cockpit.screens") || []).map(rt)[i] }))
+)
 
 const heroTags = computed(() => {
   const raw = tm("featuresPage.hero.tags")

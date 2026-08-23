@@ -29,7 +29,7 @@ const { consent } = useConsent()
 const SITE_URL = "https://www.katsumii.com"
 const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/og-image.png`
 
-const htmlLangForLocale = (lang) => lang === "tw" ? "zh-TW" : lang
+const htmlLangForLocale = (lang) => lang === "zht" ? "zh-TW" : lang
 
 provide("theme", theme)
 provide("isDark", isDark)

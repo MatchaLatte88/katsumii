@@ -8,7 +8,7 @@
       </header>
 
       <div class="v6b-panel">
-        <span class="v6-btn v6-btn-static" aria-disabled="true">Coming soon</span>
+        <span class="v6-btn v6-btn-static" aria-disabled="true">{{ t('shell.comingSoon') }}</span>
       </div>
 
       <p class="v6b-direct">
