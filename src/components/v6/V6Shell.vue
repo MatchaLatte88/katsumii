@@ -236,6 +236,7 @@
           <RouterLink :to="`/${lang}/privacy`">{{ t('shell.footer.privacy') }}</RouterLink>
           <RouterLink :to="`/${lang}/terms`">{{ t('shell.footer.terms') }}</RouterLink>
           <RouterLink :to="`/${lang}/impressum`">{{ t('shell.footer.imprint') }}</RouterLink>
+          <RouterLink :to="`/${lang}/security`">{{ t('shell.footer.security') }}</RouterLink>
           <button type="button" @click="openSettings">{{ t('consent.settings') }}</button>
         </nav>
       </div>

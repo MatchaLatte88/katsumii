@@ -38,6 +38,7 @@ const PAGES = [
   { path: "/privacy",              priority: "0.3", changefreq: "yearly" },
   { path: "/terms",                priority: "0.3", changefreq: "yearly" },
   { path: "/impressum",            priority: "0.3", changefreq: "yearly" },
+  { path: "/security",             priority: "0.3", changefreq: "yearly" },
 ]
 
 // lastmod has to describe the last real change, not the moment of the build.

@@ -23,6 +23,7 @@ const appRoutes = new Set([
   '/impressum',
   '/privacy',
   '/terms',
+  '/security',
   '/welcome',
 ])
 
@@ -152,6 +153,12 @@ const staticRouteMeta = [
     path: '/terms',
     titleKey: 'common.pageTitles.terms',
     descriptionKey: 'common.pageDescriptions.terms',
+    priority: '0.3',
+  },
+  {
+    path: '/security',
+    titleKey: 'common.pageTitles.security',
+    descriptionKey: 'common.pageDescriptions.security',
     priority: '0.3',
   },
   {
@@ -327,7 +334,7 @@ const sitemapXml = () => {
         '  <url>',
         `    <loc>${routeUrl(route, locale)}</loc>`,
         `    <lastmod>${LASTMOD}</lastmod>`,
-        `    <changefreq>${route.path === '/impressum' || route.path === '/privacy' || route.path === '/terms' ? 'yearly' : 'monthly'}</changefreq>`,
+        `    <changefreq>${route.path === '/impressum' || route.path === '/privacy' || route.path === '/terms' || route.path === '/security' ? 'yearly' : 'monthly'}</changefreq>`,
         `    <priority>${route.priority}</priority>`,
         alternates,
         '  </url>',

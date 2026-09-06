@@ -19,6 +19,7 @@ const PrivacyPage = () => import("./components/PrivacyPage.vue")
 const ContactPage = () => import("./components/ContactPage.vue")
 const BugReportPage = () => import("./components/BugReportPage.vue")
 const TermsPage = () => import("./components/TermsPage.vue")
+const SecurityPage = () => import("./components/SecurityPage.vue")
 const NotFoundPage = () => import("./components/NotFoundPage.vue")
 const LandingV6 = () => import("./components/LandingV6.vue")
 
@@ -77,6 +78,7 @@ const router = createRouter({
     withLocale("/impressum", ImpressumPage, { titleKey: "common.pageTitles.impressum", descriptionKey: "common.pageDescriptions.impressum", v6NoBg: true }),
     withLocale("/privacy",   PrivacyPage,   { titleKey: "common.pageTitles.privacy",   descriptionKey: "common.pageDescriptions.privacy", v6NoBg: true }),
     withLocale("/terms",     TermsPage,     { titleKey: "common.pageTitles.terms",     descriptionKey: "common.pageDescriptions.terms", v6NoBg: true }),
+    withLocale("/security",  SecurityPage,  { titleKey: "common.pageTitles.security",  descriptionKey: "common.pageDescriptions.security", v6NoBg: true }),
     withLocale("/welcome",   WelcomePage,   { titleKey: "common.pageTitles.welcome",   descriptionKey: "common.pageDescriptions.welcome", robots: "noindex, follow", v6DimBg: true }),
     { path: `/:locale(${localePattern})/:pathMatch(.*)*`, component: NotFoundPage, meta: { titleKey: "common.pageTitles.notFound", descriptionKey: "common.pageDescriptions.notFound", robots: "noindex, follow", v6DimBg: true } },
     unlocalizedRedirect("/app"),
@@ -97,6 +99,7 @@ const router = createRouter({
     unlocalizedRedirect("/impressum"),
     unlocalizedRedirect("/privacy"),
     unlocalizedRedirect("/terms"),
+    unlocalizedRedirect("/security"),
     unlocalizedRedirect("/welcome"),
     { path: "/:pathMatch(.*)*", component: NotFoundPage, meta: { titleKey: "common.pageTitles.notFound", descriptionKey: "common.pageDescriptions.notFound", robots: "noindex, follow", v6DimBg: true } },
   ],

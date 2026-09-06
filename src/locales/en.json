@@ -78,6 +78,7 @@
       "privacy": "Privacy",
       "terms": "Terms",
       "imprint": "Impressum",
+      "security": "Security",
       "tagline": "trading journal",
       "ariaInstagram": "Katsumii on Instagram"
     }
@@ -2238,6 +2239,7 @@
       "impressum": "Imprint - Katsumii",
       "privacy": "Privacy - Katsumii",
       "terms": "Terms - Katsumii",
+      "security": "Security - Katsumii",
       "welcome": "Welcome - Katsumii",
       "bugreport": "Report a Bug - Katsumii",
       "notFound": "404 - Katsumii"
@@ -2261,6 +2263,7 @@
       "impressum": "Legal provider information for katsumii.com and the Katsumii offline trading journal.",
       "privacy": "Learn how katsumii.com and the Katsumii desktop app handle privacy, local data, analytics, emails, and user rights.",
       "terms": "Read the terms for purchasing, downloading, licensing, and using Katsumii.",
+      "security": "How to report a security vulnerability in Katsumii and what to expect after you do.",
       "welcome": "A guided introduction to Katsumii and the first steps for getting value from your trading journal.",
       "bugreport": "Report a Katsumii bug and share reproduction steps so the issue can be investigated.",
       "notFound": "This Katsumii page does not exist or has moved."
@@ -2776,6 +2779,30 @@
       {
         "title": "Responsible for content",
         "body": "Frederik Morbe (address as above) pursuant to Section 18 (2) MStV."
+      }
+    ]
+  },
+  "securityPage": {
+    "hero": {
+      "label": "Legal",
+      "title": "Security",
+      "description": "How to report a security vulnerability in Katsumii — and what you can expect from us."
+    },
+    "sections": [
+      {
+        "title": "1. Reporting a Vulnerability",
+        "paragraphs": [
+          "Please report findings to security@katsumii.com and not publicly. We confirm receipt within 5 business days and follow up with an assessment.",
+          "Please give us 90 days to fix the issue before disclosing it publicly, and do not test against systems or data belonging to other users.",
+          "We do not pay bounties, but we are happy to credit you in the changelog if you would like."
+        ]
+      },
+      {
+        "title": "2. Scope",
+        "paragraphs": [
+          "In scope are the Katsumii desktop app and katsumii.com.",
+          "Out of scope are the systems of Lemon Squeezy and the connected brokers. Please report findings there directly to the respective provider."
+        ]
       }
     ]
   }

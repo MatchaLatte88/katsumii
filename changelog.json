@@ -1,5 +1,15 @@
 [
   {
+    "version": "0.16.0",
+    "date": "2026-09-06",
+    "title": "A place to report a security problem",
+    "changes": [
+      "A new Security page explains how to report a vulnerability in Katsumii, how quickly you hear back, and what falls inside and outside our scope",
+      "The page is linked from the footer of every page and is available in all site languages",
+      "Security researchers who look for the standard /.well-known/security.txt file now find one, pointing at the same contact address"
+    ]
+  },
+  {
     "version": "0.15.0",
     "date": "2026-08-24",
     "title": "The whole site now speaks your language",

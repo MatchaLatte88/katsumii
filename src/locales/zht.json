@@ -78,6 +78,7 @@
       "privacy": "隱私權",
       "terms": "服務條款",
       "imprint": "法律聲明",
+      "security": "資安",
       "tagline": "交易日誌",
       "ariaInstagram": "Katsumii 的 Instagram"
     }
@@ -2238,6 +2239,7 @@
       "impressum": "法律聲明 - Katsumii",
       "privacy": "隱私權 - Katsumii",
       "terms": "服務條款 - Katsumii",
+      "security": "資安 - Katsumii",
       "welcome": "歡迎 - Katsumii",
       "bugreport": "回報問題 - Katsumii",
       "notFound": "404 - Katsumii"
@@ -2261,6 +2263,7 @@
       "impressum": "katsumii.com 與 Katsumii 離線交易日誌的法律提供者資訊。",
       "privacy": "了解 katsumii.com 與 Katsumii 桌面 App 如何處理隱私、本地資料、分析、Email 與使用者權利。",
       "terms": "閱讀購買、下載、授權與使用 Katsumii 的服務條款。",
+      "security": "如何回報 Katsumii 的資安漏洞，以及回報後可以期待什麼。",
       "welcome": "Katsumii 的導覽介紹，協助你開始使用交易日誌並建立清楚流程。",
       "bugreport": "回報 Katsumii 問題並提供重現步驟，協助我們調查。",
       "notFound": "這個 Katsumii 頁面不存在，或已被移動。"
@@ -2783,6 +2786,30 @@
       {
         "title": "內容負責人",
         "body": "Frederik Morbe（地址同上），依 MStV 第 18 條第 2 項。"
+      }
+    ]
+  },
+  "securityPage": {
+    "hero": {
+      "label": "法律",
+      "title": "資安",
+      "description": "如何回報 Katsumii 的資安漏洞，以及你可以從我們這裡得到什麼回應。"
+    },
+    "sections": [
+      {
+        "title": "1. 回報資安漏洞",
+        "paragraphs": [
+          "請將發現的問題回報到 security@katsumii.com，不要公開揭露。我們會在 5 個工作天內確認收到，並在之後提供初步評估。",
+          "在你公開任何資訊之前，請給我們 90 天的時間修復問題，也請不要對其他使用者的系統或資料進行測試。",
+          "我們不提供漏洞獎金，但如果你願意，我們會在 changelog 中列出你的名字。"
+        ]
+      },
+      {
+        "title": "2. 適用範圍",
+        "paragraphs": [
+          "適用範圍包含 Katsumii 桌面 App 與 katsumii.com。",
+          "不適用範圍包含 Lemon Squeezy 與所串接券商的系統，這些問題請直接回報給對應的服務提供商。"
+        ]
       }
     ]
   }

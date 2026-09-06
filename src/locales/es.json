@@ -78,6 +78,7 @@
       "privacy": "Privacidad",
       "terms": "Términos",
       "imprint": "Aviso legal",
+      "security": "Seguridad",
       "tagline": "diario de trading",
       "ariaInstagram": "Katsumii en Instagram"
     }
@@ -2238,6 +2239,7 @@
       "impressum": "Aviso legal - Katsumii",
       "privacy": "Privacidad - Katsumii",
       "terms": "Términos - Katsumii",
+      "security": "Seguridad - Katsumii",
       "welcome": "Bienvenida - Katsumii",
       "bugreport": "Reportar error - Katsumii",
       "notFound": "404 - Katsumii"
@@ -2261,6 +2263,7 @@
       "impressum": "Informacion legal del proveedor de katsumii.com y del diario de trading offline Katsumii.",
       "privacy": "Consulta como katsumii.com y la app de escritorio Katsumii tratan privacidad, datos locales, analitica, emails y derechos de usuario.",
       "terms": "Lee los terminos para comprar, descargar, licenciar y usar Katsumii.",
+      "security": "Cómo reportar una vulnerabilidad de seguridad en Katsumii y qué esperar después.",
       "welcome": "Una introduccion guiada a Katsumii y los primeros pasos para sacar valor a tu diario de trading.",
       "bugreport": "Reporta un error de Katsumii y comparte pasos de reproduccion para que podamos investigarlo.",
       "notFound": "Esta pagina de Katsumii no existe o se ha movido."
@@ -2783,6 +2786,30 @@
       {
         "title": "Responsable del contenido",
         "body": "Frederik Morbe (dirección indicada arriba), conforme al art. 18 (2) MStV."
+      }
+    ]
+  },
+  "securityPage": {
+    "hero": {
+      "label": "Legal",
+      "title": "Seguridad",
+      "description": "Cómo reportar una vulnerabilidad de seguridad en Katsumii y qué puedes esperar de nosotros."
+    },
+    "sections": [
+      {
+        "title": "1. Cómo reportar una vulnerabilidad",
+        "paragraphs": [
+          "Por favor, reporta los hallazgos a security@katsumii.com y no los publiques. Confirmamos la recepción en un plazo de 5 días hábiles y te contactamos con una evaluación.",
+          "Danos 90 días para solucionar el problema antes de publicar cualquier información, y no realices pruebas contra sistemas o datos de otros usuarios.",
+          "No pagamos recompensas, pero con gusto te mencionamos en el changelog si lo deseas."
+        ]
+      },
+      {
+        "title": "2. Alcance",
+        "paragraphs": [
+          "Dentro del alcance están la app de escritorio de Katsumii y katsumii.com.",
+          "Fuera del alcance están los sistemas de Lemon Squeezy y de los brokers conectados. Repórtalos directamente al proveedor correspondiente."
+        ]
       }
     ]
   }

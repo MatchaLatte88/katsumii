@@ -1,0 +1,13 @@
+# security.txt per RFC 9116 (https://www.rfc-editor.org/rfc/rfc9116)
+#
+# REMINDER: Expires below must be renewed at least once a year — after that
+# date this file is considered invalid by RFC 9116 consumers. Bump it every
+# time this file is touched, or on a yearly calendar reminder otherwise.
+#
+# Human-readable policy: https://www.katsumii.com/security
+
+Contact: mailto:security@katsumii.com
+Expires: 2027-09-01T00:00:00.000Z
+Preferred-Languages: de, en
+Canonical: https://www.katsumii.com/.well-known/security.txt
+Policy: https://www.katsumii.com/security

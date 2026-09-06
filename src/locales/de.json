@@ -78,6 +78,7 @@
       "privacy": "Datenschutz",
       "terms": "AGB",
       "imprint": "Impressum",
+      "security": "Sicherheit",
       "tagline": "Trading-Journal",
       "ariaInstagram": "Katsumii auf Instagram"
     }
@@ -2238,6 +2239,7 @@
       "impressum": "Impressum - Katsumii",
       "privacy": "Datenschutz - Katsumii",
       "terms": "AGB - Katsumii",
+      "security": "Sicherheit - Katsumii",
       "welcome": "Willkommen - Katsumii",
       "bugreport": "Fehler melden - Katsumii",
       "notFound": "404 - Katsumii"
@@ -2261,6 +2263,7 @@
       "impressum": "Rechtliche Anbieterinformationen für katsumii.com und das Katsumii Offline-Trading-Journal.",
       "privacy": "Erfahre, wie katsumii.com und die Katsumii Desktop-App Datenschutz, lokale Daten, Analytics, E-Mails und Nutzerrechte behandeln.",
       "terms": "Lies die Bedingungen für Kauf, Download, Lizenzierung und Nutzung von Katsumii.",
+      "security": "Wie du eine Sicherheitslücke in Katsumii meldest und was danach passiert.",
       "welcome": "Eine geführte Einführung in Katsumii und die ersten Schritte, um dein Trading-Journal sinnvoll zu nutzen.",
       "bugreport": "Melde einen Katsumii-Fehler und teile Reproduktionsschritte, damit wir das Problem untersuchen können.",
       "notFound": "Diese Katsumii-Seite existiert nicht oder wurde verschoben."
@@ -2776,6 +2779,30 @@
       {
         "title": "Inhaltlich verantwortlich",
         "body": "Frederik Morbe (Anschrift wie oben) gemäß § 18 Abs. 2 MStV."
+      }
+    ]
+  },
+  "securityPage": {
+    "hero": {
+      "label": "Rechtliches",
+      "title": "Sicherheit",
+      "description": "So meldest du eine Sicherheitslücke in Katsumii — und was du dabei von uns erwarten darfst."
+    },
+    "sections": [
+      {
+        "title": "1. Sicherheitslücken melden",
+        "paragraphs": [
+          "Melde Funde bitte an security@katsumii.com und nicht öffentlich. Wir bestätigen den Eingang innerhalb von 5 Werktagen und melden uns anschließend mit einer Einschätzung.",
+          "Bitte gib uns 90 Tage Zeit für einen Fix, bevor du etwas veröffentlichst, und teste nichts an Systemen oder Daten anderer Nutzer.",
+          "Wir zahlen keine Prämien, nennen dich auf Wunsch aber im Changelog."
+        ]
+      },
+      {
+        "title": "2. Geltungsbereich",
+        "paragraphs": [
+          "Im Geltungsbereich sind die Katsumii-Desktop-App und katsumii.com.",
+          "Nicht im Geltungsbereich sind die Systeme von Lemon Squeezy und der angebundenen Broker. Melde Funde dort bitte direkt beim jeweiligen Anbieter."
+        ]
       }
     ]
   }
