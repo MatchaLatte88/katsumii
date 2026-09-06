@@ -41,6 +41,9 @@ jobs:
         uses: actions/upload-pages-artifact@v5
         with:
           path: ./dist
+          # Without this the action tars dist/ with --exclude=.[^/]* and drops
+          # dot-directories, so public/.well-known/security.txt 404s in production.
+          include-hidden-files: true
 
   deploy:
     needs: build

@@ -1,5 +1,13 @@
 [
   {
+    "version": "0.16.1",
+    "date": "2026-09-07",
+    "title": "The security.txt file is reachable again",
+    "changes": [
+      "/.well-known/security.txt now loads on the live site — the deployment step was silently dropping it, so security researchers looking for it found nothing"
+    ]
+  },
+  {
     "version": "0.16.0",
     "date": "2026-09-06",
     "title": "A place to report a security problem",
